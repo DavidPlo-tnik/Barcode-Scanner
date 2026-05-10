@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a0a" />
+<title>Décarie Scanner</title>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface-2: #1c1c1c;
+    --border: #2a2a2a;
+    --text: #f4f4f4;
+    --text-dim: #888;
+    --text-faint: #555;
+    --accent: #d4ff3a;
+    --accent-dim: #8aa825;
+    --good: #4ade80;
+    --warn: #fbbf24;
+    --bad: #f87171;
+    --font-display: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.5;
+    overscroll-behavior: none;
+    height: 100%;
+  }
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    min-height: 100vh;
+  }
+
+  /* ==== TOPBAR ==== */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px 12px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .topbar .brand {
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .topbar .meta {
+    font-family: var(--font-display);
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+  }
+
+  /* ==== TABS ==== */
+  .tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 47px;
+    z-index: 9;
+  }
+  .tab {
+    padding: 14px 12px;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: var(--text-dim);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+  }
+  .tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ==== SCANNER ==== */
+  #scanner-view, #search-view {
+    display: none;
+    padding: 16px;
+  }
+  #scanner-view.active, #search-view.active { display: block; }
+
+  .scanner-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #000;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  #qr-reader { width: 100%; height: 100%; }
+  #qr-reader video { object-fit: cover; }
+  /* Hide html5-qrcode default UI */
+  #qr-reader__dashboard { display: none !important; }
+  #qr-reader__scan_region { background: transparent !important; }
+  #qr-reader__scan_region img { display: none !important; }
+
+  .scanner-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .reticle {
+    width: 78%;
+    height: 28%;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 0 9999px rgba(0,0,0,0.35);
+    position: relative;
+  }
+  .reticle::before, .reticle::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.6;
+    box-shadow: 0 0 8px var(--accent);
+  }
+  .reticle::before { top: 50%; animation: scan 2s ease-in-out infinite; }
+  @keyframes scan {
+    0%, 100% { top: 10%; opacity: 0.3; }
+    50% { top: 90%; opacity: 1; }
+  }
+
+  .scanner-controls {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+  }
+  .btn {
+    padding: 14px 18px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;
+  }
+  .btn.primary {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+  }
+  .btn.primary:active { background: var(--accent-dim); }
+  .btn:disabled { opacity: 0.5; }
+
+  .manual-entry {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+  }
+  .manual-entry input {
+    flex: 1;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 14px;
+    border-radius: 4px;
+    outline: none;
+  }
+  .manual-entry input:focus { border-color: var(--accent); }
+
+  .scanner-status {
+    margin-top: 14px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    text-align: center;
+    padding: 8px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+  .scanner-status.ok { color: var(--good); border-color: var(--good); }
+  .scanner-status.err { color: var(--bad); border-color: var(--bad); }
+
+  /* ==== SEARCH ==== */
+  #search-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 16px;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 12px;
+  }
+  #search-input:focus { border-color: var(--accent); }
+
+  .search-results { display: flex; flex-direction: column; gap: 6px; }
+  .search-row {
+    padding: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .search-row:active { background: var(--surface-2); }
+  .search-row .name { font-size: 14px; font-weight: 500; }
+  .search-row .code {
+    font-family: var(--font-display);
+    font-size: 10px;
+    color: var(--text-faint);
+    margin-top: 2px;
+  }
+  .search-row .price {
+    font-family: var(--font-display);
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ==== PRODUCT DETAIL (modal) ==== */
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 100;
+    overflow-y: auto;
+    transform: translateY(100%);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .modal.open { transform: translateY(0); }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 5;
+  }
+  .modal-header .close {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0 6px;
+    line-height: 1;
+  }
+  .modal-header .label {
+    font-family: var(--font-display);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.15em;
+  }
+
+  .modal-content { padding: 0 18px 30px; }
+
+  .product-name {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 16px 0 6px;
+    line-height: 1.25;
+  }
+  .product-meta {
+    display: flex;
+    gap: 14px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    margin-bottom: 18px;
+  }
+  .product-meta span:not(:last-child)::after {
+    content: '/';
+    margin-left: 14px;
+    color: var(--text-faint);
+  }
+
+  /* Stat grid */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .stat {
+    background: var(--surface);
+    padding: 14px;
+  }
+  .stat .label {
+    font-family: var(--font-display);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+  }
+  .stat .value {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+  .stat .sub {
+    font-family: var(--font-display);
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+  .stat.accent .value { color: var(--accent); }
+
+  /* Section titles */
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    margin: 24px 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .section-title .hint {
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+  }
+
+  /* Chart container */
+  .chart-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 8px 8px;
+    height: 200px;
+    position: relative;
+  }
+
+  /* Monthly table */
+  .month-table {
+    width: 100%;
+    font-family: var(--font-display);
+    font-size: 12px;
+    border-collapse: collapse;
+  }
+  .month-table th {
+    text-align: left;
+    color: var(--text-faint);
+    font-weight: 400;
+    padding: 8px 6px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--border);
+  }
+  .month-table td {
+    padding: 8px 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .month-table tr:last-child td { border-bottom: none; }
+  .month-table .num { text-align: right; }
+  .month-table .month { color: var(--text); }
+  .month-table .qty { color: var(--text); }
+  .month-table .amt { color: var(--accent); font-weight: 600; }
+  .month-table .zero { color: var(--text-faint); }
+  .month-table .trend {
+    width: 60px;
+  }
+  .trend-bar {
+    background: var(--accent);
+    height: 8px;
+    border-radius: 1px;
+  }
+
+  .empty-state {
+    padding: 40px 16px;
+    text-align: center;
+    color: var(--text-dim);
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--accent);
+    color: #000;
+    padding: 12px 18px;
+    border-radius: 4px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    opacity: 0;
+    transition: all 0.2s;
+    z-index: 200;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.err { background: var(--bad); color: #fff; }
+
+  /* Loader */
+  .loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 16px;
+    color: var(--text-dim);
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .loader::before {
+    content: '';
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Recent scans */
+  .recent {
+    margin-top: 22px;
+  }
+  .recent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .recent-item {
+    padding: 10px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .recent-item .rname { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .recent-item .ramt { font-family: var(--font-display); font-size: 11px; color: var(--accent); white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">▮▮ MARCHÉ DÉCARIE</div>
+  <div class="meta" id="meta-info">— ITEMS</div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="scanner">⌘ SCAN</button>
+  <button class="tab" data-tab="search">⌕ SEARCH</button>
+</nav>
+
+<section id="scanner-view" class="active">
+  <div class="scanner-frame">
+    <div id="qr-reader"></div>
+    <div class="scanner-overlay"><div class="reticle"></div></div>
+  </div>
+
+  <div class="scanner-controls">
+    <button class="btn primary" id="start-btn">START CAMERA</button>
+    <button class="btn" id="stop-btn" disabled>STOP</button>
+  </div>
+
+  <form class="manual-entry" id="manual-form">
+    <input type="text" id="manual-input" placeholder="Or type barcode…" inputmode="numeric" autocomplete="off" />
+    <button class="btn" type="submit">GO</button>
+  </form>
+
+  <div class="scanner-status" id="status">CAMERA OFF</div>
+
+  <div class="recent" id="recent-section" style="display: none;">
+    <div class="section-title">RECENT</div>
+    <div class="recent-list" id="recent-list"></div>
+  </div>
+</section>
+
+<section id="search-view">
+  <input type="text" id="search-input" placeholder="Search by name or barcode…" autocomplete="off" />
+  <div class="search-results" id="search-results">
+    <div class="empty-state">TYPE TO SEARCH PRODUCTS</div>
+  </div>
+</section>
+
+<div class="modal" id="product-modal">
+  <div class="modal-header">
+    <span class="label" id="modal-label">PRODUCT</span>
+    <button class="close" id="close-modal">×</button>
+  </div>
+  <div class="modal-content" id="modal-content"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(() => {
+  'use strict';
+
+  // ============== STATE ==============
+  let DATA = null;
+  let scanner = null;
+  let lastScanCode = null;
+  let lastScanTime = 0;
+  const RECENT_KEY = 'decarie_recent_v1';
+  let chart = null;
+
+  // ============== HELPERS ==============
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => document.querySelectorAll(s);
+
+  const monthLabel = (m) => {
+    // '2025-04' -> 'Apr 25'
+    const [y, mo] = m.split('-');
+    const names = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${names[parseInt(mo, 10) - 1]} ${y.slice(2)}`;
+  };
+
+  const fmtMoney = (v) => {
+    if (v === 0) return '$0';
+    if (v < 1) return `$${v.toFixed(2)}`;
+    if (v < 100) return `$${v.toFixed(2)}`;
+    return `$${Math.round(v).toLocaleString()}`;
+  };
+
+  const fmtQty = (v) => {
+    if (v === 0) return '0';
+    if (v < 1) return v.toFixed(2);
+    if (v % 1 === 0) return Math.round(v).toLocaleString();
+    return v.toFixed(1);
+  };
+
+  const showToast = (msg, isErr = false) => {
+    const t = $('#toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (isErr ? ' err' : '');
+    setTimeout(() => t.classList.remove('show'), 2200);
+  };
+
+  const setStatus = (msg, kind = '') => {
+    const s = $('#status');
+    s.textContent = msg;
+    s.className = 'scanner-status' + (kind ? ' ' + kind : '');
+  };
+
+  // ============== DATA ==============
+  async function loadData() {
+    try {
+      const res = await fetch('data.json');
+      DATA = await res.json();
+      $('#meta-info').textContent = `${Object.keys(DATA.products).length.toLocaleString()} ITEMS`;
+      return true;
+    } catch (e) {
+      console.error('Failed to load data:', e);
+      $('#meta-info').textContent = 'DATA ERROR';
+      return false;
+    }
+  }
+
+  // Look up by code, with normalization for barcode quirks
+  function lookup(code) {
+    if (!DATA) return null;
+    const raw = String(code).trim();
+
+    // Build a list of candidate codes to try, in order of likelihood.
+    // Marché Décarie's POS stores codes WITHOUT the trailing check digit,
+    // so the most common case is: scanned 12-digit UPC-A -> POS has 11 digits.
+    const candidates = [];
+    const seen = new Set();
+    const add = (c) => { if (c && !seen.has(c)) { seen.add(c); candidates.push(c); } };
+
+    add(raw);
+
+    // Strip trailing check digit (UPC-A 12 -> 11, EAN-13 13 -> 12)
+    if (raw.length >= 8) add(raw.slice(0, -1));
+
+    // Strip leading zeros
+    const noLead = raw.replace(/^0+/, '');
+    if (noLead) add(noLead);
+
+    // Strip leading zeros AND trailing check digit
+    if (noLead.length >= 8) add(noLead.slice(0, -1));
+
+    // EAN-13 -> UPC-A: drop leading 0 (and try with check digit stripped)
+    if (raw.length === 13 && raw.startsWith('0')) {
+      add(raw.slice(1));
+      add(raw.slice(1, -1));
+    }
+
+    // Pad with leading zero (some POS data has extra leading zero)
+    add('0' + raw);
+
+    for (const c of candidates) {
+      if (DATA.products[c]) return { code: c, ...packProduct(c) };
+    }
+    return null;
+  }
+
+  function packProduct(code) {
+    const [name, price, fmt] = DATA.products[code];
+    const sales = DATA.sales[code] || null;
+    return { name, price, fmt, sales };
+  }
+
+  // ============== RECENT ==============
+  function getRecent() {
+    try { return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); }
+    catch { return []; }
+  }
+  function pushRecent(code) {
+    const list = getRecent().filter((c) => c !== code);
+    list.unshift(code);
+    localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 10)));
+    renderRecent();
+  }
+  function renderRecent() {
+    const list = getRecent();
+    const container = $('#recent-section');
+    const ul = $('#recent-list');
+    if (list.length === 0) {
+      container.style.display = 'none';
+      return;
+    }
+    container.style.display = 'block';
+    ul.innerHTML = '';
+    for (const code of list) {
+      const p = lookup(code);
+      if (!p) continue;
+      const li = document.createElement('div');
+      li.className = 'recent-item';
+      const wkAmt = p.sales ? fmtMoney(p.sales.wka) + '/wk' : '—';
+      li.innerHTML = `
+        <div class="rname">${escapeHtml(p.name)}</div>
+        <div class="ramt">${wkAmt}</div>
+      `;
+      li.addEventListener('click', () => openProduct(code));
+      ul.appendChild(li);
+    }
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
+
+  // ============== SCANNER ==============
+  async function startScanner() {
+    if (scanner) return;
+    if (!window.Html5Qrcode) {
+      setStatus('SCANNER LIBRARY FAILED TO LOAD', 'err');
+      return;
+    }
+    setStatus('STARTING CAMERA…');
+    $('#start-btn').disabled = true;
+    try {
+      scanner = new Html5Qrcode('qr-reader', { verbose: false });
+      const config = {
+        fps: 10,
+        qrbox: (vw, vh) => {
+          const w = Math.floor(vw * 0.78);
+          const h = Math.floor(vh * 0.28);
+          return { width: w, height: h };
+        },
+        aspectRatio: 4/3,
+        formatsToSupport: [
+          Html5QrcodeSupportedFormats.UPC_A,
+          Html5QrcodeSupportedFormats.UPC_E,
+          Html5QrcodeSupportedFormats.EAN_13,
+          Html5QrcodeSupportedFormats.EAN_8,
+          Html5QrcodeSupportedFormats.CODE_128,
+          Html5QrcodeSupportedFormats.CODE_39,
+          Html5QrcodeSupportedFormats.ITF,
+          Html5QrcodeSupportedFormats.QR_CODE,
+        ],
+      };
+      await scanner.start(
+        { facingMode: 'environment' },
+        config,
+        onScanSuccess,
+        () => {} // no-op error per frame
+      );
+      setStatus('SCANNING — POINT AT BARCODE', 'ok');
+      $('#stop-btn').disabled = false;
+    } catch (e) {
+      console.error(e);
+      setStatus('CAMERA ACCESS DENIED OR UNAVAILABLE', 'err');
+      $('#start-btn').disabled = false;
+      scanner = null;
+    }
+  }
+
+  async function stopScanner() {
+    if (!scanner) return;
+    try {
+      await scanner.stop();
+      await scanner.clear();
+    } catch (e) { /* ignore */ }
+    scanner = null;
+    setStatus('CAMERA OFF');
+    $('#start-btn').disabled = false;
+    $('#stop-btn').disabled = true;
+  }
+
+  function onScanSuccess(decoded) {
+    const now = Date.now();
+    // Debounce: same code within 1.5s = ignore
+    if (decoded === lastScanCode && now - lastScanTime < 1500) return;
+    lastScanCode = decoded;
+    lastScanTime = now;
+
+    const p = lookup(decoded);
+    if (p) {
+      // Vibrate confirm
+      if (navigator.vibrate) navigator.vibrate(50);
+      pushRecent(p.code);
+      openProduct(p.code);
+    } else {
+      if (navigator.vibrate) navigator.vibrate([30, 50, 30]);
+      showToast(`NOT FOUND: ${decoded}`, true);
+    }
+  }
+
+  // ============== PRODUCT DETAIL ==============
+  function openProduct(code) {
+    const p = lookup(code);
+    if (!p) {
+      showToast('PRODUCT NOT FOUND', true);
+      return;
+    }
+    renderProduct(p);
+    $('#product-modal').classList.add('open');
+  }
+
+  function closeProduct() {
+    $('#product-modal').classList.remove('open');
+    if (chart) {
+      chart.destroy();
+      chart = null;
+    }
+  }
+
+  function renderProduct(p) {
+    $('#modal-label').textContent = `CODE ${p.code}`;
+    const c = $('#modal-content');
+
+    const sales = p.sales;
+    const months = DATA.months;
+
+    // Build stat grid
+    let priceLine = p.price !== null
+      ? `<div class="stat accent"><div class="label">PRICE</div><div class="value">${fmtMoney(p.price)}</div><div class="sub">${escapeHtml(p.fmt || '')}</div></div>`
+      : `<div class="stat"><div class="label">PRICE</div><div class="value" style="color: var(--text-faint)">—</div><div class="sub">no price set</div></div>`;
+
+    let trendIndicator = '';
+    if (sales && months.length >= 4) {
+      // Compare last 2 months vs prior 2 months
+      const last2 = (sales.ma[months.length - 1] + sales.ma[months.length - 2]) / 2;
+      const prior2 = (sales.ma[months.length - 3] + sales.ma[months.length - 4]) / 2;
+      if (prior2 > 0) {
+        const delta = ((last2 - prior2) / prior2) * 100;
+        const sign = delta >= 0 ? '+' : '';
+        const color = delta >= 5 ? 'var(--good)' : (delta <= -5 ? 'var(--bad)' : 'var(--text-dim)');
+        trendIndicator = `<span style="color: ${color}; font-family: var(--font-display); font-size: 12px;">${sign}${delta.toFixed(0)}%</span>`;
+      }
+    }
+
+    let html = `
+      <h2 class="product-name">${escapeHtml(p.name)}</h2>
+      <div class="product-meta">
+        <span>${escapeHtml(p.fmt || 'no format')}</span>
+        <span>${p.code}</span>
+        ${sales ? `<span>${sales.na} mo. active</span>` : '<span>no sales data</span>'}
+      </div>
+
+      <div class="stat-grid">
+        ${priceLine}
+        <div class="stat accent">
+          <div class="label">AVG / WEEK</div>
+          <div class="value">${sales ? fmtMoney(sales.wka) : '—'}</div>
+          <div class="sub">${sales ? fmtQty(sales.wkq) + ' units' : 'no history'}</div>
+        </div>
+        <div class="stat">
+          <div class="label">12-MO REVENUE</div>
+          <div class="value">${sales ? fmtMoney(sales.ta) : '—'}</div>
+          <div class="sub">${sales ? fmtQty(sales.tq) + ' units sold' : ''}</div>
+        </div>
+        <div class="stat">
+          <div class="label">RECENT TREND</div>
+          <div class="value" style="font-size: 16px;">${trendIndicator || '<span style="color: var(--text-faint)">—</span>'}</div>
+          <div class="sub">last 2 mo. vs prior 2</div>
+        </div>
+      </div>
+    `;
+
+    if (sales) {
+      html += `
+        <div class="section-title">
+          <span>MONTHLY SALES</span>
+          <span class="hint">${months[0]} → ${months[months.length-1]}</span>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="trend-chart"></canvas>
+        </div>
+
+        <div class="section-title">
+          <span>BREAKDOWN</span>
+          <span class="hint">UNITS / REVENUE</span>
+        </div>
+        <table class="month-table">
+          <thead>
+            <tr><th>MONTH</th><th class="num">QTY</th><th class="num">REV</th><th class="num">TREND</th></tr>
+          </thead>
+          <tbody>
+            ${renderMonthRows(sales, months)}
+          </tbody>
+        </table>
+      `;
+
+      // Weekly table for April if available
+      if (sales.wq && sales.wq.length > 0 && sales.wq.some(v => v > 0)) {
+        html += `
+          <div class="section-title">
+            <span>WEEKLY (APRIL 2026)</span>
+            <span class="hint">DAILY DETAIL</span>
+          </div>
+          <table class="month-table">
+            <thead>
+              <tr><th>WEEK</th><th class="num">QTY</th><th class="num">REV</th></tr>
+            </thead>
+            <tbody>
+              ${DATA.weeks_apr.map((w, i) => {
+                const q = sales.wq[i] || 0;
+                const a = sales.wa[i] || 0;
+                const wlbl = w.replace('2026-W', 'Wk ');
+                return `<tr>
+                  <td>${wlbl}</td>
+                  <td class="num qty ${q === 0 ? 'zero' : ''}">${fmtQty(q)}</td>
+                  <td class="num amt ${a === 0 ? 'zero' : ''}">${fmtMoney(a)}</td>
+                </tr>`;
+              }).join('')}
+            </tbody>
+          </table>
+        `;
+      }
+    } else {
+      html += `<div class="empty-state">NO SALES HISTORY FOR THIS PRODUCT</div>`;
+    }
+
+    c.innerHTML = html;
+
+    // Render chart after DOM is in place
+    if (sales) {
+      requestAnimationFrame(() => renderChart(sales, months));
+    }
+  }
+
+  function renderMonthRows(sales, months) {
+    const maxAmt = Math.max(...sales.ma, 0.01);
+    return months.map((m, i) => {
+      const q = sales.mq[i];
+      const a = sales.ma[i];
+      const pct = a > 0 ? (a / maxAmt * 100) : 0;
+      return `<tr>
+        <td class="month">${monthLabel(m)}</td>
+        <td class="num qty ${q === 0 ? 'zero' : ''}">${fmtQty(q)}</td>
+        <td class="num amt ${a === 0 ? 'zero' : ''}">${fmtMoney(a)}</td>
+        <td class="num trend">${a > 0 ? `<div class="trend-bar" style="width: ${pct}%"></div>` : '<span class="zero">—</span>'}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  function renderChart(sales, months) {
+    const ctx = document.getElementById('trend-chart');
+    if (!ctx) return;
+    if (chart) chart.destroy();
+
+    chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: months.map(monthLabel),
+        datasets: [{
+          label: 'Revenue',
+          data: sales.ma,
+          borderColor: '#d4ff3a',
+          backgroundColor: 'rgba(212, 255, 58, 0.1)',
+          borderWidth: 2,
+          tension: 0.25,
+          fill: true,
+          pointBackgroundColor: '#d4ff3a',
+          pointRadius: 3,
+          pointHoverRadius: 5,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#1c1c1c',
+            borderColor: '#2a2a2a',
+            borderWidth: 1,
+            titleColor: '#f4f4f4',
+            bodyColor: '#d4ff3a',
+            titleFont: { family: 'ui-monospace, monospace', size: 10 },
+            bodyFont: { family: 'ui-monospace, monospace', size: 12, weight: 'bold' },
+            padding: 8,
+            displayColors: false,
+            callbacks: {
+              label: (ctx) => {
+                const i = ctx.dataIndex;
+                return `$${Math.round(sales.ma[i]).toLocaleString()} / ${fmtQty(sales.mq[i])} units`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: '#1c1c1c', display: false },
+            ticks: { color: '#666', font: { family: 'ui-monospace, monospace', size: 9 } }
+          },
+          y: {
+            grid: { color: '#1c1c1c' },
+            ticks: {
+              color: '#666',
+              font: { family: 'ui-monospace, monospace', size: 9 },
+              callback: (v) => '$' + (v >= 1000 ? (v/1000).toFixed(0) + 'k' : v)
+            },
+            beginAtZero: true,
+          }
+        }
+      }
+    });
+  }
+
+  // ============== SEARCH ==============
+  let searchTimer = null;
+  function doSearch(q) {
+    const results = $('#search-results');
+    q = q.trim().toLowerCase();
+    if (q.length < 2) {
+      results.innerHTML = '<div class="empty-state">TYPE TO SEARCH PRODUCTS</div>';
+      return;
+    }
+
+    const matches = [];
+    const isNum = /^\d+$/.test(q);
+    const limit = 50;
+
+    for (const code in DATA.products) {
+      const [name, price] = DATA.products[code];
+      let matchScore = 0;
+
+      if (isNum && code.includes(q)) {
+        matchScore = 100 + (code === q ? 50 : 0);
+      } else {
+        const lname = name.toLowerCase();
+        if (lname.startsWith(q)) matchScore = 50;
+        else if (lname.includes(q)) matchScore = 25;
+      }
+
+      if (matchScore > 0) {
+        const sales = DATA.sales[code];
+        const rev = sales ? sales.ta : 0;
+        // Tiebreak: higher revenue first
+        matches.push({ code, name, price, matchScore, rev });
+      }
+      if (matches.length > 500) break; // safety cap
+    }
+
+    matches.sort((a, b) => (b.matchScore - a.matchScore) || (b.rev - a.rev));
+    const top = matches.slice(0, limit);
+
+    if (top.length === 0) {
+      results.innerHTML = '<div class="empty-state">NO MATCHES</div>';
+      return;
+    }
+
+    results.innerHTML = top.map(m => `
+      <div class="search-row" data-code="${m.code}">
+        <div>
+          <div class="name">${escapeHtml(m.name)}</div>
+          <div class="code">${m.code}${m.rev > 0 ? ' · $' + Math.round(m.rev).toLocaleString() + '/yr' : ''}</div>
+        </div>
+        <div class="price">${m.price !== null ? fmtMoney(m.price) : '—'}</div>
+      </div>
+    `).join('');
+
+    results.querySelectorAll('.search-row').forEach(row => {
+      row.addEventListener('click', () => openProduct(row.dataset.code));
+    });
+  }
+
+  // ============== TABS ==============
+  function switchTab(name) {
+    $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+    $('#scanner-view').classList.toggle('active', name === 'scanner');
+    $('#search-view').classList.toggle('active', name === 'search');
+    if (name !== 'scanner' && scanner) stopScanner();
+    if (name === 'search') $('#search-input').focus();
+  }
+
+  // ============== INIT ==============
+  async function init() {
+    const ok = await loadData();
+    if (!ok) {
+      setStatus('DATA FAILED TO LOAD', 'err');
+      return;
+    }
+    renderRecent();
+
+    $('#start-btn').addEventListener('click', startScanner);
+    $('#stop-btn').addEventListener('click', stopScanner);
+
+    $('#manual-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const v = $('#manual-input').value.trim();
+      if (!v) return;
+      const p = lookup(v);
+      if (p) {
+        pushRecent(p.code);
+        openProduct(p.code);
+        $('#manual-input').value = '';
+      } else {
+        showToast('NOT FOUND: ' + v, true);
+      }
+    });
+
+    $('#close-modal').addEventListener('click', closeProduct);
+    $('#product-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeProduct();
+    });
+
+    $$('.tab').forEach(t => t.addEventListener('click', () => switchTab(t.dataset.tab)));
+
+    $('#search-input').addEventListener('input', (e) => {
+      clearTimeout(searchTimer);
+      const v = e.target.value;
+      searchTimer = setTimeout(() => doSearch(v), 120);
+    });
+
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(err => console.log('SW failed:', err));
+    }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
