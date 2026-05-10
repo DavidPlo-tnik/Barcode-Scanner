@@ -1,5 +1,5 @@
 /* MD Scanner service worker — cache-first for app shell, stale-while-revalidate for data */
-const VERSION = 'v1';
+const VERSION = 'v2';
 const SHELL = [
   './',
   './index.html',
