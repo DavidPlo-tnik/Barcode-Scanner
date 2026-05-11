@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+<meta name="theme-color" content="#0a0a0a" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-title" content="Décarie" />
+<title>Décarie Scanner</title>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface-2: #1c1c1c;
+    --border: #2a2a2a;
+    --text: #f4f4f4;
+    --text-dim: #888;
+    --text-faint: #555;
+    --accent: #d4ff3a;
+    --accent-dim: #8aa825;
+    --good: #4ade80;
+    --warn: #fbbf24;
+    --bad: #f87171;
+    --font-display: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.5;
+    overscroll-behavior: none;
+    min-height: 100%;
+  }
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px 12px; border-bottom: 1px solid var(--border);
+    background: var(--bg); position: sticky; top: 0; z-index: 10;
+  }
+  .topbar .brand {
+    font-family: var(--font-display); font-size: 13px;
+    letter-spacing: 0.18em; font-weight: 700; color: var(--accent);
+  }
+  .topbar .meta {
+    font-family: var(--font-display); font-size: 10px;
+    color: var(--text-faint); letter-spacing: 0.1em;
+  }
+
+  .tabs {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--border); background: var(--bg);
+    position: sticky; top: 47px; z-index: 9;
+  }
+  .tab {
+    padding: 14px 8px; text-align: center;
+    font-family: var(--font-display); font-size: 11px;
+    letter-spacing: 0.12em; font-weight: 600; color: var(--text-dim);
+    background: none; border: none;
+    border-bottom: 2px solid transparent; cursor: pointer;
+  }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  #scanner-view, #search-view, #lists-view { display: none; padding: 16px; }
+  #scanner-view.active, #search-view.active, #lists-view.active { display: block; }
+
+  .scanner-frame {
+    position: relative; width: 100%; aspect-ratio: 4/3;
+    background: #000; border: 1px solid var(--border);
+    overflow: hidden; border-radius: 4px;
+  }
+  #scanner-video {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+  }
+
+  .scanner-overlay {
+    position: absolute; inset: 0; pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .reticle {
+    width: 78%; height: 28%; border: 2px solid var(--accent);
+    box-shadow: 0 0 0 9999px rgba(0,0,0,0.35); position: relative;
+  }
+  .reticle::before {
+    content: ''; position: absolute; left: 0; right: 0; height: 1px;
+    background: var(--accent); opacity: 0.6;
+    box-shadow: 0 0 8px var(--accent);
+    top: 50%; animation: scan 2s ease-in-out infinite;
+  }
+  @keyframes scan {
+    0%, 100% { top: 10%; opacity: 0.3; }
+    50% { top: 90%; opacity: 1; }
+  }
+
+  .scanner-controls { margin-top: 14px; display: flex; gap: 8px; }
+  .btn {
+    padding: 14px 18px; font-family: var(--font-display); font-size: 12px;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid var(--border); background: var(--surface);
+    color: var(--text); border-radius: 4px; cursor: pointer; flex: 1;
+  }
+  .btn.primary { background: var(--accent); color: #000; border-color: var(--accent); }
+  .btn.primary:active { background: var(--accent-dim); }
+  .btn:disabled { opacity: 0.5; }
+  .btn.small { padding: 8px 12px; font-size: 10px; flex: 0 0 auto; }
+  .btn.danger { color: var(--bad); border-color: var(--bad); background: transparent; }
+
+  .manual-entry { margin-top: 14px; display: flex; gap: 8px; }
+  .manual-entry input {
+    flex: 1; padding: 12px 14px; background: var(--surface);
+    border: 1px solid var(--border); color: var(--text);
+    font-family: var(--font-display); font-size: 14px;
+    border-radius: 4px; outline: none;
+  }
+  .manual-entry input:focus { border-color: var(--accent); }
+
+  .scanner-status {
+    margin-top: 14px; font-family: var(--font-display); font-size: 11px;
+    letter-spacing: 0.08em; color: var(--text-dim); text-align: center;
+    padding: 8px; border: 1px dashed var(--border); border-radius: 4px;
+  }
+  .scanner-status.ok { color: var(--good); border-color: var(--good); }
+  .scanner-status.err { color: var(--bad); border-color: var(--bad); }
+
+  #search-input {
+    width: 100%; padding: 14px 16px; background: var(--surface);
+    border: 1px solid var(--border); color: var(--text);
+    font-size: 16px; border-radius: 4px; outline: none; margin-bottom: 12px;
+  }
+  #search-input:focus { border-color: var(--accent); }
+
+  .search-results { display: flex; flex-direction: column; gap: 6px; }
+  .search-row {
+    padding: 12px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 4px; cursor: pointer; display: flex;
+    justify-content: space-between; align-items: flex-start; gap: 10px;
+  }
+  .search-row:active { background: var(--surface-2); }
+  .search-row .name { font-size: 14px; font-weight: 500; }
+  .search-row .code {
+    font-family: var(--font-display); font-size: 10px;
+    color: var(--text-faint); margin-top: 2px;
+  }
+  .search-row .price {
+    font-family: var(--font-display); font-size: 13px;
+    color: var(--accent); font-weight: 700; white-space: nowrap;
+  }
+  .search-row .actions {
+    display: flex; gap: 4px;
+  }
+
+  .modal {
+    position: fixed; inset: 0; background: var(--bg); z-index: 100;
+    overflow-y: auto; transform: translateY(100%);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .modal.open { transform: translateY(0); }
+
+  .modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; background: var(--bg); z-index: 5;
+  }
+  .modal-header .close {
+    background: none; border: none; color: var(--text);
+    font-size: 28px; cursor: pointer; padding: 0 6px; line-height: 1;
+  }
+  .modal-header .label {
+    font-family: var(--font-display); font-size: 11px;
+    color: var(--text-faint); letter-spacing: 0.15em;
+  }
+  .modal-header .actions {
+    display: flex; gap: 8px;
+  }
+
+  .modal-content { padding: 0 18px 30px; }
+
+  .product-name {
+    font-size: 22px; font-weight: 600; margin: 16px 0 6px; line-height: 1.25;
+  }
+  .product-meta {
+    display: flex; gap: 14px; font-family: var(--font-display);
+    font-size: 11px; color: var(--text-dim);
+    letter-spacing: 0.05em; margin-bottom: 18px;
+  }
+  .product-meta span:not(:last-child)::after {
+    content: '/'; margin-left: 14px; color: var(--text-faint);
+  }
+
+  .stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--border); border: 1px solid var(--border);
+    border-radius: 4px; overflow: hidden; margin-bottom: 24px;
+  }
+  .stat { background: var(--surface); padding: 14px; }
+  .stat .label {
+    font-family: var(--font-display); font-size: 10px;
+    color: var(--text-dim); letter-spacing: 0.12em; margin-bottom: 6px;
+  }
+  .stat .value {
+    font-family: var(--font-display); font-size: 22px;
+    font-weight: 700; color: var(--text); line-height: 1;
+  }
+  .stat .sub {
+    font-family: var(--font-display); font-size: 11px;
+    color: var(--text-dim); margin-top: 4px;
+  }
+  .stat.accent .value { color: var(--accent); }
+
+  .section-title {
+    font-family: var(--font-display); font-size: 11px;
+    color: var(--text-dim); letter-spacing: 0.15em;
+    margin: 24px 0 10px; display: flex;
+    justify-content: space-between; align-items: baseline;
+  }
+  .section-title .hint {
+    font-size: 10px; color: var(--text-faint); letter-spacing: 0.05em;
+  }
+
+  .chart-wrap {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 4px; padding: 12px 8px 8px;
+    height: 200px; position: relative;
+  }
+
+  .month-table {
+    width: 100%; font-family: var(--font-display);
+    font-size: 12px; border-collapse: collapse;
+  }
+  .month-table th {
+    text-align: left; color: var(--text-faint); font-weight: 400;
+    padding: 8px 6px; font-size: 10px; letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--border);
+  }
+  .month-table td { padding: 8px 6px; border-bottom: 1px solid var(--border); }
+  .month-table tr:last-child td { border-bottom: none; }
+  .month-table .num { text-align: right; }
+  .month-table .amt { color: var(--accent); font-weight: 600; }
+  .month-table .zero { color: var(--text-faint); }
+  .month-table .trend { width: 60px; }
+  .trend-bar { background: var(--accent); height: 8px; border-radius: 1px; }
+
+  .empty-state {
+    padding: 40px 16px; text-align: center; color: var(--text-dim);
+    font-family: var(--font-display); font-size: 12px; letter-spacing: 0.08em;
+  }
+
+  .toast {
+    position: fixed; bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--accent); color: #000; padding: 12px 18px;
+    border-radius: 4px; font-family: var(--font-display);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+    opacity: 0; transition: all 0.2s; z-index: 200; pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.err { background: var(--bad); color: #fff; }
+
+  .recent { margin-top: 22px; }
+  .recent-list { display: flex; flex-direction: column; gap: 4px; }
+  .recent-item {
+    padding: 10px 12px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 4px;
+    font-size: 13px; cursor: pointer; display: flex;
+    justify-content: space-between; align-items: center; gap: 8px;
+  }
+  .recent-item .rname {
+    flex: 1; min-width: 0; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap;
+  }
+  .recent-item .ramt {
+    font-family: var(--font-display); font-size: 11px;
+    color: var(--accent); white-space: nowrap;
+  }
+
+  /* ===== LISTS UI ===== */
+  .lists-header {
+    display: flex; gap: 8px; margin-bottom: 16px;
+  }
+  .lists-header input {
+    flex: 1; padding: 12px 14px; background: var(--surface);
+    border: 1px solid var(--border); color: var(--text);
+    font-size: 14px; border-radius: 4px; outline: none;
+  }
+  .lists-header input:focus { border-color: var(--accent); }
+
+  .list-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 4px; padding: 14px; margin-bottom: 8px;
+    cursor: pointer; display: flex; justify-content: space-between;
+    align-items: center; gap: 10px;
+  }
+  .list-card:active { background: var(--surface-2); }
+  .list-card .ltitle { font-size: 15px; font-weight: 600; }
+  .list-card .lmeta {
+    font-family: var(--font-display); font-size: 10px;
+    color: var(--text-dim); letter-spacing: 0.08em; margin-top: 4px;
+  }
+  .list-card .larrow {
+    color: var(--text-faint); font-size: 22px;
+  }
+
+  /* List detail view */
+  .list-detail-actions {
+    display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;
+  }
+  .list-item {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 4px; padding: 12px; margin-bottom: 8px;
+  }
+  .list-item .li-row1 {
+    display: flex; justify-content: space-between; gap: 10px;
+    align-items: flex-start; margin-bottom: 8px;
+  }
+  .list-item .li-name { font-size: 14px; font-weight: 500; line-height: 1.3; }
+  .list-item .li-meta {
+    font-family: var(--font-display); font-size: 10px;
+    color: var(--text-faint); margin-top: 2px;
+  }
+  .list-item .li-price {
+    font-family: var(--font-display); font-size: 14px;
+    color: var(--accent); font-weight: 700; white-space: nowrap;
+  }
+  .list-item .li-barcode {
+    background: #fff; padding: 8px 4px 2px; border-radius: 3px;
+    text-align: center; margin-top: 4px;
+  }
+  .list-item .li-barcode svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+  .list-item .li-actions {
+    display: flex; gap: 6px; margin-top: 8px;
+  }
+  .list-item .li-no-barcode {
+    background: var(--surface-2); padding: 12px; border-radius: 3px;
+    text-align: center; font-family: var(--font-display);
+    font-size: 11px; color: var(--text-faint); letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  /* Print styles for list export */
+  @media print {
+    .topbar, .tabs, .list-detail-actions, .modal-header { display: none !important; }
+    body, html { background: #fff !important; color: #000 !important; }
+    .list-item {
+      background: #fff !important; border: 1px solid #ccc !important;
+      page-break-inside: avoid; margin-bottom: 6px;
+    }
+    .list-item .li-name { color: #000 !important; }
+    .list-item .li-price { color: #000 !important; }
+    .list-item .li-meta { color: #555 !important; }
+    .list-item .li-actions { display: none !important; }
+    .modal { position: static !important; transform: none !important; background: #fff !important; }
+    .modal-content { padding: 0 !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">▮▮ MARCHÉ DÉCARIE</div>
+  <div class="meta" id="meta-info">— ITEMS</div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="scanner">⌘ SCAN</button>
+  <button class="tab" data-tab="search">⌕ SEARCH</button>
+  <button class="tab" data-tab="lists">≡ LISTS</button>
+</nav>
+
+<section id="scanner-view" class="active">
+  <div class="scanner-frame">
+    <video id="scanner-video" playsinline autoplay muted></video>
+    <div class="scanner-overlay"><div class="reticle"></div></div>
+  </div>
+
+  <div class="scanner-controls">
+    <button class="btn primary" id="start-btn">START CAMERA</button>
+    <button class="btn" id="stop-btn" disabled>STOP</button>
+  </div>
+
+  <form class="manual-entry" id="manual-form">
+    <input type="text" id="manual-input" placeholder="Or type barcode…" inputmode="numeric" autocomplete="off" />
+    <button class="btn" type="submit">GO</button>
+  </form>
+
+  <div class="scanner-status" id="status">CAMERA OFF</div>
+
+  <div class="recent" id="recent-section" style="display: none;">
+    <div class="section-title">RECENT</div>
+    <div class="recent-list" id="recent-list"></div>
+  </div>
+</section>
+
+<section id="search-view">
+  <input type="text" id="search-input" placeholder="Search by name or barcode…" autocomplete="off" />
+  <div class="search-results" id="search-results">
+    <div class="empty-state">TYPE TO SEARCH PRODUCTS</div>
+  </div>
+</section>
+
+<section id="lists-view">
+  <div class="lists-header">
+    <input type="text" id="new-list-name" placeholder="New list name…" autocomplete="off" />
+    <button class="btn primary" id="new-list-btn">CREATE</button>
+  </div>
+  <div id="lists-container">
+    <div class="empty-state">NO LISTS YET — CREATE ONE ABOVE</div>
+  </div>
+</section>
+
+<div class="modal" id="product-modal">
+  <div class="modal-header">
+    <span class="label" id="modal-label">PRODUCT</span>
+    <div class="actions">
+      <button class="btn small" id="add-to-list-btn">+ LIST</button>
+      <button class="close" id="close-modal">×</button>
+    </div>
+  </div>
+  <div class="modal-content" id="modal-content"></div>
+</div>
+
+<div class="modal" id="list-detail-modal">
+  <div class="modal-header">
+    <span class="label" id="list-detail-label">LIST</span>
+    <div class="actions">
+      <button class="close" id="close-list-detail">×</button>
+    </div>
+  </div>
+  <div class="modal-content" id="list-detail-content"></div>
+</div>
+
+<div class="modal" id="add-to-list-modal">
+  <div class="modal-header">
+    <span class="label">ADD TO LIST</span>
+    <button class="close" id="close-add-list">×</button>
+  </div>
+  <div class="modal-content" id="add-to-list-content"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ZXing barcode scanner: works reliably on iOS Safari & Android Chrome -->
+<script src="https://unpkg.com/@zxing/browser@0.1.5/umd/zxing-browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<!-- JsBarcode for rendering barcodes in lists -->
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+<script>
+(() => {
+  'use strict';
+
+  let DATA = null;
+  let codeReader = null;
+  let scanControls = null;
+  let lastScanCode = null;
+  let lastScanTime = 0;
+  const RECENT_KEY = 'decarie_recent_v1';
+  const LISTS_KEY = 'decarie_lists_v1';
+  let chart = null;
+  let currentProductCode = null;
+  let currentListId = null;
+
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => document.querySelectorAll(s);
+
+  const monthLabel = (m) => {
+    const [y, mo] = m.split('-');
+    const names = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${names[parseInt(mo, 10) - 1]} ${y.slice(2)}`;
+  };
+
+  const fmtMoney = (v) => {
+    if (v === 0) return '$0';
+    if (v < 100) return `$${v.toFixed(2)}`;
+    return `$${Math.round(v).toLocaleString()}`;
+  };
+
+  const fmtQty = (v) => {
+    if (v === 0) return '0';
+    if (v < 1) return v.toFixed(2);
+    if (v % 1 === 0) return Math.round(v).toLocaleString();
+    return v.toFixed(1);
+  };
+
+  const showToast = (msg, isErr = false) => {
+    const t = $('#toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (isErr ? ' err' : '');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => t.classList.remove('show'), 2200);
+  };
+
+  const setStatus = (msg, kind = '') => {
+    const s = $('#status');
+    s.textContent = msg;
+    s.className = 'scanner-status' + (kind ? ' ' + kind : '');
+  };
+
+  const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+
+  // ============== DATA ==============
+  async function loadData() {
+    try {
+      const res = await fetch('data.json');
+      DATA = await res.json();
+      $('#meta-info').textContent = `${Object.keys(DATA.products).length.toLocaleString()} ITEMS`;
+      return true;
+    } catch (e) {
+      console.error('Failed to load data:', e);
+      $('#meta-info').textContent = 'DATA ERROR';
+      return false;
+    }
+  }
+
+  // ============== LOOKUP ==============
+  // Scale-printed barcodes from the store scale:
+  // Format: 20XXXXXPPPPPC  (13 digits)
+  //   20      = scale prefix (EAN-13 internal use)
+  //   XXXXX   = product PLU (5 digits, positions 2-6)
+  //   PPPPPP  = encoded weight/price (positions 7-12)
+  //   C       = optional check digit
+  // POS stores these as 20 + PLU + 6 zeros (12 digits with check) or with trailing zeros stripped (11 digits).
+  // To match: detect 13-digit code starting with "20", extract PLU, look up "20XXXXX0000" (11d) or "20XXXXX00000" (12d).
+  function lookup(code) {
+    if (!DATA) return null;
+    const raw = String(code).trim();
+
+    const candidates = [];
+    const seen = new Set();
+    const add = (c) => { if (c && !seen.has(c)) { seen.add(c); candidates.push(c); } };
+
+    // SCALE BARCODE detection:
+    // Marché Décarie scale prints 13-digit EAN-13 barcodes with format:
+    //   2 PPPPP WWWWW C   where:
+    //     2     = scale prefix (single digit)
+    //     PPPPP = 5-digit product PLU (positions 1-5)
+    //     WWWWW = encoded weight/price (positions 6-10)
+    //     C     = check digit
+    // The POS stores these as 2 + PLU + zeros, trimmed of trailing zeros
+    // (e.g. "20233300000" = 11 digits for PEPPERETTE DU BOEUF, PLU=02333).
+    // To match: detect any code starting with '2' that's >= 12 digits,
+    // extract PLU from positions 1-5, look up "2" + PLU + variable trailing zeros.
+    if (/^2\d{11,12}$/.test(raw)) {
+      const plu = raw.slice(1, 6); // 5-digit PLU
+      // Try various POS storage lengths (11, 12, 13 digits)
+      add('2' + plu + '00000');   // 11-digit (most common in POS)
+      add('2' + plu + '000000');  // 12-digit
+      add('2' + plu + '0000000'); // 13-digit
+      add('2' + plu + '0000');    // 10-digit fallback
+    }
+
+    add(raw);
+    // Strip trailing check digit (UPC-A 12→11, EAN-13 13→12)
+    if (raw.length >= 8) add(raw.slice(0, -1));
+    // Strip leading zeros
+    const noLead = raw.replace(/^0+/, '');
+    if (noLead) add(noLead);
+    if (noLead.length >= 8) add(noLead.slice(0, -1));
+    // EAN-13 → UPC-A: drop leading 0
+    if (raw.length === 13 && raw.startsWith('0')) {
+      add(raw.slice(1));
+      add(raw.slice(1, -1));
+    }
+    // Pad
+    add('0' + raw);
+
+    for (const c of candidates) {
+      if (DATA.products[c]) return { code: c, scanned: raw, ...packProduct(c) };
+    }
+    return null;
+  }
+
+  function packProduct(code) {
+    const [name, price, fmt] = DATA.products[code];
+    const sales = DATA.sales[code] || null;
+    return { name, price, fmt, sales };
+  }
+
+  // ============== RECENT ==============
+  function getRecent() {
+    try { return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); }
+    catch { return []; }
+  }
+  function pushRecent(code) {
+    const list = getRecent().filter((c) => c !== code);
+    list.unshift(code);
+    localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 10)));
+    renderRecent();
+  }
+  function renderRecent() {
+    const list = getRecent();
+    const container = $('#recent-section');
+    const ul = $('#recent-list');
+    if (list.length === 0) { container.style.display = 'none'; return; }
+    container.style.display = 'block';
+    ul.innerHTML = '';
+    for (const code of list) {
+      const p = lookup(code);
+      if (!p) continue;
+      const li = document.createElement('div');
+      li.className = 'recent-item';
+      const wkAmt = p.sales ? fmtMoney(p.sales.wka) + '/wk' : '—';
+      li.innerHTML = `<div class="rname">${escapeHtml(p.name)}</div><div class="ramt">${wkAmt}</div>`;
+      li.addEventListener('click', () => openProduct(code));
+      ul.appendChild(li);
+    }
+  }
+
+  // ============== SCANNER (ZXing — works on iOS Safari) ==============
+  async function startScanner() {
+    if (codeReader) return;
+    if (!window.ZXingBrowser) {
+      setStatus('SCANNER LIBRARY FAILED TO LOAD', 'err');
+      return;
+    }
+    setStatus('STARTING CAMERA…');
+    $('#start-btn').disabled = true;
+    try {
+      // Choose back camera explicitly
+      const videoEl = $('#scanner-video');
+      codeReader = new ZXingBrowser.BrowserMultiFormatReader();
+
+      // List devices and prefer environment-facing camera
+      let deviceId = undefined;
+      try {
+        const devices = await ZXingBrowser.BrowserCodeReader.listVideoInputDevices();
+        // Prefer device with "back" or "rear" or "environment" in label
+        const back = devices.find(d => /back|rear|environment/i.test(d.label));
+        deviceId = (back || devices[devices.length - 1] || {}).deviceId;
+      } catch (e) { /* fall back to constraints */ }
+
+      const constraints = deviceId
+        ? { deviceId: { exact: deviceId } }
+        : { facingMode: { ideal: 'environment' } };
+
+      scanControls = await codeReader.decodeFromConstraints(
+        { video: constraints },
+        videoEl,
+        (result, err, controls) => {
+          if (result) {
+            onScanSuccess(result.getText());
+          }
+          // Errors during scanning are normal (no barcode in frame); ignore them.
+        }
+      );
+
+      setStatus('SCANNING — POINT AT BARCODE', 'ok');
+      $('#stop-btn').disabled = false;
+    } catch (e) {
+      console.error('Scanner start error:', e);
+      let msg = 'CAMERA ERROR';
+      if (e && e.name === 'NotAllowedError') msg = 'CAMERA PERMISSION DENIED';
+      else if (e && e.name === 'NotFoundError') msg = 'NO CAMERA FOUND';
+      else if (e && e.message) msg = 'ERR: ' + e.message.toUpperCase().slice(0, 40);
+      setStatus(msg, 'err');
+      $('#start-btn').disabled = false;
+      codeReader = null;
+      scanControls = null;
+    }
+  }
+
+  async function stopScanner() {
+    try {
+      if (scanControls) {
+        scanControls.stop();
+        scanControls = null;
+      }
+      if (codeReader) {
+        codeReader = null;
+      }
+      const videoEl = $('#scanner-video');
+      if (videoEl && videoEl.srcObject) {
+        videoEl.srcObject.getTracks().forEach(t => t.stop());
+        videoEl.srcObject = null;
+      }
+    } catch (e) { /* ignore */ }
+    setStatus('CAMERA OFF');
+    $('#start-btn').disabled = false;
+    $('#stop-btn').disabled = true;
+  }
+
+  function onScanSuccess(decoded) {
+    const now = Date.now();
+    if (decoded === lastScanCode && now - lastScanTime < 1500) return;
+    lastScanCode = decoded;
+    lastScanTime = now;
+
+    const p = lookup(decoded);
+    if (p) {
+      if (navigator.vibrate) navigator.vibrate(50);
+      pushRecent(p.code);
+      openProduct(p.code, p.scanned);
+    } else {
+      if (navigator.vibrate) navigator.vibrate([30, 50, 30]);
+      showToast(`NOT FOUND: ${decoded}`, true);
+    }
+  }
+
+  // ============== PRODUCT DETAIL ==============
+  function openProduct(code, scannedRaw) {
+    const p = lookup(code);
+    if (!p) { showToast('PRODUCT NOT FOUND', true); return; }
+    currentProductCode = code;
+    renderProduct(p, scannedRaw);
+    $('#product-modal').classList.add('open');
+  }
+
+  function closeProduct() {
+    $('#product-modal').classList.remove('open');
+    if (chart) { chart.destroy(); chart = null; }
+    currentProductCode = null;
+  }
+
+  function renderProduct(p, scannedRaw) {
+    $('#modal-label').textContent = `CODE ${p.code}`;
+    const c = $('#modal-content');
+    const sales = p.sales;
+    const months = DATA.months;
+
+    let priceLine = p.price !== null
+      ? `<div class="stat accent"><div class="label">PRICE</div><div class="value">${fmtMoney(p.price)}</div><div class="sub">${escapeHtml(p.fmt || '')}</div></div>`
+      : `<div class="stat"><div class="label">PRICE</div><div class="value" style="color: var(--text-faint)">—</div><div class="sub">no price set</div></div>`;
+
+    let trendIndicator = '';
+    if (sales && months.length >= 4) {
+      const last2 = (sales.ma[months.length - 1] + sales.ma[months.length - 2]) / 2;
+      const prior2 = (sales.ma[months.length - 3] + sales.ma[months.length - 4]) / 2;
+      if (prior2 > 0) {
+        const delta = ((last2 - prior2) / prior2) * 100;
+        const sign = delta >= 0 ? '+' : '';
+        const color = delta >= 5 ? 'var(--good)' : (delta <= -5 ? 'var(--bad)' : 'var(--text-dim)');
+        trendIndicator = `<span style="color: ${color}; font-family: var(--font-display); font-size: 12px;">${sign}${delta.toFixed(0)}%</span>`;
+      }
+    }
+
+    const scaleNote = (scannedRaw && scannedRaw !== p.code)
+      ? `<div style="margin-bottom: 12px; padding: 8px 10px; background: var(--surface-2); border-left: 2px solid var(--accent); border-radius: 2px; font-family: var(--font-display); font-size: 10px; color: var(--text-dim);">
+           SCANNED: ${escapeHtml(scannedRaw)} → MATCHED POS: ${p.code}
+         </div>` : '';
+
+    let html = `
+      ${scaleNote}
+      <h2 class="product-name">${escapeHtml(p.name)}</h2>
+      <div class="product-meta">
+        <span>${escapeHtml(p.fmt || 'no format')}</span>
+        <span>${p.code}</span>
+        ${sales ? `<span>${sales.na} mo. active</span>` : '<span>no sales data</span>'}
+      </div>
+
+      <div class="stat-grid">
+        ${priceLine}
+        <div class="stat accent">
+          <div class="label">AVG / WEEK</div>
+          <div class="value">${sales ? fmtMoney(sales.wka) : '—'}</div>
+          <div class="sub">${sales ? fmtQty(sales.wkq) + ' units' : 'no history'}</div>
+        </div>
+        <div class="stat">
+          <div class="label">12-MO REVENUE</div>
+          <div class="value">${sales ? fmtMoney(sales.ta) : '—'}</div>
+          <div class="sub">${sales ? fmtQty(sales.tq) + ' units sold' : ''}</div>
+        </div>
+        <div class="stat">
+          <div class="label">RECENT TREND</div>
+          <div class="value" style="font-size: 16px;">${trendIndicator || '<span style="color: var(--text-faint)">—</span>'}</div>
+          <div class="sub">last 2 mo. vs prior 2</div>
+        </div>
+      </div>
+    `;
+
+    if (sales) {
+      html += `
+        <div class="section-title"><span>MONTHLY SALES</span><span class="hint">${months[0]} → ${months[months.length-1]}</span></div>
+        <div class="chart-wrap"><canvas id="trend-chart"></canvas></div>
+        <div class="section-title"><span>BREAKDOWN</span><span class="hint">UNITS / REVENUE</span></div>
+        <table class="month-table">
+          <thead><tr><th>MONTH</th><th class="num">QTY</th><th class="num">REV</th><th class="num">TREND</th></tr></thead>
+          <tbody>${renderMonthRows(sales, months)}</tbody>
+        </table>
+      `;
+    } else {
+      html += `<div class="empty-state">NO SALES HISTORY FOR THIS PRODUCT</div>`;
+    }
+    c.innerHTML = html;
+
+    if (sales) requestAnimationFrame(() => renderChart(sales, months));
+  }
+
+  function renderMonthRows(sales, months) {
+    const maxAmt = Math.max(...sales.ma, 0.01);
+    return months.map((m, i) => {
+      const q = sales.mq[i]; const a = sales.ma[i];
+      const pct = a > 0 ? (a / maxAmt * 100) : 0;
+      return `<tr>
+        <td>${monthLabel(m)}</td>
+        <td class="num ${q === 0 ? 'zero' : ''}">${fmtQty(q)}</td>
+        <td class="num amt ${a === 0 ? 'zero' : ''}">${fmtMoney(a)}</td>
+        <td class="num trend">${a > 0 ? `<div class="trend-bar" style="width: ${pct}%"></div>` : '<span class="zero">—</span>'}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  function renderChart(sales, months) {
+    const ctx = document.getElementById('trend-chart');
+    if (!ctx) return;
+    if (chart) chart.destroy();
+    chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: months.map(monthLabel),
+        datasets: [{
+          label: 'Revenue', data: sales.ma,
+          borderColor: '#d4ff3a', backgroundColor: 'rgba(212, 255, 58, 0.1)',
+          borderWidth: 2, tension: 0.25, fill: true,
+          pointBackgroundColor: '#d4ff3a', pointRadius: 3, pointHoverRadius: 5,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#1c1c1c', borderColor: '#2a2a2a', borderWidth: 1,
+            titleColor: '#f4f4f4', bodyColor: '#d4ff3a',
+            titleFont: { family: 'ui-monospace, monospace', size: 10 },
+            bodyFont: { family: 'ui-monospace, monospace', size: 12, weight: 'bold' },
+            padding: 8, displayColors: false,
+            callbacks: {
+              label: (ctx) => {
+                const i = ctx.dataIndex;
+                return `$${Math.round(sales.ma[i]).toLocaleString()} / ${fmtQty(sales.mq[i])} units`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#666', font: { family: 'ui-monospace, monospace', size: 9 } } },
+          y: {
+            grid: { color: '#1c1c1c' },
+            ticks: { color: '#666', font: { family: 'ui-monospace, monospace', size: 9 },
+              callback: (v) => '$' + (v >= 1000 ? (v/1000).toFixed(0) + 'k' : v) },
+            beginAtZero: true,
+          }
+        }
+      }
+    });
+  }
+
+  // ============== SEARCH ==============
+  let searchTimer = null;
+  function doSearch(q) {
+    const results = $('#search-results');
+    q = q.trim().toLowerCase();
+    if (q.length < 2) { results.innerHTML = '<div class="empty-state">TYPE TO SEARCH PRODUCTS</div>'; return; }
+
+    const matches = [];
+    const isNum = /^\d+$/.test(q);
+    const limit = 50;
+
+    for (const code in DATA.products) {
+      const [name, price] = DATA.products[code];
+      let matchScore = 0;
+      if (isNum && code.includes(q)) {
+        matchScore = 100 + (code === q ? 50 : 0);
+      } else {
+        const lname = name.toLowerCase();
+        if (lname.startsWith(q)) matchScore = 50;
+        else if (lname.includes(q)) matchScore = 25;
+      }
+      if (matchScore > 0) {
+        const sales = DATA.sales[code];
+        matches.push({ code, name, price, matchScore, rev: sales ? sales.ta : 0 });
+      }
+      if (matches.length > 500) break;
+    }
+
+    matches.sort((a, b) => (b.matchScore - a.matchScore) || (b.rev - a.rev));
+    const top = matches.slice(0, limit);
+    if (top.length === 0) { results.innerHTML = '<div class="empty-state">NO MATCHES</div>'; return; }
+
+    results.innerHTML = top.map(m => `
+      <div class="search-row" data-code="${m.code}">
+        <div style="flex: 1; min-width: 0;">
+          <div class="name">${escapeHtml(m.name)}</div>
+          <div class="code">${m.code}${m.rev > 0 ? ' · $' + Math.round(m.rev).toLocaleString() + '/yr' : ''}</div>
+        </div>
+        <div class="price">${m.price !== null ? fmtMoney(m.price) : '—'}</div>
+      </div>
+    `).join('');
+
+    results.querySelectorAll('.search-row').forEach(row => {
+      row.addEventListener('click', () => openProduct(row.dataset.code));
+    });
+  }
+
+  // ============== LISTS ==============
+  function getLists() {
+    try { return JSON.parse(localStorage.getItem(LISTS_KEY) || '[]'); }
+    catch { return []; }
+  }
+  function saveLists(lists) {
+    localStorage.setItem(LISTS_KEY, JSON.stringify(lists));
+  }
+  function createList(name) {
+    const lists = getLists();
+    const id = 'L' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    lists.unshift({ id, name: name.trim(), items: [], created: Date.now() });
+    saveLists(lists);
+    return id;
+  }
+  function deleteList(id) {
+    saveLists(getLists().filter(l => l.id !== id));
+  }
+  function renameList(id, newName) {
+    const lists = getLists();
+    const list = lists.find(l => l.id === id);
+    if (list) { list.name = newName.trim(); saveLists(lists); }
+  }
+  function addToList(listId, code) {
+    const lists = getLists();
+    const list = lists.find(l => l.id === listId);
+    if (!list) return false;
+    if (list.items.includes(code)) return false;
+    list.items.push(code);
+    saveLists(lists);
+    return true;
+  }
+  function removeFromList(listId, code) {
+    const lists = getLists();
+    const list = lists.find(l => l.id === listId);
+    if (!list) return;
+    list.items = list.items.filter(c => c !== code);
+    saveLists(lists);
+  }
+
+  function renderLists() {
+    const container = $('#lists-container');
+    const lists = getLists();
+    if (lists.length === 0) {
+      container.innerHTML = '<div class="empty-state">NO LISTS YET — CREATE ONE ABOVE</div>';
+      return;
+    }
+    container.innerHTML = lists.map(l => {
+      const count = l.items.length;
+      let total = 0;
+      for (const code of l.items) {
+        const p = DATA.products[code];
+        if (p && p[1] !== null) total += p[1];
+      }
+      return `
+        <div class="list-card" data-id="${l.id}">
+          <div style="flex: 1; min-width: 0;">
+            <div class="ltitle">${escapeHtml(l.name)}</div>
+            <div class="lmeta">${count} ITEM${count === 1 ? '' : 'S'} · TOTAL ${fmtMoney(total)}</div>
+          </div>
+          <div class="larrow">›</div>
+        </div>
+      `;
+    }).join('');
+
+    container.querySelectorAll('.list-card').forEach(card => {
+      card.addEventListener('click', () => openListDetail(card.dataset.id));
+    });
+  }
+
+  function openListDetail(listId) {
+    currentListId = listId;
+    const list = getLists().find(l => l.id === listId);
+    if (!list) return;
+    renderListDetail(list);
+    $('#list-detail-modal').classList.add('open');
+  }
+
+  function closeListDetail() {
+    $('#list-detail-modal').classList.remove('open');
+    currentListId = null;
+  }
+
+  function renderListDetail(list) {
+    $('#list-detail-label').textContent = list.name.toUpperCase().slice(0, 30);
+    const c = $('#list-detail-content');
+    let total = 0;
+    const items = list.items.map(code => {
+      const p = DATA.products[code];
+      if (!p) return null;
+      const [name, price, fmt] = p;
+      if (price !== null) total += price;
+      return { code, name, price, fmt };
+    }).filter(Boolean);
+
+    let html = `
+      <div class="list-detail-actions">
+        <button class="btn small" id="rename-list-btn">RENAME</button>
+        <button class="btn small" id="print-list-btn">PRINT</button>
+        <button class="btn small danger" id="delete-list-btn">DELETE LIST</button>
+      </div>
+      <div style="margin-bottom: 14px; font-family: var(--font-display); font-size: 11px; color: var(--text-dim);">
+        ${items.length} ITEM${items.length === 1 ? '' : 'S'} · TOTAL ${fmtMoney(total)}
+      </div>
+    `;
+
+    if (items.length === 0) {
+      html += `<div class="empty-state">EMPTY LIST<br><br>SCAN OR SEARCH A PRODUCT,<br>THEN TAP "+ LIST" TO ADD</div>`;
+    } else {
+      html += items.map(item => {
+        const barcodeOk = isPrintableBarcode(item.code);
+        return `
+          <div class="list-item">
+            <div class="li-row1">
+              <div style="flex: 1; min-width: 0;">
+                <div class="li-name">${escapeHtml(item.name)}</div>
+                <div class="li-meta">${item.code}${item.fmt ? ' · ' + escapeHtml(item.fmt) : ''}</div>
+              </div>
+              <div class="li-price">${item.price !== null ? fmtMoney(item.price) : '—'}</div>
+            </div>
+            ${barcodeOk
+              ? `<div class="li-barcode"><svg class="bc-svg" data-code="${item.code}"></svg></div>`
+              : `<div class="li-no-barcode">CODE NOT SCANNABLE (${item.code.length} DIGITS)</div>`}
+            <div class="li-actions">
+              <button class="btn small" data-action="view" data-code="${item.code}">VIEW</button>
+              <button class="btn small danger" data-action="remove" data-code="${item.code}">REMOVE</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+    c.innerHTML = html;
+
+    // Render barcodes — defer to after the modal is visible & laid out,
+    // because JsBarcode needs the SVG element to have real layout dimensions.
+    requestAnimationFrame(() => {
+      c.querySelectorAll('.bc-svg').forEach(svg => {
+        const ok = renderBarcode(svg, svg.dataset.code);
+        if (!ok) {
+          // Replace the failed SVG with a fallback message
+          const parent = svg.closest('.li-barcode');
+          if (parent) {
+            parent.outerHTML = `<div class="li-no-barcode">BARCODE RENDER FAILED — CODE: ${escapeHtml(svg.dataset.code)}</div>`;
+          }
+        }
+      });
+    });
+
+    // Bind action buttons
+    $('#rename-list-btn')?.addEventListener('click', () => {
+      const newName = prompt('Rename list:', list.name);
+      if (newName && newName.trim()) {
+        renameList(list.id, newName);
+        renderListDetail(getLists().find(l => l.id === list.id));
+        renderLists();
+      }
+    });
+    $('#delete-list-btn')?.addEventListener('click', () => {
+      if (confirm(`Delete list "${list.name}"?`)) {
+        deleteList(list.id);
+        closeListDetail();
+        renderLists();
+      }
+    });
+    $('#print-list-btn')?.addEventListener('click', () => window.print());
+
+    c.querySelectorAll('[data-action]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const action = btn.dataset.action;
+        const code = btn.dataset.code;
+        if (action === 'view') {
+          openProduct(code);
+        } else if (action === 'remove') {
+          removeFromList(list.id, code);
+          renderListDetail(getLists().find(l => l.id === list.id));
+          renderLists();
+        }
+      });
+    });
+  }
+
+  // Render a CODE128 barcode into an SVG element.
+  // CODE128 chosen because:
+  //   - Handles any digit length (your POS codes are 10-13 digits, no check digit)
+  //   - POS handheld scanners read it natively
+  //   - Avoids check-digit mismatches that would break EAN-13/UPC-A
+  function isPrintableBarcode(code) {
+    return /^\d+$/.test(code) && code.length >= 4;
+  }
+
+  function renderBarcode(svg, code) {
+    if (!window.JsBarcode) {
+      console.warn('JsBarcode not loaded');
+      return false;
+    }
+    try {
+      JsBarcode(svg, code, {
+        format: 'CODE128',
+        width: 1.8,
+        height: 55,
+        displayValue: true,
+        fontSize: 13,
+        textMargin: 2,
+        margin: 6,
+        background: '#ffffff',
+        lineColor: '#000000',
+      });
+      return true;
+    } catch (e) {
+      console.error('Barcode render failed for', code, e);
+      return false;
+    }
+  }
+
+  // ============== ADD TO LIST FROM PRODUCT ==============
+  function openAddToList() {
+    if (!currentProductCode) return;
+    const lists = getLists();
+    const c = $('#add-to-list-content');
+    let html = `
+      <div style="padding-top: 16px; margin-bottom: 16px;">
+        <div class="lists-header">
+          <input type="text" id="quick-list-name" placeholder="New list name…" autocomplete="off" />
+          <button class="btn primary" id="quick-create-list">+ NEW</button>
+        </div>
+      </div>
+    `;
+    if (lists.length === 0) {
+      html += '<div class="empty-state">NO EXISTING LISTS — CREATE ONE ABOVE</div>';
+    } else {
+      html += '<div class="section-title">ADD TO EXISTING LIST</div>';
+      html += lists.map(l => {
+        const inList = l.items.includes(currentProductCode);
+        return `
+          <div class="list-card" data-add-id="${l.id}" ${inList ? 'style="opacity:0.5"' : ''}>
+            <div>
+              <div class="ltitle">${escapeHtml(l.name)}</div>
+              <div class="lmeta">${l.items.length} ITEMS${inList ? ' · ALREADY IN LIST' : ''}</div>
+            </div>
+            <div class="larrow">${inList ? '✓' : '+'}</div>
+          </div>
+        `;
+      }).join('');
+    }
+    c.innerHTML = html;
+    $('#add-to-list-modal').classList.add('open');
+
+    $('#quick-create-list').addEventListener('click', () => {
+      const name = $('#quick-list-name').value;
+      if (!name.trim()) { showToast('ENTER A NAME', true); return; }
+      const id = createList(name);
+      addToList(id, currentProductCode);
+      showToast('LIST CREATED & ITEM ADDED');
+      $('#add-to-list-modal').classList.remove('open');
+      renderLists();
+    });
+
+    c.querySelectorAll('[data-add-id]').forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.dataset.addId;
+        const ok = addToList(id, currentProductCode);
+        if (ok) {
+          showToast('ADDED TO LIST');
+          $('#add-to-list-modal').classList.remove('open');
+          renderLists();
+        } else {
+          showToast('ALREADY IN LIST', true);
+        }
+      });
+    });
+  }
+
+  // ============== TABS ==============
+  function switchTab(name) {
+    $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+    $('#scanner-view').classList.toggle('active', name === 'scanner');
+    $('#search-view').classList.toggle('active', name === 'search');
+    $('#lists-view').classList.toggle('active', name === 'lists');
+    if (name !== 'scanner' && codeReader) stopScanner();
+    if (name === 'search') setTimeout(() => $('#search-input').focus(), 50);
+    if (name === 'lists') renderLists();
+  }
+
+  // ============== INIT ==============
+  async function init() {
+    const ok = await loadData();
+    if (!ok) { setStatus('DATA FAILED TO LOAD', 'err'); return; }
+    renderRecent();
+
+    $('#start-btn').addEventListener('click', startScanner);
+    $('#stop-btn').addEventListener('click', stopScanner);
+
+    $('#manual-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const v = $('#manual-input').value.trim();
+      if (!v) return;
+      const p = lookup(v);
+      if (p) {
+        pushRecent(p.code);
+        openProduct(p.code, v);
+        $('#manual-input').value = '';
+      } else {
+        showToast('NOT FOUND: ' + v, true);
+      }
+    });
+
+    $('#close-modal').addEventListener('click', closeProduct);
+    $('#product-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeProduct();
+    });
+
+    $('#close-list-detail').addEventListener('click', closeListDetail);
+    $('#list-detail-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeListDetail();
+    });
+
+    $('#close-add-list').addEventListener('click', () => $('#add-to-list-modal').classList.remove('open'));
+    $('#add-to-list-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) $('#add-to-list-modal').classList.remove('open');
+    });
+    $('#add-to-list-btn').addEventListener('click', openAddToList);
+
+    $('#new-list-btn').addEventListener('click', () => {
+      const name = $('#new-list-name').value;
+      if (!name.trim()) { showToast('ENTER A NAME', true); return; }
+      createList(name);
+      $('#new-list-name').value = '';
+      renderLists();
+    });
+
+    $$('.tab').forEach(t => t.addEventListener('click', () => switchTab(t.dataset.tab)));
+
+    $('#search-input').addEventListener('input', (e) => {
+      clearTimeout(searchTimer);
+      const v = e.target.value;
+      searchTimer = setTimeout(() => doSearch(v), 120);
+    });
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(err => console.log('SW failed:', err));
+    }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
