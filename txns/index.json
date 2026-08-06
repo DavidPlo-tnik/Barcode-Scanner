@@ -1,0 +1,398 @@
+{
+ "updated": "2026-08-05T22:28:01",
+ "months": [
+  {
+   "ym": "202410",
+   "count": 8585,
+   "total": 201300.07,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DANNA",
+    "David",
+    "KRISTINA",
+    "KSENIA",
+    "VALERIA"
+   ]
+  },
+  {
+   "ym": "202411",
+   "count": 8036,
+   "total": 193125.91,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DANNA",
+    "KRISTINA",
+    "KSENIA",
+    "VALERIA"
+   ]
+  },
+  {
+   "ym": "202412",
+   "count": 7491,
+   "total": 230399.34,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    ".VLADIMIR",
+    "ALONA",
+    "ANTOINE",
+    "DANNA",
+    "KSENIA",
+    "VALERIA"
+   ]
+  },
+  {
+   "ym": "202501",
+   "count": 6754,
+   "total": 176821.93,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "KSENIA",
+    "VALERIA",
+    "VLADIMIR"
+   ]
+  },
+  {
+   "ym": "202502",
+   "count": 6526,
+   "total": 177432.71,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "KSENIA",
+    "VALERIA",
+    "VLADIMIR"
+   ]
+  },
+  {
+   "ym": "202503",
+   "count": 7442,
+   "total": 196075.84,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DARIA",
+    "KSENIA",
+    "VLADIMIR"
+   ]
+  },
+  {
+   "ym": "202504",
+   "count": 8113,
+   "total": 214814.18,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DARIA",
+    "KSENIA",
+    "VLADIMIR"
+   ]
+  },
+  {
+   "ym": "202505",
+   "count": 8060,
+   "total": 197371.51,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DARIA",
+    "KSENIA"
+   ]
+  },
+  {
+   "ym": "202506",
+   "count": 7924,
+   "total": 194949.81,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DARIA",
+    "KSENIA"
+   ]
+  },
+  {
+   "ym": "202507",
+   "count": 8092,
+   "total": 220254.04,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DARIA",
+    "KSENIA"
+   ]
+  },
+  {
+   "ym": "202508",
+   "count": 8242,
+   "total": 237114.32,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DARIA",
+    "KSENIA"
+   ]
+  },
+  {
+   "ym": "202509",
+   "count": 8651,
+   "total": 233103.03,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DARIA",
+    "KSENIA"
+   ]
+  },
+  {
+   "ym": "202510",
+   "count": 8717,
+   "total": 248011.05,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DARIA",
+    "KATERYNA",
+    "KSENIA",
+    "LYZACH"
+   ]
+  },
+  {
+   "ym": "202511",
+   "count": 8005,
+   "total": 245993.92,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DARIA",
+    "KATERYNA",
+    "KSENIA",
+    "LYZACH"
+   ]
+  },
+  {
+   "ym": "202512",
+   "count": 8729,
+   "total": 341092.65,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DARIA",
+    "KSENIA",
+    "LYZACH"
+   ]
+  },
+  {
+   "ym": "202601",
+   "count": 7027,
+   "total": 215190.57,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DARIA",
+    "KSENIA",
+    "LYZACH"
+   ]
+  },
+  {
+   "ym": "202602",
+   "count": 6846,
+   "total": 215373.38,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "KSENIA",
+    "LYZACH",
+    "OLGA"
+   ]
+  },
+  {
+   "ym": "202603",
+   "count": 7647,
+   "total": 237207.18,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "KSENIA",
+    "LYZACH",
+    "OLGA"
+   ]
+  },
+  {
+   "ym": "202604",
+   "count": 8454,
+   "total": 249204.6,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "KSENIA",
+    "LYZACH",
+    "OLGA"
+   ]
+  },
+  {
+   "ym": "202605",
+   "count": 8265,
+   "total": 227656.73,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DIANA",
+    "FINN",
+    "HAKIM",
+    "KSENIA",
+    "LYZACH",
+    "OLGA"
+   ]
+  },
+  {
+   "ym": "202606",
+   "count": 7674,
+   "total": 213098.65,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANTOINE",
+    "DIANA",
+    "FINN",
+    "OLGA"
+   ]
+  },
+  {
+   "ym": "202607",
+   "count": 7369,
+   "total": 214835.72,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANNA",
+    "ANTOINE",
+    "DIANA",
+    "FINN",
+    "LYZACH",
+    "OLEKSANDR",
+    "OLGA"
+   ]
+  },
+  {
+   "ym": "202608",
+   "count": 963,
+   "total": 29406.46,
+   "registers": [
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "ALONA",
+    "ANNA",
+    "DIANA",
+    "OLEKSANDR",
+    "OLGA"
+   ]
+  },
+  {
+   "ym": "209",
+   "count": 10414,
+   "total": 214755.91,
+   "registers": [
+    "1",
+    "2",
+    "3"
+   ],
+   "cashiers": [
+    "Altamir",
+    "Caisse 1",
+    "Dave",
+    "Melanie",
+    "Patricia",
+    "Reine"
+   ]
+  }
+ ]
+}
