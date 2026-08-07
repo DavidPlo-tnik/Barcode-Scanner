@@ -364,6 +364,153 @@
      "F1011": null
     }
    }
+  },
+  {
+   "undo_id": "u20260807153819733768",
+   "applied_at": "2026-08-07T15:38:19",
+   "change": {
+    "code": "0020994200000",
+    "title": "GUIMAUVE ZEFIR DULCHE DE LECHE",
+    "tax_fed": 0,
+    "tax_prov": 0,
+    "balance": 0,
+    "qte_requise": 0,
+    "queued_at": "2026-08-07T19:35:13.500Z",
+    "id": "c1786131313503"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GUIMAUVE ZEFIR",
+     "F1744": "400.0",
+     "F22": "UN"
+    },
+    "POS_TAB": {
+     "F02": "GUIMAUVE ZEFIR UN",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "8.3900",
+     "F196": "8.3900",
+     "F1140": "8.3900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260807153819796168",
+   "applied_at": "2026-08-07T15:38:19",
+   "change": {
+    "code": "0020994000000",
+    "title": "GUIMAUVE ZEFIR BLEUETS",
+    "tax_fed": 0,
+    "tax_prov": 0,
+    "balance": 0,
+    "qte_requise": 0,
+    "queued_at": "2026-08-07T19:35:28.575Z",
+    "id": "c1786131328575"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GUIMAUVE ZEFIR",
+     "F1744": "400.0",
+     "F22": "UN"
+    },
+    "POS_TAB": {
+     "F02": "GUIMAUVE ZEFIR UN",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "8.3900",
+     "F196": "8.3900",
+     "F1140": "8.3900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260807153819858569",
+   "applied_at": "2026-08-07T15:38:19",
+   "change": {
+    "code": "0020994000000",
+    "title": "GUIMAUVE ZEFIR VANILLE",
+    "tax_fed": 0,
+    "tax_prov": 0,
+    "balance": 0,
+    "qte_requise": 0,
+    "queued_at": "2026-08-07T19:35:37.051Z",
+    "id": "c1786131337051"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GUIMAUVE ZEFIR BLEUETS",
+     "F1744": "400.0",
+     "F22": "UN"
+    },
+    "POS_TAB": {
+     "F02": "GUIMAUVE ZEFIR BLEUETS",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "8.3900",
+     "F196": "8.3900",
+     "F1140": "8.3900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
