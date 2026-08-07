@@ -1,3 +1,19 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0006563322757",
+   "size_num": 1,
+   "size_unit": "UN",
+   "multibuy": {
+    "qty": 2,
+    "price": 50
+   },
+   "tax_fed": 1,
+   "tax_prov": 1,
+   "balance": 0,
+   "qte_requise": 0,
+   "queued_at": "2026-08-07T18:35:57.236Z",
+   "id": "c1786127757236"
+  }
+ ]
 }
