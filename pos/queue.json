@@ -1,17 +1,3 @@
 {
- "items": [
-  {
-   "code": "0006563322757",
-   "title": "TEST ITEM SUCCES !",
-   "size_num": 100,
-   "size_unit": "G",
-   "price": 9.99,
-   "tax_fed": 1,
-   "tax_prov": 1,
-   "balance": 0,
-   "qte_requise": 0,
-   "queued_at": "2026-08-07T17:43:46.707Z",
-   "id": "c1786124626711"
-  }
- ]
+ "items": []
 }
