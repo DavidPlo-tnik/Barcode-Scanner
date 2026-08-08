@@ -605,6 +605,51 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260808170421101720",
+   "applied_at": "2026-08-08T17:04:21",
+   "change": {
+    "code": "0023880300000",
+    "title": "SMELT SEC KORJUSHKA",
+    "queued_at": "2026-08-08T20:47:09.261Z",
+    "id": "c1786222029270"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SMELT SEC FUME KORJUSHKA",
+     "F1744": null,
+     "F22": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SMELT SEC FUME KORJUSHKA GR",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "29.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "29.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
