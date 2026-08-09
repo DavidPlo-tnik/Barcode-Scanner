@@ -932,6 +932,194 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260808203950437241",
+   "applied_at": "2026-08-08T20:39:50",
+   "change": {
+    "code": "0085630300495",
+    "title": "SWEET LISA MINI GATEAU AU FROMAGE LAIT CONDENSÉ",
+    "size_num": 50,
+    "size_unit": "",
+    "queued_at": "2026-08-08T21:19:40.414Z",
+    "id": "c1786223980414"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "  MINI GATEAU AU FROMAGE",
+     "F1744": "50.0",
+     "F22": "50G"
+    },
+    "POS_TAB": {
+     "F02": "  MINI GATEAU AU FROMAGE 50G",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.6900",
+     "F196": "0.6900",
+     "F1140": "0.6900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "5.0000",
+     "F31": "4.0",
+     "F1006": "4.0",
+     "F1007": "5.0000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260808203950491244",
+   "applied_at": "2026-08-08T20:39:50",
+   "change": {
+    "code": "0085630300498",
+    "title": "SWEET LISA MINI GATEAU AU FROMAGE BLEUETS",
+    "size_num": 50,
+    "size_unit": "",
+    "queued_at": "2026-08-08T21:20:22.496Z",
+    "id": "c1786224022496"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "  MINI GATEAU AU FROMAGE",
+     "F1744": "50.0",
+     "F22": "50G"
+    },
+    "POS_TAB": {
+     "F02": "  MINI GATEAU AU FROMAGE 50G",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.7500",
+     "F196": "0.7500",
+     "F1140": "0.7500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.2500",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.2500",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260808203950545247",
+   "applied_at": "2026-08-08T20:39:50",
+   "change": {
+    "code": "0085630300491",
+    "title": "SWEET LISA MINI GATEAU AU FROMAGE CHOCOLAT",
+    "size_num": 50,
+    "size_unit": "",
+    "queued_at": "2026-08-08T21:21:08.801Z",
+    "id": "c1786224068801"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "  MINI GATEAU AU FROMAGE",
+     "F1744": "50.0",
+     "F22": "50G"
+    },
+    "POS_TAB": {
+     "F02": "  MINI GATEAU AU FROMAGE 50G",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.6900",
+     "F196": "0.6900",
+     "F1140": "0.6900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.2500",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.2500",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260808203950599250",
+   "applied_at": "2026-08-08T20:39:50",
+   "change": {
+    "code": "0085630300492",
+    "title": "SWEET LISA MINI GATEAU AU FROMAGE VANILLE",
+    "size_num": 50,
+    "size_unit": "",
+    "queued_at": "2026-08-08T21:21:27.252Z",
+    "id": "c1786224087252"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "  MINI GATEAU AU FROMAGE",
+     "F1744": "50.0",
+     "F22": "50G"
+    },
+    "POS_TAB": {
+     "F02": "  MINI GATEAU AU FROMAGE 50G",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.7500",
+     "F196": "0.7500",
+     "F1140": "0.7500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.2500",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.2500",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
