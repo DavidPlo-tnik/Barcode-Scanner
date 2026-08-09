@@ -1,36 +1,3 @@
 {
- "items": [
-  {
-   "code": "0085630300495",
-   "title": "SWEET LISA MINI GATEAU AU FROMAGE LAIT CONDENSÉ",
-   "size_num": 50,
-   "size_unit": "",
-   "queued_at": "2026-08-08T21:19:40.414Z",
-   "id": "c1786223980414"
-  },
-  {
-   "code": "0085630300498",
-   "title": "SWEET LISA MINI GATEAU AU FROMAGE BLEUETS",
-   "size_num": 50,
-   "size_unit": "",
-   "queued_at": "2026-08-08T21:20:22.496Z",
-   "id": "c1786224022496"
-  },
-  {
-   "code": "0085630300491",
-   "title": "SWEET LISA MINI GATEAU AU FROMAGE CHOCOLAT",
-   "size_num": 50,
-   "size_unit": "",
-   "queued_at": "2026-08-08T21:21:08.801Z",
-   "id": "c1786224068801"
-  },
-  {
-   "code": "0085630300492",
-   "title": "SWEET LISA MINI GATEAU AU FROMAGE VANILLE",
-   "size_num": 50,
-   "size_unit": "",
-   "queued_at": "2026-08-08T21:21:27.252Z",
-   "id": "c1786224087252"
-  }
- ]
+ "items": []
 }
