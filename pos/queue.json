@@ -17,6 +17,19 @@
    "size_unit": "",
    "queued_at": "2026-08-10T18:43:43.200Z",
    "id": "c1786387423200"
+  },
+  {
+   "code": "0062790711904",
+   "pos_title": "MARC ANGELO ANTIPASTO MISTO",
+   "size_num": 85,
+   "size_unit": "",
+   "promo": {
+    "price": 7.99,
+    "start": "2026-07-17",
+    "end": "2035-07-17"
+   },
+   "queued_at": "2026-08-10T19:02:37.559Z",
+   "id": "c1786388557561"
   }
  ]
 }
