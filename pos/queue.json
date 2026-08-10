@@ -1,32 +1,3 @@
 {
- "items": [
-  {
-   "code": "0005691040220",
-   "pos_title": "OLDMILW.BIERE",
-   "size_num": 4260,
-   "size_unit": "ML",
-   "promo": {
-    "price": 17.99,
-    "start": "2026-08-10",
-    "end": "2026-11-30"
-   },
-   "deposit": 1.2,
-   "queued_at": "2026-08-10T13:58:15.616Z",
-   "id": "c1786370295624"
-  },
-  {
-   "code": "0005691044035",
-   "pos_title": "PABSTBR BIERE CAN.DRY 8%",
-   "size_num": 4260,
-   "size_unit": "ML",
-   "promo": {
-    "price": 17.99,
-    "start": "2026-08-10",
-    "end": "2026-10-31"
-   },
-   "deposit": 1.2,
-   "queued_at": "2026-08-10T14:00:22.803Z",
-   "id": "c1786370422806"
-  }
- ]
+ "items": []
 }
