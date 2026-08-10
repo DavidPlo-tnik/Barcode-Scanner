@@ -1,3 +1,13 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0023982200000",
+   "title": "Fromage EDAM",
+   "pos_title": "SAPUTO EDAM (COV)  1000G",
+   "size_num": 1000,
+   "size_unit": "",
+   "queued_at": "2026-08-10T18:43:31.503Z",
+   "id": "c1786387411507"
+  }
+ ]
 }
