@@ -87,8 +87,40 @@
   }
   .updated-line .live { color: var(--accent-dim); }
 
-  #scanner-view, #search-view, #lists-view, #ecom-view, #count-view { display: none; padding: 16px; }
-  #scanner-view.active, #search-view.active, #lists-view.active, #ecom-view.active, #count-view.active { display: block; }
+  #scanner-view, #search-view, #lists-view, #ecom-view, #count-view, #editor-view { display: none; padding: 16px; }
+  #scanner-view.active, #search-view.active, #lists-view.active, #ecom-view.active, #count-view.active, #editor-view.active { display: block; }
+
+  /* POS Editor workspace */
+  .ed-lock { display: flex; align-items: center; justify-content: center; min-height: 60vh; }
+  .ed-lock-inner { text-align: center; max-width: 280px; }
+  .ed-lock-icon { font-size: 40px; margin-bottom: 12px; }
+  .ed-lock-title { font-size: 20px; font-weight: 650; margin-bottom: 6px; }
+  .ed-lock-sub { font-size: 13px; color: var(--text-dim); line-height: 1.5; margin-bottom: 20px; }
+  .ed-scan-btn {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 18px; margin-bottom: 10px; border-radius: 14px; border: 1px solid var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent);
+    font-size: 16px; font-weight: 600; cursor: pointer;
+  }
+  .ed-scan-btn span { font-size: 20px; }
+  .ed-scan-btn:active { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+  .ed-search {
+    width: 100%; box-sizing: border-box; background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 12px; color: var(--text); font-size: 15px; padding: 13px 15px; margin-bottom: 16px;
+  }
+  .ed-search:focus { outline: none; border-color: var(--accent); }
+  #ed-video { width: 100%; border-radius: 12px; background: #000; margin-bottom: 8px; }
+  .ed-scan-stop { width: 100%; margin-bottom: 16px; }
+  .ed-results { display: flex; flex-direction: column; gap: 8px; }
+  .ed-result-row {
+    display: flex; align-items: center; gap: 12px; padding: 13px 14px; cursor: pointer;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  }
+  .ed-result-row:active { background: var(--surface-2); }
+  .ed-result-row .err-name { font-size: 15px; font-weight: 550; }
+  .ed-result-row .err-meta { font-family: var(--font-display); font-size: 11px; color: var(--text-dim); margin-top: 2px; letter-spacing: 0.03em; }
+  .ed-result-row .err-price { font-size: 15px; font-weight: 650; color: var(--accent); }
+  .ed-result-row .err-go { color: var(--text-faint); font-size: 18px; }
 
   .scanner-frame {
     position: relative; width: 100%; aspect-ratio: 4/3;
@@ -1566,6 +1598,7 @@
   <button class="tab" data-tab="lists">≡ LISTS</button>
   <button class="tab" data-tab="ecom">◉ ECOM</button>
   <button class="tab" data-tab="count"># COUNT</button>
+  <button class="tab" data-tab="editor">⚡ EDIT</button>
 </nav>
 
 <section id="scanner-view" class="active">
@@ -1743,6 +1776,28 @@
       <span class="hint" id="count-list-hint"></span>
     </div>
     <div id="count-items-list"></div>
+  </div>
+</section>
+
+<section id="editor-view">
+  <div class="ed-lock" id="ed-lock">
+    <div class="ed-lock-inner">
+      <div class="ed-lock-icon">🔒</div>
+      <div class="ed-lock-title">POS Editor</div>
+      <div class="ed-lock-sub">Enter your PIN to edit items directly on the POS.</div>
+      <button class="btn primary" id="ed-unlock-btn">Unlock</button>
+    </div>
+  </div>
+  <div class="ed-workspace" id="ed-workspace" style="display:none;">
+    <button class="ed-scan-btn" id="ed-scan-btn"><span>⌘</span> Scan an item</button>
+    <input type="text" id="ed-search" class="ed-search" placeholder="or search by name / barcode" autocomplete="off" />
+    <div id="ed-scanner-wrap" style="display:none;">
+      <video id="ed-video" playsinline muted></video>
+      <button class="btn ed-scan-stop" id="ed-scan-stop">Stop scanning</button>
+    </div>
+    <div class="ed-results" id="ed-results">
+      <div class="empty-state">Scan or search an item to edit it.</div>
+    </div>
   </div>
 </section>
 
@@ -1956,7 +2011,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v74</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v75</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2585,6 +2640,99 @@
 
   // session unlock so you don't re-enter the PIN every edit
   let _posUnlocked = false;
+  // ============ EDITOR VIEW (dedicated PIN-gated section) ============
+  let _edCodeReader = null, _edScanControls = null;
+
+  function openEditorView() {
+    // reflect unlock state
+    if (_posUnlocked) {
+      $('#ed-lock').style.display = 'none';
+      $('#ed-workspace').style.display = 'block';
+    } else {
+      $('#ed-lock').style.display = 'flex';
+      $('#ed-workspace').style.display = 'none';
+    }
+  }
+
+  function edUnlock() {
+    // reuse the existing PIN modal; on success, reveal the workspace
+    _pdPendingCode = null;
+    _edUnlockMode = true;
+    _pinBuffer = ''; renderPinDots(); $('#pin-error').textContent = '';
+    $('#pos-pin-modal').classList.add('open');
+  }
+  let _edUnlockMode = false;
+
+  function edRenderResults(list) {
+    const el = $('#ed-results');
+    if (!list.length) { el.innerHTML = '<div class="empty-state">No matches.</div>'; return; }
+    el.innerHTML = list.slice(0, 30).map(p => `
+      <div class="ed-result-row" data-code="${p.code}">
+        <div style="flex:1;min-width:0;">
+          <div class="err-name">${escapeHtml((p.name || '').trim())}</div>
+          <div class="err-meta">${escapeHtml(p.code)}${p.sizeStr ? ' · ' + escapeHtml(p.sizeStr) : ''}</div>
+        </div>
+        <div class="err-price">${p.price != null ? fmtMoney(p.price) : '—'}</div>
+        <div class="err-go">›</div>
+      </div>`).join('');
+    el.querySelectorAll('.ed-result-row').forEach(r =>
+      r.addEventListener('click', () => showPosDirectEditor(r.dataset.code)));
+  }
+
+  function edSearch(q) {
+    q = (q || '').trim().toLowerCase();
+    if (q.length < 2) { $('#ed-results').innerHTML = '<div class="empty-state">Scan or search an item to edit it.</div>'; return; }
+    const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const tokens = norm(q).split(/\s+/).filter(t => t.length >= 1);
+    const out = [];
+    for (const code in DATA.products) {
+      const p = lookup(code);
+      if (!p || !p.name) continue;
+      const hay = norm(p.name + ' ' + code);
+      if (tokens.every(t => hay.includes(t))) { out.push(p); if (out.length > 80) break; }
+    }
+    out.sort((a, b) => (b.sales ? b.sales.ta : 0) - (a.sales ? a.sales.ta : 0));
+    edRenderResults(out);
+  }
+
+  async function startEdScanner() {
+    if (_edCodeReader || !window.ZXingBrowser) return;
+    $('#ed-scanner-wrap').style.display = 'block';
+    try {
+      const videoEl = $('#ed-video');
+      _edCodeReader = new ZXingBrowser.BrowserMultiFormatReader();
+      if (backCameras.length === 0) backCameras = await enumerateCameras();
+      const savedId = localStorage.getItem(CAMERA_PREF_KEY);
+      let cam = savedId ? backCameras.find(d => d.deviceId === savedId) : null;
+      if (!cam) cam = backCameras[0];
+      const vc = cam ? { deviceId: { exact: cam.deviceId }, width: { ideal: 1920 }, height: { ideal: 1080 } }
+                     : { facingMode: { ideal: 'environment' } };
+      _edScanControls = await _edCodeReader.decodeFromConstraints({ video: vc }, videoEl, (result) => {
+        if (result) {
+          const code = result.getText();
+          stopEdScanner();
+          const p = lookup(code);
+          if (p) showPosDirectEditor(p.code);
+          else showToast('Product not found', true);
+        }
+      });
+    } catch (e) {
+      showToast('Camera error', true);
+      _edCodeReader = null; _edScanControls = null;
+      $('#ed-scanner-wrap').style.display = 'none';
+    }
+  }
+
+  function stopEdScanner() {
+    try {
+      if (_edScanControls) { _edScanControls.stop(); _edScanControls = null; }
+      _edCodeReader = null;
+      const v = $('#ed-video');
+      if (v && v.srcObject) { v.srcObject.getTracks().forEach(t => t.stop()); v.srcObject = null; }
+    } catch (e) {}
+    $('#ed-scanner-wrap').style.display = 'none';
+  }
+
   function openPosDirect(code) {
     if (!GH_HAS_TOKEN) { showToast('No token — POS editor disabled', true); return; }
     _pdPendingCode = code;
@@ -2608,7 +2756,13 @@
       if (hash === GH.POS_EDIT_PIN_HASH) {
         _posUnlocked = true;
         $('#pos-pin-modal').classList.remove('open');
-        showPosDirectEditor(_pdPendingCode);
+        if (_edUnlockMode) {
+          _edUnlockMode = false;
+          openEditorView();
+          setTimeout(() => $('#ed-search') && $('#ed-search').focus(), 100);
+        } else {
+          showPosDirectEditor(_pdPendingCode);
+        }
       } else {
         $('#pin-error').textContent = 'Wrong PIN';
         _pinBuffer = ''; renderPinDots();
@@ -4858,12 +5012,15 @@
     $('#lists-view').classList.toggle('active', name === 'lists');
     $('#ecom-view').classList.toggle('active', name === 'ecom');
     $('#count-view').classList.toggle('active', name === 'count');
+    $('#editor-view').classList.toggle('active', name === 'editor');
     if (name !== 'scanner' && codeReader) stopScanner();
     if (name !== 'count' && countCodeReader) stopCountScanner();
+    if (name !== 'editor' && _edCodeReader) stopEdScanner();
     if (name === 'search') setTimeout(() => $('#search-input').focus(), 50);
     if (name === 'lists') renderLists();
     if (name === 'ecom') renderEcom();
     if (name === 'count') openCountView();
+    if (name === 'editor') openEditorView();
   }
 
   // ============== ECOM CATALOG ==============
@@ -6643,6 +6800,12 @@
     }
 
     bindCountEvents();
+
+    // POS Editor view
+    $('#ed-unlock-btn').addEventListener('click', edUnlock);
+    $('#ed-scan-btn').addEventListener('click', startEdScanner);
+    $('#ed-scan-stop').addEventListener('click', stopEdScanner);
+    $('#ed-search').addEventListener('input', (e) => edSearch(e.target.value));
 
     // Labels overlay buttons
     $('#labels-print-btn').addEventListener('click', doPrintLabels);
