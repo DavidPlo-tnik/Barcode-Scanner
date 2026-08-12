@@ -1,14 +1,3 @@
 {
- "items": [
-  {
-   "code": "0006563322757",
-   "title": "TEST ITem",
-   "pos_title": "TEST ITem",
-   "size_num": 1,
-   "size_unit": "",
-   "deposit": 1.2,
-   "queued_at": "2026-08-12T00:20:09.591Z",
-   "id": "c1786494009593"
-  }
- ]
+ "items": []
 }
