@@ -1,18 +1,3 @@
 {
- "items": [
-  {
-   "code": "0482001737004",
-   "pos_title": "GRAINS DE SARRASIN ROTIS 1000GR",
-   "size_num": 1000,
-   "size_unit": "GR",
-   "promo": {
-    "price": 9.99,
-    "qty": 3,
-    "start": "2026-08-12",
-    "end": "2026-08-18"
-   },
-   "queued_at": "2026-08-12T21:25:48.007Z",
-   "id": "c1786569948009"
-  }
- ]
+ "items": []
 }
