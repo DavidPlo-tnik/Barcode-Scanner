@@ -2967,6 +2967,59 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260812172725976174",
+   "applied_at": "2026-08-12T17:27:25",
+   "change": {
+    "code": "0083213900021",
+    "pos_title": "ELWEST PROBIOTIQUE RYAZHENKA 944ML",
+    "size_num": 944,
+    "size_unit": "ML",
+    "promo": {
+     "price": 3.99,
+     "qty": 1,
+     "start": "2026-08-12",
+     "end": "2026-08-19"
+    },
+    "queued_at": "2026-08-12T21:27:25.289Z",
+    "id": "c1786570045289"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ELWEST PROBIOTIQUE RYAZHENKA",
+     "F1744": "944.0",
+     "F22": "944ML"
+    },
+    "POS_TAB": {
+     "F02": "ELWEST PROBIOTIQUE RYAZHENKA 944ML",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.3900",
+     "F196": "3.3900",
+     "F1140": "3.3900",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "4.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
