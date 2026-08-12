@@ -1984,7 +1984,9 @@
         <div class="pd-price-label">Promo</div>
         <div class="pd-price-inputs">
           <div class="pd-money"><span>$</span><input id="pd-promo-price" type="number" inputmode="decimal" step="0.01" class="pd-input" placeholder="none" /></div>
+          <div class="pd-qty"><input id="pd-promo-qty" type="number" inputmode="numeric" class="pd-input" value="1" min="1" /><span>for</span></div>
         </div>
+        <div class="pd-hint" id="pd-promo-each"></div>
         <div class="pd-dates">
           <input id="pd-promo-start" type="date" class="pd-input" />
           <span>→</span>
@@ -2055,7 +2057,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v78</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v79</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2978,6 +2980,8 @@
 
     // PROMO (Magas) with dates + active indicator
     $('#pd-promo-price').value = (e.pp != null && e.pp !== e.rp) ? e.pp : '';
+    $('#pd-promo-qty').value = 1;
+    $('#pd-promo-each').textContent = '';
     $('#pd-promo-start').value = e.ps || '';
     $('#pd-promo-end').value = e.pe || '';
     renderActivePrice(e);
@@ -3042,7 +3046,7 @@
     if (ch.size_num != null) parts.push(`size → ${ch.size_num} ${escapeHtml(ch.size_unit||'')}`);
     if (ch.multibuy) parts.push(`price → ${ch.multibuy.qty} for $${(+ch.multibuy.price).toFixed(2)}`);
     else if (ch.price != null) parts.push(`price → $${(+ch.price).toFixed(2)}`);
-    if (ch.promo) parts.push(`promo → $${(+ch.promo.price).toFixed(2)}${ch.promo.start ? ' ' + ch.promo.start + '→' + (ch.promo.end||'') : ''}`);
+    if (ch.promo) { const q = ch.promo.qty && ch.promo.qty > 1 ? `${ch.promo.qty} for ` : ''; parts.push(`promo → ${q}$${(+ch.promo.price).toFixed(2)}${ch.promo.start ? ' ' + ch.promo.start + '→' + (ch.promo.end||'') : ''}`); }
     if (ch.clear_promo) parts.push('remove promo');
     if (ch.tax_fed != null || ch.tax_prov != null) parts.push(`tax fed:${ch.tax_fed} prov:${ch.tax_prov}`);
     if (ch.remove_deposit) parts.push('remove deposit');
@@ -3074,15 +3078,14 @@
       else if (parseFloat(pr) !== e.rp && parseFloat(pr) !== p.price) ch.price = parseFloat(pr);
     }
 
-    // promo (Magas) with dates — send if changed
+    // promo (Magas) with dates + optional qty — send if changed
     const pp = $('#pd-promo-price').value.trim();
     const ps = $('#pd-promo-start').value, pe = $('#pd-promo-end').value;
-    if (pp !== '' && parseFloat(pp) !== e.pp) {
-      ch.promo = { price: parseFloat(pp), start: ps || null, end: pe || null };
+    const pq = parseInt($('#pd-promo-qty').value, 10) || 1;
+    if (pp !== '' && (parseFloat(pp) !== e.pp || pq > 1 || ps !== (e.ps || '') || pe !== (e.pe || ''))) {
+      ch.promo = { price: parseFloat(pp), qty: pq, start: ps || null, end: pe || null };
     } else if (pp === '' && e.pp != null && e.pp !== e.rp) {
       ch.clear_promo = true;   // had a promo, now blank -> remove it
-    } else if (pp !== '' && (ps !== (e.ps || '') || pe !== (e.pe || ''))) {
-      ch.promo = { price: parseFloat(pp), start: ps || null, end: pe || null };
     }
 
     if ($('#pd-tax-fed').checked !== _pdInitial.tax_fed) ch.tax_fed = $('#pd-tax-fed').checked ? 1 : 0;
@@ -6889,8 +6892,11 @@
       const hasPromo = pp > 0;
       $('#pd-promo-block').classList.toggle('active', hasPromo);
       $('#pd-reg-block').classList.toggle('active', !hasPromo);
+      const q = parseInt($('#pd-promo-qty').value, 10) || 1;
+      $('#pd-promo-each').textContent = (q > 1 && pp > 0) ? `${q} for $${pp.toFixed(2)} = $${(pp/q).toFixed(2)} each` : '';
     };
     $('#pd-promo-price').addEventListener('input', reflectActive);
+    $('#pd-promo-qty').addEventListener('input', reflectActive);
     // Title sync: typing the main name mirrors into the POS title (capped at 40)
     // until the user edits the POS title directly, which breaks the mirror.
     $('#pd-title').addEventListener('input', () => {
