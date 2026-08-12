@@ -1,18 +1,3 @@
 {
- "items": [
-  {
-   "code": "0484103100437",
-   "pos_title": "FLAVORS  TARTE AU FROMAGE  560G",
-   "size_num": 560,
-   "size_unit": "",
-   "promo": {
-    "price": 5.99,
-    "qty": 1,
-    "start": "2026-08-12",
-    "end": "2026-08-19"
-   },
-   "queued_at": "2026-08-12T21:26:50.797Z",
-   "id": "c1786570010797"
-  }
- ]
+ "items": []
 }
