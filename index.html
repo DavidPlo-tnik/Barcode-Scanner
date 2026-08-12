@@ -2055,7 +2055,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v77</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v78</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2990,6 +2990,7 @@
     _pdInitial = {
       tax_fed: $('#pd-tax-fed').checked, tax_prov: $('#pd-tax-prov').checked,
       balance: $('#pd-balance').checked, qte: $('#pd-qte').checked,
+      hadDeposit: (e.dp != null && e.dp !== '' && e.dp !== '0'),
     };
 
     // deposit: real code -> dollars (code 10 = $0.50, +0.05 per step)
@@ -3044,7 +3045,8 @@
     if (ch.promo) parts.push(`promo → $${(+ch.promo.price).toFixed(2)}${ch.promo.start ? ' ' + ch.promo.start + '→' + (ch.promo.end||'') : ''}`);
     if (ch.clear_promo) parts.push('remove promo');
     if (ch.tax_fed != null || ch.tax_prov != null) parts.push(`tax fed:${ch.tax_fed} prov:${ch.tax_prov}`);
-    if (ch.deposit != null) parts.push(`deposit → $${(+ch.deposit).toFixed(2)}`);
+    if (ch.remove_deposit) parts.push('remove deposit');
+    else if (ch.deposit != null) parts.push(`deposit → $${(+ch.deposit).toFixed(2)}`);
     if (ch.cost != null) parts.push(`cost → $${(+ch.cost).toFixed(2)}`);
     if (ch.supplier_id) parts.push(`supplier → ${ch.supplier_id}`);
     if (ch.balance) parts.push('balance ✓');
@@ -3087,7 +3089,12 @@
     if ($('#pd-tax-prov').checked !== _pdInitial.tax_prov) ch.tax_prov = $('#pd-tax-prov').checked ? 1 : 0;
 
     const dep = $('#pd-deposit').value.trim();
-    if (dep !== '') ch.deposit = parseFloat(dep);
+    if (dep !== '') {
+      ch.deposit = parseFloat(dep);
+    } else if (_pdInitial.hadDeposit) {
+      ch.deposit = 0;          // cleared field on an item that had one = remove it
+      ch.remove_deposit = true;
+    }
     const cost = $('#pd-cost').value.trim();
     if (cost !== '' && parseFloat(cost) !== p.unitCost) ch.cost = parseFloat(cost);
     const sup = $('#pd-supplier').value;
