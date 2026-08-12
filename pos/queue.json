@@ -1,18 +1,3 @@
 {
- "items": [
-  {
-   "code": "0482017460008",
-   "pos_title": "HATINKA GRAIN DE SARRASIN 1000G",
-   "size_num": 1000,
-   "size_unit": "",
-   "promo": {
-    "price": 9.99,
-    "qty": 3,
-    "start": "2026-08-12",
-    "end": "2026-08-19"
-   },
-   "queued_at": "2026-08-12T22:15:18.988Z",
-   "id": "c1786572918991"
-  }
- ]
+ "items": []
 }
