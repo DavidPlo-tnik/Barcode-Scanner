@@ -2702,6 +2702,59 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260812172547025200",
+   "applied_at": "2026-08-12T17:25:47",
+   "change": {
+    "code": "0482001737004",
+    "pos_title": "GRAINS DE SARRASIN ROTIS 1000GR",
+    "size_num": 1000,
+    "size_unit": "GR",
+    "promo": {
+     "price": 9.99,
+     "qty": 3,
+     "start": "2026-08-12",
+     "end": "2026-08-18"
+    },
+    "queued_at": "2026-08-12T21:25:48.007Z",
+    "id": "c1786569948009"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GRAINS DE SARRASINS ROTIS",
+     "F1744": "1000.0",
+     "F22": "1000GR"
+    },
+    "POS_TAB": {
+     "F02": "GRAINS DE SARRASIN ROTIS 1000GR",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "2.1000",
+     "F196": "2.1000",
+     "F1140": "2.1000",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
