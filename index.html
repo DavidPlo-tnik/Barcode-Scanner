@@ -54,10 +54,24 @@
     font-family: var(--font-display); font-size: 13px;
     letter-spacing: 0.18em; font-weight: 700; color: var(--accent);
   }
+  .topbar-left { display: flex; flex-direction: column; gap: 3px; }
   .topbar .meta {
     font-family: var(--font-display); font-size: 10px;
     color: var(--text-faint); letter-spacing: 0.1em;
   }
+  .refresh-btn {
+    background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+    width: 38px; height: 38px; border-radius: 10px; font-size: 19px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: transform .3s;
+  }
+  .refresh-btn:active { background: var(--surface); }
+  .refresh-btn.spinning { animation: refresh-spin 0.8s linear infinite; color: var(--accent); }
+  @keyframes refresh-spin { to { transform: rotate(360deg); } }
+  .stat.pending-price {
+    border: 1px solid var(--warn); background: color-mix(in srgb, var(--warn) 10%, transparent);
+  }
+  .stat.pending-price .label { color: var(--warn); }
+  .stat.pending-price .value { color: var(--warn); }
 
   .tabs {
     display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -1586,8 +1600,11 @@
 <body>
 
 <header class="topbar">
-  <div class="brand">▮▮ MARCHÉ DÉCARIE</div>
-  <div class="meta" id="meta-info">— ITEMS</div>
+  <div class="topbar-left">
+    <div class="brand">▮▮ MARCHÉ DÉCARIE</div>
+    <div class="meta" id="meta-info">— ITEMS</div>
+  </div>
+  <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
 </header>
 
 <div class="updated-line" id="updated-line"></div>
@@ -2011,7 +2028,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v75</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v76</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2175,6 +2192,71 @@
       $('#meta-info').textContent = 'DATA ERROR';
       return false;
     }
+  }
+
+  // ===== Optimistic (pending) edits: items changed in-app but not yet in data.json =====
+  // { code: { price, promo, ... , at } }  shown highlighted until next refresh confirms.
+  let _pendingEdits = {};
+  function markPending(code, change) {
+    _pendingEdits[code] = { ...(_pendingEdits[code] || {}), ...change, at: Date.now() };
+  }
+  function pendingFor(code) { return _pendingEdits[code] || null; }
+  function clearConfirmedPending() {
+    // drop pending entries older than the current data (they're now baked in)
+    if (!DATA || !DATA.updated_at) return;
+    const dataTime = new Date(DATA.updated_at.replace(' ', 'T')).getTime();
+    for (const code in _pendingEdits) {
+      if (_pendingEdits[code].at < dataTime) delete _pendingEdits[code];
+    }
+  }
+
+  // ===== Refresh button: reload data.json, and ask the PC for a fast partial refresh =====
+  let _refreshing = false;
+  async function doRefresh(requestPcUpdate) {
+    if (_refreshing) return;
+    _refreshing = true;
+    const btn = $('#refresh-btn');
+    if (btn) btn.classList.add('spinning');
+    try {
+      if (requestPcUpdate) {
+        // drop a refresh-request in the repo; the PC watcher runs a partial update
+        await requestPcPartialRefresh();
+        // give the PC a moment to rebuild + push, then reload
+        showToast('Refreshing from POS…');
+        await new Promise(r => setTimeout(r, 6000));
+      }
+      _editData = null;                // force edit.json reload too
+      const ok = await loadData();
+      if (ok) {
+        clearConfirmedPending();
+        await fetchEditData();
+        showToast('Updated ✓');
+        // re-render whatever view is active
+        const active = document.querySelector('.tab.active');
+        if (active) switchTab(active.dataset.tab);
+      }
+    } catch (e) {
+      showToast('Refresh failed', true);
+    } finally {
+      _refreshing = false;
+      if (btn) btn.classList.remove('spinning');
+    }
+  }
+
+  // Ask the PC to run a fast partial refresh (only changed items) by writing a
+  // request file the PC watcher polls. Uses the same repo/token as the queue.
+  async function requestPcPartialRefresh() {
+    const path = 'pos/refresh_request.json';
+    const payload = { requested_at: new Date().toISOString(), codes: Object.keys(_pendingEdits) };
+    const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    // get existing sha (if any) then put
+    let sha = null;
+    try {
+      const url = `https://api.github.com/repos/${GH.GH_OWNER}/${GH.GH_REPO}/contents/${path}?ref=${GH.GH_BRANCH}`;
+      const r = await fetch(url, { cache: 'no-store', headers: { 'Authorization': `Bearer ${GH.GH_TOKEN}`, 'Accept': 'application/vnd.github+json' } });
+      if (r.status === 200) sha = (await r.json()).sha;
+    } catch {}
+    await ghPutFile(path, b64, 'refresh request', sha);
   }
 
   // ============== LOOKUP ==============
@@ -2949,6 +3031,13 @@
     const btn = $('#pd-save'); btn.disabled = true; btn.textContent = 'Applying…';
     try {
       await queuePosChange(ch);
+      // optimistic: reflect the change in-app immediately (highlighted as pending)
+      const pend = {};
+      if (ch.price != null) pend.price = ch.price;
+      if (ch.multibuy) pend.multibuy = ch.multibuy;
+      if (ch.promo) pend.promo = ch.promo;
+      if (ch.title != null) pend.name = ch.title;
+      markPending(_pdCtx.code, pend);
       showToast('QUEUED FOR POS ✓');
       renderQueuedForItem(_pdCtx.code);
     } catch (e) {
@@ -3169,7 +3258,16 @@
     // ===== PRICE BLOCK (top) =====
     // If multipack, show the "2/$6" prominently with per-unit price as a sub
     let priceBlock = '';
-    if (p.price !== null && p.price !== undefined) {
+    const pend = pendingFor(p.code);
+    if (pend && (pend.price != null || pend.multibuy)) {
+      const pv = pend.multibuy ? `${pend.multibuy.qty} for ${fmtMoney(pend.multibuy.price)}` : fmtMoney(pend.price);
+      priceBlock = `
+        <div class="stat pending-price">
+          <div class="label">PRICE · PENDING</div>
+          <div class="value">${pv}</div>
+          <div class="sub">queued — updates on next refresh</div>
+        </div>`;
+    } else if (p.price !== null && p.price !== undefined) {
       if (p.multipack) {
         priceBlock = `
           <div class="stat accent">
@@ -6800,6 +6898,9 @@
     }
 
     bindCountEvents();
+
+    // Refresh button: reload data + ask PC for a fast partial refresh
+    $('#refresh-btn').addEventListener('click', () => doRefresh(true));
 
     // POS Editor view
     $('#ed-unlock-btn').addEventListener('click', edUnlock);
