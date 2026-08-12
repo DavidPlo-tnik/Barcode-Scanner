@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0083213900008",
+   "pos_title": "CREME SURE 20% 500ML",
+   "size_num": 600,
+   "size_unit": "ML",
+   "promo": {
+    "price": 3.99,
+    "qty": 1,
+    "start": "2026-08-12",
+    "end": "2026-08-19"
+   },
+   "queued_at": "2026-08-12T21:27:39.497Z",
+   "id": "c1786570059497"
+  }
+ ]
 }
