@@ -147,6 +147,16 @@
   .ed-log-row .lg-time { font-family: var(--font-display); font-size: 10px; color: var(--text-faint); white-space: nowrap; }
   .ed-log-row .lg-change { font-size: 12.5px; color: var(--accent); margin-top: 4px; }
   .ed-log-row .lg-code { font-family: var(--font-display); font-size: 10px; color: var(--text-faint); margin-top: 3px; }
+  .ed-depts-list { display: flex; flex-direction: column; gap: 6px; }
+  .ed-dept-row { display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; }
+  .ed-dept-info { flex: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .ed-dept-code { font-family: var(--font-display); font-size: 11px; color: var(--text-faint); min-width: 26px; }
+  .ed-dept-name { flex: 1; min-width: 0; background: var(--surface-2); border: 1px solid var(--border); border-radius: 7px; color: var(--text); font-size: 13px; padding: 7px 9px; }
+  .ed-dept-name:focus { outline: none; border-color: var(--accent); }
+  .ed-dept-actions { display: flex; gap: 4px; }
+  .ed-dept-save, .ed-dept-del { width: 32px; height: 32px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface-2); cursor: pointer; font-size: 13px; }
+  .ed-dept-save { color: var(--good); }
+  .ed-dept-del { color: var(--bad); }
 
   .scanner-frame {
     position: relative; width: 100%; aspect-ratio: 4/3;
@@ -1821,6 +1831,7 @@
     <div class="ed-tabs">
       <button class="ed-tab active" data-edtab="edit">EDIT</button>
       <button class="ed-tab" data-edtab="log">LOG</button>
+      <button class="ed-tab" data-edtab="depts">DEPTS</button>
     </div>
     <div id="ed-edit-panel">
       <button class="ed-scan-btn" id="ed-scan-btn"><span>⌘</span> Scan an item</button>
@@ -1841,6 +1852,10 @@
       <div class="ed-log-list" id="ed-log-list">
         <div class="empty-state">Loading…</div>
       </div>
+    </div>
+    <div id="ed-depts-panel" style="display:none;">
+      <div class="ed-log-head"><span>Sous-départements</span><button class="ed-log-refresh" id="ed-depts-add">+ Add</button></div>
+      <div class="ed-depts-list" id="ed-depts-list"><div class="empty-state">Loading…</div></div>
     </div>
   </div>
 </section>
@@ -2062,7 +2077,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v80</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v81</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2783,7 +2798,56 @@
     document.querySelectorAll('.ed-tab').forEach(b => b.classList.toggle('active', b.dataset.edtab === tab));
     $('#ed-edit-panel').style.display = tab === 'edit' ? 'block' : 'none';
     $('#ed-log-panel').style.display = tab === 'log' ? 'block' : 'none';
+    $('#ed-depts-panel').style.display = tab === 'depts' ? 'block' : 'none';
     if (tab === 'log') loadEditorLog();
+    if (tab === 'depts') loadDeptManager();
+  }
+
+  async function loadDeptManager() {
+    const el = $('#ed-depts-list');
+    el.innerHTML = '<div class="empty-state">Loading…</div>';
+    _subdeptList = null;                       // force fresh
+    const subs = await fetchSubdepts();
+    if (!subs.length) { el.innerHTML = '<div class="empty-state">No sub-depts loaded.</div>'; return; }
+    el.innerHTML = subs.map(s => `
+      <div class="ed-dept-row" data-code="${s.code}">
+        <div class="ed-dept-info"><span class="ed-dept-code">${s.code}</span>
+          <input class="ed-dept-name" value="${escapeHtml(s.name)}" data-code="${s.code}" />
+        </div>
+        <div class="ed-dept-actions">
+          <button class="ed-dept-save" data-code="${s.code}" title="Rename">✓</button>
+          <button class="ed-dept-del" data-code="${s.code}" title="Delete">🗑</button>
+        </div>
+      </div>`).join('');
+    el.querySelectorAll('.ed-dept-save').forEach(b => b.addEventListener('click', () => {
+      const code = b.dataset.code;
+      const name = el.querySelector(`.ed-dept-name[data-code="${code}"]`).value.trim();
+      if (name) queueDeptOp({ op: 'subdept_rename', subdept: parseInt(code, 10), name });
+    }));
+    el.querySelectorAll('.ed-dept-del').forEach(b => b.addEventListener('click', () => {
+      const code = b.dataset.code;
+      if (confirm(`Delete sub-dept ${code}? (Blocked if items are still assigned to it.)`))
+        queueDeptOp({ op: 'subdept_delete', subdept: parseInt(code, 10) });
+    }));
+  }
+
+  async function queueDeptOp(op) {
+    try {
+      op.code = `__subdept_${op.subdept}`;      // synthetic code so the queue accepts it
+      op.queued_at = new Date().toISOString();
+      op.id = 'c' + Date.now();
+      await queuePosChange(op);
+      showToast('Queued ✓ — applies on next PC cycle');
+    } catch (e) { showToast(e.message || 'Failed', true); }
+  }
+
+  function deptAddFlow() {
+    const code = prompt('New sub-dept CODE (number, must be unused):');
+    if (!code || isNaN(parseInt(code, 10))) return;
+    const name = prompt('Name for this sub-dept:');
+    if (!name) return;
+    const dept = prompt('Department number (F03) to attach to:', '1');
+    queueDeptOp({ op: 'subdept_add', subdept: parseInt(code, 10), name: name.trim(), dept: parseInt(dept || '1', 10) });
   }
 
   async function loadEditorLog() {
@@ -7024,6 +7088,7 @@
     document.querySelectorAll('.ed-tab').forEach(b =>
       b.addEventListener('click', () => edSwitchTab(b.dataset.edtab)));
     $('#ed-log-refresh').addEventListener('click', loadEditorLog);
+    $('#ed-depts-add').addEventListener('click', deptAddFlow);
 
     // Labels overlay buttons
     $('#labels-print-btn').addEventListener('click', doPrintLabels);
