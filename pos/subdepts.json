@@ -1,322 +1,322 @@
 [
  {
   "code": 1,
-  "name": ""
+  "name": "ÉPICERIE"
  },
  {
   "code": 2,
-  "name": ""
+  "name": "ÉPICERIE TAXABLE"
  },
  {
   "code": 3,
-  "name": ""
+  "name": "LAITIER"
  },
  {
   "code": 4,
-  "name": ""
+  "name": "SURGELÉ"
  },
  {
   "code": 5,
-  "name": "Consigne bouteille"
+  "name": "BOULANGERIE/COMMERCIALE"
  },
  {
   "code": 6,
-  "name": "Consigne fuits et légumes"
+  "name": "TABAC/CIGARETTES"
  },
  {
   "code": 7,
-  "name": ""
+  "name": "NON-ALIMENTAIRE"
  },
  {
   "code": 8,
-  "name": ""
+  "name": "PHARMACIE"
  },
  {
   "code": 9,
-  "name": ""
+  "name": "VIN & CIDRE"
  },
  {
   "code": 11,
-  "name": "Cartes cadeaux Financières"
+  "name": "PHOTO"
  },
  {
   "code": 12,
-  "name": ""
+  "name": "VIDÉO"
  },
  {
   "code": 13,
-  "name": ""
+  "name": "REVUE/JOURNAUX"
  },
  {
   "code": 21,
-  "name": ""
+  "name": "VIANDE"
  },
  {
   "code": 22,
-  "name": ""
+  "name": "POISS.PRÉ-EMB.SURGELÉ"
  },
  {
   "code": 23,
-  "name": ""
+  "name": "POISS.VRAC SURGELÉ"
  },
  {
   "code": 24,
-  "name": ""
+  "name": "POISSON FRAIS"
  },
  {
   "code": 25,
-  "name": ""
+  "name": "VIANDE KASHER"
  },
  {
   "code": 26,
-  "name": ""
+  "name": "SUSHI"
  },
  {
   "code": 31,
-  "name": ""
+  "name": "CHARCUTERIE"
  },
  {
   "code": 32,
-  "name": "Frais de livraison"
+  "name": "FROMAGE"
  },
  {
   "code": 33,
-  "name": "Frais de livraison E-Commerce"
+  "name": "B.B.Q."
  },
  {
   "code": 34,
-  "name": ""
+  "name": "BAR À SALADE"
  },
  {
   "code": 35,
-  "name": ""
+  "name": "BUFFET"
  },
  {
   "code": 36,
-  "name": ""
+  "name": "CHARCUTERIE KASHER"
  },
  {
   "code": 41,
-  "name": ""
+  "name": "FRUITS/LÉGUMES"
  },
  {
   "code": 42,
-  "name": ""
+  "name": "PLANTES"
  },
  {
   "code": 43,
-  "name": ""
+  "name": "FRUITS/LÉGUMES TRANSFORMÉS"
  },
  {
   "code": 51,
-  "name": ""
+  "name": "MICHE"
  },
  {
   "code": 52,
-  "name": ""
+  "name": "PÂTISSERIE"
  },
  {
   "code": 61,
-  "name": ""
+  "name": "METS CUISINÉS"
  },
  {
   "code": 62,
-  "name": ""
+  "name": "METS CUISINÉS TX"
  },
  {
   "code": 63,
-  "name": ""
+  "name": "PIZZA"
  },
  {
   "code": 71,
-  "name": ""
+  "name": "VRAC"
  },
  {
   "code": 72,
-  "name": ""
+  "name": "VRAC TAXABLE"
  },
  {
   "code": 74,
-  "name": ""
+  "name": "CARTE CADEAU EXTERNE"
  },
  {
   "code": 75,
-  "name": ""
+  "name": "CARTE CADEAU"
  },
  {
   "code": 81,
-  "name": ""
+  "name": "BIERES"
  },
  {
   "code": 91,
-  "name": ""
+  "name": "LIVRAISON"
  },
  {
   "code": 101,
-  "name": ""
+  "name": "RETOUR BOUTEILLE"
  },
  {
   "code": 102,
-  "name": ""
+  "name": "DÉPÔT BOUTEILLE"
  },
  {
   "code": 110,
-  "name": ""
+  "name": "LOTO"
  },
  {
   "code": 120,
-  "name": ""
+  "name": "QUINCAILLERIE"
  },
  {
   "code": 121,
-  "name": ""
+  "name": "PEINTURE"
  },
  {
   "code": 129,
-  "name": ""
+  "name": "MÉDIUM / INTERMÉDIAIRE"
  },
  {
   "code": 130,
-  "name": ""
+  "name": "RÉG."
  },
  {
   "code": 131,
-  "name": ""
+  "name": "SUPER"
  },
  {
   "code": 132,
-  "name": ""
+  "name": "ÉTHANOL 5%"
  },
  {
   "code": 133,
-  "name": ""
+  "name": "ÉTHANOL 85%"
  },
  {
   "code": 134,
-  "name": ""
+  "name": "DIÉSEL"
  },
  {
   "code": 138,
-  "name": ""
+  "name": "PROPANE"
  },
  {
   "code": 139,
-  "name": ""
+  "name": "PROPANE VRAC."
  },
  {
   "code": 140,
-  "name": ""
+  "name": "HUILE"
  },
  {
   "code": 141,
-  "name": ""
+  "name": "ACCESSOIRES AUTOMOBILE"
  },
  {
   "code": 150,
-  "name": ""
+  "name": "ALCOOL SAQ"
  },
  {
   "code": 151,
-  "name": ""
+  "name": "VIN & CIDRE SAQ"
  },
  {
   "code": 160,
-  "name": ""
+  "name": "CAFÉ"
  },
  {
   "code": 161,
-  "name": ""
+  "name": "SLUSH"
  },
  {
   "code": 162,
-  "name": ""
+  "name": "CRÈME GLACÉE"
  },
  {
   "code": 170,
-  "name": ""
+  "name": "CARTE APPEL ASS."
  },
  {
   "code": 171,
-  "name": ""
+  "name": "TERMINAL CARTE APPEL"
  },
  {
   "code": 180,
-  "name": ""
+  "name": "SERVICES POSTAUX"
  },
  {
   "code": 181,
-  "name": ""
+  "name": "BILLETS D'AUTOBUS"
  },
  {
   "code": 182,
-  "name": ""
+  "name": "BILLETS TAXIS"
  },
  {
   "code": 183,
-  "name": ""
+  "name": "NETTOYEUR À SEC"
  },
  {
   "code": 184,
-  "name": ""
+  "name": "LOCATION MACHINE À TAPIS/POLIS"
  },
  {
   "code": 185,
-  "name": ""
+  "name": "BOIS DE CHAUFFAGE"
  },
  {
   "code": 186,
-  "name": ""
+  "name": "SAC DE GLACE"
  },
  {
   "code": 187,
-  "name": ""
+  "name": "CHASSE/PÊCHE APPÂTS"
  },
  {
   "code": 188,
-  "name": ""
+  "name": "PERMIS CHASSE"
  },
  {
   "code": 189,
-  "name": ""
+  "name": "PERMIS PÊCHE"
  },
  {
   "code": 190,
-  "name": ""
+  "name": "BILLETS TRAIN"
  },
  {
   "code": 191,
-  "name": ""
+  "name": "COMPTOIR SEARS"
  },
  {
   "code": 198,
-  "name": ""
+  "name": "LOCATION"
  },
  {
   "code": 199,
-  "name": ""
+  "name": "DIVERS"
  },
  {
   "code": 200,
-  "name": ""
+  "name": "BOEUF EN GROS"
  },
  {
   "code": 201,
-  "name": ""
+  "name": "ABATTAGE TX"
  },
  {
   "code": 202,
-  "name": ""
+  "name": "DÉBITAGE/EMBALLAGE"
  },
  {
   "code": 203,
-  "name": ""
+  "name": "TRANSPORT TX"
  },
  {
   "code": 204,
-  "name": ""
+  "name": "RÉCUPÉRATION DÉCHETS"
  },
  {
   "code": 210,
-  "name": ""
+  "name": "VALIDEUSE"
  }
 ]
