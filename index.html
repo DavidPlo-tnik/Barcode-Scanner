@@ -2077,7 +2077,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v81</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v82</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2816,18 +2816,12 @@
         </div>
         <div class="ed-dept-actions">
           <button class="ed-dept-save" data-code="${s.code}" title="Rename">✓</button>
-          <button class="ed-dept-del" data-code="${s.code}" title="Delete">🗑</button>
         </div>
       </div>`).join('');
     el.querySelectorAll('.ed-dept-save').forEach(b => b.addEventListener('click', () => {
       const code = b.dataset.code;
       const name = el.querySelector(`.ed-dept-name[data-code="${code}"]`).value.trim();
       if (name) queueDeptOp({ op: 'subdept_rename', subdept: parseInt(code, 10), name });
-    }));
-    el.querySelectorAll('.ed-dept-del').forEach(b => b.addEventListener('click', () => {
-      const code = b.dataset.code;
-      if (confirm(`Delete sub-dept ${code}? (Blocked if items are still assigned to it.)`))
-        queueDeptOp({ op: 'subdept_delete', subdept: parseInt(code, 10) });
     }));
   }
 
