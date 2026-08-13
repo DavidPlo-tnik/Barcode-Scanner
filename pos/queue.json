@@ -6,6 +6,14 @@
    "code": "__subdept_210",
    "queued_at": "2026-08-13T02:27:58.082Z",
    "id": "c1786588078082"
+  },
+  {
+   "op": "subdept_rename",
+   "subdept": 26,
+   "name": "CAVIAR DE POISSON",
+   "code": "__subdept_26",
+   "queued_at": "2026-08-13T02:28:39.655Z",
+   "id": "c1786588119655"
   }
  ]
 }
