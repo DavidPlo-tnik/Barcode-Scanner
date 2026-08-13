@@ -2015,6 +2015,11 @@
     </section>
 
     <section class="pd-group">
+      <div class="pd-group-title">Sous-département</div>
+      <select id="pd-subdept" class="pd-input"><option value="">— loading —</option></select>
+    </section>
+
+    <section class="pd-group">
       <div class="pd-group-title">Options</div>
       <label class="pd-toggle"><input type="checkbox" id="pd-balance"><span>Weigh at cash (Balance)</span></label>
       <label class="pd-toggle"><input type="checkbox" id="pd-qte"><span>Prompt for quantity</span></label>
@@ -2057,7 +2062,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v79</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v80</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2743,6 +2748,15 @@
     } else { note.textContent = ''; }
   }
   let _supplierList = null;
+  let _subdeptList = null;
+  async function fetchSubdepts() {
+    if (_subdeptList) return _subdeptList;
+    try {
+      const r = await fetch(recipeRawUrl('pos/subdepts.json'), { cache: 'no-store' });
+      _subdeptList = r.ok ? await r.json() : [];
+    } catch { _subdeptList = []; }
+    return _subdeptList;
+  }
 
   async function sha256hex(str) {
     const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
@@ -3012,6 +3026,19 @@
       sel.appendChild(o);
     });
 
+    // sous-departement dropdown
+    const sdSel = $('#pd-subdept');
+    sdSel.innerHTML = '<option value="">— unchanged —</option>';
+    const subs = await fetchSubdepts();
+    const curSd = (e.sd != null) ? String(e.sd) : null;
+    subs.forEach(s => {
+      const o = document.createElement('option');
+      o.value = s.code; o.textContent = `${s.code} · ${s.name}`;
+      if (curSd != null && String(s.code) === curSd) o.selected = true;
+      sdSel.appendChild(o);
+    });
+    _pdInitial.subdept = curSd;
+
     renderQueuedForItem(code);
   }
 
@@ -3053,6 +3080,7 @@
     else if (ch.deposit != null) parts.push(`deposit → $${(+ch.deposit).toFixed(2)}`);
     if (ch.cost != null) parts.push(`cost → $${(+ch.cost).toFixed(2)}`);
     if (ch.supplier_id) parts.push(`supplier → ${ch.supplier_id}`);
+    if (ch.subdept != null) { const sd = (_subdeptList || []).find(s => String(s.code) === String(ch.subdept)); parts.push(`sous-dépt → ${ch.subdept}${sd ? ' ' + sd.name : ''}`); }
     if (ch.balance) parts.push('balance ✓');
     if (ch.qte_requise) parts.push('qté requise ✓');
     return parts.join(' · ') || 'no changes';
@@ -3102,6 +3130,8 @@
     if (cost !== '' && parseFloat(cost) !== p.unitCost) ch.cost = parseFloat(cost);
     const sup = $('#pd-supplier').value;
     if (sup) ch.supplier_id = sup;
+    const sd = $('#pd-subdept').value;
+    if (sd && sd !== (_pdInitial.subdept || '')) ch.subdept = parseInt(sd, 10);
     if ($('#pd-balance').checked !== _pdInitial.balance) ch.balance = $('#pd-balance').checked ? 1 : 0;
     if ($('#pd-qte').checked !== _pdInitial.qte) ch.qte_requise = $('#pd-qte').checked ? 1 : 0;
     return ch;
