@@ -56,6 +56,15 @@
    "size_unit": "GR",
    "queued_at": "2026-08-14T22:52:30.091Z",
    "id": "c1786747950091"
+  },
+  {
+   "code": "0085630300491",
+   "title": "SWEET LIZA MINI GATEAU AU FROMAGE CHOCOLAT",
+   "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE CHOCOL",
+   "size_num": 50,
+   "size_unit": "",
+   "queued_at": "2026-08-14T22:52:45.645Z",
+   "id": "c1786747965645"
   }
  ]
 }
