@@ -3251,6 +3251,55 @@
     "id": "c1786672588878"
    },
    "before": {}
+  },
+  {
+   "undo_id": "u20260814185222677608",
+   "applied_at": "2026-08-14T18:52:22",
+   "change": {
+    "code": "0085630300492",
+    "title": "SWEET LIZA MINI GATEAU AU FROMAGE VANILLE",
+    "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE VANILL",
+    "size_num": 50,
+    "size_unit": "",
+    "queued_at": "2026-08-14T22:52:20.055Z",
+    "id": "c1786747940062"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SWEET LISA MINI GATEAU AU FROMAGE VANILLE",
+     "F1744": "50.0",
+     "F22": "50 "
+    },
+    "POS_TAB": {
+     "F02": "SWEET LISA MINI GATEAU AU FROMAGE VANILL",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.7500",
+     "F196": "0.7500",
+     "F1140": "0.7500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
