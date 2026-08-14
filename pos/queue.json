@@ -15,6 +15,14 @@
    "code": "__vendor_1001",
    "queued_at": "2026-08-14T02:26:24.900Z",
    "id": "c1786674384900"
+  },
+  {
+   "op": "supplier_create",
+   "vendor_id": "1001",
+   "name": "Crussimpex",
+   "code": "__vendor_1001",
+   "queued_at": "2026-08-14T02:26:32.888Z",
+   "id": "c1786674392888"
   }
  ]
 }
