@@ -15,6 +15,14 @@
    "code": "__vendor_1002",
    "queued_at": "2026-08-14T03:29:45.020Z",
    "id": "c1786678185020"
+  },
+  {
+   "op": "supplier_create",
+   "vendor_id": "1002",
+   "name": "WonderBerry",
+   "code": "__vendor_1002",
+   "queued_at": "2026-08-14T03:29:50.762Z",
+   "id": "c1786678190762"
   }
  ]
 }
