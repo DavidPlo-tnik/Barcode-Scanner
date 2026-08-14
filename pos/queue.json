@@ -1,3 +1,12 @@
 {
- "items": []
+ "items": [
+  {
+   "op": "supplier_create",
+   "vendor_id": "1002",
+   "name": "Crussimpex",
+   "code": "__vendor_1002",
+   "queued_at": "2026-08-14T03:29:38.566Z",
+   "id": "c1786678178566"
+  }
+ ]
 }
