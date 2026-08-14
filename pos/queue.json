@@ -39,6 +39,14 @@
    "code": "__vendor_1002",
    "queued_at": "2026-08-14T03:30:12.672Z",
    "id": "c1786678212672"
+  },
+  {
+   "op": "supplier_create",
+   "vendor_id": "1002",
+   "name": "Pelmen",
+   "code": "__vendor_1002",
+   "queued_at": "2026-08-14T03:30:17.381Z",
+   "id": "c1786678217381"
   }
  ]
 }
