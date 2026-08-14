@@ -1835,6 +1835,7 @@
       <button class="ed-tab active" data-edtab="edit">EDIT</button>
       <button class="ed-tab" data-edtab="log">LOG</button>
       <button class="ed-tab" data-edtab="depts">DEPTS</button>
+      <button class="ed-tab" data-edtab="supp">SUPP</button>
     </div>
     <div id="ed-edit-panel">
       <button class="ed-scan-btn" id="ed-scan-btn"><span>⌘</span> Scan an item</button>
@@ -1862,6 +1863,10 @@
     <div id="ed-depts-panel" style="display:none;">
       <div class="ed-log-head"><span>Sous-départements</span><button class="ed-log-refresh" id="ed-depts-add">+ Add</button></div>
       <div class="ed-depts-list" id="ed-depts-list"><div class="empty-state">Loading…</div></div>
+    </div>
+    <div id="ed-supp-panel" style="display:none;">
+      <div class="ed-log-head"><span>My suppliers</span><button class="ed-log-refresh" id="ed-supp-add">+ New</button></div>
+      <div class="ed-depts-list" id="ed-supp-list"><div class="empty-state">Loading…</div></div>
     </div>
   </div>
 </section>
@@ -2083,7 +2088,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v84</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v85</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2805,8 +2810,10 @@
     $('#ed-edit-panel').style.display = tab === 'edit' ? 'block' : 'none';
     $('#ed-log-panel').style.display = tab === 'log' ? 'block' : 'none';
     $('#ed-depts-panel').style.display = tab === 'depts' ? 'block' : 'none';
+    $('#ed-supp-panel').style.display = tab === 'supp' ? 'block' : 'none';
     if (tab === 'log') loadEditorLog();
     if (tab === 'depts') loadDeptManager();
+    if (tab === 'supp') loadSupplierManager();
   }
 
   async function loadDeptManager() {
@@ -2831,9 +2838,54 @@
     }));
   }
 
+  let _mySuppliers = null;
+  async function fetchMySuppliers(force) {
+    if (_mySuppliers && !force) return _mySuppliers;
+    try {
+      const r = await fetch(recipeRawUrl('pos/my_suppliers.json'), { cache: 'no-store' });
+      _mySuppliers = r.ok ? await r.json() : [];
+    } catch { _mySuppliers = []; }
+    return _mySuppliers;
+  }
+
+  async function loadSupplierManager() {
+    const el = $('#ed-supp-list');
+    el.innerHTML = '<div class="empty-state">Loading…</div>';
+    const subs = await fetchMySuppliers(true);
+    if (!subs.length) { el.innerHTML = '<div class="empty-state">No suppliers yet. Tap + New to create one.</div>'; return; }
+    el.innerHTML = subs.map(s => `
+      <div class="ed-dept-row" data-id="${s.id}">
+        <div class="ed-dept-info"><span class="ed-dept-code">${s.id}</span>
+          <input class="ed-dept-name" value="${escapeHtml(s.name)}" data-id="${s.id}" />
+        </div>
+        <div class="ed-dept-actions"><button class="ed-supp-save" data-id="${s.id}" title="Rename">✓</button></div>
+      </div>`).join('');
+    el.querySelectorAll('.ed-supp-save').forEach(b => b.addEventListener('click', () => {
+      const id = b.dataset.id;
+      const name = el.querySelector(`.ed-dept-name[data-id="${id}"]`).value.trim();
+      if (name) queueDeptOp({ op: 'supplier_rename', vendor_id: id, name });
+    }));
+  }
+
+  function nextSupplierId(subs) {
+    // start at 1001, increment past the highest numeric id we've created
+    let max = 1000;
+    subs.forEach(s => { const n = parseInt(s.id, 10); if (!isNaN(n) && n > max) max = n; });
+    return String(max + 1);
+  }
+
+  async function supplierAddFlow() {
+    const name = prompt('New supplier name:');
+    if (!name || !name.trim()) return;
+    const subs = await fetchMySuppliers();
+    const id = nextSupplierId(subs);
+    queueDeptOp({ op: 'supplier_create', vendor_id: id, name: name.trim() });
+    showToast(`Creating supplier ${id}…`);
+  }
+
   async function queueDeptOp(op) {
     try {
-      op.code = `__subdept_${op.subdept}`;      // synthetic code so the queue accepts it
+      op.code = op.vendor_id != null ? `__vendor_${op.vendor_id}` : `__subdept_${op.subdept}`;
       op.queued_at = new Date().toISOString();
       op.id = 'c' + Date.now();
       await queuePosChange(op);
@@ -3021,6 +3073,10 @@
 
   async function fetchSuppliers() {
     if (_supplierList) return _supplierList;
+    // Use the clean, self-created supplier list for the item editor dropdown.
+    const mine = await fetchMySuppliers();
+    if (mine && mine.length) { _supplierList = mine; return _supplierList; }
+    // fallback to the full list only if you haven't created any yet
     try {
       const r = await fetch(recipeRawUrl('pos/suppliers.json'), { cache: 'no-store' });
       _supplierList = r.ok ? await r.json() : [];
@@ -7090,6 +7146,7 @@
       b.addEventListener('click', () => edSwitchTab(b.dataset.edtab)));
     $('#ed-log-refresh').addEventListener('click', loadEditorLog);
     $('#ed-depts-add').addEventListener('click', deptAddFlow);
+    $('#ed-supp-add').addEventListener('click', supplierAddFlow);
 
     // Labels overlay buttons
     $('#labels-print-btn').addEventListener('click', doPrintLabels);
