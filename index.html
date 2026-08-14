@@ -2088,7 +2088,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v85</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v86</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3109,16 +3109,19 @@
 
     // REGULAR price (Détail) + qty
     $('#pd-price').value = (e.rp != null) ? e.rp : (p.price != null ? p.price : '');
-    $('#pd-price-qty').value = 1;
+    $('#pd-price-qty').value = (e.rq && e.rq > 1) ? e.rq : 1;
     $('#pd-price-each').textContent = '';
 
     // PROMO (Magas) with dates + active indicator
     $('#pd-promo-price').value = (e.pp != null && e.pp !== e.rp) ? e.pp : '';
-    $('#pd-promo-qty').value = 1;
+    $('#pd-promo-qty').value = (e.pq && e.pq > 1) ? e.pq : 1;
     $('#pd-promo-each').textContent = '';
     $('#pd-promo-start').value = e.ps || '';
     $('#pd-promo-end').value = e.pe || '';
     renderActivePrice(e);
+    // show the "= $X each" hints if the prefilled quantities are multibuy
+    if (e.rq && e.rq > 1 && e.rp) $('#pd-price-each').textContent = `${e.rq} for $${(+e.rp).toFixed(2)} = $${(e.rp/e.rq).toFixed(2)} each`;
+    if (e.pq && e.pq > 1 && e.pp) $('#pd-promo-each').textContent = `${e.pq} for $${(+e.pp).toFixed(2)} = $${(e.pp/e.pq).toFixed(2)} each`;
 
     // taxes / flags — real values
     $('#pd-tax-fed').checked = e.tf === 1;
