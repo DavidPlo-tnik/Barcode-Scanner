@@ -124,6 +124,9 @@
   }
   .ed-search:focus { outline: none; border-color: var(--accent); }
   #ed-video { width: 100%; border-radius: 12px; background: #000; margin-bottom: 8px; }
+  .ed-scan-view { position: relative; margin-bottom: 8px; }
+  .ed-scan-view #ed-video { margin-bottom: 0; display: block; }
+  .ed-scan-view .scanner-overlay { border-radius: 12px; overflow: hidden; }
   .ed-scan-stop { width: 100%; margin-bottom: 16px; }
   .ed-results { display: flex; flex-direction: column; gap: 8px; }
   .ed-result-row {
@@ -1837,7 +1840,10 @@
       <button class="ed-scan-btn" id="ed-scan-btn"><span>⌘</span> Scan an item</button>
       <input type="text" id="ed-search" class="ed-search" placeholder="or search by name / barcode" autocomplete="off" />
       <div id="ed-scanner-wrap" style="display:none;">
-        <video id="ed-video" playsinline muted></video>
+        <div class="ed-scan-view">
+          <video id="ed-video" playsinline muted></video>
+          <div class="scanner-overlay"><div class="reticle"></div></div>
+        </div>
         <button class="btn ed-scan-stop" id="ed-scan-stop">Stop scanning</button>
       </div>
       <div class="ed-results" id="ed-results">
@@ -2077,7 +2083,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v83</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v84</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
