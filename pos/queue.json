@@ -47,42 +47,6 @@
    "code": "__vendor_1008",
    "queued_at": "2026-08-14T03:30:27.725Z",
    "id": "c1786678227725"
-  },
-  {
-   "code": "0085630300495",
-   "title": "SWEET LIZA MINI GATEAU AU FROMAGE LAIT CONDENSÉ",
-   "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE LAIT C",
-   "size_num": 50,
-   "size_unit": "GR",
-   "queued_at": "2026-08-14T22:52:30.091Z",
-   "id": "c1786747950091"
-  },
-  {
-   "code": "0085630300491",
-   "title": "SWEET LIZA MINI GATEAU AU FROMAGE CHOCOLAT",
-   "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE CHOCOL",
-   "size_num": 50,
-   "size_unit": "",
-   "queued_at": "2026-08-14T22:52:45.645Z",
-   "id": "c1786747965645"
-  },
-  {
-   "code": "0085630300497",
-   "title": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE",
-   "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE",
-   "size_num": 50,
-   "size_unit": "GR",
-   "queued_at": "2026-08-14T22:52:54.154Z",
-   "id": "c1786747974154"
-  },
-  {
-   "code": "0085630300498",
-   "title": "SWEET LIZA MINI GATEAU AU FROMAGE BLEUETS",
-   "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE BLEUET",
-   "size_num": 50,
-   "size_unit": "",
-   "queued_at": "2026-08-14T22:53:02.905Z",
-   "id": "c1786747982905"
   }
  ]
 }
