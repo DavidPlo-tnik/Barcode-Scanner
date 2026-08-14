@@ -3300,6 +3300,202 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260814185303693678",
+   "applied_at": "2026-08-14T18:53:03",
+   "change": {
+    "code": "0085630300495",
+    "title": "SWEET LIZA MINI GATEAU AU FROMAGE LAIT CONDENSÉ",
+    "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE LAIT C",
+    "size_num": 50,
+    "size_unit": "GR",
+    "queued_at": "2026-08-14T22:52:30.091Z",
+    "id": "c1786747950091"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SWEET LISA MINI GATEAU AU FROMAGE LAIT CONDENSÉ",
+     "F1744": "50.0",
+     "F22": "50 "
+    },
+    "POS_TAB": {
+     "F02": "SWEET LISA MINI GATEAU AU FROMAGE LAIT C",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.6900",
+     "F196": "0.6900",
+     "F1140": "0.6900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260814185303748678",
+   "applied_at": "2026-08-14T18:53:03",
+   "change": {
+    "code": "0085630300491",
+    "title": "SWEET LIZA MINI GATEAU AU FROMAGE CHOCOLAT",
+    "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE CHOCOL",
+    "size_num": 50,
+    "size_unit": "",
+    "queued_at": "2026-08-14T22:52:45.645Z",
+    "id": "c1786747965645"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SWEET LISA MINI GATEAU AU FROMAGE CHOCOLAT",
+     "F1744": "50.0",
+     "F22": "50 "
+    },
+    "POS_TAB": {
+     "F02": "SWEET LISA MINI GATEAU AU FROMAGE CHOCOL",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.6900",
+     "F196": "0.6900",
+     "F1140": "0.6900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260814185303808678",
+   "applied_at": "2026-08-14T18:53:03",
+   "change": {
+    "code": "0085630300497",
+    "title": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE",
+    "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE",
+    "size_num": 50,
+    "size_unit": "GR",
+    "queued_at": "2026-08-14T22:52:54.154Z",
+    "id": "c1786747974154"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SWEET LISA MINI GATEAU AU FROMAGE PÊCHE",
+     "F1744": "50.0",
+     "F22": "50 "
+    },
+    "POS_TAB": {
+     "F02": "SWEET LISA MINI GATEAU AU FROMAGE PÊCHE",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.7500",
+     "F196": "0.7500",
+     "F1140": "0.7500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260814185303858678",
+   "applied_at": "2026-08-14T18:53:03",
+   "change": {
+    "code": "0085630300498",
+    "title": "SWEET LIZA MINI GATEAU AU FROMAGE BLEUETS",
+    "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE BLEUET",
+    "size_num": 50,
+    "size_unit": "",
+    "queued_at": "2026-08-14T22:53:02.905Z",
+    "id": "c1786747982905"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SWEET LISA MINI GATEAU AU FROMAGE BLEUETS",
+     "F1744": "50.0",
+     "F22": "50 "
+    },
+    "POS_TAB": {
+     "F02": "SWEET LISA MINI GATEAU AU FROMAGE BLEUET",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.7500",
+     "F196": "0.7500",
+     "F1140": "0.7500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
