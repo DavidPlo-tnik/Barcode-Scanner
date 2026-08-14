@@ -7,6 +7,14 @@
    "code": "__vendor_1002",
    "queued_at": "2026-08-14T03:29:38.566Z",
    "id": "c1786678178566"
+  },
+  {
+   "op": "supplier_create",
+   "vendor_id": "1002",
+   "name": "KNV",
+   "code": "__vendor_1002",
+   "queued_at": "2026-08-14T03:29:45.020Z",
+   "id": "c1786678185020"
   }
  ]
 }
