@@ -3496,6 +3496,104 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260814185330347747",
+   "applied_at": "2026-08-14T18:53:30",
+   "change": {
+    "code": "0085630300494",
+    "title": "SWEET LIZA MINI GATEAU AU FROMAGE CERISE",
+    "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE CERISE",
+    "size_num": 50,
+    "size_unit": "GR",
+    "queued_at": "2026-08-14T22:53:12.337Z",
+    "id": "c1786747992338"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SWEET LISA MINI GATEAU AU FROMAGE CERISE",
+     "F1744": "50.0",
+     "F22": "50 "
+    },
+    "POS_TAB": {
+     "F02": "SWEET LISA MINI GATEAU AU FROMAGE CERISE",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.6900",
+     "F196": "0.6900",
+     "F1140": "0.6900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260814185330451752",
+   "applied_at": "2026-08-14T18:53:30",
+   "change": {
+    "code": "0085630300493",
+    "title": "SWEET LIZA MINI GATEAU AU FROMAGE FRAISE",
+    "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE FRAISE",
+    "size_num": 50,
+    "size_unit": "GR",
+    "queued_at": "2026-08-14T22:53:19.278Z",
+    "id": "c1786747999278"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SWEET LISA MINI GATEAU AU FROMAGE FRAISE",
+     "F1744": "50.0",
+     "F22": "50 "
+    },
+    "POS_TAB": {
+     "F02": "SWEET LISA MINI GATEAU AU FROMAGE FRAISE",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.7500",
+     "F196": "0.7500",
+     "F1140": "0.7500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
