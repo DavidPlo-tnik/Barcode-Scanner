@@ -23,6 +23,14 @@
    "code": "__vendor_1002",
    "queued_at": "2026-08-14T03:29:50.762Z",
    "id": "c1786678190762"
+  },
+  {
+   "op": "supplier_create",
+   "vendor_id": "1002",
+   "name": "Tonsell",
+   "code": "__vendor_1002",
+   "queued_at": "2026-08-14T03:29:57.106Z",
+   "id": "c1786678197106"
   }
  ]
 }
