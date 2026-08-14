@@ -47,6 +47,14 @@
    "code": "__vendor_1002",
    "queued_at": "2026-08-14T03:30:17.381Z",
    "id": "c1786678217381"
+  },
+  {
+   "op": "supplier_create",
+   "vendor_id": "1002",
+   "name": "Coca-Cola",
+   "code": "__vendor_1002",
+   "queued_at": "2026-08-14T03:30:27.725Z",
+   "id": "c1786678227725"
   }
  ]
 }
