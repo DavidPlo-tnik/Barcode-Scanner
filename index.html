@@ -2096,7 +2096,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v88</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v89</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2875,10 +2875,12 @@
     }));
   }
 
+  const _sessionSupplierIds = new Set();   // ids created this session, not yet in the export
   function nextSupplierId(subs) {
-    // start at 1001, increment past the highest numeric id we've created
+    // start at 1001, past the highest id in the export AND any queued this session
     let max = 1000;
     subs.forEach(s => { const n = parseInt(s.id, 10); if (!isNaN(n) && n > max) max = n; });
+    _sessionSupplierIds.forEach(id => { const n = parseInt(id, 10); if (!isNaN(n) && n > max) max = n; });
     return String(max + 1);
   }
 
@@ -2887,8 +2889,9 @@
     if (!name || !name.trim()) return;
     const subs = await fetchMySuppliers();
     const id = nextSupplierId(subs);
+    _sessionSupplierIds.add(id);              // reserve it so the next add increments
     queueDeptOp({ op: 'supplier_create', vendor_id: id, name: name.trim() });
-    showToast(`Creating supplier ${id}…`);
+    showToast(`Creating supplier ${id} — ${name.trim()}`);
   }
 
   async function queueDeptOp(op) {
