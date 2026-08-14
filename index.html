@@ -2077,7 +2077,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v82</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v83</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3077,10 +3077,11 @@
     const sel = $('#pd-supplier');
     sel.innerHTML = '<option value="">— unchanged —</option>';
     const sup = await fetchSuppliers();
+    const curSup = (e.su != null && e.su !== '') ? String(e.su) : (p.supplierId ? String(p.supplierId) : null);
     sup.forEach(s => {
       const o = document.createElement('option');
       o.value = s.id; o.textContent = s.name;
-      if (p.supplierId && s.id === p.supplierId) o.selected = true;
+      if (curSup && String(s.id) === curSup) o.selected = true;
       sel.appendChild(o);
     });
 
