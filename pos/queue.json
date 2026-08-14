@@ -7,6 +7,14 @@
    "code": "__subdept_26",
    "queued_at": "2026-08-14T01:56:28.878Z",
    "id": "c1786672588878"
+  },
+  {
+   "op": "supplier_create",
+   "vendor_id": "1001",
+   "name": "Canadawide",
+   "code": "__vendor_1001",
+   "queued_at": "2026-08-14T02:26:24.900Z",
+   "id": "c1786674384900"
   }
  ]
 }
