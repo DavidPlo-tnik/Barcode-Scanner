@@ -388,6 +388,14 @@
     margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
   }
   .pd-price-block.active .pd-price-label { color: var(--good); }
+  .pd-margin {
+    margin-left: auto; font-size: 11px; font-weight: 700; letter-spacing: 0.02em;
+    padding: 2px 8px; border-radius: 5px; text-transform: none;
+    background: var(--surface-2); color: var(--text-dim);
+  }
+  .pd-margin.good { background: color-mix(in srgb, var(--good) 20%, transparent); color: var(--good); }
+  .pd-margin.mid { background: color-mix(in srgb, var(--warn) 20%, transparent); color: var(--warn); }
+  .pd-margin.low { background: color-mix(in srgb, var(--bad) 20%, transparent); color: var(--bad); }
   .pd-price-block.active .pd-price-label::after {
     content: 'ACTIVE'; font-size: 9px; background: var(--good); color: #000;
     padding: 2px 6px; border-radius: 4px; letter-spacing: 0.06em;
@@ -1999,7 +2007,7 @@
     <section class="pd-group">
       <div class="pd-group-title">Pricing</div>
       <div class="pd-price-block" id="pd-reg-block">
-        <div class="pd-price-label">Regular</div>
+        <div class="pd-price-label">Regular<span class="pd-margin" id="pd-reg-margin"></span></div>
         <div class="pd-price-inputs">
           <div class="pd-money"><span>$</span><input id="pd-price" type="number" inputmode="decimal" step="0.01" class="pd-input" placeholder="0.00" /></div>
           <div class="pd-qty"><input id="pd-price-qty" type="number" inputmode="numeric" class="pd-input" value="1" min="1" /><span>for</span></div>
@@ -2007,7 +2015,7 @@
         <div class="pd-note" id="pd-price-each"></div>
       </div>
       <div class="pd-price-block" id="pd-promo-block">
-        <div class="pd-price-label">Promo</div>
+        <div class="pd-price-label">Promo<span class="pd-margin" id="pd-promo-margin"></span></div>
         <div class="pd-price-inputs">
           <div class="pd-money"><span>$</span><input id="pd-promo-price" type="number" inputmode="decimal" step="0.01" class="pd-input" placeholder="none" /></div>
           <div class="pd-qty"><input id="pd-promo-qty" type="number" inputmode="numeric" class="pd-input" value="1" min="1" /><span>for</span></div>
@@ -2088,7 +2096,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v86</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v87</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3122,6 +3130,7 @@
     // show the "= $X each" hints if the prefilled quantities are multibuy
     if (e.rq && e.rq > 1 && e.rp) $('#pd-price-each').textContent = `${e.rq} for $${(+e.rp).toFixed(2)} = $${(e.rp/e.rq).toFixed(2)} each`;
     if (e.pq && e.pq > 1 && e.pp) $('#pd-promo-each').textContent = `${e.pq} for $${(+e.pp).toFixed(2)} = $${(e.pp/e.pq).toFixed(2)} each`;
+    pdCalcMargins();
 
     // taxes / flags — real values
     $('#pd-tax-fed').checked = e.tf === 1;
@@ -3164,6 +3173,22 @@
     _pdInitial.subdept = curSd;
 
     renderQueuedForItem(code);
+  }
+
+  // Live margin badges, matching the POS: (unit price - cost) / unit price,
+  // where unit price = price / qty. POS shows reg 1@$4.99=58%, promo 3@$9.99=37%.
+  function pdCalcMargins() {
+    const cost = parseFloat($('#pd-cost').value);
+    const badge = (el, price, qty) => {
+      if (!el) return;
+      const unit = price / (qty || 1);
+      if (!(unit > 0) || !(cost > 0)) { el.textContent = ''; el.className = 'pd-margin'; return; }
+      const m = Math.round((unit - cost) / unit * 100);
+      el.textContent = m + '%';
+      el.className = 'pd-margin ' + (m >= 30 ? 'good' : m >= 15 ? 'mid' : 'low');
+    };
+    badge($('#pd-reg-margin'), parseFloat($('#pd-price').value), parseInt($('#pd-price-qty').value, 10) || 1);
+    badge($('#pd-promo-margin'), parseFloat($('#pd-promo-price').value), parseInt($('#pd-promo-qty').value, 10) || 1);
   }
 
   function renderActivePrice(e) {
@@ -7037,9 +7062,11 @@
     const priceEach = () => {
       const pr = parseFloat($('#pd-price').value), q = parseInt($('#pd-price-qty').value, 10) || 1;
       $('#pd-price-each').textContent = (q > 1 && pr > 0) ? `${q} for $${pr.toFixed(2)} = $${(pr / q).toFixed(2)} each` : '';
+      pdCalcMargins();
     };
     $('#pd-price').addEventListener('input', priceEach);
     $('#pd-price-qty').addEventListener('input', priceEach);
+    $('#pd-cost').addEventListener('input', pdCalcMargins);
     // Promo price typed -> reflect which price is "active" by glowing its block
     const reflectActive = () => {
       const pp = parseFloat($('#pd-promo-price').value);
@@ -7048,6 +7075,7 @@
       $('#pd-reg-block').classList.toggle('active', !hasPromo);
       const q = parseInt($('#pd-promo-qty').value, 10) || 1;
       $('#pd-promo-each').textContent = (q > 1 && pp > 0) ? `${q} for $${pp.toFixed(2)} = $${(pp/q).toFixed(2)} each` : '';
+      pdCalcMargins();
     };
     $('#pd-promo-price').addEventListener('input', reflectActive);
     $('#pd-promo-qty').addEventListener('input', reflectActive);
