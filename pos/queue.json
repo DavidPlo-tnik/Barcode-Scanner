@@ -55,6 +55,14 @@
    "code": "__vendor_1009",
    "queued_at": "2026-08-15T03:32:16.757Z",
    "id": "c1786764736757"
+  },
+  {
+   "op": "supplier_create",
+   "vendor_id": "1010",
+   "name": "Lactalis",
+   "code": "__vendor_1010",
+   "queued_at": "2026-08-15T03:32:28.233Z",
+   "id": "c1786764748233"
   }
  ]
 }
