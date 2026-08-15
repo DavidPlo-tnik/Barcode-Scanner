@@ -3646,6 +3646,19 @@
     "id": "c1786814271538"
    },
    "before": {}
+  },
+  {
+   "undo_id": "u20260815132701218420",
+   "applied_at": "2026-08-15T13:27:01",
+   "change": {
+    "op": "subdept_rename",
+    "subdept": 26,
+    "name": "CAVIAR DE POISSON",
+    "code": "__subdept_26",
+    "queued_at": "2026-08-15T17:26:26.110Z",
+    "id": "c1786814786110"
+   },
+   "before": {}
   }
  ]
 }
