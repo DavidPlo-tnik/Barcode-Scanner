@@ -47,38 +47,6 @@
    "code": "__vendor_1008",
    "queued_at": "2026-08-14T03:30:27.725Z",
    "id": "c1786678227725"
-  },
-  {
-   "code": "0000000004013",
-   "pos_title": "ORAN NAVEL GR113",
-   "size_num": 1,
-   "size_unit": "",
-   "multibuy": {
-    "qty": 4,
-    "price": 3
-   },
-   "promo": {
-    "price": 0.99,
-    "qty": 1,
-    "start": "2026-06-12",
-    "end": "2027-01-12"
-   },
-   "queued_at": "2026-08-15T18:05:05.533Z",
-   "id": "c1786817105537"
-  },
-  {
-   "code": "0000000004012",
-   "pos_title": "ORAN.NAVEL GR56",
-   "size_num": 1,
-   "size_unit": "",
-   "promo": {
-    "price": 0.99,
-    "qty": 1,
-    "start": "2026-06-12",
-    "end": "2026-12-31"
-   },
-   "queued_at": "2026-08-15T18:05:24.855Z",
-   "id": "c1786817124855"
   }
  ]
 }
