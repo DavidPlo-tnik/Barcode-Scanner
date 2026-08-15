@@ -47,6 +47,14 @@
    "code": "__vendor_1008",
    "queued_at": "2026-08-14T03:30:27.725Z",
    "id": "c1786678227725"
+  },
+  {
+   "op": "subdept_rename",
+   "subdept": 26,
+   "name": "CAVIAR DE POISSON",
+   "code": "__subdept_26",
+   "queued_at": "2026-08-15T17:26:26.110Z",
+   "id": "c1786814786110"
   }
  ]
 }
