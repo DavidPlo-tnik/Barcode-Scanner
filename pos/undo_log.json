@@ -3620,6 +3620,32 @@
     "id": "c1786764748233"
    },
    "before": {}
+  },
+  {
+   "undo_id": "u20260815131857027025",
+   "applied_at": "2026-08-15T13:18:57",
+   "change": {
+    "op": "supplier_rename",
+    "vendor_id": "1001",
+    "name": "Canadawide",
+    "code": "__vendor_1001",
+    "queued_at": "2026-08-15T17:17:49.912Z",
+    "id": "c1786814269912"
+   },
+   "before": {}
+  },
+  {
+   "undo_id": "u20260815131857178032",
+   "applied_at": "2026-08-15T13:18:57",
+   "change": {
+    "op": "supplier_rename",
+    "vendor_id": "1001",
+    "name": "Canadawide",
+    "code": "__vendor_1001",
+    "queued_at": "2026-08-15T17:17:51.538Z",
+    "id": "c1786814271538"
+   },
+   "before": {}
   }
  ]
 }
