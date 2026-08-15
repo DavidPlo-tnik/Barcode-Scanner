@@ -12,6 +12,10 @@
   "name": "WonderBerry"
  },
  {
+  "id": "1004",
+  "name": "WonderBerry"
+ },
+ {
   "id": "1005",
   "name": "Tonsell"
  },
@@ -26,5 +30,13 @@
  {
   "id": "1008",
   "name": "Coca-Cola"
+ },
+ {
+  "id": "1009",
+  "name": "Frito-Lays"
+ },
+ {
+  "id": "1010",
+  "name": "Lactalis"
  }
 ]
