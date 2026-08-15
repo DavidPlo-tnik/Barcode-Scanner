@@ -3594,6 +3594,32 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260814233245570617",
+   "applied_at": "2026-08-14T23:32:45",
+   "change": {
+    "op": "supplier_create",
+    "vendor_id": "1009",
+    "name": "Frito-Lays",
+    "code": "__vendor_1009",
+    "queued_at": "2026-08-15T03:32:16.757Z",
+    "id": "c1786764736757"
+   },
+   "before": {}
+  },
+  {
+   "undo_id": "u20260814233245605617",
+   "applied_at": "2026-08-14T23:32:45",
+   "change": {
+    "op": "supplier_create",
+    "vendor_id": "1010",
+    "name": "Lactalis",
+    "code": "__vendor_1010",
+    "queued_at": "2026-08-15T03:32:28.233Z",
+    "id": "c1786764748233"
+   },
+   "before": {}
   }
  ]
 }
