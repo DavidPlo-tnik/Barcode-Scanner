@@ -69,7 +69,7 @@
  },
  {
   "code": 26,
-  "name": "SUSHI"
+  "name": "CAVIAR DE POISSON"
  },
  {
   "code": 31,
@@ -310,10 +310,6 @@
  {
   "code": 203,
   "name": "TRANSPORT TX"
- },
- {
-  "code": 204,
-  "name": "RÉCUPÉRATION DÉCHETS"
  },
  {
   "code": 210,
