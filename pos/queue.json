@@ -47,6 +47,14 @@
    "code": "__vendor_1008",
    "queued_at": "2026-08-14T03:30:27.725Z",
    "id": "c1786678227725"
+  },
+  {
+   "op": "supplier_rename",
+   "vendor_id": "1001",
+   "name": "Canadawide",
+   "code": "__vendor_1001",
+   "queued_at": "2026-08-15T17:17:49.912Z",
+   "id": "c1786814269912"
   }
  ]
 }
