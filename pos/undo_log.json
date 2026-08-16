@@ -4135,6 +4135,101 @@
      "F1011": "REG"
     }
    }
+  },
+  {
+   "undo_id": "u20260816104244792360",
+   "applied_at": "2026-08-16T10:42:44",
+   "change": {
+    "code": "0020234900000",
+    "pos_title": "KABANOS GR",
+    "price": 20.99,
+    "queued_at": "2026-08-16T14:42:05.511Z",
+    "id": "c1786891325512"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KABANOS",
+     "F1744": null,
+     "F22": "GR"
+    },
+    "POS_TAB": {
+     "F02": "KABANOS GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "0000255266"
+    },
+    "PRICE_TAB": {
+     "F30": "17.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "17.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260816104244944367",
+   "applied_at": "2026-08-16T10:42:44",
+   "change": {
+    "code": "0020235000000",
+    "title": "SAUCISSE VILLAGE GORALSKA",
+    "pos_title": "SAUCISSE VILLAGE GORALSKA GR",
+    "price": 19.99,
+    "queued_at": "2026-08-16T14:42:38.923Z",
+    "id": "c1786891358923"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSE GORALSKA",
+     "F1744": null,
+     "F22": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSE GORALSKA GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "16.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "16.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
