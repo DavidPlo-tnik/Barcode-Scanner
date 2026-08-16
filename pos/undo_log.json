@@ -4752,6 +4752,53 @@
      "F1011": null
     }
    }
+  },
+  {
+   "undo_id": "u20260816123954952478",
+   "applied_at": "2026-08-16T12:39:54",
+   "change": {
+    "code": "0020235900000",
+    "pos_title": "BOEUF SECHÉ TRAITÉ BASTURMA KG",
+    "price": 54.99,
+    "queued_at": "2026-08-16T16:39:36.989Z",
+    "id": "c1786898376990"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BOEUF SECHÉ TRAITÉ BASTURMA",
+     "F1744": null,
+     "F22": "KG"
+    },
+    "POS_TAB": {
+     "F02": "BOEUF SECHÉ TRAITÉ BASTURMA KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "39.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "39.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
