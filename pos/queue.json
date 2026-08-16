@@ -61,6 +61,13 @@
    "price": 15.99,
    "queued_at": "2026-08-16T14:43:18.724Z",
    "id": "c1786891398724"
+  },
+  {
+   "code": "0020235500000",
+   "title": "SAUCISSE DE POULET",
+   "pos_title": "SAUCISSE DE POULET KG",
+   "queued_at": "2026-08-16T14:43:47.717Z",
+   "id": "c1786891427717"
   }
  ]
 }
