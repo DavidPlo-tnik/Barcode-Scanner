@@ -3873,6 +3873,106 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260816090741195281",
+   "applied_at": "2026-08-16T09:07:41",
+   "change": {
+    "code": "0020614600000",
+    "title": "POULET POITRINE EN MORCEAUX",
+    "pos_title": "POULET POITRINE EN MORCEAUX",
+    "size_num": 1000,
+    "size_unit": "",
+    "price": 12.99,
+    "queued_at": "2026-08-16T13:07:10.401Z",
+    "id": "c1786885630406"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "poit.poul.parée dés                  rég",
+     "F1744": "1000.0",
+     "F22": "1000G"
+    },
+    "POS_TAB": {
+     "F02": "POIT.POULET DES",
+     "F04": "21",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "10.0000",
+     "F196": "10.0000",
+     "F1140": "10.0000",
+     "F27": "ZV01"
+    },
+    "PRICE_TAB": {
+     "F30": "19.8200",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.8200",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260816090741750282",
+   "applied_at": "2026-08-16T09:07:41",
+   "change": {
+    "code": "0020614600000",
+    "title": "POULET POITRINE EN MORCEAUX",
+    "pos_title": "POULET POITRINE EN MORCEAUX",
+    "size_num": 1000,
+    "size_unit": "",
+    "price": 12.99,
+    "queued_at": "2026-08-16T13:07:13.170Z",
+    "id": "c1786885633170"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "POULET POITRINE EN MORCEAUX",
+     "F1744": "1000.0",
+     "F22": "1000 "
+    },
+    "POS_TAB": {
+     "F02": "POULET POITRINE EN MORCEAUX",
+     "F04": "21",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "10.0000",
+     "F196": "10.0000",
+     "F1140": "10.0000",
+     "F27": "ZV01"
+    },
+    "PRICE_TAB": {
+     "F30": "12.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "12.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": null
+    }
+   }
   }
  ]
 }
