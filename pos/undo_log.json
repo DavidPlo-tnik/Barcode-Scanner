@@ -4230,6 +4230,147 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260816104352637519",
+   "applied_at": "2026-08-16T10:43:52",
+   "change": {
+    "code": "0020236600000",
+    "pos_title": "SAUCISSE DE DINDE ET POULET KG",
+    "price": 19.99,
+    "queued_at": "2026-08-16T14:43:07.099Z",
+    "id": "c1786891387099"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSE DE DINDE ET POULET",
+     "F1744": null,
+     "F22": "KG"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSE DE DINDE ET POULET KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "24.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "24.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260816104352749522",
+   "applied_at": "2026-08-16T10:43:52",
+   "change": {
+    "code": "0020238600000",
+    "pos_title": "FRANKFURTER KG",
+    "price": 15.99,
+    "queued_at": "2026-08-16T14:43:18.724Z",
+    "id": "c1786891398724"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FRANKFURTER",
+     "F1744": null,
+     "F22": "KG"
+    },
+    "POS_TAB": {
+     "F02": "FRANKFURTER KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260816104352864528",
+   "applied_at": "2026-08-16T10:43:52",
+   "change": {
+    "code": "0020235500000",
+    "title": "SAUCISSE DE POULET",
+    "pos_title": "SAUCISSE DE POULET KG",
+    "queued_at": "2026-08-16T14:43:47.717Z",
+    "id": "c1786891427717"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISS VIENNOISE DE POULET",
+     "F1744": null,
+     "F22": "KG"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISS VIENNOISE DE POULET KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-BRANDT"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
