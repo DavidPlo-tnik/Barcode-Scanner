@@ -47,6 +47,13 @@
    "code": "__vendor_1008",
    "queued_at": "2026-08-14T03:30:27.725Z",
    "id": "c1786678227725"
+  },
+  {
+   "code": "0020236600000",
+   "pos_title": "SAUCISSE DE DINDE ET POULET KG",
+   "price": 19.99,
+   "queued_at": "2026-08-16T14:43:07.099Z",
+   "id": "c1786891387099"
   }
  ]
 }
