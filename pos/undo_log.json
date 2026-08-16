@@ -4706,6 +4706,52 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260816104936689380",
+   "applied_at": "2026-08-16T10:49:36",
+   "change": {
+    "code": "0023880300000",
+    "price": 44.99,
+    "queued_at": "2026-08-16T14:49:07.298Z",
+    "id": "c1786891747298"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SMELT SEC KORJUSHKA",
+     "F1744": null,
+     "F22": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SMELT SEC KORJUSHKA",
+     "F04": "24",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "44.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "44.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": null
+    }
+   }
   }
  ]
 }
