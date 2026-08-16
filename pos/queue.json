@@ -54,6 +54,14 @@
    "price": 20.99,
    "queued_at": "2026-08-16T14:42:05.511Z",
    "id": "c1786891325512"
+  },
+  {
+   "code": "0020235000000",
+   "title": "SAUCISSE VILLAGE GORALSKA",
+   "pos_title": "SAUCISSE VILLAGE GORALSKA GR",
+   "price": 19.99,
+   "queued_at": "2026-08-16T14:42:38.923Z",
+   "id": "c1786891358923"
   }
  ]
 }
