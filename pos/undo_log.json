@@ -4515,6 +4515,197 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260816104718160062",
+   "applied_at": "2026-08-16T10:47:18",
+   "change": {
+    "code": "0077332160810",
+    "title": "BRANDT SAUCISSON DE FOIE AVEC HERBES",
+    "pos_title": "BRANDT SAUCISSON DE FOIE AVEC HERBES 50G",
+    "size_num": 250,
+    "size_unit": "GR",
+    "queued_at": "2026-08-16T14:46:21.368Z",
+    "id": "c1786891581368"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BRANDT SAUCISSON DE FOIE",
+     "F1744": "250.0",
+     "F22": "250GR"
+    },
+    "POS_TAB": {
+     "F02": "BRANDT SAUCISSON DE FOIE 250GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.0000",
+     "F196": "3.0000",
+     "F1140": "3.0000",
+     "F27": "L-BRANDT"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260816104718581064",
+   "applied_at": "2026-08-16T10:47:18",
+   "change": {
+    "code": "0020774900000",
+    "title": "PATE DE FOIE LIVERWURST",
+    "price": 19.99,
+    "queued_at": "2026-08-16T14:46:51.438Z",
+    "id": "c1786891611438"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "PATE DE FOIE",
+     "F1744": "1000.0",
+     "F22": "1000G"
+    },
+    "POS_TAB": {
+     "F02": "PATE DE FOIE 1000G",
+     "F04": "21",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.9900",
+     "F196": "2.9900",
+     "F1140": "2.9900",
+     "F27": "ZV01"
+    },
+    "PRICE_TAB": {
+     "F30": "7.6900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.6900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260816104719021065",
+   "applied_at": "2026-08-16T10:47:19",
+   "change": {
+    "code": "0020774900000",
+    "title": "PATE DE FOIE LIVERWURST",
+    "price": 19.99,
+    "subdept": 31,
+    "queued_at": "2026-08-16T14:46:59.702Z",
+    "id": "c1786891619702"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "PATE DE FOIE LIVERWURST",
+     "F1744": "1000.0",
+     "F22": "1000G"
+    },
+    "POS_TAB": {
+     "F02": "PATE DE FOIE LIVERWURST",
+     "F04": "21",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.9900",
+     "F196": "2.9900",
+     "F1140": "2.9900",
+     "F27": "ZV01"
+    },
+    "PRICE_TAB": {
+     "F30": "19.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": null
+    }
+   }
+  },
+  {
+   "undo_id": "u20260816104719101065",
+   "applied_at": "2026-08-16T10:47:19",
+   "change": {
+    "code": "0020775000000",
+    "price": 19.99,
+    "subdept": 31,
+    "queued_at": "2026-08-16T14:47:16.086Z",
+    "id": "c1786891636086"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "PATE DE FOIE FUMÉ",
+     "F1744": null,
+     "F22": ""
+    },
+    "POS_TAB": {
+     "F02": "PATE DE FOIE FUMÉ",
+     "F04": "21",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.9900",
+     "F196": "2.9900",
+     "F1140": "2.9900",
+     "F27": "ZV01"
+    },
+    "PRICE_TAB": {
+     "F30": "17.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "17.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
