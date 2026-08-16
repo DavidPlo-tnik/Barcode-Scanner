@@ -54,6 +54,14 @@
    "price": 15.99,
    "queued_at": "2026-08-16T14:44:05.707Z",
    "id": "c1786891445707"
+  },
+  {
+   "code": "0020238400000",
+   "title": "SAUCISSE CHORIZO",
+   "pos_title": "SAUCISSE CHORIZO KG",
+   "price": 19.99,
+   "queued_at": "2026-08-16T14:44:31.432Z",
+   "id": "c1786891471432"
   }
  ]
 }
