@@ -57,6 +57,16 @@
    "price": 12.99,
    "queued_at": "2026-08-16T13:07:10.401Z",
    "id": "c1786885630406"
+  },
+  {
+   "code": "0020614600000",
+   "title": "POULET POITRINE EN MORCEAUX",
+   "pos_title": "POULET POITRINE EN MORCEAUX",
+   "size_num": 1000,
+   "size_unit": "",
+   "price": 12.99,
+   "queued_at": "2026-08-16T13:07:13.170Z",
+   "id": "c1786885633170"
   }
  ]
 }
