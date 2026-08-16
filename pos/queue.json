@@ -47,37 +47,6 @@
    "code": "__vendor_1008",
    "queued_at": "2026-08-14T03:30:27.725Z",
    "id": "c1786678227725"
-  },
-  {
-   "code": "0077332160810",
-   "title": "BRANDT SAUCISSON DE FOIE AVEC HERBES",
-   "pos_title": "BRANDT SAUCISSON DE FOIE AVEC HERBES 50G",
-   "size_num": 250,
-   "size_unit": "GR",
-   "queued_at": "2026-08-16T14:46:21.368Z",
-   "id": "c1786891581368"
-  },
-  {
-   "code": "0020774900000",
-   "title": "PATE DE FOIE LIVERWURST",
-   "price": 19.99,
-   "queued_at": "2026-08-16T14:46:51.438Z",
-   "id": "c1786891611438"
-  },
-  {
-   "code": "0020774900000",
-   "title": "PATE DE FOIE LIVERWURST",
-   "price": 19.99,
-   "subdept": 31,
-   "queued_at": "2026-08-16T14:46:59.702Z",
-   "id": "c1786891619702"
-  },
-  {
-   "code": "0020775000000",
-   "price": 19.99,
-   "subdept": 31,
-   "queued_at": "2026-08-16T14:47:16.086Z",
-   "id": "c1786891636086"
   }
  ]
 }
