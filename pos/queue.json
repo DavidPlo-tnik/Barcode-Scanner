@@ -47,27 +47,6 @@
    "code": "__vendor_1008",
    "queued_at": "2026-08-14T03:30:27.725Z",
    "id": "c1786678227725"
-  },
-  {
-   "code": "0020236600000",
-   "pos_title": "SAUCISSE DE DINDE ET POULET KG",
-   "price": 19.99,
-   "queued_at": "2026-08-16T14:43:07.099Z",
-   "id": "c1786891387099"
-  },
-  {
-   "code": "0020238600000",
-   "pos_title": "FRANKFURTER KG",
-   "price": 15.99,
-   "queued_at": "2026-08-16T14:43:18.724Z",
-   "id": "c1786891398724"
-  },
-  {
-   "code": "0020235500000",
-   "title": "SAUCISSE DE POULET",
-   "pos_title": "SAUCISSE DE POULET KG",
-   "queued_at": "2026-08-16T14:43:47.717Z",
-   "id": "c1786891427717"
   }
  ]
 }
