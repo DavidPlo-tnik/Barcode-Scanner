@@ -367,6 +367,16 @@
   }
   .pd-count.over { color: var(--bad); font-weight: 700; }
   .pd-note { font-size: 11.5px; color: var(--text-dim); margin: 6px 2px 0; line-height: 1.4; }
+  .pd-lock-notice {
+    margin-top: 10px; padding: 9px 11px; border-radius: 9px;
+    background: color-mix(in srgb, var(--warn) 12%, transparent);
+    border: 1px solid var(--warn); font-size: 12px; color: var(--warn); line-height: 1.4;
+  }
+  .pd-permanent-toggle {
+    margin-top: 8px; padding: 8px 10px !important; background: var(--surface-2);
+    border-radius: 8px; border: none !important;
+  }
+  .pd-permanent-toggle span { font-size: 12.5px; }
 
   .pd-size { display: flex; gap: 10px; }
   .pd-size #pd-size-num { flex: 1; }
@@ -2026,6 +2036,10 @@
           <span>→</span>
           <input id="pd-promo-end" type="date" class="pd-input" />
         </div>
+        <label class="pd-toggle pd-permanent-toggle" id="pd-permanent-wrap" style="display:none;">
+          <input type="checkbox" id="pd-permanent"><span>Permanent (locked item — don't let this revert)</span>
+        </label>
+        <div class="pd-lock-notice" id="pd-lock-notice" style="display:none;"></div>
       </div>
     </section>
 
@@ -2096,7 +2110,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v89</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v90</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3134,6 +3148,28 @@
     if (e.rq && e.rq > 1 && e.rp) $('#pd-price-each').textContent = `${e.rq} for $${(+e.rp).toFixed(2)} = $${(e.rp/e.rq).toFixed(2)} each`;
     if (e.pq && e.pq > 1 && e.pp) $('#pd-promo-each').textContent = `${e.pq} for $${(+e.pp).toFixed(2)} = $${(e.pp/e.pq).toFixed(2)} each`;
 
+    // Metro-locked item (F1964=999): F30 gets overwritten by Metro's feed, so
+    // the real selling price has to live as a "permanent" promo instead.
+    _pdInitial.locked = (e.lk === 1);
+    const permWrap = $('#pd-permanent-wrap'), lockNotice = $('#pd-lock-notice');
+    const FAR_FUTURE = '2099-12-31';
+    if (e.lk === 1) {
+      permWrap.style.display = 'flex';
+      lockNotice.style.display = 'block';
+      const isPermanent = e.pe && e.pe >= '2090-01-01';
+      $('#pd-permanent').checked = !!isPermanent;
+      lockNotice.textContent = (e.pp != null && e.ap === 1)
+        ? `🔒 Metro-locked item. Selling $${(+e.pp).toFixed(2)} — locked regular is $${(+e.rp).toFixed(2)}.`
+        : `🔒 Metro-locked item — its regular price ($${e.rp != null ? (+e.rp).toFixed(2) : '?'}) is overwritten by Metro's feed. Use a permanent promo to set the real price.`;
+    } else {
+      permWrap.style.display = 'none';
+      lockNotice.style.display = 'none';
+    }
+    $('#pd-permanent').onchange = () => {
+      if ($('#pd-permanent').checked) $('#pd-promo-end').value = FAR_FUTURE;
+      else if ($('#pd-promo-end').value === FAR_FUTURE) $('#pd-promo-end').value = '';
+    };
+
     // taxes / flags — real values
     $('#pd-tax-fed').checked = e.tf === 1;
     $('#pd-tax-prov').checked = e.tp === 1;
@@ -3143,6 +3179,7 @@
       tax_fed: $('#pd-tax-fed').checked, tax_prov: $('#pd-tax-prov').checked,
       balance: $('#pd-balance').checked, qte: $('#pd-qte').checked,
       hadDeposit: (e.dp != null && e.dp !== '' && e.dp !== '0'),
+      rp: e.rp,
     };
 
     // deposit: real code -> dollars (code 10 = $0.50, +0.05 per step)
@@ -3291,6 +3328,22 @@
 
   async function pdSave() {
     const ch = pdComputeChanges();
+
+    // Guard: a short-dated (or no) promo end on a Metro-locked item will let
+    // the item revert and expose the locked/wrong regular price when it ends.
+    if (_pdInitial.locked && ch.promo && !$('#pd-permanent').checked) {
+      const end = ch.promo.end;
+      const soon = !end || end < '2090-01-01';
+      if (soon) {
+        const proceed = confirm(
+          `This item's regular price is Metro-locked ($${_pdInitial.rp != null ? (+_pdInitial.rp).toFixed(2) : '?'}).\n\n` +
+          `When this promo ends${end ? ' on ' + end : ''}, the price will revert to the LOCKED price, not your real price.\n\n` +
+          `Check "Permanent" to avoid this, or tap OK to proceed anyway.`
+        );
+        if (!proceed) return;
+      }
+    }
+
     const btn = $('#pd-save'); btn.disabled = true; btn.textContent = 'Applying…';
     try {
       await queuePosChange(ch);
