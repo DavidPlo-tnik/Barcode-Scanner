@@ -47,6 +47,15 @@
    "code": "__vendor_1008",
    "queued_at": "2026-08-14T03:30:27.725Z",
    "id": "c1786678227725"
+  },
+  {
+   "code": "0005598910086",
+   "pos_title": "PERSO.ALC.FRICT.70% COMP.",
+   "size_num": 450,
+   "size_unit": "ML",
+   "price": 3.49,
+   "queued_at": "2026-08-17T19:55:39.913Z",
+   "id": "c1786996539914"
   }
  ]
 }
