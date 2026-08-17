@@ -1,3 +1,50 @@
 {
- "entries": []
+ "entries": [
+  {
+   "undo_id": "u20260817104150512429",
+   "applied_at": "2026-08-17T10:41:50",
+   "change": {
+    "code": "0482018662129",
+    "price": 9.99,
+    "queued_at": "2026-08-17T14:41:35.762Z",
+    "id": "c1786977695770"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GOLD RING FILET DE HARENG DUNAYSKAYA TRANCHÉ",
+     "F1744": "275.0",
+     "F22": "275 "
+    },
+    "POS_TAB": {
+     "F02": "GOLD RING FILET DE HARENG DUNAYSKAYA TRA",
+     "F04": "22",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "9.9500",
+     "F196": "9.9500",
+     "F1140": "9.9500",
+     "F27": "ZB01"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  }
+ ]
 }
