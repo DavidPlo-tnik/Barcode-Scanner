@@ -2023,6 +2023,7 @@
           <div class="pd-qty"><input id="pd-price-qty" type="number" inputmode="numeric" class="pd-input" value="1" min="1" /><span>for</span></div>
         </div>
         <div class="pd-note" id="pd-price-each"></div>
+        <div class="pd-lock-notice" id="pd-lock-notice" style="display:none;">🔒 Metro locked item</div>
       </div>
       <div class="pd-price-block" id="pd-promo-block">
         <div class="pd-price-label">Promo<span class="pd-margin" id="pd-promo-margin"></span></div>
@@ -2039,7 +2040,6 @@
         <label class="pd-toggle pd-permanent-toggle" id="pd-permanent-wrap" style="display:none;">
           <input type="checkbox" id="pd-permanent"><span>Permanent (locked item — don't let this revert)</span>
         </label>
-        <div class="pd-lock-notice" id="pd-lock-notice" style="display:none;"></div>
       </div>
     </section>
 
@@ -2110,7 +2110,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v90</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v91</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3152,15 +3152,18 @@
     // the real selling price has to live as a "permanent" promo instead.
     _pdInitial.locked = (e.lk === 1);
     const permWrap = $('#pd-permanent-wrap'), lockNotice = $('#pd-lock-notice');
-    const FAR_FUTURE = '2099-12-31';
+    const farFutureDate = () => {
+      const d = new Date();
+      d.setFullYear(d.getFullYear() + 10);
+      return d.toISOString().slice(0, 10);       // today, 10 years out
+    };
+    const FAR_FUTURE = farFutureDate();
     if (e.lk === 1) {
       permWrap.style.display = 'flex';
       lockNotice.style.display = 'block';
-      const isPermanent = e.pe && e.pe >= '2090-01-01';
+      const tenYearsOut = new Date(); tenYearsOut.setFullYear(tenYearsOut.getFullYear() + 9);
+      const isPermanent = e.pe && e.pe >= tenYearsOut.toISOString().slice(0, 10);
       $('#pd-permanent').checked = !!isPermanent;
-      lockNotice.textContent = (e.pp != null && e.ap === 1)
-        ? `🔒 Metro-locked item. Selling $${(+e.pp).toFixed(2)} — locked regular is $${(+e.rp).toFixed(2)}.`
-        : `🔒 Metro-locked item — its regular price ($${e.rp != null ? (+e.rp).toFixed(2) : '?'}) is overwritten by Metro's feed. Use a permanent promo to set the real price.`;
     } else {
       permWrap.style.display = 'none';
       lockNotice.style.display = 'none';
@@ -3333,7 +3336,8 @@
     // the item revert and expose the locked/wrong regular price when it ends.
     if (_pdInitial.locked && ch.promo && !$('#pd-permanent').checked) {
       const end = ch.promo.end;
-      const soon = !end || end < '2090-01-01';
+      const nineYearsOut = new Date(); nineYearsOut.setFullYear(nineYearsOut.getFullYear() + 9);
+      const soon = !end || end < nineYearsOut.toISOString().slice(0, 10);
       if (soon) {
         const proceed = confirm(
           `This item's regular price is Metro-locked ($${_pdInitial.rp != null ? (+_pdInitial.rp).toFixed(2) : '?'}).\n\n` +
