@@ -47,6 +47,19 @@
    "code": "__vendor_1008",
    "queued_at": "2026-08-14T03:30:27.725Z",
    "id": "c1786678227725"
+  },
+  {
+   "code": "0005691086301",
+   "pos_title": "HIPL DE RIVIERE 473ML",
+   "size_num": 500,
+   "size_unit": "ML",
+   "multibuy": {
+    "qty": 2,
+    "price": 7.99
+   },
+   "deposit": 0.1,
+   "queued_at": "2026-08-17T20:28:59.875Z",
+   "id": "c1786998539875"
   }
  ]
 }
