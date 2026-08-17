@@ -2110,7 +2110,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v91</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v92</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3295,7 +3295,7 @@
     const qty = parseInt($('#pd-price-qty').value, 10) || 1;
     if (pr !== '') {
       if (qty > 1) ch.multibuy = { qty: qty, price: parseFloat(pr) };
-      else if (parseFloat(pr) !== e.rp && parseFloat(pr) !== p.price) ch.price = parseFloat(pr);
+      else if (parseFloat(pr) !== _pdInitial.rp) ch.price = parseFloat(pr);
     }
 
     // promo (Magas) with dates + optional qty — send if changed
