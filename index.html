@@ -2110,7 +2110,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v92</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v93</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3138,7 +3138,7 @@
     $('#pd-price-each').textContent = '';
 
     // PROMO (Magas) with dates + active indicator
-    $('#pd-promo-price').value = (e.pp != null && e.pp !== e.rp) ? e.pp : '';
+    $('#pd-promo-price').value = (e.ap === 1 && e.pp != null) ? e.pp : '';
     $('#pd-promo-qty').value = (e.pq && e.pq > 1) ? e.pq : 1;
     $('#pd-promo-each').textContent = '';
     $('#pd-promo-start').value = e.ps || '';
@@ -3237,7 +3237,7 @@
   function renderActivePrice(e) {
     const reg = $('#pd-reg-block'), promo = $('#pd-promo-block');
     if (!reg || !promo) return;
-    const promoActive = (e.ap === 1 && e.pp != null && e.pp !== e.rp);
+    const promoActive = (e.ap === 1 && e.pp != null);
     reg.classList.toggle('active', !promoActive);
     promo.classList.toggle('active', promoActive);
   }
@@ -3304,8 +3304,8 @@
     const pq = parseInt($('#pd-promo-qty').value, 10) || 1;
     if (pp !== '' && (parseFloat(pp) !== e.pp || pq > 1 || ps !== (e.ps || '') || pe !== (e.pe || ''))) {
       ch.promo = { price: parseFloat(pp), qty: pq, start: ps || null, end: pe || null };
-    } else if (pp === '' && e.pp != null && e.pp !== e.rp) {
-      ch.clear_promo = true;   // had a promo, now blank -> remove it
+    } else if (pp === '' && e.ap === 1) {
+      ch.clear_promo = true;   // had an active promo, now blank -> remove it
     }
 
     if ($('#pd-tax-fed').checked !== _pdInitial.tax_fed) ch.tax_fed = $('#pd-tax-fed').checked ? 1 : 0;
