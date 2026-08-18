@@ -1,3 +1,22 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0006563322757",
+   "size_num": 1,
+   "size_unit": "",
+   "multibuy": {
+    "qty": 5,
+    "price": 100
+   },
+   "promo": {
+    "price": 50,
+    "qty": 10,
+    "start": "2026-08-17",
+    "end": "2026-08-17"
+   },
+   "deposit": 0,
+   "queued_at": "2026-08-18T00:48:43.422Z",
+   "id": "c1787014123422"
+  }
+ ]
 }
