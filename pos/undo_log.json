@@ -939,6 +939,90 @@
      "F1011": "REG"
     }
    }
+  },
+  {
+   "undo_id": "d20260817202824128299",
+   "applied_at": "2026-08-17T20:28:24",
+   "change": {
+    "op": "supplier_create",
+    "vendor_id": "1003",
+    "name": "KNV",
+    "code": "__vendor_1003",
+    "queued_at": "2026-08-14T03:29:45.020Z",
+    "id": "c1786678185020"
+   },
+   "before": {},
+   "dropped_reason": "vendor id 1003 already exists"
+  },
+  {
+   "undo_id": "d20260817202824128299",
+   "applied_at": "2026-08-17T20:28:24",
+   "change": {
+    "op": "supplier_create",
+    "vendor_id": "1004",
+    "name": "WonderBerry",
+    "code": "__vendor_1004",
+    "queued_at": "2026-08-14T03:29:50.762Z",
+    "id": "c1786678190762"
+   },
+   "before": {},
+   "dropped_reason": "vendor id 1004 already exists"
+  },
+  {
+   "undo_id": "d20260817202824128299",
+   "applied_at": "2026-08-17T20:28:24",
+   "change": {
+    "op": "supplier_create",
+    "vendor_id": "1005",
+    "name": "Tonsell",
+    "code": "__vendor_1005",
+    "queued_at": "2026-08-14T03:29:57.106Z",
+    "id": "c1786678197106"
+   },
+   "before": {},
+   "dropped_reason": "vendor id 1005 already exists"
+  },
+  {
+   "undo_id": "d20260817202824128299",
+   "applied_at": "2026-08-17T20:28:24",
+   "change": {
+    "op": "supplier_create",
+    "vendor_id": "1006",
+    "name": "Sikorski",
+    "code": "__vendor_1006",
+    "queued_at": "2026-08-14T03:30:12.672Z",
+    "id": "c1786678212672"
+   },
+   "before": {},
+   "dropped_reason": "vendor id 1006 already exists"
+  },
+  {
+   "undo_id": "d20260817202824128299",
+   "applied_at": "2026-08-17T20:28:24",
+   "change": {
+    "op": "supplier_create",
+    "vendor_id": "1007",
+    "name": "Pelmen",
+    "code": "__vendor_1007",
+    "queued_at": "2026-08-14T03:30:17.381Z",
+    "id": "c1786678217381"
+   },
+   "before": {},
+   "dropped_reason": "vendor id 1007 already exists"
+  },
+  {
+   "undo_id": "d20260817202824128299",
+   "applied_at": "2026-08-17T20:28:24",
+   "change": {
+    "op": "supplier_create",
+    "vendor_id": "1008",
+    "name": "Coca-Cola",
+    "code": "__vendor_1008",
+    "queued_at": "2026-08-14T03:30:27.725Z",
+    "id": "c1786678227725"
+   },
+   "before": {},
+   "dropped_reason": "vendor id 1008 already exists"
   }
  ]
 }
