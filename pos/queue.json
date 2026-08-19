@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0005598910086",
+   "pos_title": "PERSO.ALC.FRICT.70% COMP.",
+   "size_num": 450,
+   "size_unit": "ML",
+   "promo": {
+    "price": 2.99,
+    "qty": 1,
+    "start": "2026-08-18",
+    "end": "2026-08-18"
+   },
+   "queued_at": "2026-08-19T02:50:05.536Z",
+   "id": "c1787107805536"
+  }
+ ]
 }
