@@ -1,18 +1,3 @@
 {
- "items": [
-  {
-   "code": "0482020587283",
-   "pos_title": "GATEAU KIYIV  450G",
-   "size_num": 450,
-   "size_unit": "UN",
-   "promo": {
-    "price": 19.99,
-    "qty": 1,
-    "start": "2026-08-20",
-    "end": "2026-08-26"
-   },
-   "queued_at": "2026-08-19T20:12:45.497Z",
-   "id": "c1787170365497"
-  }
- ]
+ "items": []
 }
