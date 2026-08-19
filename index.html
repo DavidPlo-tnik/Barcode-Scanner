@@ -2110,7 +2110,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v93</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v94</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2307,11 +2307,11 @@
         showToast('Refreshing from POS…');
         await new Promise(r => setTimeout(r, 6000));
       }
-      _editData = null;                // force edit.json reload too
+      _editData = null; _editDataAt = 0;   // force edit.json reload too
       const ok = await loadData();
       if (ok) {
         clearConfirmedPending();
-        await fetchEditData();
+        await fetchEditData(true);
         showToast('Updated ✓');
         // re-render whatever view is active
         const active = document.querySelector('.tab.active');
@@ -3083,12 +3083,20 @@
   // Lazy-load edit.json (true current POS state per item) only when the editor
   // is opened, so it doesn't weigh down normal app loads.
   let _editData = null;
-  async function fetchEditData() {
-    if (_editData) return _editData;
+  let _editDataAt = 0;
+  async function fetchEditData(force) {
+    // edit.json was previously cached in memory for the whole session with no
+    // invalidation, so a session that started before a pipeline run would show
+    // stale/missing fields (e.g. no Metro lock flag) until the app was killed.
+    // Re-fetch if older than 3 minutes, or on demand.
+    const TTL = 3 * 60 * 1000;
+    const fresh = _editDataAt && (Date.now() - _editDataAt) < TTL;
+    if (_editData && fresh && !force) return _editData;
     try {
       const r = await fetch(recipeRawUrl('edit.json'), { cache: 'no-store' });
-      _editData = r.ok ? await r.json() : { items: {} };
-    } catch { _editData = { items: {} }; }
+      if (r.ok) { _editData = await r.json(); _editDataAt = Date.now(); }
+      else if (!_editData) _editData = { items: {} };
+    } catch { if (!_editData) _editData = { items: {} }; }
     if (!_editData.items) _editData.items = {};
     return _editData;
   }
