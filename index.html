@@ -406,9 +406,24 @@
   .pd-margin.good { background: color-mix(in srgb, var(--good) 20%, transparent); color: var(--good); }
   .pd-margin.mid { background: color-mix(in srgb, var(--warn) 20%, transparent); color: var(--warn); }
   .pd-margin.low { background: color-mix(in srgb, var(--bad) 20%, transparent); color: var(--bad); }
-  .pd-price-block.active .pd-price-label::after {
+  /* Regular block keeps the simple ACTIVE pseudo-badge. The promo block uses a
+     real badge element instead, since it has three states (scheduled/active/
+     ended) and a scheduled promo must NOT look like it's ringing. */
+  #pd-reg-block.active .pd-price-label::after {
     content: 'ACTIVE'; font-size: 9px; background: var(--good); color: #000;
     padding: 2px 6px; border-radius: 4px; letter-spacing: 0.06em;
+  }
+  .pd-state-badge {
+    font-size: 9px; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.06em;
+    font-family: var(--font-display);
+  }
+  .pd-state-badge.active { background: var(--good); color: #000; }
+  .pd-state-badge.scheduled { background: color-mix(in srgb, var(--warn) 25%, transparent); color: var(--warn); border: 1px solid var(--warn); }
+  .pd-state-badge.expired { background: var(--surface-2); color: var(--text-faint); }
+  /* scheduled promo: outlined, not glowing -- it is not live yet */
+  .pd-price-block.scheduled {
+    border-color: var(--warn);
+    box-shadow: none;
   }
   .pd-price-inputs { display: flex; gap: 10px; align-items: center; }
   .pd-money { flex: 2; display: flex; align-items: center; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding-left: 12px; }
@@ -2026,7 +2041,7 @@
         <div class="pd-lock-notice" id="pd-lock-notice" style="display:none;">🔒 Metro locked item</div>
       </div>
       <div class="pd-price-block" id="pd-promo-block">
-        <div class="pd-price-label">Promo<span class="pd-margin" id="pd-promo-margin"></span></div>
+        <div class="pd-price-label">Promo<span class="pd-margin" id="pd-promo-margin"></span><span class="pd-state-badge" id="pd-promo-badge" style="display:none;"></span></div>
         <div class="pd-price-inputs">
           <div class="pd-money"><span>$</span><input id="pd-promo-price" type="number" inputmode="decimal" step="0.01" class="pd-input" placeholder="none" /></div>
           <div class="pd-qty"><input id="pd-promo-qty" type="number" inputmode="numeric" class="pd-input" value="1" min="1" /><span>for</span></div>
@@ -2110,7 +2125,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v94</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v95</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3146,7 +3161,8 @@
     $('#pd-price-each').textContent = '';
 
     // PROMO (Magas) with dates + active indicator
-    $('#pd-promo-price').value = (e.ap === 1 && e.pp != null) ? e.pp : '';
+    // show the promo price for scheduled promos too, not just currently-live ones
+    $('#pd-promo-price').value = (e.pp != null && promoState(e) !== 'none') ? e.pp : '';
     $('#pd-promo-qty').value = (e.pq && e.pq > 1) ? e.pq : 1;
     $('#pd-promo-each').textContent = '';
     $('#pd-promo-start').value = e.ps || '';
@@ -3242,12 +3258,45 @@
     badge($('#pd-promo-margin'), parseFloat($('#pd-promo-price').value), parseInt($('#pd-promo-qty').value, 10) || 1);
   }
 
+  // A promo's real state is a DATE-WINDOW question, not a flag. F113 (and the
+  // 'ap' flag derived from it) only says "Magas data exists" -- Storeman keeps
+  // it set for scheduled promos too, so relying on it alone lights a future
+  // promo up as if it were already ringing.
+  function promoState(e) {
+    if (!e || e.pp == null) return 'none';
+    const today = new Date().toISOString().slice(0, 10);
+    if (e.ps && e.ps > today) return 'scheduled';   // starts later
+    if (e.pe && e.pe < today) return 'expired';     // window has passed
+    if (e.ap !== 1 && !e.ps) return 'none';
+    return 'active';
+  }
+
   function renderActivePrice(e) {
     const reg = $('#pd-reg-block'), promo = $('#pd-promo-block');
     if (!reg || !promo) return;
-    const promoActive = (e.ap === 1 && e.pp != null);
-    reg.classList.toggle('active', !promoActive);
-    promo.classList.toggle('active', promoActive);
+    const st = promoState(e);
+    const isActive = (st === 'active');
+    reg.classList.toggle('active', !isActive);
+    promo.classList.toggle('active', isActive);
+    promo.classList.toggle('scheduled', st === 'scheduled');
+    const badge = $('#pd-promo-badge');
+    if (badge) {
+      if (st === 'scheduled') {
+        badge.textContent = e.ps ? `STARTS ${e.ps}` : 'SCHEDULED';
+        badge.style.display = '';
+        badge.className = 'pd-state-badge scheduled';
+      } else if (st === 'active') {
+        badge.textContent = 'ACTIVE';
+        badge.style.display = '';
+        badge.className = 'pd-state-badge active';
+      } else if (st === 'expired') {
+        badge.textContent = 'ENDED';
+        badge.style.display = '';
+        badge.className = 'pd-state-badge expired';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
   }
 
   async function renderQueuedForItem(code) {
@@ -3312,7 +3361,7 @@
     const pq = parseInt($('#pd-promo-qty').value, 10) || 1;
     if (pp !== '' && (parseFloat(pp) !== e.pp || pq > 1 || ps !== (e.ps || '') || pe !== (e.pe || ''))) {
       ch.promo = { price: parseFloat(pp), qty: pq, start: ps || null, end: pe || null };
-    } else if (pp === '' && e.ap === 1) {
+    } else if (pp === '' && promoState(e) !== 'none') {
       ch.clear_promo = true;   // had an active promo, now blank -> remove it
     }
 
