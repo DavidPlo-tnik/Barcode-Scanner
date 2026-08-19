@@ -1,19 +1,3 @@
 {
- "items": [
-  {
-   "code": "0482020587283",
-   "title": "GATEAU KIYIVSKYI DARUNOK BKK",
-   "pos_title": "GATEAU KIYIVSKYI DARUNOK BKK",
-   "size_num": 450,
-   "size_unit": "UN",
-   "promo": {
-    "price": 19.99,
-    "qty": 1,
-    "start": "2026-08-20",
-    "end": "2026-08-26"
-   },
-   "queued_at": "2026-08-19T20:22:20.944Z",
-   "id": "c1787170940945"
-  }
- ]
+ "items": []
 }
