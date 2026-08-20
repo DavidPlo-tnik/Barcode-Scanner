@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0005974993310",
+   "pos_title": "SEL.BICARB.SOUDE",
+   "size_num": 500,
+   "size_unit": "",
+   "promo": {
+    "price": 2.99,
+    "qty": 1,
+    "start": "2025-06-20",
+    "end": "2036-06-20"
+   },
+   "queued_at": "2026-08-20T16:03:59.983Z",
+   "id": "c1787241839984"
+  }
+ ]
 }
