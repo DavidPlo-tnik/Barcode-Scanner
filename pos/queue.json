@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0020106600000",
+   "pos_title": "METS CUISINES 1000G",
+   "size_num": 1000,
+   "size_unit": "",
+   "promo": {
+    "price": 1.49,
+    "qty": 1,
+    "start": "2026-08-20",
+    "end": "2036-08-20"
+   },
+   "queued_at": "2026-08-20T18:25:57.928Z",
+   "id": "c1787250357928"
+  }
+ ]
 }
