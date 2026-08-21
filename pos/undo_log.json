@@ -3909,6 +3909,153 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260821110216029447",
+   "applied_at": "2026-08-21T11:02:16",
+   "change": {
+    "code": "0482000423855",
+    "title": "VOL. POLE MINI GATEAU AU FROMAGE 36G COCO",
+    "pos_title": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE 3",
+    "size_num": 36,
+    "size_unit": "",
+    "queued_at": "2026-08-21T15:01:19.557Z",
+    "id": "c1787324479557"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VOL. POLE MINI GATEAU AU FROMAGE COCO 36G",
+     "F1744": "36.0",
+     "F22": "36 "
+    },
+    "POS_TAB": {
+     "F02": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE 3",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "17.7000",
+     "F196": "17.7000",
+     "F1140": "0.5900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "0.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "0.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260821110216084447",
+   "applied_at": "2026-08-21T11:02:16",
+   "change": {
+    "code": "0482000423746",
+    "title": "VOL. POLE MINI GATEAU AU FROMAGE 36G BLEUET",
+    "pos_title": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE 3",
+    "size_num": 36,
+    "size_unit": "",
+    "queued_at": "2026-08-21T15:01:53.625Z",
+    "id": "c1787324513625"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE",
+     "F1744": "36.0",
+     "F22": "36G"
+    },
+    "POS_TAB": {
+     "F02": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE 3",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "17.7000",
+     "F196": "17.7000",
+     "F1140": "0.5900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "0.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "0.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260821110216139447",
+   "applied_at": "2026-08-21T11:02:16",
+   "change": {
+    "code": "0482000423356",
+    "title": "VOL. POLE MINI GATEAU AU FROMAGE 36G CARAMEL",
+    "pos_title": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE 3",
+    "size_num": 36,
+    "size_unit": "",
+    "queued_at": "2026-08-21T15:02:14.424Z",
+    "id": "c1787324534424"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE",
+     "F1744": "36.0",
+     "F22": "36G"
+    },
+    "POS_TAB": {
+     "F02": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE 3",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "17.7000",
+     "F196": "17.7000",
+     "F1140": "0.5900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "0.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "0.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
