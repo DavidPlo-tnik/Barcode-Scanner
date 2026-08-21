@@ -1620,10 +1620,23 @@
     letter-spacing: 0;
   }
   .labels-sheet.promo .label .lbl-unit, #print-container.promo .label .lbl-unit {
-    font-size: 11pt;
+    font-size: 9pt;
     font-style: italic;
     font-weight: 700;
     text-align: center;
+    /* The barcode below is pinned with margin-top:auto. Without reserved space
+       and no-shrink, an overflowing label let this text render on top of the
+       barcode (garbled printouts). */
+    margin-bottom: 1mm;
+    flex-shrink: 0;
+  }
+  .labels-sheet .label .lbl-unit, #print-container .label .lbl-unit {
+    margin-bottom: 0.8mm;
+    flex-shrink: 0;
+  }
+  .labels-sheet .label .lbl-barcode, #print-container .label .lbl-barcode,
+  .labels-sheet.promo .label .lbl-barcode, #print-container.promo .label .lbl-barcode {
+    flex-shrink: 0;
   }
   .labels-sheet.promo .label .lbl-barcode, #print-container.promo .label .lbl-barcode {
     text-align: center;
@@ -2125,7 +2138,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v95</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v96</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -6412,15 +6425,19 @@
     else if (unit === 'cl') ml = value * 10;
     else if (unit === 'ml') ml = value;
 
+    // Sanity is about whether the SIZE parsed sensibly, not how the per-unit
+    // price compares to the price. The old check (per100 > price * 2) silently
+    // suppressed the unit price on every item under ~200g -- a 36g item at
+    // $0.99 is legitimately $2.75/100g -- and floating point tipped 50g items
+    // over the line too. Instead, reject only implausible parsed weights.
     if (grams && grams > 0) {
+      if (grams < 1 || grams > 50000) return '';   // implausible parse
       const per100 = price / grams * 100;
-      // Sanity: per-100g shouldn't exceed the product price itself for any normal product
-      if (per100 > price * 2) return '';
       return `${fmtUnit(per100)}/100g`;
     }
     if (ml && ml > 0) {
+      if (ml < 1 || ml > 50000) return '';
       const per100 = price / ml * 100;
-      if (per100 > price * 2) return '';
       return `${fmtUnit(per100)}/100ml`;
     }
     return '';
