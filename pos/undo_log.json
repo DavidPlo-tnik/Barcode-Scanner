@@ -3566,6 +3566,153 @@
      "F1011": "REG"
     }
    }
+  },
+  {
+   "undo_id": "u20260821103444025131",
+   "applied_at": "2026-08-21T10:34:44",
+   "change": {
+    "code": "0482000423799",
+    "title": "VOL. POLE MINI GATEAU AU FROMAGE LAIT CONDENSÉ",
+    "pos_title": "MINI GATEAU AU FROMAGE 50G",
+    "size_num": 750,
+    "size_unit": "ML",
+    "queued_at": "2026-08-21T14:33:56.612Z",
+    "id": "c1787322836612"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "  MINI GATEAU AU FROMAGE",
+     "F1744": "750.0",
+     "F22": "50G"
+    },
+    "POS_TAB": {
+     "F02": "  MINI GATEAU AU FROMAGE 50G",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.9900",
+     "F196": "0.9900",
+     "F1140": "0.9900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260821103444080131",
+   "applied_at": "2026-08-21T10:34:44",
+   "change": {
+    "code": "0482000423797",
+    "title": "VOL. POLE MINI GATEAU AU FROMAGE FRAISE",
+    "pos_title": "MINI GATEAU AU FROMAGE 50G",
+    "size_num": 750,
+    "size_unit": "ML",
+    "queued_at": "2026-08-21T14:34:18.398Z",
+    "id": "c1787322858398"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "  MINI GATEAU AU FROMAGE",
+     "F1744": "750.0",
+     "F22": "50G"
+    },
+    "POS_TAB": {
+     "F02": "  MINI GATEAU AU FROMAGE 50G",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.9900",
+     "F196": "0.9900",
+     "F1140": "0.9900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260821103444130131",
+   "applied_at": "2026-08-21T10:34:44",
+   "change": {
+    "code": "0482000423800",
+    "title": "VOL. POLE MINI GATEAU AU FROMAGE BLEUET",
+    "pos_title": "MINI GATEAU AU FROMAGE 50G",
+    "size_num": 750,
+    "size_unit": "ML",
+    "queued_at": "2026-08-21T14:34:39.622Z",
+    "id": "c1787322879622"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "  MINI GATEAU AU FROMAGE",
+     "F1744": "750.0",
+     "F22": "50G"
+    },
+    "POS_TAB": {
+     "F02": "  MINI GATEAU AU FROMAGE 50G",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.9900",
+     "F196": "0.9900",
+     "F1140": "0.9900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
