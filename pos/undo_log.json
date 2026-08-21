@@ -3762,6 +3762,104 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260821103649000306",
+   "applied_at": "2026-08-21T10:36:49",
+   "change": {
+    "code": "0482000423795",
+    "title": "VOL. POLE MINI GATEAU AU FROMAGE CHOCOLAT",
+    "pos_title": "MINI GATEAU AU FROMAGE 50G",
+    "size_num": 750,
+    "size_unit": "ML",
+    "queued_at": "2026-08-21T14:35:52.508Z",
+    "id": "c1787322952508"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "  MINI GATEAU AU FROMAGE",
+     "F1744": "750.0",
+     "F22": "50G"
+    },
+    "POS_TAB": {
+     "F02": "  MINI GATEAU AU FROMAGE 50G",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.9900",
+     "F196": "0.9900",
+     "F1140": "0.9900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260821103649050306",
+   "applied_at": "2026-08-21T10:36:49",
+   "change": {
+    "code": "0482000423796",
+    "title": "VOL. POLE MINI GATEAU AU FROMAGE CERISE",
+    "pos_title": "MINI GATEAU AU FROMAGE 50G",
+    "size_num": 750,
+    "size_unit": "ML",
+    "queued_at": "2026-08-21T14:36:08.584Z",
+    "id": "c1787322968585"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "  MINI GATEAU AU FROMAGE",
+     "F1744": "750.0",
+     "F22": "50G"
+    },
+    "POS_TAB": {
+     "F02": "  MINI GATEAU AU FROMAGE 50G",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.9900",
+     "F196": "0.9900",
+     "F1140": "0.9900",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
