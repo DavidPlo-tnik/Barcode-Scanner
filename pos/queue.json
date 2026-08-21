@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0068925900059",
+   "pos_title": "MINI CONCOMBRES",
+   "size_num": 397,
+   "size_unit": "",
+   "promo": {
+    "price": 5,
+    "qty": 3,
+    "start": "2026-08-06",
+    "end": "2036-08-21"
+   },
+   "queued_at": "2026-08-21T16:20:43.870Z",
+   "id": "c1787329243870"
+  }
+ ]
 }
