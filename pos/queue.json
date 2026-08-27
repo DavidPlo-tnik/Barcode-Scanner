@@ -8,6 +8,21 @@
    "size_unit": "",
    "queued_at": "2026-08-27T20:51:22.079Z",
    "id": "c1787863882080"
+  },
+  {
+   "code": "0022701400000",
+   "title": "STRUDEL GRAINES DE PAVOT",
+   "pos_title": "STRUDEL GRAINES DE PAVOT",
+   "size_num": 106,
+   "size_unit": "",
+   "promo": {
+    "price": 11.99,
+    "qty": 1,
+    "start": "2026-08-27",
+    "end": "2036-08-27"
+   },
+   "queued_at": "2026-08-27T20:51:32.058Z",
+   "id": "c1787863892058"
   }
  ]
 }
