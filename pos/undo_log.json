@@ -4475,6 +4475,66 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260828110014022465",
+   "applied_at": "2026-08-28T11:00:14",
+   "change": {
+    "code": "0482000019548",
+    "title": "ZHIVCHIK AVEC POMME",
+    "pos_title": "ZHIVCHIK AVEC POMME 500ML",
+    "size_num": 500,
+    "size_unit": "ML",
+    "multibuy": {
+     "qty": 2,
+     "price": 5
+    },
+    "promo": {
+     "price": 5,
+     "qty": 2,
+     "start": null,
+     "end": null
+    },
+    "queued_at": "2026-08-28T15:00:14.329Z",
+    "id": "c1787929214329"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZGHIVCHIK AVEC POMME",
+     "F1744": "500.0",
+     "F22": "500ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZGHIVCHIK AVEC POMME 500ML",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "1.4000",
+     "F196": "1.4000",
+     "F1140": "1.4000",
+     "F27": "0000202257"
+    },
+    "PRICE_TAB": {
+     "F30": "5.0000",
+     "F31": "2.0",
+     "F1006": "2.0",
+     "F1007": "5.0000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
