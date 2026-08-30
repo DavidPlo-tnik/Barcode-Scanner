@@ -1,3 +1,17 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0020185500000",
+   "title": "Salami de Gênes Genoa Salami",
+   "pos_title": "Salami de Gênes Genoa Salami",
+   "promo": {
+    "price": 39.99,
+    "qty": 1,
+    "start": "2022-01-14",
+    "end": "2036-08-30"
+   },
+   "queued_at": "2026-08-30T18:14:06.373Z",
+   "id": "c1788113646373"
+  }
+ ]
 }
