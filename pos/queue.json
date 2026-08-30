@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0082889914542",
+   "pos_title": "CAROTTES NANTAISES DOUCES",
+   "size_num": 454,
+   "size_unit": "",
+   "promo": {
+    "price": 2.99,
+    "qty": 1,
+    "start": "2025-07-10",
+    "end": "2036-08-30"
+   },
+   "queued_at": "2026-08-30T14:41:24.638Z",
+   "id": "c1788100884638"
+  }
+ ]
 }
