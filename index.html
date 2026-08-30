@@ -2138,7 +2138,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v96</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v97</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3980,6 +3980,53 @@
   }
 
   // Resize + compress an image file to <~150KB. Returns {dataUrl, blob}.
+  // Store-photo processing. Unlike compressImage() (which force-encodes JPEG
+  // and therefore FLATTENS transparency), this preserves the alpha channel and
+  // keeps much more resolution, so product cut-outs stay transparent.
+  //   - encodes WebP when supported (alpha + far smaller than PNG), else PNG
+  //   - optional square padding so every tile in the store grid is uniform
+  function processStoreImage(file, opts) {
+    const o = Object.assign({ maxDim: 1600, square: true, quality: 0.92 }, opts || {});
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        let { width, height } = img;
+        const scale = Math.min(1, o.maxDim / Math.max(width, height));
+        const w = Math.round(width * scale), h = Math.round(height * scale);
+
+        const canvas = document.createElement('canvas');
+        if (o.square) { canvas.width = o.maxDim; canvas.height = o.maxDim; }
+        else { canvas.width = w; canvas.height = h; }
+
+        const ctx = canvas.getContext('2d');
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        // NOTE: no fillRect -- leaving the canvas untouched keeps it fully
+        // transparent, which is the whole point.
+        const dx = o.square ? Math.round((o.maxDim - w) / 2) : 0;
+        const dy = o.square ? Math.round((o.maxDim - h) / 2) : 0;
+        ctx.drawImage(img, dx, dy, w, h);
+
+        // Prefer WebP (keeps alpha, ~1/3 the size of PNG). Fall back to PNG.
+        const webpOk = canvas.toDataURL('image/webp').startsWith('data:image/webp');
+        const type = webpOk ? 'image/webp' : 'image/png';
+        const ext = webpOk ? 'webp' : 'png';
+        canvas.toBlob(blob => {
+          if (!blob) return reject(new Error('encode failed'));
+          const fr = new FileReader();
+          fr.onload = () => resolve({ dataUrl: fr.result, blob, ext, width: canvas.width, height: canvas.height });
+          fr.onerror = () => reject(new Error('read failed'));
+          fr.readAsDataURL(blob);
+        }, type, o.quality);
+      };
+      img.onerror = () => reject(new Error('not an image'));
+      const fr = new FileReader();
+      fr.onload = () => { img.src = fr.result; };
+      fr.onerror = () => reject(new Error('read failed'));
+      fr.readAsDataURL(file);
+    });
+  }
+
   function compressImage(file, maxDim, quality) {
     return new Promise((resolve, reject) => {
       const img = new Image();
@@ -5811,11 +5858,13 @@
     if (fileInp) fileInp.addEventListener('change', async (e) => {
       const file = e.target.files[0]; if (!file) return;
       const st = document.getElementById('ecom-photo-status');
-      st.textContent = 'Compressing…';
+      st.textContent = 'Processing…';
       try {
-        const { dataUrl, blob } = await compressImage(file, 1200, 0.8);
-        const fn = `${code}_${Date.now()}.jpg`;
-        st.textContent = `Uploading (${Math.round(blob.size/1024)} KB)…`;
+        // 1600px square, alpha preserved (WebP/PNG) -- was 1200px forced JPEG,
+        // which shrank photos and destroyed transparent backgrounds.
+        const { dataUrl, blob, ext, width } = await processStoreImage(file, { maxDim: 1600, square: true });
+        const fn = `${code}_${Date.now()}.${ext}`;
+        st.textContent = `Uploading ${width}px (${Math.round(blob.size/1024)} KB)…`;
         await ghPutFile(`images/ecom/${fn}`, dataUrl.split(',')[1], `ecom photo ${fn}`);
         await mutateEcomCatalog(cat => {
           if (!cat.items[code]) cat.items[code] = { added: new Date().toISOString().slice(0,10), photos: [] };
