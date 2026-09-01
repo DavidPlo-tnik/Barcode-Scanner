@@ -1940,7 +1940,6 @@
       <button class="btn small" id="add-to-list-btn">+ LIST</button>
     </div>
     <div class="par-row">
-      <button class="btn small" id="ecom-toggle-btn">+ ECOM</button>
       <button class="btn small" id="open-pos-direct-btn">⚡ POS EDITOR</button>
     </div>
   </div>
@@ -2096,6 +2095,12 @@
     </section>
 
     <section class="pd-group">
+      <div class="pd-group-title">Website store</div>
+      <label class="pd-toggle"><input type="checkbox" id="pd-ecom"><span>List this product on the website</span></label>
+      <div class="pd-note" id="pd-ecom-note"></div>
+    </section>
+
+    <section class="pd-group">
       <div class="pd-group-title">Options</div>
       <label class="pd-toggle"><input type="checkbox" id="pd-balance"><span>Weigh at cash (Balance)</span></label>
       <label class="pd-toggle"><input type="checkbox" id="pd-qte"><span>Prompt for quantity</span></label>
@@ -2138,7 +2143,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v97</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v98</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3094,6 +3099,11 @@
       if (hash === GH.POS_EDIT_PIN_HASH) {
         _posUnlocked = true;
         $('#pos-pin-modal').classList.remove('open');
+        // photo add/delete is PIN-gated, so refresh an open product panel now
+        // that we're unlocked
+        if (_pdCtx && _pdCtx.code && document.getElementById('ecom-panel')) {
+          renderEcomPanel(_pdCtx.code);
+        }
         if (_edUnlockMode) {
           _edUnlockMode = false;
           openEditorView();
@@ -3252,6 +3262,24 @@
     });
     _pdInitial.subdept = curSd;
 
+    // Website store listing (moved here from the product view so it is behind
+    // the PIN). 'listed' distinguishes a published product from a photo-only
+    // entry, which exists so photos can be attached to any item.
+    try {
+      const cat = await fetchEcomCatalog();
+      const ent = cat.items[code];
+      const listed = !!(ent && ent.listed !== false);
+      $('#pd-ecom').checked = listed;
+      _pdInitial.ecom = listed;
+      const nph = ent && ent.photos ? ent.photos.length : 0;
+      $('#pd-ecom-note').textContent = nph
+        ? `${nph} photo${nph > 1 ? 's' : ''} on file`
+        : 'No photos yet — add them from the product view.';
+    } catch (e) {
+      $('#pd-ecom').checked = false; _pdInitial.ecom = false;
+      $('#pd-ecom-note').textContent = '';
+    }
+
     renderQueuedForItem(code);
   }
 
@@ -3401,6 +3429,27 @@
 
   async function pdSave() {
     const ch = pdComputeChanges();
+
+    // Website listing is stored in the ecom catalog, not the POS queue, so it
+    // is applied here directly rather than going through apply_queue.
+    try {
+      const want = $('#pd-ecom').checked;
+      if (want !== _pdInitial.ecom) {
+        const code = _pdCtx.code;
+        await mutateEcomCatalog(cat => {
+          if (want) {
+            if (!cat.items[code]) cat.items[code] = { added: new Date().toISOString().slice(0,10), photos: [] };
+            cat.items[code].listed = true;
+          } else if (cat.items[code]) {
+            // keep any photos; just unpublish
+            if ((cat.items[code].photos || []).length) cat.items[code].listed = false;
+            else delete cat.items[code];
+          }
+        });
+        _pdInitial.ecom = want;
+        showToast(want ? 'LISTED ON WEBSITE' : 'REMOVED FROM WEBSITE');
+      }
+    } catch (e) { showToast('Website update failed: ' + e.message, true); }
 
     // Guard: a short-dated (or no) promo end on a Metro-locked item will let
     // the item revert and expose the locked/wrong regular price when it ends.
@@ -3738,6 +3787,9 @@
       ${isScale ? '<div class="scale-metric-note">Quantities for scale items are kg (sold by weight). Revenue ($) is the reliable measure — the scale price above may not match the POS.</div>' : ''}
 
       ${renderCostBlock(p)}
+
+      <!-- Product photos: high up, right after price/cost data -->
+      <div id="ecom-panel" class="recipe-panel"></div>
     `;
 
     if (sales) {
@@ -3817,9 +3869,6 @@
     } else {
       html += `<div class="empty-state">NO SALES HISTORY FOR THIS PRODUCT</div>`;
     }
-
-    // Website catalog photos panel (renders only if the product is in the catalog)
-    html += `<div id="ecom-panel" class="recipe-panel"></div>`;
 
     c.innerHTML = html;
 
@@ -5838,18 +5887,25 @@
     const panel = document.getElementById('ecom-panel');
     if (!panel) return;
     const cat = await fetchEcomCatalog();
-    const entry = cat.items[code];
-    if (!entry) { panel.innerHTML = ''; return; }
+    // Photos are kept for ANY product, not just ones already in the website
+    // catalog -- this doubles as the photo database for the store build.
+    const entry = cat.items[code] || { photos: [] };
     const photos = entry.photos || [];
+    const inCatalog = !!cat.items[code];
+    // Editing (upload/delete) is PIN-gated; the regular product view is read-only.
+    const canEdit = GH_HAS_TOKEN && _posUnlocked;
+
+    if (!photos.length && !canEdit) { panel.innerHTML = ''; return; }
+
     panel.innerHTML = `
-      <div class="section-title"><span>WEBSITE PHOTOS</span>
-        ${GH_HAS_TOKEN ? '<button type="button" class="recipe-add-photo" id="ecom-file-btn">+ PHOTO</button><input type="file" accept="image/*" id="ecom-file" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">' : ''}
+      <div class="section-title"><span>PHOTOS${inCatalog ? '' : ' <span style="color:var(--text-faint);font-weight:400;">(not in website catalog)</span>'}</span>
+        ${canEdit ? '<button type="button" class="recipe-add-photo" id="ecom-file-btn">+ PHOTO</button><input type="file" accept="image/*" id="ecom-file" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">' : ''}
       </div>
       ${photos.length
         ? `<div class="recipe-photos">${photos.map((fn,i) =>
             `<div class="recipe-photo"><img src="https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/${GH.GH_BRANCH}/images/ecom/${fn}" loading="lazy" alt="">
-             ${GH_HAS_TOKEN ? `<button class="recipe-photo-del" data-i="${i}">✕</button>` : ''}</div>`).join('')}</div>`
-        : '<div class="recipe-empty">No photos yet — the website needs at least one per product.</div>'}
+             ${canEdit ? `<button class="recipe-photo-del" data-i="${i}">✕</button>` : ''}</div>`).join('')}</div>`
+        : '<div class="recipe-empty">No photos yet.</div>'}
       <div class="recipe-status" id="ecom-photo-status"></div>`;
 
     const fileBtn = document.getElementById('ecom-file-btn');
@@ -5860,14 +5916,19 @@
       const st = document.getElementById('ecom-photo-status');
       st.textContent = 'Processing…';
       try {
-        // 1600px square, alpha preserved (WebP/PNG) -- was 1200px forced JPEG,
-        // which shrank photos and destroyed transparent backgrounds.
-        const { dataUrl, blob, ext, width } = await processStoreImage(file, { maxDim: 1600, square: true });
+        // 2048px master: this doubles as the photo database for the website,
+        // so keep real resolution. (~450 KB each in WebP; ~440 MB for 1000
+        // photos, which fits GitHub's 1 GB guidance. Full phone originals
+        // would be ~3.7 GB and are not viable here.) Alpha preserved.
+        const { dataUrl, blob, ext, width } = await processStoreImage(file, { maxDim: 2048, square: true });
         const fn = `${code}_${Date.now()}.${ext}`;
         st.textContent = `Uploading ${width}px (${Math.round(blob.size/1024)} KB)…`;
         await ghPutFile(`images/ecom/${fn}`, dataUrl.split(',')[1], `ecom photo ${fn}`);
         await mutateEcomCatalog(cat => {
-          if (!cat.items[code]) cat.items[code] = { added: new Date().toISOString().slice(0,10), photos: [] };
+          if (!cat.items[code]) {
+            // photo-only entry: holds images without being published to the site
+            cat.items[code] = { added: new Date().toISOString().slice(0,10), photos: [], listed: false };
+          }
           cat.items[code].photos = cat.items[code].photos || [];
           cat.items[code].photos.push(fn);
         });
@@ -7236,7 +7297,6 @@
       if (e.target === e.currentTarget) $('#merge-picker-modal').classList.remove('open');
     });
     $('#add-to-list-btn').addEventListener('click', openAddToList);
-    $('#ecom-toggle-btn').addEventListener('click', toggleEcomForCurrent);
     // Direct POS editor
     $('#open-pos-direct-btn').addEventListener('click', () => openPosDirect(currentProductCode));
     $('#close-pos-pin').addEventListener('click', () => $('#pos-pin-modal').classList.remove('open'));
