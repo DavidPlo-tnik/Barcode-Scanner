@@ -1,4 +1,4 @@
-const CACHE = 'decarie-v98';
+const CACHE = 'decarie-v99';
 const ASSETS = [
   './manifest.webmanifest',
   './icon-192.png',
@@ -46,8 +46,8 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // data.json: network-first, cache as fallback for offline.
-  if (url.pathname.endsWith('data.json')) {
+  // data.json / live.json: network-first, cache as fallback for offline.
+  if (url.pathname.endsWith('data.json') || url.pathname.endsWith('live.json')) {
     e.respondWith(
       fetch(e.request).then((res) => {
         if (res && res.status === 200) {
