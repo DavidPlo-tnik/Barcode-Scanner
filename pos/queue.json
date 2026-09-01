@@ -1,3 +1,14 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0006563322757",
+   "size_num": 1000,
+   "size_unit": "ML",
+   "price": 100,
+   "clear_promo": true,
+   "deposit": 0,
+   "queued_at": "2026-09-01T23:17:51.470Z",
+   "id": "c1788304671470"
+  }
+ ]
 }
