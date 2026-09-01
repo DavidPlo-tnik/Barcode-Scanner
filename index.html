@@ -2159,7 +2159,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v101</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v102</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2362,8 +2362,20 @@
   function overrideFor(code) {
     const o = _overrides[code];
     if (!o || !DATA) return null;
-    // once the full rebuild has caught up, the override is redundant
-    if (DATA.updated_at && o.at && o.at.slice(0, 16) <= DATA.updated_at.slice(0, 16)) return null;
+    // Drop the override once the full rebuild has clearly caught up. Use a
+    // grace margin rather than an exact comparison: the hourly run stamps
+    // data.json with its START time but takes minutes to finish, so an edit
+    // made during the run is newer than the data yet carries an earlier
+    // timestamp. Without the margin that edit would be discarded and appear to
+    // revert until the next rebuild.
+    const GRACE_MIN = 20;
+    if (DATA.updated_at && o.at) {
+      try {
+        const dataT = new Date(DATA.updated_at.replace(' ', 'T')).getTime();
+        const ovT = new Date(o.at.replace(' ', 'T')).getTime();
+        if (!isNaN(dataT) && !isNaN(ovT) && ovT < dataT - GRACE_MIN * 60000) return null;
+      } catch { /* keep the override if timestamps are unparseable */ }
+    }
     return o;
   }
   // Apply overrides onto the in-memory product table so every view (cards,
@@ -3287,9 +3299,25 @@
     $('#pd-size-unit').value = (e.un || '').toUpperCase();
 
     // REGULAR price (Détail) + qty
-    $('#pd-price').value = (e.rp != null) ? e.rp : (p.price != null ? p.price : '');
+    // NOTE: p.price is the per-UNIT price (a 3-for-$10 item is 3.33), so it is
+    // only a last-resort fallback. If edit.json has not loaded (slow/failed
+    // fetch) we would otherwise show 3.33 for 1 and silently overwrite a
+    // multibuy on save. Prefer real POS state; warn if we have neither.
+    if (e.rp != null) {
+      $('#pd-price').value = e.rp;
+    } else {
+      $('#pd-price').value = (p.price != null ? p.price : '');
+      if (p.price != null) {
+        const st = $('#pd-price-each');
+        if (st) {
+          st.textContent = '⚠ POS data not loaded — this may be the per-unit price. Refresh before saving.';
+          st.style.color = 'var(--warn)';
+        }
+      }
+    }
     $('#pd-price-qty').value = (e.rq && e.rq > 1) ? e.rq : 1;
     $('#pd-price-each').textContent = '';
+    $('#pd-price-each').style.color = '';
 
     // PROMO (Magas) with dates + active indicator
     // show the promo price for scheduled promos too, not just currently-live ones
