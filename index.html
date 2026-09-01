@@ -1265,11 +1265,27 @@
     display: flex; flex-direction: column; gap: 10px;
   }
   .reports-bar-row1 {
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: center; gap: 8px;
   }
   #reports-title {
     font-family: var(--font-display); font-size: 13px;
     color: var(--accent); letter-spacing: 0.12em; font-weight: 700;
+    flex: 0 0 auto;
+  }
+  /* Last data refresh, centred between the title and the close button. */
+  #reports-updated {
+    flex: 1 1 auto; text-align: center; min-width: 0;
+    font-family: var(--font-display); font-size: 10px;
+    color: var(--text-faint); letter-spacing: 0.06em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  #reports-updated .ru-time { color: var(--text-dim); font-weight: 700; }
+  #reports-updated.fresh .ru-time { color: var(--good); }
+  .reports-close-x {
+    flex: 0 0 auto;
+    width: 30px; height: 30px; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; line-height: 1;
   }
   .reports-tabs { display: flex; gap: 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
   .reports-tabs .rtab {
@@ -2143,7 +2159,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v99</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v100</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2161,7 +2177,8 @@
   <div class="reports-bar">
     <div class="reports-bar-row1">
       <span id="reports-title">REPORTS</span>
-      <button class="btn" id="reports-close-btn">CLOSE</button>
+      <span id="reports-updated"></span>
+      <button class="btn reports-close-x" id="reports-close-btn" aria-label="Close">✕</button>
     </div>
     <div class="reports-tabs" id="reports-tabs">
       <button class="rtab active" data-report="dept">DÉPT</button>
@@ -7448,7 +7465,12 @@
         // re-render whichever view is showing so the new numbers appear
         const active = document.querySelector('.tab.active');
         if (active) switchTab(active.dataset.tab);
+        // reports overlay has its own header stamp + tables
+        if (document.getElementById('reports-overlay').classList.contains('open')) {
+          renderReport();
+        }
       }
+      paintReportsUpdated();
     }, 180000);
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) applyLiveSlice();
@@ -7588,7 +7610,32 @@
       : 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover');
   }
 
+  // Show when the sales data was last refreshed. Uses live.json's timestamp
+  // when the live slice is in play, otherwise data.json's.
+  function paintReportsUpdated() {
+    const el = document.getElementById('reports-updated');
+    if (!el || !DATA) return;
+    const stamp = _liveAt || DATA.updated_at || DATA.updated || '';
+    if (!stamp) { el.textContent = ''; return; }
+    let mins = null;
+    try {
+      const t = new Date(stamp.replace(' ', 'T'));
+      if (!isNaN(t)) mins = Math.round((Date.now() - t.getTime()) / 60000);
+    } catch {}
+    let ago = '';
+    if (mins !== null) {
+      if (mins < 1) ago = ' · just now';
+      else if (mins < 60) ago = ` · ${mins} min ago`;
+      else if (mins < 1440) ago = ` · ${Math.floor(mins / 60)} h ago`;
+      else ago = ` · ${Math.floor(mins / 1440)} d ago`;
+    }
+    const time = stamp.length > 10 ? stamp.slice(11, 16) : stamp;
+    el.innerHTML = `MISE À JOUR: <span class="ru-time">${escapeHtml(time)}</span>${escapeHtml(ago)}`;
+    el.classList.toggle('fresh', mins !== null && mins <= 10);
+  }
+
   function renderReport() {
+    paintReportsUpdated();
     const body = $('#reports-body');
     if (_rptChart) { _rptChart.destroy(); _rptChart = null; }
     body.innerHTML = '';
