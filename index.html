@@ -2159,7 +2159,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v100</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v101</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2276,6 +2276,10 @@
       // simply uses what data.json already contains.
       await applyLiveSlice();
 
+      // overlay any just-applied POS edits (price changes made from the app)
+      await fetchOverrides(true);
+      applyOverridesToProducts();
+
       // The pipeline currently ships partial_months as {}. Reconstruct it from
       // the data-update date so month-projection (charts + reports) works again.
       if (DATA.updated && DATA.months && DATA.months.length &&
@@ -2333,6 +2337,52 @@
     }
   }
 
+  // ===== POS OVERRIDES =====
+  // pos/overrides.json is written by apply_queue the moment it applies a change.
+  // It is tiny and holds only recently-edited items, so a price change shows up
+  // for EVERY user within one applier cycle instead of waiting for the hourly
+  // 13 MB rebuild. Overlaid on both data.json (product card) and edit.json
+  // (editor prefill). Unlike the old in-memory "pending" badge, this survives an
+  // app reload because it lives on the server.
+  let _overrides = {};      // code -> override entry
+  let _overridesAt = 0;
+  async function fetchOverrides(force) {
+    const TTL = 60 * 1000;
+    if (!force && _overridesAt && (Date.now() - _overridesAt) < TTL) return _overrides;
+    try {
+      const r = await fetch(recipeRawUrl('pos/overrides.json'), { cache: 'no-store' });
+      if (r.ok) {
+        const doc = await r.json();
+        _overrides = (doc && doc.items) || {};
+        _overridesAt = Date.now();
+      }
+    } catch { /* optional file -- ignore */ }
+    return _overrides;
+  }
+  function overrideFor(code) {
+    const o = _overrides[code];
+    if (!o || !DATA) return null;
+    // once the full rebuild has caught up, the override is redundant
+    if (DATA.updated_at && o.at && o.at.slice(0, 16) <= DATA.updated_at.slice(0, 16)) return null;
+    return o;
+  }
+  // Apply overrides onto the in-memory product table so every view (cards,
+  // search results, labels) shows the new price.
+  function applyOverridesToProducts() {
+    if (!DATA || !DATA.products) return 0;
+    let n = 0;
+    for (const code in _overrides) {
+      const o = overrideFor(code);
+      if (!o) continue;
+      const p = DATA.products[code];
+      if (!p) continue;
+      if (o.price != null) { p[1] = o.price; n++; }
+      if (o.mp !== undefined) p[7] = o.mp;
+      if (o.nm) p[0] = o.nm;
+    }
+    return n;
+  }
+
   // Merge the small live slice over DATA when it is newer than the bulk file.
   const LIVE_KEYS = ['updated','updated_at','months','weeks','last_14_days',
                      'daily_dates','dept_daily','dept_weekly','depts','hourly',
@@ -2384,9 +2434,10 @@
         await requestPcPartialRefresh();
         // give the PC a moment to rebuild + push, then reload
         showToast('Refreshing from POS…');
-        await new Promise(r => setTimeout(r, 6000));
+        await new Promise(r => setTimeout(r, 3000));
       }
       _editData = null; _editDataAt = 0;   // force edit.json reload too
+      _overridesAt = 0;                     // and re-pull just-applied edits
       const ok = await loadData();
       if (ok) {
         clearConfirmedPending();
@@ -3185,7 +3236,18 @@
     return _editData;
   }
   function editStateFor(code) {
-    return (_editData && _editData.items && _editData.items[code]) || null;
+    const base = (_editData && _editData.items && _editData.items[code]) || null;
+    // A freshly-applied edit lands in pos/overrides.json long before the hourly
+    // rebuild reaches edit.json, so overlay it -- otherwise the editor keeps
+    // showing the OLD price right after you changed it.
+    const o = overrideFor(code);
+    if (!o) return base;
+    const merged = Object.assign({}, base || {});
+    for (const k of ['pt','tf','tp','dp','bal','qte','sd','un','sn',
+                     'rp','ap','pp','ps','pe','rq','pq','lk']) {
+      if (o[k] !== undefined) merged[k] = o[k];
+    }
+    return merged;
   }
 
   async function fetchSuppliers() {
@@ -7461,6 +7523,8 @@
       if (document.hidden) return;
       const before = DATA && DATA.updated_at;
       const got = await applyLiveSlice();
+      await fetchOverrides(true);
+      applyOverridesToProducts();
       if (got && DATA.updated_at !== before) {
         // re-render whichever view is showing so the new numbers appear
         const active = document.querySelector('.tab.active');
@@ -7473,7 +7537,10 @@
       paintReportsUpdated();
     }, 180000);
     document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) applyLiveSlice();
+      if (!document.hidden) {
+        applyLiveSlice();
+        fetchOverrides(true).then(() => applyOverridesToProducts());
+      }
     });
 
     // Refresh button: reload data + ask PC for a fast partial refresh
