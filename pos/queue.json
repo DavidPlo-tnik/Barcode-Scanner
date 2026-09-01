@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0003746608337",
+   "pos_title": "LINDT EXCEL.CH.T",
+   "size_num": 100,
+   "size_unit": "",
+   "promo": {
+    "price": 499,
+    "qty": 1,
+    "start": "2026-06-23",
+    "end": "2026-11-23"
+   },
+   "queued_at": "2026-09-01T22:14:32.851Z",
+   "id": "c1788300872851"
+  }
+ ]
 }
