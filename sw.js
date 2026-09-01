@@ -1,4 +1,4 @@
-const CACHE = 'decarie-v100';
+const CACHE = 'decarie-v101';
 const ASSETS = [
   './manifest.webmanifest',
   './icon-192.png',
@@ -41,7 +41,7 @@ self.addEventListener('fetch', (e) => {
   }
 
   // Recipe JSON: network-first so edits appear promptly.
-  if (url.hostname === 'raw.githubusercontent.com' && (url.pathname.includes('/recipes/') || url.pathname.includes('/ecom/') || url.pathname.includes('/txns/') || url.pathname.endsWith('/edit.json'))) {
+  if (url.hostname === 'raw.githubusercontent.com' && (url.pathname.includes('/recipes/') || url.pathname.includes('/ecom/') || url.pathname.includes('/txns/') || url.pathname.endsWith('/edit.json') || url.pathname.endsWith('/overrides.json'))) {
     e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
     return;
   }
