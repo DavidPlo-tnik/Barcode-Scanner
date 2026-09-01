@@ -2143,7 +2143,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v98</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v99</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2252,6 +2252,13 @@
       const res = await fetch(`data.json?v=${cacheBust}`);
       DATA = await res.json();
 
+      // live.json carries just the volatile dashboard slice (today's sales,
+      // hourly, dept totals ~55 KB) and is refreshed every few minutes, while
+      // data.json (13 MB of products/history) is rebuilt once a day. Overlay it
+      // when it is newer. Entirely optional -- if it is missing or stale the app
+      // simply uses what data.json already contains.
+      await applyLiveSlice();
+
       // The pipeline currently ships partial_months as {}. Reconstruct it from
       // the data-update date so month-projection (charts + reports) works again.
       if (DATA.updated && DATA.months && DATA.months.length &&
@@ -2307,6 +2314,28 @@
       $('#meta-info').textContent = 'DATA ERROR';
       return false;
     }
+  }
+
+  // Merge the small live slice over DATA when it is newer than the bulk file.
+  const LIVE_KEYS = ['updated','updated_at','months','weeks','last_14_days',
+                     'daily_dates','dept_daily','dept_weekly','depts','hourly',
+                     'yearly_rev','batches','partial_months'];
+  let _liveAt = null;
+  async function applyLiveSlice() {
+    if (!DATA) return false;
+    try {
+      const r = await fetch(`live.json?v=${Date.now()}`, { cache: 'no-store' });
+      if (!r.ok) return false;                 // not published yet -- fine
+      const live = await r.json();
+      if (!live || !live.updated_at) return false;
+      // only take it if it is at least as fresh as the bulk file
+      if (DATA.updated_at && live.updated_at < DATA.updated_at) return false;
+      for (const k of LIVE_KEYS) {
+        if (live[k] !== undefined) DATA[k] = live[k];
+      }
+      _liveAt = live.updated_at;
+      return true;
+    } catch { return false; }                  // never let this break startup
   }
 
   // ===== Optimistic (pending) edits: items changed in-app but not yet in data.json =====
@@ -7407,6 +7436,23 @@
     }
 
     bindCountEvents();
+
+    // Keep the dashboard live: re-pull the small slice every 3 minutes (only
+    // while the app is visible, so it costs nothing in the background) and
+    // re-render if the numbers moved.
+    setInterval(async () => {
+      if (document.hidden) return;
+      const before = DATA && DATA.updated_at;
+      const got = await applyLiveSlice();
+      if (got && DATA.updated_at !== before) {
+        // re-render whichever view is showing so the new numbers appear
+        const active = document.querySelector('.tab.active');
+        if (active) switchTab(active.dataset.tab);
+      }
+    }, 180000);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) applyLiveSlice();
+    });
 
     // Refresh button: reload data + ask PC for a fast partial refresh
     $('#refresh-btn').addEventListener('click', () => doRefresh(true));
