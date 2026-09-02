@@ -366,6 +366,7 @@
     letter-spacing: 0.04em; margin: 5px 2px 14px;
   }
   .pd-count.over { color: var(--bad); font-weight: 700; }
+  .stale-warn { color: var(--warn); font-weight: 700; }
   .pd-note { font-size: 11.5px; color: var(--text-dim); margin: 6px 2px 0; line-height: 1.4; }
   .pd-lock-notice {
     margin-top: 10px; padding: 9px 11px; border-radius: 9px;
@@ -2159,7 +2160,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v102</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v103</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2265,8 +2266,12 @@
       // Cache-bust with current minute so service worker / browser can't serve
       // a stale data.json. Combined with SW's network-first policy for data.json,
       // this guarantees a fresh fetch when online.
-      const cacheBust = Math.floor(Date.now() / 60000); // changes every minute
-      const res = await fetch(`data.json?v=${cacheBust}`);
+      // cache:'no-store' matters: the query string alone does not stop the
+      // browser's HTTP cache from serving a stale copy, which is how the app
+      // ended up showing an old price (and an old margin) long after the POS,
+      // edit.json and overrides had all been updated correctly.
+      const cacheBust = Date.now();
+      const res = await fetch(`data.json?v=${cacheBust}`, { cache: 'no-store' });
       DATA = await res.json();
 
       // live.json carries just the volatile dashboard slice (today's sales,
@@ -2554,6 +2559,17 @@
       if (plu && /^\d+$/.test(plu)) return plu;
     }
     return null;
+  }
+
+  // How old is the loaded catalogue, in minutes? Used to warn when the app is
+  // showing data that has clearly fallen behind the POS.
+  function dataAgeMinutes() {
+    if (!DATA || !DATA.updated_at) return null;
+    try {
+      const t = new Date(DATA.updated_at.replace(' ', 'T')).getTime();
+      if (isNaN(t)) return null;
+      return Math.round((Date.now() - t) / 60000);
+    } catch { return null; }
   }
 
   function packProduct(code) {
@@ -3898,6 +3914,15 @@
         ${p.dept ? `<span>${escapeHtml(p.dept)}</span>` : ''}
         <span>${p.code}</span>
         ${sales ? `<span>${sales.na} mo. active</span>` : '<span>no sales data</span>'}
+        ${(() => {
+          // Warn when the loaded catalogue has fallen behind. Without this a
+          // stale cache silently shows an old price and an old margin, which
+          // looks identical to a bug in the POS.
+          const age = dataAgeMinutes();
+          if (age == null || age < 90) return '';
+          const txt = age < 1440 ? `${Math.floor(age/60)}h` : `${Math.floor(age/1440)}d`;
+          return `<span class="stale-warn" title="Tap ⟳ to refresh">⚠ data ${txt} old</span>`;
+        })()}
       </div>
       <div class="pos-size-row" id="pos-size-row" title="POS unit field — tap to edit">
         <span class="pos-size-label">FORMAT&nbsp;POS</span>
