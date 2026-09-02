@@ -600,6 +600,30 @@
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .toast.err { background: var(--bad); color: #fff; }
 
+  /* ===== CATALOGUE LOADING BAR ===== */
+  .loadbar {
+    display: none; position: relative;
+    padding: 7px 14px 9px; background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .loadbar.active { display: block; }
+  .loadbar-fill {
+    position: absolute; left: 0; top: 0; height: 2px;
+    width: 0%; background: var(--accent); transition: width .2s ease;
+  }
+  .loadbar.indeterminate .loadbar-fill {
+    width: 35%; animation: loadslide 1.1s ease-in-out infinite;
+  }
+  @keyframes loadslide {
+    0% { left: -35%; } 100% { left: 100%; }
+  }
+  .loadbar-text {
+    font-family: var(--font-display); font-size: 10px;
+    letter-spacing: 0.1em; color: var(--text-dim);
+  }
+  .loadbar.error { border-bottom-color: var(--bad); }
+  .loadbar.error .loadbar-text { color: var(--bad); }
+
   .recent { margin-top: 22px; }
   .recent-list { display: flex; flex-direction: column; gap: 4px; }
   .recent-item {
@@ -615,6 +639,33 @@
   .recent-item .ramt {
     font-family: var(--font-display); font-size: 11px;
     color: var(--accent); white-space: nowrap;
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .recent-item .rtime { color: var(--text-faint); font-size: 10px; }
+  .recent-item .rname.unknown { color: var(--text-dim); }
+  .recent-item .rmiss { color: var(--warn); font-size: 10px; font-family: var(--font-display); }
+
+  /* ===== SCAN HISTORY (grouped by day) ===== */
+  .hist-day { display: flex; flex-direction: column; gap: 4px; }
+  .hist-day + .hist-day { margin-top: 10px; }
+  .hist-head {
+    width: 100%; display: flex; align-items: center; gap: 8px;
+    background: none; border: none; padding: 4px 2px; cursor: pointer;
+    font-family: var(--font-display); font-size: 10px;
+    letter-spacing: 0.1em; color: var(--text-faint); text-align: left;
+  }
+  .hist-head:hover { color: var(--text-dim); }
+  .hist-caret { width: 10px; display: inline-block; }
+  .hist-label { flex: 1; }
+  .hist-count {
+    background: var(--surface-2); color: var(--text-dim);
+    border-radius: 10px; padding: 1px 7px; font-size: 10px;
+  }
+  .hist-day.open > .hist-head { color: var(--accent); }
+  .hist-body { display: flex; flex-direction: column; gap: 4px; }
+  .hist-more {
+    font-family: var(--font-display); font-size: 10px;
+    color: var(--text-faint); padding: 4px 2px;
   }
 
   /* ===== LISTS UI ===== */
@@ -1695,6 +1746,13 @@
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
 </header>
 
+<!-- Catalogue load progress. data.json is ~13 MB, so on mobile data this can
+     take a while; without it the app just looks broken/empty. -->
+<div class="loadbar" id="loadbar">
+  <div class="loadbar-fill" id="loadbar-fill"></div>
+  <div class="loadbar-text" id="loadbar-text">Loading catalogue…</div>
+</div>
+
 <div class="updated-line" id="updated-line"></div>
 
 <nav class="tabs">
@@ -1726,7 +1784,7 @@
   <div class="scanner-status" id="status">CAMERA OFF</div>
 
   <div class="recent" id="recent-section" style="display: none;">
-    <div class="section-title">RECENT</div>
+    <div class="section-title">SCAN HISTORY</div>
     <div class="recent-list" id="recent-list"></div>
   </div>
 </section>
@@ -2160,7 +2218,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v103</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v104</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2250,6 +2308,17 @@
     t._timer = setTimeout(() => t.classList.remove('show'), 2200);
   };
 
+  // ---- catalogue load progress ----
+  function loadbar(state, text, pct) {
+    const bar = $('#loadbar'), fill = $('#loadbar-fill'), t = $('#loadbar-text');
+    if (!bar) return;
+    if (state === 'hide') { bar.className = 'loadbar'; return; }
+    bar.className = 'loadbar active' + (state === 'error' ? ' error' : '')
+                  + (pct == null && state !== 'error' ? ' indeterminate' : '');
+    if (t && text) t.textContent = text;
+    if (fill && pct != null) fill.style.width = Math.max(0, Math.min(100, pct)) + '%';
+  }
+
   const setStatus = (msg, kind = '') => {
     const s = $('#status');
     s.textContent = msg;
@@ -2271,8 +2340,34 @@
       // ended up showing an old price (and an old margin) long after the POS,
       // edit.json and overrides had all been updated correctly.
       const cacheBust = Date.now();
+      loadbar('load', 'Loading catalogue…', null);
+      $('#meta-info').textContent = 'LOADING…';
       const res = await fetch(`data.json?v=${cacheBust}`, { cache: 'no-store' });
-      DATA = await res.json();
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+
+      // Stream it so the user sees real progress on a ~13 MB file instead of a
+      // blank screen. Falls back to a plain read if streaming is unavailable.
+      let text = null;
+      try {
+        const total = +(res.headers.get('content-length') || 0);
+        if (res.body && res.body.getReader) {
+          const reader = res.body.getReader();
+          const chunks = []; let got = 0;
+          for (;;) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            chunks.push(value); got += value.length;
+            const mb = (got / 1048576).toFixed(1);
+            if (total) loadbar('load', `Loading catalogue… ${mb} of ${(total/1048576).toFixed(1)} MB`, got/total*100);
+            else loadbar('load', `Loading catalogue… ${mb} MB`, null);
+          }
+          const buf = new Uint8Array(got); let off = 0;
+          for (const c of chunks) { buf.set(c, off); off += c.length; }
+          text = new TextDecoder('utf-8').decode(buf);
+        }
+      } catch { text = null; }
+      loadbar('load', 'Preparing catalogue…', null);
+      DATA = text != null ? JSON.parse(text) : await res.json();
 
       // live.json carries just the volatile dashboard slice (today's sales,
       // hourly, dept totals ~55 KB) and is refreshed every few minutes, while
@@ -2301,6 +2396,7 @@
         }
       }
 
+      loadbar('hide');
       $('#meta-info').textContent = `${Object.keys(DATA.products).length.toLocaleString()} ITEMS`;
       // Show last-updated and partial-month info
       const updatedLine = $('#updated-line');
@@ -2338,6 +2434,7 @@
     } catch (e) {
       console.error('Failed to load data:', e);
       $('#meta-info').textContent = 'DATA ERROR';
+      loadbar('error', 'Could not load catalogue - tap ⟳ to retry', 100);
       return false;
     }
   }
@@ -2608,34 +2705,137 @@
     return rawCode; // not found — return original
   }
 
-  // ============== RECENT ==============
-  function getRecent() {
-    try { return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); }
-    catch { return []; }
+  // ============== SCAN HISTORY ==============
+  // v2 format: [{c: code, t: epoch_ms}, ...] newest first, kept for HISTORY_DAYS.
+  // The old v1 format was a bare array of 10 codes with no timestamps; it is
+  // migrated on first read so nothing is lost.
+  const HISTORY_KEY = 'decarie_recent_v2';
+  const HISTORY_DAYS = 14;
+  const RECENT_SHOWN = 25;        // today's list on the home screen
+  let _histExpanded = {};         // dayKey -> bool
+
+  function getHistory() {
+    try {
+      const raw = localStorage.getItem(HISTORY_KEY);
+      if (raw) return JSON.parse(raw) || [];
+    } catch {}
+    // migrate v1 (codes only, no times) -- stamp them as "now" so they survive
+    try {
+      const old = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+      if (Array.isArray(old) && old.length) {
+        const now = Date.now();
+        const migrated = old.map((c, i) => ({ c, t: now - i * 1000 }));
+        localStorage.setItem(HISTORY_KEY, JSON.stringify(migrated));
+        return migrated;
+      }
+    } catch {}
+    return [];
   }
+
+  function saveHistory(list) {
+    // drop anything older than the retention window
+    const cutoff = Date.now() - HISTORY_DAYS * 86400000;
+    const trimmed = list.filter(e => e && e.t && e.t >= cutoff).slice(0, 2000);
+    try { localStorage.setItem(HISTORY_KEY, JSON.stringify(trimmed)); } catch {}
+    return trimmed;
+  }
+
   function pushRecent(code) {
-    const list = getRecent().filter((c) => c !== code);
-    list.unshift(code);
-    localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 10)));
+    const now = Date.now();
+    const list = getHistory();
+    // collapse repeats of the same item within the same day into one entry,
+    // so re-scanning while pricing a shelf does not flood the list
+    const dayStart = new Date(); dayStart.setHours(0, 0, 0, 0);
+    const idx = list.findIndex(e => e.c === code && e.t >= dayStart.getTime());
+    if (idx >= 0) list.splice(idx, 1);
+    list.unshift({ c: code, t: now });
+    saveHistory(list);
     renderRecent();
   }
+
+  function dayKeyOf(ts) {
+    const d = new Date(ts);
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  }
+  function dayLabel(key) {
+    const today = dayKeyOf(Date.now());
+    const yest = dayKeyOf(Date.now() - 86400000);
+    if (key === today) return "TODAY";
+    if (key === yest) return "YESTERDAY";
+    const d = new Date(key + 'T12:00:00');
+    return d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }).toUpperCase();
+  }
+
+  function scanRowHtml(entry) {
+    const p = lookup(entry.c);
+    const t = new Date(entry.t);
+    const hhmm = String(t.getHours()).padStart(2,'0') + ':' + String(t.getMinutes()).padStart(2,'0');
+    if (!p) {
+      return `<div class="recent-item" data-code="${escapeHtml(entry.c)}">
+        <div class="rname unknown">${escapeHtml(entry.c)} <span class="rmiss">not in catalogue</span></div>
+        <div class="ramt">${hhmm}</div></div>`;
+    }
+    const price = (p.price != null) ? fmtMoney(p.price) : '—';
+    return `<div class="recent-item" data-code="${escapeHtml(entry.c)}">
+      <div class="rname">${escapeHtml(p.name)}</div>
+      <div class="ramt"><span class="rprice">${price}</span><span class="rtime">${hhmm}</span></div>
+    </div>`;
+  }
+
   function renderRecent() {
-    const list = getRecent();
     const container = $('#recent-section');
     const ul = $('#recent-list');
-    if (list.length === 0) { container.style.display = 'none'; return; }
+    if (!container || !ul) return;
+    const list = getHistory();
+    if (!list.length) { container.style.display = 'none'; return; }
     container.style.display = 'block';
-    ul.innerHTML = '';
-    for (const code of list) {
-      const p = lookup(code);
-      if (!p) continue;
-      const li = document.createElement('div');
-      li.className = 'recent-item';
-      const wkAmt = p.sales ? fmtMoney(p.sales.wka) + '/wk' : '—';
-      li.innerHTML = `<div class="rname">${escapeHtml(p.name)}</div><div class="ramt">${wkAmt}</div>`;
-      li.addEventListener('click', () => openProduct(code));
-      ul.appendChild(li);
+
+    // group by day, newest first
+    const groups = {};
+    const order = [];
+    for (const e of list) {
+      const k = dayKeyOf(e.t);
+      if (!groups[k]) { groups[k] = []; order.push(k); }
+      groups[k].push(e);
     }
+
+    const todayKey = dayKeyOf(Date.now());
+    let html = '';
+    order.forEach((k, i) => {
+      const entries = groups[k];
+      const isToday = (k === todayKey);
+      // today is always open; older days collapse until tapped
+      const open = isToday ? true : !!_histExpanded[k];
+      const shown = isToday ? entries.slice(0, RECENT_SHOWN) : entries;
+      html += `<div class="hist-day${open ? ' open' : ''}" data-day="${k}">
+        <button class="hist-head" data-day="${k}">
+          <span class="hist-caret">${isToday ? '' : (open ? '▾' : '▸')}</span>
+          <span class="hist-label">${dayLabel(k)}</span>
+          <span class="hist-count">${entries.length}</span>
+        </button>
+        <div class="hist-body"${open ? '' : ' style="display:none"'}>
+          ${shown.map(scanRowHtml).join('')}
+          ${isToday && entries.length > RECENT_SHOWN
+            ? `<div class="hist-more">+${entries.length - RECENT_SHOWN} more today</div>` : ''}
+        </div>
+      </div>`;
+    });
+    ul.innerHTML = html;
+
+    ul.querySelectorAll('.hist-head').forEach(b => {
+      b.addEventListener('click', () => {
+        const k = b.dataset.day;
+        if (k === todayKey) return;              // today stays open
+        _histExpanded[k] = !_histExpanded[k];
+        renderRecent();
+      });
+    });
+    ul.querySelectorAll('.recent-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const c = el.dataset.code;
+        if (c && lookup(c)) openProduct(c);
+      });
+    });
   }
 
   // ============== SCANNER (ZXing — works on iOS Safari) ==============
