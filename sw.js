@@ -1,4 +1,4 @@
-const CACHE = 'decarie-v102';
+const CACHE = 'decarie-v103';
 const ASSETS = [
   './manifest.webmanifest',
   './icon-192.png',
