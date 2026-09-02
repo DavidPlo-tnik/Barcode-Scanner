@@ -66,6 +66,7 @@
   }
   .refresh-btn:active { background: var(--surface); }
   .refresh-btn.spinning { animation: refresh-spin 0.8s linear infinite; color: var(--accent); }
+  .refresh-btn.working { color: var(--accent); border-color: var(--accent); }
   @keyframes refresh-spin { to { transform: rotate(360deg); } }
   .stat.pending-price {
     border: 1px solid var(--warn); background: color-mix(in srgb, var(--warn) 10%, transparent);
@@ -2218,7 +2219,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v104</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v105</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2358,8 +2359,9 @@
             if (done) break;
             chunks.push(value); got += value.length;
             const mb = (got / 1048576).toFixed(1);
-            if (total) loadbar('load', `Loading catalogue… ${mb} of ${(total/1048576).toFixed(1)} MB`, got/total*100);
-            else loadbar('load', `Loading catalogue… ${mb} MB`, null);
+            const verb = _refreshing ? 'Refreshing' : 'Loading catalogue';
+            if (total) loadbar('load', `${verb}… ${mb} of ${(total/1048576).toFixed(1)} MB`, got/total*100);
+            else loadbar('load', `${verb}… ${mb} MB`, null);
           }
           const buf = new Uint8Array(got); let off = 0;
           for (const c of chunks) { buf.set(c, off); off += c.length; }
@@ -2541,23 +2543,57 @@
     if (_refreshing) return;
     _refreshing = true;
     const btn = $('#refresh-btn');
-    if (btn) btn.classList.add('spinning');
+    if (btn) { btn.classList.add('spinning', 'working'); }
     try {
-      if (requestPcUpdate) {
-        // drop a refresh-request in the repo; the PC watcher runs a partial update
-        await requestPcPartialRefresh();
-        // give the PC a moment to rebuild + push, then reload
-        showToast('Refreshing from POS…');
-        await new Promise(r => setTimeout(r, 3000));
-      }
       _editData = null; _editDataAt = 0;   // force edit.json reload too
       _overridesAt = 0;                     // and re-pull just-applied edits
-      const ok = await loadData();
+
+      // The PC refresh request is fire-and-forget. It used to be awaited and
+      // followed by a hard 3-second sleep "to give the PC a moment", which made
+      // every refresh feel broken. The applier publishes pos/overrides.json on
+      // its own cycle and we already poll that, so there is nothing to wait for.
+      if (requestPcUpdate) requestPcPartialRefresh().catch(() => {});
+
+      loadbar('load', 'Checking for updates…', null);
+
+      // Most refreshes do not need the 13 MB data.json at all. live.json is
+      // ~55 KB and carries the SAME updated_at as the run that built
+      // data.json, so if it matches what we already have, the catalogue is
+      // unchanged and only the small files need re-reading. That turns a
+      // multi-second refresh into a near-instant one.
+      let needFull = true;
+      try {
+        const r = await fetch(`live.json?v=${Date.now()}`, { cache: 'no-store' });
+        if (r.ok) {
+          const live = await r.json();
+          if (live && live.updated_at && DATA && DATA.updated_at
+              && live.updated_at === DATA.updated_at) {
+            needFull = false;
+            for (const k of LIVE_KEYS) if (live[k] !== undefined) DATA[k] = live[k];
+            _liveAt = live.updated_at;
+          }
+        }
+      } catch { /* fall through to the full reload */ }
+
+      let ok = true;
+      if (needFull) {
+        const res = await Promise.all([
+          loadData(),
+          fetchEditData(true).catch(() => null),
+          fetchOverrides(true).catch(() => null),
+        ]);
+        ok = res[0];
+      } else {
+        loadbar('load', 'Up to date - refreshing prices…', 80);
+        await Promise.all([
+          fetchEditData(true).catch(() => null),
+          fetchOverrides(true).catch(() => null),
+        ]);
+      }
       if (ok) {
         clearConfirmedPending();
-        await fetchEditData(true);
+        applyOverridesToProducts();
         showToast('Updated ✓');
-        // re-render whatever view is active
         const active = document.querySelector('.tab.active');
         if (active) switchTab(active.dataset.tab);
       }
@@ -2565,7 +2601,8 @@
       showToast('Refresh failed', true);
     } finally {
       _refreshing = false;
-      if (btn) btn.classList.remove('spinning');
+      if (btn) btn.classList.remove('spinning', 'working');
+      loadbar('hide');
     }
   }
 
@@ -2711,7 +2748,6 @@
   // migrated on first read so nothing is lost.
   const HISTORY_KEY = 'decarie_recent_v2';
   const HISTORY_DAYS = 14;
-  const RECENT_SHOWN = 25;        // today's list on the home screen
   let _histExpanded = {};         // dayKey -> bool
 
   function getHistory() {
@@ -2806,7 +2842,7 @@
       const isToday = (k === todayKey);
       // today is always open; older days collapse until tapped
       const open = isToday ? true : !!_histExpanded[k];
-      const shown = isToday ? entries.slice(0, RECENT_SHOWN) : entries;
+      const shown = entries;   // no cap -- show everything scanned that day
       html += `<div class="hist-day${open ? ' open' : ''}" data-day="${k}">
         <button class="hist-head" data-day="${k}">
           <span class="hist-caret">${isToday ? '' : (open ? '▾' : '▸')}</span>
@@ -2815,8 +2851,6 @@
         </button>
         <div class="hist-body"${open ? '' : ' style="display:none"'}>
           ${shown.map(scanRowHtml).join('')}
-          ${isToday && entries.length > RECENT_SHOWN
-            ? `<div class="hist-more">+${entries.length - RECENT_SHOWN} more today</div>` : ''}
         </div>
       </div>`;
     });
