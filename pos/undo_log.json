@@ -6760,6 +6760,50 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260903091339172650",
+   "applied_at": "2026-09-03T09:13:39",
+   "change": {
+    "code": "0071375784092",
+    "pos_title": "PATE FEUILLETE CONGELEE 2LB",
+    "size_num": 2,
+    "size_unit": "LB",
+    "price": 8.99,
+    "queued_at": "2026-09-03T13:13:10.919Z",
+    "id": "c1788441190919"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "PATE FEUILLETE CONGELEE",
+     "F1744": "2.0",
+     "F22": "2LB",
+     "F23": "LB"
+    },
+    "POS_TAB": {
+     "F02": "PATE FEUILLETE CONGELEE 2LB",
+     "F04": "4",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
