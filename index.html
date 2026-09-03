@@ -2219,7 +2219,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v105</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v106</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2500,8 +2500,11 @@
   }
 
   // Merge the small live slice over DATA when it is newer than the bulk file.
+  // NOTE: 'depts' is intentionally excluded -- it is built from the products dict
+  // which is empty in --live mode, so live.json carries depts:{} and would wipe
+  // the real dept names from DATA. Dept names are static and live in data.json only.
   const LIVE_KEYS = ['updated','updated_at','months','weeks','last_14_days',
-                     'daily_dates','dept_daily','dept_weekly','depts','hourly',
+                     'daily_dates','dept_daily','dept_weekly','hourly',
                      'yearly_rev','batches','partial_months'];
   let _liveAt = null;
   async function applyLiveSlice() {
