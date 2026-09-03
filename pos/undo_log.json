@@ -7003,6 +7003,107 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260903121128326995",
+   "applied_at": "2026-09-03T12:11:28",
+   "change": {
+    "code": "0067926204259",
+    "pos_title": "BELEVINI BAGELS 300G",
+    "size_num": 90,
+    "size_unit": "GR",
+    "price": 1.49,
+    "queued_at": "2026-09-03T16:10:48.238Z",
+    "id": "c1788451848238"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BELEVINI BAGELS",
+     "F1744": "90.0",
+     "F22": "300G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BELEVINI BAGELS 300G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "29.4000",
+     "F196": "29.4000",
+     "F1140": "2.1000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260903121128404995",
+   "applied_at": "2026-09-03T12:11:28",
+   "change": {
+    "code": "0067926204260",
+    "pos_title": "BELEVINI BAGELS 300G",
+    "size_num": 90,
+    "size_unit": "GR",
+    "price": 1.49,
+    "clear_promo": true,
+    "queued_at": "2026-09-03T16:11:06.958Z",
+    "id": "c1788451866958"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BELEVINI BAGELS",
+     "F1744": "90.0",
+     "F22": "300G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BELEVINI BAGELS 300G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "29.4000",
+     "F196": "29.4000",
+     "F1140": "2.1000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.0000",
+     "F31": "2.0",
+     "F1006": "2.0",
+     "F1007": "5.0000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
