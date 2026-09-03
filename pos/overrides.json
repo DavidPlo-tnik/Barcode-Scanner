@@ -358,7 +358,31 @@
    "mp": null,
    "cost": 16.95,
    "at": "2026-09-03 11:04:53"
+  },
+  "0482020587120": {
+   "pt": "GATEAU PRAGUE AUX CERISES BKK 850G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "UN",
+   "sn": 850.0,
+   "nm": "GATEAU PRAGUE AUX CERISES BKK",
+   "rp": 29.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 29.99,
+   "mp": null,
+   "cost": 24.95,
+   "at": "2026-09-03 11:06:06"
   }
  },
- "updated": "2026-09-03 11:04:53"
+ "updated": "2026-09-03 11:06:06"
 }
