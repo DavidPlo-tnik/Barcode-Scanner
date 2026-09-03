@@ -19,6 +19,26 @@
    "deposit": 0.1,
    "queued_at": "2026-09-03T21:02:13.047Z",
    "id": "c1788469333047"
+  },
+  {
+   "code": "0482000045189",
+   "title": "KVAS TARAS 500ML",
+   "pos_title": "KVAS TARAS 500ML",
+   "size_num": 500,
+   "size_unit": "ML",
+   "multibuy": {
+    "qty": 2,
+    "price": 5
+   },
+   "promo": {
+    "price": 5,
+    "qty": 2,
+    "start": null,
+    "end": null
+   },
+   "deposit": 0.1,
+   "queued_at": "2026-09-03T21:03:03.954Z",
+   "id": "c1788469383954"
   }
  ]
 }
