@@ -1,3 +1,13 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0067926204259",
+   "pos_title": "BELEVINI BAGELS 300G",
+   "size_num": 90,
+   "size_unit": "GR",
+   "price": 1.49,
+   "queued_at": "2026-09-03T16:10:48.238Z",
+   "id": "c1788451848238"
+  }
+ ]
 }
