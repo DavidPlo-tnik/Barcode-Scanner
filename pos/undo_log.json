@@ -6540,6 +6540,226 @@
      "F1011": "REG"
     }
    }
+  },
+  {
+   "undo_id": "u20260903085701121697",
+   "applied_at": "2026-09-03T08:57:01",
+   "change": {
+    "code": "0083213900021",
+    "pos_title": "ELWEST PROBIOTIQUE RYAZHENKA 944ML",
+    "size_num": 944,
+    "size_unit": "ML",
+    "promo": {
+     "price": 3.99,
+     "qty": 1,
+     "start": "2026-09-03",
+     "end": "2026-09-09"
+    },
+    "queued_at": "2026-09-03T12:56:01.891Z",
+    "id": "c1788440161891"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ELWEST PROBIOTIQUE RYAZHENKA",
+     "F1744": "944.0",
+     "F22": "944 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ELWEST PROBIOTIQUE RYAZHENKA 944ML",
+     "F04": "3",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.3900",
+     "F196": "3.3900",
+     "F1140": "3.3900",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "4.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260903085701230897",
+   "applied_at": "2026-09-03T08:57:01",
+   "change": {
+    "code": "0083213900001",
+    "pos_title": "ELWEST KEFIR CLASSIQUE 944ML",
+    "size_num": 944,
+    "size_unit": "ML",
+    "promo": {
+     "price": 3.99,
+     "qty": 1,
+     "start": "2026-09-03",
+     "end": "2026-09-09"
+    },
+    "queued_at": "2026-09-03T12:56:16.847Z",
+    "id": "c1788440176847"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ELWEST KEFIR CLASSIQUE",
+     "F1744": "944.0",
+     "F22": "944 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ELWEST KEFIR CLASSIQUE 944ML",
+     "F04": "3",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "40.6800",
+     "F196": "40.6800",
+     "F1140": "3.3900",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "4.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260903085701293297",
+   "applied_at": "2026-09-03T08:57:01",
+   "change": {
+    "code": "0083213900032",
+    "pos_title": "ELWEST KEFIR A LA TALLINN 944ML",
+    "size_num": 944,
+    "size_unit": "ML",
+    "promo": {
+     "price": 3.99,
+     "qty": 1,
+     "start": "2026-09-03",
+     "end": "2026-09-09"
+    },
+    "queued_at": "2026-09-03T12:56:30.149Z",
+    "id": "c1788440190149"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ELWEST KEFIR A LA TALLINN",
+     "F1744": "944.0",
+     "F22": "944ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ELWEST KEFIR A LA TALLINN 944ML",
+     "F04": "3",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.3900",
+     "F196": "3.3900",
+     "F1140": "3.3900",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "4.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260903085701371297",
+   "applied_at": "2026-09-03T08:57:01",
+   "change": {
+    "code": "0083213900008",
+    "pos_title": "CREME SURE 20% 500ML",
+    "size_num": 500,
+    "size_unit": "ML",
+    "promo": {
+     "price": 3.99,
+     "qty": 1,
+     "start": "2026-09-03",
+     "end": "2026-09-09"
+    },
+    "queued_at": "2026-09-03T12:56:53.702Z",
+    "id": "c1788440213702"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CREME SURE 20%",
+     "F1744": "500.0",
+     "F22": "500 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "CREME SURE 20% 500ML",
+     "F04": "3",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.3900",
+     "F196": "3.3900",
+     "F1140": "3.3900",
+     "F27": "0000209088"
+    },
+    "PRICE_TAB": {
+     "F30": "4.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
