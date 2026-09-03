@@ -263,7 +263,30 @@
    "mp": null,
    "cost": 3.39,
    "at": "2026-09-03 08:57:01"
+  },
+  "0071375784092": {
+   "pt": "PATE FEUILLETE CONGELEE 2LB",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "LB",
+   "sn": 2.0,
+   "nm": "PATE FEUILLETE CONGELEE",
+   "rp": 8.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 8.99,
+   "mp": null,
+   "at": "2026-09-03 09:13:39"
   }
  },
- "updated": "2026-09-03 08:57:01"
+ "updated": "2026-09-03 09:13:39"
 }
