@@ -7104,6 +7104,128 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260903170307061337",
+   "applied_at": "2026-09-03T17:03:07",
+   "change": {
+    "code": "0482000045752",
+    "title": "KVAS TARAS NOIR 500ML",
+    "pos_title": "KVAS TARAS NOIR 500ML",
+    "size_num": 500,
+    "size_unit": "ML",
+    "multibuy": {
+     "qty": 2,
+     "price": 5
+    },
+    "promo": {
+     "price": 5,
+     "qty": 2,
+     "start": null,
+     "end": null
+    },
+    "deposit": 0.1,
+    "queued_at": "2026-09-03T21:02:13.047Z",
+    "id": "c1788469333047"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KWAS KOMBUCHA TARAS",
+     "F1744": "500.0",
+     "F22": "500ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "KWAS KOMBUCHA TARAS 500ML",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": "2",
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "1.4000",
+     "F196": "1.4000",
+     "F1140": "1.4000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.0000",
+     "F31": "2.0",
+     "F1006": "2.0",
+     "F1007": "5.0000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260903170307123737",
+   "applied_at": "2026-09-03T17:03:07",
+   "change": {
+    "code": "0482000045189",
+    "title": "KVAS TARAS 500ML",
+    "pos_title": "KVAS TARAS 500ML",
+    "size_num": 500,
+    "size_unit": "ML",
+    "multibuy": {
+     "qty": 2,
+     "price": 5
+    },
+    "promo": {
+     "price": 5,
+     "qty": 2,
+     "start": null,
+     "end": null
+    },
+    "deposit": 0.1,
+    "queued_at": "2026-09-03T21:03:03.954Z",
+    "id": "c1788469383954"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KWAS KOMBUCHA TARAS",
+     "F1744": "500.0",
+     "F22": "500ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "KWAS KOMBUCHA TARAS 500ML",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": "2",
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "1.4000",
+     "F196": "1.4000",
+     "F1140": "1.4000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.0000",
+     "F31": "2.0",
+     "F1006": "2.0",
+     "F1007": "5.0000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
