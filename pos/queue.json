@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0083213900021",
+   "pos_title": "ELWEST PROBIOTIQUE RYAZHENKA 944ML",
+   "size_num": 944,
+   "size_unit": "ML",
+   "promo": {
+    "price": 3.99,
+    "qty": 1,
+    "start": "2026-09-03",
+    "end": "2026-09-09"
+   },
+   "queued_at": "2026-09-03T12:56:01.891Z",
+   "id": "c1788440161891"
+  }
+ ]
 }
