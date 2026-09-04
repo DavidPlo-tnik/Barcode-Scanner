@@ -382,7 +382,31 @@
    "mp": null,
    "cost": 3.5,
    "at": "2026-09-04 13:33:00"
+  },
+  "0477021930026": {
+   "pt": "CASSIS CONGELE FROZEN BLACKCURRANT 908G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 908.0,
+   "nm": "CASSIS CONGELE FROZEN BLACKCURRANT 908G",
+   "rp": 14.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 14.99,
+   "mp": null,
+   "cost": 95.0,
+   "at": "2026-09-04 13:34:11"
   }
  },
- "updated": "2026-09-04 13:33:00"
+ "updated": "2026-09-04 13:34:11"
 }
