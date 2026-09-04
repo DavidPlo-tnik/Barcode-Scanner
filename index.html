@@ -2219,7 +2219,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v106</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v107</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7805,6 +7805,73 @@
     }
 
     bindCountEvents();
+
+    // ===== ANDROID BACK BUTTON =====
+    // Without this the hardware/gesture Back exits the PWA outright, even with a
+    // modal open. We keep a sentinel history entry "armed": each Back consumes
+    // it, we close the topmost open overlay (or step back to the scanner tab),
+    // then re-arm. Only when there is nothing left to unwind do we stop
+    // re-arming, so the next Back leaves the app as expected.
+    (() => {
+      const OVERLAYS = ['audit-confirm-modal','ecom-add-modal','count-session-detail-modal',
+                        'product-modal','pos-edit-modal','pos-pin-modal','pos-direct-modal',
+                        'list-detail-modal','merge-picker-modal','add-to-list-modal',
+                        'labels-overlay','reports-overlay'];
+      const openOrder = [];   // ids in the order they were opened (topmost last)
+
+      // watch .open on every overlay so we do not have to touch each call site
+      const obs = new MutationObserver(muts => {
+        muts.forEach(m => {
+          const el = m.target, id = el.id;
+          if (!OVERLAYS.includes(id)) return;
+          const isOpen = el.classList.contains('open');
+          const at = openOrder.indexOf(id);
+          if (isOpen && at === -1) { openOrder.push(id); arm(); }
+          else if (!isOpen && at !== -1) { openOrder.splice(at, 1); }
+        });
+      });
+      OVERLAYS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) obs.observe(el, { attributes: true, attributeFilter: ['class'] });
+      });
+
+      let armed = false;
+      function arm() {
+        if (armed) return;
+        history.pushState({ decarie: 'back-guard' }, '');
+        armed = true;
+      }
+
+      function closeTop() {
+        for (let i = openOrder.length - 1; i >= 0; i--) {
+          const el = document.getElementById(openOrder[i]);
+          if (el && el.classList.contains('open')) {
+            // prefer the overlay's own close button so its cleanup still runs
+            // modals use class="close"; the two overlays have their own ids
+            const btn = el.querySelector(':scope > .modal-header > .close, :scope .close, #reports-close-btn, #labels-close-btn');
+            if (btn) btn.click(); else el.classList.remove('open');
+            return true;
+          }
+        }
+        return false;
+      }
+
+      window.addEventListener('popstate', () => {
+        armed = false;
+        if (closeTop()) { arm(); return; }
+        const active = document.querySelector('.tab.active');
+        if (active && active.dataset.tab !== 'scanner') {
+          switchTab('scanner');
+          arm();
+          return;
+        }
+        // nothing left to unwind -- do not re-arm; the next Back exits the app
+      });
+
+      // arm once at startup so the very first Back is caught while a tab is open
+      arm();
+    })();
+
 
     // Keep the dashboard live: re-pull the small slice every 3 minutes (only
     // while the app is visible, so it costs nothing in the background) and
