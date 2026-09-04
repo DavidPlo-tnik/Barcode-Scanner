@@ -7276,6 +7276,106 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260904133300149458",
+   "applied_at": "2026-09-04T13:33:00",
+   "change": {
+    "code": "0062904560008",
+    "title": "ARONIA CONGELE CHOKEBERRIES 908G",
+    "pos_title": "ARONIA CONGELE CHOKEBERRIES  908G",
+    "size_num": 908,
+    "size_unit": "GR",
+    "queued_at": "2026-09-04T17:32:04.407Z",
+    "id": "c1788543124407"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ARONIA CONGELE ",
+     "F1744": "4000.0",
+     "F22": "908G",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ARONIA CONGELE  908G",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "67.5000",
+     "F196": "67.5000",
+     "F1140": "6.7500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "12.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "12.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260904133300243058",
+   "applied_at": "2026-09-04T13:33:00",
+   "change": {
+    "code": "0477021979191",
+    "title": "VIORNE ROUGE KALINA 908G",
+    "pos_title": "VIORNE ROUGE KALINA 908G",
+    "size_num": 908,
+    "size_unit": "GR",
+    "queued_at": "2026-09-04T17:33:00.006Z",
+    "id": "c1788543180007"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VIORNE ROUGE KALINA",
+     "F1744": "400.0",
+     "F22": "1000G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "VIORNE ROUGE KALINA 1000G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.5000",
+     "F196": "3.5000",
+     "F1140": "3.5000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "12.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "12.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
