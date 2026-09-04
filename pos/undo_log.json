@@ -7376,6 +7376,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260904133411020382",
+   "applied_at": "2026-09-04T13:34:11",
+   "change": {
+    "code": "0477021930026",
+    "title": "CASSIS CONGELE FROZEN BLACKCURRANT 908G",
+    "pos_title": "CASSIS CONGELE FROZEN BLACKCURRANT 908G",
+    "size_num": 908,
+    "size_unit": "GR",
+    "queued_at": "2026-09-04T17:33:46.247Z",
+    "id": "c1788543226247"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CASSIS CONGELE ",
+     "F1744": "4000.0",
+     "F22": "908G",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "CASSIS CONGELE  908G",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "95.0000",
+     "F196": "95.0000",
+     "F1140": "9.5000",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
