@@ -2219,7 +2219,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v107</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v108</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2503,9 +2503,13 @@
   // NOTE: 'depts' is intentionally excluded -- it is built from the products dict
   // which is empty in --live mode, so live.json carries depts:{} and would wipe
   // the real dept names from DATA. Dept names are static and live in data.json only.
+  // 'batches' excluded: ~1.5 MB of label-batch lists that only change on a full
+  // run. Carrying it in a file pushed every 5 min added ~470 MB of git history
+  // per day. 'depts' excluded because live runs build it from an empty products
+  // dict and would wipe the real names. Both live in data.json only.
   const LIVE_KEYS = ['updated','updated_at','months','weeks','last_14_days',
                      'daily_dates','dept_daily','dept_weekly','hourly',
-                     'yearly_rev','batches','partial_months'];
+                     'yearly_rev','partial_months'];
   let _liveAt = null;
   async function applyLiveSlice() {
     if (!DATA) return false;
