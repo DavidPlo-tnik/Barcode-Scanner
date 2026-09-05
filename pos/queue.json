@@ -1,3 +1,12 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0020235200000",
+   "title": "LARDON AIL ET POIVRE",
+   "pos_title": "LARDON AIL ET POIVRE",
+   "price": 22.99,
+   "queued_at": "2026-09-05T17:16:35.355Z",
+   "id": "c1788628595355"
+  }
+ ]
 }
