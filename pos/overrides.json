@@ -213,7 +213,30 @@
    "mp": null,
    "cost": 11.97,
    "at": "2026-09-05 13:20:14"
+  },
+  "0000000000083": {
+   "pt": "PAIN BOULANGERIE VOVA 600G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 51,
+   "un": "G",
+   "sn": 600.0,
+   "nm": "PAIN BOULANGERIE VOVA 600G",
+   "rp": 5.39,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.39,
+   "mp": null,
+   "at": "2026-09-05 16:18:32"
   }
  },
- "updated": "2026-09-05 13:20:14"
+ "updated": "2026-09-05 16:18:32"
 }
