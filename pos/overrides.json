@@ -142,7 +142,7 @@
    "at": "2026-09-05 16:18:32"
   },
   "0020831400000": {
-   "pt": "CREVETTE NORD.",
+   "pt": "Crevette nordique cuite congelée",
    "tf": 0,
    "tp": 0,
    "dp": null,
@@ -151,20 +151,20 @@
    "sd": 24,
    "un": "G",
    "sn": 1000.0,
-   "nm": "Crevette nordique avec écaille fr.4 DISC",
+   "nm": "Crevette nordique cuite congelée",
    "rp": 22.02,
    "ap": 1,
    "pp": 19.99,
    "ps": "2026-09-06",
-   "pe": "2035-09-06",
+   "pe": "2036-09-06",
    "rq": 1,
    "pq": 1,
    "lk": 1,
    "price": 19.99,
    "mp": null,
    "cost": 12.6,
-   "at": "2026-09-06 14:23:16"
+   "at": "2026-09-06 14:43:02"
   }
  },
- "updated": "2026-09-06 14:23:16"
+ "updated": "2026-09-06 14:43:02"
 }
