@@ -1,17 +1,3 @@
 {
- "items": [
-  {
-   "code": "0020831400000",
-   "title": "Crevette nordique cuite congelée",
-   "pos_title": "Crevette nordique cuite congelée",
-   "promo": {
-    "price": 19.99,
-    "qty": 1,
-    "start": "2026-09-06",
-    "end": "2036-09-06"
-   },
-   "queued_at": "2026-09-06T18:42:34.460Z",
-   "id": "c1788720154460"
-  }
- ]
+ "items": []
 }
