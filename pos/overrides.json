@@ -164,7 +164,30 @@
    "mp": null,
    "cost": 12.6,
    "at": "2026-09-06 14:43:02"
+  },
+  "0020235000000": {
+   "pt": "SAUCISSE VILLAGE GORALSKA GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 31,
+   "un": "GR",
+   "sn": null,
+   "nm": "SAUCISSE VILLAGE GORALSKA",
+   "rp": 19.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 19.99,
+   "mp": null,
+   "at": "2026-09-06 18:30:01"
   }
  },
- "updated": "2026-09-06 14:43:02"
+ "updated": "2026-09-06 18:30:01"
 }
