@@ -2219,7 +2219,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v109</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v110</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2382,21 +2382,7 @@
       await fetchOverrides(true);
       applyOverridesToProducts();
 
-      // The pipeline currently ships partial_months as {}. Reconstruct it from
-      // the data-update date so month-projection (charts + reports) works again.
-      if (DATA.updated && DATA.months && DATA.months.length &&
-          (!DATA.partial_months || !Object.keys(DATA.partial_months).length)) {
-        const u = new Date(DATA.updated + 'T12:00:00');
-        const curKey = `${u.getFullYear()}-${String(u.getMonth() + 1).padStart(2, '0')}`;
-        const lastKey = DATA.months[DATA.months.length - 1];
-        if (curKey === lastKey) {
-          const daysElapsed = u.getDate() - 1;            // monthly totals run through the day before update
-          const daysInMonth = new Date(u.getFullYear(), u.getMonth() + 1, 0).getDate();
-          if (daysElapsed >= 1 && daysElapsed < daysInMonth) {
-            DATA.partial_months = { [curKey]: { days: daysElapsed, total: daysInMonth } };
-          }
-        }
-      }
+      rebuildPartialMonths();
 
       loadbar('hide');
       $('#meta-info').textContent = `${Object.keys(DATA.products).length.toLocaleString()} ITEMS`;
@@ -2499,13 +2485,34 @@
     return n;
   }
 
+  // The pipeline ships partial_months as {}, so the app derives it from the
+  // data-update date. This drives the month-end pace forecast, so it has to be
+  // recomputed after ANY update to DATA.updated -- not just the initial load.
+  function rebuildPartialMonths() {
+    if (!DATA || !DATA.updated || !DATA.months || !DATA.months.length) return;
+    if (DATA.partial_months && Object.keys(DATA.partial_months).length) return;
+    const u = new Date(DATA.updated + 'T12:00:00');
+    const curKey = `${u.getFullYear()}-${String(u.getMonth() + 1).padStart(2, '0')}`;
+    const lastKey = DATA.months[DATA.months.length - 1];
+    if (curKey !== lastKey) return;
+    const daysElapsed = u.getDate() - 1;   // monthly totals run through the day before update
+    const daysInMonth = new Date(u.getFullYear(), u.getMonth() + 1, 0).getDate();
+    if (daysElapsed >= 1 && daysElapsed < daysInMonth) {
+      DATA.partial_months = { [curKey]: { days: daysElapsed, total: daysInMonth } };
+    }
+  }
+
   // Merge the small live slice over DATA when it is newer than the bulk file.
   // NOTE: 'depts' is intentionally excluded -- it is built from the products dict
   // which is empty in --live mode, so live.json carries depts:{} and would wipe
   // the real dept names from DATA. Dept names are static and live in data.json only.
   const LIVE_KEYS = ['updated','updated_at','months','weeks','last_14_days',
                      'daily_dates','dept_daily','dept_weekly','hourly',
-                     'yearly_rev','batches','partial_months'];
+                     'yearly_rev','batches'];
+  // NOTE: 'partial_months' is deliberately NOT overlaid. The pipeline ships it
+  // as {} and the app reconstructs it from DATA.updated below; letting the live
+  // slice write {} back over it every 3 minutes silently killed the month-end
+  // pace forecast.
   let _liveAt = null;
   async function applyLiveSlice() {
     if (!DATA) return false;
@@ -2520,6 +2527,7 @@
         if (live[k] !== undefined) DATA[k] = live[k];
       }
       _liveAt = live.updated_at;
+      rebuildPartialMonths();   // DATA.updated may have moved
       return true;
     } catch { return false; }                  // never let this break startup
   }
