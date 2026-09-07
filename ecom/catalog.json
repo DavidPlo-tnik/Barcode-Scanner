@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-07T18:50:57.485Z",
+ "updated": "2026-09-07T18:52:55.733Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -404,17 +404,17 @@
     "0482001737004_1788807056015.webp"
    ],
    "listed": false,
-   "status": "draft",
+   "status": "ready",
    "group": null,
    "dept": "1",
    "weekly": 270.26,
    "scale": false,
    "fresh": false,
    "v": {
-    "title": false,
-    "size": false,
+    "title": true,
+    "size": true,
     "photo": true,
-    "price": false
+    "price": true
    }
   },
   "0000000000085": {
