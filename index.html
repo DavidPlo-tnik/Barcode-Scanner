@@ -1858,8 +1858,6 @@
   </div>
   <div class="ecom-filter-row" id="ecom-filter-row2">
     <button class="ecom-chip active" data-efilter="all">ALL</button>
-    <button class="ecom-chip" data-efilter="todo">TO VALIDATE</button>
-    <button class="ecom-chip" data-efilter="ready">READY</button>
     <button class="ecom-chip" data-efilter="listed">LISTED</button>
     <button class="ecom-chip" data-efilter="nophoto">NEEDS PHOTO</button>
     <button class="ecom-chip" data-efilter="hasphoto">HAS PHOTO</button>
@@ -2232,10 +2230,6 @@
         <div class="pd-note" id="pd-photo-status"></div>
       </div>
 
-      <div class="pd-group-title" style="margin-top:14px;">Validated</div>
-      <label class="pd-toggle"><input type="checkbox" id="pd-v-title"><span>Title checked</span></label>
-      <label class="pd-toggle"><input type="checkbox" id="pd-v-size"><span>Size checked</span></label>
-      <label class="pd-toggle"><input type="checkbox" id="pd-v-price"><span>Price checked</span></label>
     </section>
 
     <section class="pd-group">
@@ -2281,7 +2275,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v111</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v112</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3429,6 +3423,16 @@
     } catch { return iso; }
   }
 
+  function ecomUnlock() {
+    const list = $('#ecom-container');
+    if (list) list.innerHTML = '<div class="empty-state">LOCKED — enter PIN</div>';
+    _pdPendingCode = null;
+    _ecomUnlockMode = true;
+    _pinBuffer = ''; renderPinDots(); $('#pin-error').textContent = '';
+    $('#pos-pin-modal').classList.add('open');
+  }
+  let _ecomUnlockMode = false;
+
   function edUnlock() {
     // reuse the existing PIN modal; on success, reveal the workspace
     _pdPendingCode = null;
@@ -3536,7 +3540,10 @@
         if (_pdCtx && _pdCtx.code && document.getElementById('ecom-panel')) {
           renderEcomPanel(_pdCtx.code);
         }
-        if (_edUnlockMode) {
+        if (_ecomUnlockMode) {
+          _ecomUnlockMode = false;
+          renderEcom();
+        } else if (_edUnlockMode) {
           _edUnlockMode = false;
           openEditorView();
           setTimeout(() => $('#ed-search') && $('#ed-search').focus(), 100);
@@ -3730,18 +3737,12 @@
       const listed = !!(ent && ent.listed === true);
       $('#pd-ecom').checked = listed;
       _pdInitial.ecom = listed;
-      const v = (ent && ent.v) || {};
-      $('#pd-v-title').checked = !!v.title;
-      $('#pd-v-size').checked  = !!v.size;
-      $('#pd-v-price').checked = !!v.price;
-      _pdInitial.v = { title: !!v.title, size: !!v.size, price: !!v.price };
       $('#pd-ecom-note').textContent = ent
         ? `in catalogue${ent.group ? ' · variant group' : ''}`
         : 'not in the website catalogue yet';
       renderPdPhotos(code, ent && ent.photos);
     } catch (e) {
       $('#pd-ecom').checked = false; _pdInitial.ecom = false;
-      _pdInitial.v = { title:false, size:false, price:false };
       $('#pd-ecom-note').textContent = '';
       renderPdPhotos(code, []);
     }
@@ -3960,6 +3961,65 @@
     });
   }
 
+  // Build an override entry from a change the user just made, so the app shows
+  // the new state immediately. The PC applier will publish the authoritative
+  // version to pos/overrides.json within a cycle; this just bridges the gap so
+  // you can see what you have and have not done yet.
+  function applyLocalOverride(code, ch) {
+    const prev = _overrides[code] || {};
+    const base = Object.assign({}, editStateFor(code) || {}, prev);
+    const o = Object.assign({}, base);
+
+    if (ch.title != null)     o.nm = ch.title;
+    if (ch.pos_title != null) o.pt = ch.pos_title;
+    if (ch.size_num != null)  { o.sn = ch.size_num; o.un = ch.size_unit || o.un; }
+    if (ch.tax_fed != null)   o.tf = ch.tax_fed;
+    if (ch.tax_prov != null)  o.tp = ch.tax_prov;
+    if (ch.subdept != null)   o.sd = ch.subdept;
+
+    if (ch.multibuy) { o.rp = +ch.multibuy.price; o.rq = +ch.multibuy.qty; }
+    else if (ch.price != null) { o.rp = +ch.price; if (!o.rq) o.rq = 1; }
+
+    if (ch.clear_promo) { o.pp = null; o.ps = null; o.pe = null; o.ap = 0; o.pq = 1; }
+    if (ch.promo) {
+      o.pp = +ch.promo.price;
+      o.pq = +(ch.promo.qty || 1);
+      o.ps = ch.promo.start || null;
+      o.pe = ch.promo.end || null;
+      const today = new Date().toISOString().slice(0, 10);
+      o.ap = (!o.ps || o.ps <= today) ? 1 : 0;      // scheduled promos are not active yet
+    }
+
+    // what the register would ring right now, per unit
+    const active = (o.ap === 1 && o.pp != null) ? o.pp : o.rp;
+    const qty    = (o.ap === 1 && o.pp != null) ? (o.pq || 1) : (o.rq || 1);
+    if (active != null) {
+      o.price = (qty > 1) ? Math.round((active / qty) * 100) / 100 : active;
+      o.mp = (qty > 1) ? `${qty}/$${(+active).toFixed(2)}` : null;
+    }
+    o.at = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    o._local = true;                                 // replaced when the PC publishes
+    _overrides[code] = o;
+  }
+
+  // Re-render whatever is on screen so a just-made edit is visible everywhere.
+  function repaintAfterLocalEdit(code) {
+    applyOverridesToProducts();
+    if (_editData && _editData.items && _editData.items[code]) {
+      Object.assign(_editData.items[code], _overrides[code] || {});
+    }
+    const active = document.querySelector('.tab.active');
+    if (active && active.dataset.tab === 'ecom') renderEcom();
+    // NOTE: do NOT call openProduct() here -- its 2nd arg is the scanned raw
+    // code, not options, and re-opening would reset scroll. The product card is
+    // rebuilt from DATA.products which applyOverridesToProducts() just patched,
+    // so it will be correct the next time it is opened.
+    const pm = document.getElementById('product-modal');
+    if (pm && pm.classList.contains('open') && typeof refreshProductCard === 'function') {
+      try { refreshProductCard(code); } catch {}
+    }
+  }
+
   async function pdSave() {
     const ch = pdComputeChanges();
 
@@ -3967,27 +4027,17 @@
     // is applied here directly rather than going through apply_queue.
     try {
       const want = $('#pd-ecom').checked;
-      const vt = $('#pd-v-title').checked, vs = $('#pd-v-size').checked, vp = $('#pd-v-price').checked;
-      const iv = _pdInitial.v || {};
-      const vChanged = (vt !== !!iv.title) || (vs !== !!iv.size) || (vp !== !!iv.price);
-      if (want !== _pdInitial.ecom || vChanged) {
+      if (want !== _pdInitial.ecom) {
         const code = _pdCtx.code;
         await mutateEcomCatalog(cat => {
           if (!cat.items[code]) {
-            cat.items[code] = { added: new Date().toISOString().slice(0,10), photos: [],
-                                listed: false, status: 'draft', v: {} };
+            cat.items[code] = { added: new Date().toISOString().slice(0,10),
+                                photos: [], listed: false, status: 'draft' };
           }
-          const e = cat.items[code];
-          e.v = e.v || {};
-          e.v.title = vt; e.v.size = vs; e.v.price = vp;
-          e.v.photo = (e.photos || []).length > 0;
-          e.listed = want;
-          e.status = (e.v.title && e.v.size && e.v.price && e.v.photo) ? 'ready' : 'draft';
+          cat.items[code].listed = want;
         });
         _pdInitial.ecom = want;
-        _pdInitial.v = { title: vt, size: vs, price: vp };
-        if (want !== undefined && vChanged) showToast('Validation saved ✓');
-        else showToast(want ? 'LISTED ON WEBSITE' : 'REMOVED FROM WEBSITE');
+        showToast(want ? 'LISTED ON WEBSITE' : 'REMOVED FROM WEBSITE');
       }
     } catch (e) { showToast('Website update failed: ' + e.message, true); }
 
@@ -4017,8 +4067,13 @@
       if (ch.promo) pend.promo = ch.promo;
       if (ch.title != null) pend.name = ch.title;
       markPending(_pdCtx.code, pend);
+      // ...and write it straight into the in-memory override layer so EVERY
+      // view (product card, search, ecom list, editor prefill) shows the new
+      // value right away instead of reverting until the next refresh.
+      applyLocalOverride(_pdCtx.code, ch);
       showToast('QUEUED FOR POS ✓');
       renderQueuedForItem(_pdCtx.code);
+      repaintAfterLocalEdit(_pdCtx.code);
     } catch (e) {
       showToast(e.message, true);
     } finally {
@@ -6151,7 +6206,11 @@
     if (name !== 'editor' && _edCodeReader) stopEdScanner();
     if (name === 'search') setTimeout(() => $('#search-input').focus(), 50);
     if (name === 'lists') renderLists();
-    if (name === 'ecom') renderEcom();
+    if (name === 'ecom') {
+      // ECOM edits the public catalogue, so gate it behind the same PIN
+      if (!_posUnlocked) { ecomUnlock(); }
+      else renderEcom();
+    }
     if (name === 'count') openCountView();
     if (name === 'editor') openEditorView();
   }
@@ -6351,8 +6410,6 @@
       switch (_ecomFilter) {
         case 'nophoto':  if (r.nPhotos) return false; break;
         case 'hasphoto': if (!r.nPhotos) return false; break;
-        case 'todo':     if (r.vDone === 4) return false; break;
-        case 'ready':    if (r.vDone !== 4 || r.listed) return false; break;
         case 'listed':   if (!r.listed) return false; break;
         case 'variants': if (!r.variantOf) return false; break;
         case 'scale':    if (!r.scale) return false; break;
@@ -6385,16 +6442,11 @@
         <div style="flex:1;min-width:0;">
           <div class="li-name">${escapeHtml(r.name.trim())}${r.listed ? ' <span style="color:var(--good);font-size:9px;">LIVE</span>' : ''}</div>
           <div class="li-meta">${escapeHtml(r.code)}${r.weekly > 0 ? ' · $' + Math.round(r.weekly) + '/wk' : ''}${r.variantDupe ? ' · <span class="ecom-badge-dupe">DUPLICATE NAME</span>' : (r.variantOf ? ' · variant' : '')}</div>
-          <div class="ecom-ticks">
-            <span class="ecom-tick ${r.v.title ? 'on':''}">TITLE</span>
-            <span class="ecom-tick ${r.v.size ? 'on':''}">SIZE</span>
-            <span class="ecom-tick ${r.nPhotos ? 'on':''}">PHOTO</span>
-            <span class="ecom-tick ${r.v.price ? 'on':''}">PRICE</span>
-          </div>
         </div>
         <div class="li-cur">${r.price != null ? fmtMoney(r.price) : '—'}</div>
         <div class="li-x">
-          <button class="btn small" data-eact="view" data-code="${r.code}">⋯</button>
+          <button class="btn small" data-eact="view" data-code="${r.code}" title="Product view">⋯</button>
+          <button class="btn small" data-eact="edit" data-code="${r.code}" title="POS editor">⚡</button>
           <button class="btn small danger" data-eact="del" data-code="${r.code}">✕</button>
         </div>
       </div>`;
@@ -6430,6 +6482,7 @@
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         if (btn.dataset.eact === 'view') openProduct(btn.dataset.code);
+        else if (btn.dataset.eact === 'edit') openPosDirect(btn.dataset.code);
         else if (btn.dataset.eact === 'del') {
           if (confirm('Remove from website catalog?')) ecomRemove(btn.dataset.code);
         }
