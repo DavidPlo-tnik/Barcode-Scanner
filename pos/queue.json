@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0000000004430",
+   "pos_title": "ANANAS GOLD GR6",
+   "size_num": 1,
+   "size_unit": "",
+   "promo": {
+    "price": 1.99,
+    "qty": 1,
+    "start": "2026-08-07",
+    "end": "2036-08-21"
+   },
+   "queued_at": "2026-09-07T16:25:02.536Z",
+   "id": "c1788798302536"
+  }
+ ]
 }
