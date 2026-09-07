@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0062798733146",
+   "pos_title": "FRAISE PANIER",
+   "size_num": 1000,
+   "size_unit": "ML",
+   "promo": {
+    "price": 4.99,
+    "qty": 1,
+    "start": "2026-09-07",
+    "end": "2036-09-07"
+   },
+   "queued_at": "2026-09-07T15:13:25.761Z",
+   "id": "c1788794005761"
+  }
+ ]
 }
