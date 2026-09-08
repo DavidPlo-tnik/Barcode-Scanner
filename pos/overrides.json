@@ -1,29 +1,5 @@
 {
  "items": {
-  "0020831400000": {
-   "pt": "Crevette nordique cuite congelée",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 1,
-   "qte": 0,
-   "sd": 24,
-   "un": "G",
-   "sn": 1000.0,
-   "nm": "Crevette nordique cuite congelée",
-   "rp": 22.02,
-   "ap": 1,
-   "pp": 19.99,
-   "ps": "2026-09-06",
-   "pe": "2036-09-06",
-   "rq": 1,
-   "pq": 1,
-   "lk": 1,
-   "price": 19.99,
-   "mp": null,
-   "cost": 12.6,
-   "at": "2026-09-06 14:43:02"
-  },
   "0020235000000": {
    "pt": "SAUCISSE VILLAGE GORALSKA GR",
    "tf": 0,
@@ -356,7 +332,31 @@
    "mp": null,
    "cost": 3.99,
    "at": "2026-09-07 20:34:48"
+  },
+  "0005974989606": {
+   "pt": "SELECTION OEUF X-GROS BLANC",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 3,
+   "un": "UN1",
+   "sn": 12.0,
+   "nm": "Selection oeuf x-gros blanc         12un",
+   "rp": 4.19,
+   "ap": 1,
+   "pp": 5.89,
+   "ps": "2024-09-25",
+   "pe": "2034-09-25",
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 5.89,
+   "mp": null,
+   "cost": 50.58,
+   "at": "2026-09-07 22:53:49"
   }
  },
- "updated": "2026-09-07 20:34:48"
+ "updated": "2026-09-07 22:53:49"
 }
