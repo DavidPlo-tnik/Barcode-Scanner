@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-07T19:03:27.509Z",
+ "updated": "2026-09-08T00:21:31.476Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -1224,7 +1224,9 @@
   },
   "0089269100118": {
    "added": "2026-09-06",
-   "photos": [],
+   "photos": [
+    "0089269100118_1788826890072.webp"
+   ],
    "listed": false,
    "status": "draft",
    "group": "4-grandma-s-perogies",
@@ -1235,7 +1237,7 @@
    "v": {
     "title": false,
     "size": false,
-    "photo": false,
+    "photo": true,
     "price": false
    }
   },
