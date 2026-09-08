@@ -644,8 +644,6 @@
     color: #fff; font-size: 12px; line-height: 1; cursor: pointer;
   }
 
-  .lbl-per-kg { font-size: 0.5em; font-weight: 600; }
-
   .ecom-sub-head {
     display: flex; align-items: center; gap: 8px;
     padding: 7px 10px 7px 20px; margin-top: 4px; cursor: pointer;
@@ -2287,7 +2285,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v116</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v117</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2361,16 +2359,11 @@
   // displayed (cards, search, ecom list, labels). Revenue keeps using fmtMoney.
   function isWeighed(code) {
     if (!code) return false;
-    // Labels carry the SHORT code (e.g. "4133") while edit.json is keyed by the
-    // padded 13-digit code ("0000000004133"), so a raw lookup silently missed
-    // every produce/PLU item. Normalise first.
-    const c = (typeof resolveCode === 'function') ? resolveCode(String(code)) : String(code);
-    const o = (typeof overrideFor === 'function') ? overrideFor(c) : null;
+    const o = (typeof overrideFor === 'function') ? overrideFor(code) : null;
     if (o && o.bal != null) return o.bal === 1;
-    const items = (_editData && _editData.items) || null;
-    if (!items) return false;
-    const e = items[c] || items[String(code)] || items[String(code).padStart(13, '0')];
-    return !!(e && e.bal === 1);
+    const e = (_editData && _editData.items && _editData.items[code]) || null;
+    if (e && e.bal != null) return e.bal === 1;
+    return false;
   }
   function priceText(code, v) {
     if (v == null || v === '') return '—';
@@ -2540,12 +2533,8 @@
     return _overrides;
   }
   function overrideFor(code) {
-    if (!code || !DATA) return null;
-    // same padded-vs-short code trap as edit.json
-    const rc = (typeof resolveCode === 'function') ? resolveCode(String(code)) : String(code);
-    const o = _overrides[rc] || _overrides[String(code)] ||
-              _overrides[String(code).padStart(13, '0')];
-    if (!o) return null;
+    const o = _overrides[code];
+    if (!o || !DATA) return null;
     // Drop the override once the full rebuild has clearly caught up. Use a
     // grace margin rather than an exact comparison: the hourly run stamps
     // data.json with its START time but takes minutes to finish, so an edit
@@ -2568,7 +2557,7 @@
     if (!DATA || !DATA.products) return 0;
     let n = 0;
     for (const code in _overrides) {
-      const o = overrideFor(rc) || overrideFor(code);
+      const o = overrideFor(code);
       if (!o) continue;
       const p = DATA.products[code];
       if (!p) continue;
@@ -3643,16 +3632,7 @@
     return _editData;
   }
   function editStateFor(code) {
-    // edit.json is keyed by the PADDED 13-digit code, but items are often
-    // opened by their short PLU (e.g. "4133"). Looking up the raw code missed
-    // entirely, so EVERY field fell back to defaults -- Balance unticked, taxes
-    // off, size blank. Normalise first, with padded/stripped fallbacks.
-    const items = (_editData && _editData.items) || null;
-    const rc = (typeof resolveCode === 'function') ? resolveCode(String(code)) : String(code);
-    const base = items
-      ? (items[rc] || items[String(code)] || items[String(code).padStart(13, '0')] ||
-         items[String(code).replace(/^0+/, '')] || null)
-      : null;
+    const base = (_editData && _editData.items && _editData.items[code]) || null;
     // A freshly-applied edit lands in pos/overrides.json long before the hourly
     // rebuild reaches edit.json, so overlay it -- otherwise the editor keeps
     // showing the OLD price right after you changed it.
@@ -4044,7 +4024,6 @@
   // version to pos/overrides.json within a cycle; this just bridges the gap so
   // you can see what you have and have not done yet.
   function applyLocalOverride(code, ch) {
-    code = (typeof resolveCode === 'function') ? resolveCode(String(code)) : String(code);
     const prev = _overrides[code] || {};
     const base = Object.assign({}, editStateFor(code) || {}, prev);
     const o = Object.assign({}, base);
@@ -4083,7 +4062,6 @@
 
   // Re-render whatever is on screen so a just-made edit is visible everywhere.
   function repaintAfterLocalEdit(code) {
-    code = (typeof resolveCode === 'function') ? resolveCode(String(code)) : String(code);
     applyOverridesToProducts();
     if (_editData && _editData.items && _editData.items[code]) {
       Object.assign(_editData.items[code], _overrides[code] || {});
@@ -7536,15 +7514,11 @@
       const unitPrice = item.price != null ? unitPriceString(item.price, size) : '';
       let priceDisplay, priceSize;
       if (item.multipack) {
-        // escaped here because priceDisplay is injected as HTML (for the small
-        // /kg suffix) rather than escaped at the output site
-        priceDisplay = escapeHtml(item.multipack);
+        priceDisplay = item.multipack;
         priceSize = 'mp';
       } else if (item.price != null) {
-        // weighed items are priced per kilo -- say so, in a smaller suffix so it
-        // does not compete with the number (matches the printed PDF)
-        priceDisplay = item.price.toFixed(2) +
-          (isWeighed(item.code) ? '<span class="lbl-per-kg">/kg</span>' : '');
+        // weighed items are priced per kilo -- say so on the shelf label
+        priceDisplay = item.price.toFixed(2) + (isWeighed(item.code) ? '/kg' : '');
         priceSize = 'reg';
       } else {
         priceDisplay = '—';
@@ -7578,7 +7552,7 @@
             <div class="lbl-body">
               <div class="lbl-name">${escapeHtml(labelDisplayName(item))}</div>
               <div class="lbl-price-row">
-                <div class="lbl-price lbl-price-${priceSize}">${priceDisplay}</div>
+                <div class="lbl-price lbl-price-${priceSize}">${escapeHtml(priceDisplay)}</div>
                 ${taxBadge}
               </div>
               ${unitPrice ? `<div class="lbl-unit">${unitPrice}</div>` : ''}
@@ -7820,26 +7794,7 @@
   function labelPriceText(item) {
     if (item.multipack) return item.multipack;
     if (item.price == null) return '\u2014';
-    return `$${item.price.toFixed(2)}`;          // suffix drawn separately, smaller
-  }
-  // "/kg" for weighed items, drawn at half the price font size so it does not
-  // compete with the number.
-  function labelPriceSuffix(item) {
-    return (!item.multipack && item.price != null && isWeighed(item.code)) ? '/kg' : '';
-  }
-  // Draw price + small suffix; returns the total width used.
-  function drawPriceWithSuffix(doc, text, suffix, x, y, size) {
-    doc.setFontSize(size);
-    doc.text(text, x, y);
-    let w = doc.getTextWidth(text);
-    if (suffix) {
-      const small = Math.max(4, size * 0.5);
-      doc.setFontSize(small);
-      doc.text(suffix, x + w, y);
-      w += doc.getTextWidth(suffix);
-      doc.setFontSize(size);
-    }
-    return w;
+    return `$${item.price.toFixed(2)}` + (isWeighed(item.code) ? '/kg' : '');
   }
 
   function drawPerfLabelPdf(doc, x, y, w, h, item) {
@@ -7897,13 +7852,9 @@
       pfs -= 0.5; doc.setFontSize(pfs);
     }
     doc.setTextColor(0, 0, 0);
-    const pSuffix = labelPriceSuffix(item);
-    const pw = doc.getTextWidth(priceText) +
-               (pSuffix ? (doc.setFontSize(Math.max(4, pfs * 0.5)),
-                           doc.getTextWidth(pSuffix)) : 0);
-    doc.setFontSize(pfs);
+    const pw = doc.getTextWidth(priceText);
     const priceCx = rightX - priceZoneW / 2;
-    drawPriceWithSuffix(doc, priceText, pSuffix, priceCx - pw / 2, y + h / 2 + pfs / 6, pfs);
+    doc.text(priceText, priceCx - pw / 2, y + h / 2 + pfs / 6);
 
     // ── +tax indicator under the price ──
     if (item.taxed) {
@@ -7932,18 +7883,11 @@
     const priceIsMp = !!item.multipack;
     const priceText = labelPriceText(item);
     doc.setFont('helvetica', 'bold');
-    const pfs2 = priceIsMp ? 14 : 19;
-    doc.setFontSize(pfs2);
-    const pSuffix2 = labelPriceSuffix(item);
-    let priceWidth = doc.getTextWidth(priceText);
-    if (pSuffix2) {
-      doc.setFontSize(Math.max(4, pfs2 * 0.5));
-      priceWidth += doc.getTextWidth(pSuffix2);
-      doc.setFontSize(pfs2);
-    }
+    doc.setFontSize(priceIsMp ? 14 : 19);
+    const priceWidth = doc.getTextWidth(priceText);
     const priceX = x + w - pad - priceWidth;
     const priceY = inY + (priceIsMp ? 5 : 6.5);
-    drawPriceWithSuffix(doc, priceText, pSuffix2, priceX, priceY, pfs2);
+    doc.text(priceText, priceX, priceY);
 
     // NAME (left, top — wraps, shrinks if too tall)
     const nameMaxW = inW - priceWidth - 1.5;
@@ -8040,15 +7984,9 @@
     doc.setFont('helvetica', 'bold');
     const priceSize = priceIsMp ? 32 : 44;
     doc.setFontSize(priceSize);
-    const pSuffix3 = labelPriceSuffix(item);
-    let pw = doc.getTextWidth(priceText);
-    if (pSuffix3) {
-      doc.setFontSize(Math.max(4, priceSize * 0.5));
-      pw += doc.getTextWidth(pSuffix3);
-      doc.setFontSize(priceSize);
-    }
+    const pw = doc.getTextWidth(priceText);
     const priceY = cursorY + priceSize * 0.32;
-    drawPriceWithSuffix(doc, priceText, pSuffix3, cx - pw / 2, priceY, priceSize);
+    doc.text(priceText, cx - pw / 2, priceY);
 
     // === +tax — quiet but readable: small lowercase black next to price baseline
     if (item.taxed) {
