@@ -1,28 +1,5 @@
 {
  "items": {
-  "0020235000000": {
-   "pt": "SAUCISSE VILLAGE GORALSKA GR",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 1,
-   "qte": 0,
-   "sd": 31,
-   "un": "GR",
-   "sn": null,
-   "nm": "SAUCISSE VILLAGE GORALSKA",
-   "rp": 19.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 19.99,
-   "mp": null,
-   "at": "2026-09-06 18:33:13"
-  },
   "0062798733146": {
    "pt": "FRAISE PANIER",
    "tf": 0,
@@ -380,7 +357,31 @@
    "mp": null,
    "cost": 1.97,
    "at": "2026-09-07 22:54:53"
+  },
+  "0482000183007": {
+   "pt": "POLIANA KVASOVA 1500ML",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "ML",
+   "sn": 1500.0,
+   "nm": "POLIANA KVASOVA 1500ML",
+   "rp": 2.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 2.99,
+   "mp": null,
+   "cost": 1.99,
+   "at": "2026-09-08 15:01:52"
   }
  },
- "updated": "2026-09-07 22:54:53"
+ "updated": "2026-09-08 15:01:52"
 }
