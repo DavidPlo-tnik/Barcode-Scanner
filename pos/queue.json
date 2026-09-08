@@ -1,14 +1,3 @@
 {
- "items": [
-  {
-   "code": "0020993600000",
-   "title": "BAGUETTE 400G",
-   "pos_title": "BAGUETTE 400G",
-   "size_num": 400,
-   "size_unit": "GR",
-   "price": 2.99,
-   "queued_at": "2026-09-08T19:39:59.761Z",
-   "id": "c1788896399762"
-  }
- ]
+ "items": []
 }
