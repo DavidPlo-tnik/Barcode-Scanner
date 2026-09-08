@@ -2285,7 +2285,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v117</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v118</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2429,30 +2429,14 @@
       const res = await fetch(`data.json?v=${cacheBust}`, { cache: 'no-store' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
 
-      // Stream it so the user sees real progress on a ~13 MB file instead of a
-      // blank screen. Falls back to a plain read if streaming is unavailable.
-      let text = null;
-      try {
-        const total = +(res.headers.get('content-length') || 0);
-        if (res.body && res.body.getReader) {
-          const reader = res.body.getReader();
-          const chunks = []; let got = 0;
-          for (;;) {
-            const { done, value } = await reader.read();
-            if (done) break;
-            chunks.push(value); got += value.length;
-            const mb = (got / 1048576).toFixed(1);
-            const verb = _refreshing ? 'Refreshing' : 'Loading catalogue';
-            if (total) loadbar('load', `${verb}… ${mb} of ${(total/1048576).toFixed(1)} MB`, got/total*100);
-            else loadbar('load', `${verb}… ${mb} MB`, null);
-          }
-          const buf = new Uint8Array(got); let off = 0;
-          for (const c of chunks) { buf.set(c, off); off += c.length; }
-          text = new TextDecoder('utf-8').decode(buf);
-        }
-      } catch { text = null; }
-      loadbar('load', 'Preparing catalogue…', null);
-      DATA = text != null ? JSON.parse(text) : await res.json();
+      // NOTE: do NOT stream-and-concat this file. Building chunks -> Uint8Array
+      // -> TextDecoder string -> JSON.parse holds FOUR copies of a ~15 MB file
+      // at once (~80 MB peak) and iOS kills the tab, which showed up as
+      // "could not load catalogue" on phones while desktops were fine.
+      // res.json() parses straight from the response stream and never
+      // materialises the whole thing as a JS string.
+      loadbar('load', 'Loading catalogue…', null);
+      DATA = await res.json();
 
       // live.json carries just the volatile dashboard slice (today's sales,
       // hourly, dept totals ~55 KB) and is refreshed every few minutes, while
