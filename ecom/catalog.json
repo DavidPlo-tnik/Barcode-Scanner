@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-08T00:27:58.000Z",
+ "updated": "2026-09-08T00:29:40.309Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -2760,7 +2760,9 @@
   },
   "0006565100221": {
    "added": "2026-09-06",
-   "photos": [],
+   "photos": [
+    "0006565100221_1788827378808.webp"
+   ],
    "listed": false,
    "status": "draft",
    "group": "3-naturoeuf-oeuf-gros",
@@ -2771,7 +2773,7 @@
    "v": {
     "title": false,
     "size": false,
-    "photo": false,
+    "photo": true,
     "price": false
    }
   },
