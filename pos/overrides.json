@@ -213,7 +213,30 @@
    "mp": null,
    "cost": 80.5,
    "at": "2026-09-07 20:22:05"
+  },
+  "0023983400000": {
+   "pt": "RICOTTA 6% TVOROG GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 3,
+   "un": "",
+   "sn": null,
+   "nm": "RICOTTA 6% TVOROG",
+   "rp": 14.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 14.99,
+   "mp": null,
+   "at": "2026-09-07 20:25:11"
   }
  },
- "updated": "2026-09-07 20:22:05"
+ "updated": "2026-09-07 20:25:11"
 }
