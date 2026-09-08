@@ -2285,7 +2285,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v118</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v119</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2429,14 +2429,39 @@
       const res = await fetch(`data.json?v=${cacheBust}`, { cache: 'no-store' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
 
-      // NOTE: do NOT stream-and-concat this file. Building chunks -> Uint8Array
-      // -> TextDecoder string -> JSON.parse holds FOUR copies of a ~15 MB file
-      // at once (~80 MB peak) and iOS kills the tab, which showed up as
-      // "could not load catalogue" on phones while desktops were fine.
-      // res.json() parses straight from the response stream and never
-      // materialises the whole thing as a JS string.
-      loadbar('load', 'Loading catalogue…', null);
-      DATA = await res.json();
+      // Progress WITHOUT holding the file in memory.
+      // The old version collected chunks, concatenated them, decoded to a
+      // string and parsed that -- four copies of a ~15 MB file alive at once
+      // (~80 MB peak), which iOS killed ("could not load catalogue" on phones,
+      // fine on desktop). Instead we pipe the response through a counting
+      // TransformStream: bytes are tallied as they pass and immediately handed
+      // to the JSON parser, so nothing accumulates.
+      const total = +(res.headers.get('content-length') || 0);
+      let body = res.body, counted = false;
+      try {
+        if (body && typeof TransformStream !== 'undefined') {
+          let loaded = 0, lastPaint = 0;
+          const meter = new TransformStream({
+            transform(chunk, ctrl) {
+              loaded += chunk.byteLength;
+              const now = Date.now();
+              if (now - lastPaint > 100) {          // don't thrash the DOM
+                lastPaint = now;
+                const mb = (loaded / 1048576).toFixed(1);
+                const verb = _refreshing ? 'Refreshing' : 'Loading catalogue';
+                if (total) loadbar('load', `${verb}… ${mb} of ${(total/1048576).toFixed(1)} MB`, loaded / total * 100);
+                else loadbar('load', `${verb}… ${mb} MB`, null);
+              }
+              ctrl.enqueue(chunk);
+            }
+          });
+          body = body.pipeThrough(meter);
+          counted = true;
+        }
+      } catch { counted = false; body = res.body; }
+
+      loadbar('load', counted ? 'Loading catalogue…' : 'Loading catalogue…', counted ? 0 : null);
+      DATA = counted ? await new Response(body).json() : await res.json();
 
       // live.json carries just the volatile dashboard slice (today's sales,
       // hourly, dept totals ~55 KB) and is refreshed every few minutes, while
@@ -5187,16 +5212,28 @@
   // the user removes them by hand. Dismissals persist (key = batchId::code) so
   // the item stays hidden even though batches are regenerated nightly.
   const BATCH_HIDE_KEY = 'decarie_batch_hidden_v1';
-  function getBatchHidden() { try { return JSON.parse(localStorage.getItem(BATCH_HIDE_KEY) || '[]'); } catch { return []; } }
+  // Cached as a Set. batchItemHidden() is called once per item per batch, and
+  // re-reading + JSON.parsing localStorage on every one of those calls was
+  // making the Lists tab visibly slow with large auto-batches.
+  let _batchHiddenSet = null;
+  function batchHiddenSet() {
+    if (_batchHiddenSet) return _batchHiddenSet;
+    try { _batchHiddenSet = new Set(JSON.parse(localStorage.getItem(BATCH_HIDE_KEY) || '[]')); }
+    catch { _batchHiddenSet = new Set(); }
+    return _batchHiddenSet;
+  }
+  function getBatchHidden() { return Array.from(batchHiddenSet()); }
   function hideBatchItem(batchId, code) {
     const s = getBatchHidden(); const key = batchId + '::' + code;
     if (!s.includes(key)) { s.push(key); localStorage.setItem(BATCH_HIDE_KEY, JSON.stringify(s)); }
+    _batchHiddenSet = null;                 // invalidate cache
   }
   function unhideBatchItem(batchId, code) {
     const key = batchId + '::' + code;
     localStorage.setItem(BATCH_HIDE_KEY, JSON.stringify(getBatchHidden().filter(k => k !== key)));
+    _batchHiddenSet = null;                 // invalidate cache
   }
-  function batchItemHidden(batchId, code) { return getBatchHidden().includes(batchId + '::' + code); }
+  function batchItemHidden(batchId, code) { return batchHiddenSet().has(batchId + '::' + code); }
 
   function batchItems(b) {
     return (b.items || []).filter(c => !excludedFromLabels(c) && !batchItemHidden(b.id, c));
