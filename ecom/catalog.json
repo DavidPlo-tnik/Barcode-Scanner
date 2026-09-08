@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-08T00:31:48.919Z",
+ "updated": "2026-09-08T00:33:54.062Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -1366,7 +1366,9 @@
   },
   "0006820001002": {
    "added": "2026-09-06",
-   "photos": [],
+   "photos": [
+    "0006820001002_1788827632521.webp"
+   ],
    "listed": false,
    "status": "draft",
    "group": "3-lactan-purfiltre-lait",
@@ -1377,7 +1379,7 @@
    "v": {
     "title": false,
     "size": false,
-    "photo": false,
+    "photo": true,
     "price": false
    }
   },
