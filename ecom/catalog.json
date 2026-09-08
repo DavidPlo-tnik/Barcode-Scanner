@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-08T00:21:31.476Z",
+ "updated": "2026-09-08T00:24:45.469Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -241,7 +241,9 @@
   },
   "0023983400000": {
    "added": "2026-07-30",
-   "photos": [],
+   "photos": [
+    "0023983400000_1788827083927.webp"
+   ],
    "listed": false,
    "status": "draft",
    "group": null,
@@ -252,7 +254,7 @@
    "v": {
     "title": false,
     "size": false,
-    "photo": false,
+    "photo": true,
     "price": false
    }
   },
