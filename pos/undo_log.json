@@ -9027,6 +9027,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260908150708133058",
+   "applied_at": "2026-09-08T15:07:08",
+   "change": {
+    "code": "0482307761783",
+    "title": "GATEAU KIEV ROSHEN 850G",
+    "pos_title": "GATEAU KIEV ROSHEN 850G",
+    "size_num": 850,
+    "size_unit": "GR",
+    "queued_at": "2026-09-08T19:06:51.269Z",
+    "id": "c1788894411269"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GATEAU KIEV ROSHEN",
+     "F1744": "25.0",
+     "F22": "850G",
+     "F23": "UN"
+    },
+    "POS_TAB": {
+     "F02": "GATEAU KIEV ROSHEN 850G",
+     "F04": "4",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "34.0000",
+     "F196": "34.0000",
+     "F1140": "34.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "44.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "44.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
