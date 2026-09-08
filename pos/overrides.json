@@ -381,7 +381,31 @@
    "mp": null,
    "cost": 1.99,
    "at": "2026-09-08 15:01:52"
+  },
+  "0482307761783": {
+   "pt": "GATEAU KIEV ROSHEN 850G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 850.0,
+   "nm": "GATEAU KIEV ROSHEN 850G",
+   "rp": 44.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 44.99,
+   "mp": null,
+   "cost": 34.0,
+   "at": "2026-09-08 15:07:08"
   }
  },
- "updated": "2026-09-08 15:01:52"
+ "updated": "2026-09-08 15:07:08"
 }
