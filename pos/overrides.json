@@ -1,29 +1,5 @@
 {
  "items": {
-  "0003338366401": {
-   "pt": "CAROTTE",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 41,
-   "un": "G",
-   "sn": 907.0,
-   "nm": "MP carotte local                (24) 2lb",
-   "rp": 0.99,
-   "ap": 1,
-   "pp": 0.99,
-   "ps": "2026-08-14",
-   "pe": "2036-09-07",
-   "rq": 1,
-   "pq": 1,
-   "lk": 1,
-   "price": 0.99,
-   "mp": null,
-   "cost": 14.5,
-   "at": "2026-09-07 11:57:48"
-  },
   "0000000004430": {
    "pt": "ANANAS GOLD GR6",
    "tf": 0,
@@ -456,7 +432,31 @@
   },
   "4011": {
    "at": "2026-09-08 17:42:08"
+  },
+  "0482017460008": {
+   "pt": "HATINKA GRAIN DE SARRASIN 1000GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 1000.0,
+   "nm": "HATINKA GRAIN DE SARRASIN 1000GR",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 2.99,
+   "at": "2026-09-08 18:20:39"
   }
  },
- "updated": "2026-09-08 17:42:08"
+ "updated": "2026-09-08 18:20:39"
 }
