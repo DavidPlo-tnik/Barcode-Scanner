@@ -9077,6 +9077,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260908152246131506",
+   "applied_at": "2026-09-08T15:22:46",
+   "change": {
+    "code": "0005784123300",
+    "title": "NANUK TRIMURES DE SAUMON FUMÉ 500G",
+    "pos_title": "NANUK TRIMURES DE SAUMON FUMÉ 500G",
+    "size_num": 500,
+    "size_unit": "GR",
+    "queued_at": "2026-09-08T19:22:47.765Z",
+    "id": "c1788895367765"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "NANUK SAUMON FUMEE",
+     "F1744": "675.0",
+     "F22": "675 ",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "NANUK SAUMON FUMEE 500G",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "11.0000",
+     "F196": "11.0000",
+     "F1140": "11.0000",
+     "F27": "0000260057"
+    },
+    "PRICE_TAB": {
+     "F30": "17.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "17.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
