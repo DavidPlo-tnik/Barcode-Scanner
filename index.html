@@ -1863,7 +1863,6 @@
     <button class="ecom-chip" data-efilter="hasphoto">HAS PHOTO</button>
     <button class="ecom-chip" data-efilter="variants">VARIANTS</button>
     <button class="ecom-chip" data-efilter="scale">SCALE</button>
-    <button class="ecom-chip" data-efilter="fresh">FRESH</button>
     <button class="ecom-chip" data-efilter="dupes">DUPLICATE NAMES</button>
   </div>
   <div class="ecom-statusbar" id="ecom-statusbar"></div>
@@ -2275,7 +2274,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v112</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v113</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2343,6 +2342,23 @@
     const names = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     return `${names[parseInt(mo, 10) - 1]} ${y.slice(2)}`;
   };
+
+  // Items flagged "Weight at cash" (Balance / F82) are priced per kilo, so the
+  // bare dollar figure is misleading -- show it as $X.XX/kg wherever a PRICE is
+  // displayed (cards, search, ecom list, labels). Revenue keeps using fmtMoney.
+  function isWeighed(code) {
+    if (!code) return false;
+    const o = (typeof overrideFor === 'function') ? overrideFor(code) : null;
+    if (o && o.bal != null) return o.bal === 1;
+    const e = (_editData && _editData.items && _editData.items[code]) || null;
+    if (e && e.bal != null) return e.bal === 1;
+    return false;
+  }
+  function priceText(code, v) {
+    if (v == null || v === '') return '—';
+    const money = (v < 100) ? `$${(+v).toFixed(2)}` : `$${Math.round(v).toLocaleString()}`;
+    return isWeighed(code) ? `${money}/kg` : money;
+  }
 
   const fmtMoney = (v) => {
     if (v === 0) return '$0';
@@ -3241,6 +3257,33 @@
   let _pdTitleSynced = true;   // POS title mirrors main name until user edits it
 
   const F29_MAX = 60, F02_MAX = 40;
+
+  // Trailing size token, e.g. " 450ML" / " 1.5 KG" / "700 G."
+  const SIZE_SUFFIX_RE = /\s*\d+(?:[.,]\d+)?\s*(?:G|GR|KG|ML|L|CL|OZ|LB|UN|PC)\b\.?\s*$/i;
+
+  function currentSizeToken() {
+    const n = ($('#pd-size-num').value || '').trim();
+    const u = ($('#pd-size-unit').value || '').trim().toUpperCase();
+    if (!n) return '';
+    const num = n.replace(',', '.').replace(/\.0+$/, '');
+    return u ? `${num}${u}` : num;
+  }
+
+  // Double-click either title to append the size. Doing it again after changing
+  // the size REPLACES the old token instead of stacking a second one.
+  function stampSizeIntoTitle(inputEl, max) {
+    const token = currentSizeToken();
+    if (!token) { showToast('Set the size and unit first', true); return; }
+    let base = (inputEl.value || '').replace(SIZE_SUFFIX_RE, '').trimEnd();
+    let next = (base ? base + ' ' : '') + token;
+    if (next.length > max) {
+      showToast(`Too long for ${max} chars — shorten the name first`, true);
+      next = next.slice(0, max);
+    }
+    inputEl.value = next;
+    inputEl.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+
   function updateTitleCounts() {
     const t1 = $('#pd-title').value.length, t2 = $('#pd-title2').value.length;
     const c1 = $('#pd-title-count'), c2 = $('#pd-title2-count');
@@ -3621,7 +3664,11 @@
     // titles: main = data.json name, POS title = real F02 from edit.json
     $('#pd-title').value = p.name || '';
     $('#pd-title2').value = e.pt || p.name || '';
-    _pdTitleSynced = ($('#pd-title2').value === (p.name || '').slice(0, 40));
+    // Mirror by default. Previously this only mirrored when the existing POS
+    // title already equalled the name, which is rarely true (POS titles are
+    // abbreviated) -- so typing usually did NOT sync, seemingly at random.
+    // Typing in the POS title field below still breaks the link for this item.
+    _pdTitleSynced = true;
     updateTitleCounts();
 
     // size: real number + unit from edit.json (no fragile string parsing)
@@ -4313,7 +4360,7 @@
         priceBlock = `
           <div class="stat accent">
             <div class="label">${isScale ? 'POS PRICE ⚠' : 'PRICE'}</div>
-            <div class="value">${fmtMoney(p.price)}</div>
+            <div class="value">${priceText(p.code, p.price)}</div>
             <div class="sub">${isScale ? 'set on scale — may differ' : (p.depuis ? 'since ' + escapeHtml(p.depuis) : '')}</div>
           </div>`;
       }
@@ -5470,7 +5517,7 @@
             <div class="li-name">${escapeHtml(it.name.trim())}</div>
             <div class="li-meta">${it.rev > 0 ? fmtMoney(it.rev) + ' / 14mo' : 'no sales yet'}</div>
           </div>
-          <div class="li-cur">${it.price != null ? fmtMoney(it.price) : '—'}</div>
+          <div class="li-cur">${it.price != null ? priceText(it.code, it.price) : '—'}</div>
         </div>`).join('')}`;
 
     const si = document.getElementById('cashier-search');
@@ -5526,7 +5573,7 @@
             <div class="li-name">${escapeHtml((it.name||'').trim())}</div>
             <div class="li-meta">${fmtMoney(it.rev)} / 14mo</div>
           </div>
-          <div class="li-cur">${it.price != null ? fmtMoney(it.price) : '—'}</div>
+          <div class="li-cur">${it.price != null ? priceText(it.code, it.price) : '—'}</div>
         </div>`).join('')}`;
 
     const si = document.getElementById('scale-detail-search');
@@ -6354,11 +6401,35 @@
       const dc = e.dept != null ? String(e.dept) : '';
       if (dc) counts[dc] = (counts[dc] || 0) + 1;
     });
-    const opts = Object.keys(counts)
-      .map(dc => ({ dc, name: (DATA.depts && DATA.depts[dc]) || ('#' + dc), n: counts[dc] }))
-      .sort((a, b) => b.n - a.n);
-    sel.innerHTML = '<option value="">ALL DEPARTMENTS</option>' +
-      opts.map(o => `<option value="${o.dc}">${escapeHtml(o.name)} (${o.n})</option>`).join('');
+    // Two levels, matching the reports: pick a whole family (Épicerie, Viande…)
+    // or one department inside it. Values are "fam:Name" or the dept code.
+    let html = '<option value="">ALL DEPARTMENTS</option>';
+    const used = new Set();
+    DEPT_GROUPS.forEach(g => {
+      const subs = g.subs
+        .map(String)
+        .filter(dc => counts[dc])
+        .map(dc => ({ dc, name: (DATA.depts && DATA.depts[dc]) || ('#' + dc), n: counts[dc] }))
+        .sort((a, b) => b.n - a.n);
+      if (!subs.length) return;
+      const tot = subs.reduce((t, x) => t + x.n, 0);
+      html += `<optgroup label="${escapeHtml(g.name)}">`;
+      html += `<option value="fam:${escapeHtml(g.name)}">— all ${escapeHtml(g.name)} (${tot})</option>`;
+      subs.forEach(o => {
+        used.add(o.dc);
+        html += `<option value="${o.dc}">${escapeHtml(o.name)} (${o.n})</option>`;
+      });
+      html += '</optgroup>';
+    });
+    const orphans = Object.keys(counts).filter(dc => !used.has(dc));
+    if (orphans.length) {
+      html += '<optgroup label="Autre">';
+      orphans.sort((a, b) => counts[b] - counts[a]).forEach(dc => {
+        html += `<option value="${dc}">${escapeHtml((DATA.depts && DATA.depts[dc]) || ('#'+dc))} (${counts[dc]})</option>`;
+      });
+      html += '</optgroup>';
+    }
+    sel.innerHTML = html;
     sel.dataset.filled = '1';
     sel.addEventListener('change', () => { _ecomDept = sel.value; renderEcom(); });
   }
@@ -6367,6 +6438,7 @@
     const container = $('#ecom-container');
     const status = $('#ecom-statusbar');
     const cat = await fetchEcomCatalog();
+    fetchEditData();          // weighed flags for per-kg prices (non-blocking)
     populateEcomDepts(cat);
     const codes = Object.keys(cat.items);
     const q = (_ecomSearch || '').trim().toLowerCase();
@@ -6406,14 +6478,18 @@
       };
     }).filter(r => {
       if (q && !(r.name.toLowerCase().includes(q) || r.code.includes(q))) return false;
-      if (_ecomDept && r.deptCode !== _ecomDept) return false;
+      if (_ecomDept) {
+        if (_ecomDept.startsWith('fam:')) {
+          const g = DEPT_GROUPS.find(x => x.name === _ecomDept.slice(4));
+          if (!g || !g.subs.map(String).includes(r.deptCode)) return false;
+        } else if (r.deptCode !== _ecomDept) return false;
+      }
       switch (_ecomFilter) {
         case 'nophoto':  if (r.nPhotos) return false; break;
         case 'hasphoto': if (!r.nPhotos) return false; break;
         case 'listed':   if (!r.listed) return false; break;
         case 'variants': if (!r.variantOf) return false; break;
         case 'scale':    if (!r.scale) return false; break;
-        case 'fresh':    if (!r.fresh) return false; break;
         case 'dupes':    if (!r.variantDupe) return false; break;
       }
       return true;
@@ -6443,7 +6519,7 @@
           <div class="li-name">${escapeHtml(r.name.trim())}${r.listed ? ' <span style="color:var(--good);font-size:9px;">LIVE</span>' : ''}</div>
           <div class="li-meta">${escapeHtml(r.code)}${r.weekly > 0 ? ' · $' + Math.round(r.weekly) + '/wk' : ''}${r.variantDupe ? ' · <span class="ecom-badge-dupe">DUPLICATE NAME</span>' : (r.variantOf ? ' · variant' : '')}</div>
         </div>
-        <div class="li-cur">${r.price != null ? fmtMoney(r.price) : '—'}</div>
+        <div class="li-cur">${r.price != null ? priceText(r.code, r.price) : '—'}</div>
         <div class="li-x">
           <button class="btn small" data-eact="view" data-code="${r.code}" title="Product view">⋯</button>
           <button class="btn small" data-eact="edit" data-code="${r.code}" title="POS editor">⚡</button>
@@ -7376,6 +7452,8 @@
 
     // Reset mode to regular every time labels are opened
     _labelMode = 'regular';
+    // ensure the weighed (Balance) flags are loaded so per-kg prices print
+    fetchEditData().then(() => renderLabelsForMode()).catch(() => renderLabelsForMode());
     renderLabelsForMode();
 
     $('#labels-overlay').classList.add('open');
@@ -7400,7 +7478,8 @@
         priceDisplay = item.multipack;
         priceSize = 'mp';
       } else if (item.price != null) {
-        priceDisplay = item.price.toFixed(2);
+        // weighed items are priced per kilo -- say so on the shelf label
+        priceDisplay = item.price.toFixed(2) + (isWeighed(item.code) ? '/kg' : '');
         priceSize = 'reg';
       } else {
         priceDisplay = '—';
@@ -7984,6 +8063,10 @@
       _pdTitleSynced = ($('#pd-title2').value === $('#pd-title').value.slice(0, F02_MAX));
       updateTitleCounts();
     });
+    // Double-click either title box to stamp the size onto the end
+    $('#pd-title').addEventListener('dblclick', () => stampSizeIntoTitle($('#pd-title'), F29_MAX));
+    $('#pd-title2').addEventListener('dblclick', () => stampSizeIntoTitle($('#pd-title2'), F02_MAX));
+
     $('#pd-save').addEventListener('click', pdSave);
 
     // Open general product edit (any field)
