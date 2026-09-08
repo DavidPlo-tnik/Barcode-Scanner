@@ -8928,6 +8928,105 @@
      "F1011": "REG"
     }
    }
+  },
+  {
+   "undo_id": "u20260908150152123303",
+   "applied_at": "2026-09-08T15:01:52",
+   "change": {
+    "code": "0482000183007",
+    "pos_title": "POLIANA KVASOVA 1500ML",
+    "size_num": 1500,
+    "size_unit": "ML",
+    "queued_at": "2026-09-08T19:01:37.991Z",
+    "id": "c1788894097991"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "POLIANA KVASOVA",
+     "F1744": "400.0",
+     "F22": "1500ML",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "POLIANA KVASOVA 1500ML",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "1.9900",
+     "F196": "1.9900",
+     "F1140": "1.9900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260908150152170103",
+   "applied_at": "2026-09-08T15:01:52",
+   "change": {
+    "code": "0482000183007",
+    "title": "POLIANA KVASOVA 1500ML",
+    "pos_title": "POLIANA KVASOVA 1500ML",
+    "size_num": 1500,
+    "size_unit": "ML",
+    "queued_at": "2026-09-08T19:01:51.909Z",
+    "id": "c1788894111909"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "POLIANA KVASOVA",
+     "F1744": "1500.0",
+     "F22": "1500 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "POLIANA KVASOVA 1500ML",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "1.9900",
+     "F196": "1.9900",
+     "F1140": "1.9900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
