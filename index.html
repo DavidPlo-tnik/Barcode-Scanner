@@ -2287,7 +2287,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v115</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v116</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2540,8 +2540,12 @@
     return _overrides;
   }
   function overrideFor(code) {
-    const o = _overrides[code];
-    if (!o || !DATA) return null;
+    if (!code || !DATA) return null;
+    // same padded-vs-short code trap as edit.json
+    const rc = (typeof resolveCode === 'function') ? resolveCode(String(code)) : String(code);
+    const o = _overrides[rc] || _overrides[String(code)] ||
+              _overrides[String(code).padStart(13, '0')];
+    if (!o) return null;
     // Drop the override once the full rebuild has clearly caught up. Use a
     // grace margin rather than an exact comparison: the hourly run stamps
     // data.json with its START time but takes minutes to finish, so an edit
@@ -2564,7 +2568,7 @@
     if (!DATA || !DATA.products) return 0;
     let n = 0;
     for (const code in _overrides) {
-      const o = overrideFor(code);
+      const o = overrideFor(rc) || overrideFor(code);
       if (!o) continue;
       const p = DATA.products[code];
       if (!p) continue;
@@ -3639,7 +3643,16 @@
     return _editData;
   }
   function editStateFor(code) {
-    const base = (_editData && _editData.items && _editData.items[code]) || null;
+    // edit.json is keyed by the PADDED 13-digit code, but items are often
+    // opened by their short PLU (e.g. "4133"). Looking up the raw code missed
+    // entirely, so EVERY field fell back to defaults -- Balance unticked, taxes
+    // off, size blank. Normalise first, with padded/stripped fallbacks.
+    const items = (_editData && _editData.items) || null;
+    const rc = (typeof resolveCode === 'function') ? resolveCode(String(code)) : String(code);
+    const base = items
+      ? (items[rc] || items[String(code)] || items[String(code).padStart(13, '0')] ||
+         items[String(code).replace(/^0+/, '')] || null)
+      : null;
     // A freshly-applied edit lands in pos/overrides.json long before the hourly
     // rebuild reaches edit.json, so overlay it -- otherwise the editor keeps
     // showing the OLD price right after you changed it.
@@ -4031,6 +4044,7 @@
   // version to pos/overrides.json within a cycle; this just bridges the gap so
   // you can see what you have and have not done yet.
   function applyLocalOverride(code, ch) {
+    code = (typeof resolveCode === 'function') ? resolveCode(String(code)) : String(code);
     const prev = _overrides[code] || {};
     const base = Object.assign({}, editStateFor(code) || {}, prev);
     const o = Object.assign({}, base);
@@ -4069,6 +4083,7 @@
 
   // Re-render whatever is on screen so a just-made edit is visible everywhere.
   function repaintAfterLocalEdit(code) {
+    code = (typeof resolveCode === 'function') ? resolveCode(String(code)) : String(code);
     applyOverridesToProducts();
     if (_editData && _editData.items && _editData.items[code]) {
       Object.assign(_editData.items[code], _overrides[code] || {});
