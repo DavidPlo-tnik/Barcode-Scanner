@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-08T19:01:29.035Z",
+ "updated": "2026-09-08T19:06:42.373Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -457,7 +457,9 @@
   },
   "0482307761783": {
    "added": "2026-09-06",
-   "photos": [],
+   "photos": [
+    "0482307761783_1788894398237.webp"
+   ],
    "listed": false,
    "status": "draft",
    "group": "4-gateau-kiev-roshen",
@@ -468,7 +470,7 @@
    "v": {
     "title": false,
     "size": false,
-    "photo": false,
+    "photo": true,
     "price": false
    }
   },
