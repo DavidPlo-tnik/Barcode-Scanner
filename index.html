@@ -644,6 +644,17 @@
     color: #fff; font-size: 12px; line-height: 1; cursor: pointer;
   }
 
+  .ecom-sub-head {
+    display: flex; align-items: center; gap: 8px;
+    padding: 7px 10px 7px 20px; margin-top: 4px; cursor: pointer;
+    background: var(--surface); border-left: 2px solid var(--border);
+    font-family: var(--font-display); font-size: 10px; letter-spacing: .08em;
+    color: var(--text-dim);
+  }
+  .ecom-sub-head:hover { color: var(--text); }
+  .ecom-sub-head .ecom-dept-name { flex: 1; }
+  .ecom-sub-head .ecom-dept-stat { color: var(--text-faint); font-size: 9px; }
+
   .ecom-select {
     width: 100%; padding: 9px 10px; background: var(--surface-2);
     color: var(--text); border: 1px solid var(--border); border-radius: 8px;
@@ -2274,7 +2285,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v113</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v114</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -6527,10 +6538,38 @@
         </div>
       </div>`;
 
+    // Two levels: family (Épicerie…) -> department (#1, #2…) -> products.
+    // Both levels collapse independently.
     container.innerHTML = groupNames.map(gname => {
       const items = byGroup[gname].sort((a, b) => b.rev - a.rev);
       const gPhotos = items.filter(i => i.nPhotos).length;
       const collapsed = _ecomCollapsed[gname];
+
+      // split this family into its departments
+      const byDept = {};
+      items.forEach(r => { (byDept[r.deptCode] = byDept[r.deptCode] || []).push(r); });
+      const deptCodes = Object.keys(byDept).sort((a, b) => byDept[b].length - byDept[a].length);
+      const single = deptCodes.length <= 1;   // no point nesting a lone dept
+
+      const inner = single
+        ? items.map(rowHtml).join('')
+        : deptCodes.map(dc => {
+            const dItems = byDept[dc];
+            const key = gname + '::' + dc;
+            const dCollapsed = _ecomCollapsed[key] !== false;   // sub-depts start closed
+            const dName = (DATA.depts && DATA.depts[dc]) || ('#' + dc);
+            const dPhotos = dItems.filter(i => i.nPhotos).length;
+            return `
+              <div class="ecom-sub-head" data-dept="${escapeHtml(key)}">
+                <span class="ecom-dept-caret">${dCollapsed ? '▸' : '▾'}</span>
+                <span class="ecom-dept-name">${escapeHtml(dName)}</span>
+                <span class="ecom-dept-stat">${dPhotos}/${dItems.length} 📷</span>
+              </div>
+              <div class="ecom-dept-body ${dCollapsed ? 'collapsed' : ''}" data-dept-body="${escapeHtml(key)}">
+                ${dItems.map(rowHtml).join('')}
+              </div>`;
+          }).join('');
+
       return `
         <div class="ecom-dept-head" data-dept="${escapeHtml(gname)}">
           <span class="ecom-dept-caret">${collapsed ? '▸' : '▾'}</span>
@@ -6538,12 +6577,12 @@
           <span class="ecom-dept-stat">${gPhotos}/${items.length} 📷</span>
         </div>
         <div class="ecom-dept-body ${collapsed ? 'collapsed' : ''}" data-dept-body="${escapeHtml(gname)}">
-          ${items.map(rowHtml).join('')}
+          ${inner}
         </div>`;
     }).join('');
 
     // dept header collapse
-    container.querySelectorAll('.ecom-dept-head').forEach(h =>
+    container.querySelectorAll('.ecom-dept-head, .ecom-sub-head').forEach(h =>
       h.addEventListener('click', () => {
         const g = h.dataset.dept;
         _ecomCollapsed[g] = !_ecomCollapsed[g];
@@ -7634,9 +7673,19 @@
   // Closures need access to the active list — printLabels stashes it.
   let _activePrintList = null;
 
+  let _printRetried = false;
   function doPrintLabels() {
     if (!_activePrintList || !_activePrintList.items || !_activePrintList.items.length) {
       showToast('NO LABELS TO PRINT', true);
+      return;
+    }
+    // Per-kg pricing needs the Balance flags from edit.json. If they are not in
+    // memory yet, load them first and retry -- otherwise weighed items would
+    // print without the /kg suffix.
+    if ((!_editData || !_editData.items) && !_printRetried) {
+      _printRetried = true;                 // one retry only, never loop
+      showToast('LOADING PRICE DATA…');
+      fetchEditData().finally(() => { _printRetried = false; doPrintLabels(); });
       return;
     }
     if (!window.jspdf || !window.jspdf.jsPDF) {
@@ -7739,6 +7788,15 @@
   // Matches the physical Metro perforated label paper (measured from photo 6784.jpg).
   // Layout mirrors the Metro shelf label: name/size/unit-price/barcode on the left,
   // big price on the right. Print PORTRAIT, 100% / actual size, no scaling.
+  // Price text for a printed label. Weighed items (Balance / F82) are priced per
+  // kilo, so the label must say so -- this is the PDF path, which is built
+  // independently of the on-screen preview.
+  function labelPriceText(item) {
+    if (item.multipack) return item.multipack;
+    if (item.price == null) return '\u2014';
+    return `$${item.price.toFixed(2)}` + (isWeighed(item.code) ? '/kg' : '');
+  }
+
   function drawPerfLabelPdf(doc, x, y, w, h, item) {
     const pad = 2.0;
     const inX = x + pad;
@@ -7786,9 +7844,7 @@
 
     // ── Big price on the right, vertically centred ──
     const priceIsMp = !!item.multipack;
-    const priceText = priceIsMp
-      ? item.multipack
-      : (item.price != null ? `$${item.price.toFixed(2)}` : '\u2014');
+    const priceText = labelPriceText(item);
     let pfs = priceIsMp ? 12 : 21;
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(pfs);
@@ -7825,7 +7881,7 @@
 
     // PRICE (right, top)
     const priceIsMp = !!item.multipack;
-    const priceText = priceIsMp ? item.multipack : (item.price != null ? `$${item.price.toFixed(2)}` : '—');
+    const priceText = labelPriceText(item);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(priceIsMp ? 14 : 19);
     const priceWidth = doc.getTextWidth(priceText);
@@ -7924,7 +7980,7 @@
 
     // === HUGE PRICE (centered) ===
     const priceIsMp = !!item.multipack;
-    const priceText = priceIsMp ? item.multipack : (item.price != null ? `$${item.price.toFixed(2)}` : '—');
+    const priceText = labelPriceText(item);
     doc.setFont('helvetica', 'bold');
     const priceSize = priceIsMp ? 32 : 44;
     doc.setFontSize(priceSize);
