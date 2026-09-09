@@ -1,22 +1,3 @@
 {
- "items": [
-  {
-   "code": "0482018274708",
-   "pos_title": "FLINT CRABS 100G",
-   "size_num": 2000,
-   "size_unit": "ML",
-   "multibuy": {
-    "qty": 3,
-    "price": 5
-   },
-   "promo": {
-    "price": 5,
-    "qty": 3,
-    "start": null,
-    "end": null
-   },
-   "queued_at": "2026-09-09T23:27:25.681Z",
-   "id": "c1788996445681"
-  }
- ]
+ "items": []
 }
