@@ -10860,6 +10860,65 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909192636123748",
+   "applied_at": "2026-09-09T19:26:36",
+   "change": {
+    "code": "0482018274710",
+    "pos_title": "FLINT FROMAGE  100G",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "multibuy": {
+     "qty": 3,
+     "price": 5
+    },
+    "promo": {
+     "price": 5,
+     "qty": 3,
+     "start": null,
+     "end": null
+    },
+    "queued_at": "2026-09-09T23:25:51.698Z",
+    "id": "c1788996351698"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FLINT FROMAGE ",
+     "F1744": "2000.0",
+     "F22": "100G",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "FLINT FROMAGE  100G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "25.0000",
+     "F196": "25.0000",
+     "F1140": "1.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.0000",
+     "F31": "3.0",
+     "F1006": "3.0",
+     "F1007": "5.0000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
