@@ -6,6 +6,13 @@
    "pos_title": "SAUCISE VIENNOISE",
    "queued_at": "2026-09-09T02:38:07.752Z",
    "id": "c1788921487752"
+  },
+  {
+   "code": "0020234700000",
+   "pos_title": "SAUCISSON DE CRACOVIE KG",
+   "balance": 1,
+   "queued_at": "2026-09-09T02:38:25.189Z",
+   "id": "c1788921505189"
   }
  ]
 }
