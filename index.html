@@ -2285,7 +2285,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v120</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v121</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7521,10 +7521,22 @@
       // Sanitize code — strip non-printable / non-ASCII chars that would break CODE128B
       const cleanCode = String(code).replace(/[^\x20-\x7E]/g, '').trim();
       if (!cleanCode || cleanCode.length < 3) return null;  // too short to scan reliably
+      // A list can carry a PROPOSED price (the "prix" box on each row). That is
+      // the whole point of printing labels ahead of a price change: print the
+      // new shelf price today, key it into the POS tomorrow. Use it when set,
+      // otherwise fall back to the live POS price.
+      const proposed = getListPrice(list, code);
+      const effective = (proposed != null && isFinite(+proposed) && +proposed >= 0)
+        ? +proposed
+        : price;
       // Sanitize price — guard against negative or NaN values
-      const safePrice = (typeof price === 'number' && isFinite(price) && price >= 0) ? price : null;
+      const safePrice = (typeof effective === 'number' && isFinite(effective) && effective >= 0) ? effective : null;
       const dept = (deptCode != null && DATA.depts) ? DATA.depts[String(deptCode)] : '';
-      return { code: cleanCode, name, price: safePrice, dept, multipack, taxed: !!taxed, sizeStr: sizeStr || '' };
+      // a proposed price replaces the shelf price, so an old multibuy string
+      // (e.g. "2/$7.99") would contradict it -- drop it in that case
+      const mp = (proposed != null) ? null : multipack;
+      return { code: cleanCode, name, price: safePrice, dept, multipack: mp,
+               taxed: !!taxed, sizeStr: sizeStr || '', proposed: proposed != null };
     }).filter(Boolean);
 
     if (items.length === 0) { showToast('LIST IS EMPTY', true); return; }
