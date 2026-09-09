@@ -880,7 +880,31 @@
    "price": 4.99,
    "mp": null,
    "at": "2026-09-09 19:48:42"
+  },
+  "0482307761469": {
+   "pt": "ROSHEN BISCUITS CAFE BEURRE VANILLE 185G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 185.0,
+   "nm": "ROSHEN BISCUITS CAFE BEURRE VANILLE",
+   "rp": 1.69,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 1.69,
+   "mp": null,
+   "cost": 1.15,
+   "at": "2026-09-09 19:49:46"
   }
  },
- "updated": "2026-09-09 19:48:42"
+ "updated": "2026-09-09 19:49:46"
 }
