@@ -2285,7 +2285,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v119</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v120</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3963,6 +3963,11 @@
   }
 
   // ---- editor photo management (PIN-gated by virtue of living in the editor) ----
+  const _freshPhotos = {};       // filename -> dataUrl, for just-uploaded images
+  function photoSrc(fn) {
+    return _freshPhotos[fn] ||
+      `https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/${GH.GH_BRANCH}/images/ecom/${fn}`;
+  }
   function renderPdPhotos(code, photos) {
     const wrap = $('#pd-photos');
     if (!wrap) return;
@@ -3970,10 +3975,23 @@
     wrap.innerHTML = photos.length
       ? photos.map((fn, i) => `
           <div class="pd-photo">
-            <img src="https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/${GH.GH_BRANCH}/images/ecom/${fn}" loading="lazy" alt="">
+            <img src="${photoSrc(fn)}" data-fn="${escapeHtml(fn)}" data-try="0" loading="lazy" alt="">
             <button type="button" data-pdel="${i}">✕</button>
           </div>`).join('')
       : '<div class="pd-note">No photos yet.</div>';
+
+    // A freshly-pushed file can 404 on the CDN for a few seconds -- retry a few
+    // times with a cache-buster instead of leaving a blank tile.
+    wrap.querySelectorAll('img[data-fn]').forEach(img => {
+      img.onerror = () => {
+        const n = +(img.dataset.try || 0);
+        if (n >= 4) return;
+        img.dataset.try = n + 1;
+        setTimeout(() => {
+          img.src = `https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/${GH.GH_BRANCH}/images/ecom/${img.dataset.fn}?r=${Date.now()}`;
+        }, 1200 * (n + 1));
+      };
+    });
     wrap.querySelectorAll('[data-pdel]').forEach(b => {
       b.onclick = async () => {
         if (!confirm('Remove this photo?')) return;
@@ -4009,17 +4027,21 @@
         const fn = `${code}_${Date.now()}.${ext}`;
         st.textContent = `Uploading ${width}px (${Math.round(blob.size/1024)} KB)…`;
         await ghPutFile(`images/ecom/${fn}`, dataUrl.split(',')[1], `ecom photo ${fn}`);
-        await mutateEcomCatalog(cat => {
+        // Remember the local bytes: raw.githubusercontent.com serves a new file
+        // with a delay, so the <img> would 404 and the photo appeared missing
+        // even though the upload succeeded.
+        _freshPhotos[fn] = dataUrl;
+        const cat = await mutateEcomCatalog(cat => {
           if (!cat.items[code]) {
-            cat.items[code] = { added: new Date().toISOString().slice(0,10), photos: [], listed: false,
-                                status: 'draft', v: { title:false, size:false, photo:false, price:false } };
+            cat.items[code] = { added: new Date().toISOString().slice(0,10), photos: [],
+                                listed: false, status: 'draft' };
           }
           const e = cat.items[code];
           e.photos = e.photos || [];
           e.photos.push(fn);
-          e.v = e.v || {}; e.v.photo = true;      // photo validation ticks itself
         });
-        const cat = await fetchEcomCatalog(true);
+        // Use the object mutateEcomCatalog just wrote, NOT a re-fetch: the CDN
+        // lags and would hand back the previous catalog, losing the new photo.
         renderPdPhotos(code, (cat.items[code] || {}).photos);
         st.textContent = 'Photo added ✓';
       } catch (e) {
@@ -6691,7 +6713,7 @@
       </div>
       ${photos.length
         ? `<div class="recipe-photos">${photos.map((fn,i) =>
-            `<div class="recipe-photo"><img src="https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/${GH.GH_BRANCH}/images/ecom/${fn}" loading="lazy" alt="">
+            `<div class="recipe-photo"><img src="${photoSrc(fn)}" loading="lazy" alt="">
              ${canEdit ? `<button class="recipe-photo-del" data-i="${i}">✕</button>` : ''}</div>`).join('')}</div>`
         : '<div class="recipe-empty">No photos yet.</div>'}
       <div class="recipe-status" id="ecom-photo-status"></div>`;
