@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-09T02:53:53.584Z",
+ "updated": "2026-09-09T02:56:02.775Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -3871,7 +3871,9 @@
   },
   "0481152700083": {
    "added": "2026-09-06",
-   "photos": [],
+   "photos": [
+    "0481152700083_1788922561322.webp"
+   ],
    "listed": false,
    "status": "draft",
    "group": "1-riga-gold-sprats",
@@ -3882,7 +3884,7 @@
    "v": {
     "title": false,
     "size": false,
-    "photo": false,
+    "photo": true,
     "price": false
    }
   },
