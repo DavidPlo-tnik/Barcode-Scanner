@@ -13,6 +13,13 @@
    "balance": 1,
    "queued_at": "2026-09-09T02:38:25.189Z",
    "id": "c1788921505189"
+  },
+  {
+   "code": "0020235300000",
+   "pos_title": "LARDON AVEC VIANDE GR",
+   "balance": 1,
+   "queued_at": "2026-09-09T02:38:31.835Z",
+   "id": "c1788921511835"
   }
  ]
 }
