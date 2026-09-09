@@ -1,3 +1,12 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0020235100000",
+   "pos_title": "LARDON NATURE GR",
+   "price": 22.99,
+   "balance": 1,
+   "queued_at": "2026-09-09T02:39:07.089Z",
+   "id": "c1788921547089"
+  }
+ ]
 }
