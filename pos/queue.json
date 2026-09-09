@@ -1,3 +1,19 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0023012000000",
+   "title": "FILET SAUMON ATLANTIQUE CONG. CHILE",
+   "pos_title": "FILET SAUMON ATLANTIQUE CONG. CHILE",
+   "size_num": 1000,
+   "size_unit": "",
+   "promo": {
+    "price": 15.99,
+    "qty": 1,
+    "start": "2026-09-09",
+    "end": "2036-09-09"
+   },
+   "queued_at": "2026-09-09T16:03:09.246Z",
+   "id": "c1788969789246"
+  }
+ ]
 }
