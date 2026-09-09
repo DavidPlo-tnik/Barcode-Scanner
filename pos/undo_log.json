@@ -10066,6 +10066,55 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260908230413147312",
+   "applied_at": "2026-09-08T23:04:13",
+   "change": {
+    "code": "0481152700083",
+    "pos_title": "RIGA GOLD SPRATS FUMEE 160G",
+    "size_num": 250,
+    "size_unit": "GR",
+    "queued_at": "2026-09-09T03:03:27.291Z",
+    "id": "c1788923007291"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "RIGA GOLD SPRATS FUMEE",
+     "F1744": "250.0",
+     "F22": "250 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "RIGA GOLD SPRATS FUMEE 160G",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "154.8000",
+     "F196": "154.8000",
+     "F1140": "2.1500",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
