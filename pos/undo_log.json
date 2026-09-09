@@ -9679,6 +9679,151 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260908224006037970",
+   "applied_at": "2026-09-08T22:40:06",
+   "change": {
+    "code": "0020235100000",
+    "pos_title": "LARDON NATURE GR",
+    "price": 22.99,
+    "balance": 1,
+    "queued_at": "2026-09-09T02:39:07.089Z",
+    "id": "c1788921547089"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LARDON NATURE",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "LARDON NATURE GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260908224006084770",
+   "applied_at": "2026-09-08T22:40:06",
+   "change": {
+    "code": "0020235200000",
+    "balance": 1,
+    "queued_at": "2026-09-09T02:39:15.354Z",
+    "id": "c1788921555354"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LARDON AIL ET POIVRE",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LARDON AIL ET POIVRE",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "22.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "22.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260908224006147170",
+   "applied_at": "2026-09-08T22:40:06",
+   "change": {
+    "code": "0020234600000",
+    "pos_title": "SALAMI ESTONIEN CUIT KG",
+    "price": 21.99,
+    "balance": 1,
+    "queued_at": "2026-09-09T02:39:25.531Z",
+    "id": "c1788921565531"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SALAMI ESTONIEN CUIT",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SALAMI ESTONIEN CUIT KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "17.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "17.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
