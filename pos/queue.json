@@ -1,3 +1,19 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0486001900208",
+   "title": "BORJOMI 6X1250ML",
+   "pos_title": "BORJOMI 6X1250ML",
+   "size_num": 7500,
+   "size_unit": "ML",
+   "promo": {
+    "price": 18.99,
+    "qty": 1,
+    "start": "2026-09-09",
+    "end": "2026-09-16"
+   },
+   "queued_at": "2026-09-09T20:19:14.033Z",
+   "id": "c1788985154033"
+  }
+ ]
 }
