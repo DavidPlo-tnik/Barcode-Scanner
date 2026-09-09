@@ -9438,6 +9438,247 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260908223854184243",
+   "applied_at": "2026-09-08T22:38:54",
+   "change": {
+    "code": "0020238500000",
+    "title": "SAUCISE VIENNOISE",
+    "pos_title": "SAUCISE VIENNOISE",
+    "queued_at": "2026-09-09T02:38:07.752Z",
+    "id": "c1788921487752"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUSSISE VIENNOISE",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "SAUSSISE VIENNOISE",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260908223854231043",
+   "applied_at": "2026-09-08T22:38:54",
+   "change": {
+    "code": "0020234700000",
+    "pos_title": "SAUCISSON DE CRACOVIE KG",
+    "balance": 1,
+    "queued_at": "2026-09-09T02:38:25.189Z",
+    "id": "c1788921505189"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSON DE CRACOVIE",
+     "F1744": null,
+     "F22": "kg",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSON DE CRACOVIE KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "17.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "17.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260908223854277844",
+   "applied_at": "2026-09-08T22:38:54",
+   "change": {
+    "code": "0020235300000",
+    "pos_title": "LARDON AVEC VIANDE GR",
+    "balance": 1,
+    "queued_at": "2026-09-09T02:38:31.835Z",
+    "id": "c1788921511835"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LARDON AVEC VIANDE",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LARDON AVEC VIANDE GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "32.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "32.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260908223854324644",
+   "applied_at": "2026-09-08T22:38:54",
+   "change": {
+    "code": "0020234500000",
+    "pos_title": "SALAMI LVIVSKA KG",
+    "balance": 1,
+    "queued_at": "2026-09-09T02:38:39.431Z",
+    "id": "c1788921519431"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SALAMI LVIVSKA",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SALAMI LVIVSKA KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260908223854402644",
+   "applied_at": "2026-09-08T22:38:54",
+   "change": {
+    "code": "0020233200000",
+    "pos_title": "TETE FROMAGEE GR",
+    "price": 22.99,
+    "balance": 1,
+    "queued_at": "2026-09-09T02:38:53.220Z",
+    "id": "c1788921533220"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "TETE FROMAGEE",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "TETE FROMAGEE GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-ISABELLE"
+    },
+    "PRICE_TAB": {
+     "F30": "19.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
