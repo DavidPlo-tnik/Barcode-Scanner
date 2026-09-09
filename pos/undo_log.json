@@ -10336,6 +10336,97 @@
      "F1011": "REG"
     }
    }
+  },
+  {
+   "undo_id": "u20260909144346144138",
+   "applied_at": "2026-09-09T14:43:46",
+   "change": {
+    "code": "0020422800000",
+    "pos_title": "KEBAB MITITEI MICI KG",
+    "price": 17.99,
+    "queued_at": "2026-09-09T18:43:04.197Z",
+    "id": "c1788979384197"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KEBAB MITITEI MICI",
+     "F1744": null,
+     "F22": "KG",
+     "F23": ""
+    },
+    "POS_TAB": {
+     "F02": "KEBAB MITITEI MICI KG",
+     "F04": "21",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "PRICE_TAB": {
+     "F30": "19.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": null
+    }
+   }
+  },
+  {
+   "undo_id": "u20260909144346206538",
+   "applied_at": "2026-09-09T14:43:46",
+   "change": {
+    "code": "0020445600000",
+    "pos_title": "FROMAGE GOUDA KG",
+    "price": 19.99,
+    "balance": 1,
+    "queued_at": "2026-09-09T18:43:34.196Z",
+    "id": "c1788979414196"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FROMAGE GOUDA",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "FROMAGE GOUDA KG",
+     "F04": "32",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-ISABELLE"
+    },
+    "PRICE_TAB": {
+     "F30": "24.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "24.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
