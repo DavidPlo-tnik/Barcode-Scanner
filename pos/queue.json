@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0000000004593",
+   "pos_title": "CONCOMBR.S.PEPIN",
+   "size_num": 1,
+   "size_unit": "",
+   "promo": {
+    "price": 1.99,
+    "qty": 1,
+    "start": "2026-08-13",
+    "end": "2036-08-21"
+   },
+   "queued_at": "2026-09-09T16:19:33.007Z",
+   "id": "c1788970773007"
+  }
+ ]
 }
