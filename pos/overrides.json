@@ -1696,7 +1696,31 @@
    "mp": null,
    "cost": 2.1,
    "at": "2026-09-09 22:48:02"
+  },
+  "0482002667043": {
+   "pt": "BONBON SOLNECHNIY VINOCHOK 500GR",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "GR",
+   "sn": 500.0,
+   "nm": "BONBON SOLNECHNIY VINOCHOK 500GR",
+   "rp": 10.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 10.99,
+   "mp": null,
+   "cost": 41.4,
+   "at": "2026-09-09 23:11:55"
   }
  },
- "updated": "2026-09-09 22:48:02"
+ "updated": "2026-09-09 23:11:55"
 }
