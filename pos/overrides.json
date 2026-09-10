@@ -1048,7 +1048,31 @@
    "mp": null,
    "cost": 31.52,
    "at": "2026-09-09 20:11:02"
+  },
+  "0482308860826": {
+   "pt": "KONTI BONJOUR FRAISE ET CREME 232GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 232.0,
+   "nm": "KONTI BONJOUR FRAISE ET CREME 232GR",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 31.52,
+   "at": "2026-09-09 20:12:07"
   }
  },
- "updated": "2026-09-09 20:11:02"
+ "updated": "2026-09-09 20:12:07"
 }
