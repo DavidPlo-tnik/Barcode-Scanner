@@ -1768,7 +1768,31 @@
    "mp": null,
    "cost": 210.0,
    "at": "2026-09-09 23:22:27"
+  },
+  "0482008841523": {
+   "pt": "MORSKI CALMAR SÉCHÉ SALÉ 45GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 45.0,
+   "nm": "MORSKI CALMAR SÉCHÉ SALÉ 45GR",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 285.0,
+   "at": "2026-09-09 23:23:38"
   }
  },
- "updated": "2026-09-09 23:22:27"
+ "updated": "2026-09-09 23:23:38"
 }
