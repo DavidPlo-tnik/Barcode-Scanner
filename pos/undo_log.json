@@ -12430,6 +12430,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909205230098401",
+   "applied_at": "2026-09-09T20:52:30",
+   "change": {
+    "code": "0482307761363",
+    "title": "ROSHEN BATON CREME BRULE 43GR",
+    "pos_title": "ROSHEN BATON CREME BRULE 43GR",
+    "size_num": 43,
+    "size_unit": "GR",
+    "queued_at": "2026-09-10T00:52:30.764Z",
+    "id": "c1789001550765"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ROSHEN NOIRE",
+     "F1744": "400.0",
+     "F22": "43GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ROSHEN NOIRE 43GR",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.9000",
+     "F196": "0.9000",
+     "F1140": "0.9000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "1.2500",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.2500",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
