@@ -1,3 +1,14 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0486001900134",
+   "title": "BORJOMI 500ML",
+   "pos_title": "BORJOMI 500ML",
+   "size_num": 500,
+   "size_unit": "ML",
+   "deposit": 0.1,
+   "queued_at": "2026-09-10T01:51:46.268Z",
+   "id": "c1789005106268"
+  }
+ ]
 }
