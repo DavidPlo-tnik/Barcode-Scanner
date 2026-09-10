@@ -13060,6 +13060,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909212727187885",
+   "applied_at": "2026-09-09T21:27:27",
+   "change": {
+    "code": "0482026429001",
+    "title": "NASH CIK JUS DE POMME PECHE 1930ML",
+    "pos_title": "NASH CIK JUS DE POMME PECHE 1930ML",
+    "size_num": 1930,
+    "size_unit": "ML",
+    "queued_at": "2026-09-10T01:26:45.181Z",
+    "id": "c1789003605181"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ODESSA JUS DE POMME PECHE",
+     "F1744": "3.0",
+     "F22": "1930ML",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "ODESSA JUS DE POMME PECHE 1930ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.4500",
+     "F196": "3.4500",
+     "F1140": "3.4500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
