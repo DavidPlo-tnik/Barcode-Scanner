@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-10T02:47:28.301Z",
+ "updated": "2026-09-10T03:11:15.188Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -12815,7 +12815,9 @@
   },
   "0482002667043": {
    "added": "2026-09-06",
-   "photos": [],
+   "photos": [
+    "0482002667043_1789009873445.webp"
+   ],
    "listed": false,
    "status": "draft",
    "group": "2-bonbon-solnechniy-vinochok",
