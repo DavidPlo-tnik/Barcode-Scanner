@@ -1122,16 +1122,16 @@
    "at": "2026-09-09 20:15:28"
   },
   "0482308860856": {
-   "pt": "SUPER KONTIK LAIT CONDENSÉ",
+   "pt": "SUPER KONTIK LAIT CONDENSÉ 90GR",
    "tf": 0,
    "tp": 0,
    "dp": null,
    "bal": 0,
    "qte": 0,
    "sd": 1,
-   "un": "KG",
+   "un": "GR",
    "sn": 90.0,
-   "nm": "SUPER KONTIK LAIT CONDENSÉ",
+   "nm": "SUPER KONTIK LAIT CONDENSÉ 90GR",
    "rp": 5.0,
    "ap": 1,
    "pp": 5.0,
@@ -1143,7 +1143,7 @@
    "price": 1.67,
    "mp": "3/$5.00",
    "cost": 1.05,
-   "at": "2026-09-09 20:23:50"
+   "at": "2026-09-09 20:26:06"
   },
   "0482308860840": {
    "pt": "SUPER KONTIK LAIT VANILLE 90GR",
@@ -1170,5 +1170,5 @@
    "at": "2026-09-09 20:25:01"
   }
  },
- "updated": "2026-09-09 20:25:01"
+ "updated": "2026-09-09 20:26:06"
 }
