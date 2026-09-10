@@ -625,6 +625,9 @@
   .loadbar.error { border-bottom-color: var(--bad); }
   .loadbar.error .loadbar-text { color: var(--bad); }
 
+    #pd-ecom-btn { width: 100%; }
+  #pd-ecom-btn.in-catalog { border-color: var(--bad); color: var(--bad); }
+
   .pd-photos-block { margin-top: 12px; }
   .pd-photos-head {
     display: flex; align-items: center; gap: 8px;
@@ -2225,7 +2228,7 @@
 
     <section class="pd-group">
       <div class="pd-group-title">Website store</div>
-      <label class="pd-toggle"><input type="checkbox" id="pd-ecom"><span>List this product on the website</span></label>
+      <button type="button" class="btn small" id="pd-ecom-btn">+ ECOM</button>
       <div class="pd-note" id="pd-ecom-note"></div>
 
       <!-- Photos live here, behind the PIN, rather than on the public product view -->
@@ -2285,7 +2288,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v121</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v122</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3797,20 +3800,15 @@
 
     // Website store listing (moved here from the product view so it is behind
     // the PIN). 'listed' distinguishes a published product from a photo-only
-    // entry, which exists so photos can be attached to any item.
+    // entry, which exists so photos can be attached to any item. The button
+    // acts immediately (no Save needed) so it can never get lost among other
+    // pending edits.
     try {
       const cat = await fetchEcomCatalog();
-      const ent = cat.items[code];
-      const listed = !!(ent && ent.listed === true);
-      $('#pd-ecom').checked = listed;
-      _pdInitial.ecom = listed;
-      $('#pd-ecom-note').textContent = ent
-        ? `in catalogue${ent.group ? ' · variant group' : ''}`
-        : 'not in the website catalogue yet';
-      renderPdPhotos(code, ent && ent.photos);
+      paintPdEcomBtn(cat.items[code]);
+      renderPdPhotos(code, (cat.items[code] || {}).photos);
     } catch (e) {
-      $('#pd-ecom').checked = false; _pdInitial.ecom = false;
-      $('#pd-ecom-note').textContent = '';
+      paintPdEcomBtn(null);
       renderPdPhotos(code, []);
     }
 
@@ -3968,6 +3966,54 @@
     return _freshPhotos[fn] ||
       `https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/${GH.GH_BRANCH}/images/ecom/${fn}`;
   }
+  function paintPdEcomBtn(ent) {
+    const btn = $('#pd-ecom-btn'), note = $('#pd-ecom-note');
+    if (!btn) return;
+    const listed = !!(ent && ent.listed === true);
+    btn.textContent = listed ? '\u2715 REMOVE FROM ECOM' : '+ ECOM';
+    btn.classList.toggle('in-catalog', listed);
+    if (note) {
+      note.textContent = ent
+        ? `in catalogue${ent.group ? ' \u00b7 variant group' : ''}`
+        : 'not in the website catalogue yet';
+    }
+  }
+
+  // Instant toggle -- takes effect immediately, no Save required, so it can
+  // never sit forgotten among other pending edits in the form.
+  async function togglePdEcom() {
+    const code = _pdCtx && _pdCtx.code;
+    if (!code) return;
+    const btn = $('#pd-ecom-btn');
+    btn.disabled = true;
+    try {
+      const cat = await mutateEcomCatalog(cat => {
+        const already = !!(cat.items[code] && cat.items[code].listed === true);
+        if (already) {
+          // keep photos if any exist; just unpublish. Only delete outright
+          // when there is nothing worth keeping.
+          if (cat.items[code] && (cat.items[code].photos || []).length) {
+            cat.items[code].listed = false;
+          } else {
+            delete cat.items[code];
+          }
+        } else {
+          if (!cat.items[code]) {
+            cat.items[code] = { added: new Date().toISOString().slice(0, 10),
+                                photos: [], listed: false, status: 'draft' };
+          }
+          cat.items[code].listed = true;
+        }
+      });
+      paintPdEcomBtn(cat.items[code]);
+      showToast(cat.items[code] && cat.items[code].listed ? 'LISTED ON WEBSITE' : 'REMOVED FROM WEBSITE');
+    } catch (e) {
+      showToast('Website update failed: ' + e.message, true);
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
   function renderPdPhotos(code, photos) {
     const wrap = $('#pd-photos');
     if (!wrap) return;
@@ -4111,24 +4157,8 @@
 
   async function pdSave() {
     const ch = pdComputeChanges();
-
-    // Website listing is stored in the ecom catalog, not the POS queue, so it
-    // is applied here directly rather than going through apply_queue.
-    try {
-      const want = $('#pd-ecom').checked;
-      if (want !== _pdInitial.ecom) {
-        const code = _pdCtx.code;
-        await mutateEcomCatalog(cat => {
-          if (!cat.items[code]) {
-            cat.items[code] = { added: new Date().toISOString().slice(0,10),
-                                photos: [], listed: false, status: 'draft' };
-          }
-          cat.items[code].listed = want;
-        });
-        _pdInitial.ecom = want;
-        showToast(want ? 'LISTED ON WEBSITE' : 'REMOVED FROM WEBSITE');
-      }
-    } catch (e) { showToast('Website update failed: ' + e.message, true); }
+    // Website listing is now the instant +ECOM / \u2715 REMOVE FROM ECOM button
+    // (togglePdEcom) -- it applies immediately and is not part of Save.
 
     // Guard: a short-dated (or no) promo end on a Metro-locked item will let
     // the item revert and expose the locked/wrong regular price when it ends.
@@ -8178,6 +8208,7 @@
     $('#pd-title').addEventListener('dblclick', () => stampSizeIntoTitle($('#pd-title'), F29_MAX));
     $('#pd-title2').addEventListener('dblclick', () => stampSizeIntoTitle($('#pd-title2'), F02_MAX));
 
+    $('#pd-ecom-btn').addEventListener('click', togglePdEcom);
     $('#pd-save').addEventListener('click', pdSave);
 
     // Open general product edit (any field)
