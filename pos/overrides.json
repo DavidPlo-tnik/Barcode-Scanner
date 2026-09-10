@@ -1531,7 +1531,31 @@
    "mp": null,
    "cost": 1.26,
    "at": "2026-09-10 09:24:21"
+  },
+  "0062904502410": {
+   "pt": "BISCUIT AU MIEL 400G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 800.0,
+   "nm": "BISCUIT AU MIEL",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 36.0,
+   "at": "2026-09-10 11:15:40"
   }
  },
- "updated": "2026-09-10 09:24:21"
+ "updated": "2026-09-10 11:15:40"
 }
