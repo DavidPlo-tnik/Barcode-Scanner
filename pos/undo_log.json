@@ -13807,6 +13807,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909233301073118",
+   "applied_at": "2026-09-09T23:33:01",
+   "change": {
+    "code": "0482000019326",
+    "title": "ZHYVCHYK BOISSON GAZEUSE POIRE 2000ML",
+    "pos_title": "ZHYVCHYK BOISSON GAZEUSE POIRE 2000ML",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "queued_at": "2026-09-10T03:32:55.100Z",
+    "id": "c1789011175100"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BOISSON GAZEUSE POIRE",
+     "F1744": "2.0",
+     "F22": "2LT",
+     "F23": "LT"
+    },
+    "POS_TAB": {
+     "F02": "BOISSON GAZEUSE POIRE 2LT",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.4500",
+     "F196": "2.4500",
+     "F1140": "2.4500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
