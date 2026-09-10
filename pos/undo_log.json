@@ -13409,6 +13409,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909220110156639",
+   "applied_at": "2026-09-09T22:01:10",
+   "change": {
+    "code": "0482307761601",
+    "title": "ROSHEN KIYV VECHERNI 176GR",
+    "pos_title": "ROSHEN KIYV VECHERNI 176GR",
+    "size_num": 176,
+    "size_unit": "GR",
+    "queued_at": "2026-09-10T02:00:22.283Z",
+    "id": "c1789005622283"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ROSHEN KIYV VECHERNI",
+     "F1744": "90.0",
+     "F22": "176G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ROSHEN KIYV VECHERNI 176G",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "85.7500",
+     "F196": "85.7500",
+     "F1140": "12.2500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "16.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "16.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
