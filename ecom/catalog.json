@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-10T02:01:16.912Z",
+ "updated": "2026-09-10T02:11:41.778Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -409,7 +409,7 @@
    "photos": [
     "0482001737004_1788807805927.webp"
    ],
-   "listed": false,
+   "listed": true,
    "status": "ready",
    "group": null,
    "dept": "1",
