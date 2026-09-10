@@ -1,3 +1,23 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0482308860978",
+   "title": "SUPER KONTIK LAIT 90GR",
+   "pos_title": "SUPER KONTIK LAIT 90GR",
+   "size_num": 90,
+   "size_unit": "GR",
+   "multibuy": {
+    "qty": 3,
+    "price": 5
+   },
+   "promo": {
+    "price": 5,
+    "qty": 3,
+    "start": null,
+    "end": null
+   },
+   "queued_at": "2026-09-10T00:37:18.039Z",
+   "id": "c1789000638039"
+  }
+ ]
 }
