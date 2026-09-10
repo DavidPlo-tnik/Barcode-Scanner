@@ -12860,6 +12860,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909211958219097",
+   "applied_at": "2026-09-09T21:19:58",
+   "change": {
+    "code": "0482019226283",
+    "title": "NASH CIK JUS DE POMME RAISIN 1930ML",
+    "pos_title": "NASH CIK JUS DE POMME RAISIN 1930ML",
+    "size_num": 1930,
+    "size_unit": "ML",
+    "queued_at": "2026-09-10T01:19:57.649Z",
+    "id": "c1789003197649"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ODESSA JUS DE POMME RAISIN 1930ML",
+     "F1744": "1930.0",
+     "F22": "1930 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ODESSA JUS DE POMME RAISIN 1930ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.7500",
+     "F196": "3.7500",
+     "F1140": "3.7500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
