@@ -952,7 +952,31 @@
    "mp": null,
    "cost": 5.5,
    "at": "2026-09-09 20:03:27"
+  },
+  "0482308861142": {
+   "pt": "KONTI BONJOUR ASSORTI 348G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "KG",
+   "sn": 348.0,
+   "nm": "KONTI BONJOUR ASSORTI",
+   "rp": 7.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 7.99,
+   "mp": null,
+   "cost": 5.2,
+   "at": "2026-09-09 20:05:33"
   }
  },
- "updated": "2026-09-09 20:03:27"
+ "updated": "2026-09-09 20:05:33"
 }
