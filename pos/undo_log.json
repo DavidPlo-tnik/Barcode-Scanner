@@ -12660,6 +12660,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909210917213971",
+   "applied_at": "2026-09-09T21:09:17",
+   "change": {
+    "code": "0426012339503",
+    "title": "SEMYANKA GRAINES DE TOURNESOL GRILLÉES 300GR",
+    "pos_title": "SEMYANKA GRAINES DE TOURNESOL GRILLÉES",
+    "size_num": 300,
+    "size_unit": "GR",
+    "queued_at": "2026-09-10T01:08:34.840Z",
+    "id": "c1789002514840"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SEMYANKA XXL ",
+     "F1744": "300.0",
+     "F22": "300GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SEMYANKA XXL  300GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "54.9000",
+     "F196": "54.9000",
+     "F1140": "3.0500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
