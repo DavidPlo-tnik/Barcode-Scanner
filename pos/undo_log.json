@@ -12480,6 +12480,66 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909205335166116",
+   "applied_at": "2026-09-09T20:53:35",
+   "change": {
+    "code": "0482307761704",
+    "title": "ROSHEN BATON CARAMEL",
+    "pos_title": "ROSHEN BATON CARAMEL",
+    "size_num": 43,
+    "size_unit": "GR",
+    "multibuy": {
+     "qty": 4,
+     "price": 5
+    },
+    "promo": {
+     "price": 5,
+     "qty": 4,
+     "start": null,
+     "end": null
+    },
+    "queued_at": "2026-09-10T00:53:25.784Z",
+    "id": "c1789001605784"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ROSHEN NOIRE",
+     "F1744": "400.0",
+     "F22": "43GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ROSHEN NOIRE 43GR",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.7000",
+     "F196": "0.7000",
+     "F1140": "0.7000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.0000",
+     "F31": "4.0",
+     "F1006": "4.0",
+     "F1007": "5.0000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
