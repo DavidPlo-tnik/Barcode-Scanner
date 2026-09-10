@@ -1002,16 +1002,16 @@
    "at": "2026-09-09 20:08:54"
   },
   "0482308860824": {
-   "pt": "KONTI BONJOUR 232G",
+   "pt": "KONTI BONJOUR CERISE 232GR",
    "tf": 0,
    "tp": 0,
    "dp": null,
    "bal": 0,
    "qte": 1,
    "sd": 1,
-   "un": "G",
+   "un": "GR",
    "sn": 232.0,
-   "nm": "KONTI BONJOUR",
+   "nm": "KONTI BONJOUR CERISE 232GR",
    "rp": 4.99,
    "ap": 0,
    "pp": null,
@@ -1023,7 +1023,7 @@
    "price": 4.99,
    "mp": null,
    "cost": 31.52,
-   "at": "2026-09-09 20:07:43"
+   "at": "2026-09-09 20:13:12"
   },
   "0482308860820": {
    "pt": "KONTI BONJOUR MANGUE 232GR",
@@ -1074,5 +1074,5 @@
    "at": "2026-09-09 20:12:07"
   }
  },
- "updated": "2026-09-09 20:12:07"
+ "updated": "2026-09-09 20:13:12"
 }
