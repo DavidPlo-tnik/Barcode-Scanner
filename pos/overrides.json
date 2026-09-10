@@ -1,29 +1,5 @@
 {
  "items": {
-  "0482000183007": {
-   "pt": "POLIANA KVASOVA 1500ML",
-   "tf": 1,
-   "tp": 1,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 2,
-   "un": "ML",
-   "sn": 1500.0,
-   "nm": "POLIANA KVASOVA 1500ML",
-   "rp": 2.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 2.99,
-   "mp": null,
-   "cost": 1.99,
-   "at": "2026-09-08 15:01:52"
-  },
   "0482307761783": {
    "pt": "GATEAU KIEV ROSHEN 850G",
    "tf": 0,
@@ -1360,7 +1336,31 @@
    "mp": "4/$5.00",
    "cost": 0.7,
    "at": "2026-09-09 20:53:35"
+  },
+  "0482307763944": {
+   "pt": "ROSHEN BATON AMANDES NOIX DE COCO 38GR",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "GR",
+   "sn": 38.0,
+   "nm": "ROSHEN BATON AMANDES NOIX DE COCO 38GR",
+   "rp": 5.0,
+   "ap": 1,
+   "pp": 5.0,
+   "ps": null,
+   "pe": null,
+   "rq": 4,
+   "pq": 4,
+   "lk": 0,
+   "price": 1.25,
+   "mp": "4/$5.00",
+   "cost": 0.7,
+   "at": "2026-09-09 21:06:04"
   }
  },
- "updated": "2026-09-09 20:53:35"
+ "updated": "2026-09-09 21:06:04"
 }
