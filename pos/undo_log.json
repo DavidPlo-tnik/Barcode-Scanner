@@ -14157,6 +14157,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260910170437102372",
+   "applied_at": "2026-09-10T17:04:37",
+   "change": {
+    "code": "0482001268317",
+    "title": "IRISKA LAIT CONDENSÉ 290GR",
+    "pos_title": "IRISKA LAIT CONDENSÉ 290GR",
+    "size_num": 290,
+    "size_unit": "GR",
+    "queued_at": "2026-09-10T21:04:13.999Z",
+    "id": "c1789074254000"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": " CONDENSED MILK",
+     "F1744": "290.0",
+     "F22": "290G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": " CONDENSED MILK 290G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.1500",
+     "F196": "2.1500",
+     "F1140": "2.1500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
