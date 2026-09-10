@@ -11334,6 +11334,55 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909200533074253",
+   "applied_at": "2026-09-09T20:05:33",
+   "change": {
+    "code": "0482308861142",
+    "pos_title": "KONTI BONJOUR ASSORTI 348G",
+    "size_num": 348,
+    "size_unit": "KG",
+    "queued_at": "2026-09-10T00:05:12.307Z",
+    "id": "c1788998712307"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": " KONTI BONJOUR ASSORTI",
+     "F1744": "348.0",
+     "F22": "348G",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": " KONTI BONJOUR ASSORTI 348G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "5.2000",
+     "F196": "5.2000",
+     "F1140": "5.2000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
