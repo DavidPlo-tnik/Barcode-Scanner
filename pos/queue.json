@@ -1,3 +1,23 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0482308860840",
+   "title": "SUPER KONTIK LAIT VANILLE 90GR",
+   "pos_title": "SUPER KONTIK LAIT VANILLE 90GR",
+   "size_num": 90,
+   "size_unit": "GR",
+   "multibuy": {
+    "qty": 3,
+    "price": 5
+   },
+   "promo": {
+    "price": 5,
+    "qty": 3,
+    "start": null,
+    "end": null
+   },
+   "queued_at": "2026-09-10T00:24:52.636Z",
+   "id": "c1788999892636"
+  }
+ ]
 }
