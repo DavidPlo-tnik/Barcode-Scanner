@@ -2314,7 +2314,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v124</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v125</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4155,6 +4155,10 @@
   // Re-render whatever is on screen so a just-made edit is visible everywhere.
   function repaintAfterLocalEdit(code) {
     applyOverridesToProducts();
+    // A title fix changes DATA.products[code][0] right away but does not touch
+    // DATA.updated_at, so the duplicate-name cache would not know to rebuild --
+    // the flag would stay stale on exactly the item you just fixed. Force it.
+    _nameCountsCache = null;
     if (_editData && _editData.items && _editData.items[code]) {
       Object.assign(_editData.items[code], _overrides[code] || {});
     }
@@ -6538,6 +6542,26 @@
   // out of stock for part of the period. Instead average only over WEEKS THAT
   // HAD SALES, within the recent window -- a stockout drags the count of
   // active weeks down, not the rate itself.
+  // How many products currently share each exact name, across the WHOLE POS
+  // catalogue (not just the ecom list). Built once and cached, since scanning
+  // 55k+ items on every render would be wasteful; invalidated whenever fresh
+  // data lands so a fixed title clears the flag on the next load/refresh.
+  let _nameCountsCache = null, _nameCountsAt = 0;
+  function productNameCounts() {
+    const stamp = (DATA && DATA.updated_at) || '';
+    if (_nameCountsCache && _nameCountsAt === stamp) return _nameCountsCache;
+    const counts = {};
+    if (DATA && DATA.products) {
+      for (const code in DATA.products) {
+        const a = DATA.products[code];
+        const nm = (a && a[0] || '').trim().toUpperCase();
+        if (nm) counts[nm] = (counts[nm] || 0) + 1;
+      }
+    }
+    _nameCountsCache = counts; _nameCountsAt = stamp;
+    return counts;
+  }
+
   function ecomSalesStats(code) {
     const s = DATA.sales && DATA.sales[resolveCode(code)];
     const wa = (s && s.wa) || [];      // weekly revenue, oldest..newest
@@ -6575,8 +6599,18 @@
       <div class="ecom-progress-track"><div class="ecom-progress-fill" style="width:${pct}%"></div></div>
       <div class="ecom-progress-label">${withPhotos} / ${codes.length} WITH PHOTO · ${pct}% COMPLETE</div>` : '';
 
-    // build rows with dept + photo + validation info
+    // build rows with dept + photo + sales info
     const gmeta = cat.groups || {};
+
+    // Duplicate-name detection is recomputed LIVE from current titles every
+    // render, not read from the stored group metadata (that was a one-time
+    // snapshot from population, so a title fix never cleared the flag).
+    // Checked against the WHOLE POS catalogue (55k+ items), not just the ecom
+    // list -- the matching duplicate can sit outside the ecom catalogue
+    // entirely and still mean the same product got entered twice in the POS.
+    // Cached and only rebuilt when DATA reloads.
+    const nameCounts = productNameCounts();
+
     let rows = codes.map(code => {
       const arr = DATA.products[resolveCode(code)];
       const entry = cat.items[code];
@@ -6585,6 +6619,7 @@
       const vDone = ['title','size','photo','price'].filter(k => v[k]).length;
       const g = entry.group ? gmeta[entry.group] : null;
       const stat = ecomSalesStats(code);
+      const curName = (arr && arr[0] || '').trim().toUpperCase();
       return {
         code,
         name: arr ? (arr[0] || '(unknown product)') : '(unknown product)',
@@ -6601,7 +6636,7 @@
         listed: !!entry.listed,
         v, vDone,
         variantOf: entry.group || null,
-        variantDupe: !!(g && g.duplicate_names),
+        variantDupe: !!curName && (nameCounts[curName] || 0) > 1,
         scale: !!entry.scale,
         fresh: !!entry.fresh,
       };
@@ -6648,8 +6683,8 @@
           : `<div class="ecom-photo-flag">no photo</div>`}
         <div style="flex:1;min-width:0;">
           <div class="li-name">${escapeHtml(r.name.trim())}</div>
-          <div class="li-meta">${escapeHtml(r.code)}${r.weekly > 0 ? ' · ' + (r.weekly < 10 ? r.weekly.toFixed(1) : Math.round(r.weekly)) + '/wk' : ''} · ${r.units14}u/14d${r.variantDupe ? ' · <span class="ecom-badge-dupe">DUPLICATE NAME</span>' : (r.variantOf ? ' · variant' : '')}</div>
-          ${r.noSales14d ? '<div class="ecom-warn">⚠ no sales in 14 days — check stock / placement</div>'
+          <div class="li-meta">${escapeHtml(r.code)}${r.weekly > 0 ? ' · ' + (r.weekly < 10 ? r.weekly.toFixed(1) : Math.round(r.weekly)) + '/wk' : ''} · ${r.units14}/14d${r.variantDupe ? ' · <span class="ecom-badge-dupe">DUPLICATE NAME</span>' : (r.variantOf ? ' · variant' : '')}</div>
+          ${r.noSales14d ? '<div class="ecom-warn">⚠ no sales in 14 days</div>'
             : (r.noSales7d ? '<div class="ecom-warn">⚠ no sales in 7 days</div>' : '')}
         </div>
         <div class="li-cur">${r.price != null ? priceText(r.code, r.price) : '—'}</div>
