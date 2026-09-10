@@ -12250,6 +12250,66 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909203645095542",
+   "applied_at": "2026-09-09T20:36:45",
+   "change": {
+    "code": "0482308860848",
+    "title": "SUPER KONTIK CHOCOLAT 90GR",
+    "pos_title": "SUPER KONTIK CHOCOLAT 90GR",
+    "size_num": 90,
+    "size_unit": "GR",
+    "multibuy": {
+     "qty": 3,
+     "price": 5
+    },
+    "promo": {
+     "price": 5,
+     "qty": 3,
+     "start": null,
+     "end": null
+    },
+    "queued_at": "2026-09-10T00:36:18.183Z",
+    "id": "c1789000578183"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SUPER KONTIK",
+     "F1744": "90.0",
+     "F22": "90G",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "SUPER KONTIK 90G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "36.8000",
+     "F196": "36.8000",
+     "F1140": "1.0222",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.0000",
+     "F31": "3.0",
+     "F1006": "3.0",
+     "F1007": "5.0000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
