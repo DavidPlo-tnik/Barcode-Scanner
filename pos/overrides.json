@@ -1312,7 +1312,31 @@
    "mp": "4/$5.00",
    "cost": 0.7,
    "at": "2026-09-09 20:51:25"
+  },
+  "0482307761363": {
+   "pt": "ROSHEN BATON CREME BRULE 43GR",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "GR",
+   "sn": 43.0,
+   "nm": "ROSHEN BATON CREME BRULE 43GR",
+   "rp": 1.25,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 1.25,
+   "mp": null,
+   "cost": 0.9,
+   "at": "2026-09-09 20:52:30"
   }
  },
- "updated": "2026-09-09 20:51:25"
+ "updated": "2026-09-09 20:52:30"
 }
