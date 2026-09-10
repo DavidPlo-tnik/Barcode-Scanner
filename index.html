@@ -337,7 +337,7 @@
   #pos-direct-modal { z-index: 165; }
 
   /* ===== POS Editor: calm, grouped, generous whitespace ===== */
-  .pd-editor { padding-bottom: 40px; max-width: 100%; overflow-x: hidden; }
+  .pd-editor { padding-bottom: 110px; max-width: 100%; overflow-x: hidden; }
   .pd-editor *, .pd-editor *::before, .pd-editor *::after { box-sizing: border-box; max-width: 100%; }
   .pd-size, .pd-price-inputs, .pd-dates { min-width: 0; }
   .pd-size > *, .pd-price-inputs > *, .pd-dates > * { min-width: 0; }
@@ -454,8 +454,19 @@
   .pd-money-labeled .pd-money { flex: 0 0 120px; min-width: 0; }
   .pd-money-labeled .pd-money .pd-input { min-width: 0; }
 
-  .pd-apply { width: 100%; margin-top: 8px; padding: 15px; font-size: 15px; border-radius: 12px; }
-  .pd-apply-note { font-size: 11px; color: var(--text-faint); text-align: center; margin-top: 10px; line-height: 1.4; }
+  /* Floating so Apply is always reachable without scrolling to the bottom of a
+     long editor. Fixed to the viewport (the modal itself scrolls, the bar does
+     not), sitting above the safe-area inset on notched phones. */
+  .pd-apply-bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 180;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: linear-gradient(to top, var(--bg) 65%, transparent);
+    display: none;
+  }
+  #pos-direct-modal.open .pd-apply-bar { display: block; }
+  .pd-apply { width: 100%; padding: 15px; font-size: 15px; border-radius: 12px;
+              box-shadow: 0 -2px 14px rgba(0,0,0,.4); }
+  .pd-apply-note { font-size: 11px; color: var(--text-faint); text-align: center; margin-top: 8px; line-height: 1.4; }
 
   .pd-queued { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border); }
   .pd-q-title { font-family: var(--font-display); font-size: 10px; color: var(--warn); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
@@ -673,6 +684,10 @@
   .ecom-tick.on { background: color-mix(in srgb, var(--good) 22%, transparent);
                   color: var(--good); border-color: var(--good); }
   .ecom-badge-dupe { color: var(--warn); font-size: 9px; font-family: var(--font-display); }
+  .ecom-warn {
+    color: var(--warn); font-size: 10px; font-family: var(--font-display);
+    margin-top: 2px;
+  }
 
   .recent { margin-top: 22px; }
   .recent-list { display: flex; flex-direction: column; gap: 4px; }
@@ -1875,6 +1890,8 @@
     <button class="ecom-chip" data-efilter="listed">LISTED</button>
     <button class="ecom-chip" data-efilter="nophoto">NEEDS PHOTO</button>
     <button class="ecom-chip" data-efilter="hasphoto">HAS PHOTO</button>
+    <button class="ecom-chip" data-efilter="nosales7">NO SALES 7D</button>
+    <button class="ecom-chip" data-efilter="nosales14">NO SALES 14D</button>
     <button class="ecom-chip" data-efilter="variants">VARIANTS</button>
     <button class="ecom-chip" data-efilter="scale">SCALE</button>
     <button class="ecom-chip" data-efilter="dupes">DUPLICATE NAMES</button>
@@ -2251,9 +2268,11 @@
       <label class="pd-toggle"><input type="checkbox" id="pd-qte"><span>Prompt for quantity</span></label>
     </section>
 
+    <div id="pd-queued" class="pd-queued"></div>
+  </div>
+  <div class="pd-apply-bar">
     <button class="btn primary pd-apply" id="pd-save">Apply to POS</button>
     <div class="pd-apply-note">Applied on the store PC within a minute. Every change is logged and reversible.</div>
-    <div id="pd-queued" class="pd-queued"></div>
   </div>
 </div>
 
@@ -2288,7 +2307,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v122</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v123</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3966,21 +3985,21 @@
     return _freshPhotos[fn] ||
       `https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/${GH.GH_BRANCH}/images/ecom/${fn}`;
   }
+  // The ecom catalogue (cat.items) IS the website catalogue -- there is no
+  // separate "listed" gate anymore. Presence in the dict = in the catalogue.
+  // Earlier this button toggled a 'listed' sub-flag, which is why existing
+  // catalogue items (added as drafts, listed:false) confusingly showed
+  // "+ ECOM" as if they weren't in it at all.
   function paintPdEcomBtn(ent) {
     const btn = $('#pd-ecom-btn'), note = $('#pd-ecom-note');
     if (!btn) return;
-    const listed = !!(ent && ent.listed === true);
-    btn.textContent = listed ? '\u2715 REMOVE FROM ECOM' : '+ ECOM';
-    btn.classList.toggle('in-catalog', listed);
-    if (note) {
-      note.textContent = ent
-        ? `in catalogue${ent.group ? ' \u00b7 variant group' : ''}`
-        : 'not in the website catalogue yet';
-    }
+    const inCat = !!ent;
+    btn.textContent = inCat ? '\u2715 REMOVE FROM ECOM' : '+ ECOM';
+    btn.classList.toggle('in-catalog', inCat);
+    if (note) note.textContent = inCat ? 'in the website catalogue' : 'not in the website catalogue';
   }
 
-  // Instant toggle -- takes effect immediately, no Save required, so it can
-  // never sit forgotten among other pending edits in the form.
+  // Instant toggle -- takes effect immediately, no Save required.
   async function togglePdEcom() {
     const code = _pdCtx && _pdCtx.code;
     if (!code) return;
@@ -3988,25 +4007,14 @@
     btn.disabled = true;
     try {
       const cat = await mutateEcomCatalog(cat => {
-        const already = !!(cat.items[code] && cat.items[code].listed === true);
-        if (already) {
-          // keep photos if any exist; just unpublish. Only delete outright
-          // when there is nothing worth keeping.
-          if (cat.items[code] && (cat.items[code].photos || []).length) {
-            cat.items[code].listed = false;
-          } else {
-            delete cat.items[code];
-          }
+        if (cat.items[code]) {
+          delete cat.items[code];
         } else {
-          if (!cat.items[code]) {
-            cat.items[code] = { added: new Date().toISOString().slice(0, 10),
-                                photos: [], listed: false, status: 'draft' };
-          }
-          cat.items[code].listed = true;
+          cat.items[code] = { added: new Date().toISOString().slice(0, 10), photos: [] };
         }
       });
       paintPdEcomBtn(cat.items[code]);
-      showToast(cat.items[code] && cat.items[code].listed ? 'LISTED ON WEBSITE' : 'REMOVED FROM WEBSITE');
+      showToast(cat.items[code] ? 'ADDED TO ECOM' : 'REMOVED FROM ECOM');
     } catch (e) {
       showToast('Website update failed: ' + e.message, true);
     } finally {
@@ -6518,6 +6526,32 @@
     sel.addEventListener('change', () => { _ecomDept = sel.value; renderEcom(); });
   }
 
+  // Weekly rate + recency for one item. Averaging over ALL weeks (including
+  // stockout weeks with zero sales) understates a good seller that was simply
+  // out of stock for part of the period. Instead average only over WEEKS THAT
+  // HAD SALES, within the recent window -- a stockout drags the count of
+  // active weeks down, not the rate itself.
+  function ecomSalesStats(code) {
+    const s = DATA.sales && DATA.sales[resolveCode(code)];
+    const wa = (s && s.wa) || [];      // weekly revenue, oldest..newest
+    const wq = (s && s.wq) || [];      // weekly units
+    const dq = (s && s.dq) || [];      // last-14-days units, oldest..newest
+    const recentWq = wq.slice(-8);
+    const activeWeeks = recentWq.filter(x => x > 0);
+    const rateUnits = activeWeeks.length
+      ? activeWeeks.reduce((a, b) => a + b, 0) / activeWeeks.length
+      : 0;
+    const units14 = dq.reduce((a, b) => a + (b || 0), 0);
+    const last7 = dq.slice(-7).reduce((a, b) => a + (b || 0), 0);
+    const hadHistory = wq.some(x => x > 0);   // has it EVER sold, so a zero now is meaningful
+    return {
+      rateUnits,                                  // /wk, stockout-adjusted
+      units14,
+      noSales7d: hadHistory && last7 === 0,
+      noSales14d: hadHistory && units14 === 0,
+    };
+  }
+
   async function renderEcom() {
     const container = $('#ecom-container');
     const status = $('#ecom-statusbar');
@@ -6543,12 +6577,16 @@
       const v = entry.v || {};
       const vDone = ['title','size','photo','price'].filter(k => v[k]).length;
       const g = entry.group ? gmeta[entry.group] : null;
+      const stat = ecomSalesStats(code);
       return {
         code,
         name: arr ? (arr[0] || '(unknown product)') : '(unknown product)',
         price: arr ? arr[1] : null,
         rev: (DATA.sales[code] && DATA.sales[code].ta) || 0,
-        weekly: entry.weekly || 0,
+        weekly: stat.rateUnits,          // now stockout-adjusted, computed live
+        units14: stat.units14,
+        noSales7d: stat.noSales7d,
+        noSales14d: stat.noSales14d,
         nPhotos: photos.length,
         photo: photos[0],
         group: ecomGroupOf(code),
@@ -6574,6 +6612,8 @@
         case 'listed':   if (!r.listed) return false; break;
         case 'variants': if (!r.variantOf) return false; break;
         case 'scale':    if (!r.scale) return false; break;
+        case 'nosales7':  if (!r.noSales7d) return false; break;
+        case 'nosales14': if (!r.noSales14d) return false; break;
         case 'dupes':    if (!r.variantDupe) return false; break;
       }
       return true;
@@ -6600,8 +6640,10 @@
           ? `<img class="cashier-thumb" src="https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/${GH.GH_BRANCH}/images/ecom/${r.photo}" loading="lazy" alt="">${r.nPhotos > 1 ? `<div class="ecom-photo-count">+${r.nPhotos - 1}</div>` : ''}`
           : `<div class="ecom-photo-flag">no photo</div>`}
         <div style="flex:1;min-width:0;">
-          <div class="li-name">${escapeHtml(r.name.trim())}${r.listed ? ' <span style="color:var(--good);font-size:9px;">LIVE</span>' : ''}</div>
-          <div class="li-meta">${escapeHtml(r.code)}${r.weekly > 0 ? ' · $' + Math.round(r.weekly) + '/wk' : ''}${r.variantDupe ? ' · <span class="ecom-badge-dupe">DUPLICATE NAME</span>' : (r.variantOf ? ' · variant' : '')}</div>
+          <div class="li-name">${escapeHtml(r.name.trim())}</div>
+          <div class="li-meta">${escapeHtml(r.code)}${r.weekly > 0 ? ' · ' + (r.weekly < 10 ? r.weekly.toFixed(1) : Math.round(r.weekly)) + '/wk' : ''} · ${r.units14}u/14d${r.variantDupe ? ' · <span class="ecom-badge-dupe">DUPLICATE NAME</span>' : (r.variantOf ? ' · variant' : '')}</div>
+          ${r.noSales14d ? '<div class="ecom-warn">⚠ no sales in 14 days — check stock / placement</div>'
+            : (r.noSales7d ? '<div class="ecom-warn">⚠ no sales in 7 days</div>' : '')}
         </div>
         <div class="li-cur">${r.price != null ? priceText(r.code, r.price) : '—'}</div>
         <div class="li-x">
