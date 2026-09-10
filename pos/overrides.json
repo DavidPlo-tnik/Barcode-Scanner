@@ -1,29 +1,5 @@
 {
  "items": {
-  "0482307761783": {
-   "pt": "GATEAU KIEV ROSHEN 850G",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 4,
-   "un": "GR",
-   "sn": 850.0,
-   "nm": "GATEAU KIEV ROSHEN 850G",
-   "rp": 44.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 44.99,
-   "mp": null,
-   "cost": 34.0,
-   "at": "2026-09-08 15:07:08"
-  },
   "0005784123300": {
    "pt": "NANUK TRIMURES DE SAUMON FUMÉ 500G",
    "tf": 0,
@@ -1360,7 +1336,31 @@
    "mp": "4/$5.00",
    "cost": 0.7,
    "at": "2026-09-09 21:06:04"
+  },
+  "0426012339503": {
+   "pt": "SEMYANKA GRAINES DE TOURNESOL GRILLÉES",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 300.0,
+   "nm": "SEMYANKA GRAINES DE TOURNESOL GRILLÉES 300GR",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 54.9,
+   "at": "2026-09-09 21:09:17"
   }
  },
- "updated": "2026-09-09 21:06:04"
+ "updated": "2026-09-09 21:09:17"
 }
