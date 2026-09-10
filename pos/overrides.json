@@ -1672,7 +1672,31 @@
    "mp": null,
    "cost": 136.5,
    "at": "2026-09-09 22:02:18"
+  },
+  "0482001737004": {
+   "pt": "BELOTSERKOVSKAYA SARRASIN GRILLÉ 1000GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 1000.0,
+   "nm": "BELOTSERKOVSKAYA SARRASIN GRILLÉ 1000GR",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 2.1,
+   "at": "2026-09-09 22:48:02"
   }
  },
- "updated": "2026-09-09 22:02:18"
+ "updated": "2026-09-09 22:48:02"
 }
