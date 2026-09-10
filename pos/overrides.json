@@ -1627,7 +1627,31 @@
    "mp": null,
    "cost": 7.0,
    "at": "2026-09-10 14:51:40"
+  },
+  "0482001268317": {
+   "pt": "IRISKA LAIT CONDENSÉ 290GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 290.0,
+   "nm": "IRISKA LAIT CONDENSÉ 290GR",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 2.15,
+   "at": "2026-09-10 17:04:37"
   }
  },
- "updated": "2026-09-10 14:51:40"
+ "updated": "2026-09-10 17:04:37"
 }
