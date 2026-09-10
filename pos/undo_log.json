@@ -13557,6 +13557,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909231155146495",
+   "applied_at": "2026-09-09T23:11:55",
+   "change": {
+    "code": "0482002667043",
+    "title": "BONBON SOLNECHNIY VINOCHOK 500GR",
+    "pos_title": "BONBON SOLNECHNIY VINOCHOK 500GR",
+    "size_num": 500,
+    "size_unit": "GR",
+    "queued_at": "2026-09-10T03:11:22.678Z",
+    "id": "c1789009882678"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BONBON SOLNECHNIY VINOCHOK",
+     "F1744": "500.0",
+     "F22": "500GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BONBON SOLNECHNIY VINOCHOK 500GR",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "41.4000",
+     "F196": "41.4000",
+     "F1140": "6.9000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "10.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "10.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
