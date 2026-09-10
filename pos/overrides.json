@@ -1408,7 +1408,31 @@
    "mp": null,
    "cost": 3.75,
    "at": "2026-09-09 21:14:39"
+  },
+  "0482000368936": {
+   "pt": "NASH CIK JUS DE TOMATES 1930ML",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 1930.0,
+   "nm": "NASH CIK JUS DE TOMATES 1930ML",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 3.75,
+   "at": "2026-09-09 21:18:53"
   }
  },
- "updated": "2026-09-09 21:14:39"
+ "updated": "2026-09-09 21:18:53"
 }
