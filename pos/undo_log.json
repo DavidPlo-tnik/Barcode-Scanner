@@ -14107,6 +14107,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260910145140222958",
+   "applied_at": "2026-09-10T14:51:40",
+   "change": {
+    "code": "0482002996133",
+    "title": "DARLIS JUS DE BOULEAU 3000ML",
+    "pos_title": "DARLIS JUS DE BOULEAU 3000ML",
+    "size_num": 3000,
+    "size_unit": "ML",
+    "queued_at": "2026-09-10T18:50:45.597Z",
+    "id": "c1789066245597"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "TSUMAN BIRCH JUIS",
+     "F1744": "3000.0",
+     "F22": "3L",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "TSUMAN BIRCH JUIS 3L",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "7.0000",
+     "F196": "7.0000",
+     "F1140": "7.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "11.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "11.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
