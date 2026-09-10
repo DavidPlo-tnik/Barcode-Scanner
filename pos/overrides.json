@@ -1,29 +1,5 @@
 {
  "items": {
-  "0005784123300": {
-   "pt": "NANUK TRIMURES DE SAUMON FUMÉ 500G",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 4,
-   "un": "GR",
-   "sn": 500.0,
-   "nm": "NANUK TRIMURES DE SAUMON FUMÉ 500G",
-   "rp": 17.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 17.99,
-   "mp": null,
-   "cost": 11.0,
-   "at": "2026-09-08 15:23:57"
-  },
   "0020993600000": {
    "pt": "BAGUETTE 400GR",
    "tf": 0,
@@ -1456,7 +1432,31 @@
    "mp": null,
    "cost": 3.75,
    "at": "2026-09-09 21:22:04"
+  },
+  "0482000368937": {
+   "pt": "NASH CIK JUS DE POMME 1930ML",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 1930.0,
+   "nm": "NASH CIK JUS DE POMME 1930ML",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 3.5,
+   "at": "2026-09-09 21:24:16"
   }
  },
- "updated": "2026-09-09 21:22:04"
+ "updated": "2026-09-09 21:24:16"
 }
