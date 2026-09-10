@@ -12540,6 +12540,126 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909210604116832",
+   "applied_at": "2026-09-09T21:06:04",
+   "change": {
+    "code": "0482307763944",
+    "title": "ROSHEN BATON AMANDES NOIX DE COCO 38GR",
+    "pos_title": "ROSHEN BATON AMANDES NOIX DE COCO 38GR",
+    "size_num": 38,
+    "size_unit": "GR",
+    "multibuy": {
+     "qty": 4,
+     "price": 5
+    },
+    "promo": {
+     "price": 5,
+     "qty": 4,
+     "start": null,
+     "end": null
+    },
+    "queued_at": "2026-09-10T01:05:16.231Z",
+    "id": "c1789002316231"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ROSHEN NOIRE",
+     "F1744": "400.0",
+     "F22": "43GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ROSHEN NOIRE 43GR",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.7000",
+     "F196": "0.7000",
+     "F1140": "0.7000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.0000",
+     "F31": "4.0",
+     "F1006": "4.0",
+     "F1007": "5.0000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260909210604179232",
+   "applied_at": "2026-09-09T21:06:04",
+   "change": {
+    "code": "0482307763944",
+    "title": "ROSHEN BATON AMANDES NOIX DE COCO 38GR",
+    "pos_title": "ROSHEN BATON AMANDES NOIX DE COCO 38GR",
+    "size_num": 38,
+    "size_unit": "GR",
+    "multibuy": {
+     "qty": 4,
+     "price": 5
+    },
+    "promo": {
+     "price": 5,
+     "qty": 4,
+     "start": null,
+     "end": null
+    },
+    "queued_at": "2026-09-10T01:05:34.947Z",
+    "id": "c1789002334947"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ROSHEN BATON AMANDES NOIX DE COCO 38GR",
+     "F1744": "38.0",
+     "F22": "38 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ROSHEN BATON AMANDES NOIX DE COCO 38GR",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.7000",
+     "F196": "0.7000",
+     "F1140": "0.7000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.0000",
+     "F31": "4.0",
+     "F1006": "4.0",
+     "F1007": "5.0000",
+     "F113": "STOR",
+     "F1133": "5.0000",
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
