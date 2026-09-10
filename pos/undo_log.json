@@ -13657,6 +13657,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260909232227072405",
+   "applied_at": "2026-09-09T23:22:27",
+   "change": {
+    "code": "0482008841521",
+    "title": "MORSKI SELAIRE SECHE SALÉ (POLOSATIK) 45GR",
+    "pos_title": "MORSKI SELAIRE SECHE SALÉ (POLOSATIK) 45",
+    "size_num": 45,
+    "size_unit": "GR",
+    "queued_at": "2026-09-10T03:21:31.139Z",
+    "id": "c1789010491139"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SELAIRE  SECHE SALE",
+     "F1744": "45.0",
+     "F22": "45G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "SELAIRE  SECHE SALE 45G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "210.0000",
+     "F196": "210.0000",
+     "F1140": "2.1000",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
