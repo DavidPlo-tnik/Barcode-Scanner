@@ -2253,7 +2253,31 @@
    "mp": null,
    "cost": 29.4,
    "at": "2026-09-10 21:50:57"
+  },
+  "0482307761782": {
+   "pt": "ROSHEN GATEAU  KIEV 450GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 450.0,
+   "nm": "ROSHEN GATEAU  KIEV 450GR",
+   "rp": 34.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 34.99,
+   "mp": null,
+   "cost": 23.75,
+   "at": "2026-09-10 21:52:02"
   }
  },
- "updated": "2026-09-10 21:50:57"
+ "updated": "2026-09-10 21:52:02"
 }
