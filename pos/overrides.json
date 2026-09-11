@@ -2109,7 +2109,31 @@
    "mp": null,
    "cost": 5.9,
    "at": "2026-09-10 21:31:47"
+  },
+  "0083213900102": {
+   "pt": "ELWEST FARMER'S FROMAGE FRAIS 14% 454GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 3,
+   "un": "GR",
+   "sn": 454.0,
+   "nm": "ELWEST FARMER'S FROMAGE FRAIS 14%",
+   "rp": 7.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 7.99,
+   "mp": null,
+   "cost": 6.2,
+   "at": "2026-09-10 21:32:52"
   }
  },
- "updated": "2026-09-10 21:31:47"
+ "updated": "2026-09-10 21:32:52"
 }
