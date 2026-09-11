@@ -1627,7 +1627,31 @@
    "mp": null,
    "cost": 42.0,
    "at": "2026-09-10 20:07:14"
+  },
+  "0482009781556": {
+   "pt": "LOVARE THÉ 1001 NIGHTS 80GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 80.0,
+   "nm": "LOVARE THÉ 1001 NIGHTS 80GR",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 4.2,
+   "at": "2026-09-10 20:09:26"
   }
  },
- "updated": "2026-09-10 20:07:14"
+ "updated": "2026-09-10 20:09:26"
 }
