@@ -14655,6 +14655,106 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260910203647104310",
+   "applied_at": "2026-09-10T20:36:47",
+   "change": {
+    "code": "0482019887127",
+    "title": "LOVARÉ THÉ WILD BERRY 80GR",
+    "pos_title": "LOVARÉ THÉ WILD BERRY 80GR",
+    "size_num": 80,
+    "size_unit": "GR",
+    "queued_at": "2026-09-11T00:35:55.966Z",
+    "id": "c1789086955966"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LOVARE THE ",
+     "F1744": "400.0",
+     "F22": "80G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LOVARE THE  80G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "4.2000",
+     "F196": "4.2000",
+     "F1140": "4.2000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260910203647151110",
+   "applied_at": "2026-09-10T20:36:47",
+   "change": {
+    "code": "0482019887127",
+    "title": "LOVARÉ THÉ WILD BERRY 80GR",
+    "pos_title": "LOVARÉ THÉ WILD BERRY 80GR",
+    "size_num": 80,
+    "size_unit": "GR",
+    "queued_at": "2026-09-11T00:36:03.961Z",
+    "id": "c1789086963961"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LOVARÉ THÉ WILD BERRY 80GR",
+     "F1744": "80.0",
+     "F22": "80 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LOVARÉ THÉ WILD BERRY 80GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "4.2000",
+     "F196": "4.2000",
+     "F1140": "4.2000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
