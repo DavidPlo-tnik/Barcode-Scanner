@@ -16191,6 +16191,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260910222702084330",
+   "applied_at": "2026-09-10T22:27:02",
+   "change": {
+    "code": "0085007784091",
+    "title": "BELEVINI CRÊPES AUX CASSIS 350GR",
+    "pos_title": "BELEVINI CRÊPES AUX CASSIS 350GR",
+    "size_num": 350,
+    "size_unit": "GR",
+    "queued_at": "2026-09-11T02:26:39.880Z",
+    "id": "c1789093599880"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BELEVINI CREPES AU FROMAGE COTTAGE",
+     "F1744": "350.0",
+     "F22": "350 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BELEVINI CREPES AU FROMAGE COTTAGE 350 G",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "25.2000",
+     "F196": "25.2000",
+     "F1140": "2.1000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
