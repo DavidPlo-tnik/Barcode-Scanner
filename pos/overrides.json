@@ -1653,7 +1653,7 @@
    "at": "2026-09-10 20:09:26"
   },
   "0482009781806": {
-   "pt": "LOVARE THÉ FRUIT DE LA PASSION 80GR",
+   "pt": "LOVARÉ THÉ FRUIT DE LA PASSION",
    "tf": 0,
    "tp": 0,
    "dp": null,
@@ -1661,8 +1661,8 @@
    "qte": 0,
    "sd": 1,
    "un": "GR",
-   "sn": 80.0,
-   "nm": "LOVARE THÉ FRUIT DE LA PASSION 80GR",
+   "sn": 400.0,
+   "nm": "LOVARÉ THÉ FRUIT DE LA PASSION",
    "rp": 5.99,
    "ap": 0,
    "pp": null,
@@ -1674,8 +1674,8 @@
    "price": 5.99,
    "mp": null,
    "cost": 4.2,
-   "at": "2026-09-10 20:15:42"
+   "at": "2026-09-10 20:18:49"
   }
  },
- "updated": "2026-09-10 20:15:42"
+ "updated": "2026-09-10 20:18:49"
 }
