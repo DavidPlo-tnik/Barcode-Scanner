@@ -1,22 +1,3 @@
 {
- "items": [
-  {
-   "code": "0482019887127",
-   "title": "LOVARÉ THÉ WILD BERRY 80GR",
-   "pos_title": "LOVARÉ THÉ WILD BERRY 80GR",
-   "size_num": 80,
-   "size_unit": "GR",
-   "queued_at": "2026-09-11T00:35:55.966Z",
-   "id": "c1789086955966"
-  },
-  {
-   "code": "0482019887127",
-   "title": "LOVARÉ THÉ WILD BERRY 80GR",
-   "pos_title": "LOVARÉ THÉ WILD BERRY 80GR",
-   "size_num": 80,
-   "size_unit": "GR",
-   "queued_at": "2026-09-11T00:36:03.961Z",
-   "id": "c1789086963961"
-  }
- ]
+ "items": []
 }
