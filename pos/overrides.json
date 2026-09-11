@@ -2229,7 +2229,31 @@
    "mp": null,
    "cost": 29.4,
    "at": "2026-09-10 21:49:48"
+  },
+  "0067926204259": {
+   "pt": "BELEVINI BAGELS 300G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 90.0,
+   "nm": "BELEVINI BAGELS",
+   "rp": 1.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 1.49,
+   "mp": null,
+   "cost": 29.4,
+   "at": "2026-09-10 21:50:57"
   }
  },
- "updated": "2026-09-10 21:49:48"
+ "updated": "2026-09-10 21:50:57"
 }
