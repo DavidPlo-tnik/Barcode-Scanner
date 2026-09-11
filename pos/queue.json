@@ -1,22 +1,3 @@
 {
- "items": [
-  {
-   "code": "0482311540517",
-   "pos_title": "LOVARE PROVENCE DREAMS 24UN",
-   "size_num": 24,
-   "size_unit": "UN",
-   "multibuy": {
-    "qty": 3,
-    "price": 9.99
-   },
-   "promo": {
-    "price": 9.99,
-    "qty": 3,
-    "start": null,
-    "end": null
-   },
-   "queued_at": "2026-09-11T00:41:23.012Z",
-   "id": "c1789087283012"
-  }
- ]
+ "items": []
 }
