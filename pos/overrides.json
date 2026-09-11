@@ -2277,7 +2277,31 @@
    "mp": null,
    "cost": 23.75,
    "at": "2026-09-10 21:52:02"
+  },
+  "0062871964310": {
+   "pt": "EMPIRE BAKERY STRUDEL PAVOT 200GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 51,
+   "un": "GR",
+   "sn": 200.0,
+   "nm": "EMPIRE BAKERY STRUDEL GRAINE DE PAVOT 200GR",
+   "rp": 4.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.49,
+   "mp": null,
+   "cost": 3.05,
+   "at": "2026-09-10 21:54:31"
   }
  },
- "updated": "2026-09-10 21:52:02"
+ "updated": "2026-09-10 21:54:31"
 }
