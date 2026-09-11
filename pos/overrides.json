@@ -2085,7 +2085,31 @@
    "mp": "3/$9.99",
    "cost": 115.2,
    "at": "2026-09-10 21:29:41"
+  },
+  "0083213900100": {
+   "pt": "ELWEST TVOROG FROMAGE FRAIS 4% 454GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 3,
+   "un": "GR",
+   "sn": 454.0,
+   "nm": "ELWEST TVOROG FROMAGE FRAIS 4% 454GR",
+   "rp": 7.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 7.99,
+   "mp": null,
+   "cost": 5.9,
+   "at": "2026-09-10 21:31:47"
   }
  },
- "updated": "2026-09-10 21:29:41"
+ "updated": "2026-09-10 21:31:47"
 }
