@@ -1,22 +1,3 @@
 {
- "items": [
-  {
-   "code": "0482311540521",
-   "pos_title": "LOVARE MAGIC BREEZE 24UN",
-   "size_num": 24,
-   "size_unit": "UN",
-   "multibuy": {
-    "qty": 3,
-    "price": 9.99
-   },
-   "promo": {
-    "price": 9.99,
-    "qty": 3,
-    "start": null,
-    "end": null
-   },
-   "queued_at": "2026-09-11T00:49:03.547Z",
-   "id": "c1789087743547"
-  }
- ]
+ "items": []
 }
