@@ -2302,7 +2302,31 @@
    "mp": null,
    "cost": 25.2,
    "at": "2026-09-10 22:27:02"
+  },
+  "0075468489939": {
+   "pt": "BELEVINI CRÊPES AUX CERISES 350GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 350.0,
+   "nm": "BELEVINI CRÊPES AUX CERISES 350GR",
+   "rp": 2.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 2.99,
+   "mp": null,
+   "cost": 25.2,
+   "at": "2026-09-10 22:28:07"
   }
  },
- "updated": "2026-09-10 22:27:02"
+ "updated": "2026-09-10 22:28:07"
 }
