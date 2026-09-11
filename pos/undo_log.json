@@ -16291,6 +16291,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260910222913093360",
+   "applied_at": "2026-09-10T22:29:13",
+   "change": {
+    "code": "0075468489942",
+    "title": "BELEVINI CRÊPES AU FROMAGE COTTAGE 350GR",
+    "pos_title": "BELEVINI CRÊPES AU FROMAGE COTTAGE 350GR",
+    "size_num": 350,
+    "size_unit": "GR",
+    "queued_at": "2026-09-11T02:28:57.462Z",
+    "id": "c1789093737462"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BELEVINI CREPES AU FROMAGE COTTAGE",
+     "F1744": "350.0",
+     "F22": "350 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BELEVINI CREPES AU FROMAGE COTTAGE 350 G",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "25.2000",
+     "F196": "25.2000",
+     "F1140": "2.1000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
