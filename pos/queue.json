@@ -1,3 +1,23 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0082988200558",
+   "title": "BELEVINI SAURY BALAOU 180GR",
+   "pos_title": "BELEVINI SAURY BALAOU 180GR",
+   "size_num": 180,
+   "size_unit": "GR",
+   "multibuy": {
+    "qty": 3,
+    "price": 9.99
+   },
+   "promo": {
+    "price": 9.99,
+    "qty": 3,
+    "start": null,
+    "end": null
+   },
+   "queued_at": "2026-09-11T01:29:00.641Z",
+   "id": "c1789090140641"
+  }
+ ]
 }
