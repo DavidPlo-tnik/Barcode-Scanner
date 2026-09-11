@@ -1,3 +1,22 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0482311540518",
+   "pos_title": "LOVARE ROOIBOS HONEY 24UN",
+   "size_num": 24,
+   "size_unit": "UN",
+   "multibuy": {
+    "qty": 3,
+    "price": 9.99
+   },
+   "promo": {
+    "price": 9.99,
+    "qty": 3,
+    "start": null,
+    "end": null
+   },
+   "queued_at": "2026-09-11T00:45:44.499Z",
+   "id": "c1789087544499"
+  }
+ ]
 }
