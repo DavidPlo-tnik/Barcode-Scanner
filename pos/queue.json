@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0000000004022",
+   "pos_title": "RAISINS VERTS MOYENS S.PEPIN",
+   "size_num": 1000,
+   "size_unit": "",
+   "promo": {
+    "price": 4.39,
+    "qty": 1,
+    "start": "2026-07-17",
+    "end": "2036-07-17"
+   },
+   "queued_at": "2026-09-11T15:21:11.291Z",
+   "id": "c1789140071291"
+  }
+ ]
 }
