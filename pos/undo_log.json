@@ -15587,6 +15587,66 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260910212941071086",
+   "applied_at": "2026-09-10T21:29:41",
+   "change": {
+    "code": "0082988200558",
+    "title": "BELEVINI SAURY BALAOU 180GR",
+    "pos_title": "BELEVINI SAURY BALAOU 180GR",
+    "size_num": 180,
+    "size_unit": "GR",
+    "multibuy": {
+     "qty": 3,
+     "price": 9.99
+    },
+    "promo": {
+     "price": 9.99,
+     "qty": 3,
+     "start": null,
+     "end": null
+    },
+    "queued_at": "2026-09-11T01:29:00.641Z",
+    "id": "c1789090140641"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BELEVINI SAURY BALAOU ",
+     "F1744": "100.0",
+     "F22": "180GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BELEVINI SAURY BALAOU  180GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "115.2000",
+     "F196": "115.2000",
+     "F1140": "2.4000",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "3.0",
+     "F1006": "3.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
