@@ -16041,6 +16041,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260910215418315681",
+   "applied_at": "2026-09-10T21:54:18",
+   "change": {
+    "code": "0062871964310",
+    "title": "EMPIRE BAKERY STRUDEL GRAINE DE PAVOT 200GR",
+    "pos_title": "EMPIRE BAKERY STRUDEL PAVOT 200GR",
+    "size_num": 200,
+    "size_unit": "GR",
+    "queued_at": "2026-09-11T01:53:19.340Z",
+    "id": "c1789091599340"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "EMPIRE BAKERY STRUDEL GRAINE DE PAVOT",
+     "F1744": "520.0",
+     "F22": "200GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "EMPIRE BAKERY STRUDEL GRAINE DE PAVOT 20",
+     "F04": "51",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.0500",
+     "F196": "3.0500",
+     "F1140": "3.0500",
+     "F27": "L-COMILFO"
+    },
+    "PRICE_TAB": {
+     "F30": "4.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
