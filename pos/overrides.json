@@ -1795,7 +1795,31 @@
    "mp": null,
    "cost": 4.2,
    "at": "2026-09-10 20:37:52"
+  },
+  "0482019887824": {
+   "pt": "LOVARÉ THÉ BERRY JAM 80GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 80.0,
+   "nm": "LOVARÉ THÉ BERRY JAM 80GR",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 4.2,
+   "at": "2026-09-10 20:38:57"
   }
  },
- "updated": "2026-09-10 20:37:52"
+ "updated": "2026-09-10 20:38:57"
 }
