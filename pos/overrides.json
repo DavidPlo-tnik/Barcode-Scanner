@@ -2301,7 +2301,31 @@
    "mp": null,
    "cost": 3.05,
    "at": "2026-09-10 21:54:31"
+  },
+  "0426012339285": {
+   "pt": "FLAVOURS PLAQIES DE PÂTE LEVÉE 800GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 800.0,
+   "nm": "FLAVOURS PLAQIES DE PÂTE LEVÉE 800GR",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 2.9,
+   "at": "2026-09-10 22:09:09"
   }
  },
- "updated": "2026-09-10 21:54:31"
+ "updated": "2026-09-10 22:09:09"
 }
