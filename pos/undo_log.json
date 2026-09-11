@@ -15092,6 +15092,65 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260910204840073362",
+   "applied_at": "2026-09-10T20:48:40",
+   "change": {
+    "code": "0482311540522",
+    "pos_title": "LOVARE SUNSET MELODY 24UN",
+    "size_num": 24,
+    "size_unit": "UN",
+    "multibuy": {
+     "qty": 3,
+     "price": 9.99
+    },
+    "promo": {
+     "price": 9.99,
+     "qty": 3,
+     "start": null,
+     "end": null
+    },
+    "queued_at": "2026-09-11T00:47:47.171Z",
+    "id": "c1789087667171"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LOVARE SUNSET MELODY",
+     "F1744": "24.0",
+     "F22": "24UN",
+     "F23": "UN"
+    },
+    "POS_TAB": {
+     "F02": "LOVARE SUNSET MELODY 24UN",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.1000",
+     "F196": "2.1000",
+     "F1140": "2.1000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "3.0",
+     "F1006": "3.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
