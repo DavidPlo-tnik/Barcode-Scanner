@@ -190,7 +190,31 @@
    "price": 32.99,
    "mp": null,
    "at": "2026-09-12 11:48:30"
+  },
+  "0482000077039": {
+   "pt": "KVAS MONASTIRSKY",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 2000.0,
+   "nm": "KVAS MONASTIRSKY",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 17.1,
+   "at": "2026-09-12 11:50:42"
   }
  },
- "updated": "2026-09-12 11:48:30"
+ "updated": "2026-09-12 11:50:42"
 }
