@@ -143,7 +143,31 @@
    "mp": null,
    "cost": 4.99,
    "at": "2026-09-12 11:43:10"
+  },
+  "0021011800000": {
+   "pt": "ZAPEKANKA KG",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 62,
+   "un": "KG",
+   "sn": null,
+   "nm": "ZAPEKANKA",
+   "rp": 21.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 21.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-09-12 11:47:25"
   }
  },
- "updated": "2026-09-12 11:43:10"
+ "updated": "2026-09-12 11:47:25"
 }
