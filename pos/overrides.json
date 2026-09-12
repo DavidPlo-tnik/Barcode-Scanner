@@ -167,7 +167,30 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-09-12 11:47:25"
+  },
+  "0020235300000": {
+   "pt": "LARDON AVEC VIANDE GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "GR",
+   "sn": null,
+   "nm": "LARDON AVEC VIANDE",
+   "rp": 32.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 32.99,
+   "mp": null,
+   "at": "2026-09-12 11:48:30"
   }
  },
- "updated": "2026-09-12 11:47:25"
+ "updated": "2026-09-12 11:48:30"
 }
