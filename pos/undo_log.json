@@ -16788,6 +16788,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260912115042230582",
+   "applied_at": "2026-09-12T11:50:42",
+   "change": {
+    "code": "0482000077039",
+    "title": "KVAS MONASTIRSKY",
+    "pos_title": "KVAS MONASTIRSKY",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "queued_at": "2026-09-12T15:49:53.139Z",
+    "id": "c1789228193139"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KWAS MONASTIRSKY",
+     "F1744": "2000.0",
+     "F22": "2000ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "KWAS MONASTIRSKY 2000ML",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "17.1000",
+     "F196": "17.1000",
+     "F1140": "2.8500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
