@@ -17275,6 +17275,104 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260912120755082197",
+   "applied_at": "2026-09-12T12:07:55",
+   "change": {
+    "code": "0474008600114",
+    "pos_title": "PEALINNA PAIN DU SEGLE 1000G",
+    "size_num": 800,
+    "size_unit": "GR",
+    "queued_at": "2026-09-12T16:07:10.465Z",
+    "id": "c1789229230465"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "PEALINNA PAIN DU SEGLE",
+     "F1744": "800.0",
+     "F22": "1000G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "PEALINNA PAIN DU SEGLE 1000G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "5.6000",
+     "F196": "5.6000",
+     "F1140": "5.6000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260912120755144597",
+   "applied_at": "2026-09-12T12:07:55",
+   "change": {
+    "code": "0474008600114",
+    "pos_title": "PEALINNA PAIN DU SEGLE 1000G",
+    "size_num": 800,
+    "size_unit": "GR",
+    "queued_at": "2026-09-12T16:07:14.437Z",
+    "id": "c1789229234437"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "PEALINNA PAIN DU SEGLE",
+     "F1744": "800.0",
+     "F22": "800 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "PEALINNA PAIN DU SEGLE 1000G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "5.6000",
+     "F196": "5.6000",
+     "F1140": "5.6000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
