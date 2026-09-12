@@ -17128,6 +17128,55 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260912120231085228",
+   "applied_at": "2026-09-12T12:02:31",
+   "change": {
+    "code": "0089269100120",
+    "pos_title": "GRANDMA'S PEROGIES POULET 907GR",
+    "size_num": 907,
+    "size_unit": "GR",
+    "queued_at": "2026-09-12T16:02:05.362Z",
+    "id": "c1789228925362"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GRANDMA'S PEROGIES POULET",
+     "F1744": "907.0",
+     "F22": "907GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "GRANDMA'S PEROGIES POULET 907GR",
+     "F04": "4",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "80.5000",
+     "F196": "80.5000",
+     "F1140": "5.7500",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
