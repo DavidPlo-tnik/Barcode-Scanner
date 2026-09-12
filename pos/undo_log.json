@@ -17471,6 +17471,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260912121627137496",
+   "applied_at": "2026-09-12T12:16:27",
+   "change": {
+    "code": "0482007857605",
+    "title": "CHUMAK HUILE DE TOURNESOL NON-RAFINÉ",
+    "pos_title": "CHUMAK HUILE DE TOURNESOL NON-RAFINÉ",
+    "size_num": 300,
+    "size_unit": "KG",
+    "queued_at": "2026-09-12T16:16:27.528Z",
+    "id": "c1789229787528"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CHUMAK OIL",
+     "F1744": "300.0",
+     "F22": "900ML",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "CHUMAK OIL 900ML",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "4.9000",
+     "F196": "4.9000",
+     "F1140": "4.9000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
