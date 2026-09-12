@@ -17621,6 +17621,53 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260912122351051876",
+   "applied_at": "2026-09-12T12:23:51",
+   "change": {
+    "code": "0020233600000",
+    "pos_title": "JAMBON FUMEE DESOSSE ANCIENNE GR",
+    "queued_at": "2026-09-12T16:23:48.932Z",
+    "id": "c1789230228932"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": " JAMBON FUMEE DESOSSE ANCIENNE",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": " JAMBON FUMEE DESOSSE ANCIENNE GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-ISABELLE"
+    },
+    "PRICE_TAB": {
+     "F30": "12.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "12.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
