@@ -595,7 +595,30 @@
    "price": 21.99,
    "mp": null,
    "at": "2026-09-12 12:25:57"
+  },
+  "0020235100000": {
+   "pt": "LARDON NATURE GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "KG",
+   "sn": null,
+   "nm": "LARDON NATURE",
+   "rp": 22.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 22.99,
+   "mp": null,
+   "at": "2026-09-12 12:27:08"
   }
  },
- "updated": "2026-09-12 12:25:57"
+ "updated": "2026-09-12 12:27:08"
 }
