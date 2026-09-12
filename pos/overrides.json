@@ -262,7 +262,31 @@
    "mp": null,
    "cost": 3.85,
    "at": "2026-09-12 11:55:00"
+  },
+  "0020616300000": {
+   "pt": "HT CUISSE POULET",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 21,
+   "un": "G",
+   "sn": 1000.0,
+   "nm": "haut cuiss poulet s.p-dés.           rég",
+   "rp": 16.51,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 16.51,
+   "mp": null,
+   "cost": 9.6,
+   "at": "2026-09-12 11:56:05"
   }
  },
- "updated": "2026-09-12 11:55:00"
+ "updated": "2026-09-12 11:56:05"
 }
