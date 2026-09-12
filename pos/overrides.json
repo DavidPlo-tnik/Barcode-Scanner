@@ -381,7 +381,31 @@
    "mp": null,
    "cost": 80.5,
    "at": "2026-09-12 12:02:31"
+  },
+  "0089269100122": {
+   "pt": "GRANDMA'S PEROGIES UKRAINIAN 907GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 907.0,
+   "nm": "GRANDMA'S PEROGIES UKRAINIAN",
+   "rp": 9.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 9.99,
+   "mp": null,
+   "cost": 80.5,
+   "at": "2026-09-12 12:04:37"
   }
  },
- "updated": "2026-09-12 12:02:31"
+ "updated": "2026-09-12 12:04:37"
 }
