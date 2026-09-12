@@ -17715,6 +17715,53 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260912122708111422",
+   "applied_at": "2026-09-12T12:27:08",
+   "change": {
+    "code": "0020235100000",
+    "pos_title": "LARDON NATURE GR",
+    "queued_at": "2026-09-12T16:26:24.791Z",
+    "id": "c1789230384791"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LARDON NATURE",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "LARDON NATURE GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "22.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "22.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
