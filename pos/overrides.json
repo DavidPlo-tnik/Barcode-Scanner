@@ -1072,7 +1072,30 @@
    "mp": null,
    "cost": 44.8,
    "at": "2026-09-13 17:40:13"
+  },
+  "0020420100000": {
+   "pt": "SAUCISSE BOUDIN NOIR KG",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "",
+   "sn": null,
+   "nm": "SAUCISSE BOUDIN NOIR",
+   "rp": 15.41,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 15.41,
+   "mp": null,
+   "at": "2026-09-13 17:41:18"
   }
  },
- "updated": "2026-09-13 17:40:13"
+ "updated": "2026-09-13 17:41:18"
 }
