@@ -1002,7 +1002,31 @@
    "mp": null,
    "cost": 38.5,
    "at": "2026-09-13 18:39:48"
+  },
+  "0069256502201": {
+   "pt": "PELMEN  PIEROGIE POMME DE TERRE CHEDDAR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 500.0,
+   "nm": "PELMEN  PIEROGIE POMME DE TERRE CHEDDAR 500GR",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 38.5,
+   "at": "2026-09-13 18:42:02"
   }
  },
- "updated": "2026-09-13 18:39:48"
+ "updated": "2026-09-13 18:42:02"
 }
