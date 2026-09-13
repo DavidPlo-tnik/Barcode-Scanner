@@ -1048,7 +1048,31 @@
    "mp": null,
    "cost": 3.45,
    "at": "2026-09-13 15:06:42"
+  },
+  "0062598396009": {
+   "pt": "KVAS \"ALL STAR\" LIQUEUR 2000ML",
+   "tf": 1,
+   "tp": 1,
+   "dp": "2",
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "ML",
+   "sn": 2000.0,
+   "nm": "KVAS \"ALL STAR\" LIQUEUR 2000ML",
+   "rp": 4.39,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.39,
+   "mp": null,
+   "cost": 44.8,
+   "at": "2026-09-13 17:40:13"
   }
  },
- "updated": "2026-09-13 17:29:47"
+ "updated": "2026-09-13 17:40:13"
 }
