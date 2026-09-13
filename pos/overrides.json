@@ -24,30 +24,6 @@
    "cost": 3.99,
    "at": "2026-09-13 17:29:47"
   },
-  "0089269100122": {
-   "pt": "GRANDMA'S PEROGIES UKRAINIAN 907GR",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 4,
-   "un": "GR",
-   "sn": 907.0,
-   "nm": "GRANDMA'S PEROGIES UKRAINIAN",
-   "rp": 9.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 9.99,
-   "mp": null,
-   "cost": 80.5,
-   "at": "2026-09-12 12:04:37"
-  },
   "0089269100145": {
    "pt": "GRANDMA'S PEROGIES BOEUF 907G",
    "tf": 0,
@@ -928,7 +904,31 @@
    "mp": null,
    "cost": 12.6,
    "at": "2026-09-13 18:04:35"
+  },
+  "0020236400000": {
+   "pt": "SOC DE PORC FUME KG",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "KG",
+   "sn": null,
+   "nm": "SOC DE PORC FUME",
+   "rp": 19.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 19.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-09-13 18:05:40"
   }
  },
- "updated": "2026-09-13 18:04:35"
+ "updated": "2026-09-13 18:05:40"
 }
