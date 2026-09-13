@@ -24,29 +24,6 @@
    "cost": 3.99,
    "at": "2026-09-13 17:29:47"
   },
-  "0020233600000": {
-   "pt": "JAMBON FUMEE DESOSSE ANCIENNE GR",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 31,
-   "un": "GR",
-   "sn": null,
-   "nm": "JAMBON FUMEE DESOSSE ANCIENNE",
-   "rp": 12.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 12.99,
-   "mp": null,
-   "at": "2026-09-12 12:23:51"
-  },
   "0020234600000": {
    "pt": "SALAMI ESTONIEN CUIT KG",
    "tf": 0,
@@ -951,7 +928,31 @@
    "mp": null,
    "cost": 61.2,
    "at": "2026-09-13 18:22:51"
+  },
+  "0069256502250": {
+   "pt": "PELMEN  PIEROGIES PORC BOEUF 500GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 500.0,
+   "nm": "PELMEN  PIEROGIES PORC BOEUF 500GR",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 61.2,
+   "at": "2026-09-13 18:23:57"
   }
  },
- "updated": "2026-09-13 18:22:51"
+ "updated": "2026-09-13 18:23:57"
 }
