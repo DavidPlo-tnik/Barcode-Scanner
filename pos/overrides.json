@@ -24,30 +24,6 @@
    "cost": 3.99,
    "at": "2026-09-13 17:29:47"
   },
-  "0482007857605": {
-   "pt": "CHUMAK HUILE DE TOURNESOL NON-RAFFINÉ",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 1,
-   "un": "KG",
-   "sn": 300.0,
-   "nm": "CHUMAK HUILE DE TOURNESOL NON-RAFFINÉ",
-   "rp": 4.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 4.99,
-   "mp": null,
-   "cost": 4.9,
-   "at": "2026-09-12 12:17:32"
-  },
   "0482007857593": {
    "pt": "CHUMAK HUILE DE TOURNESOL",
    "tf": 0,
@@ -951,7 +927,31 @@
    "mp": null,
    "cost": 3.85,
    "at": "2026-09-13 18:16:26"
+  },
+  "0069256502253": {
+   "pt": "PELMEN  PIEROGIES POULET 500GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 500.0,
+   "nm": "PELMEN  PIEROGIES POULET 500GR",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 61.2,
+   "at": "2026-09-13 18:20:40"
   }
  },
- "updated": "2026-09-13 18:16:26"
+ "updated": "2026-09-13 18:20:40"
 }
