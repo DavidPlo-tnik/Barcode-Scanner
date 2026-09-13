@@ -20752,6 +20752,100 @@
      "F1011": "REG"
     }
    }
+  },
+  {
+   "undo_id": "u20260913190644122171",
+   "applied_at": "2026-09-13T19:06:44",
+   "change": {
+    "code": "0020234500000",
+    "pos_title": "SALAMI LVIVSKA KG",
+    "queued_at": "2026-09-13T23:05:50.066Z",
+    "id": "c1789340750066"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SALAMI LVIVSKA",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SALAMI LVIVSKA KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260913190644168971",
+   "applied_at": "2026-09-13T19:06:44",
+   "change": {
+    "code": "0020234500000",
+    "pos_title": "SALAMI LVIVSKA KG",
+    "queued_at": "2026-09-13T23:05:54.917Z",
+    "id": "c1789340754917"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SALAMI LVIVSKA",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SALAMI LVIVSKA KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
