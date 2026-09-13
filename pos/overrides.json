@@ -1551,7 +1551,31 @@
    "price": 20.99,
    "mp": null,
    "at": "2026-09-13 19:39:45"
+  },
+  "0020239400000": {
+   "pt": "SLANINA LARD DE PORC FUMÉ",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "UN",
+   "sn": null,
+   "nm": "SLANINA LARD DE PORC FUMÉ",
+   "rp": 24.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 24.99,
+   "mp": null,
+   "cost": 16.4,
+   "at": "2026-09-13 19:41:52"
   }
  },
- "updated": "2026-09-13 19:39:45"
+ "updated": "2026-09-13 19:41:52"
 }
