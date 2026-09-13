@@ -18880,6 +18880,57 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260913174013146663",
+   "applied_at": "2026-09-13T17:40:13",
+   "change": {
+    "code": "0062598396009",
+    "title": "KVAS \"ALL STAR\" LIQUEUR 2000ML",
+    "pos_title": "KVAS \"ALL STAR\" LIQUEUR 2000ML",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "deposit": 0.1,
+    "queued_at": "2026-09-13T21:39:30.961Z",
+    "id": "c1789335570961"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KVAS \"ALL STAR\" LIQUEUR",
+     "F1744": "2000.0",
+     "F22": "2000ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "KVAS \"ALL STAR\" LIQUEUR 2000ML",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": "2",
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "44.8000",
+     "F196": "44.8000",
+     "F1140": "3.7333",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.3900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.3900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
