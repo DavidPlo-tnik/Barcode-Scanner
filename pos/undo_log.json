@@ -19112,6 +19112,55 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260913175059192597",
+   "applied_at": "2026-09-13T17:50:59",
+   "change": {
+    "code": "0020993800000",
+    "title": "GUIMAUVE ZEFIR BLANC ET ROSE",
+    "pos_title": "GUIMAUVE ZEFIR BLANC ET ROSE",
+    "balance": 1,
+    "queued_at": "2026-09-13T21:50:27.481Z",
+    "id": "c1789336227481"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GUIMAUVE ZEFIR",
+     "F1744": "400.0",
+     "F22": "UN",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "GUIMAUVE ZEFIR UN",
+     "F04": "5",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "8.3900",
+     "F196": "8.3900",
+     "F1140": "8.3900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
