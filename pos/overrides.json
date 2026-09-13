@@ -1336,7 +1336,31 @@
    "mp": null,
    "cost": 2.99,
    "at": "2026-09-13 19:07:57"
+  },
+  "0021011100000": {
+   "pt": "LAIT CONDENSÉ CUIT (DULCE DE LECHE)",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 1,
+   "un": "KG",
+   "sn": null,
+   "nm": "LAIT CONDENSÉ CUIT (DULCE DE LECHE)",
+   "rp": 14.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 14.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-09-13 19:11:04"
   }
  },
- "updated": "2026-09-13 19:07:57"
+ "updated": "2026-09-13 19:11:04"
 }
