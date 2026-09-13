@@ -1289,7 +1289,30 @@
    "mp": null,
    "cost": 55.0,
    "at": "2026-09-13 19:05:39"
+  },
+  "0020234500000": {
+   "pt": "SALAMI LVIVSKA KG",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "GR",
+   "sn": null,
+   "nm": "SALAMI LVIVSKA",
+   "rp": 14.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 14.99,
+   "mp": null,
+   "at": "2026-09-13 19:06:44"
   }
  },
- "updated": "2026-09-13 19:05:39"
+ "updated": "2026-09-13 19:06:44"
 }
