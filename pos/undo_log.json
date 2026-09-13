@@ -21185,6 +21185,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260913193315161766",
+   "applied_at": "2026-09-13T19:33:15",
+   "change": {
+    "code": "0089269100145",
+    "pos_title": "GRANDMA'S PEROGIES BOEUF 907G",
+    "size_num": 907,
+    "size_unit": "",
+    "subdept": 4,
+    "queued_at": "2026-09-13T23:32:56.058Z",
+    "id": "c1789342376058"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GRANDMA'S PEROGIES BOEUF",
+     "F1744": "907.0",
+     "F22": "907 ",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "GRANDMA'S PEROGIES BOEUF 907G",
+     "F04": "21",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "84.0000",
+     "F196": "84.0000",
+     "F1140": "6.0000",
+     "F27": "L-PARMA"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
