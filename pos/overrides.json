@@ -927,7 +927,31 @@
    "mp": null,
    "cost": 61.2,
    "at": "2026-09-13 18:21:45"
+  },
+  "0069256502272": {
+   "pt": "PELMEN  PIEROGIE CERISE 500GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 500.0,
+   "nm": "PELMEN  PIEROGIE CERISE 500GR",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 61.2,
+   "at": "2026-09-13 18:22:51"
   }
  },
- "updated": "2026-09-13 18:21:45"
+ "updated": "2026-09-13 18:22:51"
 }
