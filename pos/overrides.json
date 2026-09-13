@@ -930,7 +930,31 @@
    "mp": null,
    "cost": 61.2,
    "at": "2026-09-13 18:35:36"
+  },
+  "0069256502206": {
+   "pt": "PELMEN  PIEROGIE POMME DE TERRE CHAMPIGN",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 500.0,
+   "nm": "PELMEN  PIEROGIE POMME DE TERRE CHAMPIGNONS 500GR",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 61.2,
+   "at": "2026-09-13 18:37:42"
   }
  },
- "updated": "2026-09-13 18:35:36"
+ "updated": "2026-09-13 18:37:42"
 }
