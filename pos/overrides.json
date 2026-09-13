@@ -1000,7 +1000,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-09-13 14:55:04"
+  },
+  "0020994100000": {
+   "pt": "GUIMAUVE ZEFIR AU CHOCOLAT",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 5,
+   "un": "GR",
+   "sn": 400.0,
+   "nm": "GUIMAUVE ZEFIR AU CHOCOLAT",
+   "rp": 14.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 14.99,
+   "mp": null,
+   "cost": 8.39,
+   "at": "2026-09-13 15:04:30"
   }
  },
- "updated": "2026-09-13 14:55:04"
+ "updated": "2026-09-13 15:04:30"
 }
