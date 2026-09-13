@@ -784,7 +784,31 @@
    "mp": null,
    "cost": 90.0,
    "at": "2026-09-13 09:41:18"
+  },
+  "0482020587283": {
+   "pt": "GATEAU KIYIVSKYI DARUNOK BKK",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "UN",
+   "sn": 450.0,
+   "nm": "GATEAU KIYIVSKYI DARUNOK BKK",
+   "rp": 19.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 19.99,
+   "mp": null,
+   "cost": 16.95,
+   "at": "2026-09-13 09:43:24"
   }
  },
- "updated": "2026-09-13 09:41:18"
+ "updated": "2026-09-13 09:43:24"
 }
