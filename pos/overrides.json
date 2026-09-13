@@ -1074,7 +1074,31 @@
    "mp": null,
    "cost": 61.2,
    "at": "2026-09-13 18:43:07"
+  },
+  "0069256502230": {
+   "pt": "PELMEN  PIEROGIES CHOUCROUTE 500GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 500.0,
+   "nm": "PELMEN  PIEROGIES CHOUCROUTE 500GR",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 38.5,
+   "at": "2026-09-13 18:44:12"
   }
  },
- "updated": "2026-09-13 18:43:07"
+ "updated": "2026-09-13 18:44:12"
 }
