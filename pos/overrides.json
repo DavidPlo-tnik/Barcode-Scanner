@@ -1024,7 +1024,31 @@
    "mp": null,
    "cost": 8.39,
    "at": "2026-09-13 15:04:30"
+  },
+  "0474008602582": {
+   "pt": "EESTI PAGAR PAIN DE SEIGLE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 600.0,
+   "nm": "BORODINSKY PAIN DE SEIGLE EESTI PAGAR 600G",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 3.45,
+   "at": "2026-09-13 15:06:42"
   }
  },
- "updated": "2026-09-13 15:04:30"
+ "updated": "2026-09-13 15:06:42"
 }
