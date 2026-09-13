@@ -1480,7 +1480,31 @@
    "mp": null,
    "cost": 84.0,
    "at": "2026-09-13 19:33:15"
+  },
+  "0020236700000": {
+   "pt": "DEBRECYNA SAUCISSE BBQ KG",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "KG",
+   "sn": null,
+   "nm": "DEBRECYNA SAUCISSE BBQ",
+   "rp": 14.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 14.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-09-13 19:37:29"
   }
  },
- "updated": "2026-09-13 19:33:15"
+ "updated": "2026-09-13 19:37:29"
 }
