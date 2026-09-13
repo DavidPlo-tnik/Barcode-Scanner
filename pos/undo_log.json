@@ -21040,6 +21040,55 @@
      "F1011": "REG"
     }
    }
+  },
+  {
+   "undo_id": "u20260913191725174096",
+   "applied_at": "2026-09-13T19:17:25",
+   "change": {
+    "code": "0088764300077",
+    "title": "WHITE EAGLE GRIOTTES ROUGES DENOYAUTEES 796ML",
+    "size_num": 796,
+    "size_unit": "ML",
+    "queued_at": "2026-09-13T23:17:09.720Z",
+    "id": "c1789341429720"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "WHITE EAGLE GRIOTTES ROUGES DENOYAUTEES",
+     "F1744": "796.0",
+     "F22": "796ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "WHITE EAGLE GRIOTTES ROUGES DENOYAUTEES",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "5.3900",
+     "F196": "5.3900",
+     "F1140": "5.3900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
