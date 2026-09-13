@@ -24,30 +24,6 @@
    "cost": 3.99,
    "at": "2026-09-13 17:29:47"
   },
-  "0426014717015": {
-   "pt": "CALMAR SECHE SALE 38G",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 1,
-   "un": "G",
-   "sn": 38.0,
-   "nm": "CALMAR SECHE SALE",
-   "rp": 4.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 4.99,
-   "mp": null,
-   "cost": 437.5,
-   "at": "2026-09-12 12:15:16"
-  },
   "0482007857605": {
    "pt": "CHUMAK HUILE DE TOURNESOL NON-RAFFINÉ",
    "tf": 0,
@@ -951,7 +927,31 @@
    "mp": null,
    "cost": 3.5,
    "at": "2026-09-13 18:13:13"
+  },
+  "0482000045590": {
+   "pt": "KVAS TARAS BLANC 1500ML",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "ML",
+   "sn": 1500.0,
+   "nm": "KVAS TARAS BLANC 1500ML",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 3.85,
+   "at": "2026-09-13 18:16:26"
   }
  },
- "updated": "2026-09-13 18:13:13"
+ "updated": "2026-09-13 18:16:26"
 }
