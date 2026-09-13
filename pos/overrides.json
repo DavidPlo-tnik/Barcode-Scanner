@@ -617,7 +617,31 @@
    "mp": null,
    "cost": 9.99,
    "at": "2026-09-12 21:40:53"
+  },
+  "0083213900001": {
+   "pt": "ELWEST KEFIR CLASSIQUE 944ML",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 3,
+   "un": "ML",
+   "sn": 944.0,
+   "nm": "ELWEST KEFIR CLASSIQUE",
+   "rp": 4.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.49,
+   "mp": null,
+   "cost": 40.68,
+   "at": "2026-09-12 21:42:04"
   }
  },
- "updated": "2026-09-12 21:40:53"
+ "updated": "2026-09-12 21:42:04"
 }
