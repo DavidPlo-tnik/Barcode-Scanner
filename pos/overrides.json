@@ -1146,7 +1146,31 @@
    "mp": null,
    "cost": 38.5,
    "at": "2026-09-13 18:47:35"
+  },
+  "0020237900000": {
+   "pt": "SAUCISSON WIENNERS POULET ET PORC KG",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "KG",
+   "sn": null,
+   "nm": "SAUCISSON WIENNERS POULET ET PORC",
+   "rp": 15.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 15.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-09-13 18:48:41"
   }
  },
- "updated": "2026-09-13 18:47:35"
+ "updated": "2026-09-13 18:48:41"
 }
