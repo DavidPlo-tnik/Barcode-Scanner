@@ -21235,6 +21235,100 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260913193729177013",
+   "applied_at": "2026-09-13T19:37:29",
+   "change": {
+    "code": "0020236700000",
+    "pos_title": "DEBRECYNA SAUCISSE BBQ KG",
+    "queued_at": "2026-09-13T23:36:41.243Z",
+    "id": "c1789342601243"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DEBRECYNA SAUCISSE BBQ",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "DEBRECYNA SAUCISSE BBQ KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260913193729239413",
+   "applied_at": "2026-09-13T19:37:29",
+   "change": {
+    "code": "0020236700000",
+    "pos_title": "DEBRECYNA SAUCISSE BBQ KG",
+    "queued_at": "2026-09-13T23:37:07.073Z",
+    "id": "c1789342627073"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DEBRECYNA SAUCISSE BBQ",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "DEBRECYNA SAUCISSE BBQ KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
