@@ -17859,6 +17859,54 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260912214053288835",
+   "applied_at": "2026-09-12T21:40:53",
+   "change": {
+    "code": "0020238700000",
+    "pos_title": "SAUCISSON STYLE MAISON KG",
+    "balance": 0,
+    "queued_at": "2026-09-13T01:40:19.518Z",
+    "id": "c1789263619518"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSON STYLE MAISON",
+     "F1744": null,
+     "F22": "",
+     "F23": "UN"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSON STYLE MAISON KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "9.9900",
+     "F196": "9.9900",
+     "F1140": "9.9900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "11.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "11.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
