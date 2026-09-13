@@ -1432,7 +1432,31 @@
    "mp": null,
    "cost": 47.3,
    "at": "2026-09-13 19:19:38"
+  },
+  "0021011600000": {
+   "pt": "Choucroute fermenté Kapusta GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 34,
+   "un": "GR",
+   "sn": null,
+   "nm": "Choucroute fermenté Kapusta",
+   "rp": 8.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 8.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-09-13 19:21:45"
   }
  },
- "updated": "2026-09-13 19:19:38"
+ "updated": "2026-09-13 19:21:45"
 }
