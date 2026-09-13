@@ -2316,7 +2316,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v126</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v127</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2936,18 +2936,59 @@
     return d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }).toUpperCase();
   }
 
+  // Shared inline thumbnail markup for any product row, anywhere in the app.
+  // Looks up the ecom catalogue's cached photo list (no extra fetch if it is
+  // already loaded this session) and falls back to an empty placeholder box so
+  // rows stay aligned whether or not a photo exists yet.
+  function productThumbHtml(code, size) {
+    size = size || 42;
+    const cat = _ecomCatalog;
+    const ent = cat && cat.items && cat.items[resolveCode(code)];
+    const photos = ent && ent.photos;
+    if (photos && photos[0]) {
+      return `<img class="js-photo-thumb" data-full="${photoSrc(photos[0])}" style="width:${size}px;height:${size}px;border-radius:7px;object-fit:cover;background:var(--surface-2);flex-shrink:0;cursor:zoom-in;" src="${photoSrc(photos[0])}" loading="lazy" alt="">`;
+    }
+    return `<div style="width:${size}px;height:${size}px;border-radius:7px;border:1px dashed var(--border);flex-shrink:0;"></div>`;
+  }
+
+  // Full-screen photo lightbox, shared by every product thumbnail in the app.
+  // Delegated on document so newly-rendered rows never need their own binding.
+  function openPhotoLightbox(url) {
+    let box = document.getElementById('photo-lightbox');
+    if (!box) {
+      box = document.createElement('div');
+      box.id = 'photo-lightbox';
+      box.style.cssText = 'position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:24px;';
+      box.innerHTML = '<img style="max-width:100%;max-height:100%;border-radius:8px;object-fit:contain;">' +
+        '<button style="position:absolute;top:calc(16px + env(safe-area-inset-top));right:16px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);border:none;color:#fff;font-size:20px;line-height:1;">✕</button>';
+      box.addEventListener('click', () => box.remove());
+      document.body.appendChild(box);
+    }
+    box.querySelector('img').src = url;
+  }
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('.js-photo-thumb');
+    if (t && t.dataset.full) { e.stopPropagation(); openPhotoLightbox(t.dataset.full); }
+  }, true);   // capture: must fire before the row's own bubble-phase click handler
+
   function scanRowHtml(entry) {
     const p = lookup(entry.c);
     const t = new Date(entry.t);
     const hhmm = String(t.getHours()).padStart(2,'0') + ':' + String(t.getMinutes()).padStart(2,'0');
     if (!p) {
-      return `<div class="recent-item" data-code="${escapeHtml(entry.c)}">
-        <div class="rname unknown">${escapeHtml(entry.c)} <span class="rmiss">not in catalogue</span></div>
+      return `<div class="recent-item" data-code="${escapeHtml(entry.c)}" style="display:flex;align-items:center;gap:10px;">
+        ${productThumbHtml(entry.c, 36)}
+        <div style="flex:1;min-width:0;">
+          <div class="rname unknown">${escapeHtml(entry.c)} <span class="rmiss">not in catalogue</span></div>
+        </div>
         <div class="ramt">${hhmm}</div></div>`;
     }
     const price = (p.price != null) ? fmtMoney(p.price) : '—';
-    return `<div class="recent-item" data-code="${escapeHtml(entry.c)}">
-      <div class="rname">${escapeHtml(p.name)}</div>
+    return `<div class="recent-item" data-code="${escapeHtml(entry.c)}" style="display:flex;align-items:center;gap:10px;">
+      ${productThumbHtml(entry.c, 36)}
+      <div style="flex:1;min-width:0;">
+        <div class="rname">${escapeHtml(p.name)}</div>
+      </div>
       <div class="ramt"><span class="rprice">${price}</span><span class="rtime">${hhmm}</span></div>
     </div>`;
   }
@@ -2956,6 +2997,10 @@
     const container = $('#recent-section');
     const ul = $('#recent-list');
     if (!container || !ul) return;
+    // Photos come from the ecom catalogue; if it is not cached yet, fetch it
+    // once in the background and re-render so thumbnails appear without
+    // blocking this render for everyone else.
+    if (!_ecomCatalog) fetchEcomCatalog().then(() => renderRecent());
     const list = getHistory();
     if (!list.length) { container.style.display = 'none'; return; }
     container.style.display = 'block';
@@ -3539,8 +3584,10 @@
   function edRenderResults(list) {
     const el = $('#ed-results');
     if (!list.length) { el.innerHTML = '<div class="empty-state">No matches.</div>'; return; }
+    if (!_ecomCatalog) fetchEcomCatalog().then(() => edRenderResults(list));
     el.innerHTML = list.slice(0, 30).map(p => `
       <div class="ed-result-row" data-code="${p.code}">
+        ${productThumbHtml(p.code, 38)}
         <div style="flex:1;min-width:0;">
           <div class="err-name">${escapeHtml((p.name || '').trim())}</div>
           <div class="err-meta">${escapeHtml(p.code)}${p.sizeStr ? ' · ' + escapeHtml(p.sizeStr) : ''}</div>
@@ -4038,7 +4085,7 @@
     wrap.innerHTML = photos.length
       ? photos.map((fn, i) => `
           <div class="pd-photo">
-            <img src="${photoSrc(fn)}" data-fn="${escapeHtml(fn)}" data-try="0" loading="lazy" alt="">
+            <img class="js-photo-thumb" data-full="${photoSrc(fn)}" style="cursor:zoom-in;" src="${photoSrc(fn)}" data-fn="${escapeHtml(fn)}" data-try="0" loading="lazy" alt="">
             <button type="button" data-pdel="${i}">✕</button>
           </div>`).join('')
       : '<div class="pd-note">No photos yet.</div>';
@@ -5223,7 +5270,7 @@
 
     results.innerHTML = top.map(m => {
       const thumb = m.photo
-        ? `<img class="search-thumb" src="${photoSrc(m.photo)}" loading="lazy" alt="">${m.nPhotos > 1 ? `<div class="ecom-photo-count">+${m.nPhotos - 1}</div>` : ''}`
+        ? `<img class="search-thumb js-photo-thumb" data-full="${photoSrc(m.photo)}" style="cursor:zoom-in;" src="${photoSrc(m.photo)}" loading="lazy" alt="">${m.nPhotos > 1 ? `<div class="ecom-photo-count">+${m.nPhotos - 1}</div>` : ''}`
         : `<div class="search-thumb search-thumb-empty"></div>`;
       if (m.scalePlu) {
         return `
@@ -5627,9 +5674,7 @@
       </div>
       ${shown.map(it => `
         <div class="ecom-row" data-code="${it.code}">
-          ${it.photo
-            ? `<img class="cashier-thumb" src="https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/${GH.GH_BRANCH}/images/ecom/${it.photo}" loading="lazy" alt="">`
-            : ''}
+          ${productThumbHtml(it.code, 36)}
           <div class="plu-badge" style="font-size:16px;min-width:56px;">${it.cs}</div>
           <div style="flex:1;min-width:0;">
             <div class="li-name">${escapeHtml(it.name.trim())}</div>
@@ -5686,6 +5731,7 @@
       </div>
       ${shown.map(it => `
         <div class="ecom-row" data-code="${it.code}">
+          ${productThumbHtml(it.code, 36)}
           <div class="plu-badge" style="font-size:18px;min-width:56px;">${it.plu}</div>
           <div style="flex:1;min-width:0;">
             <div class="li-name">${escapeHtml((it.name||'').trim())}</div>
@@ -6094,6 +6140,7 @@
       </div>
     `;
 
+    if (!_ecomCatalog) fetchEcomCatalog().then(() => renderListDetail(list));
     if (items.length === 0) {
       html += `<div class="empty-state">EMPTY LIST<br><br>SCAN OR SEARCH A PRODUCT,<br>THEN TAP "+ LIST" TO ADD</div>`;
     } else {
@@ -6109,6 +6156,7 @@
              </div>`;
         return `
           <div class="list-item-c">
+            ${productThumbHtml(item.code, 36)}
             <div class="li-main">
               <div class="li-name">${escapeHtml(item.name.trim())}</div>
               <div class="li-meta">${escapeHtml(item.code)}${item.dept ? ' · ' + escapeHtml(item.dept) : ''}</div>
@@ -6694,7 +6742,7 @@
     const rowHtml = (r) => `
       <div class="ecom-row" data-code="${r.code}">
         ${r.photo
-          ? `<img class="cashier-thumb" src="https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/${GH.GH_BRANCH}/images/ecom/${r.photo}" loading="lazy" alt="">${r.nPhotos > 1 ? `<div class="ecom-photo-count">+${r.nPhotos - 1}</div>` : ''}`
+          ? `<img class="cashier-thumb js-photo-thumb" data-full="${photoSrc(r.photo)}" style="cursor:zoom-in;" src="${photoSrc(r.photo)}" loading="lazy" alt="">${r.nPhotos > 1 ? `<div class="ecom-photo-count">+${r.nPhotos - 1}</div>` : ''}`
           : `<div class="ecom-photo-flag">no photo</div>`}
         <div style="flex:1;min-width:0;">
           <div class="li-name">${escapeHtml(r.name.trim())}</div>
@@ -6802,6 +6850,7 @@
     const inCat = (_ecomCatalog && _ecomCatalog.items) || {};
     box.innerHTML = out.slice(0, 40).map(m => `
       <div class="search-row" data-code="${m.code}">
+        ${productThumbHtml(m.code, 38)}
         <div style="flex:1;min-width:0;">
           <div class="name">${escapeHtml(m.name)}</div>
           <div class="code">${m.code}${m.rev>0 ? ' · $'+Math.round(m.rev).toLocaleString()+'/yr' : ''}</div>
@@ -6842,7 +6891,7 @@
       </div>
       ${photos.length
         ? `<div class="recipe-photos">${photos.map((fn,i) =>
-            `<div class="recipe-photo"><img src="${photoSrc(fn)}" loading="lazy" alt="">
+            `<div class="recipe-photo"><img class="js-photo-thumb" data-full="${photoSrc(fn)}" style="cursor:zoom-in;" src="${photoSrc(fn)}" loading="lazy" alt="">
              ${canEdit ? `<button class="recipe-photo-del" data-i="${i}">✕</button>` : ''}</div>`).join('')}</div>`
         : '<div class="recipe-empty">No photos yet.</div>'}
       <div class="recipe-status" id="ecom-photo-status"></div>`;
