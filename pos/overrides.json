@@ -952,7 +952,31 @@
    "mp": null,
    "cost": 45.0,
    "at": "2026-09-13 14:44:33"
+  },
+  "0482018662074": {
+   "pt": "GOLD RING FILET DE HARENG 900GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 22,
+   "un": "GR",
+   "sn": 900.0,
+   "nm": "GOLD RING FILET DE HARENG 900GR",
+   "rp": 9.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 9.99,
+   "mp": null,
+   "cost": 9.95,
+   "at": "2026-09-13 14:45:45"
   }
  },
- "updated": "2026-09-13 14:44:33"
+ "updated": "2026-09-13 14:45:45"
 }
