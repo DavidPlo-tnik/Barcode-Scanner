@@ -1622,7 +1622,30 @@
    "mp": null,
    "cost": 85.75,
    "at": "2026-09-13 19:45:11"
+  },
+  "0020233000000": {
+   "pt": "LONGE DE PORC FUMEE GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "GR",
+   "sn": null,
+   "nm": "LONGE DE PORC FUMEE",
+   "rp": 19.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 19.99,
+   "mp": null,
+   "at": "2026-09-13 19:47:17"
   }
  },
- "updated": "2026-09-13 19:45:11"
+ "updated": "2026-09-13 19:47:17"
 }
