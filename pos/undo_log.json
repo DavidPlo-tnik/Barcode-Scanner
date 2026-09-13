@@ -20894,6 +20894,103 @@
      "F1011": null
     }
    }
+  },
+  {
+   "undo_id": "u20260913191104096627",
+   "applied_at": "2026-09-13T19:11:04",
+   "change": {
+    "code": "0021011100000",
+    "title": "LAIT CONDENSÉ CUIT (DULCE DE LECHE)",
+    "pos_title": "LAIT CONDENSÉ CUIT (DULCE DE LECHE)",
+    "queued_at": "2026-09-13T23:10:13.145Z",
+    "id": "c1789341013145"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DULCE DE LECHE",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "DULCE DE LECHE KG",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "13.2100",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "13.2100",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260913191104190227",
+   "applied_at": "2026-09-13T19:11:04",
+   "change": {
+    "code": "0021011100000",
+    "title": "LAIT CONDENSÉ CUIT (DULCE DE LECHE)",
+    "pos_title": "LAIT CONDENSÉ CUIT (DULCE DE LECHE)",
+    "price": 14.99,
+    "queued_at": "2026-09-13T23:10:19.780Z",
+    "id": "c1789341019780"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LAIT CONDENSÉ CUIT (DULCE DE LECHE)",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "LAIT CONDENSÉ CUIT (DULCE DE LECHE)",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "13.2100",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "13.2100",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
