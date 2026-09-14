@@ -21941,6 +21941,54 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260913200327091349",
+   "applied_at": "2026-09-13T20:03:27",
+   "change": {
+    "code": "0020237400000",
+    "pos_title": "SALAMI HONGROIS GR",
+    "price": 34.99,
+    "queued_at": "2026-09-14T00:02:56.543Z",
+    "id": "c1789344176543"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": " SALAMI HONGROIS",
+     "F1744": null,
+     "F22": "GR",
+     "F23": null
+    },
+    "POS_TAB": {
+     "F02": " SALAMI HONGROIS GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "24.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "24.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
