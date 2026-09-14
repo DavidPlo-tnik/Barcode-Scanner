@@ -2074,7 +2074,30 @@
    "mp": null,
    "cost": 9.99,
    "at": "2026-09-13 20:20:42"
+  },
+  "0020151800000": {
+   "pt": "RAIFORT, HORSERADISH GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 41,
+   "un": "",
+   "sn": null,
+   "nm": "RAIFORT, HORSERADISH",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "at": "2026-09-13 20:23:56"
   }
  },
- "updated": "2026-09-13 20:20:42"
+ "updated": "2026-09-13 20:23:56"
 }
