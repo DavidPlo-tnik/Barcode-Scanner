@@ -2216,7 +2216,31 @@
    "mp": null,
    "cost": 4.59,
    "at": "2026-09-13 20:43:01"
+  },
+  "0077624103246": {
+   "pt": "MC DAIRY KEFIR PROBIOTIQUE 2000G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 3,
+   "un": "ML",
+   "sn": 2000.0,
+   "nm": "MC DAIRY KEFIR PROBIOTIQUE",
+   "rp": 8.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 8.99,
+   "mp": null,
+   "cost": 5.99,
+   "at": "2026-09-13 20:46:16"
   }
  },
- "updated": "2026-09-13 20:43:01"
+ "updated": "2026-09-13 20:46:16"
 }
