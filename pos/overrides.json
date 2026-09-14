@@ -2121,7 +2121,31 @@
    "mp": null,
    "cost": 71.52,
    "at": "2026-09-13 20:30:13"
+  },
+  "0020313100000": {
+   "pt": "COTELETTE PORC",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 21,
+   "un": "G",
+   "sn": 1000.0,
+   "nm": "côtel.porc centre dés            fam",
+   "rp": 13.21,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 13.21,
+   "mp": null,
+   "cost": 5.31,
+   "at": "2026-09-13 20:31:19"
   }
  },
- "updated": "2026-09-13 20:30:13"
+ "updated": "2026-09-13 20:31:19"
 }
