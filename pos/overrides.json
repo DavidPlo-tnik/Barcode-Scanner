@@ -2650,7 +2650,31 @@
    "mp": null,
    "cost": 66.0,
    "at": "2026-09-14 16:32:05"
+  },
+  "0762220222443": {
+   "pt": "LUX CROUSTILLES PAPRIKA",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "GR",
+   "sn": 400.0,
+   "nm": "LUX CROUSTILLES PAPRIKA",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 66.0,
+   "at": "2026-09-14 16:33:12"
   }
  },
- "updated": "2026-09-14 16:32:05"
+ "updated": "2026-09-14 16:33:12"
 }
