@@ -23625,6 +23625,55 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260913211317246109",
+   "applied_at": "2026-09-13T21:13:17",
+   "change": {
+    "code": "0085630300493",
+    "title": "SWEET LIZA MINI GATEAU AU FROMAGE FRAISE 50GR",
+    "size_num": 50,
+    "size_unit": "GR",
+    "queued_at": "2026-09-14T01:12:46.485Z",
+    "id": "c1789348366485"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SWEET LIZA MINI GATEAU AU FROMAGE FRAISE",
+     "F1744": "50.0",
+     "F22": "50 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SWEET LIZA MINI GATEAU AU FROMAGE FRAISE",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.7500",
+     "F196": "0.7500",
+     "F1140": "0.7500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
