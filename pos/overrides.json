@@ -2336,7 +2336,31 @@
    "mp": null,
    "cost": 9.36,
    "at": "2026-09-13 20:50:41"
+  },
+  "0076740833086": {
+   "pt": "FROMAGE CORDE ARMENIENNE 590G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 3,
+   "un": "ML",
+   "sn": 944.0,
+   "nm": "FROMAGE CORDE ARMENIENNE",
+   "rp": 16.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 16.99,
+   "mp": null,
+   "cost": 12.95,
+   "at": "2026-09-13 20:51:47"
   }
  },
- "updated": "2026-09-13 20:50:41"
+ "updated": "2026-09-13 20:51:47"
 }
