@@ -7,6 +7,15 @@
    "price": 4.99,
    "queued_at": "2026-09-14T20:30:08.466Z",
    "id": "c1789417808467"
+  },
+  {
+   "code": "0762220222449",
+   "title": "LUX CROUSTILLES CRÈME SURE OIGNONS",
+   "pos_title": "LUX CROUSTILLES CRÈME SURE OIGNONS",
+   "size_num": 400,
+   "size_unit": "GR",
+   "queued_at": "2026-09-14T20:30:45.149Z",
+   "id": "c1789417845149"
   }
  ]
 }
