@@ -1858,7 +1858,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-09-13 20:04:32"
+  },
+  "0020239100000": {
+   "pt": "SALAMI MOSKOVSKAYA SEC",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "UN",
+   "sn": null,
+   "nm": "SALAMI MOSKOVSKAYA SEC",
+   "rp": 59.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 59.99,
+   "mp": null,
+   "cost": 9.99,
+   "at": "2026-09-13 20:05:38"
   }
  },
- "updated": "2026-09-13 20:04:32"
+ "updated": "2026-09-13 20:05:38"
 }
