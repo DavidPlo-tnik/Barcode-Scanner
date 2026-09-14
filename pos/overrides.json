@@ -2528,7 +2528,31 @@
    "mp": null,
    "cost": 0.69,
    "at": "2026-09-13 21:09:58"
+  },
+  "0085630300497": {
+   "pt": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 50.0,
+   "nm": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE 50GR",
+   "rp": 1.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 1.49,
+   "mp": null,
+   "cost": 0.75,
+   "at": "2026-09-13 21:12:11"
   }
  },
- "updated": "2026-09-13 21:09:58"
+ "updated": "2026-09-13 21:12:11"
 }
