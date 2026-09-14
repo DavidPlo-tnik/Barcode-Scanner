@@ -1978,7 +1978,31 @@
    "mp": null,
    "cost": 2.34,
    "at": "2026-09-13 20:13:14"
+  },
+  "0077332160810": {
+   "pt": "BRANDT SAUCISSON DE FOIE AVEC HERBES 50G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 31,
+   "un": "GR",
+   "sn": 250.0,
+   "nm": "BRANDT SAUCISSON DE FOIE AVEC HERBES",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 3.0,
+   "at": "2026-09-13 20:14:20"
   }
  },
- "updated": "2026-09-13 20:13:14"
+ "updated": "2026-09-13 20:14:20"
 }
