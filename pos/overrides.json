@@ -2192,7 +2192,31 @@
    "price": 17.99,
    "mp": null,
    "at": "2026-09-13 20:33:36"
+  },
+  "0085630300468": {
+   "pt": "GATEAU AUX GAUFRES  300G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "ML",
+   "sn": 944.0,
+   "nm": "GATEAU AUX GAUFRES",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 4.59,
+   "at": "2026-09-13 20:43:01"
   }
  },
- "updated": "2026-09-13 20:35:43"
+ "updated": "2026-09-13 20:43:01"
 }
