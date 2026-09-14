@@ -24386,6 +24386,155 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260914163058284409",
+   "applied_at": "2026-09-14T16:30:58",
+   "change": {
+    "code": "0762220222437",
+    "title": "LUX CROUSTILLES FROMAGE",
+    "pos_title": "LUX CROUSTILLES FROMAGE",
+    "price": 4.99,
+    "queued_at": "2026-09-14T20:30:08.466Z",
+    "id": "c1789417808467"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LUX CROUSTILLES",
+     "F1744": "400.0",
+     "F22": "125G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LUX CROUSTILLES 125G",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "66.0000",
+     "F196": "66.0000",
+     "F1140": "3.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260914163058331209",
+   "applied_at": "2026-09-14T16:30:58",
+   "change": {
+    "code": "0762220222449",
+    "title": "LUX CROUSTILLES CRÈME SURE OIGNONS",
+    "pos_title": "LUX CROUSTILLES CRÈME SURE OIGNONS",
+    "size_num": 400,
+    "size_unit": "GR",
+    "queued_at": "2026-09-14T20:30:45.149Z",
+    "id": "c1789417845149"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LUX CROUSTILLES",
+     "F1744": "400.0",
+     "F22": "125G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LUX CROUSTILLES 125G",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "66.0000",
+     "F196": "66.0000",
+     "F1140": "3.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260914163058393609",
+   "applied_at": "2026-09-14T16:30:58",
+   "change": {
+    "code": "0762220226794",
+    "title": "LUX CROUSTILLES CHAMPIGNONS",
+    "pos_title": "LUX CROUSTILLES CHAMPIGNONS",
+    "size_num": 400,
+    "size_unit": "GR",
+    "queued_at": "2026-09-14T20:30:57.281Z",
+    "id": "c1789417857281"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LUX CROUSTILLES",
+     "F1744": "400.0",
+     "F22": "125G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LUX CROUSTILLES 125G",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "66.0000",
+     "F196": "66.0000",
+     "F1140": "3.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
