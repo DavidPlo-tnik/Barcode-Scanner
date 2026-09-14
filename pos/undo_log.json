@@ -22840,6 +22840,153 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260913204823152484",
+   "applied_at": "2026-09-13T20:48:23",
+   "change": {
+    "code": "0077624103100",
+    "pos_title": "MCDAIRY FROMAGE COTTAGE 500G",
+    "size_num": 125,
+    "size_unit": "",
+    "queued_at": "2026-09-14T00:47:23.294Z",
+    "id": "c1789346843294"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "MCDAIRY FROMAGE COTTAGE",
+     "F1744": "125.0",
+     "F22": "500G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "MCDAIRY FROMAGE COTTAGE 500G",
+     "F04": "3",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "6.9900",
+     "F196": "6.9900",
+     "F1140": "6.9900",
+     "F27": "ZJ01"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260913204823214885",
+   "applied_at": "2026-09-13T20:48:23",
+   "change": {
+    "code": "0077624103100",
+    "pos_title": "MCDAIRY FROMAGE COTTAGE 500G",
+    "size_num": 125,
+    "size_unit": "",
+    "queued_at": "2026-09-14T00:47:41.304Z",
+    "id": "c1789346861304"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "MCDAIRY FROMAGE COTTAGE",
+     "F1744": "125.0",
+     "F22": "125 ",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "MCDAIRY FROMAGE COTTAGE 500G",
+     "F04": "3",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "6.9900",
+     "F196": "6.9900",
+     "F1140": "6.9900",
+     "F27": "ZJ01"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260913204823261685",
+   "applied_at": "2026-09-13T20:48:23",
+   "change": {
+    "code": "0077624103104",
+    "pos_title": "ELWEST TVOROG FROMAGE FRAIS 0.8% 500GR",
+    "size_num": 454,
+    "size_unit": "GR",
+    "queued_at": "2026-09-14T00:48:05.011Z",
+    "id": "c1789346885011"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "MC DAIRY  TVOROG FROMAGE FRAIS 0.8%",
+     "F1744": "454.0",
+     "F22": "500GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ELWEST TVOROG FROMAGE FRAIS 0.8% 500GR",
+     "F04": "3",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "6.9900",
+     "F196": "6.9900",
+     "F1140": "6.9900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
