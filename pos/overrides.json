@@ -2456,7 +2456,31 @@
    "mp": null,
    "cost": 0.75,
    "at": "2026-09-13 21:02:30"
+  },
+  "0085630300491": {
+   "pt": "SWEET LIZA MINI GATEAU AU FROMAGE CHOCOL",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 50.0,
+   "nm": "SWEET LIZA MINI GATEAU AU FROMAGE CHOCOLAT 50GR",
+   "rp": 1.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 1.49,
+   "mp": null,
+   "cost": 0.69,
+   "at": "2026-09-13 21:04:37"
   }
  },
- "updated": "2026-09-13 21:02:30"
+ "updated": "2026-09-13 21:04:37"
 }
