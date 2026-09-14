@@ -2408,7 +2408,31 @@
    "mp": null,
    "cost": 59.31,
    "at": "2026-09-13 20:55:07"
+  },
+  "0482307151982": {
+   "pt": "SMACOM CREPES AU CERISE 350G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "G",
+   "sn": 350.0,
+   "nm": "SMACOM CREPES AU CERISE",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 2.7,
+   "at": "2026-09-13 21:00:23"
   }
  },
- "updated": "2026-09-13 20:55:07"
+ "updated": "2026-09-13 21:00:23"
 }
