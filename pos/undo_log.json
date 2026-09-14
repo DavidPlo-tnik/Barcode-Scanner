@@ -23724,6 +23724,56 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260913211939228380",
+   "applied_at": "2026-09-13T21:19:39",
+   "change": {
+    "code": "0482018662128",
+    "title": "GOLD RING FILET DE HARENG TRANCHÉ 900GR",
+    "pos_title": "GOLD RING FILET DE HARENG TRANCHÉ 900GR",
+    "size_num": 900,
+    "size_unit": "GR",
+    "queued_at": "2026-09-14T01:18:47.835Z",
+    "id": "c1789348727835"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GOLD RING FILET DE HARENG TRANCHÉ",
+     "F1744": "900.0",
+     "F22": "900G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "GOLD RING FILET DE HARENG TRANCHÉ 900G",
+     "F04": "22",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "9.9800",
+     "F196": "9.9800",
+     "F1140": "9.9800",
+     "F27": "ZB01"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
