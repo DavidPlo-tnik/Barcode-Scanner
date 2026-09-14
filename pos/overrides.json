@@ -2698,7 +2698,30 @@
    "mp": null,
    "cost": 66.0,
    "at": "2026-09-14 16:34:18"
+  },
+  "0023882500000": {
+   "pt": "THON FUMÉ SMOKED TUNA",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 24,
+   "un": "UN",
+   "sn": null,
+   "nm": "THON FUMÉ SMOKED TUNA",
+   "rp": 49.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 49.99,
+   "mp": null,
+   "at": "2026-09-14 17:23:18"
   }
  },
- "updated": "2026-09-14 16:34:18"
+ "updated": "2026-09-14 17:23:18"
 }
