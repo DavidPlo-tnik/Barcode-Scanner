@@ -1930,7 +1930,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-09-13 20:08:55"
+  },
+  "0077332147490": {
+   "pt": "BRANDT SAUCISSON KOLBASSA 250GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 31,
+   "un": "GR",
+   "sn": 250.0,
+   "nm": "BRANDT SAUCISSON KOLBASSA 250GR",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 3.5,
+   "at": "2026-09-13 20:12:08"
   }
  },
- "updated": "2026-09-13 20:08:55"
+ "updated": "2026-09-13 20:12:08"
 }
