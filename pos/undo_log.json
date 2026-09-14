@@ -23528,6 +23528,103 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260913211211211193",
+   "applied_at": "2026-09-13T21:12:11",
+   "change": {
+    "code": "0085630300497",
+    "size_num": 50,
+    "size_unit": "GR",
+    "queued_at": "2026-09-14T01:11:20.231Z",
+    "id": "c1789348280231"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE",
+     "F1744": "50.0",
+     "F22": "50 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.7500",
+     "F196": "0.7500",
+     "F1140": "0.7500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260913211211257993",
+   "applied_at": "2026-09-13T21:12:11",
+   "change": {
+    "code": "0085630300497",
+    "title": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE 50GR",
+    "size_num": 50,
+    "size_unit": "GR",
+    "queued_at": "2026-09-14T01:11:28.327Z",
+    "id": "c1789348288327"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE",
+     "F1744": "50.0",
+     "F22": "50 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.7500",
+     "F196": "0.7500",
+     "F1140": "0.7500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
