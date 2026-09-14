@@ -2650,7 +2650,31 @@
    "mp": null,
    "cost": 8.0,
    "at": "2026-09-14 12:08:52"
+  },
+  "0006235650652": {
+   "pt": "CEDAR SEM.BLE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "G",
+   "sn": 907.0,
+   "nm": "Cedar sem.blé durum enrichi         907g",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 3.99,
+   "mp": null,
+   "cost": 23.0,
+   "at": "2026-09-14 12:34:00"
   }
  },
- "updated": "2026-09-14 12:21:30"
+ "updated": "2026-09-14 12:34:00"
 }
