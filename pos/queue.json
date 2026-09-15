@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0000000003156",
+   "pos_title": "ORAN. NAVEL GR56",
+   "size_num": 1,
+   "size_unit": "",
+   "promo": {
+    "price": 5,
+    "qty": 3,
+    "start": "2023-11-24",
+    "end": "2036-09-15"
+   },
+   "queued_at": "2026-09-15T15:35:42.831Z",
+   "id": "c1789486542831"
+  }
+ ]
 }
