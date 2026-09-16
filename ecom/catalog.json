@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-14T16:06:43.147Z",
+ "updated": "2026-09-16T22:44:26.909Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -6530,7 +6530,9 @@
   },
   "0484000804162": {
    "added": "2026-09-06",
-   "photos": [],
+   "photos": [
+    "0484000804162_1789598665478.webp"
+   ],
    "listed": false,
    "status": "draft",
    "group": "1-franzeluta-pain-borodinsky",
