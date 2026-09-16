@@ -1,22 +1,3 @@
 {
- "items": [
-  {
-   "code": "0590318907631",
-   "pos_title": "NUSSBEISSER 100GR",
-   "size_num": 100,
-   "size_unit": "GR",
-   "price": 4.99,
-   "queued_at": "2026-09-16T12:16:17.641Z",
-   "id": "c1789560977641"
-  },
-  {
-   "code": "0800050034750",
-   "pos_title": "Fer.Kinder choc CARDS 76.8G",
-   "size_num": 43,
-   "size_unit": "",
-   "price": 4.99,
-   "queued_at": "2026-09-16T12:16:47.078Z",
-   "id": "c1789561007078"
-  }
- ]
+ "items": []
 }
