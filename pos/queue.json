@@ -1,20 +1,3 @@
 {
- "items": [
-  {
-   "code": "0484000804162",
-   "pos_title": "FRANZELUTA PAIN  BORODINSKY 600G",
-   "size_num": 200,
-   "size_unit": "GR",
-   "queued_at": "2026-09-16T22:44:29.458Z",
-   "id": "c1789598669458"
-  },
-  {
-   "code": "0484000804162",
-   "pos_title": "FRANZELUTA PAIN  BORODINSKY 600G",
-   "size_num": 200,
-   "size_unit": "GR",
-   "queued_at": "2026-09-16T22:45:04.577Z",
-   "id": "c1789598704577"
-  }
- ]
+ "items": []
 }
