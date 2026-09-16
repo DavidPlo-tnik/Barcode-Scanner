@@ -47,7 +47,31 @@
    "mp": null,
    "cost": 1.99,
    "at": "2026-09-16 08:16:46"
+  },
+  "0482000271309": {
+   "pt": "KVAS STAROKYIVSKI 500ML",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "ML",
+   "sn": 500.0,
+   "nm": "KVAS STAROKYIVSKI 500ML",
+   "rp": 2.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 2.49,
+   "mp": null,
+   "cost": 32.4,
+   "at": "2026-09-16 13:34:55"
   }
  },
- "updated": "2026-09-16 08:16:46"
+ "updated": "2026-09-16 13:34:55"
 }
