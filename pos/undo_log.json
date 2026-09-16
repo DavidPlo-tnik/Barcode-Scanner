@@ -24988,6 +24988,106 @@
      "F1011": ""
     }
    }
+  },
+  {
+   "undo_id": "u20260916133455277162",
+   "applied_at": "2026-09-16T13:34:55",
+   "change": {
+    "code": "0482000271309",
+    "title": "KVAS STAROKYIVSKI",
+    "pos_title": "KVAS STAROKYIVSKI",
+    "size_num": 500,
+    "size_unit": "ML",
+    "queued_at": "2026-09-16T17:34:15.487Z",
+    "id": "c1789580055487"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KWAS OBOLON STAROKYIV",
+     "F1744": "500.0",
+     "F22": "500ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "KWAS OBOLON STAROKYIV 500ML",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "32.4000",
+     "F196": "32.4000",
+     "F1140": "1.3500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "2.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260916133455323962",
+   "applied_at": "2026-09-16T13:34:55",
+   "change": {
+    "code": "0482000271309",
+    "title": "KVAS STAROKYIVSKI 500ML",
+    "pos_title": "KVAS STAROKYIVSKI 500ML",
+    "size_num": 500,
+    "size_unit": "ML",
+    "queued_at": "2026-09-16T17:34:29.290Z",
+    "id": "c1789580069290"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KVAS STAROKYIVSKI",
+     "F1744": "500.0",
+     "F22": "500 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "KVAS STAROKYIVSKI",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "32.4000",
+     "F196": "32.4000",
+     "F1140": "1.3500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "2.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
   }
  ]
 }
