@@ -5,20 +5,6 @@
    "applied_at": "2026-08-17T20:28:24",
    "change": {
     "op": "supplier_create",
-    "vendor_id": "1004",
-    "name": "WonderBerry",
-    "code": "__vendor_1004",
-    "queued_at": "2026-08-14T03:29:50.762Z",
-    "id": "c1786678190762"
-   },
-   "before": {},
-   "dropped_reason": "vendor id 1004 already exists"
-  },
-  {
-   "undo_id": "d20260817202824128299",
-   "applied_at": "2026-08-17T20:28:24",
-   "change": {
-    "op": "supplier_create",
     "vendor_id": "1005",
     "name": "Tonsell",
     "code": "__vendor_1005",
@@ -25116,6 +25102,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260917112952127018",
+   "applied_at": "2026-09-17T11:29:52",
+   "change": {
+    "code": "0482000147092",
+    "title": "SMAK BIRCH JUICE",
+    "pos_title": "SMAK BIRCH JUICE",
+    "size_num": 1000,
+    "size_unit": "ML",
+    "queued_at": "2026-09-17T15:29:05.185Z",
+    "id": "c1789658945185"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SMAK BIRCH JUSE",
+     "F1744": "141.0",
+     "F22": "1000ML",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "SMAK BIRCH JUSE 1000ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "33.6000",
+     "F196": "33.6000",
+     "F1140": "2.8000",
+     "F27": "0000200041"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
