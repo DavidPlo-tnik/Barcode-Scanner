@@ -1,29 +1,5 @@
 {
  "items": {
-  "0590318907631": {
-   "pt": "NUSSBEISSER 100GR",
-   "tf": 1,
-   "tp": 1,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 2,
-   "un": "GR",
-   "sn": 100.0,
-   "nm": "NUSSBEISSER",
-   "rp": 4.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 4.99,
-   "mp": null,
-   "cost": 1.99,
-   "at": "2026-09-16 08:16:46"
-  },
   "0482000271309": {
    "pt": "KVAS STAROKYIVSKI 500ML",
    "tf": 1,
@@ -643,7 +619,31 @@
    "mp": null,
    "cost": 31.52,
    "at": "2026-09-17 12:57:51"
+  },
+  "0022423200000": {
+   "pt": "SALADE POMME DE TERRE OLIVIER",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 61,
+   "un": "G",
+   "sn": null,
+   "nm": "SALADE POMME DE TERRE OLIVIER",
+   "rp": 4.9,
+   "ap": 1,
+   "pp": 14.99,
+   "ps": "2026-08-31",
+   "pe": "2036-08-31",
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 14.99,
+   "mp": null,
+   "cost": 11.97,
+   "at": "2026-09-17 16:17:09"
   }
  },
- "updated": "2026-09-17 12:57:51"
+ "updated": "2026-09-17 16:17:09"
 }
