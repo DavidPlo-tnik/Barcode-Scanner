@@ -8,6 +8,15 @@
    "balance": 0,
    "queued_at": "2026-09-17T14:28:53.846Z",
    "id": "c1789655333846"
+  },
+  {
+   "code": "0021051700000",
+   "pos_title": "BEIGNE AUX PRUNES 12 UN",
+   "size_num": 12,
+   "size_unit": "UN",
+   "balance": 0,
+   "queued_at": "2026-09-17T14:29:02.815Z",
+   "id": "c1789655342816"
   }
  ]
 }
