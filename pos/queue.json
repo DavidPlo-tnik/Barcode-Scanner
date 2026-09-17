@@ -1,28 +1,3 @@
 {
- "items": [
-  {
-   "code": "0000000004060",
-   "pos_title": "BROCOLI GR18",
-   "size_num": 1,
-   "size_unit": "",
-   "multibuy": {
-    "qty": 2,
-    "price": 3.99
-   },
-   "queued_at": "2026-09-17T16:09:29.909Z",
-   "id": "c1789661369909"
-  },
-  {
-   "code": "0000000004060",
-   "pos_title": "BROCOLI GR18",
-   "size_num": 1,
-   "size_unit": "",
-   "multibuy": {
-    "qty": 2,
-    "price": 3.99
-   },
-   "queued_at": "2026-09-17T16:09:42.793Z",
-   "id": "c1789661382793"
-  }
- ]
+ "items": []
 }
