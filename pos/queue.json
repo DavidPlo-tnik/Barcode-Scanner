@@ -1,22 +1,3 @@
 {
- "items": [
-  {
-   "code": "0482000077028",
-   "title": "KVAS MONASTYRSKIY",
-   "pos_title": "KVAS MONASTYRSKIY",
-   "size_num": 2000,
-   "size_unit": "ML",
-   "queued_at": "2026-09-17T15:27:19.547Z",
-   "id": "c1789658839547"
-  },
-  {
-   "code": "0482000077094",
-   "title": "KVAS MONASTYRSKIY OKROSHKA",
-   "pos_title": "KVAS MONASTYRSKIY OKROSHKA",
-   "size_num": 2000,
-   "size_unit": "ML",
-   "queued_at": "2026-09-17T15:27:35.858Z",
-   "id": "c1789658855858"
-  }
- ]
+ "items": []
 }
