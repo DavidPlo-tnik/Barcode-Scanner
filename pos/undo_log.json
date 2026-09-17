@@ -1,108 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260817164438067577",
-   "applied_at": "2026-08-17T16:44:38",
-   "change": {
-    "code": "0000000004045",
-    "pos_title": "CERISE BING",
-    "size_num": 1000,
-    "size_unit": "",
-    "queued_at": "2026-08-17T20:44:34.763Z",
-    "id": "c1786999474763"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "Cerise bing 10.5 rangs (18)         DISC",
-     "F1744": "1000.0",
-     "F22": "1000 "
-    },
-    "POS_TAB": {
-     "F02": "CERISE BING",
-     "F04": "41",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "67.0000",
-     "F196": "67.0000",
-     "F1140": "8.2061",
-     "F27": "L-SAP"
-    },
-    "PRICE_TAB": {
-     "F30": "4.3800",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.3800",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260817164512307625",
-   "applied_at": "2026-08-17T16:45:12",
-   "change": {
-    "code": "0000000004045",
-    "pos_title": "CERISE BING",
-    "size_num": 1000,
-    "size_unit": "",
-    "promo": {
-     "price": 4.39,
-     "qty": 1,
-     "start": "2026-08-17",
-     "end": "2036-08-17"
-    },
-    "queued_at": "2026-08-17T20:45:06.521Z",
-    "id": "c1786999506521"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "Cerise bing 10.5 rangs (18)         DISC",
-     "F1744": "1000.0",
-     "F22": "1000 "
-    },
-    "POS_TAB": {
-     "F02": "CERISE BING",
-     "F04": "41",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "67.0000",
-     "F196": "67.0000",
-     "F1140": "8.2061",
-     "F27": "L-SAP"
-    },
-    "PRICE_TAB": {
-     "F30": "4.3800",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.3800",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260817165303550673",
    "applied_at": "2026-08-17T16:53:03",
    "change": {
@@ -25080,6 +24978,106 @@
      "F196": "66.0000",
      "F1140": "3.0000",
      "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260917112636331074",
+   "applied_at": "2026-09-17T11:26:36",
+   "change": {
+    "code": "0482000337093",
+    "title": "KVAS DANILO CLASSIQUE",
+    "pos_title": "KVAS DANILO CLASSIQUE",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "queued_at": "2026-09-17T15:25:47.976Z",
+    "id": "c1789658747976"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KVAS DANILO COMBUCHA",
+     "F1744": "2000.0",
+     "F22": "2L",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "KVAS DANILO COMBUCHA 2L",
+     "F04": "1",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "18.0000",
+     "F196": "18.0000",
+     "F1140": "3.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260917112636393474",
+   "applied_at": "2026-09-17T11:26:36",
+   "change": {
+    "code": "0482000077094",
+    "title": "KVAS MONASTYRSKIY",
+    "pos_title": "KVAS MONASTYRSKIY",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "queued_at": "2026-09-17T15:26:17.630Z",
+    "id": "c1789658777630"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KVAS KOMBUCHA MONASTIRSK",
+     "F1744": "2000.0",
+     "F22": "2L",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "KVAS KOMBUCHA MONASTIRSK 2L",
+     "F04": "1",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "18.0000",
+     "F196": "18.0000",
+     "F1140": "3.0000",
+     "F27": "L-TONSELL"
     },
     "PRICE_TAB": {
      "F30": "4.9900",
