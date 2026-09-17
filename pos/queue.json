@@ -17,6 +17,15 @@
    "balance": 0,
    "queued_at": "2026-09-17T14:29:02.815Z",
    "id": "c1789655342816"
+  },
+  {
+   "code": "0021051500000",
+   "pos_title": "BEIGNE A LA CREME 12 UN",
+   "size_num": 12,
+   "size_unit": "UN",
+   "balance": 0,
+   "queued_at": "2026-09-17T14:29:22.407Z",
+   "id": "c1789655362407"
   }
  ]
 }
