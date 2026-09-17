@@ -573,7 +573,30 @@
    "mp": null,
    "cost": 19.75,
    "at": "2026-09-17 12:15:27"
+  },
+  "0003260195298": {
+   "pt": "salade jeune epinard bio 5 oz (8)   DISC",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 41,
+   "un": "UN1",
+   "sn": 1.0,
+   "nm": "salade bébé epinard bio 5 oz (8)   DISC",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "at": "2026-09-17 12:37:09"
   }
  },
- "updated": "2026-09-17 12:15:27"
+ "updated": "2026-09-17 12:37:09"
 }
