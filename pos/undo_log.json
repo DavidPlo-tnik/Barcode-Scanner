@@ -5,20 +5,6 @@
    "applied_at": "2026-08-17T20:28:24",
    "change": {
     "op": "supplier_create",
-    "vendor_id": "1005",
-    "name": "Tonsell",
-    "code": "__vendor_1005",
-    "queued_at": "2026-08-14T03:29:57.106Z",
-    "id": "c1786678197106"
-   },
-   "before": {},
-   "dropped_reason": "vendor id 1005 already exists"
-  },
-  {
-   "undo_id": "d20260817202824128299",
-   "applied_at": "2026-08-17T20:28:24",
-   "change": {
-    "op": "supplier_create",
     "vendor_id": "1006",
     "name": "Sikorski",
     "code": "__vendor_1006",
@@ -25152,6 +25138,61 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260917120858310739",
+   "applied_at": "2026-09-17T12:08:58",
+   "change": {
+    "code": "0003338365321",
+    "pos_title": "CELERI",
+    "size_num": 1,
+    "size_unit": "",
+    "promo": {
+     "price": 1.79,
+     "qty": 1,
+     "start": "2026-09-17",
+     "end": "2036-09-17"
+    },
+    "queued_at": "2026-09-17T16:08:06.569Z",
+    "id": "c1789661286569"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "Céleri local gr24                   DISC",
+     "F1744": "1.0",
+     "F22": "1UN1",
+     "F23": "UN1"
+    },
+    "POS_TAB": {
+     "F02": "CELERI",
+     "F04": "41",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "19.7500",
+     "F196": "19.7500",
+     "F1140": "0.8229",
+     "F27": "L-SAP"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
