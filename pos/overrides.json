@@ -239,7 +239,31 @@
    "mp": null,
    "cost": 66.0,
    "at": "2026-09-18 19:58:45"
+  },
+  "0062531500055": {
+   "pt": "JJWilk pierog.pom.terre OIGNON srg 907g",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "G",
+   "sn": 907.0,
+   "nm": "JJWilk pierog.pom.terre OIGNON srg 907g",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 42.0,
+   "at": "2026-09-18 20:00:52"
   }
  },
- "updated": "2026-09-18 19:58:45"
+ "updated": "2026-09-18 20:00:52"
 }
