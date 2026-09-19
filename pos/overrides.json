@@ -265,7 +265,7 @@
    "at": "2026-09-19 14:37:25"
   },
   "0023881600000": {
-   "pt": "SAUMON FUME GR",
+   "pt": "FLANCS DE SAUMON FUME",
    "tf": 0,
    "tp": 0,
    "dp": null,
@@ -274,7 +274,7 @@
    "sd": 24,
    "un": "GR",
    "sn": null,
-   "nm": "SAUMON FUME",
+   "nm": "FLANCS DE SAUMON FUME",
    "rp": 34.99,
    "ap": 0,
    "pp": null,
@@ -285,8 +285,8 @@
    "lk": 0,
    "price": 34.99,
    "mp": null,
-   "at": "2026-09-19 18:02:53"
+   "at": "2026-09-19 18:17:17"
   }
  },
- "updated": "2026-09-19 18:02:53"
+ "updated": "2026-09-19 18:17:17"
 }
