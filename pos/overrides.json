@@ -1,29 +1,5 @@
 {
  "items": {
-  "0022423200000": {
-   "pt": "SALADE POMME DE TERRE OLIVIER",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 1,
-   "qte": 0,
-   "sd": 61,
-   "un": "G",
-   "sn": null,
-   "nm": "SALADE POMME DE TERRE OLIVIER",
-   "rp": 4.9,
-   "ap": 1,
-   "pp": 14.99,
-   "ps": "2026-08-31",
-   "pe": "2036-08-31",
-   "rq": 1,
-   "pq": 1,
-   "lk": 1,
-   "price": 14.99,
-   "mp": null,
-   "cost": 11.97,
-   "at": "2026-09-17 16:17:09"
-  },
   "0023981700000": {
    "pt": "FROMAGE HAVARTI  KG",
    "tf": 0,
@@ -263,7 +239,31 @@
    "mp": null,
    "cost": 42.0,
    "at": "2026-09-18 20:00:52"
+  },
+  "0020810800000": {
+   "pt": "TRUITE FUMÉE À FROID KG",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 24,
+   "un": "KG",
+   "sn": null,
+   "nm": "TRUITE FUMÉE À FROID",
+   "rp": 34.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 34.99,
+   "mp": null,
+   "cost": 31.78,
+   "at": "2026-09-19 14:37:25"
   }
  },
- "updated": "2026-09-18 20:00:52"
+ "updated": "2026-09-19 14:37:25"
 }
