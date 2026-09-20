@@ -118,7 +118,31 @@
    "mp": null,
    "cost": 1.5,
    "at": "2026-09-20 19:52:51"
+  },
+  "0477021930032": {
+   "pt": "ARGOUSIER CONGELE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "ML",
+   "sn": 4000.0,
+   "nm": "ARGOUSIER CONGELE",
+   "rp": 15.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 15.99,
+   "mp": null,
+   "cost": 100.0,
+   "at": "2026-09-20 19:55:01"
   }
  },
- "updated": "2026-09-20 19:52:51"
+ "updated": "2026-09-20 19:55:01"
 }
