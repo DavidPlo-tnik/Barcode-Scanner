@@ -1,60 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260819172027019782",
-   "applied_at": "2026-08-19T17:20:27",
-   "change": {
-    "code": "0482020587105",
-    "pos_title": "GATEAU GRYLIAZHNIY BKK 850G",
-    "size_num": 850,
-    "size_unit": "ML",
-    "promo": {
-     "price": 29.99,
-     "qty": 1,
-     "start": "2026-08-20",
-     "end": "2026-08-26"
-    },
-    "queued_at": "2026-08-19T21:20:05.588Z",
-    "id": "c1787174405588"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "GATEAU GRYLIAZHNIY BKK",
-     "F1744": "850.0",
-     "F22": "850 ML"
-    },
-    "POS_TAB": {
-     "F02": "GATEAU GRYLIAZHNIY BKK 850G",
-     "F04": "4",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "26.9500",
-     "F196": "26.9500",
-     "F1140": "26.9500",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "34.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "34.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260819172027149782",
    "applied_at": "2026-08-19T17:20:27",
    "change": {
@@ -25138,6 +25084,56 @@
     "size_unit": "GR",
     "queued_at": "2026-09-21T20:31:53.212Z",
     "id": "c1790022713212"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "AVK BAMBUK",
+     "F1744": "200.0",
+     "F22": "200GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "AVK BAMBUK 200GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "1.4000",
+     "F196": "1.4000",
+     "F1140": "1.4000",
+     "F27": "ZJ01"
+    },
+    "PRICE_TAB": {
+     "F30": "2.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260921163322269279",
+   "applied_at": "2026-09-21T16:33:22",
+   "change": {
+    "code": "0482310581330",
+    "title": "AVK BAMBUK COCONUT",
+    "pos_title": "AVK BAMBUK COCONUT",
+    "size_num": 200,
+    "size_unit": "GR",
+    "queued_at": "2026-09-21T20:32:52.605Z",
+    "id": "c1790022772605"
    },
    "before": {
     "OBJ_TAB": {
