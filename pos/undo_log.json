@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260821103444025131",
-   "applied_at": "2026-08-21T10:34:44",
-   "change": {
-    "code": "0482000423799",
-    "title": "VOL. POLE MINI GATEAU AU FROMAGE LAIT CONDENSÉ",
-    "pos_title": "MINI GATEAU AU FROMAGE 50G",
-    "size_num": 750,
-    "size_unit": "ML",
-    "queued_at": "2026-08-21T14:33:56.612Z",
-    "id": "c1787322836612"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "  MINI GATEAU AU FROMAGE",
-     "F1744": "750.0",
-     "F22": "50G"
-    },
-    "POS_TAB": {
-     "F02": "  MINI GATEAU AU FROMAGE 50G",
-     "F04": "4",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.9900",
-     "F196": "0.9900",
-     "F1140": "0.9900",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "1.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "1.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260821103444080131",
    "applied_at": "2026-08-21T10:34:44",
    "change": {
@@ -25123,6 +25074,54 @@
      "F31": "3.0",
      "F1006": "3.0",
      "F1007": "5.0000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260922190753062324",
+   "applied_at": "2026-09-22T19:07:53",
+   "change": {
+    "code": "0021010100000",
+    "pos_title": "CAROTTES MARINEES A L'AIL GR",
+    "subdept": 61,
+    "queued_at": "2026-09-22T23:07:32.628Z",
+    "id": "c1790118452628"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CAROTTES MARINEES A L'AIL",
+     "F1744": null,
+     "F22": "GR",
+     "F23": null
+    },
+    "POS_TAB": {
+     "F02": "CAROTTES MARINEES A L'AIL GR",
+     "F04": "34",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
