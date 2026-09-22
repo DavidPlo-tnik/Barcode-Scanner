@@ -1,52 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260820142652108919",
-   "applied_at": "2026-08-20T14:26:52",
-   "change": {
-    "code": "0021006600000",
-    "price": 1.49,
-    "queued_at": "2026-08-20T18:26:39.600Z",
-    "id": "c1787250399600"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "METS CUISINES",
-     "F1744": null,
-     "F22": ""
-    },
-    "POS_TAB": {
-     "F02": "METS CUISINES",
-     "F04": "61",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "2.2900",
-     "F196": "2.2900",
-     "F1140": "2.2900",
-     "F27": "L-METS"
-    },
-    "PRICE_TAB": {
-     "F30": "1.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "1.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260821090716102774",
    "applied_at": "2026-08-21T09:07:16",
    "change": {
@@ -25122,6 +25076,56 @@
      "F1014": "2035-09-13 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20260922170124201940",
+   "applied_at": "2026-09-22T17:01:24",
+   "change": {
+    "code": "0069256502252",
+    "title": "PELMEN  PIEROGIES PORC BOEUF POULET 500GR",
+    "pos_title": "PELMEN  PIEROGIES PORC BOEUF POULET 500G",
+    "size_num": 500,
+    "size_unit": "GR",
+    "queued_at": "2026-09-22T21:00:56.208Z",
+    "id": "c1790110856208"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "PELMEN  PIEROGIES PORC BOEUF 500GR",
+     "F1744": "500.0",
+     "F22": "500 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "PELMEN  PIEROGIES PORC BOEUF 500GR",
+     "F04": "4",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "61.2000",
+     "F196": "61.2000",
+     "F1140": "5.1000",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "6.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "6.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
