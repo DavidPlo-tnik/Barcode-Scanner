@@ -1,3 +1,13 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0006700000829",
+   "pos_title": "COKE B.GAZ.CAN.CLASSIQUE",
+   "size_num": 355,
+   "size_unit": "ML",
+   "deposit": 0.1,
+   "queued_at": "2026-09-22T20:15:16.235Z",
+   "id": "c1790108116235"
+  }
+ ]
 }
