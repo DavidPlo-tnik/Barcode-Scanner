@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-22T23:13:02.191Z",
+ "updated": "2026-09-22T23:13:05.552Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -3026,23 +3026,6 @@
    "group": "41-fraises-454g-8",
    "dept": "41",
    "weekly": 22.98,
-   "scale": false,
-   "fresh": true,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0081588701230": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "41-fraises-454g-8",
-   "dept": "41",
-   "weekly": 12.51,
    "scale": false,
    "fresh": true,
    "v": {
