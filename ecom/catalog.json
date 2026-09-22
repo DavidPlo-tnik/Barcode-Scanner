@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-22T23:12:55.304Z",
+ "updated": "2026-09-22T23:13:02.191Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -6360,23 +6360,6 @@
    "group": "41-laitue-coeur-romaine",
    "dept": "41",
    "weekly": 15.19,
-   "scale": false,
-   "fresh": true,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0007357480003": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "41-laitue-coeur-romaine",
-   "dept": "41",
-   "weekly": 12.44,
    "scale": false,
    "fresh": true,
    "v": {
