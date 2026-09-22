@@ -1,3 +1,13 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0006900001425",
+   "pos_title": "PEPSI B.GAZ.CAN.DIETE",
+   "size_num": 355,
+   "size_unit": "ML",
+   "deposit": 0.1,
+   "queued_at": "2026-09-22T20:09:09.765Z",
+   "id": "c1790107749765"
+  }
+ ]
 }
