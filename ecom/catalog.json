@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-22T23:19:37.435Z",
+ "updated": "2026-09-22T23:20:04.435Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -4344,23 +4344,6 @@
    "group": "4-dadu-creme-glac",
    "dept": "4",
    "weekly": 20.56,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0082988200331": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": null,
-   "dept": "22",
-   "weekly": 60.86,
    "scale": false,
    "fresh": false,
    "v": {
