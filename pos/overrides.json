@@ -358,7 +358,31 @@
    "price": 31.99,
    "mp": null,
    "at": "2026-09-21 20:11:19"
+  },
+  "0020238800000": {
+   "pt": "BARILO`S MINI BOLOGNE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 31,
+   "un": "UN",
+   "sn": null,
+   "nm": "BARILO`S MINI BOLOGNE",
+   "rp": 9.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 9.99,
+   "mp": null,
+   "cost": 9.99,
+   "at": "2026-09-21 20:13:28"
   }
  },
- "updated": "2026-09-21 20:11:19"
+ "updated": "2026-09-21 20:13:28"
 }
