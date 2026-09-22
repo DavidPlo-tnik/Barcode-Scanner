@@ -1,29 +1,5 @@
 {
  "items": {
-  "0000000003452": {
-   "pt": "RAISINS VERTS MOYENS S.PEPIN",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 1,
-   "qte": 0,
-   "sd": 41,
-   "un": "G",
-   "sn": 1000.0,
-   "nm": "raisin vert moyen sans pépins ÉU (19)/lb",
-   "rp": 11.0,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 11.0,
-   "mp": null,
-   "cost": 29.0,
-   "at": "2026-09-21 12:32:34"
-  },
   "0071575620002": {
    "pt": "FRAISES",
    "tf": 0,
@@ -478,7 +454,31 @@
    "mp": "3/$5.00",
    "cost": 55.5,
    "at": "2026-09-22 18:23:38"
+  },
+  "0021010100000": {
+   "pt": "CAROTTES MARINEES A L'AIL GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 61,
+   "un": "",
+   "sn": null,
+   "nm": "CAROTTES MARINEES A L'AIL",
+   "rp": 9.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 9.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-09-22 19:07:53"
   }
  },
- "updated": "2026-09-22 18:23:38"
+ "updated": "2026-09-22 19:07:53"
 }
