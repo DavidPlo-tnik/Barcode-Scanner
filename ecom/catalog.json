@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-22T23:08:01.713Z",
+ "updated": "2026-09-22T23:12:53.423Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -13319,23 +13319,6 @@
    "group": "41-mp-champ-blanc",
    "dept": "41",
    "weekly": 19.82,
-   "scale": false,
-   "fresh": true,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0003338345090": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "41-mp-champ-blanc",
-   "dept": "41",
-   "weekly": 11.96,
    "scale": false,
    "fresh": true,
    "v": {
