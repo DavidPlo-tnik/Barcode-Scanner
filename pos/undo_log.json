@@ -1,64 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260819172332044128",
-   "applied_at": "2026-08-19T17:23:32",
-   "change": {
-    "code": "0482308860854",
-    "pos_title": "SUPER KONTIK 90G",
-    "size_num": 90,
-    "size_unit": "KG",
-    "multibuy": {
-     "qty": 3,
-     "price": 5
-    },
-    "promo": {
-     "price": 0.49,
-     "qty": 1,
-     "start": "2026-08-12",
-     "end": "2026-08-26"
-    },
-    "queued_at": "2026-08-19T21:23:19.442Z",
-    "id": "c1787174599442"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SUPER KONTIK",
-     "F1744": "90.0",
-     "F22": "90G"
-    },
-    "POS_TAB": {
-     "F02": "SUPER KONTIK 90G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "36.8000",
-     "F196": "36.8000",
-     "F1140": "1.0222",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.0000",
-     "F31": "3.0",
-     "F1006": "1.0",
-     "F1007": "0.4900",
-     "F113": "STOR",
-     "F1133": "0.4900",
-     "F1216": "2026-08-12 00:00:00",
-     "F1217": "2026-08-19 00:00:00",
-     "F1013": "5.0000",
-     "F1014": "2026-08-19 00:00:00",
-     "F1015": "2359",
-     "F1011": "REG"
-    }
-   }
-  },
-  {
    "undo_id": "u20260819172332139128",
    "applied_at": "2026-08-19T17:23:32",
    "change": {
@@ -25164,6 +25106,54 @@
      "F1014": "2028-01-10 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20260921201119137476",
+   "applied_at": "2026-09-21T20:11:19",
+   "change": {
+    "code": "0020232600000",
+    "pos_title": "LACHSSCHINKEN LONGE DE PORC FUME DEUX FO",
+    "balance": 1,
+    "queued_at": "2026-09-22T00:10:24.102Z",
+    "id": "c1790035824102"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LACHSSCHINKEN LONGE DE PORC FUME DEUX FOIS",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LACHSSCHINKEN LONGE DE PORC FUME DEUX FO",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-ISABELLE"
+    },
+    "PRICE_TAB": {
+     "F30": "31.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "31.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
