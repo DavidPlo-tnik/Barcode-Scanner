@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-22T23:13:05.552Z",
+ "updated": "2026-09-22T23:13:08.705Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -7619,23 +7619,6 @@
    "group": "41-tomate-raisin-serre",
    "dept": "41",
    "weekly": 17.2,
-   "scale": false,
-   "fresh": true,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0062891523542": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "41-tomate-raisin-serre",
-   "dept": "41",
-   "weekly": 12.69,
    "scale": false,
    "fresh": true,
    "v": {
