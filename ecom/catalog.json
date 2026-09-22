@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-22T22:55:52.676Z",
+ "updated": "2026-09-22T23:08:01.713Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -1130,23 +1130,6 @@
    "group": "61-salade-de-terre",
    "dept": "61",
    "weekly": 158.19,
-   "scale": true,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0022423300000": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "61-salade-de-terre",
-   "dept": "61",
-   "weekly": 77.03,
    "scale": true,
    "fresh": false,
    "v": {
