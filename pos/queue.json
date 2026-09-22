@@ -1,3 +1,22 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0062598396019",
+   "pos_title": "KVAS \"ALL STAR\" LIQUEUR 591ML",
+   "size_num": 591,
+   "size_unit": "ML",
+   "multibuy": {
+    "qty": 3,
+    "price": 5
+   },
+   "promo": {
+    "price": 5,
+    "qty": 3,
+    "start": null,
+    "end": null
+   },
+   "queued_at": "2026-09-22T22:23:07.899Z",
+   "id": "c1790115787899"
+  }
+ ]
 }
