@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-22T23:13:29.670Z",
+ "updated": "2026-09-22T23:18:56.014Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -1060,23 +1060,6 @@
    "group": "22-baltic-hareng",
    "dept": "22",
    "weekly": 49.61,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0475218900019": {
-   "added": "2026-07-29",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "22-baltic-hareng",
-   "dept": "22",
-   "weekly": 33.81,
    "scale": false,
    "fresh": false,
    "v": {
