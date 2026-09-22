@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-22T23:12:53.423Z",
+ "updated": "2026-09-22T23:12:55.304Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -2236,23 +2236,6 @@
    "group": "41-chopine-12-disc",
    "dept": "41",
    "weekly": 16.56,
-   "scale": false,
-   "fresh": true,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0066529005140": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "41-chopine-12-disc",
-   "dept": "41",
-   "weekly": 11.51,
    "scale": false,
    "fresh": true,
    "v": {
