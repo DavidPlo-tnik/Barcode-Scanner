@@ -2316,7 +2316,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v127</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v128</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -6563,8 +6563,9 @@
     const sel = $('#ecom-dept');
     if (!sel || sel.dataset.filled) return;
     const counts = {};
-    Object.values(cat.items || {}).forEach(e => {
-      const dc = e.dept != null ? String(e.dept) : '';
+    Object.entries(cat.items || {}).forEach(([code, e]) => {
+      const arr = DATA.products[resolveCode(code)];
+      const dc = arr ? String(arr[2]) : (e.dept != null ? String(e.dept) : '');
       if (dc) counts[dc] = (counts[dc] || 0) + 1;
     });
     // Two levels, matching the reports: pick a whole family (Épicerie, Viande…)
@@ -6695,7 +6696,12 @@
         nPhotos: photos.length,
         photo: photos[0],
         group: ecomGroupOf(code),
-        deptCode: entry.dept != null ? String(entry.dept) : (arr ? String(arr[2]) : ''),
+        // Prefer the LIVE department from the product record over the stale
+        // one baked into the catalogue at population time -- entry.dept was
+        // a one-time snapshot and never updated itself when you moved an
+        // item to a different department later, so a real change here
+        // silently never showed up in the app's own department filter.
+        deptCode: arr ? String(arr[2]) : (entry.dept != null ? String(entry.dept) : ''),
         listed: !!entry.listed,
         v, vDone,
         variantOf: entry.group || null,
