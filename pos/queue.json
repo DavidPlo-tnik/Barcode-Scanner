@@ -1,3 +1,13 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0006700010668",
+   "pos_title": "COKE BOUTEILLE",
+   "size_num": 2000,
+   "size_unit": "ML",
+   "deposit": 0.1,
+   "queued_at": "2026-09-22T20:12:25.508Z",
+   "id": "c1790107945508"
+  }
+ ]
 }
