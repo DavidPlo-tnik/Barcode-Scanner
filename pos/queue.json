@@ -1,3 +1,14 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0020711600000",
+   "pos_title": "BOLOGNE PORC KG",
+   "size_num": 1000,
+   "size_unit": "",
+   "price": 22.99,
+   "clear_promo": true,
+   "queued_at": "2026-09-22T00:08:28.650Z",
+   "id": "c1790035708650"
+  }
+ ]
 }
