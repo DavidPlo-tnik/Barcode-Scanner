@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260821103649050306",
-   "applied_at": "2026-08-21T10:36:49",
-   "change": {
-    "code": "0482000423796",
-    "title": "VOL. POLE MINI GATEAU AU FROMAGE CERISE",
-    "pos_title": "MINI GATEAU AU FROMAGE 50G",
-    "size_num": 750,
-    "size_unit": "ML",
-    "queued_at": "2026-08-21T14:36:08.584Z",
-    "id": "c1787322968585"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "  MINI GATEAU AU FROMAGE",
-     "F1744": "750.0",
-     "F22": "50G"
-    },
-    "POS_TAB": {
-     "F02": "  MINI GATEAU AU FROMAGE 50G",
-     "F04": "4",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.9900",
-     "F196": "0.9900",
-     "F1140": "0.9900",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "1.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "1.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260821110114019361",
    "applied_at": "2026-08-21T11:01:14",
    "change": {
@@ -25118,6 +25069,54 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "8.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260922203235229259",
+   "applied_at": "2026-09-22T20:32:35",
+   "change": {
+    "code": "0482013782533",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "queued_at": "2026-09-23T00:32:11.639Z",
+    "id": "c1790123531639"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ROSINKA BOISSON TARHUN",
+     "F1744": "800.0",
+     "F22": "800 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ROSINKA BOISSON TARHUN",
+     "F04": "1",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "16.5000",
+     "F196": "16.5000",
+     "F1140": "2.7500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
