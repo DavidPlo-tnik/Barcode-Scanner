@@ -407,7 +407,31 @@
    "mp": null,
    "cost": 3.15,
    "at": "2026-09-23 11:10:48"
+  },
+  "0003338345080": {
+   "pt": "CHAMPIGNON BLANC",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 41,
+   "un": "G",
+   "sn": 227.0,
+   "nm": "MP champ.blanc 227g (12)             1un",
+   "rp": 2.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 2.49,
+   "mp": null,
+   "cost": 12.0,
+   "at": "2026-09-23 12:46:42"
   }
  },
- "updated": "2026-09-23 11:10:48"
+ "updated": "2026-09-23 12:46:42"
 }
