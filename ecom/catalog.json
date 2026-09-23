@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-22T23:20:04.435Z",
+ "updated": "2026-09-23T00:35:43.193Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -6086,23 +6086,6 @@
    "group": "4-bkk-patisserie",
    "dept": "4",
    "weekly": 44.56,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482020587354": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "4-bkk-patisserie",
-   "dept": "4",
-   "weekly": 39.4,
    "scale": false,
    "fresh": false,
    "v": {
