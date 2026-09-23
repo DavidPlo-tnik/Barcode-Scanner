@@ -1,62 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260827165144809320",
-   "applied_at": "2026-08-27T16:51:44",
-   "change": {
-    "code": "0022701400000",
-    "title": "STRUDEL GRAINES DE PAVOT",
-    "pos_title": "STRUDEL GRAINES DE PAVOT",
-    "size_num": 106,
-    "size_unit": "",
-    "promo": {
-     "price": 11.99,
-     "qty": 1,
-     "start": "2026-08-27",
-     "end": "2036-08-27"
-    },
-    "queued_at": "2026-08-27T20:51:32.058Z",
-    "id": "c1787863892058"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "STRUDEL GRAINES DE PAVOT",
-     "F1744": "106.0",
-     "F22": "106 ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "STRUDEL GRAINES DE PAVOT",
-     "F04": "23",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.1800",
-     "F196": "2.1800",
-     "F1140": "2.1800",
-     "F27": "ZA03"
-    },
-    "PRICE_TAB": {
-     "F30": "3.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260828110014022465",
    "applied_at": "2026-08-28T11:00:14",
    "change": {
@@ -25118,6 +25062,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260923151826347321",
+   "applied_at": "2026-09-23T15:18:26",
+   "change": {
+    "code": "0070498124136",
+    "title": "CHECHIL TRESSE DE FROMAGE FUME",
+    "pos_title": "CHECHIL TRESSE DE FROMAGE FUME",
+    "size_num": 150,
+    "size_unit": "GR",
+    "queued_at": "2026-09-23T19:18:19.190Z",
+    "id": "c1790191099190"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CHECIL TRESSE DE FROMAGE FUME",
+     "F1744": "150.0",
+     "F22": "150 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CHECIL TRESSE DE FROMAGE FUME",
+     "F04": "32",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "7.0000",
+     "F196": "7.0000",
+     "F1140": "7.0000",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
