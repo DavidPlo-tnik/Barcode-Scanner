@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260827165144622119",
-   "applied_at": "2026-08-27T16:51:44",
-   "change": {
-    "code": "0022701400000",
-    "title": "STRUDEL GRAINES DE PAVOT",
-    "pos_title": "STRUDEL GRAINES DE PAVOT",
-    "size_num": 106,
-    "size_unit": "",
-    "queued_at": "2026-08-27T20:51:22.079Z",
-    "id": "c1787863882080"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "brochette thon décongelée           106g",
-     "F1744": "106.0",
-     "F22": "106G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "BROCHETTE THON",
-     "F04": "23",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.1800",
-     "F196": "2.1800",
-     "F1140": "2.1800",
-     "F27": "ZA03"
-    },
-    "PRICE_TAB": {
-     "F30": "3.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260827165144809320",
    "applied_at": "2026-08-27T16:51:44",
    "change": {
@@ -25119,6 +25069,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260923151514264184",
+   "applied_at": "2026-09-23T15:15:14",
+   "change": {
+    "code": "0006969401373",
+    "pos_title": "S & F ZACUSCA TARTINADE POIVRONS ROUGES",
+    "size_num": 500,
+    "size_unit": "ML",
+    "queued_at": "2026-09-23T19:15:00.706Z",
+    "id": "c1790190900706"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "S & F ZACUSCA TARTINADE POIVRONS ROUGES ROTIS",
+     "F1744": "500.0",
+     "F22": "500ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "S & F ZACUSCA TARTINADE POIVRONS ROUGES",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "54.0000",
+     "F196": "54.0000",
+     "F1140": "4.5000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
