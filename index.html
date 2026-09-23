@@ -1894,6 +1894,7 @@
     <button class="ecom-chip" data-efilter="hasphoto">HAS PHOTO</button>
     <button class="ecom-chip" data-efilter="nosales7">NO SALES 7D</button>
     <button class="ecom-chip" data-efilter="nosales14">NO SALES 14D</button>
+    <button class="ecom-chip" data-efilter="nosize">NO SIZE</button>
     <button class="ecom-chip" data-efilter="variants">VARIANTS</button>
     <button class="ecom-chip" data-efilter="scale">SCALE</button>
     <button class="ecom-chip" data-efilter="dupes">DUPLICATE NAMES</button>
@@ -2316,7 +2317,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v128</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v129</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2400,6 +2401,23 @@
     if (v == null || v === '') return '—';
     const money = (v < 100) ? `$${(+v).toFixed(2)}` : `$${Math.round(v).toLocaleString()}`;
     return isWeighed(code) ? `${money}/kg` : money;
+  }
+
+  // Size text for one item, so it can show up in every list/preview the
+  // item appears in -- lets a wrong gram/mL value be caught by eye while
+  // scanning a list, instead of only inside the product page.
+  function productSizeText(code) {
+    if (!code) return '';
+    const rc = (typeof resolveCode === 'function') ? resolveCode(String(code)) : String(code);
+    const items = (_editData && _editData.items) || {};
+    const e = items[rc] || items[String(code)] || items[String(code).padStart(13, '0')];
+    if (e && e.sn && e.un) {
+      const n = Number(e.sn);
+      const num = Number.isInteger(n) ? n : n;
+      return `${num}${e.un}`;
+    }
+    const arr = DATA.products && DATA.products[rc];
+    return (arr && arr[10]) ? String(arr[10]).trim() : '';
   }
 
   const fmtMoney = (v) => {
@@ -2984,10 +3002,12 @@
         <div class="ramt">${hhmm}</div></div>`;
     }
     const price = (p.price != null) ? fmtMoney(p.price) : '—';
+    const sz = productSizeText(entry.c);
     return `<div class="recent-item" data-code="${escapeHtml(entry.c)}" style="display:flex;align-items:center;gap:10px;">
       ${productThumbHtml(entry.c, 36)}
       <div style="flex:1;min-width:0;">
         <div class="rname">${escapeHtml(p.name)}</div>
+        ${sz ? `<div style="font-size:10px;color:var(--text-faint);">${escapeHtml(sz)}</div>` : ''}
       </div>
       <div class="ramt"><span class="rprice">${price}</span><span class="rtime">${hhmm}</span></div>
     </div>`;
@@ -5216,6 +5236,7 @@
     // the ecom list -- reuses that cache, so this costs nothing extra once the
     // ecom tab has been opened once this session.
     const cat = await fetchEcomCatalog();
+    if (!_editData) fetchEditData().then(() => doSearch(q));   // re-run once sizes are precise
 
     // Accent-insensitive normalization ("crème" matches "creme")
     const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -5259,7 +5280,8 @@
         const ent = cat.items && cat.items[code];
         const photos = ent && ent.photos;
         matches.push({ code, name, price, matchScore, rev: sales ? sales.ta : 0, scalePlu,
-                       photo: photos && photos[0], nPhotos: photos ? photos.length : 0 });
+                       photo: photos && photos[0], nPhotos: photos ? photos.length : 0,
+                       sizeText: productSizeText(code) });
       }
       if (matches.length > 500) break;
     }
@@ -5279,7 +5301,7 @@
           <div class="plu-badge">${m.scalePlu}</div>
           <div style="flex: 1; min-width: 0;">
             <div class="name">${escapeHtml(m.name)}</div>
-            <div class="code">scale · PLU ${m.scalePlu}${m.rev > 0 ? ' · $' + Math.round(m.rev).toLocaleString() + '/yr' : ''}</div>
+            <div class="code">scale · PLU ${m.scalePlu}${m.sizeText ? ' · ' + escapeHtml(m.sizeText) : ''}${m.rev > 0 ? ' · $' + Math.round(m.rev).toLocaleString() + '/yr' : ''}</div>
           </div>
           <div class="price">${m.price !== null ? fmtMoney(m.price) : '—'}</div>
         </div>`;
@@ -5289,7 +5311,7 @@
         ${thumb}
         <div style="flex: 1; min-width: 0;">
           <div class="name">${escapeHtml(m.name)}</div>
-          <div class="code">${m.code}${m.rev > 0 ? ' · $' + Math.round(m.rev).toLocaleString() + '/yr' : ''}</div>
+          <div class="code">${m.code}${m.sizeText ? ' · ' + escapeHtml(m.sizeText) : ''}${m.rev > 0 ? ' · $' + Math.round(m.rev).toLocaleString() + '/yr' : ''}</div>
         </div>
         <div class="price">${m.price !== null ? fmtMoney(m.price) : '—'}</div>
       </div>`;
@@ -5678,7 +5700,7 @@
           <div class="plu-badge" style="font-size:16px;min-width:56px;">${it.cs}</div>
           <div style="flex:1;min-width:0;">
             <div class="li-name">${escapeHtml(it.name.trim())}</div>
-            <div class="li-meta">${it.rev > 0 ? fmtMoney(it.rev) + ' / 14mo' : 'no sales yet'}</div>
+            <div class="li-meta">${(() => { const sz = productSizeText(it.code); return sz ? escapeHtml(sz) + ' · ' : ''; })()}${it.rev > 0 ? fmtMoney(it.rev) + ' / 14mo' : 'no sales yet'}</div>
           </div>
           <div class="li-cur">${it.price != null ? priceText(it.code, it.price) : '—'}</div>
         </div>`).join('')}`;
@@ -5735,7 +5757,7 @@
           <div class="plu-badge" style="font-size:18px;min-width:56px;">${it.plu}</div>
           <div style="flex:1;min-width:0;">
             <div class="li-name">${escapeHtml((it.name||'').trim())}</div>
-            <div class="li-meta">${fmtMoney(it.rev)} / 14mo</div>
+            <div class="li-meta">${(() => { const sz = productSizeText(it.code); return sz ? escapeHtml(sz) + ' · ' : ''; })()}${fmtMoney(it.rev)} / 14mo</div>
           </div>
           <div class="li-cur">${it.price != null ? priceText(it.code, it.price) : '—'}</div>
         </div>`).join('')}`;
@@ -6159,7 +6181,7 @@
             ${productThumbHtml(item.code, 36)}
             <div class="li-main">
               <div class="li-name">${escapeHtml(item.name.trim())}</div>
-              <div class="li-meta">${escapeHtml(item.code)}${item.dept ? ' · ' + escapeHtml(item.dept) : ''}</div>
+              <div class="li-meta">${escapeHtml(item.code)}${(() => { const sz = productSizeText(item.code); return sz ? ' · ' + escapeHtml(sz) : ''; })()}${item.dept ? ' · ' + escapeHtml(item.dept) : ''}</div>
             </div>
             ${priceCell}
             <div class="li-x">
@@ -6691,6 +6713,7 @@
         rev: (DATA.sales[code] && DATA.sales[code].ta) || 0,
         weekly: stat.rateUnits,          // now stockout-adjusted, computed live
         units14: stat.units14,
+        sizeText: productSizeText(code),
         noSales7d: stat.noSales7d,
         noSales14d: stat.noSales14d,
         nPhotos: photos.length,
@@ -6725,6 +6748,7 @@
         case 'scale':    if (!r.scale) return false; break;
         case 'nosales7':  if (!r.noSales7d) return false; break;
         case 'nosales14': if (!r.noSales14d) return false; break;
+        case 'nosize':    if (r.sizeText) return false; break;
         case 'dupes':    if (!r.variantDupe) return false; break;
       }
       return true;
@@ -6752,7 +6776,7 @@
           : `<div class="ecom-photo-flag">no photo</div>`}
         <div style="flex:1;min-width:0;">
           <div class="li-name">${escapeHtml(r.name.trim())}</div>
-          <div class="li-meta">${escapeHtml(r.code)}${r.weekly > 0 ? ' · ' + (r.weekly < 10 ? r.weekly.toFixed(1) : Math.round(r.weekly)) + '/wk' : ''} · ${r.units14}/14d${r.variantDupe ? ' · <span class="ecom-badge-dupe">DUPLICATE NAME</span>' : (r.variantOf ? ' · variant' : '')}</div>
+          <div class="li-meta">${escapeHtml(r.code)}${r.sizeText ? ' · <b>' + escapeHtml(r.sizeText) + '</b>' : ' · <span style="color:var(--bad)">no size</span>'}${r.weekly > 0 ? ' · ' + (r.weekly < 10 ? r.weekly.toFixed(1) : Math.round(r.weekly)) + '/wk' : ''} · ${r.units14}/14d${r.variantDupe ? ' · <span class="ecom-badge-dupe">DUPLICATE NAME</span>' : (r.variantOf ? ' · variant' : '')}</div>
           ${r.noSales14d ? '<div class="ecom-warn">⚠ no sales in 14 days</div>'
             : (r.noSales7d ? '<div class="ecom-warn">⚠ no sales in 7 days</div>' : '')}
         </div>
@@ -6848,7 +6872,7 @@
       else hit = name.toLowerCase().includes(q);
       if (hit) {
         const s = DATA.sales[code];
-        out.push({ code, name, price: arr[1], rev: s ? s.ta : 0 });
+        out.push({ code, name, price: arr[1], rev: s ? s.ta : 0, sizeText: productSizeText(code) });
         if (out.length > 200) break;
       }
     }
