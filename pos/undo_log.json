@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260821110216139447",
-   "applied_at": "2026-08-21T11:02:16",
-   "change": {
-    "code": "0482000423356",
-    "title": "VOL. POLE MINI GATEAU AU FROMAGE 36G CARAMEL",
-    "pos_title": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE 3",
-    "size_num": 36,
-    "size_unit": "",
-    "queued_at": "2026-08-21T15:02:14.424Z",
-    "id": "c1787324534424"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE",
-     "F1744": "36.0",
-     "F22": "36G"
-    },
-    "POS_TAB": {
-     "F02": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE 3",
-     "F04": "4",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "17.7000",
-     "F196": "17.7000",
-     "F1140": "0.5900",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "0.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "0.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260821110318084534",
    "applied_at": "2026-08-21T11:03:18",
    "change": {
@@ -25130,6 +25081,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "18.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260923111048271821",
+   "applied_at": "2026-09-23T11:10:48",
+   "change": {
+    "code": "0482306312531",
+    "title": "LAYS  CROUSTILLES CRABE",
+    "pos_title": "LAYS  CROUSTILLES CRABE",
+    "size_num": 120,
+    "size_unit": "GR",
+    "queued_at": "2026-09-23T15:10:28.172Z",
+    "id": "c1790176228172"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LAYS  CROUSTILLES",
+     "F1744": "120.0",
+     "F22": "120G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LAYS  CROUSTILLES 120G",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.1500",
+     "F196": "3.1500",
+     "F1140": "3.1500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
