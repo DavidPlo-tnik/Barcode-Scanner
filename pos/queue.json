@@ -1,22 +1,3 @@
 {
- "items": [
-  {
-   "code": "0775127102860",
-   "pos_title": "BONLE CREMIER COND. SUCREE 397GR",
-   "size_num": 397,
-   "size_unit": "GR",
-   "multibuy": {
-    "qty": 3,
-    "price": 9.99
-   },
-   "promo": {
-    "price": 9.99,
-    "qty": 3,
-    "start": null,
-    "end": null
-   },
-   "queued_at": "2026-09-23T20:01:15.096Z",
-   "id": "c1790193675096"
-  }
- ]
+ "items": []
 }
