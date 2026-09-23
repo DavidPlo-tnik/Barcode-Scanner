@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260821110216084447",
-   "applied_at": "2026-08-21T11:02:16",
-   "change": {
-    "code": "0482000423746",
-    "title": "VOL. POLE MINI GATEAU AU FROMAGE 36G BLEUET",
-    "pos_title": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE 3",
-    "size_num": 36,
-    "size_unit": "",
-    "queued_at": "2026-08-21T15:01:53.625Z",
-    "id": "c1787324513625"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE",
-     "F1744": "36.0",
-     "F22": "36G"
-    },
-    "POS_TAB": {
-     "F02": "VOLOCHKOVE POLE MINI GATEAU AU FROMAGE 3",
-     "F04": "4",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "17.7000",
-     "F196": "17.7000",
-     "F1140": "0.5900",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "0.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "0.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260821110216139447",
    "applied_at": "2026-08-21T11:02:16",
    "change": {
@@ -25137,6 +25088,56 @@
      "F1014": "2036-09-23 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20260923100653143485",
+   "applied_at": "2026-09-23T10:06:53",
+   "change": {
+    "code": "0062869366997",
+    "pos_title": "BOB SNAIL CALENDRIER 140G",
+    "size_num": 140,
+    "size_unit": "",
+    "price": 1799,
+    "queued_at": "2026-09-23T14:06:16.166Z",
+    "id": "c1790172376166"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BOB SNAIL CALENDRIER",
+     "F1744": "140.0",
+     "F22": "140G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "BOB SNAIL CALENDRIER 140G",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "11.9900",
+     "F196": "11.9900",
+     "F1140": "11.9900",
+     "F27": "L-APEX"
+    },
+    "PRICE_TAB": {
+     "F30": "18.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "18.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
