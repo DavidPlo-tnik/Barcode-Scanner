@@ -16,6 +16,24 @@
    },
    "queued_at": "2026-09-23T20:34:22.626Z",
    "id": "c1790195662626"
+  },
+  {
+   "code": "0775127102860",
+   "pos_title": "BONLE CREMIER COND. SUCREE 397GR",
+   "size_num": 290,
+   "size_unit": "ML",
+   "multibuy": {
+    "qty": 3,
+    "price": 9.99
+   },
+   "promo": {
+    "price": 9.99,
+    "qty": 3,
+    "start": null,
+    "end": null
+   },
+   "queued_at": "2026-09-23T20:34:46.615Z",
+   "id": "c1790195686615"
   }
  ]
 }
