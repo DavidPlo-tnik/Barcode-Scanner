@@ -335,6 +335,7 @@
   #open-pos-direct-btn { border-color: var(--accent); color: var(--accent); }
   #pos-pin-modal { z-index: 175; }
   #pos-direct-modal { z-index: 165; }
+  #candy-modal { z-index: 175; }
 
   /* ===== POS Editor: calm, grouped, generous whitespace ===== */
   .pd-editor { padding-bottom: 110px; max-width: 100%; overflow-x: hidden; }
@@ -640,6 +641,21 @@
   #pd-ecom-btn.in-catalog { border-color: var(--bad); color: var(--bad); }
 
   .pd-photos-block { margin-top: 12px; }
+  .candy-row {
+    display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .candy-row .thumb {
+    width: 44px; height: 44px; border-radius: 7px; object-fit: cover;
+    background: var(--surface-2); flex-shrink: 0; cursor: zoom-in;
+  }
+  .candy-row .thumb-empty { border: 1px dashed var(--border); }
+  .candy-row input[type="text"] {
+    flex: 1; min-width: 0; padding: 8px 10px; background: var(--surface-2);
+    color: var(--text); border: 1px solid var(--border); border-radius: 6px; font-size: 13px;
+  }
+  .candy-row .btn { flex-shrink: 0; }
   .pd-photos-head {
     display: flex; align-items: center; gap: 8px;
     font-family: var(--font-display); font-size: 10px;
@@ -2156,6 +2172,31 @@
   </div>
 </div>
 
+<!-- Candy/chocolate-by-weight manager: attach individually named/photographed
+     items to one of the bulk price-level codes. Each entry becomes its own
+     Shopify listing, priced live from whichever code it's grouped under. -->
+<div class="modal" id="candy-modal">
+  <div class="modal-header">
+    <span class="label">🍬 CANDIES</span>
+    <div class="actions"><button class="close" id="close-candy-modal">×</button></div>
+  </div>
+  <div class="modal-content">
+    <div class="pd-head">
+      <div id="candy-head-name" class="pd-head-name"></div>
+      <div id="candy-head-code" class="pd-head-code"></div>
+    </div>
+    <div class="pd-note" style="margin:4px 0 14px;">
+      Every candy below is sold at this code's price per kg. Add one entry per
+      candy/chocolate you want listed on the site -- a name (or just leave it
+      blank and rely on the photo) and a photo.
+    </div>
+    <div id="candy-list"></div>
+    <button type="button" class="btn primary" id="candy-add-btn" style="width:100%;margin-top:10px;">
+      + ADD A CANDY
+    </button>
+  </div>
+</div>
+
 <!-- Direct POS editor: full field set, writes to the POS apply queue -->
 <div class="modal" id="pos-direct-modal">
   <div class="modal-header">
@@ -2251,6 +2292,15 @@
       <button type="button" class="btn small" id="pd-ecom-btn">+ ECOM</button>
       <div class="pd-note" id="pd-ecom-note"></div>
 
+      <!-- Only shown for the bulk candy/chocolate price-level codes. These
+           codes have one POS price for many different physical products, so
+           instead of listing the bare price code, this lets you attach
+           individually named/photographed candies to it -- each becomes its
+           own listing on the site, priced live from this code. -->
+      <button type="button" class="btn small" id="pd-candy-btn" style="display:none;margin-top:8px;">
+        🍬 MANAGE CANDIES FOR THIS PRICE
+      </button>
+
       <!-- Photos live here, behind the PIN, rather than on the public product view -->
       <div class="pd-photos-block">
         <div class="pd-photos-head">
@@ -2317,7 +2367,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v129</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v130</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3907,6 +3957,9 @@
       renderPdPhotos(code, []);
     }
 
+    const candyBtn = $('#pd-candy-btn');
+    if (candyBtn) candyBtn.style.display = isCandyTierCode(code) ? 'block' : 'none';
+
     bindPdPhotoUpload();
     renderQueuedForItem(code);
   }
@@ -4061,6 +4114,121 @@
     return _freshPhotos[fn] ||
       `https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/${GH.GH_BRANCH}/images/ecom/${fn}`;
   }
+
+  // ============== CANDY/CHOCOLATE BY-WEIGHT MANAGER ==============
+  // These 5 codes are bulk price levels in the POS (many different physical
+  // candies share one code + one $/kg price). This lets you attach named,
+  // photographed candies to a price code from the app -- each becomes its
+  // own Shopify listing, priced live from whichever code it's under, without
+  // touching the POS or the register workflow at all.
+  const CANDY_TIER_CODES_RAW = ['11000', '11001', '11002', '11003', '11008'];
+  function candyTierCodesResolved() {
+    return CANDY_TIER_CODES_RAW.map(c => resolveCode(c));
+  }
+  function isCandyTierCode(code) {
+    const rc = resolveCode(String(code));
+    return candyTierCodesResolved().includes(rc);
+  }
+
+  let _candyCtx = null;   // the tier code currently open in the manager
+
+  async function openCandyManager(code) {
+    _candyCtx = resolveCode(String(code));
+    const arr = DATA.products[_candyCtx];
+    $('#candy-head-name').textContent = (arr && arr[0]) || _candyCtx;
+    $('#candy-head-code').textContent = `${priceText(_candyCtx, arr && arr[1])} — ${_candyCtx}`;
+    $('#candy-modal').classList.add('open');
+    await renderCandyList();
+  }
+
+  async function renderCandyList() {
+    const list = $('#candy-list');
+    list.innerHTML = '<div class="pd-note">Loading…</div>';
+    const cat = await fetchEcomCatalog();
+    const entries = (cat.candyGroups && cat.candyGroups[_candyCtx]) || [];
+    if (!entries.length) {
+      list.innerHTML = '<div class="pd-note">No candies added yet.</div>';
+      return;
+    }
+    list.innerHTML = entries.map(e => `
+      <div class="candy-row" data-id="${escapeHtml(e.id)}">
+        ${e.photos && e.photos[0]
+          ? `<img class="thumb js-photo-thumb" data-full="${photoSrc(e.photos[0])}" src="${photoSrc(e.photos[0])}" loading="lazy" alt="">`
+          : `<div class="thumb thumb-empty"></div>`}
+        <input type="text" placeholder="Candy name (optional)" value="${escapeHtml(e.name || '')}" data-candy-name="${escapeHtml(e.id)}">
+        <button type="button" class="btn small" data-candy-photo="${escapeHtml(e.id)}">📷</button>
+        <button type="button" class="btn small danger" data-candy-del="${escapeHtml(e.id)}">✕</button>
+      </div>`).join('');
+
+    list.querySelectorAll('[data-candy-name]').forEach(inp => {
+      inp.addEventListener('change', () => saveCandyName(inp.dataset.candyName, inp.value));
+    });
+    list.querySelectorAll('[data-candy-photo]').forEach(btn => {
+      btn.addEventListener('click', () => uploadCandyPhoto(btn.dataset.candyPhoto));
+    });
+    list.querySelectorAll('[data-candy-del]').forEach(btn => {
+      btn.addEventListener('click', () => deleteCandyEntry(btn.dataset.candyDel));
+    });
+  }
+
+  async function addCandyEntry() {
+    const id = 'c' + Date.now().toString(36);
+    try {
+      await mutateEcomCatalog(cat => {
+        cat.candyGroups = cat.candyGroups || {};
+        cat.candyGroups[_candyCtx] = cat.candyGroups[_candyCtx] || [];
+        cat.candyGroups[_candyCtx].push({ id, name: '', photos: [] });
+      });
+      await renderCandyList();
+      showToast('Candy added — give it a name and photo');
+    } catch (e) { showToast('Could not add: ' + e.message, true); }
+  }
+
+  async function saveCandyName(id, name) {
+    try {
+      await mutateEcomCatalog(cat => {
+        const arr = cat.candyGroups && cat.candyGroups[_candyCtx];
+        const e = arr && arr.find(x => x.id === id);
+        if (e) e.name = name.trim();
+      });
+    } catch (e) { showToast('Could not save name: ' + e.message, true); }
+  }
+
+  async function deleteCandyEntry(id) {
+    if (!confirm('Remove this candy? It will be taken off the website on the next sync.')) return;
+    try {
+      await mutateEcomCatalog(cat => {
+        const arr = cat.candyGroups && cat.candyGroups[_candyCtx];
+        if (arr) cat.candyGroups[_candyCtx] = arr.filter(x => x.id !== id);
+      });
+      await renderCandyList();
+      showToast('Candy removed');
+    } catch (e) { showToast('Could not remove: ' + e.message, true); }
+  }
+
+  function uploadCandyPhoto(id) {
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = 'image/*';
+    input.onchange = async () => {
+      const file = input.files && input.files[0];
+      if (!file) return;
+      try {
+        const { dataUrl, blob, ext } = await processStoreImage(file, { maxDim: 2048, square: true });
+        const fn = `${_candyCtx}_${id}_${Date.now()}.${ext}`;
+        await ghPutFile(`images/ecom/${fn}`, dataUrl.split(',')[1], `candy photo ${fn}`);
+        _freshPhotos[fn] = dataUrl;
+        await mutateEcomCatalog(cat => {
+          const arr = cat.candyGroups && cat.candyGroups[_candyCtx];
+          const e = arr && arr.find(x => x.id === id);
+          if (e) { e.photos = e.photos || []; e.photos.push(fn); }
+        });
+        await renderCandyList();
+        showToast('Photo added ✓');
+      } catch (e) { showToast('Upload failed: ' + e.message, true); }
+    };
+    input.click();
+  }
+
   // The ecom catalogue (cat.items) IS the website catalogue -- there is no
   // separate "listed" gate anymore. Presence in the dict = in the catalogue.
   // Earlier this button toggled a 'listed' sub-flag, which is why existing
@@ -8387,6 +8555,9 @@
     $('#pd-title2').addEventListener('dblclick', () => stampSizeIntoTitle($('#pd-title2'), F02_MAX));
 
     $('#pd-ecom-btn').addEventListener('click', togglePdEcom);
+    $('#pd-candy-btn').addEventListener('click', () => { if (_pdCtx) openCandyManager(_pdCtx.code); });
+    $('#close-candy-modal').addEventListener('click', () => $('#candy-modal').classList.remove('open'));
+    $('#candy-add-btn').addEventListener('click', addCandyEntry);
     $('#pd-save').addEventListener('click', pdSave);
 
     // Open general product edit (any field)
@@ -8473,7 +8644,7 @@
       const OVERLAYS = ['audit-confirm-modal','ecom-add-modal','count-session-detail-modal',
                         'product-modal','pos-edit-modal','pos-pin-modal','pos-direct-modal',
                         'list-detail-modal','merge-picker-modal','add-to-list-modal',
-                        'labels-overlay','reports-overlay'];
+                        'labels-overlay','reports-overlay','candy-modal'];
       const openOrder = [];   // ids in the order they were opened (topmost last)
 
       // watch .open on every overlay so we do not have to touch each call site
