@@ -359,7 +359,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-09-24 10:04:29"
+  },
+  "0020994700000": {
+   "pt": "MARMELADE GELÉE DE FRUITS",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 2,
+   "un": "KG",
+   "sn": null,
+   "nm": "MARMELADE GELÉE DE FRUITS",
+   "rp": 11.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 11.99,
+   "mp": null,
+   "cost": 5.5,
+   "at": "2026-09-24 14:21:36"
   }
  },
- "updated": "2026-09-24 10:04:29"
+ "updated": "2026-09-24 14:21:36"
 }
