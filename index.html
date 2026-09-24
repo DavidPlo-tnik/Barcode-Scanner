@@ -2367,7 +2367,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v130</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v131</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -8704,12 +8704,25 @@
     // The bar lives OUTSIDE the modal (see the comment by its markup) so it
     // fixes to the real viewport instead of the modal's transformed box, so it
     // needs its own small observer rather than a CSS descendant rule.
+    //
+    // BUG FIXED: the candy manager opens ON TOP of the editor without closing
+    // it underneath, so pos-direct-modal stayed "open" the whole time -- the
+    // bar kept showing and covered the bottom of the candy screen, hiding the
+    // "+ ADD A CANDY" button and blocking scrolling to it. Now it only shows
+    // when the editor is actually the frontmost thing on screen, not merely
+    // open somewhere behind another modal.
     (() => {
       const modal = document.getElementById('pos-direct-modal');
+      const candyModal = document.getElementById('candy-modal');
       const bar = document.getElementById('pd-apply-bar');
       if (!modal || !bar) return;
-      const sync = () => bar.classList.toggle('show', modal.classList.contains('open'));
+      const sync = () => {
+        const editorOpen = modal.classList.contains('open');
+        const coveredByCandy = candyModal && candyModal.classList.contains('open');
+        bar.classList.toggle('show', editorOpen && !coveredByCandy);
+      };
       new MutationObserver(sync).observe(modal, { attributes: true, attributeFilter: ['class'] });
+      if (candyModal) new MutationObserver(sync).observe(candyModal, { attributes: true, attributeFilter: ['class'] });
       sync();   // in case it opens before this runs
     })();
 
