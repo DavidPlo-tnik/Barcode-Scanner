@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260901173342081372",
-   "applied_at": "2026-09-01T17:33:42",
-   "change": {
-    "code": "0484000802093",
-    "pos_title": "FRANZELUTA GATEAU CERISES 1000G",
-    "size_num": 1000,
-    "size_unit": "GR",
-    "price": 29.99,
-    "queued_at": "2026-09-01T21:33:36.901Z",
-    "id": "c1788298416901"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "FRANZELUTA GATEAU CERISES",
-     "F1744": "1000.0",
-     "F22": "1000G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "FRANZELUTA GATEAU CERISES 1000G",
-     "F04": "4",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "17.9900",
-     "F196": "17.9900",
-     "F1140": "17.9900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "14.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "14.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260901181524132712",
    "applied_at": "2026-09-01T18:15:24",
    "change": {
@@ -25043,6 +24993,56 @@
     },
     "POS_TAB": {
      "F02": "VERES TOMATES CERISES 500G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.5000",
+     "F196": "3.5000",
+     "F1140": "3.5000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260924194452324929",
+   "applied_at": "2026-09-24T19:44:52",
+   "change": {
+    "code": "0482310540848",
+    "title": "VERES CORNICHONS MARINÉS",
+    "pos_title": "VERES CORNICHONS MARINÉS",
+    "size_num": 435,
+    "size_unit": "GR",
+    "queued_at": "2026-09-24T23:44:04.672Z",
+    "id": "c1790293444672"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VERES CORNICHONS MARINEES ",
+     "F1744": "435.0",
+     "F22": "435G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "VERES CORNICHONS MARINEES  435G",
      "F04": "1",
      "F81": "0",
      "F96": "0",
