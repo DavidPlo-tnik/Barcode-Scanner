@@ -1007,7 +1007,31 @@
    "mp": null,
    "cost": 13.99,
    "at": "2026-09-24 21:43:14"
+  },
+  "0871100057612": {
+   "pt": "JACOBS KRONUNG CAFE 250GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 250.0,
+   "nm": "JACOBS KRONUNG CAFE",
+   "rp": 11.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 11.99,
+   "mp": null,
+   "cost": 7.99,
+   "at": "2026-09-24 21:45:24"
   }
  },
- "updated": "2026-09-24 21:43:14"
+ "updated": "2026-09-24 21:45:24"
 }
