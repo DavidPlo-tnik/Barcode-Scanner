@@ -24,30 +24,6 @@
    "cost": 7.0,
    "at": "2026-09-23 15:18:26"
   },
-  "0006969401373": {
-   "pt": "S & F ZACUSCA TARTINADE POIVRONS ROUGES",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 1,
-   "un": "ML",
-   "sn": 500.0,
-   "nm": "S & F ZACUSCA TARTINADE POIVRONS ROUGES ROTIS",
-   "rp": 5.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 5.99,
-   "mp": null,
-   "cost": 54.0,
-   "at": "2026-09-23 15:15:14"
-  },
   "0775127102860": {
    "pt": "BONLE CREMIER COND. SUCREE 397GR",
    "tf": 0,
@@ -887,7 +863,31 @@
    "mp": null,
    "cost": 3.5,
    "at": "2026-09-24 20:37:02"
+  },
+  "0006718570250": {
+   "pt": "DUTCHMANS SIRUP D'ÉRABLE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 250.0,
+   "nm": "DUTCHMANS SIRUP D'ÉRABLE",
+   "rp": 12.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 12.99,
+   "mp": null,
+   "cost": 84.0,
+   "at": "2026-09-24 21:18:10"
   }
  },
- "updated": "2026-09-24 20:37:02"
+ "updated": "2026-09-24 21:18:10"
 }
