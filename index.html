@@ -2367,7 +2367,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v131</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v132</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3021,18 +3021,35 @@
 
   // Full-screen photo lightbox, shared by every product thumbnail in the app.
   // Delegated on document so newly-rendered rows never need their own binding.
-  function openPhotoLightbox(url) {
+  // A persistent element (created once, toggled via the 'open' class) rather
+  // than create-on-open/remove-on-close -- the Android back-button handler
+  // below only tracks overlays that toggle 'open' on a fixed element, so a
+  // node that got create()d and remove()d was invisible to it entirely:
+  // pressing back fell through to whatever was underneath instead of closing
+  // the photo, which stayed on screen on top of it.
+  function ensurePhotoLightbox() {
     let box = document.getElementById('photo-lightbox');
-    if (!box) {
-      box = document.createElement('div');
-      box.id = 'photo-lightbox';
-      box.style.cssText = 'position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:24px;';
-      box.innerHTML = '<img style="max-width:100%;max-height:100%;border-radius:8px;object-fit:contain;">' +
-        '<button style="position:absolute;top:calc(16px + env(safe-area-inset-top));right:16px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);border:none;color:#fff;font-size:20px;line-height:1;">✕</button>';
-      box.addEventListener('click', () => box.remove());
-      document.body.appendChild(box);
-    }
+    if (box) return box;
+    box = document.createElement('div');
+    box.id = 'photo-lightbox';
+    box.style.cssText = 'position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;display:none;';
+    box.innerHTML = '<img style="max-width:100%;max-height:100%;border-radius:8px;object-fit:contain;">' +
+      '<button class="close" id="photo-lightbox-close" style="position:absolute;top:calc(16px + env(safe-area-inset-top));right:16px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);border:none;color:#fff;font-size:20px;line-height:1;">✕</button>';
+    box.addEventListener('click', (e) => { if (e.target === box || e.target.id === 'photo-lightbox-close') closePhotoLightbox(); });
+    document.body.appendChild(box);
+    return box;
+  }
+  function openPhotoLightbox(url) {
+    const box = ensurePhotoLightbox();
     box.querySelector('img').src = url;
+    box.style.display = 'flex';
+    box.classList.add('open');
+  }
+  function closePhotoLightbox() {
+    const box = document.getElementById('photo-lightbox');
+    if (!box) return;
+    box.classList.remove('open');
+    box.style.display = 'none';
   }
   document.addEventListener('click', (e) => {
     const t = e.target.closest('.js-photo-thumb');
@@ -8641,10 +8658,16 @@
     // then re-arm. Only when there is nothing left to unwind do we stop
     // re-arming, so the next Back leaves the app as expected.
     (() => {
+      // photo-lightbox is normally created lazily on first use, but the
+      // watcher below only attaches to overlays that already exist in the
+      // DOM at this point -- so it has to be created now (still closed/
+      // hidden) purely so Back can see and track it once it IS opened later.
+      ensurePhotoLightbox();
+
       const OVERLAYS = ['audit-confirm-modal','ecom-add-modal','count-session-detail-modal',
                         'product-modal','pos-edit-modal','pos-pin-modal','pos-direct-modal',
                         'list-detail-modal','merge-picker-modal','add-to-list-modal',
-                        'labels-overlay','reports-overlay','candy-modal'];
+                        'labels-overlay','reports-overlay','candy-modal','photo-lightbox'];
       const openOrder = [];   // ids in the order they were opened (topmost last)
 
       // watch .open on every overlay so we do not have to touch each call site
