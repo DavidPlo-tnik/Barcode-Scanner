@@ -695,7 +695,31 @@
    "mp": null,
    "cost": 3.5,
    "at": "2026-09-24 20:11:31"
+  },
+  "0482310540814": {
+   "pt": "VERES BORTSCH STYLE MAISON",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 515.0,
+   "nm": "VERES BORTSCH STYLE MAISON",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 3.5,
+   "at": "2026-09-24 20:13:38"
   }
  },
- "updated": "2026-09-24 20:11:31"
+ "updated": "2026-09-24 20:13:38"
 }
