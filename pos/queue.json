@@ -1,3 +1,12 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0023880800000",
+   "pos_title": "POISSON VOBLA GR",
+   "price": 39.99,
+   "cost": 30.78,
+   "queued_at": "2026-09-25T17:52:12.042Z",
+   "id": "c1790358732042"
+  }
+ ]
 }
