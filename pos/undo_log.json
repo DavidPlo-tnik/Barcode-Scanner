@@ -1,61 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260903085701121697",
-   "applied_at": "2026-09-03T08:57:01",
-   "change": {
-    "code": "0083213900021",
-    "pos_title": "ELWEST PROBIOTIQUE RYAZHENKA 944ML",
-    "size_num": 944,
-    "size_unit": "ML",
-    "promo": {
-     "price": 3.99,
-     "qty": 1,
-     "start": "2026-09-03",
-     "end": "2026-09-09"
-    },
-    "queued_at": "2026-09-03T12:56:01.891Z",
-    "id": "c1788440161891"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ELWEST PROBIOTIQUE RYAZHENKA",
-     "F1744": "944.0",
-     "F22": "944 ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "ELWEST PROBIOTIQUE RYAZHENKA 944ML",
-     "F04": "3",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.3900",
-     "F196": "3.3900",
-     "F1140": "3.3900",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "4.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260903085701230897",
    "applied_at": "2026-09-03T08:57:01",
    "change": {
@@ -25050,6 +24995,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260924211810177936",
+   "applied_at": "2026-09-24T21:18:10",
+   "change": {
+    "code": "0006718570250",
+    "title": "DUTCHMANS SIRUP D'ÉRABLE",
+    "pos_title": "DUTCHMANS SIRUP D'ÉRABLE",
+    "size_num": 250,
+    "size_unit": "ML",
+    "queued_at": "2026-09-25T01:17:45.191Z",
+    "id": "c1790299065191"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DUTCHIMANS SIRUP DÈRABLE",
+     "F1744": "320.0",
+     "F22": "250ML",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "DUTCHIMANS SIRUP DÈRABLE 250ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "84.0000",
+     "F196": "84.0000",
+     "F1140": "7.0000",
+     "F27": "ZE05"
+    },
+    "PRICE_TAB": {
+     "F30": "12.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "12.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
