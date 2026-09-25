@@ -1,50 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260903091339172650",
-   "applied_at": "2026-09-03T09:13:39",
-   "change": {
-    "code": "0071375784092",
-    "pos_title": "PATE FEUILLETE CONGELEE 2LB",
-    "size_num": 2,
-    "size_unit": "LB",
-    "price": 8.99,
-    "queued_at": "2026-09-03T13:13:10.919Z",
-    "id": "c1788441190919"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "PATE FEUILLETE CONGELEE",
-     "F1744": "2.0",
-     "F22": "2LB",
-     "F23": "LB"
-    },
-    "POS_TAB": {
-     "F02": "PATE FEUILLETE CONGELEE 2LB",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "PRICE_TAB": {
-     "F30": "7.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "7.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260903105326555370",
    "applied_at": "2026-09-03T10:53:26",
    "change": {
@@ -24999,6 +24955,54 @@
     "size_unit": "GR",
     "queued_at": "2026-09-25T01:35:11.789Z",
     "id": "c1790300111789"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CAFE LWIWSKA",
+     "F1744": "500.0",
+     "F22": "225GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CAFE LWIWSKA 225GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "7.7000",
+     "F196": "7.7000",
+     "F1140": "7.7000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "11.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "11.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260924213655111512",
+   "applied_at": "2026-09-24T21:36:55",
+   "change": {
+    "code": "0482014562091",
+    "size_num": 225,
+    "size_unit": "GR",
+    "queued_at": "2026-09-25T01:36:09.604Z",
+    "id": "c1790300169604"
    },
    "before": {
     "OBJ_TAB": {
