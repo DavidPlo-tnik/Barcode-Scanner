@@ -1,105 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260905131036025068",
-   "applied_at": "2026-09-05T13:10:36",
-   "change": {
-    "code": "0071022833994",
-    "title": "BANDI FROMAGE",
-    "pos_title": "BANDI FROMAGE 100G",
-    "size_num": 100,
-    "size_unit": "",
-    "queued_at": "2026-09-05T17:09:48.152Z",
-    "id": "c1788628188152"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VOLOCHKOVE POLE FROMAGE",
-     "F1744": "100.0",
-     "F22": "100G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "VOLOCHKOVE POLE FROMAGE 100G",
-     "F04": "4",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "1.5000",
-     "F196": "1.5000",
-     "F1140": "1.5000",
-     "F27": "0000204728"
-    },
-    "PRICE_TAB": {
-     "F30": "2.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "2.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260905131652141728",
-   "applied_at": "2026-09-05T13:16:52",
-   "change": {
-    "code": "0020235200000",
-    "title": "LARDON AIL ET POIVRE",
-    "pos_title": "LARDON AIL ET POIVRE",
-    "price": 22.99,
-    "queued_at": "2026-09-05T17:16:35.355Z",
-    "id": "c1788628595355"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LARDON PAPRIKA",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LARDON PAPRIKA GR",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "24.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "24.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260905131808082662",
    "applied_at": "2026-09-05T13:18:08",
    "change": {
@@ -24989,6 +24890,104 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "26.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260925135255339580",
+   "applied_at": "2026-09-25T13:52:55",
+   "change": {
+    "code": "0023880800000",
+    "pos_title": "POISSON VOBLA GR",
+    "price": 39.99,
+    "cost": 30.78,
+    "queued_at": "2026-09-25T17:52:12.042Z",
+    "id": "c1790358732042"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "POISSON VOBLA",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "POISSON VOBLA GR",
+     "F04": "24",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "39.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "39.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260925135255401980",
+   "applied_at": "2026-09-25T13:52:55",
+   "change": {
+    "code": "0023880800000",
+    "pos_title": "POISSON VOBLA GR",
+    "price": 44.99,
+    "cost": 30.78,
+    "queued_at": "2026-09-25T17:52:21.340Z",
+    "id": "c1790358741340"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "POISSON VOBLA",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "POISSON VOBLA GR",
+     "F04": "24",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "30.7800",
+     "F196": "30.7800",
+     "F1140": "30.7800",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "39.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "39.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
