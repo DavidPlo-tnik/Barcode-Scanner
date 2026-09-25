@@ -1,29 +1,5 @@
 {
  "items": {
-  "0020235800000": {
-   "pt": "LARDON AVEC PAPRIKA",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 1,
-   "qte": 0,
-   "sd": 31,
-   "un": "GR",
-   "sn": null,
-   "nm": "LARDON AVEC PAPRIKA",
-   "rp": 19.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 19.99,
-   "mp": null,
-   "cost": 0.01,
-   "at": "2026-09-24 10:04:29"
-  },
   "0020994700000": {
    "pt": "MARMELADE GELÉE DE FRUITS",
    "tf": 0,
@@ -1103,7 +1079,30 @@
    "mp": null,
    "cost": 30.78,
    "at": "2026-09-25 13:55:03"
+  },
+  "0023880400000": {
+   "pt": "CAPELIN SEC FUME MOIVA GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 24,
+   "un": "GR",
+   "sn": null,
+   "nm": "CAPELIN SEC FUME MOIVA",
+   "rp": 19.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 19.99,
+   "mp": null,
+   "at": "2026-09-25 19:26:07"
   }
  },
- "updated": "2026-09-25 13:55:03"
+ "updated": "2026-09-25 19:26:07"
 }
