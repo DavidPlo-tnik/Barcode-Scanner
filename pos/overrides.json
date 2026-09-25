@@ -959,7 +959,31 @@
    "mp": null,
    "cost": 7.7,
    "at": "2026-09-24 21:36:55"
+  },
+  "0482014562083": {
+   "pt": "CAFE LWIWSKA PREMIUM 225GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 225.0,
+   "nm": "CAFE LWIWSKA PREMIUM",
+   "rp": 14.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 14.99,
+   "mp": null,
+   "cost": 9.8,
+   "at": "2026-09-24 21:38:01"
   }
  },
- "updated": "2026-09-24 21:36:55"
+ "updated": "2026-09-24 21:38:01"
 }
