@@ -863,7 +863,31 @@
    "mp": null,
    "cost": 3.5,
    "at": "2026-09-24 20:35:52"
+  },
+  "0482310540964": {
+   "pt": "VERES SOUPE AUX CHAMPIGNONS  410ML",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 430.0,
+   "nm": "VERES SOUPE AUX CHAMPIGNONS",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 3.5,
+   "at": "2026-09-24 20:37:02"
   }
  },
- "updated": "2026-09-24 20:35:52"
+ "updated": "2026-09-24 20:37:02"
 }
