@@ -1151,7 +1151,31 @@
    "mp": null,
    "cost": 3.69,
    "at": "2026-09-24 21:51:59"
+  },
+  "0482004668048": {
+   "pt": "CHICORY CLASSIQUE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 100.0,
+   "nm": "CHICORY CLASSIQUE",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 3.5,
+   "at": "2026-09-24 21:54:06"
   }
  },
- "updated": "2026-09-24 21:51:59"
+ "updated": "2026-09-24 21:54:06"
 }
