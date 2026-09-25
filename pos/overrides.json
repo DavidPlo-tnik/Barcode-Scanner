@@ -1127,7 +1127,31 @@
    "mp": null,
    "cost": 12.59,
    "at": "2026-09-24 21:49:52"
+  },
+  "0590115404149": {
+   "pt": "INKA SUBSTITUT DE CAFÉ",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 200.0,
+   "nm": "INKA SUBSTITUT DE CAFÉ BOISSON AUX CÉRÉALES",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 3.69,
+   "at": "2026-09-24 21:51:59"
   }
  },
- "updated": "2026-09-24 21:49:52"
+ "updated": "2026-09-24 21:51:59"
 }
