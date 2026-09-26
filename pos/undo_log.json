@@ -1,110 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260906142316105504",
-   "applied_at": "2026-09-06T14:23:16",
-   "change": {
-    "code": "0020831400000",
-    "pos_title": "CREVETTE NORD.",
-    "size_num": 1000,
-    "size_unit": "",
-    "cost": 12.6,
-    "queued_at": "2026-09-06T18:22:22.840Z",
-    "id": "c1788718942840"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "Crevette nordique avec écaille fr.4 DISC",
-     "F1744": "1000.0",
-     "F22": "1000G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "CREVETTE NORD.",
-     "F04": "24",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "7.8100",
-     "F196": "7.8100",
-     "F1140": "7.8100",
-     "F27": "POISSON"
-    },
-    "PRICE_TAB": {
-     "F30": "22.0200",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "19.9900",
-     "F113": "STOR",
-     "F1133": "19.9900",
-     "F1216": "2026-09-06 00:00:00",
-     "F1217": "2035-09-06 00:00:00",
-     "F1013": "22.0200",
-     "F1014": "2035-09-06 00:00:00",
-     "F1015": "2359",
-     "F1011": "REG"
-    }
-   }
-  },
-  {
-   "undo_id": "u20260906144302144387",
-   "applied_at": "2026-09-06T14:43:02",
-   "change": {
-    "code": "0020831400000",
-    "title": "Crevette nordique cuite congelée",
-    "pos_title": "Crevette nordique cuite congelée",
-    "promo": {
-     "price": 19.99,
-     "qty": 1,
-     "start": "2026-09-06",
-     "end": "2036-09-06"
-    },
-    "queued_at": "2026-09-06T18:42:34.460Z",
-    "id": "c1788720154460"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "Crevette nordique avec écaille fr.4 DISC",
-     "F1744": "1000.0",
-     "F22": "1000 ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "CREVETTE NORD.",
-     "F04": "24",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "12.6000",
-     "F196": "12.6000",
-     "F1140": "12.6000",
-     "F27": "POISSON"
-    },
-    "PRICE_TAB": {
-     "F30": "22.0200",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "19.9900",
-     "F113": "STOR",
-     "F1133": "19.9900",
-     "F1216": "2026-09-06 00:00:00",
-     "F1217": "2035-09-06 00:00:00",
-     "F1013": "22.0200",
-     "F1014": "2035-09-06 00:00:00",
-     "F1015": "2359",
-     "F1011": "REG"
-    }
-   }
-  },
-  {
    "undo_id": "u20260906183001010571",
    "applied_at": "2026-09-06T18:30:01",
    "change": {
@@ -24994,6 +24890,106 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "17.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260926151210812847",
+   "applied_at": "2026-09-26T15:12:10",
+   "change": {
+    "code": "0062531500008",
+    "pos_title": "SUPREME PIEROGIES PORC 454GR",
+    "size_num": 454,
+    "size_unit": "GR",
+    "price": 4.79,
+    "queued_at": "2026-09-26T19:11:58.185Z",
+    "id": "c1790449918185"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SUPREME PIEROGIES PORC",
+     "F1744": "454.0",
+     "F22": "454GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SUPREME PIEROGIES PORC 454GR",
+     "F04": "4",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "35.4000",
+     "F196": "35.4000",
+     "F1140": "2.9500",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "4.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260926151210890847",
+   "applied_at": "2026-09-26T15:12:10",
+   "change": {
+    "code": "0062531500002",
+    "pos_title": "SUPREME PIEROGIES CHEDDAR POMME TERRE 45",
+    "size_num": 454,
+    "size_unit": "GR",
+    "price": 4.79,
+    "queued_at": "2026-09-26T19:12:06.511Z",
+    "id": "c1790449926511"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SUPREME PIEROGIES CHEDDAR POMME TERRE",
+     "F1744": "454.0",
+     "F22": "454GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SUPREME PIEROGIES CHEDDAR POMME TERRE 45",
+     "F04": "4",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "42.0000",
+     "F196": "42.0000",
+     "F1140": "3.5000",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
