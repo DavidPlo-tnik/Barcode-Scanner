@@ -8,6 +8,15 @@
    "price": 4.79,
    "queued_at": "2026-09-26T19:12:24.501Z",
    "id": "c1790449944502"
+  },
+  {
+   "code": "0062531500015",
+   "pos_title": "SUPREME PIEROGIES POMME TERRE OIGNON 454",
+   "size_num": 454,
+   "size_unit": "GR",
+   "price": 4.79,
+   "queued_at": "2026-09-26T19:12:31.746Z",
+   "id": "c1790449951746"
   }
  ]
 }
