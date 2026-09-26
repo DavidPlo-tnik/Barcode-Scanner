@@ -8,6 +8,15 @@
    "price": 4.79,
    "queued_at": "2026-09-26T19:11:58.185Z",
    "id": "c1790449918185"
+  },
+  {
+   "code": "0062531500002",
+   "pos_title": "SUPREME PIEROGIES CHEDDAR POMME TERRE 45",
+   "size_num": 454,
+   "size_unit": "GR",
+   "price": 4.79,
+   "queued_at": "2026-09-26T19:12:06.511Z",
+   "id": "c1790449926511"
   }
  ]
 }
