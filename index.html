@@ -2367,7 +2367,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v132</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v133</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2921,7 +2921,12 @@
       name, price, dept, deptCode,
       marginPct, unitCost, caseCost, unitsPerCase,
       multipack, depuis, sales,
-      sizeStr: sizeStr || '',
+      // Prefer the LIVE structured size (edit.json's number+unit) over the
+      // flat raw POS format string -- these two can drift apart in Storeman
+      // itself (one field gets edited without the other), and showing the
+      // stale flat one made the product card disagree with the real editor,
+      // which always shows the live value.
+      sizeStr: productSizeText(code) || sizeStr || '',
       taxed: !!taxed,
       scalePlu: scalePlu || null,
       code,
@@ -4869,10 +4874,15 @@
     c.innerHTML = html;
 
     const sizeRow = document.getElementById('pos-size-row');
+    // This used to open the quick "pos-edit-modal", which only ever saved a
+    // personal to-do note (localStorage) and never actually touched the POS
+    // -- it showed "SAVED" either way, which looked like a real edit but
+    // wasn't. Size can now ONLY be changed from the real, PIN-gated editor,
+    // which is the only one that actually writes to the POS.
     if (sizeRow) sizeRow.addEventListener('click', () => {
-      openPosEditModal(p.code);
+      openPosDirect(p.code);
       requestAnimationFrame(() => {
-        const si = $('#pos-edit-size-input');
+        const si = $('#pd-size-num');
         if (si) { si.focus(); si.select(); }
       });
     });
