@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260907145305059652",
-   "applied_at": "2026-09-07T14:53:05",
-   "change": {
-    "code": "0482001737004",
-    "title": "BELOTSERKOVSKAYA SARRASIN GRILLÉ 1000GR",
-    "pos_title": "BELOTSERKOVSKAYA SARRASIN GRILLÉ 1000GR",
-    "size_num": 1000,
-    "size_unit": "GR",
-    "queued_at": "2026-09-07T18:52:57.068Z",
-    "id": "c1788807177068"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "GRAINS DE SARRASINS ROTIS",
-     "F1744": "1000.0",
-     "F22": "1000 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "GRAINS DE SARRASIN ROTIS 1000GR",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "2.1000",
-     "F196": "2.1000",
-     "F1140": "2.1000",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260907145718076496",
    "applied_at": "2026-09-07T14:57:18",
    "change": {
@@ -24951,6 +24901,54 @@
     },
     "POS_TAB": {
      "F02": "CHAMPIGNONS MARINE 500ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "39.0000",
+     "F196": "39.0000",
+     "F1140": "3.2500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260927163623409526",
+   "applied_at": "2026-09-27T16:36:23",
+   "change": {
+    "code": "0062904581055",
+    "size_num": 500,
+    "size_unit": "ML",
+    "queued_at": "2026-09-27T20:36:00.881Z",
+    "id": "c1790541360881"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CHAMPIGNONS KING STRAW ",
+     "F1744": "800.0",
+     "F22": "500ML",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CHAMPIGNONS KING STRAW  500ML",
      "F04": "1",
      "F81": "0",
      "F96": "0",
