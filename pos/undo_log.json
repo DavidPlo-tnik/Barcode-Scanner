@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260907145718076496",
-   "applied_at": "2026-09-07T14:57:18",
-   "change": {
-    "code": "0023983300000",
-    "pos_title": "RICOTTA 15% TVOROG GR",
-    "price": 12.99,
-    "queued_at": "2026-09-07T18:57:08.617Z",
-    "id": "c1788807428617"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "RICOTTA 15% TVOROG",
-     "F1744": null,
-     "F22": "GR",
-     "F23": ""
-    },
-    "POS_TAB": {
-     "F02": "RICOTTA 15% TVOROG GR",
-     "F04": "3",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": "0.0000",
-     "F1140": "0.0000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "11.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "11.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260907150435037264",
    "applied_at": "2026-09-07T15:04:35",
    "change": {
@@ -24949,6 +24901,56 @@
     },
     "POS_TAB": {
      "F02": "CHAMPIGNONS KING STRAW  500ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "39.0000",
+     "F196": "39.0000",
+     "F1140": "3.2500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260927164240165788",
+   "applied_at": "2026-09-27T16:42:40",
+   "change": {
+    "code": "0062904581001",
+    "title": "CHAMPIGNONS MARINE SLIPPERY JACK",
+    "pos_title": "CHAMPIGNONS MARINE SLIPPERY JACK",
+    "size_num": 500,
+    "size_unit": "ML",
+    "queued_at": "2026-09-27T20:42:06.942Z",
+    "id": "c1790541726942"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CHAMPIGNONS MARINE",
+     "F1744": "800.0",
+     "F22": "500ML",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CHAMPIGNONS MARINE 500ML",
      "F04": "1",
      "F81": "0",
      "F96": "0",
