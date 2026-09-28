@@ -8,6 +8,16 @@
    "price": 1.99,
    "queued_at": "2026-09-28T16:05:42.734Z",
    "id": "c1790611542734"
+  },
+  {
+   "code": "0068492407001",
+   "pos_title": "FRAISE             1un 340G",
+   "size_num": 340,
+   "size_unit": "",
+   "price": 1.99,
+   "clear_promo": true,
+   "queued_at": "2026-09-28T16:06:06.497Z",
+   "id": "c1790611566497"
   }
  ]
 }
