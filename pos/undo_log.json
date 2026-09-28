@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260907202723031028",
-   "applied_at": "2026-09-07T20:27:23",
-   "change": {
-    "code": "0482309790387",
-    "pos_title": "VELADIS HARENG 500GR",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-08T00:27:00.986Z",
-    "id": "c1788827220986"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VELADIS HARENG",
-     "F1744": "500.0",
-     "F22": "500GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "VELADIS HARENG 500GR",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "4.9000",
-     "F196": "4.9000",
-     "F1140": "4.9000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "7.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "7.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260907202827053541",
    "applied_at": "2026-09-07T20:28:27",
    "change": {
@@ -24983,6 +24934,56 @@
      "F1014": "2026-09-30 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20260928094015192105",
+   "applied_at": "2026-09-28T09:40:15",
+   "change": {
+    "code": "0085007784004",
+    "pos_title": "TRESSE DE FROMAGE FUME 150GR",
+    "size_num": 150,
+    "size_unit": "GR",
+    "price": 6.99,
+    "queued_at": "2026-09-28T13:39:37.678Z",
+    "id": "c1790602777678"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "TRESSE DE FROMAGE FUME",
+     "F1744": "150.0",
+     "F22": "150GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "TRESSE DE FROMAGE FUME 150GR",
+     "F04": "32",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "7.0000",
+     "F196": "7.0000",
+     "F1140": "7.0000",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
