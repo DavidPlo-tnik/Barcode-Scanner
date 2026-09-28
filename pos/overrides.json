@@ -119,7 +119,31 @@
    "mp": null,
    "cost": 7.0,
    "at": "2026-09-28 09:39:05"
+  },
+  "0085007784004": {
+   "pt": "TRESSE DE FROMAGE FUME 150GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 32,
+   "un": "GR",
+   "sn": 150.0,
+   "nm": "TRESSE DE FROMAGE FUME",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 7.0,
+   "at": "2026-09-28 09:40:15"
   }
  },
- "updated": "2026-09-28 09:39:05"
+ "updated": "2026-09-28 09:40:15"
 }
