@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260908223854324644",
-   "applied_at": "2026-09-08T22:38:54",
-   "change": {
-    "code": "0020234500000",
-    "pos_title": "SALAMI LVIVSKA KG",
-    "balance": 1,
-    "queued_at": "2026-09-09T02:38:39.431Z",
-    "id": "c1788921519431"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SALAMI LVIVSKA",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SALAMI LVIVSKA KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "14.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "14.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260908223854402644",
    "applied_at": "2026-09-08T22:38:54",
    "change": {
@@ -25005,6 +24957,56 @@
     },
     "POS_TAB": {
      "F02": "GRAIN DE TOURNESOL BAZAR 300G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.2900",
+     "F196": "3.2900",
+     "F1140": "3.2900",
+     "F27": "0000202257"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260928225614188612",
+   "applied_at": "2026-09-28T22:56:14",
+   "change": {
+    "code": "0477026618634",
+    "title": "BAZARNYE GRAINES DE TOURNESOL SALÉES",
+    "pos_title": "BAZARNYE GRAINES DE TOURNESOL SALÉES",
+    "size_num": 300,
+    "size_unit": "GR",
+    "queued_at": "2026-09-29T02:55:12.471Z",
+    "id": "c1790650512471"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BAZARNYE GRAINES DE TOURNESOL",
+     "F1744": "300.0",
+     "F22": "300 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BAZARNYE GRAINES DE TOURNESOL",
      "F04": "1",
      "F81": "0",
      "F96": "0",
