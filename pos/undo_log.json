@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260908223854277844",
-   "applied_at": "2026-09-08T22:38:54",
-   "change": {
-    "code": "0020235300000",
-    "pos_title": "LARDON AVEC VIANDE GR",
-    "balance": 1,
-    "queued_at": "2026-09-09T02:38:31.835Z",
-    "id": "c1788921511835"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LARDON AVEC VIANDE",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LARDON AVEC VIANDE GR",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "32.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "32.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260908223854324644",
    "applied_at": "2026-09-08T22:38:54",
    "change": {
@@ -25021,6 +24973,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "13.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260928225508356497",
+   "applied_at": "2026-09-28T22:55:08",
+   "change": {
+    "code": "0477026618634",
+    "title": "BAZARNYE GRAINES DE TOURNESOL",
+    "pos_title": "BAZARNYE GRAINES DE TOURNESOL",
+    "size_num": 300,
+    "size_unit": "GR",
+    "queued_at": "2026-09-29T02:54:29.775Z",
+    "id": "c1790650469775"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GRAIN DE TOURNESOL BAZAR",
+     "F1744": "1332.0",
+     "F22": "300G",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "GRAIN DE TOURNESOL BAZAR 300G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.2900",
+     "F196": "3.2900",
+     "F1140": "3.2900",
+     "F27": "0000202257"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
