@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260908223854231043",
-   "applied_at": "2026-09-08T22:38:54",
-   "change": {
-    "code": "0020234700000",
-    "pos_title": "SAUCISSON DE CRACOVIE KG",
-    "balance": 1,
-    "queued_at": "2026-09-09T02:38:25.189Z",
-    "id": "c1788921505189"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SAUCISSON DE CRACOVIE",
-     "F1744": null,
-     "F22": "kg",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SAUCISSON DE CRACOVIE KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "17.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "17.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260908223854277844",
    "applied_at": "2026-09-08T22:38:54",
    "change": {
@@ -25020,6 +24972,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260928225301200673",
+   "applied_at": "2026-09-28T22:53:01",
+   "change": {
+    "code": "0071022833948",
+    "title": "BANDI LAIT CONDENSED MILK",
+    "size_num": 1000,
+    "size_unit": "GR",
+    "queued_at": "2026-09-29T02:52:04.397Z",
+    "id": "c1790650324397"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BANDI  LAIT CONDENSED MILK ",
+     "F1744": "1000.0",
+     "F22": "1000GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BANDI  LAIT CONDENSED MILK  1000GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "54.0000",
+     "F196": "54.0000",
+     "F1140": "9.0000",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "13.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "13.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
