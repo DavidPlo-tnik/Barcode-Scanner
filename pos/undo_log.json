@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260908225343152805",
-   "applied_at": "2026-09-08T22:53:43",
-   "change": {
-    "code": "0075148867226",
-    "pos_title": "ILIOS FOIE DE MORUE  121G",
-    "size_num": 120,
-    "size_unit": "",
-    "queued_at": "2026-09-09T02:53:32.546Z",
-    "id": "c1788922412547"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ILIOS FOIE DE MORUE ",
-     "F1744": "120.0",
-     "F22": "121G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "ILIOS FOIE DE MORUE  121G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "27.7500",
-     "F196": "27.7500",
-     "F1140": "2.5227",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "3.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260908225656125144",
    "applied_at": "2026-09-08T22:56:56",
    "change": {
@@ -25028,6 +24979,50 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260929163147161295",
+   "applied_at": "2026-09-29T16:31:47",
+   "change": {
+    "code": "0460701235112",
+    "title": "MARTIN GRAINE DE TOURNESOL",
+    "pos_title": "MARTIN GRAINE DE TOURNESOL",
+    "size_num": 500,
+    "size_unit": "GR",
+    "queued_at": "2026-09-29T20:31:35.009Z",
+    "id": "c1790713895009"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GRAINE DE TOURNESOL OT MARTINA ",
+     "F1744": "500.0",
+     "F22": "500GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "GRAINE DE TOURNESOL OT MARTINA  500GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
