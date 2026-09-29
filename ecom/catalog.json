@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-29T22:59:08.072Z",
+ "updated": "2026-09-29T22:59:35.791Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -4155,23 +4155,6 @@
    "group": "4-vol-pole-mini",
    "dept": "4",
    "weekly": 26.85,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482001268399": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-lait-concentre-sucre",
-   "dept": "1",
-   "weekly": 65.83,
    "scale": false,
    "fresh": false,
    "v": {
