@@ -908,7 +908,31 @@
    "mp": null,
    "cost": 47.4,
    "at": "2026-09-29 19:34:41"
+  },
+  "0485001587096": {
+   "pt": "NAIRI CONFITURE FIGUES 330ML",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 330.0,
+   "nm": "NAIRI CONFITURE FIGUES",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 40.8,
+   "at": "2026-09-29 19:38:50"
   }
  },
- "updated": "2026-09-29 19:34:41"
+ "updated": "2026-09-29 19:38:50"
 }
