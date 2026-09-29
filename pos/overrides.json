@@ -407,7 +407,31 @@
    "mp": null,
    "cost": 55.6,
    "at": "2026-09-28 22:37:17"
+  },
+  "0083839600972": {
+   "pt": "ZAKUSON CHAMPIGNONS MÉLANGÉS NAMEKO",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 1000.0,
+   "nm": "ZAKUSON CHAMPIGNONS MÉLANGÉS NAMEKO OPIATA",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 57.9,
+   "at": "2026-09-28 22:38:23"
   }
  },
- "updated": "2026-09-28 22:37:17"
+ "updated": "2026-09-28 22:38:23"
 }
