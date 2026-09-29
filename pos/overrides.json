@@ -383,7 +383,31 @@
    "mp": null,
    "cost": 55.6,
    "at": "2026-09-28 22:22:38"
+  },
+  "0083839600985": {
+   "pt": "ZAKYCOH CHAMPIGNONS 1L",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 1000.0,
+   "nm": "ZAKYCOH CHAMPIGNONS",
+   "rp": 7.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 7.99,
+   "mp": null,
+   "cost": 63.9,
+   "at": "2026-09-28 22:23:45"
   }
  },
- "updated": "2026-09-28 22:22:38"
+ "updated": "2026-09-28 22:23:45"
 }
