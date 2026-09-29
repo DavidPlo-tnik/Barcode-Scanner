@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260908182039062638",
-   "applied_at": "2026-09-08T18:20:39",
-   "change": {
-    "code": "0482017460008",
-    "title": "HATINKA GRAIN DE SARRASIN 1000GR",
-    "pos_title": "HATINKA GRAIN DE SARRASIN 1000GR",
-    "size_num": 1000,
-    "size_unit": "GR",
-    "queued_at": "2026-09-08T22:20:01.165Z",
-    "id": "c1788906001165"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "HATINKA GRAIN DE SARRASIN 1000G",
-     "F1744": "1000.0",
-     "F22": "1000 GR",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "HATINKA GRAIN DE SARRASIN 1000G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.9900",
-     "F196": "2.9900",
-     "F1140": "2.9900",
-     "F27": "0000220211"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260908223854184243",
    "applied_at": "2026-09-08T22:38:54",
    "change": {
@@ -25020,6 +24970,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "6.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260928224030400555",
+   "applied_at": "2026-09-28T22:40:30",
+   "change": {
+    "code": "0482014333098",
+    "title": "LEKORNA GAUFRES CACAO",
+    "pos_title": "LEKORNA GAUFRES CACAO",
+    "size_num": 90,
+    "size_unit": "GR",
+    "queued_at": "2026-09-29T02:40:21.957Z",
+    "id": "c1790649621957"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LEKORNA GAUFRES",
+     "F1744": "90.0",
+     "F22": "90G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LEKORNA GAUFRES 90G",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "2.2000",
+     "F196": "2.2000",
+     "F1140": "2.2000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
