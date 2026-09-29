@@ -1,111 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260908230413147312",
-   "applied_at": "2026-09-08T23:04:13",
-   "change": {
-    "code": "0481152700083",
-    "pos_title": "RIGA GOLD SPRATS FUMEE 160G",
-    "size_num": 250,
-    "size_unit": "GR",
-    "queued_at": "2026-09-09T03:03:27.291Z",
-    "id": "c1788923007291"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "RIGA GOLD SPRATS FUMEE",
-     "F1744": "250.0",
-     "F22": "250 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "RIGA GOLD SPRATS FUMEE 160G",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "154.8000",
-     "F196": "154.8000",
-     "F1140": "2.1500",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "3.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260909120327252843",
-   "applied_at": "2026-09-09T12:03:27",
-   "change": {
-    "code": "0023012000000",
-    "title": "FILET SAUMON ATLANTIQUE CONG. CHILE",
-    "pos_title": "FILET SAUMON ATLANTIQUE CONG. CHILE",
-    "size_num": 1000,
-    "size_unit": "",
-    "promo": {
-     "price": 15.99,
-     "qty": 1,
-     "start": "2026-09-09",
-     "end": "2036-09-09"
-    },
-    "queued_at": "2026-09-09T16:03:09.246Z",
-    "id": "c1788969789246"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "fil.saumon Atl.frais                 /kg",
-     "F1744": "1000.0",
-     "F22": "1000G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "FIL.SAUMON ATL.FRAIS",
-     "F04": "24",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "22.0000",
-     "F196": "22.0000",
-     "F1140": "22.0000",
-     "F27": "ZA03"
-    },
-    "PRICE_TAB": {
-     "F30": "34.1500",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "34.1500",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260909122016278215",
    "applied_at": "2026-09-09T12:20:16",
    "change": {
@@ -25024,6 +24919,102 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260929163504345642",
+   "applied_at": "2026-09-29T16:35:04",
+   "change": {
+    "code": "0482306312531",
+    "size_num": 120,
+    "size_unit": "GR",
+    "queued_at": "2026-09-29T20:34:22.491Z",
+    "id": "c1790714062491"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LAYS  CROUSTILLES CRABE",
+     "F1744": "120.0",
+     "F22": "120 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LAYS  CROUSTILLES CRABE",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.1500",
+     "F196": "3.1500",
+     "F1140": "3.1500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260929163504392442",
+   "applied_at": "2026-09-29T16:35:04",
+   "change": {
+    "code": "0482306312531",
+    "size_num": 120,
+    "size_unit": "GR",
+    "queued_at": "2026-09-29T20:34:27.951Z",
+    "id": "c1790714067951"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LAYS  CROUSTILLES CRABE",
+     "F1744": "120.0",
+     "F22": "120 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LAYS  CROUSTILLES CRABE",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.1500",
+     "F196": "3.1500",
+     "F1140": "3.1500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
