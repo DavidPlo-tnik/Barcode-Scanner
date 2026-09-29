@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260908224723058137",
-   "applied_at": "2026-09-08T22:47:23",
-   "change": {
-    "code": "0020238300000",
-    "pos_title": "COTES DE PORC FUMES KG",
-    "price": 29.99,
-    "queued_at": "2026-09-09T02:46:32.644Z",
-    "id": "c1788921992644"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "COTES DE PORC FUMES",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "KG"
-    },
-    "POS_TAB": {
-     "F02": "COTES DE PORC FUMES KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "19.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "19.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260908224828157052",
    "applied_at": "2026-09-08T22:48:28",
    "change": {
@@ -25023,6 +24975,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260929162111402754",
+   "applied_at": "2026-09-29T16:21:11",
+   "change": {
+    "code": "0460536200711",
+    "title": "BABKINI GRAINES DE TOURNESOL SALÉES",
+    "pos_title": "BABKINI GRAINES DE TOURNESOL SALÉES",
+    "size_num": 944,
+    "size_unit": "ML",
+    "queued_at": "2026-09-29T20:20:43.356Z",
+    "id": "c1790713243356"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GRAINS DE TOURNESOL",
+     "F1744": "944.0",
+     "F22": "300G",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "GRAINS DE TOURNESOL 300G",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.7500",
+     "F196": "3.7500",
+     "F1140": "3.7500",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
