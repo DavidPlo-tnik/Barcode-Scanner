@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-29T20:53:31.820Z",
+ "updated": "2026-09-29T22:59:08.072Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -6192,23 +6192,6 @@
    "group": null,
    "dept": "1",
    "weekly": 44.22,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0000000000005": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-vente-de-sac",
-   "dept": "1",
-   "weekly": 44.21,
    "scale": false,
    "fresh": false,
    "v": {
