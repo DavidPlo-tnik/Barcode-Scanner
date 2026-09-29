@@ -668,7 +668,31 @@
    "mp": null,
    "cost": 6.99,
    "at": "2026-09-29 16:42:26"
+  },
+  "0006372312003": {
+   "pt": "FEATURE HARENG 600GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 24,
+   "un": "GR",
+   "sn": 600.0,
+   "nm": "FEATURE HARENG",
+   "rp": 9.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 9.99,
+   "mp": null,
+   "cost": 6.89,
+   "at": "2026-09-29 16:43:37"
   }
  },
- "updated": "2026-09-29 16:42:26"
+ "updated": "2026-09-29 16:43:37"
 }
