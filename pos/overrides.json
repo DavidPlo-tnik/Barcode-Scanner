@@ -620,7 +620,31 @@
    "mp": null,
    "cost": 3.15,
    "at": "2026-09-29 16:35:04"
+  },
+  "0482310540858": {
+   "pt": "VERES TARTINADE ZUCCINI  440G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 440.0,
+   "nm": "VERES TARTINADE ZUCCINI",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 3.5,
+   "at": "2026-09-29 16:37:12"
   }
  },
- "updated": "2026-09-29 16:35:04"
+ "updated": "2026-09-29 16:37:12"
 }
