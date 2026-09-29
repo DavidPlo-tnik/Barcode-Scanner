@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260909161818213302",
-   "applied_at": "2026-09-09T16:18:18",
-   "change": {
-    "code": "0020233200000",
-    "title": "TETE FROMAGEE TOBA",
-    "pos_title": "TETE FROMAGEE TOBA",
-    "price": 17.99,
-    "queued_at": "2026-09-09T20:17:35.713Z",
-    "id": "c1788985055713"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "TETE FROMAGEE",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "TETE FROMAGEE GR",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-ISABELLE"
-    },
-    "PRICE_TAB": {
-     "F30": "22.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "22.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260909161930176228",
    "applied_at": "2026-09-09T16:19:30",
    "change": {
@@ -25002,6 +24953,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260929190341319952",
+   "applied_at": "2026-09-29T19:03:41",
+   "change": {
+    "code": "0482310540036",
+    "pos_title": "VERES FRAMBOISES AVEC SUCRE 370G",
+    "size_num": 370,
+    "size_unit": "GR",
+    "queued_at": "2026-09-29T23:02:57.584Z",
+    "id": "c1790722977584"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VERES FRAMBOISES AVEC SUCRE",
+     "F1744": "25.0",
+     "F22": "370G",
+     "F23": "UN"
+    },
+    "POS_TAB": {
+     "F02": "VERES FRAMBOISES AVEC SUCRE 370G",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "4.2000",
+     "F196": "4.2000",
+     "F1140": "4.2000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "6.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "6.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
