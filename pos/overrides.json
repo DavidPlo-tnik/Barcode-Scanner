@@ -263,7 +263,31 @@
    "mp": null,
    "cost": 26.0,
    "at": "2026-09-28 12:12:46"
+  },
+  "0083839600255": {
+   "pt": "ZAKUSON NAMECO CHAMPIGNONS 500ML",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 500.0,
+   "nm": "ZAKUSON NAMECO CHAMPIGNONS",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 33.0,
+   "at": "2026-09-28 21:59:42"
   }
  },
- "updated": "2026-09-28 12:12:46"
+ "updated": "2026-09-28 21:59:42"
 }
