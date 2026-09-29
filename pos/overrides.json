@@ -740,7 +740,31 @@
    "mp": null,
    "cost": 5.6,
    "at": "2026-09-29 19:09:14"
+  },
+  "0485001587028": {
+   "pt": "NAIRI CONFITURE PETALES DE ROSE 350ML",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 350.0,
+   "nm": "NAIRI CONFITURE PETALES DE ROSE",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 47.4,
+   "at": "2026-09-29 19:15:29"
   }
  },
- "updated": "2026-09-29 19:09:14"
+ "updated": "2026-09-29 19:15:29"
 }
