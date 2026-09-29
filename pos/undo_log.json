@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260908173649175434",
-   "applied_at": "2026-09-08T17:36:49",
-   "change": {
-    "code": "0020993600000",
-    "title": "BAGUETTE 400GR",
-    "pos_title": "BAGUETTE 400GR",
-    "size_num": 400,
-    "size_unit": "GR",
-    "queued_at": "2026-09-08T21:36:29.232Z",
-    "id": "c1788903389232"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "BAGUETTE 400G",
-     "F1744": "400.0",
-     "F22": "400 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "BAGUETTE 400G",
-     "F04": "5",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "8.3900",
-     "F196": "8.3900",
-     "F1140": "8.3900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "2.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "2.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260908173754055947",
    "applied_at": "2026-09-08T17:37:54",
    "change": {
@@ -24984,6 +24934,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260928222552165812",
+   "applied_at": "2026-09-28T22:25:52",
+   "change": {
+    "code": "0083839600971",
+    "pos_title": "ZAKYCOH BOLET MASLATA 1L",
+    "size_num": 1000,
+    "size_unit": "ML",
+    "queued_at": "2026-09-29T02:24:50.191Z",
+    "id": "c1790648690191"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH BOLET MASLATA",
+     "F1744": "250.0",
+     "F22": "1L",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH BOLET MASLATA 1L",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "63.9000",
+     "F196": "63.9000",
+     "F1140": "5.3250",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "8.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "8.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
