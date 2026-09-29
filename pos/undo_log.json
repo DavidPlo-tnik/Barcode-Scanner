@@ -1,48 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260909144346144138",
-   "applied_at": "2026-09-09T14:43:46",
-   "change": {
-    "code": "0020422800000",
-    "pos_title": "KEBAB MITITEI MICI KG",
-    "price": 17.99,
-    "queued_at": "2026-09-09T18:43:04.197Z",
-    "id": "c1788979384197"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KEBAB MITITEI MICI",
-     "F1744": null,
-     "F22": "KG",
-     "F23": ""
-    },
-    "POS_TAB": {
-     "F02": "KEBAB MITITEI MICI KG",
-     "F04": "21",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "PRICE_TAB": {
-     "F30": "19.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "19.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": null
-    }
-   }
-  },
-  {
    "undo_id": "u20260909144346206538",
    "applied_at": "2026-09-09T14:43:46",
    "change": {
@@ -24996,6 +24954,54 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260929164443325059",
+   "applied_at": "2026-09-29T16:44:43",
+   "change": {
+    "code": "0006372312002",
+    "size_num": 320,
+    "size_unit": "GR",
+    "queued_at": "2026-09-29T20:44:32.881Z",
+    "id": "c1790714672881"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FEATURE HARENG",
+     "F1744": "320.0",
+     "F22": "320GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "FEATURE HARENG 320GR",
+     "F04": "24",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "4.8900",
+     "F196": "4.8900",
+     "F1140": "4.8900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "6.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "6.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
