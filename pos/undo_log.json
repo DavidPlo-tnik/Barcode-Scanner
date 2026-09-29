@@ -1,18 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260908174208102394",
-   "applied_at": "2026-09-08T17:42:08",
-   "change": {
-    "code": "4011",
-    "price": 2.19,
-    "balance": 1,
-    "queued_at": "2026-09-08T21:41:51.972Z",
-    "id": "c1788903711972"
-   },
-   "before": {}
-  },
-  {
    "undo_id": "u20260908182039062638",
    "applied_at": "2026-09-08T18:20:39",
    "change": {
@@ -24975,6 +24963,56 @@
      "F38": "55.6000",
      "F196": "55.6000",
      "F1140": "4.6333",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "6.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "6.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260928223823275931",
+   "applied_at": "2026-09-28T22:38:23",
+   "change": {
+    "code": "0083839600972",
+    "title": "ZAKUSON CHAMPIGNONS MÉLANGÉS NAMEKO OPIATA",
+    "pos_title": "ZAKUSON CHAMPIGNONS MÉLANGÉS NAMEKO",
+    "size_num": 1000,
+    "size_unit": "ML",
+    "queued_at": "2026-09-29T02:37:54.337Z",
+    "id": "c1790649474337"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKUSON NAMECO OPIATA",
+     "F1744": "540.0",
+     "F22": "1L",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKUSON NAMECO OPIATA 1L",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "57.9000",
+     "F196": "57.9000",
+     "F1140": "4.8250",
      "F27": "L-TONSELL"
     },
     "PRICE_TAB": {
