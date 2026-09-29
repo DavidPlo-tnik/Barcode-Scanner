@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-29T20:53:13.735Z",
+ "updated": "2026-09-29T20:53:31.820Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -886,23 +886,6 @@
    "group": "32-string-cheese",
    "dept": "32",
    "weekly": 22.58,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0426012339550": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": null,
-   "dept": "1",
-   "weekly": 184.92,
    "scale": false,
    "fresh": false,
    "v": {
