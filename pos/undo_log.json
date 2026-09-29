@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260908225656125144",
-   "applied_at": "2026-09-08T22:56:56",
-   "change": {
-    "code": "0481152700083",
-    "pos_title": "RIGA GOLD SPRATS FUMEE 160G",
-    "size_num": 250,
-    "size_unit": "GR",
-    "queued_at": "2026-09-09T02:56:05.182Z",
-    "id": "c1788922565182"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "RIGA GOLD SPRATS FUMEE",
-     "F1744": "250.0",
-     "F22": "160G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "RIGA GOLD SPRATS FUMEE 160G",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "154.8000",
-     "F196": "154.8000",
-     "F1140": "2.1500",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "3.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260908230413147312",
    "applied_at": "2026-09-08T23:04:13",
    "change": {
@@ -25017,6 +24968,56 @@
      "F05": null,
      "F82": null,
      "F85": null
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260929163358263926",
+   "applied_at": "2026-09-29T16:33:58",
+   "change": {
+    "code": "0460701235209",
+    "title": "MARTIN GRAINES DE TOURNESOL",
+    "pos_title": "MARTIN GRAINES DE TOURNESOL",
+    "size_num": 500,
+    "size_unit": "GR",
+    "queued_at": "2026-09-29T20:33:03.651Z",
+    "id": "c1790713983651"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GRAINES OT MARTINA ",
+     "F1744": "500.0",
+     "F22": "500GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "GRAINES OT MARTINA  500GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "6.9900",
+     "F196": "6.9900",
+     "F1140": "6.9900",
+     "F27": "L-EPIC"
     },
     "PRICE_TAB": {
      "F30": "9.9900",
