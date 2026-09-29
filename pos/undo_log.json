@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260909194737058362",
-   "applied_at": "2026-09-09T19:47:37",
-   "change": {
-    "code": "0482015663105",
-    "title": "GRONA BISCUIT MARIA",
-    "pos_title": "GRONA BISCUIT MARIA",
-    "size_num": 310,
-    "size_unit": "GR",
-    "queued_at": "2026-09-09T23:46:58.586Z",
-    "id": "c1788997618586"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "GRONA MARIA",
-     "F1744": "310.0",
-     "F22": "310G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "GRONA MARIA 310G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "22.4000",
-     "F196": "22.4000",
-     "F1140": "1.4000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "1.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "1.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260909194842001277",
    "applied_at": "2026-09-09T19:48:42",
    "change": {
@@ -24913,6 +24863,55 @@
      "F38": "47.4000",
      "F196": "47.4000",
      "F1140": "3.9500",
+     "F27": "L-SAP"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260929193850263567",
+   "applied_at": "2026-09-29T19:38:50",
+   "change": {
+    "code": "0485001587096",
+    "pos_title": "NAIRI CONFITURE FIGUES 330ML",
+    "size_num": 330,
+    "size_unit": "ML",
+    "queued_at": "2026-09-29T23:38:13.264Z",
+    "id": "c1790725093264"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "NAIRI CONFITURE FIGUES",
+     "F1744": "1.0",
+     "F22": "330ML",
+     "F23": "UN1"
+    },
+    "POS_TAB": {
+     "F02": "NAIRI CONFITURE FIGUES 330ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "40.8000",
+     "F196": "40.8000",
+     "F1140": "3.4000",
      "F27": "L-SAP"
     },
     "PRICE_TAB": {
