@@ -716,7 +716,31 @@
    "mp": null,
    "cost": 4.89,
    "at": "2026-09-29 16:44:43"
+  },
+  "0005549820071": {
+   "pt": "KRINOS TARAMOSALATA 330GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 31,
+   "un": "GR",
+   "sn": 330.0,
+   "nm": "KRINOS TARAMOSALATA",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 44.0,
+   "at": "2026-09-29 16:47:51"
   }
  },
- "updated": "2026-09-29 16:44:43"
+ "updated": "2026-09-29 16:47:51"
 }
