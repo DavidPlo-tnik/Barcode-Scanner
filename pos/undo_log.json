@@ -1,53 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260908224006084770",
-   "applied_at": "2026-09-08T22:40:06",
-   "change": {
-    "code": "0020235200000",
-    "balance": 1,
-    "queued_at": "2026-09-09T02:39:15.354Z",
-    "id": "c1788921555354"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LARDON AIL ET POIVRE",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LARDON AIL ET POIVRE",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "22.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "22.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260908224006147170",
    "applied_at": "2026-09-08T22:40:06",
    "change": {
@@ -25027,6 +24980,50 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260928230746129828",
+   "applied_at": "2026-09-28T23:07:46",
+   "change": {
+    "code": "0460701235201",
+    "title": "MARTIN GRAINES DE CITROUILLE",
+    "pos_title": "MARTIN GRAINES DE CITROUILLE",
+    "size_num": 200,
+    "size_unit": "GR",
+    "queued_at": "2026-09-29T03:07:34.821Z",
+    "id": "c1790651254821"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GRAINE DE CITROUILLE  OT MARTINA ",
+     "F1744": "200.0",
+     "F22": "200GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "GRAINE DE CITROUILLE  OT MARTINA  200GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
