@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260909211439354537",
-   "applied_at": "2026-09-09T21:14:39",
-   "change": {
-    "code": "0482019226283",
-    "title": "ODESSA JUS DE POMME RAISIN 1930ML",
-    "pos_title": "ODESSA JUS DE POMME RAISIN 1930ML",
-    "size_num": 1930,
-    "size_unit": "ML",
-    "queued_at": "2026-09-10T01:13:57.243Z",
-    "id": "c1789002837243"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ODESSA JUS DE POMME RAISIN",
-     "F1744": "1930.0",
-     "F22": "1930ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "ODESSA JUS DE POMME RAISIN 1930ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.7500",
-     "F196": "3.7500",
-     "F1140": "3.7500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260909211853088982",
    "applied_at": "2026-09-09T21:18:53",
    "change": {
@@ -24769,6 +24719,55 @@
      "F38": "42.0000",
      "F196": "42.0000",
      "F1140": "3.5000",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "4.7900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.7900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260930153533226931",
+   "applied_at": "2026-09-30T15:35:33",
+   "change": {
+    "code": "0062531500008",
+    "pos_title": "SUPREME PIEROGIES PORC 454GR",
+    "size_num": 454,
+    "size_unit": "GR",
+    "queued_at": "2026-09-30T19:35:09.622Z",
+    "id": "c1790796909622"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SUPREME PIEROGIES PORC",
+     "F1744": "454.0",
+     "F22": "454 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SUPREME PIEROGIES PORC 454GR",
+     "F04": "4",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "35.4000",
+     "F196": "35.4000",
+     "F1140": "2.9500",
      "F27": "L-GLOU"
     },
     "PRICE_TAB": {
