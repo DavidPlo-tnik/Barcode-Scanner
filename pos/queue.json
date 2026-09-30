@@ -1,20 +1,3 @@
 {
- "items": [
-  {
-   "code": "0062531500016",
-   "pos_title": "SUPREME PIEROGIES CHEDDAR BACON 454GR",
-   "size_num": 454,
-   "size_unit": "GR",
-   "queued_at": "2026-09-30T19:31:10.947Z",
-   "id": "c1790796670947"
-  },
-  {
-   "code": "0062531500016",
-   "pos_title": "SUPREME PIEROGIES CHEDDAR BACON 454GR",
-   "size_num": 454,
-   "size_unit": "GR",
-   "queued_at": "2026-09-30T19:31:30.546Z",
-   "id": "c1790796690546"
-  }
- ]
+ "items": []
 }
