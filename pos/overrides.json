@@ -1314,7 +1314,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-09-30 16:31:09"
+  },
+  "0484000802090": {
+   "pt": "FRANZELUTA KIEV GATEAU",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 800.0,
+   "nm": "FRANZELUTA KIEV GATEAU",
+   "rp": 34.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 34.99,
+   "mp": null,
+   "cost": 21.7,
+   "at": "2026-09-30 16:33:17"
   }
  },
- "updated": "2026-09-30 16:31:09"
+ "updated": "2026-09-30 16:33:17"
 }
