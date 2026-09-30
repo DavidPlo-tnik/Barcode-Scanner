@@ -1291,7 +1291,30 @@
    "price": 5.99,
    "mp": null,
    "at": "2026-09-29 20:27:33"
+  },
+  "0062315700265": {
+   "pt": "IMP. BH BEURRE D'ARACHIDE CROQUANT",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 500.0,
+   "nm": "IMP. BH BEURRE D'ARACHIDE CROQUANT",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "at": "2026-09-29 20:28:39"
   }
  },
- "updated": "2026-09-29 20:27:33"
+ "updated": "2026-09-29 20:28:39"
 }
