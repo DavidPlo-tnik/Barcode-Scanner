@@ -1,20 +1,3 @@
 {
- "items": [
-  {
-   "code": "0426042846484",
-   "pos_title": "EMELA  ARGOUSIER AU SUCRE 350G",
-   "size_num": 350,
-   "size_unit": "GR",
-   "queued_at": "2026-09-30T00:17:54.784Z",
-   "id": "c1790727474784"
-  },
-  {
-   "code": "0426042846484",
-   "pos_title": "EMELA  ARGOUSIER AU SUCRE 350G",
-   "size_num": 350,
-   "size_unit": "GR",
-   "queued_at": "2026-09-30T00:18:06.281Z",
-   "id": "c1790727486281"
-  }
- ]
+ "items": []
 }
