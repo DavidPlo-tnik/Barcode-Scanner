@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-30T00:31:27.921Z",
+ "updated": "2026-09-30T00:32:48.582Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -2570,23 +2570,6 @@
    "group": "1-soda-quebec",
    "dept": "1",
    "weekly": 92.71,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0005149739756": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-soda-quebec",
-   "dept": "1",
-   "weekly": 58.85,
    "scale": false,
    "fresh": false,
    "v": {
