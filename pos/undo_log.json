@@ -1,66 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260909202350117380",
-   "applied_at": "2026-09-09T20:23:50",
-   "change": {
-    "code": "0482308860856",
-    "title": "SUPER KONTIK LAIT CONDENSÉ",
-    "pos_title": "SUPER KONTIK LAIT CONDENSÉ",
-    "size_num": 90,
-    "size_unit": "KG",
-    "multibuy": {
-     "qty": 3,
-     "price": 5
-    },
-    "promo": {
-     "price": 5,
-     "qty": 3,
-     "start": null,
-     "end": null
-    },
-    "queued_at": "2026-09-10T00:23:34.169Z",
-    "id": "c1788999814169"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SUPER KONTIK",
-     "F1744": "90.0",
-     "F22": "90 KG",
-     "F23": "KG"
-    },
-    "POS_TAB": {
-     "F02": "SUPER KONTIK 90G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "1.0500",
-     "F196": "1.0500",
-     "F1140": "1.0500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.0000",
-     "F31": "3.0",
-     "F1006": "3.0",
-     "F1007": "5.0000",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260909202501066305",
    "applied_at": "2026-09-09T20:25:01",
    "change": {
@@ -24915,6 +24855,55 @@
      "F38": "4.3000",
      "F196": "4.3000",
      "F1140": "4.3000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "6.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "6.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260929202421171299",
+   "applied_at": "2026-09-29T20:24:21",
+   "change": {
+    "code": "0426042846102",
+    "pos_title": "EMELA CONFITURE DE POMMES 630G",
+    "size_num": 630,
+    "size_unit": "GR",
+    "queued_at": "2026-09-30T00:23:32.616Z",
+    "id": "c1790727812616"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "EMELA CONFITURE DE POMMES",
+     "F1744": "630.0",
+     "F22": "630G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "EMELA CONFITURE DE POMMES 630G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "4.2900",
+     "F196": "4.2900",
+     "F1140": "4.2900",
      "F27": "L-EPIC"
     },
     "PRICE_TAB": {
