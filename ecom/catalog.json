@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-30T00:34:15.270Z",
+ "updated": "2026-09-30T00:34:24.310Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -744,23 +744,6 @@
    "group": "32-tresse-de-fromage",
    "dept": "32",
    "weekly": 19.98,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482307761764": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-gataeu-roshen",
-   "dept": "1",
-   "weekly": 156.35,
    "scale": false,
    "fresh": false,
    "v": {
