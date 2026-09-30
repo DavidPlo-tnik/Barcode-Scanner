@@ -1268,7 +1268,30 @@
    "mp": null,
    "cost": 4.29,
    "at": "2026-09-29 20:24:21"
+  },
+  "0062315700266": {
+   "pt": "IMP. BH BEUURE D'ARACHIDE CREMEUX",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 500.0,
+   "nm": "IMP. BH BEUURE D'ARACHIDE CREMEUX",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "at": "2026-09-29 20:27:33"
   }
  },
- "updated": "2026-09-29 20:24:21"
+ "updated": "2026-09-29 20:27:33"
 }
