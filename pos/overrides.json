@@ -1196,7 +1196,31 @@
    "mp": null,
    "cost": 3.54,
    "at": "2026-09-29 20:18:57"
+  },
+  "0426042846099": {
+   "pt": "EMELA CONFITURE DE CERISES",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 630.0,
+   "nm": "EMELA CONFITURE DE CERISES",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 4.29,
+   "at": "2026-09-29 20:20:03"
   }
  },
- "updated": "2026-09-29 20:18:57"
+ "updated": "2026-09-29 20:20:03"
 }
