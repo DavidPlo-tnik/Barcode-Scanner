@@ -1170,7 +1170,31 @@
    "mp": null,
    "cost": 42.0,
    "at": "2026-09-30 15:30:58"
+  },
+  "0062531500016": {
+   "pt": "SUPREME PIEROGIES CHEDDAR BACON 454GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 454.0,
+   "nm": "SUPREME PIEROGIES CHEDDAR BACON",
+   "rp": 4.79,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.79,
+   "mp": null,
+   "cost": 42.0,
+   "at": "2026-09-30 15:32:04"
   }
  },
- "updated": "2026-09-30 15:30:58"
+ "updated": "2026-09-30 15:32:04"
 }
