@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-30T00:33:20.170Z",
+ "updated": "2026-09-30T00:34:08.452Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -11443,23 +11443,6 @@
    "group": "4-parlour-bar-gl",
    "dept": "4",
    "weekly": 11.66,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482310540056": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-veres-tartinade-zuccini",
-   "dept": "1",
-   "weekly": 23.29,
    "scale": false,
    "fresh": false,
    "v": {
