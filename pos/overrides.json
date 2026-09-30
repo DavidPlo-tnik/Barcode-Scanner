@@ -1146,7 +1146,31 @@
    "mp": null,
    "cost": 42.0,
    "at": "2026-09-30 15:23:37"
+  },
+  "0062531500001": {
+   "pt": "SUPREME PIEROGIES POMME TERRE FROMAGE CO",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 454.0,
+   "nm": "SUPREME PIEROGIES POMME TERRE FROMAGE COTTAGE",
+   "rp": 4.79,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.79,
+   "mp": null,
+   "cost": 42.0,
+   "at": "2026-09-30 15:28:50"
   }
  },
- "updated": "2026-09-30 15:23:37"
+ "updated": "2026-09-30 15:28:50"
 }
