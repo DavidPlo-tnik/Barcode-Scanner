@@ -1290,7 +1290,31 @@
    "mp": null,
    "cost": 42.0,
    "at": "2026-09-30 15:36:39"
+  },
+  "0021013700000": {
+   "pt": "KHINKALI AU BOEUF ET PORC",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 61,
+   "un": "GR",
+   "sn": null,
+   "nm": "KHINKALI AU BOEUF ET PORC",
+   "rp": 9.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 9.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-09-30 16:31:09"
   }
  },
- "updated": "2026-09-30 15:36:39"
+ "updated": "2026-09-30 16:31:09"
 }
