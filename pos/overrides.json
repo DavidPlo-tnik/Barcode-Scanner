@@ -1218,7 +1218,31 @@
    "mp": null,
    "cost": 42.0,
    "at": "2026-09-30 15:33:11"
+  },
+  "0062531500003": {
+   "pt": "SUPREME PIEROGIES CHOUCROUTE CHAMPIGNONS",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 454.0,
+   "nm": "SUPREME PIEROGIES CHOUCROUTE CHAMPIGNONS",
+   "rp": 4.79,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.79,
+   "mp": null,
+   "cost": 42.0,
+   "at": "2026-09-30 15:34:22"
   }
  },
- "updated": "2026-09-30 15:33:11"
+ "updated": "2026-09-30 15:34:22"
 }
