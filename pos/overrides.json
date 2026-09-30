@@ -1122,7 +1122,31 @@
    "mp": null,
    "cost": 2.1,
    "at": "2026-09-30 14:04:18"
+  },
+  "0062531500002": {
+   "pt": "SUPREME PIEROGIES CHEDDAR POMME TERRE 45",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 454.0,
+   "nm": "SUPREME PIEROGIES CHEDDAR POMME TERRE",
+   "rp": 4.79,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.79,
+   "mp": null,
+   "cost": 42.0,
+   "at": "2026-09-30 15:23:37"
   }
  },
- "updated": "2026-09-30 14:04:18"
+ "updated": "2026-09-30 15:23:37"
 }
