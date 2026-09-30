@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260909200743084881",
-   "applied_at": "2026-09-09T20:07:43",
-   "change": {
-    "code": "0482308860824",
-    "pos_title": "KONTI BONJOUR 232G",
-    "size_num": 232,
-    "size_unit": "",
-    "qte_requise": 1,
-    "queued_at": "2026-09-10T00:06:57.231Z",
-    "id": "c1788998817231"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KONTI BONJOUR",
-     "F1744": "232.0",
-     "F22": "232G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "KONTI BONJOUR 232G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "31.5200",
-     "F196": "31.5200",
-     "F1140": "3.5022",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260909200854189806",
    "applied_at": "2026-09-09T20:08:54",
    "change": {
@@ -24920,6 +24870,56 @@
      "F38": "4.9000",
      "F196": "4.9000",
      "F1140": "4.9000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260929200717241558",
+   "applied_at": "2026-09-29T20:07:17",
+   "change": {
+    "code": "0482014537410",
+    "title": "DNIPRO CONFITURE CASSIS",
+    "pos_title": "DNIPRO CONFITURE CASSIS",
+    "size_num": 600,
+    "size_unit": "GR",
+    "queued_at": "2026-09-30T00:07:11.077Z",
+    "id": "c1790726831077"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DNIPRO CONFITURE CASIS",
+     "F1744": "600.0",
+     "F22": "600GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "DNIPRO CONFITURE CASIS 600GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "5.6000",
+     "F196": "5.6000",
+     "F1140": "5.6000",
      "F27": "L-EPIC"
     },
     "PRICE_TAB": {
