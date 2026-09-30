@@ -1,66 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260909205125233488",
-   "applied_at": "2026-09-09T20:51:25",
-   "change": {
-    "code": "0482307762115",
-    "title": "ROSHEN BATON NOIR 43GR",
-    "pos_title": "ROSHEN BATON NOIR 43GR",
-    "size_num": 43,
-    "size_unit": "GR",
-    "multibuy": {
-     "qty": 4,
-     "price": 5
-    },
-    "promo": {
-     "price": 5,
-     "qty": 4,
-     "start": null,
-     "end": null
-    },
-    "queued_at": "2026-09-10T00:51:22.407Z",
-    "id": "c1789001482407"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ROSHEN NOIRE",
-     "F1744": "400.0",
-     "F22": "43GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "ROSHEN NOIRE 43GR",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.7000",
-     "F196": "0.7000",
-     "F1140": "0.7000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.0000",
-     "F31": "4.0",
-     "F1006": "4.0",
-     "F1007": "5.0000",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260909205230098401",
    "applied_at": "2026-09-09T20:52:30",
    "change": {
@@ -24825,6 +24765,54 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "3.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20260930152337123273",
+   "applied_at": "2026-09-30T15:23:37",
+   "change": {
+    "code": "0062531500002",
+    "size_num": 454,
+    "size_unit": "GR",
+    "queued_at": "2026-09-30T19:23:34.091Z",
+    "id": "c1790796214091"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SUPREME PIEROGIES CHEDDAR POMME TERRE",
+     "F1744": "454.0",
+     "F22": "454 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SUPREME PIEROGIES CHEDDAR POMME TERRE 45",
+     "F04": "4",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "42.0000",
+     "F196": "42.0000",
+     "F1140": "3.5000",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "4.7900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.7900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
