@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260909213141031531",
-   "applied_at": "2026-09-09T21:31:41",
-   "change": {
-    "code": "0486001900141",
-    "title": "BORJOMI 750ML",
-    "pos_title": "BORJOMI 750ML",
-    "size_num": 750,
-    "size_unit": "ML",
-    "queued_at": "2026-09-10T01:31:04.467Z",
-    "id": "c1789003864467"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "BORJOMI",
-     "F1744": "400.0",
-     "F22": "0.75ML",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "BORJOMI 0.75ML",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "1.9500",
-     "F196": "1.9500",
-     "F1140": "1.9500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "2.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "2.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260909213353085763",
    "applied_at": "2026-09-09T21:33:53",
    "change": {
@@ -24774,6 +24724,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261001110701142121",
+   "applied_at": "2026-10-01T11:07:01",
+   "change": {
+    "code": "0088764300067",
+    "pos_title": "WHITE EAGLE CORNICHONS A LA POLONAISE 75",
+    "size_num": 750,
+    "size_unit": "ML",
+    "price": 3.99,
+    "queued_at": "2026-10-01T15:06:36.300Z",
+    "id": "c1790867196300"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "WHITE EAGLE CORNICHONS A LA POLONAISE",
+     "F1744": "750.0",
+     "F22": "750ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "WHITE EAGLE CORNICHONS A LA POLONAISE 75",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.5900",
+     "F196": "3.5900",
+     "F1140": "3.5900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
