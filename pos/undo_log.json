@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260909220218141558",
-   "applied_at": "2026-09-09T22:02:18",
-   "change": {
-    "code": "0482307762073",
-    "title": "ROSHEN KIYV VECHERNI 352GR",
-    "pos_title": "ROSHEN KIYV VECHERNI 352GR",
-    "size_num": 352,
-    "size_unit": "GR",
-    "queued_at": "2026-09-10T02:01:19.271Z",
-    "id": "c1789005679271"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ROSHEN KIYV VECHERNI",
-     "F1744": "352.0",
-     "F22": "352G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "ROSHEN KIYV VECHERNI 352G",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "136.5000",
-     "F196": "136.5000",
-     "F1140": "19.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "27.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "27.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260909224802123978",
    "applied_at": "2026-09-09T22:48:02",
    "change": {
@@ -24783,6 +24733,56 @@
      "F1014": "2035-03-05 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261001191928094571",
+   "applied_at": "2026-10-01T19:19:28",
+   "change": {
+    "code": "0080138688701",
+    "title": "SALADE D'ALGUES CONGELÉE",
+    "pos_title": "SALADE D'ALGUES CONGELÉE",
+    "size_num": 1000,
+    "size_unit": "GR",
+    "queued_at": "2026-10-01T23:19:16.144Z",
+    "id": "c1790896756144"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": " SALADE D ALGUES",
+     "F1744": "454.0",
+     "F22": "1000GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": " SALADE D ALGUES 1000GR",
+     "F04": "4",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "6.3000",
+     "F196": "6.3000",
+     "F1140": "6.3000",
+     "F27": "L-ISABELLE"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
