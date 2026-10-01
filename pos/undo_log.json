@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260909231711156250",
-   "applied_at": "2026-09-09T23:17:11",
-   "change": {
-    "code": "0482014861117",
-    "title": "CHOCOLATS TOUT SERA UKRAINE 500GR",
-    "pos_title": "CHOCOLATS TOUT SERA UKRAINE 500GR",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-10T03:16:52.094Z",
-    "id": "c1789010212094"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "TOUTE UKRAINE",
-     "F1744": "500.0",
-     "F22": "500G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "TOUTE UKRAINE 500G",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "114.7500",
-     "F196": "114.7500",
-     "F1140": "12.7500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "18.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "18.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260909232227072405",
    "applied_at": "2026-09-09T23:22:27",
    "change": {
@@ -24767,6 +24717,56 @@
     "COST_TAB": {
      "F38": "63.0000",
      "F196": "63.0000",
+     "F1140": "2.1000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261001192754136260",
+   "applied_at": "2026-10-01T19:27:54",
+   "change": {
+    "code": "0482019551518",
+    "title": "PRIPRAVKA KETCHUP AVEC BASILIC",
+    "pos_title": "PRIPRAVKA KETCHUP AVEC BASILIC",
+    "size_num": 400,
+    "size_unit": "GR",
+    "queued_at": "2026-10-01T23:27:38.217Z",
+    "id": "c1790897258217"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "PRIPRAVKA KETCHUP",
+     "F1744": "400.0",
+     "F22": "400GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "PRIPRAVKA KETCHUP 400GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.1000",
+     "F196": "2.1000",
      "F1140": "2.1000",
      "F27": "L-EPIC"
     },
