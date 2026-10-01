@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260909232338130530",
-   "applied_at": "2026-09-09T23:23:38",
-   "change": {
-    "code": "0482008841523",
-    "title": "MORSKI CALMAR SÉCHÉ SALÉ 45GR",
-    "pos_title": "MORSKI CALMAR SÉCHÉ SALÉ 45GR",
-    "size_num": 45,
-    "size_unit": "GR",
-    "queued_at": "2026-09-10T03:23:30.969Z",
-    "id": "c1789010610969"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "CALMAR SECHE SALE",
-     "F1744": "45.0",
-     "F22": "45G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "CALMAR SECHE SALE 45G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "285.0000",
-     "F196": "285.0000",
-     "F1140": "2.8500",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260909233156192604",
    "applied_at": "2026-09-09T23:31:56",
    "change": {
@@ -24760,6 +24710,55 @@
      "F04": "1",
      "F81": "0",
      "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.1000",
+     "F196": "2.1000",
+     "F1140": "2.1000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261001193311431217",
+   "applied_at": "2026-10-01T19:33:11",
+   "change": {
+    "code": "0482015676640",
+    "pos_title": "CHUMAK SAUCE SATSEBELI 200GR",
+    "size_num": 200,
+    "size_unit": "GR",
+    "queued_at": "2026-10-01T23:32:19.870Z",
+    "id": "c1790897539870"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CHUMAK SAUCE SATSEBELI",
+     "F1744": "200.0",
+     "F22": "200GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CHUMAK SAUCE SATSEBELI 200GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
      "F05": null,
      "F82": null,
      "F85": null
