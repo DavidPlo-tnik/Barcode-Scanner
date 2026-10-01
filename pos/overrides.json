@@ -479,7 +479,31 @@
    "mp": null,
    "cost": 42.0,
    "at": "2026-10-01 19:18:19"
+  },
+  "0080138688701": {
+   "pt": "SALADE D'ALGUES CONGELÉE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 1000.0,
+   "nm": "SALADE D'ALGUES CONGELÉE",
+   "rp": 9.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 9.99,
+   "mp": null,
+   "cost": 6.3,
+   "at": "2026-10-01 19:19:28"
   }
  },
- "updated": "2026-10-01 19:18:19"
+ "updated": "2026-10-01 19:19:28"
 }
