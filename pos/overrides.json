@@ -358,7 +358,31 @@
    "mp": null,
    "cost": 42.25,
    "at": "2026-10-01 10:10:22"
+  },
+  "0003338344289": {
+   "pt": "POMME MACINTOSH",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 41,
+   "un": "G",
+   "sn": 1360.0,
+   "nm": "MP pomme macintosh local          (12) 3lb",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 37.0,
+   "at": "2026-10-01 10:16:36"
   }
  },
- "updated": "2026-10-01 10:10:22"
+ "updated": "2026-10-01 10:16:36"
 }
