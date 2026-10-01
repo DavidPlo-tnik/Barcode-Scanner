@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0003338344351",
+   "pos_title": "POMME SPARTAN",
+   "size_num": 1360,
+   "size_unit": "",
+   "promo": {
+    "price": 3.99,
+    "qty": 1,
+    "start": "2025-01-31",
+    "end": "2036-10-01"
+   },
+   "queued_at": "2026-10-01T14:09:46.407Z",
+   "id": "c1790863786407"
+  }
+ ]
 }
