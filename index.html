@@ -336,6 +336,48 @@
   #pos-pin-modal { z-index: 175; }
   #pos-direct-modal { z-index: 165; }
   #candy-modal { z-index: 175; }
+  #metro-modal { z-index: 185; }
+
+  /* ===== Metro order ===== */
+  #par-metro-row .btn { border-color: var(--bad); color: var(--bad); font-weight: 700; letter-spacing: .04em; }
+  #metro-add-btn.in-order { background: var(--bad); color: #0a0a0a; }
+  .scanner-lastfmt { text-align: center; font-family: var(--font-display); font-size: 10px; letter-spacing: .06em; color: var(--text-faint); margin-top: 4px; min-height: 14px; }
+  .mm-wrap { padding: 4px 16px 28px; }
+  .mm-desc { font-size: 20px; font-weight: 700; line-height: 1.25; margin-top: 6px; }
+  .mm-sub { font-size: 12px; color: var(--text-dim); margin-top: 5px; line-height: 1.45; }
+  .mm-sub b { color: var(--text); }
+  .mm-label { font-family: var(--font-display); font-size: 10px; letter-spacing: .12em; color: var(--text-faint); margin: 18px 0 8px; }
+  .mm-opt { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 6px; cursor: pointer; }
+  .mm-opt.sel { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 10%, var(--surface)); }
+  .mm-radio { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; }
+  .mm-opt.sel .mm-radio { border-color: var(--bad); background: var(--bad); box-shadow: inset 0 0 0 3px var(--surface); }
+  .mm-main { flex: 1; min-width: 0; font-size: 13px; }
+  .mm-main small, .mm-price small { display: block; color: var(--text-dim); font-size: 11px; margin-top: 2px; }
+  .mm-price { font-family: var(--font-display); font-size: 13px; text-align: right; flex-shrink: 0; }
+  .mm-qty { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 6px 0 4px; }
+  .mm-qty .btn { width: 54px; height: 54px; font-size: 26px; padding: 0; }
+  .mm-qty input { width: 90px; height: 54px; text-align: center; font-size: 26px; font-weight: 700; background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; }
+  .btn.mm-go { width: 100%; margin-top: 16px; padding: 15px; font-size: 15px; background: var(--bad); color: #0a0a0a; border-color: var(--bad); font-weight: 700; }
+  .mo-actions { display: flex; gap: 8px; margin-top: 16px; }
+  .mo-actions .btn { flex: 1; margin-top: 0; }
+  .list-card.metro-card { border-left: 3px solid var(--bad); }
+  .batch-badge.metro-badge { background: var(--bad); color: #0a0a0a; }
+  .mo-banner { font-size: 11px; color: var(--text-dim); padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 12px; line-height: 1.4; }
+  .mo-banner.warn { color: var(--warn); border-color: var(--warn); }
+  .mo-fields { display: grid; gap: 8px; margin-bottom: 14px; }
+  .mo-fields input, .mo-fields textarea, .mo-searchbox input { width: 100%; box-sizing: border-box; padding: 10px 12px; background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 6px; font-size: 13px; font-family: inherit; }
+  .mo-hit { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; margin-top: 4px; cursor: pointer; }
+  .mo-plus { font-size: 20px; color: var(--bad); padding: 0 6px; }
+  .mo-vendor { display: flex; justify-content: space-between; font-family: var(--font-display); font-size: 10px; letter-spacing: .1em; color: var(--text-dim); background: var(--surface-2); padding: 7px 10px; margin-top: 14px; border-radius: 4px; }
+  .mo-line { display: flex; align-items: center; gap: 8px; padding: 9px 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; margin-top: 5px; }
+  .mo-main { flex: 1; min-width: 0; }
+  .mo-name { font-size: 13px; font-weight: 500; line-height: 1.25; }
+  .mo-meta { font-family: var(--font-display); font-size: 10px; color: var(--text-faint); margin-top: 3px; line-height: 1.4; }
+  .mo-link { color: var(--bad); cursor: pointer; }
+  .mo-qty { display: flex; align-items: center; gap: 2px; flex-shrink: 0; }
+  .mo-qty button { width: 32px; height: 32px; font-size: 18px; background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 0; }
+  .mo-qty span { min-width: 30px; text-align: center; font-weight: 700; font-size: 15px; cursor: pointer; }
+  .mo-sum { text-align: center; font-family: var(--font-display); font-size: 12px; color: var(--text-dim); margin-top: 16px; }
 
   /* ===== POS Editor: calm, grouped, generous whitespace ===== */
   .pd-editor { padding-bottom: 110px; max-width: 100%; overflow-x: hidden; }
@@ -1865,6 +1907,7 @@
   </form>
 
   <div class="scanner-status" id="status">CAMERA OFF</div>
+  <div class="scanner-lastfmt" id="last-scan-fmt"></div>
 
   <div class="recent" id="recent-section" style="display: none;">
     <div class="section-title">SCAN HISTORY</div>
@@ -2110,10 +2153,23 @@
     <div class="par-row">
       <button class="btn small" id="open-pos-direct-btn">⚡ POS EDITOR</button>
     </div>
+    <!-- Only shown when this item appears in Metro's order book -->
+    <div class="par-row" id="par-metro-row" style="display:none;">
+      <button class="btn small" id="metro-add-btn">+ METRO ORDER</button>
+    </div>
   </div>
   <div class="modal-content" id="modal-content"></div>
 </div>
 
+
+<!-- Add / edit one line of the Metro order -->
+<div class="modal" id="metro-modal">
+  <div class="modal-header">
+    <span class="label">METRO · ORDER</span>
+    <div class="actions"><button class="close" id="close-metro-modal">×</button></div>
+  </div>
+  <div class="modal-content" id="metro-modal-content"></div>
+</div>
 
 <div class="modal" id="pos-edit-modal">
   <div class="modal-header">
@@ -2367,7 +2423,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v133</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v134</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3265,7 +3321,7 @@
       { video: videoConstraints },
       videoEl,
       (result) => {
-        if (result) onScanSuccess(result.getText());
+        if (result) onScanSuccess(result.getText(), result.getBarcodeFormat());
       }
     );
 
@@ -3322,11 +3378,14 @@
     $('#switch-camera-btn').style.display = 'none';
   }
 
-  function onScanSuccess(decoded) {
+  function onScanSuccess(decoded, fmt) {
     const now = Date.now();
     if (decoded === lastScanCode && now - lastScanTime < 1500) return;
     lastScanCode = decoded;
     lastScanTime = now;
+    // What kind of barcode was that? (handy for identifying a supplier's own label format)
+    const lf = $('#last-scan-fmt');
+    if (lf) lf.textContent = `LAST SCAN · ${decoded} · ${zxFormatName(fmt) || '?'}`;
 
     // Scale-audit mode consumes scans (compares embedded price vs POS)
     if (handleAuditScan(decoded)) return;
@@ -3337,8 +3396,7 @@
       pushRecent(p.code);
       openProduct(p.code, p.scanned);
     } else {
-      if (navigator.vibrate) navigator.vibrate([30, 50, 30]);
-      showToast(`NOT FOUND: ${decoded}`, true);
+      scanNotInPos(decoded, fmt);   // not in the POS: maybe it is in Metro's order book
     }
   }
 
@@ -3349,6 +3407,7 @@
     currentProductCode = code;
     renderProduct(p, scannedRaw);
     refreshEcomToggle(code);
+    refreshMetroBtn(code);
     $('#product-modal').classList.add('open');
   }
 
@@ -5817,9 +5876,24 @@
         <div class="larrow">›</div>
       </div>`;
 
+    // ── Metro order: appears as soon as the first item is added ──
+    let metroHtml = '';
+    const _mo = getMetroOrder();
+    if (_mo.lines.length) {
+      const _cases = _mo.lines.reduce((a, l) => a + (+l.qty || 0), 0);
+      metroHtml = `
+        <div class="list-card metro-card" data-id="__metro__">
+          <div style="flex: 1; min-width: 0;">
+            <div class="ltitle">METRO ORDER <span class="batch-badge metro-badge">${_cases} CASE${_cases === 1 ? '' : 'S'}</span></div>
+            <div class="lmeta">${_mo.lines.length} item${_mo.lines.length === 1 ? '' : 's'} · tap to review &amp; send PDF</div>
+          </div>
+          <div class="larrow">›</div>
+        </div>`;
+    }
+
     container.innerHTML =
       '<div class="batch-section-label">MY LISTS</div>' + listHtml +
-      '<div class="batch-section-label">WORKLISTS</div>' + pendingHtml + scaleCard + cashierCard +
+      '<div class="batch-section-label">WORKLISTS</div>' + metroHtml + pendingHtml + scaleCard + cashierCard +
       (batchHtml ? '<div class="batch-section-label">AUTO · LABELS TO PRINT</div>' + batchHtml : '');
 
     container.querySelectorAll('.list-card').forEach(card => {
@@ -5837,6 +5911,11 @@
 
   function openListDetail(listId) {
     currentListId = listId;
+    if (listId === '__metro__') {
+      renderMetroDetail();
+      $('#list-detail-modal').classList.add('open');
+      return;
+    }
     if (listId === '__mods__') {
       renderModsDetail();
       $('#list-detail-modal').classList.add('open');
@@ -8499,6 +8578,612 @@
     doc.text(codeStr, x + (maxW - tw) / 2, y + barH + 2);
   }
 
+  // ============== METRO: logic + PDF (standalone, unit-tested) ==============
+  // ---- METRO PURE BEGIN (no DOM access; tested standalone against a real barcode decoder) ----
+
+  // Metro lists a UPC two ways: a 10-11 digit UPC-A WITHOUT its check digit, or a
+  // full 13-digit EAN-13 (check digit included). The POS stores both as "code
+  // minus check digit, left-padded to 13" -- so convert Metro's UPC to that key.
+  function metroKeyFromUpc(u) {
+    if (!u) return '';
+    return (u.length === 13 ? u.slice(0, 12) : u).padStart(13, '0');
+  }
+
+  // Candidate POS-style keys for a RAW scanned string. A checksum-valid UPC-A /
+  // EAN-13 gives exactly one key (strict, no false positives); anything else
+  // falls back to the same lenient guesses lookup() uses.
+  function metroKeysForScan(raw) {
+    const d = String(raw || '').replace(/\D/g, '');
+    if (!d) return [];
+    if (d.length === 12 && upcACheckDigit(d.slice(0, 11)) === +d[11]) return [d.slice(0, 11).padStart(13, '0')];
+    if (d.length === 13 && ean13CheckDigit(d.slice(0, 12)) === +d[12]) return [d.slice(0, 12).padStart(13, '0')];
+    const loose = [];
+    const add = (k) => { if (k) { k = k.padStart(13, '0'); if (!loose.includes(k)) loose.push(k); } };
+    add(d);
+    if (d.length >= 8) add(d.slice(0, -1));
+    const noLead = d.replace(/^0+/, '');
+    add(noLead);
+    if (noLead.length >= 8) add(noLead.slice(0, -1));
+    return loose;
+  }
+
+  // "6X4" -> 24, "12" -> 12, "1X15" -> 15; null if not a plain count.
+  function metroUnitsPerCase(p) {
+    const m = /^(\d+)(?:[xX](\d+))?$/.exec(String(p || '').trim());
+    if (!m) return null;
+    return m[2] ? (+m[1]) * (+m[2]) : +m[1];
+  }
+
+  // The REAL printed barcode for a Metro UPC (what is on the package).
+  function metroBarcodeFor(u) {
+    u = String(u || '').replace(/\D/g, '');
+    if (!u) return null;
+    if (u.length === 13) return { value: u, format: 'EAN13' };
+    if (u.length <= 11) { const d = u.padStart(11, '0'); return { value: d + upcACheckDigit(d), format: 'UPC' }; }
+    return { value: u, format: 'CODE128' };
+  }
+
+  // Bar pattern ("1" = bar module, "0" = space) via JsBarcode's plain-object
+  // renderer, so the PDF gets crisp vector bars instead of a bitmap.
+  function metroBinary(value, format) {
+    const tryFmt = (f) => { const o = {}; JsBarcode(o, value, { format: f, flat: true }); return o.encodings.map(e => e.data).join(''); };
+    try { return tryFmt(format); }
+    catch (e) { return tryFmt('CODE128'); }   // e.g. a bad check digit: still scannable as plain digits
+  }
+
+  function drawBinaryBars(doc, bin, x, y, w, h) {
+    if (!bin) return;
+    const mw = w / bin.length;
+    doc.setFillColor(0, 0, 0);
+    for (let i = 0; i < bin.length;) {
+      if (bin[i] === '1') {
+        let j = i; while (j < bin.length && bin[j] === '1') j++;
+        doc.rect(x + i * mw, y, (j - i) * mw, h, 'F');
+        i = j;
+      } else i++;
+    }
+  }
+
+  // Digits shown under a UPC/EAN barcode, grouped like the printed package.
+  function metroDigitsText(value, format) {
+    if (format === 'UPC' && value.length === 12) return `${value[0]} ${value.slice(1, 6)} ${value.slice(6, 11)} ${value[11]}`;
+    if (format === 'EAN13' && value.length === 13) return `${value[0]} ${value.slice(1, 7)} ${value.slice(7)}`;
+    return value;
+  }
+
+  // Order -> jsPDF document. Lines are grouped under their vendor (that is what
+  // routes a dropshipment order), each row: Metro product code + barcode,
+  // description / format / case, UPC barcode, and quantity in cases.
+  function buildMetroPdf(order, meta) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'mm', format: 'letter' });
+    const PW = 215.9, PH = 279.4, ML = 10, MR = 10, CW = PW - ML - MR;
+    const ROW = 18, VH = 6.5, FOOT = 13;
+    const lines = (order.lines || []).filter(l => +l.qty > 0);
+    const stamp = new Date().toISOString().slice(0, 10);
+
+    // group by vendor, vendors A-Z, lines A-Z inside
+    const groups = [], idx = {};
+    lines.slice().sort((a, b) => (a.d || '').localeCompare(b.d || '')).forEach(l => {
+      const key = l.vid || '';
+      if (!(key in idx)) { idx[key] = groups.length; groups.push({ vid: l.vid || '', vn: l.vn || 'Fournisseur non precise', items: [] }); }
+      groups[idx[key]].items.push(l);
+    });
+    groups.sort((a, b) => a.vn.localeCompare(b.vn));
+    const totalCases = lines.reduce((a, l) => a + (+l.qty || 0), 0);
+
+    const txt = (s, x, y, o) => doc.text(String(s), x, y, o);
+
+    function firstHeader() {
+      let y = 12;
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(17); doc.setTextColor(0);
+      txt('COMMANDE METRO', ML, y + 4);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(90);
+      txt(stamp, PW - MR, y + 4, { align: 'right' });
+      y += 9.5;
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(10); doc.setTextColor(0);
+      txt('Marché Décarie', ML, y);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); doc.setTextColor(90);
+      txt('3824 boul. Décarie, Montréal (Québec) H4A 3J7', ML + 30, y);
+      y += 5;
+      const bits = [];
+      if (meta && meta.cust) bits.push(`Client Metro : ${meta.cust}`);
+      if (order.po) bits.push(`PO / Réf. : ${order.po}`);
+      if (bits.length) { doc.setFontSize(9.5); doc.setTextColor(0); txt(bits.join('      '), ML, y); y += 5; }
+      if (order.note) {
+        doc.setFontSize(8.5); doc.setTextColor(60);
+        doc.splitTextToSize(`Note : ${order.note}`, CW).slice(0, 4).forEach(t => { txt(t, ML, y); y += 4; });
+        y += 0.5;
+      }
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(0);
+      txt(`${lines.length} article${lines.length === 1 ? '' : 's'}  ·  ${totalCases} caisse${totalCases === 1 ? '' : 's'}  ·  ${groups.length} fournisseur${groups.length === 1 ? '' : 's'}`, ML, y);
+      y += 2.5;
+      doc.setDrawColor(0); doc.setLineWidth(0.4); doc.line(ML, y, PW - MR, y);
+      return y + 3;
+    }
+    function contHeader() {
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(0);
+      txt('COMMANDE METRO', ML, 10);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(90);
+      txt(`Marché Décarie${order.po ? '  ·  PO ' + order.po : ''}  ·  ${stamp}`, PW - MR, 10, { align: 'right' });
+      doc.setDrawColor(150); doc.setLineWidth(0.2); doc.line(ML, 12, PW - MR, 12);
+      return 15;
+    }
+    function vendorBand(g, y, cont) {
+      doc.setFillColor(228, 228, 228); doc.rect(ML, y, CW, VH, 'F');
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(0);
+      txt(`FOURNISSEUR : ${g.vn}${cont ? '  (suite)' : ''}`, ML + 2, y + 4.4);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(80);
+      if (g.vid) txt(`# ${g.vid.replace(/^0+/, '')}`, PW - MR - 2, y + 4.4, { align: 'right' });
+      return y + VH + 1;
+    }
+
+    function drawRow(l, y) {
+      // -- Code produit + its barcode
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(5.5); doc.setTextColor(120);
+      txt('CODE PRODUIT', ML, y + 2.8);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(12.5); doc.setTextColor(0);
+      txt(l.c, ML, y + 7.8);
+      drawBinaryBars(doc, metroBinary(l.c, /^\d+$/.test(l.c) && l.c.length % 2 === 0 ? 'CODE128C' : 'CODE128'), ML, y + 9.4, 38, 7);
+
+      // -- Description / format / vendor
+      const dx = 53, dw = 66;
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(8.8); doc.setTextColor(0);
+      doc.splitTextToSize(l.d || '', dw).slice(0, 2).forEach((t, k) => txt(t, dx, y + 4.2 + k * 3.7));
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(7.6); doc.setTextColor(70);
+      txt([l.f, l.p ? `caisse de ${l.p}` : ''].filter(Boolean).join('  ·  '), dx, y + 12.2);
+      doc.setFontSize(6.8); doc.setTextColor(120);
+      txt(doc.splitTextToSize(l.vn || '', dw)[0] || '', dx, y + 15.6);
+
+      // -- UPC barcode (the barcode printed on the package)
+      const bc = metroBarcodeFor(l.u);
+      if (bc) {
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(5.5); doc.setTextColor(120);
+        txt('UPC', 123, y + 2.8);
+        drawBinaryBars(doc, metroBinary(bc.value, bc.format), 123, y + 3.6, 42, 9);
+        doc.setFontSize(7); doc.setTextColor(0);
+        txt(metroDigitsText(bc.value, bc.format), 123 + 21, y + 15.4, { align: 'center' });
+      } else {
+        doc.setFont('helvetica', 'italic'); doc.setFontSize(7.5); doc.setTextColor(150);
+        txt('(pas de UPC)', 123, y + 9);
+      }
+
+      // -- Quantity box
+      const qx = 171, qw = PW - MR - qx;
+      doc.setDrawColor(0); doc.setLineWidth(0.5); doc.roundedRect(qx, y + 1.5, qw, ROW - 4, 1.5, 1.5, 'S');
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(5.5); doc.setTextColor(110);
+      txt('QTÉ  (CAISSES)', qx + qw / 2, y + 5, { align: 'center' });
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(21); doc.setTextColor(0);
+      txt(String(l.qty), qx + qw / 2, y + 13.2, { align: 'center' });
+
+      doc.setDrawColor(215); doc.setLineWidth(0.15); doc.line(ML, y + ROW - 0.6, PW - MR, y + ROW - 0.6);
+    }
+
+    // ---- layout pass
+    let y = firstHeader();
+    const bottom = PH - FOOT;
+    groups.forEach(g => {
+      let cont = false;
+      if (y + VH + ROW > bottom) { doc.addPage(); y = contHeader(); }
+      y = vendorBand(g, y, false);
+      g.items.forEach(l => {
+        if (y + ROW > bottom) { doc.addPage(); y = contHeader(); y = vendorBand(g, y, true); }
+        drawRow(l, y);
+        y += ROW;
+      });
+      y += 2;
+    });
+
+    // ---- footer on every page: page x / n + the catalogue the codes came from
+    const n = doc.getNumberOfPages();
+    for (let p = 1; p <= n; p++) {
+      doc.setPage(p);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(7); doc.setTextColor(120);
+      txt(`Page ${p} / ${n}`, PW - MR, PH - 6, { align: 'right' });
+      if (meta && meta.period) txt(`Catalogue Metro ${meta.period[0]} au ${meta.period[1]}`, ML, PH - 6);
+    }
+    return doc;
+  }
+
+  // ---- METRO PURE END ----
+
+  // ============== METRO ORDER ==============
+  // Metro's order book (a PDF, refreshed about every 4 weeks) is converted to
+  // metro_catalog.json. Any scanned item that appears in it gets a red
+  // "+ METRO ORDER" button; lines collect in a METRO ORDER list (Lists tab) that
+  // exports a PDF Metro can pick from: product code + barcode, UPC barcode,
+  // description, vendor and quantity in cases.
+  const METRO_URL = 'metro_catalog.json';
+  const METRO_ORDER_KEY = 'decarie_metro_order_v1';
+  const METRO_CUST_KEY = 'decarie_metro_cust_v1';
+  let METRO = null, _metroLoading = null, _metroFailAt = 0;
+  const metroNorm = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  // @zxing/library BarcodeFormat enum (verified against the package) -- used to
+  // show what symbology a scanned label is, e.g. to identify Metro's own barcode.
+  const ZX_FORMATS = ['AZTEC', 'CODABAR', 'CODE_39', 'CODE_93', 'CODE_128', 'DATA_MATRIX', 'EAN_8', 'EAN_13', 'ITF',
+    'MAXICODE', 'PDF_417', 'QR_CODE', 'RSS_14', 'RSS_EXPANDED', 'UPC_A', 'UPC_E', 'UPC_EAN_EXTENSION'];
+  function zxFormatName(f) { return (typeof f === 'number' && ZX_FORMATS[f]) || (f != null ? String(f) : ''); }
+
+  function loadMetro() {
+    if (METRO) return Promise.resolve(METRO);
+    if (_metroLoading) return _metroLoading;
+    if (Date.now() - _metroFailAt < 60000) return Promise.resolve(null);   // don't hammer when offline
+    _metroLoading = (async () => {
+      try {
+        const r = await fetch(`${METRO_URL}?v=${new Date().toISOString().slice(0, 10)}`);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const j = await r.json();
+        const byCode = {}, byKey = {};
+        for (const it of j.items) {
+          it._n = metroNorm(it.d);
+          byCode[it.c] = it;
+          const k = metroKeyFromUpc(it.u);
+          if (k) (byKey[k] = byKey[k] || []).push(it);
+        }
+        METRO = { period: j.period, built: j.built, vendors: j.vendors || {}, items: j.items, byCode, byKey };
+        return METRO;
+      } catch (e) {
+        console.warn('Metro catalogue unavailable:', e);
+        _metroFailAt = Date.now();
+        return null;
+      } finally {
+        _metroLoading = null;
+      }
+    })();
+    return _metroLoading;
+  }
+
+  function metroVendorName(id) { return (METRO && METRO.vendors[id]) || id || ''; }
+  function metroItemsForProduct(code) { return METRO ? (METRO.byKey[String(code).padStart(13, '0')] || []) : []; }
+  function metroFindScan(raw) {
+    if (!METRO) return [];
+    for (const k of metroKeysForScan(raw)) { const hit = METRO.byKey[k]; if (hit && hit.length) return hit; }
+    // their own product code scanned / typed directly
+    const d = String(raw || '').replace(/\D/g, '');
+    return (/^\d{8}$/.test(d) && METRO.byCode[d]) ? [METRO.byCode[d]] : [];
+  }
+  function metroSearch(q) {
+    if (!METRO) return [];
+    const raw = String(q || '').trim();
+    if (raw.length < 2) return [];
+    const out = [];
+    const digits = raw.replace(/\D/g, '');
+    if (digits.length >= 4 && digits.length === raw.replace(/\s/g, '').length) {
+      for (const it of METRO.items) {
+        if (it.c.startsWith(digits) || (it.u && it.u.includes(digits))) { out.push(it); if (out.length >= 25) break; }
+      }
+      return out;
+    }
+    const toks = metroNorm(raw).split(/\s+/).filter(Boolean);
+    for (const it of METRO.items) {
+      if (toks.every(t => it._n.includes(t))) { out.push(it); if (out.length >= 25) break; }
+    }
+    return out;
+  }
+  function metroParseDMY(s) {
+    const m = /^(\d{2})-(\d{2})-(\d{4})$/.exec(s || '');
+    return m ? new Date(+m[3], +m[2] - 1, +m[1]) : null;
+  }
+  const metroMoney = (n) => (n == null ? '—' : '$' + Number(n).toFixed(2));
+
+  // ---- order storage (this device, like the other lists) ----
+  function getMetroOrder() {
+    try {
+      const o = JSON.parse(localStorage.getItem(METRO_ORDER_KEY) || 'null');
+      if (o && Array.isArray(o.lines)) return o;
+    } catch (e) {}
+    return { lines: [], po: '', note: '' };
+  }
+  function saveMetroOrder(o) { localStorage.setItem(METRO_ORDER_KEY, JSON.stringify(o)); }
+  function metroMeta() { return { cust: localStorage.getItem(METRO_CUST_KEY) || '', period: METRO && METRO.period }; }
+  function metroQtyFor(items) {
+    const o = getMetroOrder();
+    return items.reduce((a, it) => { const l = o.lines.find(x => x.c === it.c); return a + (l ? (+l.qty || 0) : 0); }, 0);
+  }
+  function metroSetLine(it, offer, qty) {
+    const o = getMetroOrder();
+    const i = o.lines.findIndex(l => l.c === it.c);
+    // snapshot the details: if next period's book drops this code, the order still prints correctly
+    const line = {
+      c: it.c, d: it.d, f: it.f, p: it.p, u: it.u,
+      vid: offer ? offer[0] : '', vn: offer ? metroVendorName(offer[0]) : '', cost: offer ? offer[1] : null,
+      qty, at: i >= 0 ? o.lines[i].at : Date.now(),
+    };
+    if (i >= 0) o.lines[i] = line; else o.lines.push(line);
+    saveMetroOrder(o);
+  }
+  function metroRemoveLine(code) {
+    const o = getMetroOrder();
+    o.lines = o.lines.filter(l => l.c !== code);
+    saveMetroOrder(o);
+  }
+
+  // ---- red button on the product card ----
+  function refreshMetroBtn(code) {
+    const row = $('#par-metro-row'), btn = $('#metro-add-btn');
+    if (!row || !btn) return;
+    if (!METRO) {
+      row.style.display = 'none';
+      loadMetro().then(m => { if (m && currentProductCode === code) refreshMetroBtn(code); });
+      return;
+    }
+    const items = metroItemsForProduct(code);
+    if (!items.length) { row.style.display = 'none'; return; }
+    row.style.display = '';
+    const q = metroQtyFor(items);
+    btn.textContent = q ? `METRO ORDER · ${q} CASE${q === 1 ? '' : 'S'}` : '+ METRO ORDER';
+    btn.classList.toggle('in-order', q > 0);
+  }
+
+  // ---- add / edit sheet ----
+  let _mm = null;   // { items, ci, oi, qty, inOrder, posCode }
+  function openMetroAdd(items, ctx) {
+    if (!items || !items.length) return;
+    const o = getMetroOrder();
+    let ci = items.findIndex(it => o.lines.some(l => l.c === it.c));
+    if (ci < 0) ci = 0;
+    _mm = { items, ci, oi: 0, qty: 1, inOrder: false, posCode: (ctx && ctx.posCode) || null };
+    metroSyncFromOrder();
+    renderMetroAdd();
+    $('#metro-modal').classList.add('open');
+  }
+  function closeMetroAdd() { $('#metro-modal').classList.remove('open'); _mm = null; }
+  function metroSyncFromOrder() {
+    const it = _mm.items[_mm.ci], l = getMetroOrder().lines.find(x => x.c === it.c);
+    if (l) {
+      _mm.qty = Math.max(1, +l.qty || 1);
+      const oi = (it.o || []).findIndex(of => of[0] === l.vid);
+      _mm.oi = oi >= 0 ? oi : 0;
+      _mm.inOrder = true;
+    } else { _mm.qty = 1; _mm.oi = 0; _mm.inOrder = false; }
+  }
+  function renderMetroAdd() {
+    const m = _mm, it = m.items[m.ci], offers = it.o || [];
+    const bc = metroBarcodeFor(it.u);
+    const per = metroUnitsPerCase(it.p);
+    const posP = m.posCode ? DATA.products[m.posCode] : null;
+    const fmt = [it.f, it.p ? 'case of ' + it.p : ''].filter(Boolean).join(' · ');
+    let h = '<div class="mm-wrap">';
+    h += `<div class="mm-desc">${escapeHtml(it.d)}</div>`;
+    h += `<div class="mm-sub">${escapeHtml(fmt)}</div>`;
+    h += `<div class="mm-sub">Metro code <b>${escapeHtml(it.c)}</b>${bc ? ' · UPC <b>' + escapeHtml(metroDigitsText(bc.value, bc.format)) + '</b>' : ' · no UPC listed'}</div>`;
+    if (posP) {
+      h += `<div class="mm-sub">Your price: <b>${posP[1] != null ? fmtMoney(posP[1]) : '—'}</b>` +
+        (it.r != null ? ` · Metro suggested retail: <b>${typeof it.r === 'number' ? metroMoney(it.r) : escapeHtml(String(it.r))}</b>` : '') + '</div>';
+    }
+    if (m.items.length > 1) {
+      h += `<div class="mm-label">THIS BARCODE HAS ${m.items.length} METRO CODES — PICK ONE</div>`;
+      m.items.forEach((c, i) => {
+        const costs = (c.o || []).map(o => o[1]).filter(x => x != null);
+        const lo = costs.length ? Math.min(...costs) : null;
+        h += `<div class="mm-opt ${i === m.ci ? 'sel' : ''}" data-mm-cand="${i}"><div class="mm-radio"></div>` +
+          `<div class="mm-main">${escapeHtml(c.d)}<small>code ${escapeHtml(c.c)} · ${escapeHtml([c.f, c.p ? 'case of ' + c.p : ''].filter(Boolean).join(' · '))}</small></div>` +
+          `<div class="mm-price">${lo != null ? metroMoney(lo) : ''}</div></div>`;
+      });
+    }
+    h += `<div class="mm-label">VENDOR${offers.length > 1 ? ' — CHEAPEST FIRST' : ''}</div>`;
+    offers.forEach((o, i) => {
+      const each = (per && per > 1 && o[1] != null) ? `${metroMoney(o[1] / per)} each` : '';
+      h += `<div class="mm-opt ${i === m.oi ? 'sel' : ''}" data-mm-off="${i}"><div class="mm-radio"></div>` +
+        `<div class="mm-main">${escapeHtml(metroVendorName(o[0]))}<small># ${escapeHtml(String(o[0] || '').replace(/^0+/, ''))}</small></div>` +
+        `<div class="mm-price">${o[1] != null ? metroMoney(o[1]) + ' /case' : '—'}<small>${each}</small></div></div>`;
+    });
+    if (!offers.length) h += '<div class="mm-sub">No vendor listed for this code.</div>';
+    h += '<div class="mm-label">CASES</div>';
+    h += `<div class="mm-qty"><button class="btn" data-mm-q="-1">−</button>` +
+      `<input id="mm-qty-input" type="number" inputmode="numeric" min="1" value="${m.qty}">` +
+      `<button class="btn" data-mm-q="1">+</button></div>`;
+    h += '<div class="mm-sub" id="mm-cost" style="text-align:center;"></div>';
+    h += `<button class="btn mm-go" id="mm-go">${m.inOrder ? 'UPDATE METRO ORDER' : 'ADD TO METRO ORDER'}</button>`;
+    if (m.inOrder) h += '<button class="btn danger" id="mm-remove" style="width:100%;margin-top:8px;">REMOVE FROM ORDER</button>';
+    h += '</div>';
+    $('#metro-modal-content').innerHTML = h;
+    updateMmCost();
+  }
+  function updateMmCost() {
+    const el = $('#mm-cost'); if (!el || !_mm) return;
+    const off = (_mm.items[_mm.ci].o || [])[_mm.oi];
+    el.textContent = (off && off[1] != null) ? `≈ ${metroMoney(off[1] * _mm.qty)} for ${_mm.qty} case${_mm.qty === 1 ? '' : 's'}` : '';
+  }
+  function metroAfterChange() {
+    if (currentProductCode) refreshMetroBtn(currentProductCode);
+    const lv = $('#lists-view');
+    if (lv && lv.classList.contains('active')) renderLists();
+    if (currentListId === '__metro__' && $('#list-detail-modal').classList.contains('open')) renderMetroDetail();
+  }
+  function bindMetroSheet() {
+    const root = $('#metro-modal-content');
+    root.addEventListener('click', (e) => {
+      if (!_mm) return;
+      const t = e.target.closest('[data-mm-cand],[data-mm-off],[data-mm-q],#mm-go,#mm-remove');
+      if (!t) return;
+      if (t.dataset.mmCand != null) { _mm.ci = +t.dataset.mmCand; metroSyncFromOrder(); renderMetroAdd(); }
+      else if (t.dataset.mmOff != null) { _mm.oi = +t.dataset.mmOff; renderMetroAdd(); }
+      else if (t.dataset.mmQ != null) {
+        _mm.qty = Math.max(1, Math.floor((+_mm.qty || 1) + (+t.dataset.mmQ)));
+        $('#mm-qty-input').value = _mm.qty; updateMmCost();
+      } else if (t.id === 'mm-go') {
+        const it = _mm.items[_mm.ci], off = (it.o || [])[_mm.oi] || null;
+        const q = Math.max(1, Math.floor(+_mm.qty || 1));
+        metroSetLine(it, off, q);
+        showToast(`METRO ORDER · ${q} × ${it.d.slice(0, 26)}`);
+        closeMetroAdd(); metroAfterChange();
+      } else if (t.id === 'mm-remove') {
+        metroRemoveLine(_mm.items[_mm.ci].c);
+        showToast('REMOVED FROM METRO ORDER');
+        closeMetroAdd(); metroAfterChange();
+      }
+    });
+    root.addEventListener('input', (e) => {
+      if (e.target.id === 'mm-qty-input' && _mm) { _mm.qty = Math.max(1, Math.floor(+e.target.value || 1)); updateMmCost(); }
+    });
+  }
+
+  // ---- scan that is not in the POS: maybe Metro lists it (an item you could start carrying) ----
+  function scanNotInPos(decoded, fmt) {
+    const tail = fmt != null && zxFormatName(fmt) ? ` [${zxFormatName(fmt)}]` : '';
+    const fail = () => { if (navigator.vibrate) navigator.vibrate([30, 50, 30]); showToast(`NOT FOUND: ${decoded}${tail}`, true); };
+    const go = (hit) => { if (navigator.vibrate) navigator.vibrate(50); openMetroAdd(hit, { scanned: decoded }); };
+    if (METRO) { const h = metroFindScan(decoded); return h.length ? go(h) : fail(); }
+    loadMetro().then(m => { const h = m ? metroFindScan(decoded) : []; h.length ? go(h) : fail(); });
+  }
+
+  // ---- METRO ORDER list (Lists tab -> detail) ----
+  function renderMetroDetail() {
+    $('#list-detail-label').textContent = 'METRO ORDER';
+    const c = $('#list-detail-content');
+    const o = getMetroOrder(), meta = metroMeta();
+    let banner = '';
+    if (METRO && METRO.period) {
+      const end = metroParseDMY(METRO.period[1]);
+      const ended = end && Date.now() > end.getTime() + 86400000;
+      banner = `<div class="mo-banner ${ended ? 'warn' : ''}">Metro catalogue ${escapeHtml(METRO.period[0])} → ${escapeHtml(METRO.period[1])}` +
+        (ended ? ' — <b>this period has ended</b>. Prices and codes may have changed: load the new Metro order book.' : '') + '</div>';
+    } else if (!METRO) {
+      banner = '<div class="mo-banner warn">Metro catalogue not loaded yet (offline?). You can still review and print this order.</div>';
+      loadMetro().then(m => { if (m && currentListId === '__metro__' && $('#list-detail-modal').classList.contains('open')) renderMetroDetail(); });
+    }
+    c.innerHTML = `${banner}
+      <div class="mo-fields">
+        <input id="mo-cust" type="text" placeholder="Your Metro customer # (printed on the PDF)" value="${escapeHtml(meta.cust)}" autocomplete="off">
+        <input id="mo-po" type="text" placeholder="PO / reference (optional)" value="${escapeHtml(o.po || '')}" autocomplete="off">
+        <textarea id="mo-note" rows="2" placeholder="Note to Metro (optional)">${escapeHtml(o.note || '')}</textarea>
+      </div>
+      <div class="mo-searchbox">
+        <input id="mo-search" type="text" placeholder="＋ Add by name, UPC or Metro code…" autocomplete="off">
+        <div id="mo-results"></div>
+      </div>
+      <div id="mo-lines"></div>`;
+    $('#mo-cust').addEventListener('input', (e) => localStorage.setItem(METRO_CUST_KEY, e.target.value.trim()));
+    $('#mo-po').addEventListener('input', (e) => { const x = getMetroOrder(); x.po = e.target.value; saveMetroOrder(x); });
+    $('#mo-note').addEventListener('input', (e) => { const x = getMetroOrder(); x.note = e.target.value; saveMetroOrder(x); });
+    $('#mo-search').addEventListener('input', (e) => {
+      const hits = metroSearch(e.target.value);
+      $('#mo-results').innerHTML = hits.map(it => {
+        const lo = (it.o || []).map(x => x[1]).filter(x => x != null);
+        return `<div class="mo-hit" data-hit="${escapeHtml(it.c)}"><div class="mo-main"><div class="mo-name">${escapeHtml(it.d)}</div>` +
+          `<div class="mo-meta">${escapeHtml(it.c)} · ${escapeHtml([it.f, it.p ? 'case of ' + it.p : ''].filter(Boolean).join(' · '))}${lo.length ? ' · ' + metroMoney(Math.min(...lo)) : ''}</div></div>` +
+          `<div class="mo-plus">＋</div></div>`;
+      }).join('') || (e.target.value.trim().length >= 2 ? '<div class="mo-meta" style="padding:8px 2px;">No match in the Metro catalogue.</div>' : '');
+    });
+    $('#mo-results').addEventListener('click', (e) => {
+      const t = e.target.closest('[data-hit]'); if (!t || !METRO) return;
+      const it = METRO.byCode[t.dataset.hit];
+      if (it) openMetroAdd([it], {});
+    });
+    $('#mo-lines').addEventListener('click', metroLinesClick);
+    renderMetroLines();
+  }
+
+  function renderMetroLines() {
+    const box = $('#mo-lines'); if (!box) return;
+    const o = getMetroOrder();
+    if (!o.lines.length) { box.innerHTML = '<div class="empty-state">NO ITEMS YET<br><br>SCAN A METRO ITEM AND TAP THE RED + METRO ORDER BUTTON,<br>OR SEARCH ABOVE</div>'; return; }
+    const groups = {}, order = [];
+    o.lines.slice().sort((a, b) => (a.d || '').localeCompare(b.d || '')).forEach(l => {
+      const k = l.vid || '';
+      if (!groups[k]) { groups[k] = { vn: l.vn || 'Vendor not specified', items: [] }; order.push(k); }
+      groups[k].items.push(l);
+    });
+    order.sort((a, b) => groups[a].vn.localeCompare(groups[b].vn));
+    let cases = 0, est = 0, estAll = true;
+    o.lines.forEach(l => { cases += (+l.qty || 0); if (l.cost == null) estAll = false; else est += l.cost * (+l.qty || 0); });
+    let h = '';
+    order.forEach(k => {
+      const g = groups[k];
+      h += `<div class="mo-vendor"><span>${escapeHtml(g.vn)}</span><span>${g.items.length}</span></div>`;
+      g.items.forEach(l => {
+        const it = METRO && METRO.byCode[l.c];
+        const multi = it && (it.o || []).length > 1;
+        h += `<div class="mo-line" data-c="${escapeHtml(l.c)}"><div class="mo-main">` +
+          `<div class="mo-name">${escapeHtml(l.d)}</div>` +
+          `<div class="mo-meta">${escapeHtml(l.c)} · ${escapeHtml([l.f, l.p ? 'case of ' + l.p : ''].filter(Boolean).join(' · '))}${l.cost != null ? ' · ' + metroMoney(l.cost) : ''}` +
+          `${multi ? ' · <span class="mo-link" data-mo="vendor">CHANGE VENDOR ↻</span>' : ''}</div></div>` +
+          `<div class="mo-qty"><button data-mo="dec">−</button><span data-mo="edit">${+l.qty || 0}</span><button data-mo="inc">+</button></div>` +
+          `<button class="btn small danger" data-mo="del">✕</button></div>`;
+      });
+    });
+    h += `<div class="mo-sum">${o.lines.length} line${o.lines.length === 1 ? '' : 's'} · ${cases} case${cases === 1 ? '' : 's'}` +
+      `${est ? ' · ≈ ' + metroMoney(est) + (estAll ? '' : '+') : ''}</div>`;
+    h += '<div class="mo-actions"><button class="btn mm-go" id="mo-pdf">📄 SAVE PDF</button><button class="btn" id="mo-share">📤 SHARE</button></div>';
+    h += '<button class="btn danger" id="mo-clear" style="width:100%;margin-top:10px;">CLEAR ORDER</button>';
+    box.innerHTML = h;
+  }
+
+  function metroLinesClick(e) {
+    const t = e.target.closest('[data-mo],#mo-pdf,#mo-share,#mo-clear');
+    if (!t) return;
+    if (t.id === 'mo-pdf') return metroSavePdf();
+    if (t.id === 'mo-share') return metroSharePdf();
+    if (t.id === 'mo-clear') {
+      if (confirm('Clear the whole Metro order?')) {
+        const x = getMetroOrder(); x.lines = []; x.po = ''; x.note = ''; saveMetroOrder(x);
+        renderMetroDetail(); metroAfterChange();
+      }
+      return;
+    }
+    const row = t.closest('.mo-line'); if (!row) return;
+    const code = row.dataset.c, o = getMetroOrder(), l = o.lines.find(x => x.c === code);
+    if (!l) return;
+    const act = t.dataset.mo;
+    if (act === 'inc') l.qty = (+l.qty || 0) + 1;
+    else if (act === 'dec') l.qty = Math.max(1, (+l.qty || 1) - 1);
+    else if (act === 'edit') {
+      const v = prompt('Cases?', String(l.qty));
+      if (v === null) return;
+      const n = Math.floor(+v);
+      if (!(n >= 1)) return;
+      l.qty = n;
+    } else if (act === 'del') o.lines = o.lines.filter(x => x.c !== code);
+    else if (act === 'vendor') {
+      const it = METRO && METRO.byCode[code];
+      if (it && (it.o || []).length > 1) {
+        const cur = it.o.findIndex(of => of[0] === l.vid);
+        const nx = it.o[(cur + 1) % it.o.length];
+        l.vid = nx[0]; l.vn = metroVendorName(nx[0]); l.cost = nx[1];
+      }
+    }
+    saveMetroOrder(o);
+    renderMetroLines(); metroAfterChange();
+  }
+
+  // ---- PDF out ----
+  function metroFilename() { return `commande_metro_${new Date().toISOString().slice(0, 10)}.pdf`; }
+  function metroBuildPdfNow() {
+    const o = getMetroOrder();
+    if (!o.lines.length) { showToast('ORDER IS EMPTY', true); return null; }
+    if (!window.jspdf || !window.jspdf.jsPDF) { showToast('PDF LIBRARY NOT LOADED', true); return null; }
+    try { return buildMetroPdf(o, metroMeta()); }
+    catch (e) { console.error(e); showToast('PDF FAILED: ' + e.message, true); return null; }
+  }
+  function metroSavePdf() {
+    const doc = metroBuildPdfNow(); if (!doc) return;
+    try { doc.save(metroFilename()); showToast('METRO PDF SAVED'); }
+    catch (e) {
+      try {
+        const url = URL.createObjectURL(doc.output('blob'));
+        const a = document.createElement('a'); a.href = url; a.download = metroFilename();
+        document.body.appendChild(a); a.click();
+        setTimeout(() => { a.remove(); URL.revokeObjectURL(url); }, 1000);
+        showToast('METRO PDF SAVED');
+      } catch (e2) { showToast('PDF SAVE FAILED', true); }
+    }
+  }
+  async function metroSharePdf() {
+    const doc = metroBuildPdfNow(); if (!doc) return;
+    try {
+      const file = new File([doc.output('blob')], metroFilename(), { type: 'application/pdf' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: 'Commande Metro', text: 'Commande Metro — Marché Décarie' });
+        return;
+      }
+    } catch (e) {
+      if (e && e.name === 'AbortError') return;   // user closed the share sheet
+    }
+    metroSavePdf();   // browser can't share files: fall back to saving
+  }
+
   // ============== INIT ==============
   async function init() {
     const ok = await loadData();
@@ -8519,11 +9204,19 @@
         openProduct(p.code, v);
         $('#manual-input').value = '';
       } else {
-        showToast('NOT FOUND: ' + v, true);
+        scanNotInPos(v, null);
       }
     });
 
     $('#close-modal').addEventListener('click', closeProduct);
+    // Metro order
+    $('#metro-add-btn').addEventListener('click', () => {
+      const items = metroItemsForProduct(currentProductCode);
+      if (items.length) openMetroAdd(items, { posCode: currentProductCode });
+    });
+    $('#close-metro-modal').addEventListener('click', closeMetroAdd);
+    bindMetroSheet();
+    setTimeout(loadMetro, 1200);   // warm the catalogue so the red button appears instantly
     $('#product-modal').addEventListener('click', (e) => {
       if (e.target === e.currentTarget) closeProduct();
     });
@@ -8677,7 +9370,7 @@
       const OVERLAYS = ['audit-confirm-modal','ecom-add-modal','count-session-detail-modal',
                         'product-modal','pos-edit-modal','pos-pin-modal','pos-direct-modal',
                         'list-detail-modal','merge-picker-modal','add-to-list-modal',
-                        'labels-overlay','reports-overlay','candy-modal','photo-lightbox'];
+                        'labels-overlay','reports-overlay','candy-modal','photo-lightbox','metro-modal'];
       const openOrder = [];   // ids in the order they were opened (topmost last)
 
       // watch .open on every overlay so we do not have to touch each call site
