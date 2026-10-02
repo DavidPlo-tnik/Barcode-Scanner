@@ -1,29 +1,5 @@
 {
  "items": {
-  "0021013700000": {
-   "pt": "KHINKALI AU BOEUF ET PORC",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 61,
-   "un": "GR",
-   "sn": null,
-   "nm": "KHINKALI AU BOEUF ET PORC",
-   "rp": 9.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 9.99,
-   "mp": null,
-   "cost": 0.01,
-   "at": "2026-09-30 16:31:09"
-  },
   "0484000802090": {
    "pt": "FRANZELUTA KIEV GATEAU",
    "tf": 0,
@@ -479,7 +455,31 @@
    "mp": null,
    "cost": 1.2,
    "at": "2026-10-01 22:25:48"
+  },
+  "0482000423907": {
+   "pt": "VOLOCHKOVE POLE FROMAGE 5% 330G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "G",
+   "sn": 330.0,
+   "nm": "VOLOCHKOVE POLE FROMAGE 5%",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 40.0,
+   "at": "2026-10-02 09:45:58"
   }
  },
- "updated": "2026-10-01 22:25:48"
+ "updated": "2026-10-02 09:45:58"
 }
