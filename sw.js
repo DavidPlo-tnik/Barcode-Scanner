@@ -1,4 +1,4 @@
-const CACHE = 'decarie-v135';
+const CACHE = 'decarie-v136';
 const ASSETS = [
   './manifest.webmanifest',
   './icon-192.png',
@@ -47,7 +47,7 @@ self.addEventListener('fetch', (e) => {
   }
 
   // data.json / live.json: network-first, cache as fallback for offline.
-  if (url.pathname.endsWith('data.json') || url.pathname.endsWith('live.json') || url.pathname.endsWith('metro_catalog.json')) {
+  if (url.pathname.endsWith('data.json') || url.pathname.endsWith('live.json')) {
     e.respondWith(
       fetch(e.request).then((res) => {
         if (res && res.status === 200) {
