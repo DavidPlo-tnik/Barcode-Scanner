@@ -358,6 +358,7 @@
   .mm-qty .btn { width: 54px; height: 54px; font-size: 26px; padding: 0; }
   .mm-qty input { width: 90px; height: 54px; text-align: center; font-size: 26px; font-weight: 700; background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; }
   .btn.mm-go { width: 100%; margin-top: 16px; padding: 15px; font-size: 15px; background: var(--bad); color: #0a0a0a; border-color: var(--bad); font-weight: 700; }
+  .par-metro-note { font-family: var(--font-display); font-size: 10px; letter-spacing: .04em; line-height: 1.5; color: var(--text-faint); padding: 2px 2px 0; }
   .mo-actions { display: flex; gap: 8px; margin-top: 16px; }
   .mo-actions .btn { flex: 1; margin-top: 0; }
   .list-card.metro-card { border-left: 3px solid var(--bad); }
@@ -2157,6 +2158,7 @@
     <div class="par-row" id="par-metro-row" style="display:none;">
       <button class="btn small" id="metro-add-btn">+ METRO ORDER</button>
     </div>
+    <div class="par-metro-note" id="par-metro-note" style="display:none;"></div>
   </div>
   <div class="modal-content" id="modal-content"></div>
 </div>
@@ -2423,7 +2425,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v134</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v135</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -8900,18 +8902,40 @@
   }
 
   // ---- red button on the product card ----
+  // Metro's dropship book also lists vendors you buy from DIRECTLY (breweries,
+  // Frito-Lay...). Your POS already knows which items Metro really supplies (the
+  // Metro price-lock flag, lk=1 in edit.json), so the button only shows for items
+  // that are in the book AND Metro-owned. When it is hidden, a one-line note says
+  // why, with an override for the odd item you do order through Metro.
+  const _metroShowAnyway = new Set();
+  function metroOwned(code) {
+    const e = _editData && _editData.items && _editData.items[code];
+    return !!(e && e.lk === 1);
+  }
   function refreshMetroBtn(code) {
-    const row = $('#par-metro-row'), btn = $('#metro-add-btn');
-    if (!row || !btn) return;
-    if (!METRO) {
-      row.style.display = 'none';
-      loadMetro().then(m => { if (m && currentProductCode === code) refreshMetroBtn(code); });
+    const row = $('#par-metro-row'), btn = $('#metro-add-btn'), note = $('#par-metro-note');
+    if (!row || !btn || !note) return;
+    const say = (html) => { row.style.display = 'none'; note.style.display = html ? '' : 'none'; note.innerHTML = html || ''; };
+    if (!METRO || !_editData) {
+      say('');
+      Promise.all([loadMetro(), fetchEditData()]).then(([m]) => { if (m && currentProductCode === code) refreshMetroBtn(code); });
       return;
     }
+    const period = METRO.period ? `${METRO.period[0]} → ${METRO.period[1]}` : '';
     const items = metroItemsForProduct(code);
-    if (!items.length) { row.style.display = 'none'; return; }
-    row.style.display = '';
+    if (!items.length) {
+      say(metroOwned(code) ? `METRO · not in the loaded order book${period ? ' (' + period + ')' : ''}` : '');
+      return;
+    }
     const q = metroQtyFor(items);
+    if (!(metroOwned(code) || _metroShowAnyway.has(code) || q > 0)) {
+      say(`METRO · listed in the dropship book, but your POS does not mark this as a Metro item. <span class="mo-link" id="metro-showany">SHOW ORDER BUTTON</span>`);
+      const l = $('#metro-showany');
+      if (l) l.addEventListener('click', () => { _metroShowAnyway.add(code); refreshMetroBtn(code); });
+      return;
+    }
+    note.style.display = 'none'; note.innerHTML = '';
+    row.style.display = '';
     btn.textContent = q ? `METRO ORDER · ${q} CASE${q === 1 ? '' : 'S'}` : '+ METRO ORDER';
     btn.classList.toggle('in-order', q > 0);
   }
@@ -8949,6 +8973,7 @@
     h += `<div class="mm-sub">${escapeHtml(fmt)}</div>`;
     h += `<div class="mm-sub">Metro code <b>${escapeHtml(it.c)}</b>${bc ? ' · UPC <b>' + escapeHtml(metroDigitsText(bc.value, bc.format)) + '</b>' : ' · no UPC listed'}</div>`;
     if (posP) {
+      h += `<div class="mm-sub">Your item: <b>${escapeHtml(posP[0] || '')}</b></div>`;
       h += `<div class="mm-sub">Your price: <b>${posP[1] != null ? fmtMoney(posP[1]) : '—'}</b>` +
         (it.r != null ? ` · Metro suggested retail: <b>${typeof it.r === 'number' ? metroMoney(it.r) : escapeHtml(String(it.r))}</b>` : '') + '</div>';
     }
