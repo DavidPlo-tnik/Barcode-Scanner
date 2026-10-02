@@ -431,7 +431,31 @@
    "mp": null,
    "cost": 1.4,
    "at": "2026-10-01 22:20:32"
+  },
+  "0761303635214": {
+   "pt": "TORCHIN ADZGHIKA  180G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 180.0,
+   "nm": "TORCHIN ADZGHIKA",
+   "rp": 3.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.49,
+   "mp": null,
+   "cost": 69.3,
+   "at": "2026-10-01 22:22:38"
   }
  },
- "updated": "2026-10-01 22:20:32"
+ "updated": "2026-10-01 22:22:38"
 }
