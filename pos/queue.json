@@ -29,6 +29,16 @@
    "deposit": 15,
    "queued_at": "2026-10-02T16:52:25.997Z",
    "id": "c1790959945997"
+  },
+  {
+   "code": "0062798781203",
+   "title": "SODA INDIGO ROSE CLIP",
+   "pos_title": "SODA INDIGO ROSE CLIP",
+   "size_num": 410,
+   "size_unit": "GR",
+   "deposit": 15,
+   "queued_at": "2026-10-02T16:52:32.352Z",
+   "id": "c1790959952352"
   }
  ]
 }
