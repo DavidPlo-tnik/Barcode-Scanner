@@ -2368,7 +2368,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v137</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v138</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7127,7 +7127,11 @@
     container.querySelectorAll('.ecom-dept-head, .ecom-sub-head').forEach(h =>
       h.addEventListener('click', () => {
         const g = h.dataset.dept;
-        _ecomCollapsed[g] = !_ecomCollapsed[g];
+        // Same rule as the render above: a section nobody has touched counts as
+        // CLOSED (state !== false). Flipping the raw value (undefined -> true)
+        // "closed it again", so the first tap did nothing visible and it took
+        // two taps to open.
+        _ecomCollapsed[g] = (_ecomCollapsed[g] === false);
         const body = container.querySelector(`[data-dept-body="${CSS.escape(g)}"]`);
         const caret = h.querySelector('.ecom-dept-caret');
         if (body) body.classList.toggle('collapsed', _ecomCollapsed[g]);
