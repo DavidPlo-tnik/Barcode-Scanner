@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-02T16:56:46.301Z",
+ "updated": "2026-10-02T16:56:54.291Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -4722,23 +4722,6 @@
    "weekly": 54.11,
    "scale": false,
    "fresh": true,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482023781228": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-semki",
-   "dept": "1",
-   "weekly": 53.8,
-   "scale": false,
-   "fresh": false,
    "v": {
     "title": false,
     "size": false,
