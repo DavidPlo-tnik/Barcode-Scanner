@@ -2236,10 +2236,11 @@
 
     <section class="pd-group">
       <div class="pd-group-title">Pricing</div>
+      <div class="pd-note" style="margin:-4px 0 8px;">Type digits only: <b>500</b> = $5.00 &nbsp;·&nbsp; press <b>.</b> for exact amounts (<b>4.99</b>)</div>
       <div class="pd-price-block" id="pd-reg-block">
         <div class="pd-price-label">Regular<span class="pd-margin" id="pd-reg-margin"></span></div>
         <div class="pd-price-inputs">
-          <div class="pd-money"><span>$</span><input id="pd-price" type="number" inputmode="decimal" step="0.01" class="pd-input" placeholder="0.00" /></div>
+          <div class="pd-money"><span>$</span><input id="pd-price" type="text" inputmode="decimal" data-money="1" autocomplete="off" autocapitalize="off" spellcheck="false" class="pd-input" placeholder="0.00" /></div>
           <div class="pd-qty"><input id="pd-price-qty" type="number" inputmode="numeric" class="pd-input" value="1" min="1" /><span>for</span></div>
         </div>
         <div class="pd-note" id="pd-price-each"></div>
@@ -2248,7 +2249,7 @@
       <div class="pd-price-block" id="pd-promo-block">
         <div class="pd-price-label">Promo<span class="pd-margin" id="pd-promo-margin"></span><span class="pd-state-badge" id="pd-promo-badge" style="display:none;"></span></div>
         <div class="pd-price-inputs">
-          <div class="pd-money"><span>$</span><input id="pd-promo-price" type="number" inputmode="decimal" step="0.01" class="pd-input" placeholder="none" /></div>
+          <div class="pd-money"><span>$</span><input id="pd-promo-price" type="text" inputmode="decimal" data-money="1" autocomplete="off" autocapitalize="off" spellcheck="false" class="pd-input" placeholder="none" /></div>
           <div class="pd-qty"><input id="pd-promo-qty" type="number" inputmode="numeric" class="pd-input" value="1" min="1" /><span>for</span></div>
         </div>
         <div class="pd-hint" id="pd-promo-each"></div>
@@ -2269,7 +2270,7 @@
       <label class="pd-toggle"><input type="checkbox" id="pd-tax-prov"><span>Provincial tax (QST)</span></label>
       <div class="pd-money-labeled">
         <label>Bottle deposit</label>
-        <div class="pd-money"><span>$</span><input id="pd-deposit" type="number" inputmode="decimal" step="0.05" class="pd-input" placeholder="0.00" /></div>
+        <div class="pd-money"><span>$</span><input id="pd-deposit" type="text" inputmode="decimal" data-money="1" autocomplete="off" autocapitalize="off" spellcheck="false" class="pd-input" placeholder="0.00" /></div>
       </div>
     </section>
 
@@ -2277,7 +2278,7 @@
       <div class="pd-group-title">Cost &amp; supplier</div>
       <div class="pd-money-labeled">
         <label>Unit cost</label>
-        <div class="pd-money"><span>$</span><input id="pd-cost" type="number" inputmode="decimal" step="0.01" class="pd-input" placeholder="0.00" /></div>
+        <div class="pd-money"><span>$</span><input id="pd-cost" type="text" inputmode="decimal" data-money="1" autocomplete="off" autocapitalize="off" spellcheck="false" class="pd-input" placeholder="0.00" /></div>
       </div>
       <select id="pd-supplier" class="pd-input"><option value="">Supplier — unchanged</option></select>
     </section>
@@ -2367,7 +2368,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v136</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v137</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3871,9 +3872,9 @@
     // fetch) we would otherwise show 3.33 for 1 and silently overwrite a
     // multibuy on save. Prefer real POS state; warn if we have neither.
     if (e.rp != null) {
-      $('#pd-price').value = e.rp;
+      $('#pd-price').value = Number(e.rp).toFixed(2);
     } else {
-      $('#pd-price').value = (p.price != null ? p.price : '');
+      $('#pd-price').value = (p.price != null ? Number(p.price).toFixed(2) : '');
       if (p.price != null) {
         const st = $('#pd-price-each');
         if (st) {
@@ -3888,7 +3889,7 @@
 
     // PROMO (Magas) with dates + active indicator
     // show the promo price for scheduled promos too, not just currently-live ones
-    $('#pd-promo-price').value = (e.pp != null && promoState(e) !== 'none') ? e.pp : '';
+    $('#pd-promo-price').value = (e.pp != null && promoState(e) !== 'none') ? Number(e.pp).toFixed(2) : '';
     $('#pd-promo-qty').value = (e.pq && e.pq > 1) ? e.pq : 1;
     $('#pd-promo-each').textContent = '';
     $('#pd-promo-start').value = e.ps || '';
@@ -4433,6 +4434,97 @@
     }
   }
 
+  // ============== MONEY FIELDS: "old POS" cents entry ==============
+  // Staff have years of muscle memory from the old POS, where typing 500 meant
+  // $5.00. Typing the same here gave $500 (strawberries 3 for $500). So the
+  // editor's money fields now work like that old system:
+  //   * digits fill in from the RIGHT:  5 -> 0.05,  50 -> 0.50,  500 -> 5.00
+  //   * pressing "." switches to normal entry for that value:  4 . 9 9 -> 4.99
+  //   * backspace undoes the last digit; clearing everything leaves it empty
+  //     (empty promo = no promo, so an empty field is never turned into 0.00)
+  // The field always holds a plain decimal string ("5.00"), so everything that
+  // reads it (parseFloat, margin badges, change detection) is unaffected.
+  function attachMoneyInput(el) {
+    if (!el || el._money) return;
+    el._money = true;
+    let lit = false;                       // true while typing a literal "12.5"
+    const MAXD = 7;                        // up to 99,999.99
+    const atm = (digits) => {              // cents digits -> "5.00" ("" when zero)
+      digits = String(digits).replace(/\D/g, '').replace(/^0+/, '');
+      if (!digits) return '';
+      if (digits.length > MAXD) digits = digits.slice(0, MAXD);
+      const p = digits.padStart(3, '0');
+      return p.slice(0, -2) + '.' + p.slice(-2);
+    };
+    const dots = (s) => (s.match(/[.,]/g) || []).length;
+
+    el.addEventListener('focus', () => {
+      lit = false;
+      setTimeout(() => { try { el.select(); } catch (e) {} }, 0);   // typing replaces the old price, like the old POS
+    });
+    el.addEventListener('blur', () => {
+      if (lit && el.value !== '') {                                   // "12." / "12.5" -> "12.00" / "12.50"
+        const n = parseFloat(el.value);
+        if (isFinite(n)) el.value = n.toFixed(2);
+      }
+      lit = false;
+    });
+
+    // capture phase: runs BEFORE the editor's own input listeners (margin badge,
+    // "= $x each" hint...), so they always read the finished value.
+    el.addEventListener('input', (e) => {
+      let raw = el.value.replace(/\$/g, '').replace(/\s/g, '');
+      if (raw === '') { lit = false; el.value = ''; return; }
+      let out;
+      const pasted = e.inputType === 'insertFromPaste' || e.inputType === 'insertFromDrop';
+      const typedDot = (e.data && /[.,]/.test(e.data)) || (!lit && dots(raw) > 1);
+      if (pasted) {                                                   // "$4.99" / "12.5" / "500"
+        const s = raw.replace(/,/g, '.');
+        if (/\./.test(s) && isFinite(parseFloat(s))) { out = parseFloat(s).toFixed(2); lit = false; }
+        else out = atm(s);
+      } else if (typedDot && !lit) {                                  // first "." : digits so far become DOLLARS
+        const dollars = raw.replace(/\D/g, '').replace(/^0+/, '') || '0';
+        out = dollars.slice(0, 5) + '.';
+        lit = true;
+      } else if (lit && /[.,]/.test(raw)) {                           // literal entry: keep what was typed, max 2 decimals
+        const s = raw.replace(/,/g, '.');
+        const i = s.indexOf('.');
+        const whole = s.slice(0, i).replace(/\D/g, '').replace(/^0+(?=\d)/, '').slice(0, 5) || '0';
+        out = whole + '.' + s.slice(i + 1).replace(/\D/g, '').slice(0, 2);
+      } else {                                                        // normal case: digits fill from the right
+        lit = false;
+        out = atm(raw);
+      }
+      el.value = out;
+      try { el.setSelectionRange(out.length, out.length); } catch (err) {}
+    }, true);
+  }
+
+  // Last line of defence against a typo ($500 instead of $5.00): when a new price
+  // is 5x or more away from the current one (and at least $10 on one side),
+  // ask before it goes to the register. Ordinary edits never trigger this.
+  function pdPriceSanity(ch) {
+    const e = _pdCtx.edit || {};
+    const money = (n) => '$' + Number(n).toFixed(2);
+    const oldReg = (e.rp != null && isFinite(+e.rp)) ? (+e.rp) / (e.rq > 1 ? e.rq : 1) : null;
+    const oldPromo = (e.pp != null && isFinite(+e.pp) && promoState(e) !== 'none') ? (+e.pp) / (e.pq > 1 ? e.pq : 1) : null;
+    const odd = (nw, old) => isFinite(nw) && isFinite(old) && nw > 0 && old > 0 &&
+      Math.max(nw, old) >= 10 && (nw / old >= 5 || old / nw >= 5);
+    const out = [];
+    if (ch.price != null && odd(ch.price, oldReg))
+      out.push(`Regular price: ${money(oldReg)} \u2192 ${money(ch.price)}`);
+    if (ch.multibuy) {
+      const each = ch.multibuy.price / ch.multibuy.qty;
+      if (odd(each, oldReg)) out.push(`Regular: ${ch.multibuy.qty} for ${money(ch.multibuy.price)} (${money(each)} each, was ${money(oldReg)} each)`);
+    }
+    if (ch.promo) {
+      const each = ch.promo.price / (ch.promo.qty || 1);
+      const base = oldPromo != null ? oldPromo : oldReg;
+      if (odd(each, base)) out.push(`Promo: ${ch.promo.qty > 1 ? ch.promo.qty + ' for ' + money(ch.promo.price) + ' (' + money(each) + ' each)' : money(each)} (was ${money(base)} each)`);
+    }
+    return out;
+  }
+
   async function pdSave() {
     const ch = pdComputeChanges();
     // Website listing is now the instant +ECOM / \u2715 REMOVE FROM ECOM button
@@ -4453,6 +4545,11 @@
         if (!proceed) return;
       }
     }
+
+    const unusual = pdPriceSanity(ch);
+    if (unusual.length && !confirm(
+      'Please double-check this price:\n\n' + unusual.join('\n') +
+      '\n\nIn these boxes digits fill from the right, so 500 means $5.00.\nApply anyway?')) return;
 
     const btn = $('#pd-save'); btn.disabled = true; btn.textContent = 'Applying…';
     try {
@@ -8552,6 +8649,7 @@
       $('#pd-price-each').textContent = (q > 1 && pr > 0) ? `${q} for $${pr.toFixed(2)} = $${(pr / q).toFixed(2)} each` : '';
       pdCalcMargins();
     };
+    $$('input[data-money]').forEach(attachMoneyInput);
     $('#pd-price').addEventListener('input', priceEach);
     $('#pd-price-qty').addEventListener('input', priceEach);
     $('#pd-cost').addEventListener('input', pdCalcMargins);
