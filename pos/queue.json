@@ -1,3 +1,16 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0066529000118",
+   "pos_title": "FRAISES",
+   "size_num": 454,
+   "size_unit": "",
+   "multibuy": {
+    "qty": 3,
+    "price": 5
+   },
+   "queued_at": "2026-10-02T16:49:19.756Z",
+   "id": "c1790959759756"
+  }
+ ]
 }
