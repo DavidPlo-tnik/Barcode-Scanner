@@ -479,7 +479,31 @@
    "mp": null,
    "cost": 40.0,
    "at": "2026-10-02 09:45:58"
+  },
+  "0482000423908": {
+   "pt": "VOLOCHKOVE POLE FROMAGE 9% 330G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "G",
+   "sn": 330.0,
+   "nm": "VOLOCHKOVE POLE FROMAGE 9%",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 40.0,
+   "at": "2026-10-02 09:47:04"
   }
  },
- "updated": "2026-10-02 09:45:58"
+ "updated": "2026-10-02 09:47:04"
 }
