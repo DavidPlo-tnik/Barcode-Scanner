@@ -1,28 +1,3 @@
 {
- "items": [
-  {
-   "code": "0066529000118",
-   "pos_title": "FRAISES",
-   "size_num": 454,
-   "size_unit": "",
-   "multibuy": {
-    "qty": 3,
-    "price": 5
-   },
-   "queued_at": "2026-10-02T16:49:19.756Z",
-   "id": "c1790959759756"
-  },
-  {
-   "code": "0068492407001",
-   "pos_title": "FRAISE             1un 340G",
-   "size_num": 340,
-   "size_unit": "",
-   "multibuy": {
-    "qty": 3,
-    "price": 500
-   },
-   "queued_at": "2026-10-02T16:50:14.230Z",
-   "id": "c1790959814230"
-  }
- ]
+ "items": []
 }
