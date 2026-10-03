@@ -1,106 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260910205412088745",
-   "applied_at": "2026-09-10T20:54:12",
-   "change": {
-    "code": "0482009781555",
-    "title": "LOVARÉ THÉ CHAMPAGNE SPLASHES 80GR",
-    "pos_title": "LOVARÉ THÉ CHAMPAGNE SPLASHES 80GR",
-    "size_num": 80,
-    "size_unit": "GR",
-    "queued_at": "2026-09-11T00:53:57.884Z",
-    "id": "c1789088037884"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LOVARE THE ",
-     "F1744": "400.0",
-     "F22": "80G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LOVARE THE  80G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "4.2000",
-     "F196": "4.2000",
-     "F1140": "4.2000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260910205618152567",
-   "applied_at": "2026-09-10T20:56:18",
-   "change": {
-    "code": "0482009781554",
-    "title": "LOVARÉ THÉ CLEOPATRA'S NIGHT 80GR",
-    "pos_title": "LOVARÉ THÉ CLEOPATRA'S NIGHT 80GR",
-    "size_num": 80,
-    "size_unit": "GR",
-    "queued_at": "2026-09-11T00:55:54.013Z",
-    "id": "c1789088154013"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LOVARE THE ",
-     "F1744": "400.0",
-     "F22": "80G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LOVARE THE  80G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "4.2000",
-     "F196": "4.2000",
-     "F1140": "4.2000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260910212836174972",
    "applied_at": "2026-09-10T21:28:36",
    "change": {
@@ -24713,6 +24613,106 @@
     },
     "POS_TAB": {
      "F02": "NAIRI  LECHO  720ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "46.2000",
+     "F196": "46.2000",
+     "F1140": "3.8500",
+     "F27": "L-SAP"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261003123708010416",
+   "applied_at": "2026-10-03T12:37:08",
+   "change": {
+    "code": "0485001587088",
+    "title": "NAIRI  LECHO RÂGOUT DE LÉGUMES",
+    "pos_title": "NAIRI  LECHO RÂGOUT DE LÉGUMES",
+    "size_num": 720,
+    "size_unit": "ML",
+    "queued_at": "2026-10-03T16:36:04.078Z",
+    "id": "c1791045364078"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "NAIRI  LECHO ",
+     "F1744": "720.0",
+     "F22": "720 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "NAIRI  LECHO  720ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "46.2000",
+     "F196": "46.2000",
+     "F1140": "3.8500",
+     "F27": "L-SAP"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261003123708072816",
+   "applied_at": "2026-10-03T12:37:08",
+   "change": {
+    "code": "0485001587020",
+    "title": "NAIRI  LÉGUMES RÔTIS",
+    "pos_title": "NAIRI  LÉGUMES RÔTIS",
+    "size_num": 720,
+    "size_unit": "ML",
+    "queued_at": "2026-10-03T16:37:05.665Z",
+    "id": "c1791045425665"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "NAIRI  LEGUMES ROTIS",
+     "F1744": "720.0",
+     "F22": "720ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "NAIRI  LEGUMES ROTIS 720ML",
      "F04": "1",
      "F81": "0",
      "F96": "0",
