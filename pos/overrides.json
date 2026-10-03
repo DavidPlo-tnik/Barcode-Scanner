@@ -261,7 +261,31 @@
    "mp": null,
    "cost": 39.0,
    "at": "2026-10-03 12:25:06"
+  },
+  "0485001587159": {
+   "pt": "NAIRI  ADJIKA PIQUANT 350ML",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 350.0,
+   "nm": "NAIRI  ADJIKA PIQUANT",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 39.0,
+   "at": "2026-10-03 12:26:16"
   }
  },
- "updated": "2026-10-03 12:25:06"
+ "updated": "2026-10-03 12:26:16"
 }
