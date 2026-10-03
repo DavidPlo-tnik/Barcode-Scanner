@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-03T17:03:54.195Z",
+ "updated": "2026-10-03T17:04:03.090Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -13811,23 +13811,6 @@
    "group": "2-golden-nut",
    "dept": "2",
    "weekly": 11.74,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0082869942121": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": null,
-   "dept": "4",
-   "weekly": 18.29,
    "scale": false,
    "fresh": false,
    "v": {
