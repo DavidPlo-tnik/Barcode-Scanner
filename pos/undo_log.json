@@ -1,53 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260912114310157388",
-   "applied_at": "2026-09-12T11:43:10",
-   "change": {
-    "code": "0023880200000",
-    "pos_title": "MAQUEREAU FUME ENTIER KG",
-    "queued_at": "2026-09-12T15:42:20.221Z",
-    "id": "c1789227740221"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "MAQUEREAU FUME ENTIER",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "KG"
-    },
-    "POS_TAB": {
-     "F02": "MAQUEREAU FUME ENTIER KG",
-     "F04": "24",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "28.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "28.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260912114310266588",
    "applied_at": "2026-09-12T11:43:10",
    "change": {
@@ -24685,6 +24638,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261003164831231724",
+   "applied_at": "2026-10-03T16:48:31",
+   "change": {
+    "code": "0460705445086",
+    "title": "STANICHNIY GRAINES DE TOURNESOL GRILLÉES",
+    "pos_title": "STANICHNIY GRAINES DE TOURNESOL GRILLÉES",
+    "size_num": 400,
+    "size_unit": "GR",
+    "queued_at": "2026-10-03T20:47:44.173Z",
+    "id": "c1791060464173"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GRAINES DE TOURNESOL GRILLEES",
+     "F1744": "400.0",
+     "F22": "400GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "GRAINES DE TOURNESOL GRILLEES 400GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "90.7200",
+     "F196": "90.7200",
+     "F1140": "9.0720",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "13.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "13.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
