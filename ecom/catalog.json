@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-03T04:18:33.767Z",
+ "updated": "2026-10-03T04:18:49.837Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -3164,24 +3164,6 @@
     "photo": false,
     "price": false
    }
-  },
-  "0023882200000": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "24-hareng",
-   "dept": "24",
-   "weekly": 38.04,
-   "scale": true,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   },
-   "oos": true
   },
   "0062602781102": {
    "added": "2026-09-06",
