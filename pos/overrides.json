@@ -285,7 +285,31 @@
    "mp": null,
    "cost": 39.0,
    "at": "2026-10-03 12:26:16"
+  },
+  "0485001587137": {
+   "pt": "NAIRI  CAVIAR DE ZUCCHINI EPICE 350ML",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 350.0,
+   "nm": "NAIRI  CAVIAR DE ZUCCHINI EPICE",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 30.6,
+   "at": "2026-10-03 12:27:21"
   }
  },
- "updated": "2026-10-03 12:26:16"
+ "updated": "2026-10-03 12:27:21"
 }
