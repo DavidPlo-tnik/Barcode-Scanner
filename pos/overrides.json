@@ -740,7 +740,31 @@
    "price": 29.99,
    "mp": null,
    "at": "2026-10-03 16:08:14"
+  },
+  "0021010100000": {
+   "pt": "CAROTTES MARINEES A L'AIL GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 61,
+   "un": "",
+   "sn": null,
+   "nm": "CAROTTES MARINEES A L'AIL",
+   "rp": 9.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 9.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-10-03 16:36:04"
   }
  },
- "updated": "2026-10-03 16:08:14"
+ "updated": "2026-10-03 16:36:04"
 }
