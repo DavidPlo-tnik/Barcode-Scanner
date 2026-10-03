@@ -597,7 +597,31 @@
    "mp": null,
    "cost": 2.8,
    "at": "2026-10-03 12:49:46"
+  },
+  "0482309600970": {
+   "pt": "CHUMAK KETCHUP CHUMAZKI SHLAH 200GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 250.0,
+   "nm": "CHUMAK KETCHUP CHUMAZKI SHLAH",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 2.45,
+   "at": "2026-10-03 12:50:51"
   }
  },
- "updated": "2026-10-03 12:49:46"
+ "updated": "2026-10-03 12:50:51"
 }
