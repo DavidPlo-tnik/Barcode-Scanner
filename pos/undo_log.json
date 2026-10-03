@@ -1,53 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260912114829989150",
-   "applied_at": "2026-09-12T11:48:29",
-   "change": {
-    "code": "0020235300000",
-    "pos_title": "LARDON AVEC VIANDE GR",
-    "queued_at": "2026-09-12T15:48:24.383Z",
-    "id": "c1789228104383"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LARDON AVEC VIANDE",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LARDON AVEC VIANDE GR",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "32.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "32.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260912115042230582",
    "applied_at": "2026-09-12T11:50:42",
    "change": {
@@ -24704,6 +24657,49 @@
      "F1014": "2026-11-23 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261003191243170529",
+   "applied_at": "2026-10-03T19:12:43",
+   "change": {
+    "code": "0020141700000",
+    "title": "POISSON SECHE GOBIE BICHOK",
+    "pos_title": "POISSON SECHE GOBIE BICHOK",
+    "price": 44.99,
+    "queued_at": "2026-10-03T23:12:25.394Z",
+    "id": "c1791069145394"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "POISSON SECHE ",
+     "F1744": null,
+     "F22": "UN",
+     "F23": ""
+    },
+    "POS_TAB": {
+     "F02": "POISSON SECHE  UN",
+     "F04": "23",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": "0"
+    },
+    "PRICE_TAB": {
+     "F30": "49.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "49.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
