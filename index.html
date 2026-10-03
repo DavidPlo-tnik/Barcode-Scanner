@@ -827,7 +827,14 @@
   }
   .ecom-row .li-meta b { color: var(--text-dim); }
   .ecom-row .li-meta .ecom-yr { color: var(--text-dim); }
-  .ecom-flags { display: flex; align-items: center; gap: 6px; min-height: 16px; }
+  .ecom-flags { display: flex; align-items: center; flex-wrap: wrap; gap: 2px 7px; min-height: 16px; }
+  /* "no sales for a while" -- deliberately quiet; gets slightly louder the longer it has been */
+  .ecom-quiet { font-family: var(--font-display); font-size: 8.5px; letter-spacing: .03em; color: var(--text-faint); white-space: nowrap; }
+  .ecom-quiet::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; margin-right: 4px; vertical-align: 1px; background: var(--warn); opacity: .35; }
+  .ecom-quiet.q14 { color: var(--text-dim); }
+  .ecom-quiet.q14::before { opacity: .65; }
+  .ecom-quiet.q30 { color: var(--warn); opacity: .85; }
+  .ecom-quiet.q30::before { opacity: 1; }
   .ecom-side { flex-shrink: 0; padding: 6px 8px 6px 0; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 5px; }
   .ecom-row .li-cur { font-family: var(--font-display); font-size: 12.5px; font-weight: 700; color: var(--text); white-space: nowrap; }
   .ecom-side .li-x { display: flex; gap: 4px; }
@@ -1950,6 +1957,7 @@
     <button class="ecom-chip" data-efilter="hasphoto">HAS PHOTO</button>
     <button class="ecom-chip" data-efilter="nosales7">NO SALES 7D</button>
     <button class="ecom-chip" data-efilter="nosales14">NO SALES 14D</button>
+    <button class="ecom-chip" data-efilter="nosales30">NO SALES 1MO</button>
     <button class="ecom-chip" data-efilter="nosize">NO SIZE</button>
     <button class="ecom-chip" data-efilter="oos">OUT OF STOCK</button>
     <button class="ecom-chip" data-efilter="variants">VARIANTS</button>
@@ -2410,7 +2418,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v141</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v142</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7043,11 +7051,15 @@
     const units14 = dq.reduce((a, b) => a + (b || 0), 0);
     const last7 = dq.slice(-7).reduce((a, b) => a + (b || 0), 0);
     const hadHistory = wq.some(x => x > 0);   // has it EVER sold, so a zero now is meaningful
+    // "A month": nothing in the last 14 days AND nothing in the last 5 weekly buckets
+    // (the newest bucket is the week in progress, so that is at least 4 full weeks).
+    const quietMonth = hadHistory && units14 === 0 && wq.length >= 5 && wq.slice(-5).every(x => !(x > 0));
     return {
       rateUnits,                                  // /wk, stockout-adjusted
       units14,
       noSales7d: hadHistory && last7 === 0,
       noSales14d: hadHistory && units14 === 0,
+      noSales30d: quietMonth,
     };
   }
 
@@ -7099,6 +7111,7 @@
         oos: !!entry.oos,
         noSales7d: stat.noSales7d,
         noSales14d: stat.noSales14d,
+        noSales30d: stat.noSales30d,
         nPhotos: photos.length,
         photo: photos[0],
         group: ecomGroupOf(code),
@@ -7131,6 +7144,7 @@
         case 'scale':    if (!r.scale) return false; break;
         case 'nosales7':  if (!r.noSales7d) return false; break;
         case 'nosales14': if (!r.noSales14d) return false; break;
+        case 'nosales30': if (!r.noSales30d) return false; break;
         case 'nosize':    if (r.sizeText) return false; break;
         case 'oos':       if (!r.oos) return false; break;
         case 'dupes':    if (!r.variantDupe) return false; break;
@@ -7157,6 +7171,8 @@
 
     const rowHtml = (r) => {
       const yr = '$' + Math.round(r.rev || 0).toLocaleString() + '/yr';
+      // quiet "no sales" note: only the longest period, and never on items already marked out of stock
+      const quiet = r.oos ? null : (r.noSales30d ? ['q30', '1mo', '1 month'] : r.noSales14d ? ['q14', '14d', '14 days'] : r.noSales7d ? ['q7', '7d', '7 days'] : null);
       return `
       <div class="ecom-row${r.oos ? ' oos' : ''}" data-code="${r.code}">
         <div class="ecom-thumb-wrap">
@@ -7170,6 +7186,7 @@
           <div class="ecom-flags">
             <button class="ecom-stock${r.oos ? ' out' : ''}" data-eact="oos" data-code="${r.code}">${r.oos ? 'OUT OF STOCK' : 'IN STOCK'}</button>
             ${r.variantDupe ? '<span class="ecom-badge-dupe">DUPLICATE NAME</span>' : (r.variantOf ? '<span class="ecom-badge-dupe" style="color:var(--text-faint)">variant</span>' : '')}
+            ${quiet ? `<span class="ecom-quiet ${quiet[0]}" title="No sales in the last ${quiet[2]}">no sales ${quiet[1]}</span>` : ''}
           </div>
         </div>
         <div class="ecom-side">
