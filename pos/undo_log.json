@@ -1,105 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260910213252062222",
-   "applied_at": "2026-09-10T21:32:52",
-   "change": {
-    "code": "0083213900102",
-    "pos_title": "ELWEST FARMER'S FROMAGE FRAIS 14% 454GR",
-    "size_num": 454,
-    "size_unit": "GR",
-    "queued_at": "2026-09-11T01:32:23.657Z",
-    "id": "c1789090343657"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ELWEST FARMER'S FROMAGE FRAIS 14%",
-     "F1744": "454.0",
-     "F22": "454GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "ELWEST FARMER'S FROMAGE FRAIS 14% 454GR",
-     "F04": "3",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "6.2000",
-     "F196": "6.2000",
-     "F1140": "6.2000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "7.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "7.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260910213504210054",
-   "applied_at": "2026-09-10T21:35:04",
-   "change": {
-    "code": "0083213900111",
-    "title": "KLIFE FROMAGE FERMIER 14% 1000GR",
-    "pos_title": "KLIFE FROMAGE FERMIER 14% 1000GR",
-    "size_num": 1000,
-    "size_unit": "GR",
-    "queued_at": "2026-09-11T01:34:28.450Z",
-    "id": "c1789090468450"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KLIFE FROMAGE FERMIER",
-     "F1744": "1000.0",
-     "F22": "1000G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "KLIFE FROMAGE FERMIER 1000G",
-     "F04": "3",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "12.0000",
-     "F196": "12.0000",
-     "F1140": "12.0000",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "15.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "15.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260910213609106168",
    "applied_at": "2026-09-10T21:36:09",
    "change": {
@@ -24720,6 +24621,104 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261003124741118329",
+   "applied_at": "2026-10-03T12:47:41",
+   "change": {
+    "code": "0482309600934",
+    "pos_title": "CHUMAK KETCHUP BBQ 350G",
+    "size_num": 350,
+    "size_unit": "GR",
+    "queued_at": "2026-10-03T16:47:10.937Z",
+    "id": "c1791046030937"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CHUMAK KETCHUP BBQ",
+     "F1744": "350.0",
+     "F22": "350G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "CHUMAK KETCHUP BBQ 350G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.8000",
+     "F196": "2.8000",
+     "F1140": "2.8000",
+     "F27": "ZJ01"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261003124741180729",
+   "applied_at": "2026-10-03T12:47:41",
+   "change": {
+    "code": "0482309600934",
+    "pos_title": "CHUMAK KETCHUP BBQ 350G",
+    "size_num": 350,
+    "size_unit": "GR",
+    "queued_at": "2026-10-03T16:47:18.448Z",
+    "id": "c1791046038448"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CHUMAK KETCHUP BBQ",
+     "F1744": "350.0",
+     "F22": "350 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CHUMAK KETCHUP BBQ 350G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.8000",
+     "F196": "2.8000",
+     "F1140": "2.8000",
+     "F27": "ZJ01"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
