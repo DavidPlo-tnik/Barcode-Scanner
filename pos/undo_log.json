@@ -1,106 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260910221014197760",
-   "applied_at": "2026-09-10T22:10:14",
-   "change": {
-    "code": "0426012339285",
-    "title": "FLAVOURS PLAQIES DE PÂTE LEVÉE 800GR",
-    "pos_title": "FLAVOURS PLAQIES DE PÂTE LEVÉE 800GR",
-    "size_num": 800,
-    "size_unit": "GR",
-    "queued_at": "2026-09-11T02:09:40.817Z",
-    "id": "c1789092580817"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "FLAVOURS PLAQIES DE PÂTE LEVÉE 800GR",
-     "F1744": "800.0",
-     "F22": "800 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "FLAVOURS PLAQIES DE PÂTE LEVÉE 800GR",
-     "F04": "4",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.9000",
-     "F196": "2.9000",
-     "F1140": "2.9000",
-     "F27": "L-SAP"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260910222702084330",
-   "applied_at": "2026-09-10T22:27:02",
-   "change": {
-    "code": "0085007784091",
-    "title": "BELEVINI CRÊPES AUX CASSIS 350GR",
-    "pos_title": "BELEVINI CRÊPES AUX CASSIS 350GR",
-    "size_num": 350,
-    "size_unit": "GR",
-    "queued_at": "2026-09-11T02:26:39.880Z",
-    "id": "c1789093599880"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "BELEVINI CREPES AU FROMAGE COTTAGE",
-     "F1744": "350.0",
-     "F22": "350 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "BELEVINI CREPES AU FROMAGE COTTAGE 350 G",
-     "F04": "4",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "25.2000",
-     "F196": "25.2000",
-     "F1140": "2.1000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "2.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "2.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260910222807120845",
    "applied_at": "2026-09-10T22:28:07",
    "change": {
@@ -24720,6 +24620,104 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261003130129150584",
+   "applied_at": "2026-10-03T13:01:29",
+   "change": {
+    "code": "0005980700871",
+    "pos_title": "VEGETA ASSAISONNEMENT 250GR",
+    "size_num": 250,
+    "size_unit": "GR",
+    "queued_at": "2026-10-03T17:00:36.122Z",
+    "id": "c1791046836122"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VEGETA ASSAISONNEMENT",
+     "F1744": "100.0",
+     "F22": "250GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "VEGETA ASSAISONNEMENT 250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.5900",
+     "F196": "3.5900",
+     "F1140": "3.5900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "5.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261003130129197384",
+   "applied_at": "2026-10-03T13:01:29",
+   "change": {
+    "code": "0005980700844",
+    "pos_title": "VEGETA  ASSAISONNEMENT 500GR",
+    "size_num": 500,
+    "size_unit": "GR",
+    "queued_at": "2026-10-03T17:01:26.707Z",
+    "id": "c1791046886707"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VEGETA  ASSAISONNEMENT",
+     "F1744": "500.0",
+     "F22": "500GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "VEGETA  ASSAISONNEMENT 500GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "5.9500",
+     "F196": "5.9500",
+     "F1140": "5.9500",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "8.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "8.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
