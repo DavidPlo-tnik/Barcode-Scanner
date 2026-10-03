@@ -786,6 +786,11 @@
   .ecom-dept-stat { font-family: var(--font-display); font-size: 9px; color: var(--text-dim); letter-spacing: 0.04em; }
   .ecom-dept-caret { font-size: 10px; color: var(--text-faint); width: 12px; text-align: center; }
   .ecom-dept-body.collapsed { display: none; }
+  /* out-of-stock pill (ecom list) + buttons (editor / candy manager) */
+  .ecom-stock { font-family: var(--font-display); font-size: 9px; letter-spacing: .08em; padding: 6px 12px; margin-top: 6px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--text-faint); cursor: pointer; }
+  .ecom-stock.out { background: var(--bad); border-color: var(--bad); color: #0a0a0a; font-weight: 700; }
+  .ecom-row.oos .li-name { opacity: .6; }
+  #pd-oos-btn.is-out, .candy-row .btn.is-out { background: var(--bad); border-color: var(--bad); color: #0a0a0a; font-weight: 700; }
   .ecom-row {
     display: flex; align-items: center; gap: 10px; padding: 10px 12px;
     background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
@@ -1911,6 +1916,7 @@
     <button class="ecom-chip" data-efilter="nosales7">NO SALES 7D</button>
     <button class="ecom-chip" data-efilter="nosales14">NO SALES 14D</button>
     <button class="ecom-chip" data-efilter="nosize">NO SIZE</button>
+    <button class="ecom-chip" data-efilter="oos">OUT OF STOCK</button>
     <button class="ecom-chip" data-efilter="variants">VARIANTS</button>
     <button class="ecom-chip" data-efilter="scale">SCALE</button>
     <button class="ecom-chip" data-efilter="dupes">DUPLICATE NAMES</button>
@@ -2292,6 +2298,7 @@
       <div class="pd-group-title">Website store</div>
       <button type="button" class="btn small" id="pd-ecom-btn">+ ECOM</button>
       <div class="pd-note" id="pd-ecom-note"></div>
+      <button type="button" class="btn small" id="pd-oos-btn" style="display:none;margin-top:8px;">MARK OUT OF STOCK</button>
 
       <!-- Only shown for the bulk candy/chocolate price-level codes. These
            codes have one POS price for many different physical products, so
@@ -2368,7 +2375,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v138</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v139</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4179,6 +4186,7 @@
           ? `<img class="thumb js-photo-thumb" data-full="${photoSrc(e.photos[0])}" src="${photoSrc(e.photos[0])}" loading="lazy" alt="">`
           : `<div class="thumb thumb-empty"></div>`}
         <input type="text" placeholder="Candy name (optional)" value="${escapeHtml(e.name || '')}" data-candy-name="${escapeHtml(e.id)}">
+        <button type="button" class="btn small${e.oos ? ' is-out' : ''}" data-candy-oos="${escapeHtml(e.id)}" title="Out of stock toggle">${e.oos ? 'OUT' : 'IN'}</button>
         <button type="button" class="btn small" data-candy-photo="${escapeHtml(e.id)}">📷</button>
         <button type="button" class="btn small danger" data-candy-del="${escapeHtml(e.id)}">✕</button>
       </div>`).join('');
@@ -4188,6 +4196,9 @@
     });
     list.querySelectorAll('[data-candy-photo]').forEach(btn => {
       btn.addEventListener('click', () => uploadCandyPhoto(btn.dataset.candyPhoto));
+    });
+    list.querySelectorAll('[data-candy-oos]').forEach(btn => {
+      btn.addEventListener('click', () => toggleCandyOos(btn.dataset.candyOos));
     });
     list.querySelectorAll('[data-candy-del]').forEach(btn => {
       btn.addEventListener('click', () => deleteCandyEntry(btn.dataset.candyDel));
@@ -4215,6 +4226,21 @@
         if (e) e.name = name.trim();
       });
     } catch (e) { showToast('Could not save name: ' + e.message, true); }
+  }
+
+  async function toggleCandyOos(id) {
+    let nowOut = false;
+    try {
+      await mutateEcomCatalog(cat => {
+        const arr = cat.candyGroups && cat.candyGroups[_candyCtx];
+        const e = arr && arr.find(x => x.id === id);
+        if (!e) return;
+        if (e.oos) delete e.oos; else e.oos = true;
+        nowOut = !!e.oos;
+      });
+      showToast(nowOut ? 'OUT OF STOCK \u2014 shows as sold out on the site' : 'BACK IN STOCK');
+      await renderCandyList();
+    } catch (e) { showToast('Could not update: ' + e.message, true); }
   }
 
   async function deleteCandyEntry(id) {
@@ -4264,6 +4290,14 @@
     btn.textContent = inCat ? '\u2715 REMOVE FROM ECOM' : '+ ECOM';
     btn.classList.toggle('in-catalog', inCat);
     if (note) note.textContent = inCat ? 'in the website catalogue' : 'not in the website catalogue';
+    const ob = $('#pd-oos-btn');
+    if (ob) {
+      const out = !!(ent && ent.oos);
+      ob.style.display = inCat ? '' : 'none';
+      ob.textContent = out ? '\u2713 BACK IN STOCK' : 'MARK OUT OF STOCK';
+      ob.classList.toggle('is-out', out);
+      if (note && out) note.textContent = 'in the website catalogue \u00b7 OUT OF STOCK (shows as sold out)';
+    }
   }
 
   // Instant toggle -- takes effect immediately, no Save required.
@@ -6848,6 +6882,27 @@
     renderEcom();
   }
 
+  // Out-of-stock toggle. The item STAYS in the catalogue (and stays listed on the
+  // site); on the next Shopify sync it shows as "Sold out" instead of being
+  // hidden or deleted. Flipping it back restores normal selling.
+  async function ecomToggleOos(code) {
+    let nowOut = false;
+    try {
+      await mutateEcomCatalog(c => {
+        const it = c.items[code];
+        if (!it) return;
+        if (it.oos) delete it.oos; else it.oos = true;
+        nowOut = !!it.oos;
+      });
+      showToast(nowOut ? 'OUT OF STOCK \u2014 shows as sold out on the site' : 'BACK IN STOCK');
+    } catch (e) { showToast(e.message, true); return; }
+    renderEcom();
+    if ($('#pd-oos-btn') && _pdCtx && _pdCtx.code === code) {
+      const cat = await fetchEcomCatalog();
+      paintPdEcomBtn(cat.items[code]);
+    }
+  }
+
   async function ecomRemove(code) {
     const cat = await fetchEcomCatalog();
     if (!cat.items[code]) return;
@@ -7006,6 +7061,7 @@
         weekly: stat.rateUnits,          // now stockout-adjusted, computed live
         units14: stat.units14,
         sizeText: productSizeText(code),
+        oos: !!entry.oos,
         noSales7d: stat.noSales7d,
         noSales14d: stat.noSales14d,
         nPhotos: photos.length,
@@ -7041,12 +7097,15 @@
         case 'nosales7':  if (!r.noSales7d) return false; break;
         case 'nosales14': if (!r.noSales14d) return false; break;
         case 'nosize':    if (r.sizeText) return false; break;
+        case 'oos':       if (!r.oos) return false; break;
         case 'dupes':    if (!r.variantDupe) return false; break;
       }
       return true;
     });
 
+    const _nOos = codes.filter(c => cat.items[c].oos).length;
     status.innerHTML = `${codes.length} product${codes.length===1?'':'s'} in catalog` +
+      (_nOos ? ` · <span style="color:var(--bad)">${_nOos} out of stock</span>` : '') +
       (rows.length !== codes.length ? ` · ${rows.length} shown` : '') +
       (GH_HAS_TOKEN ? '' : ' · <span style="color:var(--warn)">READ-ONLY (no token)</span>');
 
@@ -7062,7 +7121,7 @@
     const groupNames = Object.keys(byGroup).sort((a, b) => order.indexOf(a) - order.indexOf(b));
 
     const rowHtml = (r) => `
-      <div class="ecom-row" data-code="${r.code}">
+      <div class="ecom-row${r.oos ? ' oos' : ''}" data-code="${r.code}">
         ${r.photo
           ? `<img class="cashier-thumb js-photo-thumb" data-full="${photoSrc(r.photo)}" style="cursor:zoom-in;" src="${photoSrc(r.photo)}" loading="lazy" alt="">${r.nPhotos > 1 ? `<div class="ecom-photo-count">+${r.nPhotos - 1}</div>` : ''}`
           : `<div class="ecom-photo-flag">no photo</div>`}
@@ -7071,6 +7130,7 @@
           <div class="li-meta">${escapeHtml(r.code)}${r.sizeText ? ' · <b>' + escapeHtml(r.sizeText) + '</b>' : ' · <span style="color:var(--bad)">no size</span>'}${r.weekly > 0 ? ' · ' + (r.weekly < 10 ? r.weekly.toFixed(1) : Math.round(r.weekly)) + '/wk' : ''} · ${r.units14}/14d${r.variantDupe ? ' · <span class="ecom-badge-dupe">DUPLICATE NAME</span>' : (r.variantOf ? ' · variant' : '')}</div>
           ${r.noSales14d ? '<div class="ecom-warn">⚠ no sales in 14 days</div>'
             : (r.noSales7d ? '<div class="ecom-warn">⚠ no sales in 7 days</div>' : '')}
+          <button class="ecom-stock${r.oos ? ' out' : ''}" data-eact="oos" data-code="${r.code}">${r.oos ? 'OUT OF STOCK' : 'IN STOCK'}</button>
         </div>
         <div class="li-cur">${r.price != null ? priceText(r.code, r.price) : '—'}</div>
         <div class="li-x">
@@ -7144,6 +7204,7 @@
         e.stopPropagation();
         if (btn.dataset.eact === 'view') openProduct(btn.dataset.code);
         else if (btn.dataset.eact === 'edit') openPosDirect(btn.dataset.code);
+        else if (btn.dataset.eact === 'oos') ecomToggleOos(btn.dataset.code);
         else if (btn.dataset.eact === 'del') {
           if (confirm('Remove from website catalog?')) ecomRemove(btn.dataset.code);
         }
@@ -8684,6 +8745,7 @@
     $('#pd-title2').addEventListener('dblclick', () => stampSizeIntoTitle($('#pd-title2'), F02_MAX));
 
     $('#pd-ecom-btn').addEventListener('click', togglePdEcom);
+    $('#pd-oos-btn').addEventListener('click', () => { if (_pdCtx && _pdCtx.code) ecomToggleOos(_pdCtx.code); });
     $('#pd-candy-btn').addEventListener('click', () => { if (_pdCtx) openCandyManager(_pdCtx.code); });
     $('#close-candy-modal').addEventListener('click', () => $('#candy-modal').classList.remove('open'));
     $('#candy-add-btn').addEventListener('click', addCandyEntry);
