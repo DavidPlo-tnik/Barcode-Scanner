@@ -1,22 +1,3 @@
 {
- "items": [
-  {
-   "code": "0482305060382",
-   "title": "TORCHIN MAYONNAISE EUROPÉEN",
-   "pos_title": "TORCHIN MAYONNAISE EUROPÉEN",
-   "size_num": 500,
-   "size_unit": "GR",
-   "queued_at": "2026-10-03T16:53:10.325Z",
-   "id": "c1791046390325"
-  },
-  {
-   "code": "0482305060382",
-   "title": "TORCHIN MAYONNAISE EUROPÉEN",
-   "pos_title": "TORCHIN MAYONNAISE EUROPÉEN",
-   "size_num": 500,
-   "size_unit": "GR",
-   "queued_at": "2026-10-03T16:53:16.146Z",
-   "id": "c1791046396146"
-  }
- ]
+ "items": []
 }
