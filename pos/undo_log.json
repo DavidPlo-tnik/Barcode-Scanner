@@ -1,65 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260910204840073362",
-   "applied_at": "2026-09-10T20:48:40",
-   "change": {
-    "code": "0482311540522",
-    "pos_title": "LOVARE SUNSET MELODY 24UN",
-    "size_num": 24,
-    "size_unit": "UN",
-    "multibuy": {
-     "qty": 3,
-     "price": 9.99
-    },
-    "promo": {
-     "price": 9.99,
-     "qty": 3,
-     "start": null,
-     "end": null
-    },
-    "queued_at": "2026-09-11T00:47:47.171Z",
-    "id": "c1789087667171"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LOVARE SUNSET MELODY",
-     "F1744": "24.0",
-     "F22": "24UN",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "LOVARE SUNSET MELODY 24UN",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.1000",
-     "F196": "2.1000",
-     "F1140": "2.1000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "3.0",
-     "F1006": "3.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260910204945109876",
    "applied_at": "2026-09-10T20:49:45",
    "change": {
@@ -24780,6 +24721,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261003122827008301",
+   "applied_at": "2026-10-03T12:28:27",
+   "change": {
+    "code": "0485001587063",
+    "pos_title": "NAIRI APERITIF DE LEGUMES 450ML",
+    "size_num": 450,
+    "size_unit": "ML",
+    "queued_at": "2026-10-03T16:28:19.084Z",
+    "id": "c1791044899084"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "NAIRI APERITIF DE LEGUMES",
+     "F1744": "450.0",
+     "F22": "450ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "NAIRI APERITIF DE LEGUMES 450ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "46.2000",
+     "F196": "46.2000",
+     "F1140": "3.8500",
+     "F27": "L-SAP"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
