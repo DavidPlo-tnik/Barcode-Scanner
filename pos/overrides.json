@@ -669,7 +669,31 @@
    "mp": null,
    "cost": 93.5,
    "at": "2026-10-03 12:55:06"
+  },
+  "0482305060384": {
+   "pt": "TORCHIN MAYONNAISE DELICATESSNI 500G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 500.0,
+   "nm": "TORCHIN MAYONNAISE DELICATESSNI",
+   "rp": 7.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 7.99,
+   "mp": null,
+   "cost": 93.5,
+   "at": "2026-10-03 12:56:11"
   }
  },
- "updated": "2026-10-03 12:55:06"
+ "updated": "2026-10-03 12:56:11"
 }
