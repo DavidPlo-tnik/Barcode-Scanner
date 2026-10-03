@@ -1,65 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260910204210087277",
-   "applied_at": "2026-09-10T20:42:10",
-   "change": {
-    "code": "0482311540517",
-    "pos_title": "LOVARE PROVENCE DREAMS 24UN",
-    "size_num": 24,
-    "size_unit": "UN",
-    "multibuy": {
-     "qty": 3,
-     "price": 9.99
-    },
-    "promo": {
-     "price": 9.99,
-     "qty": 3,
-     "start": null,
-     "end": null
-    },
-    "queued_at": "2026-09-11T00:41:23.012Z",
-    "id": "c1789087283012"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LOVARE PROVENCE DREAMS",
-     "F1744": "24.0",
-     "F22": "24UN",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "LOVARE PROVENCE DREAMS 24UN",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.1000",
-     "F196": "2.1000",
-     "F1140": "2.1000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "3.0",
-     "F1006": "3.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260910204517194006",
    "applied_at": "2026-09-10T20:45:17",
    "change": {
@@ -24830,6 +24771,54 @@
      "F1014": "2050-07-04 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261003004011130406",
+   "applied_at": "2026-10-03T00:40:11",
+   "change": {
+    "code": "0020238800000",
+    "size_num": 500,
+    "size_unit": "GR",
+    "queued_at": "2026-10-03T04:40:13.718Z",
+    "id": "c1791002413718"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BARILO`S MINI BOLOGNE",
+     "F1744": null,
+     "F22": "",
+     "F23": "UN"
+    },
+    "POS_TAB": {
+     "F02": "BARILO`S MINI BOLOGNE",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "9.9900",
+     "F196": "9.9900",
+     "F1140": "9.9900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
