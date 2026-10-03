@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-03T17:03:28.358Z",
+ "updated": "2026-10-03T17:03:50.381Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -13098,23 +13098,6 @@
    "group": "1-lekorna-gaufres",
    "dept": "1",
    "weekly": 11.51,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0082869942122": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": null,
-   "dept": "4",
-   "weekly": 19.37,
    "scale": false,
    "fresh": false,
    "v": {
