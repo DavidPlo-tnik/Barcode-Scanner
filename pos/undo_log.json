@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260910213147150508",
-   "applied_at": "2026-09-10T21:31:47",
-   "change": {
-    "code": "0083213900100",
-    "title": "ELWEST TVOROG FROMAGE FRAIS 4% 454GR",
-    "pos_title": "ELWEST TVOROG FROMAGE FRAIS 4% 454GR",
-    "size_num": 454,
-    "size_unit": "GR",
-    "queued_at": "2026-09-11T01:31:34.171Z",
-    "id": "c1789090294171"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ELWEST TVOROG FROMAGE FRAIS 4%",
-     "F1744": "454.0",
-     "F22": "454GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "ELWEST TVOROG FROMAGE FRAIS 4% 454GR",
-     "F04": "3",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "5.9000",
-     "F196": "5.9000",
-     "F1140": "5.9000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "7.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "7.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260910213252062222",
    "applied_at": "2026-09-10T21:32:52",
    "change": {
@@ -24720,6 +24670,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261003124431137195",
+   "applied_at": "2026-10-03T12:44:31",
+   "change": {
+    "code": "0797059654734",
+    "title": "BELEVINI BÉBÉ BETTERAVES TRANCHÉES",
+    "pos_title": "BELEVINI BÉBÉ BETTERAVES TRANCHÉES",
+    "size_num": 860,
+    "size_unit": "GR",
+    "queued_at": "2026-10-03T16:44:02.631Z",
+    "id": "c1791045842631"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BELEVINI BETTERAVES TRANCHEES",
+     "F1744": "90.0",
+     "F22": "860G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BELEVINI BETTERAVES TRANCHEES 860G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "42.0000",
+     "F196": "42.0000",
+     "F1140": "3.5000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
