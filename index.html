@@ -2375,7 +2375,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v139</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v140</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -8076,6 +8076,7 @@
   }
 
   function printLabels(list) {
+    noteOverlayScroll('labels-overlay');     // before this overlay scrolls the page to the top
     const items = list.items.map(code => {
       const p = DATA.products[resolveCode(code)];
       if (!p) return null;
@@ -8661,6 +8662,23 @@
     doc.text(codeStr, x + (maxW - tw) / 2, y + barH + 2);
   }
 
+  // ============== SCROLL POSITION MEMORY ==============
+  // Opening a product (or any overlay) from a long list and coming back must land
+  // you exactly where you were. Two things used to break that:
+  //  1) the browser's own scroll restoration: the Back-guard history entry is
+  //     pushed at startup while the page is at the very TOP, so pressing Back made
+  //     Chrome "restore" that saved position (top) -- see init() where this is
+  //     switched off;
+  //  2) overlays that scroll the page to the top when they open (labels, reports).
+  // Each overlay's open position is remembered when it opens and put back when it closes.
+  const _overlayScroll = {};
+  function noteOverlayScroll(id) { if (_overlayScroll[id] == null) _overlayScroll[id] = window.scrollY; }
+  function restoreOverlayScroll(id) {
+    const y = _overlayScroll[id];
+    delete _overlayScroll[id];
+    if (y != null && Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);
+  }
+
   // ============== INIT ==============
   async function init() {
     const ok = await loadData();
@@ -8838,6 +8856,10 @@
       // hidden) purely so Back can see and track it once it IS opened later.
       ensurePhotoLightbox();
 
+      // The browser must never "restore" a saved scroll position when Back steps
+      // through our guard entries (it is saved from the top of the page).
+      try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+
       const OVERLAYS = ['audit-confirm-modal','ecom-add-modal','count-session-detail-modal',
                         'product-modal','pos-edit-modal','pos-pin-modal','pos-direct-modal',
                         'list-detail-modal','merge-picker-modal','add-to-list-modal',
@@ -8851,8 +8873,8 @@
           if (!OVERLAYS.includes(id)) return;
           const isOpen = el.classList.contains('open');
           const at = openOrder.indexOf(id);
-          if (isOpen && at === -1) { openOrder.push(id); arm(); }
-          else if (!isOpen && at !== -1) { openOrder.splice(at, 1); }
+          if (isOpen && at === -1) { openOrder.push(id); noteOverlayScroll(id); arm(); }
+          else if (!isOpen && at !== -1) { openOrder.splice(at, 1); restoreOverlayScroll(id); }
         });
       });
       OVERLAYS.forEach(id => {
@@ -9022,6 +9044,7 @@
   const DOW = ['dim','lun','mar','mer','jeu','ven','sam'];
 
   function openReports() {
+    noteOverlayScroll('reports-overlay');
     $('#reports-overlay').classList.add('open');
     setPinchZoom(true);
     document.body.classList.add('body-locked');
