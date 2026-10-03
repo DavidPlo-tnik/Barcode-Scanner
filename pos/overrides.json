@@ -477,7 +477,31 @@
    "mp": null,
    "cost": 46.2,
    "at": "2026-10-03 12:37:08"
+  },
+  "0482024152294": {
+   "pt": "KOROLIVSKI SMAK ZAPRAVKA POUR BORSCHT",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 180.0,
+   "nm": "KOROLIVSKI SMAK ZAPRAVKA POUR BORSCHT",
+   "rp": 2.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 2.49,
+   "mp": null,
+   "cost": 1.4,
+   "at": "2026-10-03 12:40:16"
   }
  },
- "updated": "2026-10-03 12:37:08"
+ "updated": "2026-10-03 12:40:16"
 }
