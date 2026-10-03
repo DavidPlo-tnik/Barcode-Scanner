@@ -431,7 +431,7 @@
    "at": "2026-10-03 12:34:53"
   },
   "0485001587088": {
-   "pt": "NAIRI  LECHO  720ML",
+   "pt": "NAIRI  LECHO RÂGOUT DE LÉGUMES",
    "tf": 0,
    "tp": 0,
    "dp": null,
@@ -440,7 +440,7 @@
    "sd": 1,
    "un": "ML",
    "sn": 720.0,
-   "nm": "NAIRI  LECHO",
+   "nm": "NAIRI  LECHO RÂGOUT DE LÉGUMES",
    "rp": 5.99,
    "ap": 0,
    "pp": null,
@@ -452,8 +452,32 @@
    "price": 5.99,
    "mp": null,
    "cost": 46.2,
-   "at": "2026-10-03 12:35:59"
+   "at": "2026-10-03 12:37:08"
+  },
+  "0485001587020": {
+   "pt": "NAIRI  LÉGUMES RÔTIS",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 720.0,
+   "nm": "NAIRI  LÉGUMES RÔTIS",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 46.2,
+   "at": "2026-10-03 12:37:08"
   }
  },
- "updated": "2026-10-03 12:35:59"
+ "updated": "2026-10-03 12:37:08"
 }
