@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260912115500100035",
-   "applied_at": "2026-09-12T11:55:00",
-   "change": {
-    "code": "0482000045188",
-    "size_num": 2000,
-    "size_unit": "ML",
-    "queued_at": "2026-09-12T15:54:12.934Z",
-    "id": "c1789228452934"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KVAS TARAS 2000ML",
-     "F1744": "2000.0",
-     "F22": "2000 ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "KVAS TARAS 2000ML",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.8500",
-     "F196": "3.8500",
-     "F1140": "3.8500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260912115605136549",
    "applied_at": "2026-09-12T11:56:05",
    "change": {
@@ -24663,6 +24615,55 @@
     "size_unit": "GR",
     "queued_at": "2026-10-04T22:16:15.939Z",
     "id": "c1791152175939"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KUCHAREK ASSAISONNEMENT VEGETAL",
+     "F1744": "500.0",
+     "F22": "500 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "KUCHAREK ASSAISONNEMENT VEGETAL 500GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.8900",
+     "F196": "2.8900",
+     "F1140": "2.8900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "4.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261004182058143024",
+   "applied_at": "2026-10-04T18:20:58",
+   "change": {
+    "code": "0590113502322",
+    "pos_title": "KUCHAREK ASSAISONNEMENT VEGETAL 500GR",
+    "size_num": 500,
+    "size_unit": "GR",
+    "queued_at": "2026-10-04T22:20:00.023Z",
+    "id": "c1791152400023"
    },
    "before": {
     "OBJ_TAB": {
