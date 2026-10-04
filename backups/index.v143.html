@@ -2424,7 +2424,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v144</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v143</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -5648,25 +5648,12 @@
         for (const t of tokens) {
           const idx = hay.indexOf(t);
           if (idx === -1) { all = false; break; }
-          // Whole-word hit ("olivier" in "...TERRE OLIVIER") beats a prefix hit
-          // ("Olivieri ..."), which beats a mid-word hit. Check every occurrence
-          // so a later whole-word hit isn't hidden by an earlier partial one.
-          let best = 0;
-          for (let i = idx; i !== -1; i = hay.indexOf(t, i + 1)) {
-            const start = i === 0 || /[^a-z0-9]/.test(hay[i - 1]);
-            const end = i + t.length >= hay.length || /[^a-z0-9]/.test(hay[i + t.length]);
-            best = Math.max(best, start && end ? 60 : start ? 40 : 15);
-            if (best === 60) break;
-          }
-          score += best;
+          // Word-start hits score higher than mid-word hits
+          score += (idx === 0 || hay[idx - 1] === ' ' || hay[idx - 1] === '.' || hay[idx - 1] === '-') ? 40 : 20;
         }
         if (all) {
           matchScore = score;
-          if (hay.startsWith(tokens[0])) matchScore += 5;    // slight first-word bonus
-          // Popularity: items that actually sell float above dead/discontinued
-          // ones with a similar text match ($100/yr ≈ +12, $10k/yr ≈ +24).
-          const ta = DATA.sales[code] ? DATA.sales[code].ta : 0;
-          if (ta > 0) matchScore += Math.min(30, 6 * Math.log10(ta + 1));
+          if (hay.startsWith(tokens[0])) matchScore += 15;   // slight first-word bonus
         }
       }
 
@@ -5678,6 +5665,7 @@
                        photo: photos && photos[0], nPhotos: photos ? photos.length : 0,
                        sizeText: productSizeText(code) });
       }
+      if (matches.length > 500) break;
     }
 
     matches.sort((a, b) => (b.matchScore - a.matchScore) || (b.rev - a.rev));
