@@ -1,105 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260912115042230582",
-   "applied_at": "2026-09-12T11:50:42",
-   "change": {
-    "code": "0482000077039",
-    "title": "KVAS MONASTIRSKY",
-    "pos_title": "KVAS MONASTIRSKY",
-    "size_num": 2000,
-    "size_unit": "ML",
-    "queued_at": "2026-09-12T15:49:53.139Z",
-    "id": "c1789228193139"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KWAS MONASTIRSKY",
-     "F1744": "2000.0",
-     "F22": "2000ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "KWAS MONASTIRSKY 2000ML",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "17.1000",
-     "F196": "17.1000",
-     "F1140": "2.8500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260912115147095496",
-   "applied_at": "2026-09-12T11:51:47",
-   "change": {
-    "code": "0083213900008",
-    "pos_title": "CREME SURE 20% 500ML",
-    "size_num": 500,
-    "size_unit": "ML",
-    "queued_at": "2026-09-12T15:51:01.817Z",
-    "id": "c1789228261817"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "CREME SURE 20%",
-     "F1744": "500.0",
-     "F22": "500 ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "CREME SURE 20% 500ML",
-     "F04": "3",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.3900",
-     "F196": "3.3900",
-     "F1140": "3.3900",
-     "F27": "0000209088"
-    },
-    "PRICE_TAB": {
-     "F30": "4.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260912115500100035",
    "applied_at": "2026-09-12T11:55:00",
    "change": {
@@ -24692,6 +24593,104 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "49.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261004181646124581",
+   "applied_at": "2026-10-04T18:16:46",
+   "change": {
+    "code": "0590113502322",
+    "pos_title": "KUCHAREK ASSAISONNEMENT VEGETAL 500GR",
+    "size_num": 500,
+    "size_unit": "GR",
+    "queued_at": "2026-10-04T22:16:03.745Z",
+    "id": "c1791152163745"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KUCHAREK ASSAISONNEMENT VEGETAL",
+     "F1744": "500.0",
+     "F22": "500GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "KUCHAREK ASSAISONNEMENT VEGETAL 500GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.8900",
+     "F196": "2.8900",
+     "F1140": "2.8900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "4.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261004181646171381",
+   "applied_at": "2026-10-04T18:16:46",
+   "change": {
+    "code": "0590113502322",
+    "pos_title": "KUCHAREK ASSAISONNEMENT VEGETAL 500GR",
+    "size_num": 500,
+    "size_unit": "GR",
+    "queued_at": "2026-10-04T22:16:15.939Z",
+    "id": "c1791152175939"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KUCHAREK ASSAISONNEMENT VEGETAL",
+     "F1744": "500.0",
+     "F22": "500 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "KUCHAREK ASSAISONNEMENT VEGETAL 500GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.8900",
+     "F196": "2.8900",
+     "F1140": "2.8900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "4.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.4900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
