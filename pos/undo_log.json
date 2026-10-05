@@ -1,106 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913150430132676",
-   "applied_at": "2026-09-13T15:04:30",
-   "change": {
-    "code": "0020994100000",
-    "title": "GUIMAUVE ZEFIR AU CHOCOLAT",
-    "pos_title": "GUIMAUVE ZEFIR AU CHOCOLAT",
-    "size_num": 400,
-    "size_unit": "GR",
-    "balance": 1,
-    "queued_at": "2026-09-13T19:04:28.071Z",
-    "id": "c1789326268071"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "GUIMAUVE ZEFIR",
-     "F1744": "400.0",
-     "F22": "UN",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "GUIMAUVE ZEFIR UN",
-     "F04": "5",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "8.3900",
-     "F196": "8.3900",
-     "F1140": "8.3900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "14.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "14.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913150642046508",
-   "applied_at": "2026-09-13T15:06:42",
-   "change": {
-    "code": "0474008602582",
-    "pos_title": "EESTI PAGAR PAIN DE SEIGLE",
-    "size_num": 600,
-    "size_unit": "GR",
-    "queued_at": "2026-09-13T19:05:42.772Z",
-    "id": "c1789326342772"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "BORODINSKY PAIN DE SEIGLE EESTI PAGAR 600G",
-     "F1744": "470.0",
-     "F22": "470 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "EESTI PAGAR PAIN DE SEIGLE",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.4500",
-     "F196": "3.4500",
-     "F1140": "3.4500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913172947039563",
    "applied_at": "2026-09-13T17:29:47",
    "change": {
@@ -24768,6 +24668,103 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005155116140166",
+   "applied_at": "2026-10-05T15:51:16",
+   "change": {
+    "code": "0020238100000",
+    "title": "JAMBON GRAND-PÈRE",
+    "pos_title": "JAMBON GRAND-PÈRE",
+    "queued_at": "2026-10-05T19:50:29.803Z",
+    "id": "c1791229829803"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "PILON DE DINDE FUMEE",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "PILON DE DINDE FUMEE KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "11.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "11.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005155116202566",
+   "applied_at": "2026-10-05T15:51:16",
+   "change": {
+    "code": "0020238100000",
+    "title": "JAMBON GRAND-PÈRE",
+    "pos_title": "JAMBON GRAND-PÈRE",
+    "price": 19.99,
+    "queued_at": "2026-10-05T19:50:33.535Z",
+    "id": "c1791229833535"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "JAMBON GRAND-PÈRE",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "JAMBON GRAND-PÈRE",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "11.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "11.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
