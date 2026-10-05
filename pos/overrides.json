@@ -215,7 +215,7 @@
    "at": "2026-10-05 14:24:37"
   },
   "0020713800000": {
-   "pt": "Rôti de poitrine de dinde",
+   "pt": "POITRINE DE DINDE RÔTI",
    "tf": 0,
    "tp": 0,
    "dp": null,
@@ -224,7 +224,7 @@
    "sd": 31,
    "un": "G",
    "sn": 1000.0,
-   "nm": "Rôti de poitrine de dinde",
+   "nm": "POITRINE DE DINDE RÔTI",
    "rp": 27.9,
    "ap": 1,
    "pp": 24.99,
@@ -236,8 +236,8 @@
    "price": 24.99,
    "mp": null,
    "cost": 98.0,
-   "at": "2026-10-05 14:28:46"
+   "at": "2026-10-05 14:29:55"
   }
  },
- "updated": "2026-10-05 14:28:46"
+ "updated": "2026-10-05 14:29:55"
 }
