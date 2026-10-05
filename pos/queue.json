@@ -1,3 +1,14 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0482023924823",
+   "title": "FROMAGE COTTAGE 9%",
+   "pos_title": "FROMAGE COTTAGE 9%",
+   "size_num": 350,
+   "size_unit": "GR",
+   "cost": 3.75,
+   "queued_at": "2026-10-05T18:47:54.452Z",
+   "id": "c1791226074452"
+  }
+ ]
 }
