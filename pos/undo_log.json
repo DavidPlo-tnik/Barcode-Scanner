@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260912214204097359",
-   "applied_at": "2026-09-12T21:42:04",
-   "change": {
-    "code": "0083213900001",
-    "pos_title": "ELWEST KEFIR CLASSIQUE 944ML",
-    "size_num": 944,
-    "size_unit": "ML",
-    "queued_at": "2026-09-13T01:41:21.119Z",
-    "id": "c1789263681119"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ELWEST KEFIR CLASSIQUE",
-     "F1744": "944.0",
-     "F22": "944 ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "ELWEST KEFIR CLASSIQUE 944ML",
-     "F04": "3",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "40.6800",
-     "F196": "40.6800",
-     "F1140": "3.3900",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "4.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260912214309149474",
    "applied_at": "2026-09-12T21:43:09",
    "change": {
@@ -24746,6 +24697,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005144324011411",
+   "applied_at": "2026-10-05T14:43:24",
+   "change": {
+    "code": "0020233400000",
+    "title": "TÊTE FROMAGÉE VIANDE",
+    "pos_title": "TÊTE FROMAGÉE VIANDE",
+    "price": 22.99,
+    "queued_at": "2026-10-05T18:42:42.878Z",
+    "id": "c1791225762878"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "TÊTE FROMAGÉE VIANDE",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "TÊTE FROMAGÉE VIANDE",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-ISABELLE"
+    },
+    "PRICE_TAB": {
+     "F30": "22.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "22.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
