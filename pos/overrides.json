@@ -619,7 +619,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-10-05 15:51:16"
+  },
+  "0021437800000": {
+   "pt": "ROUGEOT SECHE - BARABYLKA",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 24,
+   "un": "G",
+   "sn": null,
+   "nm": "ROUGEOT SECHE - BARABYLKA",
+   "rp": 34.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 34.99,
+   "mp": null,
+   "cost": 16.1,
+   "at": "2026-10-05 16:13:57"
   }
  },
- "updated": "2026-10-05 15:51:16"
+ "updated": "2026-10-05 16:13:57"
 }
