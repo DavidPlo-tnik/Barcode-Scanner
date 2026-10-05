@@ -9,6 +9,16 @@
    "cost": 3.75,
    "queued_at": "2026-10-05T18:47:54.452Z",
    "id": "c1791226074452"
+  },
+  {
+   "code": "0460556101300",
+   "pos_title": "SANTA BREMOR  POUR POMME DE TERRE 400G",
+   "size_num": 400,
+   "size_unit": "GR",
+   "price": 6.99,
+   "cost": 4.66,
+   "queued_at": "2026-10-05T18:48:50.035Z",
+   "id": "c1791226130035"
   }
  ]
 }
