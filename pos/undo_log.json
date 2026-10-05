@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913144545197100",
-   "applied_at": "2026-09-13T14:45:45",
-   "change": {
-    "code": "0482018662074",
-    "title": "GOLD RING FILET DE HARENG 900GR",
-    "pos_title": "GOLD RING FILET DE HARENG 900GR",
-    "size_num": 900,
-    "size_unit": "GR",
-    "queued_at": "2026-09-13T18:45:25.858Z",
-    "id": "c1789325125858"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "GOLD RING FILET DE HARENG",
-     "F1744": "900.0",
-     "F22": "900G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "GOLD RING FILET DE HARENG 900G",
-     "F04": "22",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "9.9500",
-     "F196": "9.9500",
-     "F1140": "9.9500",
-     "F27": "ZB01"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913145504101282",
    "applied_at": "2026-09-13T14:55:04",
    "change": {
@@ -24756,6 +24706,57 @@
      "F38": "42.6000",
      "F196": "42.6000",
      "F1140": "3.5500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005150700291099",
+   "applied_at": "2026-10-05T15:07:00",
+   "change": {
+    "code": "0482017881045",
+    "title": "BEURRE AU CHOCOLAT",
+    "pos_title": "BEURRE AU CHOCOLAT",
+    "size_num": 200,
+    "size_unit": "GR",
+    "price": 6.99,
+    "queued_at": "2026-10-05T19:06:15.394Z",
+    "id": "c1791227175394"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ORGANIC MILK BEURRE BATTER ",
+     "F1744": "400.0",
+     "F22": "200G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ORGANIC MILK BEURRE BATTER  200G",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "114.0000",
+     "F196": "114.0000",
+     "F1140": "4.7500",
      "F27": "L-EPIC"
     },
     "PRICE_TAB": {
