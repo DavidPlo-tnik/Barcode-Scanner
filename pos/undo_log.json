@@ -1,47 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913174229241302",
-   "applied_at": "2026-09-13T17:42:29",
-   "change": {
-    "code": "0020142000000",
-    "pos_title": "SANDRE SECHE SUDAK UN",
-    "queued_at": "2026-09-13T21:41:43.449Z",
-    "id": "c1789335703449"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SANDRE SECHE SUDAK",
-     "F1744": null,
-     "F22": "UN",
-     "F23": ""
-    },
-    "POS_TAB": {
-     "F02": "SANDRE SECHE SUDAK UN",
-     "F04": "23",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": "0"
-    },
-    "PRICE_TAB": {
-     "F30": "49.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "49.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913174338271423",
    "applied_at": "2026-09-13T17:43:38",
    "change": {
@@ -24762,6 +24721,54 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "34.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005195040001596",
+   "applied_at": "2026-10-05T19:50:40",
+   "change": {
+    "code": "0020234700000",
+    "pos_title": "SAUCISSON DE CRACOVIE KG",
+    "price": 22.99,
+    "queued_at": "2026-10-05T23:50:00.772Z",
+    "id": "c1791244200773"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSON DE CRACOVIE",
+     "F1744": null,
+     "F22": "kg",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSON DE CRACOVIE KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "19.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
