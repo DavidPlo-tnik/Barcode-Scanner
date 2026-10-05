@@ -547,7 +547,31 @@
    "mp": null,
    "cost": 42.6,
    "at": "2026-10-05 14:59:41"
+  },
+  "0482017881045": {
+   "pt": "BEURRE AU CHOCOLAT",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 200.0,
+   "nm": "BEURRE AU CHOCOLAT",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 114.0,
+   "at": "2026-10-05 15:07:00"
   }
  },
- "updated": "2026-10-05 14:59:41"
+ "updated": "2026-10-05 15:07:00"
 }
