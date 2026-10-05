@@ -1,151 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260912122813069936",
-   "applied_at": "2026-09-12T12:28:13",
-   "change": {
-    "code": "0482309790385",
-    "title": "VELADIS HERRING MATJES",
-    "pos_title": "VELADIS HERRING MATJES",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-12T16:28:20.237Z",
-    "id": "c1789230500238"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VELADIS HERRING ",
-     "F1744": "500.0",
-     "F22": "500GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "VELADIS HERRING  500GR",
-     "F04": "24",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "5.6000",
-     "F196": "5.6000",
-     "F1140": "5.6000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "7.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "STOR",
-     "F1133": "5.9900",
-     "F1216": "2026-09-10 00:00:00",
-     "F1217": "2026-09-16 00:00:00",
-     "F1013": "7.9900",
-     "F1014": "2026-09-16 00:00:00",
-     "F1015": "2359",
-     "F1011": "REG"
-    }
-   }
-  },
-  {
-   "undo_id": "u20260912153548969508",
-   "applied_at": "2026-09-12T15:35:48",
-   "change": {
-    "code": "0023881500000",
-    "pos_title": "FLANCS DE SAUMON FUMÉ GR",
-    "queued_at": "2026-09-12T19:35:03.280Z",
-    "id": "c1789241703280"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "FLANCS DE SAUMON FUMÉ",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "FLANCS DE SAUMON FUMÉ GR",
-     "F04": "24",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "19.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "19.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260912214053288835",
-   "applied_at": "2026-09-12T21:40:53",
-   "change": {
-    "code": "0020238700000",
-    "pos_title": "SAUCISSON STYLE MAISON KG",
-    "balance": 0,
-    "queued_at": "2026-09-13T01:40:19.518Z",
-    "id": "c1789263619518"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SAUCISSON STYLE MAISON",
-     "F1744": null,
-     "F22": "",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "SAUCISSON STYLE MAISON KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "9.9900",
-     "F196": "9.9900",
-     "F1140": "9.9900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "11.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "11.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260912214204097359",
    "applied_at": "2026-09-12T21:42:04",
    "change": {
@@ -24753,6 +24608,152 @@
      "F1014": "2036-10-05 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005143710078755",
+   "applied_at": "2026-10-05T14:37:10",
+   "change": {
+    "code": "0020233200000",
+    "title": "TETE FROMAGEE TOBA LANGUE",
+    "pos_title": "TETE FROMAGEE TOBA LANGUE",
+    "queued_at": "2026-10-05T18:36:36.238Z",
+    "id": "c1791225396238"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "TETE FROMAGEE TOBA",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "TETE FROMAGEE TOBA",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-ISABELLE"
+    },
+    "PRICE_TAB": {
+     "F30": "17.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "17.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005143710141155",
+   "applied_at": "2026-10-05T14:37:10",
+   "change": {
+    "code": "0020233200000",
+    "title": "TETE FROMAGEE TOBA LANGUE",
+    "pos_title": "TETE FROMAGEE TOBA LANGUE",
+    "price": 24.99,
+    "queued_at": "2026-10-05T18:36:40.668Z",
+    "id": "c1791225400668"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "TETE FROMAGEE TOBA LANGUE",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "TETE FROMAGEE TOBA LANGUE",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-ISABELLE"
+    },
+    "PRICE_TAB": {
+     "F30": "17.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "17.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005143710219155",
+   "applied_at": "2026-10-05T14:37:10",
+   "change": {
+    "code": "0020233400000",
+    "title": "TÊTE FROMAGÉE VIANDE",
+    "pos_title": "TÊTE FROMAGÉE VIANDE",
+    "price": 22.99,
+    "queued_at": "2026-10-05T18:37:06.697Z",
+    "id": "c1791225426697"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "JAMBON BLANC",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "JAMBON BLANC GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-ISABELLE"
+    },
+    "PRICE_TAB": {
+     "F30": "19.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
