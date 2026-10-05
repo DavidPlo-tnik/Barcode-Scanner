@@ -690,7 +690,30 @@
    "price": 22.99,
    "mp": null,
    "at": "2026-10-05 19:50:40"
+  },
+  "0020232600000": {
+   "pt": "LACHSSCHINKEN LONGE DE PORC FUME DEUX FO",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "GR",
+   "sn": null,
+   "nm": "LACHSSCHINKEN LONGE DE PORC FUME DEUX FOIS",
+   "rp": 39.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 39.99,
+   "mp": null,
+   "at": "2026-10-05 19:58:56"
   }
  },
- "updated": "2026-10-05 19:50:40"
+ "updated": "2026-10-05 19:58:56"
 }
