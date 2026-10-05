@@ -401,9 +401,33 @@
    "lk": 0,
    "price": 5.49,
    "mp": null,
-   "cost": 37.0,
-   "at": "2026-10-05 14:47:52"
+   "cost": 3.75,
+   "at": "2026-10-05 14:48:58"
+  },
+  "0460556101300": {
+   "pt": "SANTA BREMOR  POUR POMME DE TERRE 400G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 22,
+   "un": "GR",
+   "sn": 400.0,
+   "nm": "SANTA BREMOR  POUR POMME DE TERRE",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 4.66,
+   "at": "2026-10-05 14:48:58"
   }
  },
- "updated": "2026-10-05 14:47:52"
+ "updated": "2026-10-05 14:48:58"
 }
