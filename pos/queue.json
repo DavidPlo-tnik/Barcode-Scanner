@@ -1,3 +1,22 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0000000004013",
+   "pos_title": "ORAN NAVEL GR113",
+   "size_num": 1,
+   "size_unit": "",
+   "multibuy": {
+    "qty": 4,
+    "price": 3
+   },
+   "promo": {
+    "price": 1.99,
+    "qty": 3,
+    "start": "2026-09-08",
+    "end": "2036-10-05"
+   },
+   "queued_at": "2026-10-05T13:42:57.327Z",
+   "id": "c1791207777327"
+  }
+ ]
 }
