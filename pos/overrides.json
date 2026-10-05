@@ -571,7 +571,31 @@
    "mp": null,
    "cost": 114.0,
    "at": "2026-10-05 15:07:00"
+  },
+  "0481016805227": {
+   "pt": "GRANNY ANNIE CREPES",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 320.0,
+   "nm": "GRANNY ANNIE CREPES",
+   "rp": 2.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 2.99,
+   "mp": null,
+   "cost": 21.0,
+   "at": "2026-10-05 15:16:17"
   }
  },
- "updated": "2026-10-05 15:07:00"
+ "updated": "2026-10-05 15:16:17"
 }
