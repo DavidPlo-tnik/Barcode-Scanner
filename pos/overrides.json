@@ -499,7 +499,31 @@
    "mp": null,
    "cost": 25.2,
    "at": "2026-10-05 14:57:28"
+  },
+  "0083839600890": {
+   "pt": "ZAKUSON TOMATES VERTS 1000ML",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 1000.0,
+   "nm": "ZAKUSON TOMATES VERTS",
+   "rp": 4.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 4.99,
+   "mp": null,
+   "cost": 39.6,
+   "at": "2026-10-05 14:58:34"
   }
  },
- "updated": "2026-10-05 14:57:28"
+ "updated": "2026-10-05 14:58:34"
 }
