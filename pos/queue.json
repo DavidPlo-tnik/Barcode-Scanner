@@ -1,27 +1,3 @@
 {
- "items": [
-  {
-   "code": "0000000004664",
-   "pos_title": "TOMATES ROUGES EN GRAPPE",
-   "size_num": 1000,
-   "size_unit": "",
-   "clear_promo": true,
-   "queued_at": "2026-10-05T16:05:38.402Z",
-   "id": "c1791216338402"
-  },
-  {
-   "code": "0000000004799",
-   "pos_title": "TOMATE RGE SERRE",
-   "size_num": 1000,
-   "size_unit": "",
-   "promo": {
-    "price": 6.59,
-    "qty": 1,
-    "start": "2026-10-02",
-    "end": "2036-10-05"
-   },
-   "queued_at": "2026-10-05T16:05:54.620Z",
-   "id": "c1791216354620"
-  }
- ]
+ "items": []
 }
