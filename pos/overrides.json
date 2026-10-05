@@ -262,7 +262,7 @@
    "at": "2026-10-05 14:37:10"
   },
   "0020233400000": {
-   "pt": "TÊTE FROMAGÉE VIANDE",
+   "pt": "TÊTE FROMAGÉE VIANDE ET AIL",
    "tf": 0,
    "tp": 0,
    "dp": null,
@@ -271,7 +271,7 @@
    "sd": 31,
    "un": "GR",
    "sn": null,
-   "nm": "TÊTE FROMAGÉE VIANDE",
+   "nm": "TÊTE FROMAGÉE VIANDE ET AIL",
    "rp": 22.99,
    "ap": 0,
    "pp": null,
@@ -282,7 +282,7 @@
    "lk": 0,
    "price": 22.99,
    "mp": null,
-   "at": "2026-10-05 14:43:24"
+   "at": "2026-10-05 14:54:11"
   },
   "0083839600144": {
    "pt": "RIGA GOLD MAQUEREAU  185G",
@@ -429,5 +429,5 @@
    "at": "2026-10-05 14:48:58"
   }
  },
- "updated": "2026-10-05 14:48:58"
+ "updated": "2026-10-05 14:54:11"
 }
