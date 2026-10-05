@@ -1,100 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913093908110103",
-   "applied_at": "2026-09-13T09:39:08",
-   "change": {
-    "code": "0021013700000",
-    "balance": 0,
-    "queued_at": "2026-09-13T13:38:06.754Z",
-    "id": "c1789306686754"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KHINKALI AU BOEUF ET PORC",
-     "F1744": null,
-     "F22": "",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "KHINKALI AU BOEUF ET PORC",
-     "F04": "61",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "7.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "7.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913094013115417",
-   "applied_at": "2026-09-13T09:40:13",
-   "change": {
-    "code": "0020238300000",
-    "pos_title": "COTES DE PORC FUMES KG",
-    "queued_at": "2026-09-13T13:39:21.822Z",
-    "id": "c1789306761822"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "COTES DE PORC FUMES",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "KG"
-    },
-    "POS_TAB": {
-     "F02": "COTES DE PORC FUMES KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "29.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "29.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913094118120731",
    "applied_at": "2026-09-13T09:41:18",
    "change": {
@@ -24754,6 +24660,106 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "2.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005144752082282",
+   "applied_at": "2026-10-05T14:47:52",
+   "change": {
+    "code": "0482023924821",
+    "title": "FROMAGE COTTAGE 5%",
+    "pos_title": "FROMAGE COTTAGE 5%",
+    "size_num": 350,
+    "size_unit": "GR",
+    "queued_at": "2026-10-05T18:47:20.344Z",
+    "id": "c1791226040344"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FROMAFE COTTAGE 5%",
+     "F1744": "650.0",
+     "F22": "350G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "FROMAFE COTTAGE 5% 350G",
+     "F04": "3",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "36.0000",
+     "F196": "36.0000",
+     "F1140": "3.6000",
+     "F27": "ZB01"
+    },
+    "PRICE_TAB": {
+     "F30": "5.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005144752129082",
+   "applied_at": "2026-10-05T14:47:52",
+   "change": {
+    "code": "0482023924823",
+    "title": "FROMAGE COTTAGE 9%",
+    "pos_title": "FROMAGE COTTAGE 9%",
+    "size_num": 350,
+    "size_unit": "GR",
+    "queued_at": "2026-10-05T18:47:48.295Z",
+    "id": "c1791226068295"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FROMAFE COTTAGE 9%",
+     "F1744": "650.0",
+     "F22": "350G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "FROMAFE COTTAGE 9% 350G",
+     "F04": "3",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "37.0000",
+     "F196": "37.0000",
+     "F1140": "3.7000",
+     "F27": "ZB01"
+    },
+    "PRICE_TAB": {
+     "F30": "5.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.4900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
