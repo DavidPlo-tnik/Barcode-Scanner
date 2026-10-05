@@ -427,7 +427,31 @@
    "mp": null,
    "cost": 4.66,
    "at": "2026-10-05 14:48:58"
+  },
+  "0083839600991": {
+   "pt": "ZAKYCOH BOROVIKI 1L",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 1000.0,
+   "nm": "ZAKYCOH BOROVIKI",
+   "rp": 8.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 8.99,
+   "mp": null,
+   "cost": 63.9,
+   "at": "2026-10-05 14:55:17"
   }
  },
- "updated": "2026-10-05 14:54:11"
+ "updated": "2026-10-05 14:55:17"
 }
