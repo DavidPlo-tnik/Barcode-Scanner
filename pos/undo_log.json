@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260912121516063771",
-   "applied_at": "2026-09-12T12:15:16",
-   "change": {
-    "code": "0426014717015",
-    "pos_title": "CALMAR SECHE SALE 38G",
-    "size_num": 38,
-    "size_unit": "",
-    "queued_at": "2026-09-12T16:14:36.715Z",
-    "id": "c1789229676715"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "CALMAR SECHE SALE",
-     "F1744": "38.0",
-     "F22": "38G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "CALMAR SECHE SALE 38G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "437.5000",
-     "F196": "437.5000",
-     "F1140": "3.5000",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260912121627137496",
    "applied_at": "2026-09-12T12:16:27",
    "change": {
@@ -24731,6 +24682,54 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005141059249596",
+   "applied_at": "2026-10-05T14:10:59",
+   "change": {
+    "code": "0020233600000",
+    "pos_title": "JAMBON FUMEE DESOSSE ANCIENNE GR",
+    "price": 14.99,
+    "queued_at": "2026-10-05T18:10:48.893Z",
+    "id": "c1791223848893"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": " JAMBON FUMEE DESOSSE ANCIENNE",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "JAMBON FUMEE DESOSSE ANCIENNE GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-ISABELLE"
+    },
+    "PRICE_TAB": {
+     "F30": "12.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "12.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
