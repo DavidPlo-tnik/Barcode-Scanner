@@ -1874,7 +1874,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v146</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v145</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2424,7 +2424,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v146</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v145</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -6961,10 +6961,6 @@
     const cat0 = await fetchEcomCatalog();
     const now = Object.values(cat0.items || {}).filter(e => e && e.featured).length;
     const isOn = !!(cat0.items[code] && cat0.items[code].featured);
-    // Star sits in the scroll path on the ecom list -- confirm so a stray tap
-    // while scrolling doesn't change the home page.
-    if (!confirm(isOn ? `Remove from featured?\n\n${ecomItemName(code)}`
-                      : `Feature on the home page?\n\n${ecomItemName(code)}`)) return;
     if (!isOn && now >= FEATURED_TARGET &&
         !confirm(`You already have ${now} featured items (the home page shelf is meant for about ${FEATURED_TARGET}). Add this one anyway?`)) return;
     let nowOn = false;
@@ -6984,17 +6980,7 @@
     }
   }
 
-  // Product name for confirm dialogs (POS names are padded with spaces).
-  function ecomItemName(code) {
-    const p = DATA.products[resolveCode(code)] || DATA.products[code];
-    return p && p[0] ? String(p[0]).replace(/\s+/g, ' ').trim() : code;
-  }
-
   async function ecomToggleOos(code) {
-    const cat0 = await fetchEcomCatalog();
-    const isOut = !!(cat0.items[code] && cat0.items[code].oos);
-    if (!confirm(isOut ? `Put back IN STOCK?\n\n${ecomItemName(code)}`
-                       : `Mark OUT OF STOCK?\n\n${ecomItemName(code)}`)) return;
     let nowOut = false;
     try {
       await mutateEcomCatalog(c => {
