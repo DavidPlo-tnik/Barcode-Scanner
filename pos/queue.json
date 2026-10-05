@@ -1,3 +1,14 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0083839600144",
+   "pos_title": "RIGA GOLD MAQUEREAU  185G",
+   "size_num": 400,
+   "size_unit": "GR",
+   "price": 2.49,
+   "cost": 1.57,
+   "queued_at": "2026-10-05T18:45:46.184Z",
+   "id": "c1791225946184"
+  }
+ ]
 }
