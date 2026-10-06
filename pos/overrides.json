@@ -809,7 +809,31 @@
    "mp": null,
    "cost": 1.29,
    "at": "2026-10-05 22:59:56"
+  },
+  "0082021300200": {
+   "pt": "KRAKUS SOUPE AU SEIGLE 1l",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 1000.0,
+   "nm": "KRAKUS SOUPE AU SEIGLE",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 2.49,
+   "at": "2026-10-05 23:01:01"
   }
  },
- "updated": "2026-10-05 22:59:56"
+ "updated": "2026-10-05 23:01:01"
 }
