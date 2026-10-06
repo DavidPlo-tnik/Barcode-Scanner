@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913212045154095",
-   "applied_at": "2026-09-13T21:20:45",
-   "change": {
-    "code": "0482018662072",
-    "title": "GOLD RING FILET DE HARENG AVEC HERBES TRANCHÉS 900GR",
-    "pos_title": "GOLD RING FILET DE HARENG AVEC HERBES TR",
-    "size_num": 900,
-    "size_unit": "GR",
-    "queued_at": "2026-09-14T01:19:46.044Z",
-    "id": "c1789348786044"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "GOLD RING FILET DE HARENG AVEC HERBES TRANCHÉS",
-     "F1744": "900.0",
-     "F22": "900G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "GOLD RING FILET DE HARENG AVEC HERBES TR",
-     "F04": "22",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "9.9500",
-     "F196": "9.9500",
-     "F1140": "9.9500",
-     "F27": "ZB01"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913212157163822",
    "applied_at": "2026-09-13T21:21:57",
    "change": {
@@ -24819,6 +24769,56 @@
     },
     "POS_TAB": {
      "F02": "DADU CREME GLACÉE CHOCOLAT",
+     "F04": "4",
+     "F81": "1",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "45.0000",
+     "F196": "45.0000",
+     "F1140": "1.5000",
+     "F27": "0000204728"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006182637169200",
+   "applied_at": "2026-10-06T18:26:37",
+   "change": {
+    "code": "0060961371283",
+    "title": "BANDI CRÈME GLACÉE PLOMBIR À LA VANILLE",
+    "pos_title": "BANDI CRÈME GLACÉE PLOMBIR À LA VANILLE",
+    "size_num": 150,
+    "size_unit": "ML",
+    "queued_at": "2026-10-06T22:25:59.051Z",
+    "id": "c1791325559051"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DADU CREME GLACÉE VANILLE",
+     "F1744": "150.0",
+     "F22": "150 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "DADU CREME GLACÉE VANILLE",
      "F04": "4",
      "F81": "1",
      "F96": "0",
