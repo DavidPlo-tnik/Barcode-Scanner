@@ -1531,7 +1531,7 @@
    "at": "2026-10-06 16:20:40"
   },
   "0006372996082": {
-   "pt": "ZAKUSON  BEET RELISH 250GR",
+   "pt": "ZAKUSON RAIFORT AUX BETTERAVES GASTRONOM",
    "tf": 0,
    "tp": 0,
    "dp": null,
@@ -1540,7 +1540,7 @@
    "sd": 1,
    "un": "GR",
    "sn": 250.0,
-   "nm": "ZAKUSON  BEET RELISH",
+   "nm": "ZAKUSON RAIFORT AUX BETTERAVES GASTRONOMIQUE",
    "rp": 3.99,
    "ap": 0,
    "pp": null,
@@ -1552,7 +1552,7 @@
    "price": 3.99,
    "mp": null,
    "cost": 24.4,
-   "at": "2026-10-06 16:20:40"
+   "at": "2026-10-06 16:33:21"
   },
   "0083839600203": {
    "pt": "ZAKUSON KHRENODER SAUCE TOMATE ET RAIFOR",
@@ -1915,5 +1915,5 @@
    "at": "2026-10-06 16:32:15"
   }
  },
- "updated": "2026-10-06 16:32:15"
+ "updated": "2026-10-06 16:33:21"
 }
