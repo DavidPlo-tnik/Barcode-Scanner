@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913191104190227",
-   "applied_at": "2026-09-13T19:11:04",
-   "change": {
-    "code": "0021011100000",
-    "title": "LAIT CONDENSÉ CUIT (DULCE DE LECHE)",
-    "pos_title": "LAIT CONDENSÉ CUIT (DULCE DE LECHE)",
-    "price": 14.99,
-    "queued_at": "2026-09-13T23:10:19.780Z",
-    "id": "c1789341019780"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LAIT CONDENSÉ CUIT (DULCE DE LECHE)",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "KG"
-    },
-    "POS_TAB": {
-     "F02": "LAIT CONDENSÉ CUIT (DULCE DE LECHE)",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "13.2100",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "13.2100",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913191209211142",
    "applied_at": "2026-09-13T19:12:09",
    "change": {
@@ -24753,6 +24704,56 @@
     },
     "POS_TAB": {
      "F02": "GRAINS DE TOURNESOL 300G",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.7500",
+     "F196": "3.7500",
+     "F1140": "3.7500",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006161626152672",
+   "applied_at": "2026-10-06T16:16:26",
+   "change": {
+    "code": "0460536200878",
+    "title": "BABKINI GRAINES DE TOURNESOL GRILLÉES CLASSIQUES",
+    "pos_title": "BABKINI GRAINES DE TOURNESOL GRILLÉES CL",
+    "size_num": 300,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T20:15:27.836Z",
+    "id": "c1791317727836"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BABKINI GRAINES DE TOURNESOL GRILLÉES CLASSIQUES",
+     "F1744": "300.0",
+     "F22": "300 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BABKINI GRAINES DE TOURNESOL GRILLÉES CL",
      "F04": "2",
      "F81": "1",
      "F96": "1",
