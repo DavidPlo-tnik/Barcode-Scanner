@@ -1,52 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913190232010128",
-   "applied_at": "2026-09-13T19:02:32",
-   "change": {
-    "code": "0020238900000",
-    "queued_at": "2026-09-13T23:01:40.388Z",
-    "id": "c1789340500388"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KNACKWURST BARILOS",
-     "F1744": null,
-     "F22": "",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "KNACKWURST BARILOS",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "9.9900",
-     "F196": "9.9900",
-     "F1140": "9.9900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "16.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "16.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913190539116856",
    "applied_at": "2026-09-13T19:05:39",
    "change": {
@@ -24741,6 +24695,56 @@
      "F04": "1",
      "F81": null,
      "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.5000",
+     "F196": "3.5000",
+     "F1140": "3.5000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006160538048534",
+   "applied_at": "2026-10-06T16:05:38",
+   "change": {
+    "code": "0482300680495",
+    "title": "NIZHYN TOMATES ASSORTIES AUX CANNEBERGES",
+    "pos_title": "NIZHYN TOMATES ASSORTIES AUX CANNEBERGES",
+    "size_num": 920,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T20:04:35.861Z",
+    "id": "c1791317075861"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "NEJIN TOMATES ASSORTI",
+     "F1744": "920.0",
+     "F22": "920GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "NEJIN TOMATES ASSORTI 920GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
      "F05": null,
      "F82": null,
      "F85": null
