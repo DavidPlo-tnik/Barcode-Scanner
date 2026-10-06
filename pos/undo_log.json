@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913210958252159",
-   "applied_at": "2026-09-13T21:09:58",
-   "change": {
-    "code": "0085630300495",
-    "title": "SWEET LIZA MINI GATEAU AU FROMAGE LAIT CONDENSÉ 50GR",
-    "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE LAIT C",
-    "size_num": 50,
-    "size_unit": "GR",
-    "queued_at": "2026-09-14T01:09:16.610Z",
-    "id": "c1789348156610"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SWEET LIZA MINI GATEAU AU FROMAGE LAIT CONDENSÉ",
-     "F1744": "50.0",
-     "F22": "50 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SWEET LIZA MINI GATEAU AU FROMAGE LAIT C",
-     "F04": "4",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.6900",
-     "F196": "0.6900",
-     "F1140": "0.6900",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "1.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "1.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913211211211193",
    "applied_at": "2026-09-13T21:12:11",
    "change": {
@@ -24805,6 +24755,56 @@
     "size_unit": "GR",
     "queued_at": "2026-10-06T22:13:14.392Z",
     "id": "c1791324794392"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KARUMUS  MINI GATEAU AU FROMAGE",
+     "F1744": "750.0",
+     "F22": "45G",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "KARUMUS  MINI GATEAU AU FROMAGE 45G",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "40.0000",
+     "F196": "40.0000",
+     "F1140": "1.0000",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006181548114460",
+   "applied_at": "2026-10-06T18:15:48",
+   "change": {
+    "code": "0475005034149",
+    "title": "KARUMS BARRE DE FROMAGE SUCRÉ AUX NOISETTES ET CHOCOLAT",
+    "pos_title": "KARUMS BARRE DE FROMAGE SUCRÉ AUX NOISET",
+    "size_num": 45,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T22:15:04.657Z",
+    "id": "c1791324904657"
    },
    "before": {
     "OBJ_TAB": {
