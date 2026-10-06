@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913211631201249",
-   "applied_at": "2026-09-13T21:16:31",
-   "change": {
-    "code": "0085630300492",
-    "title": "SWEET LIZA MINI GATEAU AU FROMAGE VANILLE 50GR",
-    "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE VANILL",
-    "size_num": 50,
-    "size_unit": "GR",
-    "queued_at": "2026-09-14T01:15:40.065Z",
-    "id": "c1789348540065"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SWEET LIZA MINI GATEAU AU FROMAGE VANILLE",
-     "F1744": "50.0",
-     "F22": "50 ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "SWEET LIZA MINI GATEAU AU FROMAGE VANILL",
-     "F04": "4",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.7500",
-     "F196": "0.7500",
-     "F1140": "0.7500",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "1.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "1.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913211939228380",
    "applied_at": "2026-09-13T21:19:39",
    "change": {
@@ -24837,6 +24787,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006182320218854",
+   "applied_at": "2026-10-06T18:23:20",
+   "change": {
+    "code": "0070058040988",
+    "title": "BANDI PLOMBIR CRÈME GLACÉE VANILLE ET BAIES SAUVAGES",
+    "pos_title": "BANDI PLOMBIR CRÈME GLACÉE VANILLE ET BA",
+    "size_num": 200,
+    "size_unit": "ML",
+    "queued_at": "2026-10-06T22:22:53.028Z",
+    "id": "c1791325373028"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DADU CREME GLASE",
+     "F1744": "150.0",
+     "F22": "150ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "DADU CREME GLASE 150ML",
+     "F04": "4",
+     "F81": "1",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "48.0000",
+     "F196": "48.0000",
+     "F1140": "2.0000",
+     "F27": "0000204728"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
