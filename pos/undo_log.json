@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913211211257993",
-   "applied_at": "2026-09-13T21:12:11",
-   "change": {
-    "code": "0085630300497",
-    "title": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE 50GR",
-    "size_num": 50,
-    "size_unit": "GR",
-    "queued_at": "2026-09-14T01:11:28.327Z",
-    "id": "c1789348288327"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE",
-     "F1744": "50.0",
-     "F22": "50 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SWEET LIZA MINI GATEAU AU FROMAGE PÊCHE",
-     "F04": "4",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.7500",
-     "F196": "0.7500",
-     "F1140": "0.7500",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "1.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "1.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913211317246109",
    "applied_at": "2026-09-13T21:13:17",
    "change": {
@@ -24807,6 +24758,56 @@
     "size_unit": "GR",
     "queued_at": "2026-10-06T22:16:07.840Z",
     "id": "c1791324967840"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KARUMUS  MINI GATEAU AU FROMAGE",
+     "F1744": "750.0",
+     "F22": "45G",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "KARUMUS  MINI GATEAU AU FROMAGE 45G",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "40.0000",
+     "F196": "40.0000",
+     "F1140": "1.0000",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "1.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006182003065708",
+   "applied_at": "2026-10-06T18:20:03",
+   "change": {
+    "code": "0475005034151",
+    "title": "KARUMS BARRE DE FROMAGE SUCRÉ AUX PÉPITES DE CHOCOLAT",
+    "pos_title": "KARUMS BARRE DE FROMAGE SUCRÉ AUX PÉPITE",
+    "size_num": 45,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T22:19:26.216Z",
+    "id": "c1791325166216"
    },
    "before": {
     "OBJ_TAB": {
