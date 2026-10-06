@@ -2321,7 +2321,31 @@
    "mp": null,
    "cost": 40.0,
    "at": "2026-10-06 18:20:03"
+  },
+  "0475002500052": {
+   "pt": "KARUMS BARRE DE FROMAGE SUCRÉ À LA FRAIS",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 45.0,
+   "nm": "KARUMS BARRE DE FROMAGE SUCRÉ À LA FRAISE",
+   "rp": 1.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 1.49,
+   "mp": null,
+   "cost": 37.62,
+   "at": "2026-10-06 18:21:13"
   }
  },
- "updated": "2026-10-06 18:20:03"
+ "updated": "2026-10-06 18:21:13"
 }
