@@ -1937,7 +1937,31 @@
    "mp": null,
    "cost": 32.4,
    "at": "2026-10-06 17:19:56"
+  },
+  "0070498124145": {
+   "pt": "LA FERME PERLES DE FROMAGE EFILOCHÉ CHEC",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 32,
+   "un": "GR",
+   "sn": 150.0,
+   "nm": "LA FERME PERLES DE FROMAGE EFILOCHÉ CHECHIL FUMÉ",
+   "rp": 9.99,
+   "ap": 1,
+   "pp": 6.99,
+   "ps": "2026-10-01",
+   "pe": "2026-10-07",
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 7.0,
+   "at": "2026-10-06 17:25:14"
   }
  },
- "updated": "2026-10-06 17:21:02"
+ "updated": "2026-10-06 17:25:14"
 }
