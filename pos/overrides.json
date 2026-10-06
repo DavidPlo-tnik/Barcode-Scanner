@@ -1145,7 +1145,31 @@
    "mp": null,
    "cost": 0.99,
    "at": "2026-10-06 15:22:42"
+  },
+  "0590008500741": {
+   "pt": "WINIARY BOUILLON DE LÉGUMES",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 60.0,
+   "nm": "WINIARY BOUILLON DE LÉGUMES",
+   "rp": 1.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 1.99,
+   "mp": null,
+   "cost": 0.69,
+   "at": "2026-10-06 15:23:49"
   }
  },
- "updated": "2026-10-06 15:22:42"
+ "updated": "2026-10-06 15:23:49"
 }
