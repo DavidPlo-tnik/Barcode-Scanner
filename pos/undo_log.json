@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913205041150327",
-   "applied_at": "2026-09-13T20:50:41",
-   "change": {
-    "code": "0076740833085",
-    "pos_title": "FROMAGE ADYGHE QUESO FRESCO 490G",
-    "size_num": 944,
-    "size_unit": "ML",
-    "queued_at": "2026-09-14T00:50:33.359Z",
-    "id": "c1789347033359"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "FROMAGE ADYGHE QUESO FRESCO",
-     "F1744": "944.0",
-     "F22": "490G",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "FROMAGE ADYGHE QUESO FRESCO 490G",
-     "F04": "3",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "9.3600",
-     "F196": "9.3600",
-     "F1140": "9.3600",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "12.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "12.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913205147247643",
    "applied_at": "2026-09-13T20:51:47",
    "change": {
@@ -24827,6 +24778,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006175637126838",
+   "applied_at": "2026-10-06T17:56:37",
+   "change": {
+    "code": "0482309790680",
+    "title": "VELADIS SPRATS KILKA DANS LA SAUCE TOMATE",
+    "pos_title": "VELADIS SPRATS KILKA DANS LA SAUCE TOMAT",
+    "size_num": 230,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T21:56:23.731Z",
+    "id": "c1791323783731"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VELADIS SPRATS A LA SAUCE TOMATE",
+     "F1744": "230.0",
+     "F22": "230G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "VELADIS SPRATS A LA SAUCE TOMATE 230G",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "2.4500",
+     "F196": "2.4500",
+     "F1140": "2.4500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
