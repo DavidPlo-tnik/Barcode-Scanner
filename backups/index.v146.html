@@ -1874,7 +1874,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v147</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v146</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2231,7 +2231,7 @@
      Shopify listing, priced live from whichever code it's grouped under. -->
 <div class="modal" id="candy-modal">
   <div class="modal-header">
-    <span class="label" id="candy-modal-label">🍬 CANDIES</span>
+    <span class="label">🍬 CANDIES</span>
     <div class="actions"><button class="close" id="close-candy-modal">×</button></div>
   </div>
   <div class="modal-content">
@@ -2239,7 +2239,7 @@
       <div id="candy-head-name" class="pd-head-name"></div>
       <div id="candy-head-code" class="pd-head-code"></div>
     </div>
-    <div class="pd-note" id="candy-help" style="margin:4px 0 14px;">
+    <div class="pd-note" style="margin:4px 0 14px;">
       Every candy below is sold at this code's price per kg. Add one entry per
       candy/chocolate you want listed on the site -- a name (or just leave it
       blank and rely on the photo) and a photo.
@@ -2355,7 +2355,7 @@
            individually named/photographed candies to it -- each becomes its
            own listing on the site, priced live from this code. -->
       <button type="button" class="btn small" id="pd-candy-btn" style="display:none;margin-top:8px;">
-        🍬 MANAGE ITEMS UNDER THIS CODE
+        🍬 MANAGE CANDIES FOR THIS PRICE
       </button>
 
       <!-- Photos live here, behind the PIN, rather than on the public product view -->
@@ -2424,7 +2424,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v147</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v146</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4201,18 +4201,8 @@
   // own Shopify listing, priced live from whichever code it's under, without
   // touching the POS or the register workflow at all.
   const CANDY_TIER_CODES_RAW = ['11000', '11001', '11002', '11003', '11008'];
-  // Other codes that work the same way: several named items under ONE POS code.
-  // 10104/10107/10108 are the scale codes for ready-made food (sides / salads /
-  // meats); 85 is the pastry / pierozhki code (sold per piece).
-  const GROUP_ONLY_CODES_RAW = ['0021010400000', '0021010700000', '0021010800000', '85'];
-  const GROUP_NOUN = { '0021010400000': 'side', '0021010700000': 'salad', '0021010800000': 'meat', '85': 'pastry' };
-  function groupNoun(code) { return GROUP_NOUN[code] || GROUP_NOUN[String(code).replace(/^0+/, '')] || (isCandyOnly(code) ? 'candy' : 'item'); }
-  function isCandyOnly(code) {
-    const rc = resolveCode(String(code));
-    return CANDY_TIER_CODES_RAW.map(c => resolveCode(c)).includes(rc);
-  }
   function candyTierCodesResolved() {
-    return CANDY_TIER_CODES_RAW.concat(GROUP_ONLY_CODES_RAW).map(c => resolveCode(c));
+    return CANDY_TIER_CODES_RAW.map(c => resolveCode(c));
   }
   function isCandyTierCode(code) {
     const rc = resolveCode(String(code));
@@ -4226,10 +4216,6 @@
     const arr = DATA.products[_candyCtx];
     $('#candy-head-name').textContent = (arr && arr[0]) || _candyCtx;
     $('#candy-head-code').textContent = `${priceText(_candyCtx, arr && arr[1])} — ${_candyCtx}`;
-    const noun = groupNoun(_candyCtx);
-    $('#candy-modal-label').textContent = noun === 'candy' ? '🍬 CANDIES' : '🍽 ITEMS UNDER ONE CODE';
-    $('#candy-help').textContent = `Every ${noun} below is sold at this code's price. Add one entry per ${noun} you want listed on the site -- a name and a photo.`;
-    $('#candy-add-btn').textContent = `+ ADD ${noun === 'candy' ? 'A CANDY' : 'AN ITEM'}`;
     $('#candy-modal').classList.add('open');
     await renderCandyList();
   }
@@ -4240,7 +4226,7 @@
     const cat = await fetchEcomCatalog();
     const entries = (cat.candyGroups && cat.candyGroups[_candyCtx]) || [];
     if (!entries.length) {
-      list.innerHTML = '<div class="pd-note">Nothing added yet.</div>';
+      list.innerHTML = '<div class="pd-note">No candies added yet.</div>';
       return;
     }
     list.innerHTML = entries.map(e => `
@@ -4248,10 +4234,9 @@
         ${e.photos && e.photos[0]
           ? `<img class="thumb js-photo-thumb" data-full="${photoSrc(e.photos[0])}" src="${photoSrc(e.photos[0])}" loading="lazy" alt="">`
           : `<div class="thumb thumb-empty"></div>`}
-        <input type="text" placeholder="Name (optional)" value="${escapeHtml(e.name || '')}" data-candy-name="${escapeHtml(e.id)}">
+        <input type="text" placeholder="Candy name (optional)" value="${escapeHtml(e.name || '')}" data-candy-name="${escapeHtml(e.id)}">
         <button type="button" class="btn small${e.oos ? ' is-out' : ''}" data-candy-oos="${escapeHtml(e.id)}" title="Out of stock toggle">${e.oos ? 'OUT' : 'IN'}</button>
         <button type="button" class="btn small" data-candy-photo="${escapeHtml(e.id)}">📷</button>
-        ${isCandyOnly(_candyCtx) ? `<button type="button" class="btn small" data-candy-move="${escapeHtml(e.id)}" title="Move to another price level">⇄</button>` : ''}
         <button type="button" class="btn small danger" data-candy-del="${escapeHtml(e.id)}">✕</button>
       </div>`).join('');
 
@@ -4263,9 +4248,6 @@
     });
     list.querySelectorAll('[data-candy-oos]').forEach(btn => {
       btn.addEventListener('click', () => toggleCandyOos(btn.dataset.candyOos));
-    });
-    list.querySelectorAll('[data-candy-move]').forEach(btn => {
-      btn.addEventListener('click', () => moveCandyEntry(btn.dataset.candyMove));
     });
     list.querySelectorAll('[data-candy-del]').forEach(btn => {
       btn.addEventListener('click', () => deleteCandyEntry(btn.dataset.candyDel));
@@ -4296,11 +4278,6 @@
   }
 
   async function toggleCandyOos(id) {
-    const cat0 = await fetchEcomCatalog();
-    const e0 = ((cat0.candyGroups && cat0.candyGroups[_candyCtx]) || []).find(x => x.id === id);
-    if (!e0) return;
-    const nm = (e0.name || '').trim() || '(unnamed)';
-    if (!confirm(e0.oos ? `Put back IN STOCK?\n\n${nm}` : `Mark OUT OF STOCK?\n\n${nm}\n\nIt will show as sold out on the website.`)) return;
     let nowOut = false;
     try {
       await mutateEcomCatalog(cat => {
@@ -4315,38 +4292,8 @@
     } catch (e) { showToast('Could not update: ' + e.message, true); }
   }
 
-  // Move one candy to a different price level (e.g. 11000 -> 11002). The entry
-  // keeps its id + photos, and remembers the tier it was first created under
-  // (`home`) so its Shopify product keeps the same handle instead of being
-  // deleted and recreated; only its price changes.
-  async function moveCandyEntry(id) {
-    const tiers = CANDY_TIER_CODES_RAW.map(c => resolveCode(c)).filter(c => c !== _candyCtx);
-    const lines = tiers.map((c, i) => {
-      const a = DATA.products[c];
-      return `${i + 1}) ${c.replace(/^0+/, '')} \u2014 ${priceText(c, a && a[1])}`;
-    });
-    const ans = prompt(`Move to which price level?\n\n${lines.join('\n')}\n\nType the number:`);
-    if (ans === null) return;
-    const idx = parseInt(ans, 10) - 1;
-    if (!(idx >= 0 && idx < tiers.length)) { showToast('Not a valid choice', true); return; }
-    const dest = tiers[idx];
-    try {
-      await mutateEcomCatalog(cat => {
-        const groups = cat.candyGroups = cat.candyGroups || {};
-        const src = groups[_candyCtx] || [];
-        const e = src.find(x => x.id === id);
-        if (!e) return;
-        groups[_candyCtx] = src.filter(x => x.id !== id);
-        if (!e.home) e.home = _candyCtx;
-        (groups[dest] = groups[dest] || []).push(e);
-      });
-      await renderCandyList();
-      showToast(`Moved to ${dest.replace(/^0+/, '')} \u2014 takes effect on the next sync`);
-    } catch (e) { showToast('Could not move: ' + e.message, true); }
-  }
-
   async function deleteCandyEntry(id) {
-    if (!confirm('Remove this entry? It will be taken off the website on the next sync.')) return;
+    if (!confirm('Remove this candy? It will be taken off the website on the next sync.')) return;
     try {
       await mutateEcomCatalog(cat => {
         const arr = cat.candyGroups && cat.candyGroups[_candyCtx];
