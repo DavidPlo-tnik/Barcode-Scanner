@@ -1816,7 +1816,7 @@
    "price": 3.99,
    "mp": null,
    "cost": 32.4,
-   "at": "2026-10-06 16:51:04"
+   "at": "2026-10-06 17:19:56"
   },
   "0083839600055": {
    "pt": "ZAKUSON MOUTARDE GASTRONOMIQUE",
@@ -1913,7 +1913,31 @@
    "mp": null,
    "cost": 29.45,
    "at": "2026-10-06 16:32:15"
+  },
+  "0083839600007": {
+   "pt": "ZAKUSON MAYONNAISE À LA MOUTARDE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 250.0,
+   "nm": "ZAKUSON MAYONNAISE À LA MOUTARDE",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 32.4,
+   "at": "2026-10-06 17:19:56"
   }
  },
- "updated": "2026-10-06 16:51:04"
+ "updated": "2026-10-06 17:19:56"
 }
