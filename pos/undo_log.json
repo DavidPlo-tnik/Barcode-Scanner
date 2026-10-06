@@ -1,97 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913202356108308",
-   "applied_at": "2026-09-13T20:23:56",
-   "change": {
-    "code": "0020151800000",
-    "pos_title": "RAIFORT, HORSERADISH GR",
-    "subdept": 41,
-    "queued_at": "2026-09-14T00:23:32.625Z",
-    "id": "c1789345412625"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "RAIFORT, HORSERADISH",
-     "F1744": null,
-     "F22": "GR",
-     "F23": ""
-    },
-    "POS_TAB": {
-     "F02": "RAIFORT, HORSERADISH GR",
-     "F04": "62",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": "0"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913203013176570",
-   "applied_at": "2026-09-13T20:30:13",
-   "change": {
-    "code": "0006310021940",
-    "pos_title": "ML BACON",
-    "size_num": 375,
-    "size_unit": "",
-    "queued_at": "2026-09-14T00:29:11.902Z",
-    "id": "c1789345751902"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "MLeaf bacon                         375g",
-     "F1744": "375.0",
-     "F22": "375G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "ML BACON",
-     "F04": "21",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "71.5200",
-     "F196": "71.5200",
-     "F1140": "5.9600",
-     "F27": "ZV01"
-    },
-    "PRICE_TAB": {
-     "F30": "7.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "10.9900",
-     "F113": "STOR",
-     "F1133": "10.9900",
-     "F1216": "2025-10-15 00:00:00",
-     "F1217": "2035-10-15 00:00:00",
-     "F1013": "7.9900",
-     "F1014": "2035-10-15 00:00:00",
-     "F1015": "2359",
-     "F1011": "REG"
-    }
-   }
-  },
-  {
    "undo_id": "u20260913203119227086",
    "applied_at": "2026-09-13T20:31:19",
    "change": {
@@ -24784,6 +24693,104 @@
     },
     "POS_TAB": {
      "F02": "ZAKUSON  TKEMALI 250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "32.4000",
+     "F196": "32.4000",
+     "F1140": "2.7000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006171956196972",
+   "applied_at": "2026-10-06T17:19:56",
+   "change": {
+    "code": "0083839600886",
+    "size_num": 250,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T21:18:55.489Z",
+    "id": "c1791321535489"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKUSON SAUCE TKEMALI",
+     "F1744": "250.0",
+     "F22": "250 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKUSON SAUCE TKEMALI",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "32.4000",
+     "F196": "32.4000",
+     "F1140": "2.7000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006171956259373",
+   "applied_at": "2026-10-06T17:19:56",
+   "change": {
+    "code": "0083839600007",
+    "title": "ZAKUSON MAYONNAISE À LA MOUTARDE",
+    "pos_title": "ZAKUSON MAYONNAISE À LA MOUTARDE",
+    "size_num": 250,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T21:19:48.141Z",
+    "id": "c1791321588141"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKUSON MAYONAISE AVEC MOUTARDE",
+     "F1744": "250.0",
+     "F22": "250 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKUSON MAYONAISE AVEC MOUTARDE 250 GR",
      "F04": "1",
      "F81": null,
      "F96": null,
