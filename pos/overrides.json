@@ -1193,7 +1193,31 @@
    "mp": null,
    "cost": 0.89,
    "at": "2026-10-06 15:24:55"
+  },
+  "0426000724021": {
+   "pt": "EMELA MELON D'EAU MARINÉ",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 1600.0,
+   "nm": "EMELA MELON D'EAU MARINÉ",
+   "rp": 7.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 7.99,
+   "mp": null,
+   "cost": 25.35,
+   "at": "2026-10-06 15:27:02"
   }
  },
- "updated": "2026-10-06 15:24:55"
+ "updated": "2026-10-06 15:27:02"
 }
