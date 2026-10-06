@@ -1409,7 +1409,31 @@
    "mp": null,
    "cost": 90.72,
    "at": "2026-10-06 16:11:07"
+  },
+  "0460536200878": {
+   "pt": "BABKINI GRAINES DE TOURNESOL GRILLÉES CL",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "GR",
+   "sn": 300.0,
+   "nm": "BABKINI GRAINES DE TOURNESOL GRILLÉES CLASSIQUES",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 3.75,
+   "at": "2026-10-06 16:13:14"
   }
  },
- "updated": "2026-10-06 16:11:07"
+ "updated": "2026-10-06 16:13:14"
 }
