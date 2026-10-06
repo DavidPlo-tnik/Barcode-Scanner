@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913181313135340",
-   "applied_at": "2026-09-13T18:13:13",
-   "change": {
-    "code": "0482000045653",
-    "title": "KVAS TARAS NOIR 1500ML",
-    "pos_title": "KVAS TARAS NOIR 1500ML",
-    "size_num": 1500,
-    "size_unit": "ML",
-    "queued_at": "2026-09-13T22:12:24.806Z",
-    "id": "c1789337544806"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KVAS TARAS ",
-     "F1744": "2.0",
-     "F22": "1.5L",
-     "F23": "LT"
-    },
-    "POS_TAB": {
-     "F02": "KVAS TARAS  1.5L",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5000",
-     "F196": "3.5000",
-     "F1140": "3.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913181626123279",
    "applied_at": "2026-09-13T18:16:26",
    "change": {
@@ -24761,6 +24711,52 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006142242092683",
+   "applied_at": "2026-10-06T14:22:42",
+   "change": {
+    "code": "0020233400000",
+    "queued_at": "2026-10-06T18:21:58.266Z",
+    "id": "c1791310918266"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "TÊTE FROMAGÉE VIANDE ET AIL",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "TÊTE FROMAGÉE VIANDE ET AIL",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-ISABELLE"
+    },
+    "PRICE_TAB": {
+     "F30": "22.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "22.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
