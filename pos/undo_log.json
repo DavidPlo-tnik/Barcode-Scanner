@@ -1,102 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913201835246944",
-   "applied_at": "2026-09-13T20:18:35",
-   "change": {
-    "code": "0005549820057",
-    "pos_title": "KRINOS TARAMA 250GR",
-    "size_num": 250,
-    "size_unit": "GR",
-    "subdept": 26,
-    "queued_at": "2026-09-14T00:18:15.956Z",
-    "id": "c1789345095956"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KRINOS TARAMA",
-     "F1744": "250.0",
-     "F22": "250GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "KRINOS TARAMA 250GR",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "84.0000",
-     "F196": "84.0000",
-     "F1140": "7.0000",
-     "F27": "L-KRINOS"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913202042184367",
-   "applied_at": "2026-09-13T20:20:42",
-   "change": {
-    "code": "0020239200000",
-    "queued_at": "2026-09-14T00:19:42.226Z",
-    "id": "c1789345182226"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SALAMI KIEV DROGOBITSKA",
-     "F1744": null,
-     "F22": "",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "SALAMI KIEV DROGOBITSKA",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "9.9900",
-     "F196": "9.9900",
-     "F1140": "9.9900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "24.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "24.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913202042231167",
    "applied_at": "2026-09-13T20:20:42",
    "change": {
@@ -24787,6 +24691,106 @@
      "F38": "24.4000",
      "F196": "24.4000",
      "F1140": "2.0333",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006164957185217",
+   "applied_at": "2026-10-06T16:49:57",
+   "change": {
+    "code": "0083839600055",
+    "title": "ZAKUSON MOUTARDE GASTRONOMIQUE",
+    "pos_title": "ZAKUSON MOUTARDE GASTRONOMIQUE",
+    "size_num": 250,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T20:49:30.409Z",
+    "id": "c1791319770409"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKUSON MOUTARDE GOURMET",
+     "F1744": "250.0",
+     "F22": "250GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKUSON MOUTARDE GOURMET 250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "29.4500",
+     "F196": "29.4500",
+     "F1140": "2.4542",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006164957232017",
+   "applied_at": "2026-10-06T16:49:57",
+   "change": {
+    "code": "0083839600055",
+    "title": "ZAKUSON MOUTARDE GASTRONOMIQUE",
+    "pos_title": "ZAKUSON MOUTARDE GASTRONOMIQUE",
+    "size_num": 250,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T20:49:34.401Z",
+    "id": "c1791319774401"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKUSON MOUTARDE GASTRONOMIQUE",
+     "F1744": "250.0",
+     "F22": "250 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKUSON MOUTARDE GASTRONOMIQUE",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "29.4500",
+     "F196": "29.4500",
+     "F1140": "2.4542",
      "F27": "L-EPIC"
     },
     "PRICE_TAB": {
