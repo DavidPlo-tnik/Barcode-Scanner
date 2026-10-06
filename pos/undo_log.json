@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913185155279419",
-   "applied_at": "2026-09-13T18:51:55",
-   "change": {
-    "code": "0020234700000",
-    "pos_title": "SAUCISSON DE CRACOVIE KG",
-    "price": 19.99,
-    "queued_at": "2026-09-13T22:51:25.190Z",
-    "id": "c1789339885190"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SAUCISSON DE CRACOVIE",
-     "F1744": null,
-     "F22": "kg",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SAUCISSON DE CRACOVIE KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "17.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "17.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913185502198947",
    "applied_at": "2026-09-13T18:55:02",
    "change": {
@@ -24743,6 +24695,56 @@
      "F38": "4.2000",
      "F196": "4.2000",
      "F1140": "4.2000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006153431126053",
+   "applied_at": "2026-10-06T15:34:31",
+   "change": {
+    "code": "0482300680205",
+    "title": "NIZHYN ASSORTIMENT DE LÉGUMES MARINÉS NO 1",
+    "pos_title": "NIZHYN ASSORTIMENT DE LÉGUMES MARINÉS NO",
+    "size_num": 920,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T19:33:49.491Z",
+    "id": "c1791315229491"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "NEZHIN MELANGE LEGUMES TOMATES CONCOMBRES",
+     "F1744": "920.0",
+     "F22": "920GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "NEZHIN MELANGE LEGUMES TOMATES CONCOMBRE",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.5000",
+     "F196": "3.5000",
+     "F1140": "3.5000",
      "F27": "L-EPIC"
     },
     "PRICE_TAB": {
