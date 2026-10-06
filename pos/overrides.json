@@ -2489,7 +2489,31 @@
    "mp": null,
    "cost": 37.75,
    "at": "2026-10-06 18:30:56"
+  },
+  "0088764300210": {
+   "pt": "KOZACKIE CHAMPIGNONS MARINÉS",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 750.0,
+   "nm": "KOZACKIE CHAMPIGNONS MARINÉS",
+   "rp": 8.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 8.99,
+   "mp": null,
+   "cost": 5.99,
+   "at": "2026-10-06 18:33:07"
   }
  },
- "updated": "2026-10-06 18:30:56"
+ "updated": "2026-10-06 18:33:07"
 }
