@@ -833,7 +833,31 @@
    "mp": null,
    "cost": 5.59,
    "at": "2026-10-06 14:49:38"
+  },
+  "0005980799911": {
+   "pt": "VEGETA BOUILLON DE POULET 80GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 80.0,
+   "nm": "VEGETA BOUILLON DE POULET",
+   "rp": 2.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 2.49,
+   "mp": null,
+   "cost": 1.39,
+   "at": "2026-10-06 14:50:47"
   }
  },
- "updated": "2026-10-06 14:49:38"
+ "updated": "2026-10-06 14:50:47"
 }
