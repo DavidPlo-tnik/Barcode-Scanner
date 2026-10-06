@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-06T22:38:23.071Z",
+ "updated": "2026-10-06T22:38:39.873Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -5775,23 +5775,6 @@
    "group": "22-gold-ring-filet",
    "dept": "22",
    "weekly": 16.32,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482020587375": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": null,
-   "dept": "4",
-   "weekly": 44.97,
    "scale": false,
    "fresh": false,
    "v": {
