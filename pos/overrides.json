@@ -1289,7 +1289,31 @@
    "mp": null,
    "cost": 3.5,
    "at": "2026-10-06 15:34:31"
+  },
+  "0482300680096": {
+   "pt": "NIZHYN TOMATES MARINÉES",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 920.0,
+   "nm": "NIZHYN TOMATES MARINÉES",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 3.5,
+   "at": "2026-10-06 15:40:45"
   }
  },
- "updated": "2026-10-06 15:34:31"
+ "updated": "2026-10-06 15:40:45"
 }
