@@ -1,53 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913200855191125",
-   "applied_at": "2026-09-13T20:08:55",
-   "change": {
-    "code": "0021014100000",
-    "pos_title": "KHOLODETS GR",
-    "queued_at": "2026-09-14T00:07:59.056Z",
-    "id": "c1789344479056"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KHOLODETS",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "KHOLODETS GR",
-     "F04": "61",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "15.4100",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "15.4100",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913201208272664",
    "applied_at": "2026-09-13T20:12:08",
    "change": {
@@ -24782,6 +24735,56 @@
      "F38": "32.4000",
      "F196": "32.4000",
      "F1140": "2.7000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006163109272036",
+   "applied_at": "2026-10-06T16:31:09",
+   "change": {
+    "code": "0083839600203",
+    "title": "ZAKUSON KHRENODER SAUCE TOMATE ET RAIFORT MAISON",
+    "pos_title": "ZAKUSON KHRENODER SAUCE TOMATE ET RAIFOR",
+    "size_num": 250,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T20:30:15.111Z",
+    "id": "c1791318615111"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKUSON XRENODER",
+     "F1744": "250.0",
+     "F22": "250GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKUSON XRENODER 250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "33.0000",
+     "F196": "33.0000",
+     "F1140": "2.7500",
      "F27": "L-EPIC"
     },
     "PRICE_TAB": {
