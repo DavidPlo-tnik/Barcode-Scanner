@@ -1,105 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913210023125949",
-   "applied_at": "2026-09-13T21:00:23",
-   "change": {
-    "code": "0482307151982",
-    "pos_title": "SMACOM CREPES AU CERISE 350G",
-    "size_num": 350,
-    "size_unit": "",
-    "queued_at": "2026-09-14T01:00:06.503Z",
-    "id": "c1789347606503"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SMACOM CREPES AU CERISE",
-     "F1744": "350.0",
-     "F22": "350G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "SMACOM CREPES AU CERISE 350G",
-     "F04": "4",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.7000",
-     "F196": "2.7000",
-     "F1140": "2.7000",
-     "F27": "L-SAP"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913210230203772",
-   "applied_at": "2026-09-13T21:02:30",
-   "change": {
-    "code": "0085630300498",
-    "title": "SWEET LIZA MINI GATEAU AU FROMAGE BLEUETS 50GR",
-    "pos_title": "SWEET LIZA MINI GATEAU AU FROMAGE BLEUET",
-    "size_num": 50,
-    "size_unit": "GR",
-    "queued_at": "2026-09-14T01:02:08.692Z",
-    "id": "c1789347728692"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SWEET LIZA MINI GATEAU AU FROMAGE BLEUETS",
-     "F1744": "50.0",
-     "F22": "50 ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "SWEET LIZA MINI GATEAU AU FROMAGE BLEUET",
-     "F04": "4",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.7500",
-     "F196": "0.7500",
-     "F1140": "0.7500",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "1.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "1.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913210437187995",
    "applied_at": "2026-09-13T21:04:37",
    "change": {
@@ -24830,6 +24731,106 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "10.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006180306129121",
+   "applied_at": "2026-10-06T18:03:06",
+   "change": {
+    "code": "0062845141372",
+    "title": "RAGOÛT DE PORC",
+    "pos_title": "RAGOÛT DE PORC",
+    "size_num": 400,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T22:02:10.461Z",
+    "id": "c1791324130461"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "RAGOUT DE PORC",
+     "F1744": "400.0",
+     "F22": "400GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "RAGOUT DE PORC 400GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "87.6700",
+     "F196": "87.6700",
+     "F1140": "7.3058",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "10.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "10.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006180306175921",
+   "applied_at": "2026-10-06T18:03:06",
+   "change": {
+    "code": "0062845141373",
+    "title": "RAGOÛT DE BOEUF",
+    "pos_title": "RAGOÛT DE BOEUF",
+    "size_num": 400,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T22:03:00.348Z",
+    "id": "c1791324180348"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "RAGOUT DE BOEUF",
+     "F1744": "400.0",
+     "F22": "400GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "RAGOUT DE BOEUF 400GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "121.8700",
+     "F196": "121.8700",
+     "F1140": "10.1558",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
