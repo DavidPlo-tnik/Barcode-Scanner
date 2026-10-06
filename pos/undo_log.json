@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913184735180162",
-   "applied_at": "2026-09-13T18:47:35",
-   "change": {
-    "code": "0069256502209",
-    "title": "PELMEN  PIEROGIE EPINARD ET FETA 500GR",
-    "pos_title": "PELMEN  PIEROGIE EPINARD ET FETA 500GR",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-13T22:47:07.365Z",
-    "id": "c1789339627365"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "PELMEN  PIEROGIE EPINARD ET FETA 500GR",
-     "F1744": "500.0",
-     "F22": "500 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "PELMEN  PIEROGIE EPINARD ET FETA 500GR",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "38.5000",
-     "F196": "38.5000",
-     "F1140": "3.2083",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913184841137078",
    "applied_at": "2026-09-13T18:48:41",
    "change": {
@@ -24740,6 +24690,56 @@
      "F38": "25.3500",
      "F196": "25.3500",
      "F1140": "4.2250",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006152812279387",
+   "applied_at": "2026-10-06T15:28:12",
+   "change": {
+    "code": "0426000724008",
+    "title": "EMELA ASSORTIMENT DE TOMATES ET CONCOMBRES MAISON",
+    "pos_title": "EMELA ASSORTIMENT DE TOMATES ET CONCOMBR",
+    "size_num": 1630,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T19:27:54.070Z",
+    "id": "c1791314874070"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "EMELA TOMATES ET CORNICHONES",
+     "F1744": "1700.0",
+     "F22": "1700ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "EMELA TOMATES ET CORNICHONES 1700ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "33.8500",
+     "F196": "33.8500",
+     "F1140": "5.6417",
      "F27": "L-EPIC"
     },
     "PRICE_TAB": {
