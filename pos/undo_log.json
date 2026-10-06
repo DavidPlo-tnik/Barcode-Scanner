@@ -1,52 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913202042231167",
-   "applied_at": "2026-09-13T20:20:42",
-   "change": {
-    "code": "0020239300000",
-    "queued_at": "2026-09-14T00:20:38.228Z",
-    "id": "c1789345238228"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SALAMI SEC DELICATESNAYA",
-     "F1744": null,
-     "F22": "",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "SALAMI SEC DELICATESNAYA",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "9.9900",
-     "F196": "9.9900",
-     "F1140": "9.9900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "44.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "44.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913202356108308",
    "applied_at": "2026-09-13T20:23:56",
    "change": {
@@ -24791,6 +24745,56 @@
      "F38": "29.4500",
      "F196": "29.4500",
      "F1140": "2.4542",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006165104140534",
+   "applied_at": "2026-10-06T16:51:04",
+   "change": {
+    "code": "0083839600886",
+    "title": "ZAKUSON SAUCE TKEMALI",
+    "pos_title": "ZAKUSON SAUCE TKEMALI",
+    "size_num": 250,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T20:50:42.286Z",
+    "id": "c1791319842286"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKUSON  TKEMALI",
+     "F1744": "250.0",
+     "F22": "250GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKUSON  TKEMALI 250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "32.4000",
+     "F196": "32.4000",
+     "F1140": "2.7000",
      "F27": "L-EPIC"
     },
     "PRICE_TAB": {
