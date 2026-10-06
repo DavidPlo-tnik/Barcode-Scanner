@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913180540172945",
-   "applied_at": "2026-09-13T18:05:40",
-   "change": {
-    "code": "0020236400000",
-    "pos_title": "SOC DE PORC FUME KG",
-    "price": 19.99,
-    "queued_at": "2026-09-13T22:04:44.384Z",
-    "id": "c1789337084384"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SOC DE PORC FUME",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "KG"
-    },
-    "POS_TAB": {
-     "F02": "SOC DE PORC FUME KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "16.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "16.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913180645162659",
    "applied_at": "2026-09-13T18:06:45",
    "change": {
@@ -24769,6 +24721,55 @@
      "F38": "1.3900",
      "F196": "1.3900",
      "F1140": "1.3900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005225956180630",
+   "applied_at": "2026-10-05T22:59:56",
+   "change": {
+    "code": "0590113501562",
+    "pos_title": "KUCHAREK ASSAISONNEMENT VEGETAL 175GR",
+    "size_num": 175,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T02:59:28.041Z",
+    "id": "c1791255568041"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KUCHAREK ASSAISONNEMENT VEGETAL",
+     "F1744": "175.0",
+     "F22": "175GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "KUCHAREK ASSAISONNEMENT VEGETAL 175GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "1.2900",
+     "F196": "1.2900",
+     "F1140": "1.2900",
      "F27": "L-TONSELL"
     },
     "PRICE_TAB": {
