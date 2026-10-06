@@ -1073,7 +1073,31 @@
    "mp": null,
    "cost": 48.65,
    "at": "2026-10-06 15:15:13"
+  },
+  "0426000724665": {
+   "pt": "EMELA POIVRONS À LA GÉORGIENNE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 530.0,
+   "nm": "EMELA POIVRONS À LA GÉORGIENNE",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 46.75,
+   "at": "2026-10-06 15:19:25"
   }
  },
- "updated": "2026-10-06 15:15:13"
+ "updated": "2026-10-06 15:19:25"
 }
