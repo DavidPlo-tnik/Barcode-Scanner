@@ -1,1097 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913191209211142",
-   "applied_at": "2026-09-13T19:12:09",
-   "change": {
-    "code": "0005900000001",
-    "pos_title": "EAGLBR.LAIT COND",
-    "size_num": 300,
-    "size_unit": "ML",
-    "queued_at": "2026-09-13T23:11:31.471Z",
-    "id": "c1789341091471"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "EagleBr.lait cond.                 300ml",
-     "F1744": "300.0",
-     "F22": "300ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "EAGLBR.LAIT COND",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "77.6800",
-     "F196": "77.6800",
-     "F1140": "3.2367",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "3.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "STOR",
-     "F1133": "4.9900",
-     "F1216": "2026-04-02 00:00:00",
-     "F1217": "2028-04-02 00:00:00",
-     "F1013": "3.9900",
-     "F1014": "2028-04-02 00:00:00",
-     "F1015": "2359",
-     "F1011": "REG"
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913191725174096",
-   "applied_at": "2026-09-13T19:17:25",
-   "change": {
-    "code": "0088764300077",
-    "title": "WHITE EAGLE GRIOTTES ROUGES DENOYAUTEES 796ML",
-    "size_num": 796,
-    "size_unit": "ML",
-    "queued_at": "2026-09-13T23:17:09.720Z",
-    "id": "c1789341429720"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "WHITE EAGLE GRIOTTES ROUGES DENOYAUTEES",
-     "F1744": "796.0",
-     "F22": "796ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "WHITE EAGLE GRIOTTES ROUGES DENOYAUTEES",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "5.3900",
-     "F196": "5.3900",
-     "F1140": "5.3900",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "7.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "7.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913191938148730",
-   "applied_at": "2026-09-13T19:19:38",
-   "change": {
-    "code": "0020711700000",
-    "pos_title": "BOLOGNE AU VEAU 1000G",
-    "size_num": 1000,
-    "size_unit": "",
-    "queued_at": "2026-09-13T23:18:37.920Z",
-    "id": "c1789341517920"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "BOLOGNE AU VEAU",
-     "F1744": "1000.0",
-     "F22": "1000G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "BOLOGNE AU VEAU 1000G",
-     "F04": "31",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "47.3000",
-     "F196": "47.3000",
-     "F1140": "5.5000",
-     "F27": "ZV01"
-    },
-    "PRICE_TAB": {
-     "F30": "16.9000",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "16.9000",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913192145086153",
-   "applied_at": "2026-09-13T19:21:45",
-   "change": {
-    "code": "0021011600000",
-    "pos_title": "Choucroute fermenté Kapusta GR",
-    "queued_at": "2026-09-13T23:21:07.713Z",
-    "id": "c1789341667713"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "Choucroute fermenté Kapusta",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "Choucroute fermenté Kapusta GR",
-     "F04": "34",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "8.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "8.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913193315161766",
-   "applied_at": "2026-09-13T19:33:15",
-   "change": {
-    "code": "0089269100145",
-    "pos_title": "GRANDMA'S PEROGIES BOEUF 907G",
-    "size_num": 907,
-    "size_unit": "",
-    "subdept": 4,
-    "queued_at": "2026-09-13T23:32:56.058Z",
-    "id": "c1789342376058"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "GRANDMA'S PEROGIES BOEUF",
-     "F1744": "907.0",
-     "F22": "907 ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "GRANDMA'S PEROGIES BOEUF 907G",
-     "F04": "21",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "84.0000",
-     "F196": "84.0000",
-     "F1140": "6.0000",
-     "F27": "L-PARMA"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913193729177013",
-   "applied_at": "2026-09-13T19:37:29",
-   "change": {
-    "code": "0020236700000",
-    "pos_title": "DEBRECYNA SAUCISSE BBQ KG",
-    "queued_at": "2026-09-13T23:36:41.243Z",
-    "id": "c1789342601243"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "DEBRECYNA SAUCISSE BBQ",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "KG"
-    },
-    "POS_TAB": {
-     "F02": "DEBRECYNA SAUCISSE BBQ KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "14.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "14.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913193729239413",
-   "applied_at": "2026-09-13T19:37:29",
-   "change": {
-    "code": "0020236700000",
-    "pos_title": "DEBRECYNA SAUCISSE BBQ KG",
-    "queued_at": "2026-09-13T23:37:07.073Z",
-    "id": "c1789342627073"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "DEBRECYNA SAUCISSE BBQ",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "KG"
-    },
-    "POS_TAB": {
-     "F02": "DEBRECYNA SAUCISSE BBQ KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "14.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "14.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913193834119927",
-   "applied_at": "2026-09-13T19:38:34",
-   "change": {
-    "code": "0020236800000",
-    "pos_title": "DEBRECYNA SAUCISSE BBQ PIQUANTE KG",
-    "queued_at": "2026-09-13T23:37:41.050Z",
-    "id": "c1789342661050"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "DEBRECYNA SAUCISSE BBQ PIQUANTE",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "KG"
-    },
-    "POS_TAB": {
-     "F02": "DEBRECYNA SAUCISSE BBQ PIQUANTE KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "14.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "14.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913193945256052",
-   "applied_at": "2026-09-13T19:39:45",
-   "change": {
-    "code": "0020234900000",
-    "pos_title": "KABANOS GR",
-    "queued_at": "2026-09-13T23:38:42.647Z",
-    "id": "c1789342722647"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KABANOS",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "KABANOS GR",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "0000255266"
-    },
-    "PRICE_TAB": {
-     "F30": "20.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "20.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": null
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913194152115474",
-   "applied_at": "2026-09-13T19:41:52",
-   "change": {
-    "code": "0020239400000",
-    "queued_at": "2026-09-13T23:41:26.014Z",
-    "id": "c1789342886014"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SLANINA LARD DE PORC FUMÉ",
-     "F1744": null,
-     "F22": "",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "SLANINA LARD DE PORC FUMÉ",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "16.4000",
-     "F196": "16.4000",
-     "F1140": "16.4000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "24.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "24.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913194359162098",
-   "applied_at": "2026-09-13T19:43:59",
-   "change": {
-    "code": "0020233200000",
-    "queued_at": "2026-09-13T23:43:01.908Z",
-    "id": "c1789342981908"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "TETE FROMAGEE TOBA",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "TETE FROMAGEE TOBA",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-ISABELLE"
-    },
-    "PRICE_TAB": {
-     "F30": "17.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "17.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913194511140624",
-   "applied_at": "2026-09-13T19:45:11",
-   "change": {
-    "code": "0020713900000",
-    "title": "POITRINE DE DINDE FUMÉE",
-    "pos_title": "POITRINE DE DINDE FUMÉE",
-    "size_num": 1000,
-    "size_unit": "",
-    "queued_at": "2026-09-13T23:44:24.265Z",
-    "id": "c1789343064265"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "PetitCharc.poit.dinde fumée   2Xenv DISC",
-     "F1744": "1000.0",
-     "F22": "1000G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "BUTERBALL POITRINE DINDE FUMEE",
-     "F04": "31",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "85.7500",
-     "F196": "85.7500",
-     "F1140": "12.2500",
-     "F27": "ZV01"
-    },
-    "PRICE_TAB": {
-     "F30": "27.9000",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "24.9900",
-     "F113": "STOR",
-     "F1133": "24.9900",
-     "F1216": "2022-01-14 00:00:00",
-     "F1217": "2027-01-14 00:00:00",
-     "F1013": "27.9000",
-     "F1014": "2027-01-14 00:00:00",
-     "F1015": "2359",
-     "F1011": "REG"
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913194717050445",
-   "applied_at": "2026-09-13T19:47:17",
-   "change": {
-    "code": "0020233000000",
-    "pos_title": "LONGE DE PORC FUMEE GR",
-    "queued_at": "2026-09-13T23:46:40.572Z",
-    "id": "c1789343200572"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LONGE DE PORC FUMEE",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LONGE DE PORC FUMEE GR",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "19.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "19.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913195031161586",
-   "applied_at": "2026-09-13T19:50:31",
-   "change": {
-    "code": "0020232600000",
-    "pos_title": "LACHSSCHINKEN LONGE DE PORC FUME DEUX FO",
-    "queued_at": "2026-09-13T23:50:27.569Z",
-    "id": "c1789343427569"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LACHSSCHINKEN LONGE DE PORC FUME DEUX FOIS",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LACHSSCHINKEN LONGE DE PORC FUME DEUX FO",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-ISABELLE"
-    },
-    "PRICE_TAB": {
-     "F30": "31.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "31.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913195136057700",
-   "applied_at": "2026-09-13T19:51:36",
-   "change": {
-    "code": "0020235400000",
-    "pos_title": "JAMBON GENRE PRAGUE FUME KG",
-    "queued_at": "2026-09-13T23:51:34.729Z",
-    "id": "c1789343494729"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "JAMBON GENRE PRAGUE FUME",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "JAMBON GENRE PRAGUE FUME KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-BRANDT"
-    },
-    "PRICE_TAB": {
-     "F30": "29.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "29.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913195342168322",
-   "applied_at": "2026-09-13T19:53:42",
-   "change": {
-    "code": "0020237300000",
-    "pos_title": "SALAMI FORET NOIRE KG",
-    "queued_at": "2026-09-13T23:53:05.852Z",
-    "id": "c1789343585852"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SALAMI FORET NOIRE",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SALAMI FORET NOIRE KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "29.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "29.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913195448156438",
-   "applied_at": "2026-09-13T19:54:48",
-   "change": {
-    "code": "0020235900000",
-    "pos_title": "BOEUF SECHÉ TRAITÉ BASTURMA KG",
-    "queued_at": "2026-09-13T23:54:43.576Z",
-    "id": "c1789343683576"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "BOEUF SECHÉ TRAITÉ BASTURMA",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "BOEUF SECHÉ TRAITÉ BASTURMA KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "54.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "54.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": null
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913195600088164",
-   "applied_at": "2026-09-13T19:56:00",
-   "change": {
-    "code": "0020236200000",
-    "pos_title": "SALAMI CARRE KG",
-    "queued_at": "2026-09-13T23:55:46.846Z",
-    "id": "c1789343746846"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SALAMI CARRE",
-     "F1744": null,
-     "F22": "KG",
-     "F23": ""
-    },
-    "POS_TAB": {
-     "F02": "SALAMI CARRE KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": "0.0000",
-     "F1140": "0.0000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "29.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "29.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913195705155878",
-   "applied_at": "2026-09-13T19:57:05",
-   "change": {
-    "code": "0020230200000",
-    "pos_title": "LEVURE  GR",
-    "queued_at": "2026-09-13T23:56:56.070Z",
-    "id": "c1789343816070"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LEVURE ",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "0003"
-    },
-    "POS_TAB": {
-     "F02": "LEVURE  GR",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.9900",
-     "F196": "3.9900",
-     "F1140": "3.9900",
-     "F27": "L-CHARC"
-    },
-    "PRICE_TAB": {
-     "F30": "10.9000",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "10.9000",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913200120294326",
-   "applied_at": "2026-09-13T20:01:20",
-   "change": {
-    "code": "0020236900000",
-    "pos_title": "SALAMI CERVELAT KG",
-    "queued_at": "2026-09-14T00:01:11.188Z",
-    "id": "c1789344071188"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SALAMI CERVELAT",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "KG"
-    },
-    "POS_TAB": {
-     "F02": "SALAMI CERVELAT KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "24.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "24.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913200327091349",
-   "applied_at": "2026-09-13T20:03:27",
-   "change": {
-    "code": "0020237400000",
-    "pos_title": "SALAMI HONGROIS GR",
-    "price": 34.99,
-    "queued_at": "2026-09-14T00:02:56.543Z",
-    "id": "c1789344176543"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": " SALAMI HONGROIS",
-     "F1744": null,
-     "F22": "GR",
-     "F23": null
-    },
-    "POS_TAB": {
-     "F02": " SALAMI HONGROIS GR",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "24.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "24.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913200432127863",
-   "applied_at": "2026-09-13T20:04:32",
-   "change": {
-    "code": "0020237200000",
-    "pos_title": "ZERNISTAYA SALAMI SEC KG",
-    "queued_at": "2026-09-14T00:04:14.810Z",
-    "id": "c1789344254810"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ZERNISTAYA SALAMI SEC",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "KG"
-    },
-    "POS_TAB": {
-     "F02": "ZERNISTAYA SALAMI SEC KG",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "39.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "39.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260913200538147179",
-   "applied_at": "2026-09-13T20:05:38",
-   "change": {
-    "code": "0020239100000",
-    "queued_at": "2026-09-14T00:04:56.082Z",
-    "id": "c1789344296082"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SALAMI MOSKOVSKAYA SEC ",
-     "F1744": null,
-     "F22": "",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "SALAMI MOSKOVSKAYA SEC",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "9.9900",
-     "F196": "9.9900",
-     "F1140": "9.9900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "59.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "59.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913200750185811",
    "applied_at": "2026-09-13T20:07:50",
    "change": {
@@ -24772,6 +23681,1110 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039185117",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0008383960097",
+    "title": "ZAKUSON BOLET MASLATA",
+    "pos_title": "ZAKUSON BOLET MASLATA 1L",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984014001"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH BOLET MASLATA",
+     "F1744": "250.0",
+     "F22": "1L",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH BOLET MASLATA 1L",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "61.2000",
+     "F196": "61.2000",
+     "F1140": "5.1000",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "6.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "6.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039247517",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600051",
+    "title": "ZAKUSON RAIFORT GOURMET 250GR",
+    "pos_title": "ZAKUSON RAIFORT GOURMET 250GR",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984018002"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYSOH RAIFORT GOURMET 250GR",
+     "F1744": "250.0",
+     "F22": "250 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYSOH RAIFORT GOURMET 250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "24.0000",
+     "F196": "24.0000",
+     "F1140": "2.0000",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "3.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039294317",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600126",
+    "title": "ZAKUSON SALADE D'ALGUES",
+    "pos_title": "ZAKUSON SALADE D'ALGUES 370ML",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984018003"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH SALADE D'ALGUES",
+     "F1744": "370.0",
+     "F22": "370ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH SALADE D'ALGUES 370ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "25.2000",
+     "F196": "25.2000",
+     "F1140": "2.1000",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "3.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039356717",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600977",
+    "title": "ZAKUSON STRAW SMORCHKI",
+    "pos_title": "ZAKUSON STRAW SMORCHKI 1L",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984018004"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH STRAW SMORCHKI",
+     "F1744": "1000.0",
+     "F22": "1000 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH STRAW SMORCHKI 1L",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "90.4000",
+     "F196": "90.4000",
+     "F1140": "7.5333",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "10.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "10.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039419117",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0006372996082",
+    "title": "ZAKUSON  BEET RELISH",
+    "pos_title": "ZAKUSON  BEET RELISH 250GR",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984030005"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH  BEET RELISH",
+     "F1744": "250.0",
+     "F22": "250GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH  BEET RELISH 250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "24.4000",
+     "F196": "24.4000",
+     "F1140": "2.0333",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039481517",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600203",
+    "title": "ZAKUSON XRENODER",
+    "pos_title": "ZAKUSON XRENODER 250GR",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984039006"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH XRENODER",
+     "F1744": "250.0",
+     "F22": "250GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH XRENODER 250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "33.0000",
+     "F196": "33.0000",
+     "F1140": "2.7500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039528317",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600863",
+    "title": "ZAKUSON POUSSE D'AIL",
+    "pos_title": "ZAKUSON POUSSE D'AIL 370ML",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984039007"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH POUSSE D'AIL",
+     "F1744": "370.0",
+     "F22": "370 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH POUSSE D'AIL 370ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "27.0000",
+     "F196": "27.0000",
+     "F1140": "2.2500",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039590717",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600985",
+    "title": "ZAKUSON CHAMPIGNONS",
+    "pos_title": "ZAKUSON CHAMPIGNONS 1L",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984039008"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH CHAMPIGNONS",
+     "F1744": "1000.0",
+     "F22": "1000 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH CHAMPIGNONS 1L",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "63.9000",
+     "F196": "63.9000",
+     "F1140": "5.3250",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039637517",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600024",
+    "title": "ZAKUSON AIL",
+    "pos_title": "ZAKUSON AIL  370ML",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984046009"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH AIL ",
+     "F1744": "370.0",
+     "F22": "370ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH AIL  370ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "33.0000",
+     "F196": "33.0000",
+     "F1140": "2.7500",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039684317",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600025",
+    "title": "ZAKUSON AIL",
+    "pos_title": "ZAKUSON AIL  370ML",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984046010"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH AIL ",
+     "F1744": "370.0",
+     "F22": "370ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH AIL  370ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "33.0000",
+     "F196": "33.0000",
+     "F1140": "2.7500",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039746718",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600191",
+    "title": "ZAKUSON KIMCHI",
+    "pos_title": "ZAKUSON KIMCHI 500ML",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984046011"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH KIMCHI",
+     "F1744": "370.0",
+     "F22": "500ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH KIMCHI 500ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "30.0000",
+     "F196": "30.0000",
+     "F1140": "2.5000",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039793518",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600862",
+    "title": "ZAKUSON CARROT",
+    "pos_title": "ZAKUSON CARROT 370ML",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984046012"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH CARROT",
+     "F1744": "370.0",
+     "F22": "370ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH CARROT 370ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "26.4500",
+     "F196": "26.4500",
+     "F1140": "2.2042",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039840318",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600874",
+    "title": "ZAKUSON HORSRADISH MAYONNAISE",
+    "pos_title": "ZAKUSON HORSRADISH MAYONNAISE 250GR",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984046013"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH HORSRADISH MAYONNAISE",
+     "F1744": "250.0",
+     "F22": "250GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH HORSRADISH MAYONNAISE 250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "29.4500",
+     "F196": "29.4500",
+     "F1140": "2.4542",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039902718",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600897",
+    "title": "ZAKUSON  ADJIKA",
+    "pos_title": "ZAKUSON  ADJIKA  250GR",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984046014"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH  ADJIKA ",
+     "F1744": "250.0",
+     "F22": "250GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH  ADJIKA  250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "32.4000",
+     "F196": "32.4000",
+     "F1140": "2.7000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162039949518",
+   "applied_at": "2026-10-06T16:20:39",
+   "change": {
+    "code": "0083839600966",
+    "title": "ZAKUSON RAIFORT BETTERAVE GOURMET 250GR",
+    "pos_title": "ZAKUSON RAIFORT BETTERAVE GOURMET 250GR",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984046015"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYSOH RAIFORT BETTERAVE GOURMET 250GR",
+     "F1744": "250.0",
+     "F22": "250 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYSOH RAIFORT BETTERAVE GOURMET 250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "24.0000",
+     "F196": "24.0000",
+     "F1140": "2.0000",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "3.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162040011918",
+   "applied_at": "2026-10-06T16:20:40",
+   "change": {
+    "code": "0083839600991",
+    "title": "ZAKUSON BOROVIKI",
+    "pos_title": "ZAKUSON BOROVIKI 1L",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984046016"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH BOROVIKI",
+     "F1744": "1000.0",
+     "F22": "1000 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH BOROVIKI 1L",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "63.9000",
+     "F196": "63.9000",
+     "F1140": "5.3250",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "8.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "8.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162040058718",
+   "applied_at": "2026-10-06T16:20:40",
+   "change": {
+    "code": "0083839600110",
+    "title": "ZAKUSON SALADE D'ALGUES",
+    "pos_title": "ZAKUSON SALADE D'ALGUES 370ML",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984067017"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH SALADE D'ALGUES",
+     "F1744": "370.0",
+     "F22": "370 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH SALADE D'ALGUES 370ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "25.2000",
+     "F196": "25.2000",
+     "F1140": "2.1000",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "3.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162040105518",
+   "applied_at": "2026-10-06T16:20:40",
+   "change": {
+    "code": "0083839600855",
+    "title": "ZAKUSON AIL ENTIER",
+    "pos_title": "ZAKUSON AIL ENTIER 370ML",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984067018"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH AIL ENTIER",
+     "F1744": "370.0",
+     "F22": "370ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH AIL ENTIER 370ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "28.2000",
+     "F196": "28.2000",
+     "F1140": "2.3500",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162040167918",
+   "applied_at": "2026-10-06T16:20:40",
+   "change": {
+    "code": "0083839600886",
+    "title": "ZAKUSON  TKEMALI",
+    "pos_title": "ZAKUSON  TKEMALI 250GR",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984067019"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH  TKEMALI",
+     "F1744": "250.0",
+     "F22": "250GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH  TKEMALI 250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "32.4000",
+     "F196": "32.4000",
+     "F1140": "2.7000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162040214718",
+   "applied_at": "2026-10-06T16:20:40",
+   "change": {
+    "code": "0083839600055",
+    "title": "ZAKUSON MOUTARDE GOURMET",
+    "pos_title": "ZAKUSON MOUTARDE GOURMET 250GR",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984093020"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH MOUTARDE GOURMET",
+     "F1744": "250.0",
+     "F22": "250GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH MOUTARDE GOURMET 250GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "29.4500",
+     "F196": "29.4500",
+     "F1140": "2.4542",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162040261518",
+   "applied_at": "2026-10-06T16:20:40",
+   "change": {
+    "code": "0083839600971",
+    "title": "ZAKUSON BOLET MASLATA",
+    "pos_title": "ZAKUSON BOLET MASLATA 1L",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984093021"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH BOLET MASLATA",
+     "F1744": "1000.0",
+     "F22": "1000 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH BOLET MASLATA 1L",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "63.9000",
+     "F196": "63.9000",
+     "F1140": "5.3250",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "8.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "8.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162040323919",
+   "applied_at": "2026-10-06T16:20:40",
+   "change": {
+    "code": "0083839600978",
+    "title": "ZAKUSON VESHENKI",
+    "pos_title": "ZAKUSON VESHENKI 1L",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984093022"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH VESHENKI",
+     "F1744": "250.0",
+     "F22": "1L",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH VESHENKI 1L",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "63.9000",
+     "F196": "63.9000",
+     "F1140": "5.3250",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006162040370719",
+   "applied_at": "2026-10-06T16:20:40",
+   "change": {
+    "code": "0083839600856",
+    "title": "ZAKUSON AIL ENTIER ET POUSSES",
+    "pos_title": "ZAKUSON AIL ENTIER ET POUSSES 370ML",
+    "queued_at": "2026-10-06T20:19:43.978658Z",
+    "id": "c1791317984141023"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH AIL ENTIER ET POUSSES",
+     "F1744": "370.0",
+     "F22": "370 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH AIL ENTIER ET POUSSES 370ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "27.0000",
+     "F196": "27.0000",
+     "F1140": "2.2500",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
