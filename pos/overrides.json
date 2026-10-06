@@ -2033,7 +2033,31 @@
    "mp": null,
    "cost": 87.5,
    "at": "2026-10-06 17:37:47"
+  },
+  "0075148867224": {
+   "pt": "ILIOS SPRATS FUMÉS",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 160.0,
+   "nm": "ILIOS SPRATS FUMÉS",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 64.8,
+   "at": "2026-10-06 17:39:57"
   }
  },
- "updated": "2026-10-06 17:37:47"
+ "updated": "2026-10-06 17:39:57"
 }
