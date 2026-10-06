@@ -2297,7 +2297,31 @@
    "mp": null,
    "cost": 40.0,
    "at": "2026-10-06 18:16:54"
+  },
+  "0475005034151": {
+   "pt": "KARUMS BARRE DE FROMAGE SUCRÉ AUX PÉPITE",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 45.0,
+   "nm": "KARUMS BARRE DE FROMAGE SUCRÉ AUX PÉPITES DE CHOCOLAT",
+   "rp": 1.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 1.49,
+   "mp": null,
+   "cost": 40.0,
+   "at": "2026-10-06 18:20:03"
   }
  },
- "updated": "2026-10-06 18:16:54"
+ "updated": "2026-10-06 18:20:03"
 }
