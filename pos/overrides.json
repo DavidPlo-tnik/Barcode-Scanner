@@ -2129,7 +2129,31 @@
    "mp": null,
    "cost": 52.8,
    "at": "2026-10-06 17:57:43"
+  },
+  "0475100158533": {
+   "pt": "S & F SARDINES FUMÉES DANS L'HUILE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 270.0,
+   "nm": "S & F SARDINES FUMÉES DANS L'HUILE",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 52.8,
+   "at": "2026-10-06 17:59:53"
   }
  },
- "updated": "2026-10-06 17:57:43"
+ "updated": "2026-10-06 17:59:53"
 }
