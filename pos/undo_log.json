@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913183948300542",
-   "applied_at": "2026-09-13T18:39:48",
-   "change": {
-    "code": "0069256502205",
-    "title": "PELMEN  PIEROGIES  POMME DE TERRE OIGNION 500GR",
-    "pos_title": "PELMEN  PIEROGIES  POMME DE TERRE OIGNIO",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-13T22:39:20.108Z",
-    "id": "c1789339160108"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "PELMEN  PIEROGIES  POMME DE TERRE OIGNION ",
-     "F1744": "500.0",
-     "F22": "500GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "PELMEN  PIEROGIES  POMME DE TERRE OIGNIO",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "38.5000",
-     "F196": "38.5000",
-     "F1140": "3.2083",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913184202117577",
    "applied_at": "2026-09-13T18:42:02",
    "change": {
@@ -24748,6 +24698,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006151305480994",
+   "applied_at": "2026-10-06T15:13:05",
+   "change": {
+    "code": "0426042846803",
+    "pos_title": "EMELA  TARTINADE DE AUBERGINES 540G",
+    "size_num": 540,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T19:12:56.391Z",
+    "id": "c1791313976391"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "EMELA  TARTINADE DE AUBERGINES",
+     "F1744": "200.0",
+     "F22": "540G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "EMELA  TARTINADE DE AUBERGINES 540G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "37.2800",
+     "F196": "37.2800",
+     "F1140": "3.1067",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
