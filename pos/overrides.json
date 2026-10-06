@@ -2345,7 +2345,31 @@
    "mp": null,
    "cost": 37.62,
    "at": "2026-10-06 18:21:13"
+  },
+  "0070058040988": {
+   "pt": "BANDI PLOMBIR CRÈME GLACÉE VANILLE ET BA",
+   "tf": 1,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "ML",
+   "sn": 200.0,
+   "nm": "BANDI PLOMBIR CRÈME GLACÉE VANILLE ET BAIES SAUVAGES",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 48.0,
+   "at": "2026-10-06 18:23:20"
   }
  },
- "updated": "2026-10-06 18:21:13"
+ "updated": "2026-10-06 18:23:20"
 }
