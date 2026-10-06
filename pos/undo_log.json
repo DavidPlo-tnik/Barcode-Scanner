@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913182357120071",
-   "applied_at": "2026-09-13T18:23:57",
-   "change": {
-    "code": "0069256502250",
-    "title": "PELMEN  PIEROGIES PORC BOEUF 500GR",
-    "pos_title": "PELMEN  PIEROGIES PORC BOEUF 500GR",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-13T22:23:38.674Z",
-    "id": "c1789338218674"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "PELMEN  PIEROGIES PORC BOEUF",
-     "F1744": "500.0",
-     "F22": "500GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "PELMEN  PIEROGIES PORC BOEUF 500GR",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "61.2000",
-     "F196": "61.2000",
-     "F1140": "5.1000",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "6.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "6.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913182812227319",
    "applied_at": "2026-09-13T18:28:12",
    "change": {
@@ -24753,6 +24703,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "2.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006145503088693",
+   "applied_at": "2026-10-06T14:55:03",
+   "change": {
+    "code": "0426000724430",
+    "pos_title": "EMELA  ADZHIKA  180ML",
+    "size_num": 180,
+    "size_unit": "ML",
+    "queued_at": "2026-10-06T18:54:15.112Z",
+    "id": "c1791312855112"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "EMELA  ADZHIKA ",
+     "F1744": "180.0",
+     "F22": "180ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "EMELA  ADZHIKA  180ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "18.8900",
+     "F196": "18.8900",
+     "F1140": "1.5742",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
