@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913184517102320",
-   "applied_at": "2026-09-13T18:45:17",
-   "change": {
-    "code": "0069256502230",
-    "title": "PELMEN  PIEROGIES CHOUCROUTE 500GR",
-    "pos_title": "PELMEN  PIEROGIES CHOUCROUTE 500GR",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-13T22:44:47.456Z",
-    "id": "c1789339487456"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "PELMEN  PIEROGIES CHOUCROUTE 500GR",
-     "F1744": "500.0",
-     "F22": "500 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "PELMEN  PIEROGIES CHOUCROUTE 500GR",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "38.5000",
-     "F196": "38.5000",
-     "F1140": "3.2083",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913184629316847",
    "applied_at": "2026-09-13T18:46:29",
    "change": {
@@ -24740,6 +24690,56 @@
      "F38": "0.9900",
      "F196": "0.9900",
      "F1140": "0.9900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "1.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "1.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006152349138125",
+   "applied_at": "2026-10-06T15:23:49",
+   "change": {
+    "code": "0590008500741",
+    "title": "WINIARY BOUILLON DE LÉGUMES",
+    "pos_title": "WINIARY BOUILLON DE LÉGUMES",
+    "size_num": 60,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T19:23:20.097Z",
+    "id": "c1791314600097"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "WINIARY BOUILLON DE LEGUMES",
+     "F1744": "60.0",
+     "F22": "60GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "WINIARY BOUILLON DE LEGUMES 60GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.6900",
+     "F196": "0.6900",
+     "F1140": "0.6900",
      "F27": "L-TONSELL"
     },
     "PRICE_TAB": {
