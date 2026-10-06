@@ -785,7 +785,31 @@
    "mp": null,
    "cost": 1.39,
    "at": "2026-10-05 22:58:47"
+  },
+  "0590113501562": {
+   "pt": "KUCHAREK ASSAISONNEMENT VEGETAL 175GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 175.0,
+   "nm": "KUCHAREK ASSAISONNEMENT VEGETAL",
+   "rp": 2.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 2.99,
+   "mp": null,
+   "cost": 1.29,
+   "at": "2026-10-05 22:59:56"
   }
  },
- "updated": "2026-10-05 22:58:47"
+ "updated": "2026-10-05 22:59:56"
 }
