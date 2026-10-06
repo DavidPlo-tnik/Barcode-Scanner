@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913183948206942",
-   "applied_at": "2026-09-13T18:39:48",
-   "change": {
-    "code": "0069256502208",
-    "title": "PELMEN PIEROGIE POMME DE TERRE CHEDDAR BACON 500GR",
-    "pos_title": "PELMEN PIEROGIE POMME DE TERRE CHEDDAR B",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-13T22:38:52.435Z",
-    "id": "c1789339132435"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "PELMEN  PIEROGIE POMME DE TERRE BACON",
-     "F1744": "454.0",
-     "F22": "500GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "PELMEN  PIEROGIE POMME DE TERRE BACON 50",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "38.5000",
-     "F196": "38.5000",
-     "F1140": "3.2083",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913183948253742",
    "applied_at": "2026-09-13T18:39:48",
    "change": {
@@ -24750,6 +24700,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006150239202294",
+   "applied_at": "2026-10-06T15:02:39",
+   "change": {
+    "code": "0083839600863",
+    "pos_title": "ZAKYCOH POUSSE D'AIL 370ML",
+    "size_num": 370,
+    "size_unit": "ML",
+    "queued_at": "2026-10-06T19:01:58.520Z",
+    "id": "c1791313318520"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKYCOH POUSSE D'AIL",
+     "F1744": "370.0",
+     "F22": "370ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKYCOH POUSSE D'AIL 370ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "27.0000",
+     "F196": "27.0000",
+     "F1140": "2.2500",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
