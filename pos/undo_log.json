@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913205147247643",
-   "applied_at": "2026-09-13T20:51:47",
-   "change": {
-    "code": "0076740833086",
-    "pos_title": "FROMAGE CORDE ARMENIENNE 590G",
-    "size_num": 944,
-    "size_unit": "ML",
-    "queued_at": "2026-09-14T00:51:36.661Z",
-    "id": "c1789347096661"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "FROMAGE CORDE ARMENIENNE",
-     "F1744": "944.0",
-     "F22": "590G",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "FROMAGE CORDE ARMENIENNE 590G",
-     "F04": "3",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "12.9500",
-     "F196": "12.9500",
-     "F1140": "12.9500",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "16.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "16.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913205253235759",
    "applied_at": "2026-09-13T20:52:53",
    "change": {
@@ -24828,6 +24779,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006175743192954",
+   "applied_at": "2026-10-06T17:57:43",
+   "change": {
+    "code": "0475100158865",
+    "pos_title": "S & F SPRATS FRITS SAUCE TOMATE 280GR",
+    "size_num": 280,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T21:57:29.771Z",
+    "id": "c1791323849771"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "S & F SPRATS FRITS SAUCE TOMATE",
+     "F1744": "280.0",
+     "F22": "280GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "S & F SPRATS FRITS SAUCE TOMATE 280GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "52.8000",
+     "F196": "52.8000",
+     "F1140": "4.4000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "6.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "6.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
