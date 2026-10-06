@@ -1,65 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913181107087119",
-   "applied_at": "2026-09-13T18:11:07",
-   "change": {
-    "code": "0482000045752",
-    "size_num": 500,
-    "size_unit": "ML",
-    "multibuy": {
-     "qty": 2,
-     "price": 5
-    },
-    "promo": {
-     "price": 5,
-     "qty": 2,
-     "start": null,
-     "end": null
-    },
-    "deposit": 0.1,
-    "queued_at": "2026-09-13T22:10:06.788Z",
-    "id": "c1789337406788"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KVAS TARAS NOIR 500ML",
-     "F1744": "500.0",
-     "F22": "500 ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "KVAS TARAS NOIR 500ML",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": "2",
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "1.4000",
-     "F196": "1.4000",
-     "F1140": "1.4000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.0000",
-     "F31": "2.0",
-     "F1006": "2.0",
-     "F1007": "5.0000",
-     "F113": "STOR",
-     "F1133": "5.0000",
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913181313135340",
    "applied_at": "2026-09-13T18:13:13",
    "change": {
@@ -24764,6 +24705,55 @@
      "F38": "2.7900",
      "F196": "2.7900",
      "F1140": "2.7900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261005231840070004",
+   "applied_at": "2026-10-05T23:18:40",
+   "change": {
+    "code": "0082021310115",
+    "pos_title": "KRAKUS CONCENTRE DE RED BORSCHT 300ML",
+    "size_num": 300,
+    "size_unit": "ML",
+    "queued_at": "2026-10-06T03:18:01.042Z",
+    "id": "c1791256681042"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KRAKUS CONCENTRE DE RED BORSCHT",
+     "F1744": "200.0",
+     "F22": "300ML",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "KRAKUS CONCENTRE DE RED BORSCHT 300ML",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.4900",
+     "F196": "2.4900",
+     "F1140": "2.4900",
      "F27": "L-TONSELL"
     },
     "PRICE_TAB": {
