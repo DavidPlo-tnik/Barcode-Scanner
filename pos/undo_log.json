@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913182145112640",
-   "applied_at": "2026-09-13T18:21:45",
-   "change": {
-    "code": "0069256502253",
-    "title": "PELMEN  PIEROGIES POULET 500GR",
-    "pos_title": "PELMEN  PIEROGIES POULET 500GR",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-13T22:20:33.713Z",
-    "id": "c1789338033713"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "PELMEN  PIEROGIES POULET 500GR",
-     "F1744": "500.0",
-     "F22": "500 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "PELMEN  PIEROGIES POULET 500GR",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "61.2000",
-     "F196": "61.2000",
-     "F1140": "5.1000",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "6.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "6.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913182251241156",
    "applied_at": "2026-09-13T18:22:51",
    "change": {
@@ -24755,6 +24705,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006145047217044",
+   "applied_at": "2026-10-06T14:50:47",
+   "change": {
+    "code": "0005980799911",
+    "pos_title": "VEGETA BOUILLON DE POULET 80GR",
+    "size_num": 80,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T18:50:01.376Z",
+    "id": "c1791312601376"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VEGETA BOUILLON DE POULET",
+     "F1744": "80.0",
+     "F22": "80GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "VEGETA BOUILLON DE POULET 80GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "1.3900",
+     "F196": "1.3900",
+     "F1140": "1.3900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "2.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.4900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
