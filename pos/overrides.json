@@ -1795,7 +1795,7 @@
    "at": "2026-10-06 16:20:40"
   },
   "0083839600886": {
-   "pt": "ZAKUSON  TKEMALI 250GR",
+   "pt": "ZAKUSON SAUCE TKEMALI",
    "tf": 0,
    "tp": 0,
    "dp": null,
@@ -1804,7 +1804,7 @@
    "sd": 1,
    "un": "GR",
    "sn": 250.0,
-   "nm": "ZAKUSON  TKEMALI",
+   "nm": "ZAKUSON SAUCE TKEMALI",
    "rp": 3.99,
    "ap": 0,
    "pp": null,
@@ -1816,7 +1816,7 @@
    "price": 3.99,
    "mp": null,
    "cost": 32.4,
-   "at": "2026-10-06 16:20:40"
+   "at": "2026-10-06 16:51:04"
   },
   "0083839600055": {
    "pt": "ZAKUSON MOUTARDE GASTRONOMIQUE",
@@ -1915,5 +1915,5 @@
    "at": "2026-10-06 16:32:15"
   }
  },
- "updated": "2026-10-06 16:49:57"
+ "updated": "2026-10-06 16:51:04"
 }
