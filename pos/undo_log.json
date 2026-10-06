@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260913204823152484",
-   "applied_at": "2026-09-13T20:48:23",
-   "change": {
-    "code": "0077624103100",
-    "pos_title": "MCDAIRY FROMAGE COTTAGE 500G",
-    "size_num": 125,
-    "size_unit": "",
-    "queued_at": "2026-09-14T00:47:23.294Z",
-    "id": "c1789346843294"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "MCDAIRY FROMAGE COTTAGE",
-     "F1744": "125.0",
-     "F22": "500G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "MCDAIRY FROMAGE COTTAGE 500G",
-     "F04": "3",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "6.9900",
-     "F196": "6.9900",
-     "F1140": "6.9900",
-     "F27": "ZJ01"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260913204823214885",
    "applied_at": "2026-09-13T20:48:23",
    "change": {
@@ -24822,6 +24773,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "6.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261006173747029653",
+   "applied_at": "2026-10-06T17:37:47",
+   "change": {
+    "code": "0071022834198",
+    "title": "BANDI SARDINES DANS LA SAUCE TOMATE",
+    "pos_title": "BANDI SARDINES DANS LA SAUCE TOMATE",
+    "size_num": 125,
+    "size_unit": "GR",
+    "queued_at": "2026-10-06T21:36:59.052Z",
+    "id": "c1791322619052"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BANDI SARDINES SAUCE TOMATE",
+     "F1744": "1000.0",
+     "F22": "125G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BANDI SARDINES SAUCE TOMATE 125G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "87.5000",
+     "F196": "87.5000",
+     "F1140": "1.7500",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "3.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.4900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
