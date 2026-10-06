@@ -1819,7 +1819,7 @@
    "at": "2026-10-06 16:20:40"
   },
   "0083839600055": {
-   "pt": "ZAKUSON MOUTARDE GOURMET 250GR",
+   "pt": "ZAKUSON MOUTARDE GASTRONOMIQUE",
    "tf": 0,
    "tp": 0,
    "dp": null,
@@ -1828,7 +1828,7 @@
    "sd": 1,
    "un": "GR",
    "sn": 250.0,
-   "nm": "ZAKUSON MOUTARDE GOURMET",
+   "nm": "ZAKUSON MOUTARDE GASTRONOMIQUE",
    "rp": 3.99,
    "ap": 0,
    "pp": null,
@@ -1840,7 +1840,7 @@
    "price": 3.99,
    "mp": null,
    "cost": 29.45,
-   "at": "2026-10-06 16:20:40"
+   "at": "2026-10-06 16:49:57"
   },
   "0083839600971": {
    "pt": "ZAKUSON BOLET MASLATA 1L",
@@ -1915,5 +1915,5 @@
    "at": "2026-10-06 16:32:15"
   }
  },
- "updated": "2026-10-06 16:48:51"
+ "updated": "2026-10-06 16:49:57"
 }
