@@ -2201,7 +2201,31 @@
    "mp": null,
    "cost": 137.22,
    "at": "2026-10-07 14:42:04"
+  },
+  "0020235400000": {
+   "pt": "JAMBON GENRE PRAGUE FUME KG",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "GR",
+   "sn": null,
+   "nm": "JAMBON GENRE PRAGUE FUME",
+   "rp": 39.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 39.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-10-07 14:43:11"
   }
  },
- "updated": "2026-10-07 14:42:04"
+ "updated": "2026-10-07 14:43:11"
 }
