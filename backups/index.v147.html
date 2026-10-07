@@ -667,14 +667,7 @@
     position: relative; width: 76px; height: 76px; border-radius: 8px;
     overflow: hidden; background: var(--surface-2); border: 1px solid var(--border);
   }
-  .pd-photo img { width: 100%; height: 100%; object-fit: cover; display: block; -webkit-user-drag: none; -webkit-touch-callout: none; }
-  .pd-photo { -webkit-user-select: none; user-select: none; }
-  .pd-photo.is-main::after { content: 'MAIN'; position: absolute; left: 3px; bottom: 3px; padding: 1px 5px; border-radius: 4px; background: var(--accent); color: #000; font-family: var(--font-display); font-size: 8px; font-weight: 700; letter-spacing: .06em; }
-  .pd-photo.dragging { opacity: .3; }
-  .pd-photo.drop-target { outline: 2px solid var(--accent); outline-offset: 1px; }
-  .pd-photo-ghost { position: fixed; z-index: 9999; pointer-events: none; width: 76px; height: 76px; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 22px rgba(0,0,0,.6); transform: scale(1.12); opacity: .95; }
-  .pd-photo-ghost img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .pd-photos.reordering { touch-action: none; }
+  .pd-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .pd-photo button {
     position: absolute; top: 2px; right: 2px; width: 20px; height: 20px;
     border-radius: 50%; border: none; background: rgba(0,0,0,.72);
@@ -1881,7 +1874,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v148</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v147</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2374,7 +2367,6 @@
                  style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
         </div>
         <div class="pd-photos" id="pd-photos"></div>
-        <div class="pd-note" id="pd-photo-hint" style="display:none;">Hold a photo and drag it onto another to change the order. The first one (MAIN) is what shows first on the site.</div>
         <div class="pd-note" id="pd-photo-status"></div>
       </div>
 
@@ -2432,7 +2424,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v148</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v147</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4446,14 +4438,11 @@
     photos = photos || [];
     wrap.innerHTML = photos.length
       ? photos.map((fn, i) => `
-          <div class="pd-photo${i === 0 && photos.length > 1 ? ' is-main' : ''}" data-i="${i}">
+          <div class="pd-photo">
             <img class="js-photo-thumb" data-full="${photoSrc(fn)}" style="cursor:zoom-in;" src="${photoSrc(fn)}" data-fn="${escapeHtml(fn)}" data-try="0" loading="lazy" alt="">
             <button type="button" data-pdel="${i}">✕</button>
           </div>`).join('')
       : '<div class="pd-note">No photos yet.</div>';
-    const hint = $('#pd-photo-hint');
-    if (hint) hint.style.display = photos.length > 1 ? '' : 'none';
-    bindPhotoReorder(wrap, code, photos);
 
     // A freshly-pushed file can 404 on the CDN for a few seconds -- retry a few
     // times with a cache-buster instead of leaving a blank tile.
@@ -4481,115 +4470,6 @@
           showToast('Photo removed');
         } catch (e) { showToast('Remove failed: ' + e.message, true); }
       };
-    });
-  }
-
-  // Press and hold a photo, then drag it over another one to reorder. The first photo is
-  // the MAIN one (shown first on the website). Works with a finger or a mouse.
-  function bindPhotoReorder(wrap, code, photos) {
-    if (photos.length < 2) return;
-    const tiles = [...wrap.querySelectorAll('.pd-photo')];
-    let timer = null, drag = null, startX = 0, startY = 0, swallowClick = false;
-
-    const tileAt = (x, y) => {
-      const el = document.elementFromPoint(x, y);
-      const t = el && el.closest && el.closest('.pd-photo');
-      return t && wrap.contains(t) ? t : null;
-    };
-    const moveGhost = (x, y) => { drag.ghost.style.left = (x - 38) + 'px'; drag.ghost.style.top = (y - 38) + 'px'; };
-    const begin = (tile, x, y) => {
-      const img = tile.querySelector('img');
-      const ghost = document.createElement('div');
-      ghost.className = 'pd-photo-ghost';
-      ghost.innerHTML = `<img src="${img.src}" alt="">`;
-      document.body.appendChild(ghost);
-      drag = { tile, ghost, from: +tile.dataset.i, over: null };
-      tile.classList.add('dragging');
-      wrap.classList.add('reordering');
-      moveGhost(x, y);
-      if (navigator.vibrate) { try { navigator.vibrate(15); } catch (e) {} }
-    };
-    const track = (x, y) => {
-      moveGhost(x, y);
-      const t = tileAt(x, y);
-      if (drag.over && drag.over !== t) drag.over.classList.remove('drop-target');
-      drag.over = (t && t !== drag.tile) ? t : null;
-      if (drag.over) drag.over.classList.add('drop-target');
-    };
-    const finish = async (commit) => {
-      clearTimeout(timer); timer = null;
-      if (!drag) return;
-      const { tile, ghost, from, over } = drag;
-      drag = null;
-      ghost.remove();
-      tile.classList.remove('dragging');
-      wrap.classList.remove('reordering');
-      wrap.querySelectorAll('.drop-target').forEach(el => el.classList.remove('drop-target'));
-      swallowClick = true; setTimeout(() => { swallowClick = false; }, 350);
-      if (!commit || !over) return;
-      const to = +over.dataset.i;
-      if (to === from) return;
-      const fn = photos[from];
-      const next = photos.slice();
-      next.splice(from, 1); next.splice(to, 0, fn);
-      renderPdPhotos(code, next);                       // show the new order straight away
-      try {
-        await mutateEcomCatalog(cat => {
-          const e = cat.items[code];
-          if (!e || !e.photos) return;
-          const f = e.photos.indexOf(fn), t2 = e.photos.indexOf(photos[to]);
-          if (f < 0 || t2 < 0) return;
-          e.photos.splice(f, 1);
-          e.photos.splice(t2, 0, fn);
-        });
-        showToast(to === 0 ? 'Now the MAIN photo \u2713' : 'Photo order saved \u2713');
-      } catch (err) {
-        showToast('Could not save order: ' + err.message, true);
-        const cat = await fetchEcomCatalog(true);
-        renderPdPhotos(code, (cat.items[code] || {}).photos);
-      }
-    };
-
-    // swallow the lightbox tap that would otherwise fire right after a drag
-    wrap.addEventListener('click', (e) => { if (swallowClick) { e.stopPropagation(); e.preventDefault(); } }, true);
-
-    tiles.forEach(tile => {
-      // touch
-      tile.addEventListener('touchstart', (e) => {
-        if (e.target.closest('[data-pdel]') || e.touches.length !== 1) return;
-        const t = e.touches[0]; startX = t.clientX; startY = t.clientY;
-        clearTimeout(timer);
-        timer = setTimeout(() => begin(tile, startX, startY), 380);
-      }, { passive: true });
-      tile.addEventListener('touchmove', (e) => {
-        const t = e.touches[0];
-        if (!drag) {
-          if (Math.abs(t.clientX - startX) > 8 || Math.abs(t.clientY - startY) > 8) { clearTimeout(timer); timer = null; }
-          return;
-        }
-        e.preventDefault();                              // dragging: do not scroll the page
-        track(t.clientX, t.clientY);
-      }, { passive: false });
-      tile.addEventListener('touchend', () => { clearTimeout(timer); timer = null; if (drag) finish(true); });
-      tile.addEventListener('touchcancel', () => { clearTimeout(timer); timer = null; if (drag) finish(false); });
-      tile.addEventListener('contextmenu', (e) => { if (drag || timer) e.preventDefault(); });
-      // mouse
-      tile.addEventListener('mousedown', (e) => {
-        if (e.button !== 0 || e.target.closest('[data-pdel]')) return;
-        e.preventDefault();
-        startX = e.clientX; startY = e.clientY;
-        timer = setTimeout(() => begin(tile, startX, startY), 200);
-        const mv = (ev) => {
-          if (!drag) { if (Math.abs(ev.clientX - startX) > 6 || Math.abs(ev.clientY - startY) > 6) { clearTimeout(timer); begin(tile, ev.clientX, ev.clientY); } return; }
-          track(ev.clientX, ev.clientY);
-        };
-        const up = () => {
-          document.removeEventListener('mousemove', mv); document.removeEventListener('mouseup', up);
-          clearTimeout(timer); timer = null;
-          if (drag) finish(true);
-        };
-        document.addEventListener('mousemove', mv); document.addEventListener('mouseup', up);
-      });
     });
   }
 
