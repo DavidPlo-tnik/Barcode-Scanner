@@ -1,106 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260914163204334925",
-   "applied_at": "2026-09-14T16:32:04",
-   "change": {
-    "code": "0762220222440",
-    "title": "LUX CROUSTILLES BACON",
-    "pos_title": "LUX CROUSTILLES BACON",
-    "size_num": 400,
-    "size_unit": "GR",
-    "queued_at": "2026-09-14T20:31:25.661Z",
-    "id": "c1789417885661"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LUX CROUSTILLES",
-     "F1744": "400.0",
-     "F22": "125G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LUX CROUSTILLES 125G",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "66.0000",
-     "F196": "66.0000",
-     "F1140": "3.0000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260914163204381725",
-   "applied_at": "2026-09-14T16:32:04",
-   "change": {
-    "code": "0762220222446",
-    "title": "LUX CROUSTILLES CRABE",
-    "pos_title": "LUX CROUSTILLES CRABE",
-    "size_num": 400,
-    "size_unit": "GR",
-    "queued_at": "2026-09-14T20:31:40.975Z",
-    "id": "c1789417900975"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LUX CROUSTILLES",
-     "F1744": "400.0",
-     "F22": "125G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LUX CROUSTILLES 125G",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "66.0000",
-     "F196": "66.0000",
-     "F1140": "3.0000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260914163204444125",
    "applied_at": "2026-09-14T16:32:04",
    "change": {
@@ -24787,6 +24687,102 @@
      "F38": "0.0100",
      "F196": "0.0100",
      "F1140": "0.0100",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "19.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261007133608181518",
+   "applied_at": "2026-10-07T13:36:08",
+   "change": {
+    "code": "0020234700000",
+    "pos_title": "SAUCISSON DE CRACOVIE KG",
+    "price": 19.99,
+    "queued_at": "2026-10-07T17:35:57.004Z",
+    "id": "c1791394557004"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSON DE CRACOVIE",
+     "F1744": null,
+     "F22": "kg",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSON DE CRACOVIE KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "22.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "22.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261007133608228318",
+   "applied_at": "2026-10-07T13:36:08",
+   "change": {
+    "code": "0020234700000",
+    "pos_title": "SAUCISSON DE CRACOVIE KG",
+    "price": 19.99,
+    "queued_at": "2026-10-07T17:36:04.189Z",
+    "id": "c1791394564189"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSON DE CRACOVIE",
+     "F1744": null,
+     "F22": "kg",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSON DE CRACOVIE KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
      "F27": "L-VIANDE"
     },
     "PRICE_TAB": {
