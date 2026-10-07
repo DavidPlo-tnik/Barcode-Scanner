@@ -2177,7 +2177,31 @@
    "price": 39.99,
    "mp": null,
    "at": "2026-10-07 14:39:52"
+  },
+  "0020185000000": {
+   "pt": "SALAMI DE GÊNES PUQUANT SPICY GENOA",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "G",
+   "sn": 1000.0,
+   "nm": "SALAMI DE GÊNES PUQUANT SPICY GENOA",
+   "rp": 39.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 39.99,
+   "mp": null,
+   "cost": 137.22,
+   "at": "2026-10-07 14:42:04"
   }
  },
- "updated": "2026-10-07 14:39:52"
+ "updated": "2026-10-07 14:42:04"
 }
