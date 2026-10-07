@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260917102943149677",
-   "applied_at": "2026-09-17T10:29:43",
-   "change": {
-    "code": "0021051600000",
-    "pos_title": "BEIGNE A LA FRAISE 12 UN",
-    "size_num": 12,
-    "size_unit": "UN",
-    "balance": 0,
-    "queued_at": "2026-09-17T14:28:53.846Z",
-    "id": "c1789655333846"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "BEIGNE A LA FRAISE",
-     "F1744": "12.0",
-     "F22": "12 UN",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "BEIGNE A LA FRAISE 12 UN",
-     "F04": "51",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "0.0100",
-     "F196": "0.0100",
-     "F1140": "0.0100",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260917102943212077",
    "applied_at": "2026-09-17T10:29:43",
    "change": {
@@ -24759,6 +24709,54 @@
      "F1014": "2036-08-30 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261007144311211184",
+   "applied_at": "2026-10-07T14:43:11",
+   "change": {
+    "code": "0020235400000",
+    "pos_title": "JAMBON GENRE PRAGUE FUME KG",
+    "price": 39.99,
+    "queued_at": "2026-10-07T18:42:37.032Z",
+    "id": "c1791398557032"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "JAMBON GENRE PRAGUE FUME",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "JAMBON GENRE PRAGUE FUME KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-BRANDT"
+    },
+    "PRICE_TAB": {
+     "F30": "29.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "29.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
