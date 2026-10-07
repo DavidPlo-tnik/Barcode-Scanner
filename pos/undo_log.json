@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260914172318251105",
-   "applied_at": "2026-09-14T17:23:18",
-   "change": {
-    "code": "0023882500000",
-    "title": "THON FUMÉ SMOKED TUNA",
-    "pos_title": "THON FUMÉ SMOKED TUNA",
-    "queued_at": "2026-09-14T21:22:35.780Z",
-    "id": "c1789420955780"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "THON FUMÉ ",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "THON FUMÉ  GR",
-     "F04": "24",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "49.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "49.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260915113623307507",
    "applied_at": "2026-09-15T11:36:23",
    "change": {
@@ -24775,6 +24727,54 @@
      "F38": "0.0100",
      "F196": "0.0100",
      "F1140": "0.0100",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "19.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261007135200126390",
+   "applied_at": "2026-10-07T13:52:00",
+   "change": {
+    "code": "0020234700000",
+    "pos_title": "SAUCISSON DE CRACOVIE KG",
+    "price": 22.99,
+    "queued_at": "2026-10-07T17:51:28.471Z",
+    "id": "c1791395488471"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSON DE CRACOVIE",
+     "F1744": null,
+     "F22": "kg",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSON DE CRACOVIE KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
      "F27": "L-VIANDE"
     },
     "PRICE_TAB": {
