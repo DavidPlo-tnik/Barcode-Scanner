@@ -1941,7 +1941,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-10-07 12:18:15"
+  },
+  "0020238100000": {
+   "pt": "JAMBON GRAND-PÈRE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "KG",
+   "sn": null,
+   "nm": "JAMBON GRAND-PÈRE",
+   "rp": 19.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 19.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-10-07 12:44:03"
   }
  },
- "updated": "2026-10-07 12:18:15"
+ "updated": "2026-10-07 12:44:03"
 }
