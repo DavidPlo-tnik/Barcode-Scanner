@@ -1,105 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260916133455323962",
-   "applied_at": "2026-09-16T13:34:55",
-   "change": {
-    "code": "0482000271309",
-    "title": "KVAS STAROKYIVSKI 500ML",
-    "pos_title": "KVAS STAROKYIVSKI 500ML",
-    "size_num": 500,
-    "size_unit": "ML",
-    "queued_at": "2026-09-16T17:34:29.290Z",
-    "id": "c1789580069290"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KVAS STAROKYIVSKI",
-     "F1744": "500.0",
-     "F22": "500 ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "KVAS STAROKYIVSKI",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "32.4000",
-     "F196": "32.4000",
-     "F1140": "1.3500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "2.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "2.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260916184519289594",
-   "applied_at": "2026-09-16T18:45:19",
-   "change": {
-    "code": "0484000804162",
-    "pos_title": "FRANZELUTA PAIN  BORODINSKY 600G",
-    "size_num": 200,
-    "size_unit": "GR",
-    "queued_at": "2026-09-16T22:44:29.458Z",
-    "id": "c1789598669458"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "FRANZELUTA PAIN  BORODINSKY",
-     "F1744": "200.0",
-     "F22": "600G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "FRANZELUTA PAIN  BORODINSKY 600G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.9900",
-     "F196": "2.9900",
-     "F1140": "2.9900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260916184519336394",
    "applied_at": "2026-09-16T18:45:19",
    "change": {
@@ -24769,6 +24670,103 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "19.9000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261007143739242601",
+   "applied_at": "2026-10-07T14:37:39",
+   "change": {
+    "code": "0020236200000",
+    "title": "SALAMI CARRE AVEC GRAINES DE MOUTARDE",
+    "pos_title": "SALAMI CARRE AVEC GRAINES DE MOUTARDE",
+    "price": 34.99,
+    "queued_at": "2026-10-07T18:36:37.781Z",
+    "id": "c1791398197781"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SALAMI CARRE",
+     "F1744": null,
+     "F22": "KG",
+     "F23": ""
+    },
+    "POS_TAB": {
+     "F02": "SALAMI CARRE KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": "0.0000",
+     "F1140": "0.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "29.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "29.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261007143739305001",
+   "applied_at": "2026-10-07T14:37:39",
+   "change": {
+    "code": "0020237300000",
+    "pos_title": "SALAMI FORET NOIRE KG",
+    "price": 39.99,
+    "queued_at": "2026-10-07T18:37:28.259Z",
+    "id": "c1791398248259"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SALAMI FORET NOIRE",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SALAMI FORET NOIRE KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "29.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "29.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
