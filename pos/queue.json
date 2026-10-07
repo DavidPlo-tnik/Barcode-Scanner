@@ -1,3 +1,16 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0023881500000",
+   "pos_title": "FLANCS DE SAUMON FUMÉ GR",
+   "promo": {
+    "price": 19.99,
+    "qty": 1,
+    "start": "2026-10-08",
+    "end": "2026-08-14"
+   },
+   "queued_at": "2026-10-07T19:10:36.264Z",
+   "id": "c1791400236264"
+  }
+ ]
 }
