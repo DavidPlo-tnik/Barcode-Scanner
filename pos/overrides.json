@@ -1989,7 +1989,30 @@
    "mp": null,
    "cost": 98.0,
    "at": "2026-10-07 13:18:29"
+  },
+  "0020234700000": {
+   "pt": "SAUCISSON DE CRACOVIE KG",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "GR",
+   "sn": null,
+   "nm": "SAUCISSON DE CRACOVIE",
+   "rp": 19.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 19.99,
+   "mp": null,
+   "at": "2026-10-07 13:36:08"
   }
  },
- "updated": "2026-10-07 13:23:44"
+ "updated": "2026-10-07 13:36:08"
 }
