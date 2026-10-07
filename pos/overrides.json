@@ -1917,7 +1917,31 @@
    "mp": null,
    "cost": 32.0,
    "at": "2026-10-07 12:10:59"
+  },
+  "0021011700000": {
+   "pt": "CHOU FERMENTÉ ENTIER",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 62,
+   "un": "GR",
+   "sn": null,
+   "nm": "CHOU FERMENTÉ ENTIER",
+   "rp": 7.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 7.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-10-07 12:18:15"
   }
  },
- "updated": "2026-10-07 12:10:59"
+ "updated": "2026-10-07 12:18:15"
 }
