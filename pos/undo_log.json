@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260917112742272390",
-   "applied_at": "2026-09-17T11:27:42",
-   "change": {
-    "code": "0482000077094",
-    "title": "KVAS MONASTYRSKIY OKROSHKA",
-    "pos_title": "KVAS MONASTYRSKIY OKROSHKA",
-    "size_num": 2000,
-    "size_unit": "ML",
-    "queued_at": "2026-09-17T15:27:35.858Z",
-    "id": "c1789658855858"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KVAS MONASTYRSKIY",
-     "F1744": "2000.0",
-     "F22": "2000 ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "KVAS MONASTYRSKIY",
-     "F04": "1",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "18.0000",
-     "F196": "18.0000",
-     "F1140": "3.0000",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260917112952127018",
    "applied_at": "2026-09-17T11:29:52",
    "change": {
@@ -24771,6 +24721,54 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261007192554236495",
+   "applied_at": "2026-10-07T19:25:54",
+   "change": {
+    "code": "0020234500000",
+    "pos_title": "SALAMI LVIVSKA KG",
+    "price": 17.99,
+    "queued_at": "2026-10-07T23:25:13.392Z",
+    "id": "c1791415513392"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SALAMI LVIVSKA",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SALAMI LVIVSKA KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
