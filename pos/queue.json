@@ -1,3 +1,11 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0020237400000",
+   "pos_title": "SALAMI HONGROIS GR",
+   "price": 39.99,
+   "queued_at": "2026-10-07T18:38:05.432Z",
+   "id": "c1791398285432"
+  }
+ ]
 }
