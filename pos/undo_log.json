@@ -1,204 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260917104018179992",
-   "applied_at": "2026-09-17T10:40:18",
-   "change": {
-    "code": "0762220225425",
-    "size_num": 125,
-    "size_unit": "GR",
-    "queued_at": "2026-09-17T14:39:49.510Z",
-    "id": "c1789655989510"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LUX CROUSTILLES FROMAGE GOUDA",
-     "F1744": "400.0",
-     "F22": "400 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LUX CROUSTILLES FROMAGE GOUDA",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "66.0000",
-     "F196": "66.0000",
-     "F1140": "3.0000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260917112636331074",
-   "applied_at": "2026-09-17T11:26:36",
-   "change": {
-    "code": "0482000337093",
-    "title": "KVAS DANILO CLASSIQUE",
-    "pos_title": "KVAS DANILO CLASSIQUE",
-    "size_num": 2000,
-    "size_unit": "ML",
-    "queued_at": "2026-09-17T15:25:47.976Z",
-    "id": "c1789658747976"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KVAS DANILO COMBUCHA",
-     "F1744": "2000.0",
-     "F22": "2L",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "KVAS DANILO COMBUCHA 2L",
-     "F04": "1",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "18.0000",
-     "F196": "18.0000",
-     "F1140": "3.0000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260917112636393474",
-   "applied_at": "2026-09-17T11:26:36",
-   "change": {
-    "code": "0482000077094",
-    "title": "KVAS MONASTYRSKIY",
-    "pos_title": "KVAS MONASTYRSKIY",
-    "size_num": 2000,
-    "size_unit": "ML",
-    "queued_at": "2026-09-17T15:26:17.630Z",
-    "id": "c1789658777630"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KVAS KOMBUCHA MONASTIRSK",
-     "F1744": "2000.0",
-     "F22": "2L",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "KVAS KOMBUCHA MONASTIRSK 2L",
-     "F04": "1",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "18.0000",
-     "F196": "18.0000",
-     "F1140": "3.0000",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260917112742225590",
-   "applied_at": "2026-09-17T11:27:42",
-   "change": {
-    "code": "0482000077028",
-    "title": "KVAS MONASTYRSKIY",
-    "pos_title": "KVAS MONASTYRSKIY",
-    "size_num": 2000,
-    "size_unit": "ML",
-    "queued_at": "2026-09-17T15:27:19.547Z",
-    "id": "c1789658839547"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KVAS KOMBUCHA MONASTIRSKI",
-     "F1744": "2000.0",
-     "F22": "2L",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "KVAS KOMBUCHA MONASTIRSKI 2L",
-     "F04": "1",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "18.0000",
-     "F196": "18.0000",
-     "F1140": "3.0000",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260917112742272390",
    "applied_at": "2026-09-17T11:27:42",
    "change": {
@@ -24771,6 +24573,204 @@
      "F31": "2.0",
      "F1006": "2.0",
      "F1007": "5.0000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261007170036146666",
+   "applied_at": "2026-10-07T17:00:36",
+   "change": {
+    "code": "0460178000539",
+    "title": "MAKFA GRAIN DE SARRASIN",
+    "pos_title": "MAKFA GRAIN DE SARRASIN",
+    "size_num": 200,
+    "size_unit": "GR",
+    "queued_at": "2026-10-07T20:59:43.010Z",
+    "id": "c1791406783010"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "MAFKA GRAIN DE SARRASIN",
+     "F1744": "200.0",
+     "F22": "200 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "MAFKA GRAIN DE SARRASIN",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "14.4000",
+     "F196": "14.4000",
+     "F1140": "2.4000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261007170036193466",
+   "applied_at": "2026-10-07T17:00:36",
+   "change": {
+    "code": "0460178000539",
+    "title": "MAKFA GRAIN DE SARRASIN",
+    "pos_title": "MAKFA GRAIN DE SARRASIN",
+    "size_num": 800,
+    "size_unit": "GR",
+    "queued_at": "2026-10-07T20:59:46.530Z",
+    "id": "c1791406786530"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "MAKFA GRAIN DE SARRASIN",
+     "F1744": "200.0",
+     "F22": "200 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "MAKFA GRAIN DE SARRASIN",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "14.4000",
+     "F196": "14.4000",
+     "F1140": "2.4000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261007170036240266",
+   "applied_at": "2026-10-07T17:00:36",
+   "change": {
+    "code": "0460178000539",
+    "title": "MAKFA GRAIN DE SARRASIN",
+    "pos_title": "MAKFA GRAIN DE SARRASIN",
+    "size_num": 800,
+    "size_unit": "GR",
+    "queued_at": "2026-10-07T20:59:54.526Z",
+    "id": "c1791406794526"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "MAKFA GRAIN DE SARRASIN",
+     "F1744": "800.0",
+     "F22": "800 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "MAKFA GRAIN DE SARRASIN",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "14.4000",
+     "F196": "14.4000",
+     "F1140": "2.4000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261007170036287066",
+   "applied_at": "2026-10-07T17:00:36",
+   "change": {
+    "code": "0460178000539",
+    "size_num": 800,
+    "size_unit": "GR",
+    "queued_at": "2026-10-07T21:00:00.741Z",
+    "id": "c1791406800741"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "MAKFA GRAIN DE SARRASIN",
+     "F1744": "800.0",
+     "F22": "800 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "MAKFA GRAIN DE SARRASIN",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "14.4000",
+     "F196": "14.4000",
+     "F1140": "2.4000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
