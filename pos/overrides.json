@@ -1981,7 +1981,31 @@
    "mp": null,
    "cost": 3.99,
    "at": "2026-10-07 21:48:32"
+  },
+  "0021010700000": {
+   "pt": "METS CUISINES SALADE GR",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 61,
+   "un": "KG",
+   "sn": null,
+   "nm": "METS CUISINES SALADE",
+   "rp": 14.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 14.99,
+   "mp": null,
+   "cost": 3.49,
+   "at": "2026-10-07 22:05:04"
   }
  },
- "updated": "2026-10-07 21:48:32"
+ "updated": "2026-10-07 22:05:04"
 }
