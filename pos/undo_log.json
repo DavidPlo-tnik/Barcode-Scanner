@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260918200052221955",
-   "applied_at": "2026-09-18T20:00:52",
-   "change": {
-    "code": "0062531500055",
-    "size_num": 907,
-    "size_unit": "",
-    "subdept": 4,
-    "queued_at": "2026-09-19T00:00:00.251Z",
-    "id": "c1789776000251"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "JJWilk pierog.pom.terre OIGNON srg 907g",
-     "F1744": "907.0",
-     "F22": "907G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "JJWilk pierog.pom.terre OIGNON srg 907g",
-     "F04": "21",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "42.0000",
-     "F196": "42.0000",
-     "F1140": "4.2000",
-     "F27": "ZV01"
-    },
-    "PRICE_TAB": {
-     "F30": "6.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "6.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260919143725126966",
    "applied_at": "2026-09-19T14:37:25",
    "change": {
@@ -24703,6 +24654,48 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "6.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261008163350204356",
+   "applied_at": "2026-10-08T16:33:50",
+   "change": {
+    "code": "0020143900000",
+    "title": "BATONNETS DESANDRE SÉCHÉ SUDAK JERKY",
+    "pos_title": "BATONNETS DESANDRE SÉCHÉ SUDAK JERKY",
+    "queued_at": "2026-10-08T20:33:51.448Z",
+    "id": "c1791491631448"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SANDRE SECHE SUDAK JERKY",
+     "F1744": null,
+     "F22": "UN",
+     "F23": ""
+    },
+    "POS_TAB": {
+     "F02": "SANDRE SECHE SUDAK JERKY UN",
+     "F04": "23",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": "0"
+    },
+    "PRICE_TAB": {
+     "F30": "49.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "49.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
