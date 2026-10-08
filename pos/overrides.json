@@ -781,7 +781,30 @@
    "mp": null,
    "cost": 5.5,
    "at": "2026-10-08 10:14:31"
+  },
+  "0000000000085": {
+   "pt": "METS CUISINES PIROZHKI",
+   "tf": 1,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 62,
+   "un": "G",
+   "sn": null,
+   "nm": "METS CUISINES PIROZHKI",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "at": "2026-10-08 14:43:28"
   }
  },
- "updated": "2026-10-08 10:14:31"
+ "updated": "2026-10-08 14:43:28"
 }
