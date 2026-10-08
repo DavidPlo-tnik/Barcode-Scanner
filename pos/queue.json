@@ -8,6 +8,15 @@
    "price": 7.99,
    "queued_at": "2026-10-08T13:15:20.849Z",
    "id": "c1791465320850"
+  },
+  {
+   "code": "0085007784002",
+   "pos_title": "TRESSE DE FROMAGE FUME 100GR",
+   "size_num": 100,
+   "size_unit": "GR",
+   "price": 7.99,
+   "queued_at": "2026-10-08T13:16:03.603Z",
+   "id": "c1791465363603"
   }
  ]
 }
