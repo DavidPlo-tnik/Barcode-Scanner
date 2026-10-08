@@ -1933,7 +1933,31 @@
    "mp": null,
    "cost": 85.75,
    "at": "2026-10-07 21:43:01"
+  },
+  "0020238500000": {
+   "pt": "SAUCISE VIENNOISE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "KG",
+   "sn": null,
+   "nm": "SAUCISE VIENNOISE",
+   "rp": 15.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 15.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-10-07 21:45:17"
   }
  },
- "updated": "2026-10-07 21:44:07"
+ "updated": "2026-10-07 21:45:17"
 }
