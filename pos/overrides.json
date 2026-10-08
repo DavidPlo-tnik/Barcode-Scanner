@@ -709,7 +709,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-10-08 09:25:44"
+  },
+  "0022701700000": {
+   "pt": "STRUDEL GRAINES DE PAVOT MINI",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 52,
+   "un": "GR",
+   "sn": 100.0,
+   "nm": "STRUDEL GRAINES DE PAVOT MINI",
+   "rp": 3.49,
+   "ap": 1,
+   "pp": 2.49,
+   "ps": "2026-09-17",
+   "pe": "2031-09-17",
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 2.49,
+   "mp": null,
+   "cost": 2.18,
+   "at": "2026-10-08 10:07:06"
   }
  },
- "updated": "2026-10-08 09:36:06"
+ "updated": "2026-10-08 10:07:06"
 }
