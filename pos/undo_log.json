@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260920195501101393",
-   "applied_at": "2026-09-20T19:55:01",
-   "change": {
-    "code": "0477021930032",
-    "title": "ARGOUSIER CONGELE",
-    "pos_title": "ARGOUSIER CONGELE",
-    "size_num": 4000,
-    "size_unit": "ML",
-    "queued_at": "2026-09-20T23:54:03.529Z",
-    "id": "c1789948443529"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LARGOUSIER CONGELE ",
-     "F1744": "4000.0",
-     "F22": "908G",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "LARGOUSIER CONGELE  908G",
-     "F04": "4",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "100.0000",
-     "F196": "100.0000",
-     "F1140": "10.0000",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "15.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "15.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260920200013136348",
    "applied_at": "2026-09-20T20:00:13",
    "change": {
@@ -24708,6 +24658,48 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261009095626389671",
+   "applied_at": "2026-10-09T09:56:26",
+   "change": {
+    "code": "0021437900000",
+    "title": "BATONNETS DE BREME SOLOMKA LECHE",
+    "pos_title": "BATONNETS DE BREME SOLOMKA LECHE",
+    "queued_at": "2026-10-09T13:55:44.100Z",
+    "id": "c1791554144100"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "POISSON SECHE ",
+     "F1744": null,
+     "F22": "UN",
+     "F23": ""
+    },
+    "POS_TAB": {
+     "F02": "POISSON SECHE  UN",
+     "F04": "23",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": "0"
+    },
+    "PRICE_TAB": {
+     "F30": "49.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "49.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
