@@ -359,9 +359,9 @@
    "tf": 0,
    "tp": 0,
    "dp": null,
-   "bal": 0,
+   "bal": 1,
    "qte": 0,
-   "sd": 23,
+   "sd": 24,
    "un": "",
    "sn": null,
    "nm": "BATONNETS DE BREME SOLOMKA LECHE",
@@ -375,8 +375,8 @@
    "lk": 0,
    "price": 49.99,
    "mp": null,
-   "at": "2026-10-09 09:56:26"
+   "at": "2026-10-09 12:32:07"
   }
  },
- "updated": "2026-10-09 10:59:21"
+ "updated": "2026-10-09 12:32:07"
 }
