@@ -1,106 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260921162859377617",
-   "applied_at": "2026-09-21T16:28:59",
-   "change": {
-    "code": "0482310581423",
-    "title": "AVK BAMBUK FRAISE",
-    "pos_title": "AVK BAMBUK FRAISE",
-    "size_num": 200,
-    "size_unit": "GR",
-    "queued_at": "2026-09-21T20:28:38.873Z",
-    "id": "c1790022518873"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "AVK BAMBUK",
-     "F1744": "200.0",
-     "F22": "200GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "AVK BAMBUK 200GR",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "1.4000",
-     "F196": "1.4000",
-     "F1140": "1.4000",
-     "F27": "ZJ01"
-    },
-    "PRICE_TAB": {
-     "F30": "2.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "2.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260921163006270535",
-   "applied_at": "2026-09-21T16:30:06",
-   "change": {
-    "code": "0482310581815",
-    "title": "AVK BAMBUK LAIT CONDENSÉ",
-    "pos_title": "AVK BAMBUK LAIT CONDENSÉ",
-    "size_num": 200,
-    "size_unit": "GR",
-    "queued_at": "2026-09-21T20:29:10.400Z",
-    "id": "c1790022550400"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "AVK BAMBUK",
-     "F1744": "200.0",
-     "F22": "200GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "AVK BAMBUK 200GR",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "1.4000",
-     "F196": "1.4000",
-     "F1140": "1.4000",
-     "F27": "ZJ01"
-    },
-    "PRICE_TAB": {
-     "F30": "2.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "2.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260921163216218763",
    "applied_at": "2026-09-21T16:32:16",
    "change": {
@@ -24683,6 +24583,106 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "13.2100",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261009163440212051",
+   "applied_at": "2026-10-09T16:34:40",
+   "change": {
+    "code": "0482019303584",
+    "title": "ZHIVCHIK BOISSON GAZEUSE ORANGE",
+    "pos_title": "ZHIVCHIK BOISSON GAZEUSE ORANGE",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "queued_at": "2026-10-09T20:34:02.896Z",
+    "id": "c1791578042896"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BOISSON GAZEUSE POIRE",
+     "F1744": "2.0",
+     "F22": "2LT",
+     "F23": "LT"
+    },
+    "POS_TAB": {
+     "F02": "BOISSON GAZEUSE POIRE 2LT",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.4500",
+     "F196": "2.4500",
+     "F1140": "2.4500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261009163440258851",
+   "applied_at": "2026-10-09T16:34:40",
+   "change": {
+    "code": "0482019303584",
+    "title": "ZHYVCHYK BOISSON GAZEUSE ORANGE",
+    "pos_title": "ZHYVCHYK BOISSON GAZEUSE ORANGE",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "queued_at": "2026-10-09T20:34:24.829Z",
+    "id": "c1791578064829"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZHIVCHIK BOISSON GAZEUSE ORANGE",
+     "F1744": "2000.0",
+     "F22": "2000 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZHIVCHIK BOISSON GAZEUSE ORANGE",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.4500",
+     "F196": "2.4500",
+     "F1140": "2.4500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
