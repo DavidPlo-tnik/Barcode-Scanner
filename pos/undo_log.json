@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260920195251176963",
-   "applied_at": "2026-09-20T19:52:51",
-   "change": {
-    "code": "0071022833994",
-    "pos_title": "BANDI FROMAGE 100G",
-    "size_num": 100,
-    "size_unit": "",
-    "queued_at": "2026-09-20T23:51:45.374Z",
-    "id": "c1789948305375"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "BANDI FROMAGE",
-     "F1744": "100.0",
-     "F22": "100 ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "BANDI FROMAGE 100G",
-     "F04": "4",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "1.5000",
-     "F196": "1.5000",
-     "F1140": "1.5000",
-     "F27": "0000204728"
-    },
-    "PRICE_TAB": {
-     "F30": "2.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "2.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260920195501101393",
    "applied_at": "2026-09-20T19:55:01",
    "change": {
@@ -24701,6 +24652,56 @@
      "F05": null,
      "F82": "0",
      "F85": "0"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261009093135479452",
+   "applied_at": "2026-10-09T09:31:35",
+   "change": {
+    "code": "0000000000101",
+    "title": "GRAINES DE TOURNESOL UKR",
+    "pos_title": "GRAINES DE TOURNESOL UKR",
+    "size_num": 500,
+    "size_unit": "GR",
+    "queued_at": "2026-10-09T13:30:49.186Z",
+    "id": "c1791552649186"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GRAINES DE TOURNESOL ",
+     "F1744": "500.0",
+     "F22": "500 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CAVIAR DE SAUMON ROUGE",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
     },
     "PRICE_TAB": {
      "F30": "4.9900",
