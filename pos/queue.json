@@ -1,3 +1,19 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0071575620011",
+   "pos_title": "FRAISE BIO",
+   "size_num": 454,
+   "size_unit": "",
+   "price": 1.99,
+   "promo": {
+    "price": 5,
+    "qty": 3,
+    "start": "2026-10-08",
+    "end": "2028-10-08"
+   },
+   "queued_at": "2026-10-09T14:58:42.370Z",
+   "id": "c1791557922370"
+  }
+ ]
 }
