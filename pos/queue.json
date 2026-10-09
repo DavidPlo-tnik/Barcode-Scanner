@@ -1,3 +1,14 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0005500021219",
+   "pos_title": "PERRIER EAU GAZ",
+   "size_num": 3000,
+   "size_unit": "ML",
+   "price": 12.99,
+   "deposit": 0.6,
+   "queued_at": "2026-10-09T18:44:07.758Z",
+   "id": "c1791571447758"
+  }
+ ]
 }
