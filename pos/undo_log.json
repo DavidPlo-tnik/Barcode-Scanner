@@ -1,106 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260920200526156506",
-   "applied_at": "2026-09-20T20:05:26",
-   "change": {
-    "code": "0482013782533",
-    "title": "ROSINKA BOISSON TARHUN",
-    "pos_title": "ROSINKA BOISSON TARHUN",
-    "size_num": 800,
-    "size_unit": "GR",
-    "queued_at": "2026-09-21T00:05:06.221Z",
-    "id": "c1789949106221"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ROSINKA ESTRAGON",
-     "F1744": "800.0",
-     "F22": "2L",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "ROSINKA ESTRAGON 2L",
-     "F04": "1",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "16.5000",
-     "F196": "16.5000",
-     "F1140": "2.7500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260921123234216077",
-   "applied_at": "2026-09-21T12:32:34",
-   "change": {
-    "code": "0000000003452",
-    "pos_title": "RAISINS VERTS MOYENS S.PEPIN",
-    "size_num": 1000,
-    "size_unit": "",
-    "price": 11,
-    "queued_at": "2026-09-21T16:31:52.176Z",
-    "id": "c1790008312176"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "raisin vert moyen sans pépins ÉU (19)/lb",
-     "F1744": "1000.0",
-     "F22": "1000G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "RAISINS VERTS MOYENS S.PEPIN",
-     "F04": "41",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "29.0000",
-     "F196": "29.0000",
-     "F1140": "3.3650",
-     "F27": "ZJ01"
-    },
-    "PRICE_TAB": {
-     "F30": "15.4100",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "15.4100",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260921151701272149",
    "applied_at": "2026-09-21T15:17:01",
    "change": {
@@ -24715,6 +24615,89 @@
      "F1014": "2028-10-08 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261009123207029477",
+   "applied_at": "2026-10-09T12:32:07",
+   "change": {
+    "code": "0021437900000",
+    "balance": 1,
+    "queued_at": "2026-10-09T16:31:54.711Z",
+    "id": "c1791563514711"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BATONNETS DE BREME SOLOMKA LECHE",
+     "F1744": null,
+     "F22": "UN",
+     "F23": ""
+    },
+    "POS_TAB": {
+     "F02": "BATONNETS DE BREME SOLOMKA LECHE",
+     "F04": "23",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": "0"
+    },
+    "PRICE_TAB": {
+     "F30": "49.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "49.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261009123207076277",
+   "applied_at": "2026-10-09T12:32:07",
+   "change": {
+    "code": "0021437900000",
+    "subdept": 24,
+    "balance": 1,
+    "queued_at": "2026-10-09T16:32:00.405Z",
+    "id": "c1791563520405"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BATONNETS DE BREME SOLOMKA LECHE",
+     "F1744": null,
+     "F22": "UN",
+     "F23": ""
+    },
+    "POS_TAB": {
+     "F02": "BATONNETS DE BREME SOLOMKA LECHE",
+     "F04": "23",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "1",
+     "F85": "0"
+    },
+    "PRICE_TAB": {
+     "F30": "49.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "49.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
