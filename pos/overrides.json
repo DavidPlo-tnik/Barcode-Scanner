@@ -282,7 +282,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-10-09 19:57:06"
+  },
+  "0022423200000": {
+   "pt": "SALADE POMME DE TERRE OLIVIER",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 61,
+   "un": "G",
+   "sn": null,
+   "nm": "SALADE POMME DE TERRE OLIVIER",
+   "rp": 14.99,
+   "ap": 1,
+   "pp": 14.99,
+   "ps": "2026-08-31",
+   "pe": "2036-08-31",
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 14.99,
+   "mp": null,
+   "cost": 11.97,
+   "at": "2026-10-09 20:09:29"
   }
  },
- "updated": "2026-10-09 19:57:06"
+ "updated": "2026-10-09 20:09:29"
 }
