@@ -573,7 +573,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-10-10 15:50:47"
+  },
+  "0020150400000": {
+   "pt": "BETRAVES CUITES",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 41,
+   "un": "",
+   "sn": null,
+   "nm": "BETRAVES CUITES",
+   "rp": 3.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.49,
+   "mp": null,
+   "cost": 2.08,
+   "at": "2026-10-10 17:59:26"
   }
  },
- "updated": "2026-10-10 17:05:55"
+ "updated": "2026-10-10 17:59:26"
 }
