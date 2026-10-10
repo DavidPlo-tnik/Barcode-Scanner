@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260921201328119304",
-   "applied_at": "2026-09-21T20:13:28",
-   "change": {
-    "code": "0020238800000",
-    "price": 9.99,
-    "balance": 0,
-    "queued_at": "2026-09-22T00:12:37.826Z",
-    "id": "c1790035957826"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "BARILO`S MINI BOLOGNE",
-     "F1744": null,
-     "F22": "",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "BARILO`S MINI BOLOGNE",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "9.9900",
-     "F196": "9.9900",
-     "F1140": "9.9900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "7.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "7.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": null
-    }
-   }
-  },
-  {
    "undo_id": "u20260922160817440943",
    "applied_at": "2026-09-22T16:08:17",
    "change": {
@@ -24641,6 +24593,56 @@
     "size_unit": "GR",
     "queued_at": "2026-10-10T15:36:49.212Z",
     "id": "c1791646609212"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FERMA BEURRE BATTER ",
+     "F1744": "200.0",
+     "F22": "200G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "FERMA BEURRE BATTER  200G",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "112.0000",
+     "F196": "112.0000",
+     "F1140": "5.6000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "8.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "8.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261010113806247954",
+   "applied_at": "2026-10-10T11:38:06",
+   "change": {
+    "code": "0482024552718",
+    "title": "FERMA BEURRE VERSHKOVE 82,5%",
+    "pos_title": "FERMA BEURRE VERSHKOVE 82,5%",
+    "size_num": 200,
+    "size_unit": "GR",
+    "queued_at": "2026-10-10T15:37:57.016Z",
+    "id": "c1791646677016"
    },
    "before": {
     "OBJ_TAB": {
