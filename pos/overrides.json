@@ -307,7 +307,31 @@
    "mp": null,
    "cost": 112.0,
    "at": "2026-10-10 11:37:00"
+  },
+  "0482024552718": {
+   "pt": "FERMA BEURRE VERSHKOVE 82,5%",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 200.0,
+   "nm": "FERMA BEURRE VERSHKOVE 82,5%",
+   "rp": 8.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 8.99,
+   "mp": null,
+   "cost": 112.0,
+   "at": "2026-10-10 11:38:06"
   }
  },
- "updated": "2026-10-10 11:37:00"
+ "updated": "2026-10-10 11:38:06"
 }
