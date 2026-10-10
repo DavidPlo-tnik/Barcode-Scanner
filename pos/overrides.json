@@ -1,29 +1,5 @@
 {
  "items": {
-  "0071575620011": {
-   "pt": "FRAISE BIO",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 41,
-   "un": "G",
-   "sn": 454.0,
-   "nm": "fraise bio 454g (8)                 DISC",
-   "rp": 1.99,
-   "ap": 1,
-   "pp": 5.0,
-   "ps": "2026-10-08",
-   "pe": "2028-10-08",
-   "rq": 1,
-   "pq": 3,
-   "lk": 1,
-   "price": 1.67,
-   "mp": "3/$5.00",
-   "cost": 10.0,
-   "at": "2026-10-09 10:59:21"
-  },
   "0021437900000": {
    "pt": "BATONNETS DE BREME SOLOMKA LECHE",
    "tf": 0,
@@ -178,7 +154,7 @@
    "un": "",
    "sn": null,
    "nm": "POISSON SECHE GOBIE BICHOK",
-   "rp": 44.99,
+   "rp": 39.99,
    "ap": 0,
    "pp": null,
    "ps": null,
@@ -186,9 +162,9 @@
    "rq": 1,
    "pq": 1,
    "lk": 0,
-   "price": 44.99,
+   "price": 39.99,
    "mp": null,
-   "at": "2026-10-10 11:14:13"
+   "at": "2026-10-10 17:05:55"
   },
   "0481016806691": {
    "pt": "SANTA BREMOR PÂTE DE CAVIAR DE MORUE",
@@ -599,5 +575,5 @@
    "at": "2026-10-10 15:50:47"
   }
  },
- "updated": "2026-10-10 15:50:47"
+ "updated": "2026-10-10 17:05:55"
 }
