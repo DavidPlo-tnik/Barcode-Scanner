@@ -475,7 +475,31 @@
    "mp": null,
    "cost": 50.0,
    "at": "2026-10-10 11:58:03"
+  },
+  "0629045600145": {
+   "pt": "CANNEBERGES CONGELÉES",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 908.0,
+   "nm": "CANNEBERGES CONGELÉES",
+   "rp": 17.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 17.99,
+   "mp": null,
+   "cost": 120.0,
+   "at": "2026-10-10 12:35:05"
   }
  },
- "updated": "2026-10-10 11:58:03"
+ "updated": "2026-10-10 12:35:05"
 }
