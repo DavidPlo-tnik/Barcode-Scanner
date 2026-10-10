@@ -499,7 +499,31 @@
    "mp": null,
    "cost": 120.0,
    "at": "2026-10-10 12:35:05"
+  },
+  "0629045600189": {
+   "pt": "MYRTILLES CONGELE  908G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 908.0,
+   "nm": "MYRTILLES CONGELE",
+   "rp": 14.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 14.99,
+   "mp": null,
+   "cost": 99.0,
+   "at": "2026-10-10 12:37:11"
   }
  },
- "updated": "2026-10-10 12:35:05"
+ "updated": "2026-10-10 12:37:11"
 }
