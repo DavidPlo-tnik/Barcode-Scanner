@@ -403,7 +403,31 @@
    "mp": null,
    "cost": 4.8,
    "at": "2026-10-10 11:44:29"
+  },
+  "0077624103840": {
+   "pt": "M-C DAIRY BEURRE DE VILLAGE NON SALÉ",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 3,
+   "un": "GR",
+   "sn": 250.0,
+   "nm": "M-C DAIRY BEURRE DE VILLAGE NON SALÉ",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 4.8,
+   "at": "2026-10-10 11:46:38"
   }
  },
- "updated": "2026-10-10 11:44:29"
+ "updated": "2026-10-10 11:46:38"
 }
