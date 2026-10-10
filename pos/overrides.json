@@ -355,7 +355,31 @@
    "mp": null,
    "cost": 114.0,
    "at": "2026-10-10 11:41:17"
+  },
+  "0077624103842": {
+   "pt": "M-C DAIRY BEURRE DE VILLAGE FERMENTÉ",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 3,
+   "un": "GR",
+   "sn": 250.0,
+   "nm": "M-C DAIRY BEURRE DE VILLAGE FERMENTÉ",
+   "rp": 6.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 6.99,
+   "mp": null,
+   "cost": 4.8,
+   "at": "2026-10-10 11:42:23"
   }
  },
- "updated": "2026-10-10 11:41:17"
+ "updated": "2026-10-10 11:42:23"
 }
