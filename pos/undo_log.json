@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260921201119137476",
-   "applied_at": "2026-09-21T20:11:19",
-   "change": {
-    "code": "0020232600000",
-    "pos_title": "LACHSSCHINKEN LONGE DE PORC FUME DEUX FO",
-    "balance": 1,
-    "queued_at": "2026-09-22T00:10:24.102Z",
-    "id": "c1790035824102"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LACHSSCHINKEN LONGE DE PORC FUME DEUX FOIS",
-     "F1744": null,
-     "F22": "KG",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LACHSSCHINKEN LONGE DE PORC FUME DEUX FO",
-     "F04": "31",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-ISABELLE"
-    },
-    "PRICE_TAB": {
-     "F30": "31.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "31.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260921201328119304",
    "applied_at": "2026-09-21T20:13:28",
    "change": {
@@ -24667,6 +24619,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "5.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261010113700337838",
+   "applied_at": "2026-10-10T11:37:00",
+   "change": {
+    "code": "0482023924597",
+    "title": "FERMA BEURRE EXTRA 82,5%",
+    "pos_title": "FERMA BEURRE EXTRA 82,5%",
+    "size_num": 200,
+    "size_unit": "GR",
+    "queued_at": "2026-10-10T15:36:49.212Z",
+    "id": "c1791646609212"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FERMA BEURRE BATTER ",
+     "F1744": "200.0",
+     "F22": "200G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "FERMA BEURRE BATTER  200G",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "112.0000",
+     "F196": "112.0000",
+     "F1140": "5.6000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "8.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "8.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
