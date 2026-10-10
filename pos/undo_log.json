@@ -1,65 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260922182338169993",
-   "applied_at": "2026-09-22T18:23:38",
-   "change": {
-    "code": "0062598396019",
-    "pos_title": "KVAS \"ALL STAR\" LIQUEUR 591ML",
-    "size_num": 591,
-    "size_unit": "ML",
-    "multibuy": {
-     "qty": 3,
-     "price": 5
-    },
-    "promo": {
-     "price": 5,
-     "qty": 3,
-     "start": null,
-     "end": null
-    },
-    "queued_at": "2026-09-22T22:23:07.899Z",
-    "id": "c1790115787899"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KVAS \"ALL STAR\" LIQUEUR",
-     "F1744": "2000.0",
-     "F22": "591ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "KVAS \"ALL STAR\" LIQUEUR 591ML",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "55.5000",
-     "F196": "55.5000",
-     "F1140": "1.7344",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.0000",
-     "F31": "3.0",
-     "F1006": "3.0",
-     "F1007": "5.0000",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260922190753062324",
    "applied_at": "2026-09-22T19:07:53",
    "change": {
@@ -24672,6 +24613,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "15.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261010124636155173",
+   "applied_at": "2026-10-10T12:46:36",
+   "change": {
+    "code": "0477021979191",
+    "title": "VIORNE ROUGE CONGELÉE",
+    "pos_title": "VIORNE ROUGE CONGELÉE",
+    "size_num": 908,
+    "size_unit": "GR",
+    "queued_at": "2026-10-10T16:46:08.432Z",
+    "id": "c1791650768432"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VIORNE ROUGE KALINA 908G",
+     "F1744": "908.0",
+     "F22": "908 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "VIORNE ROUGE KALINA 908G",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "7.7500",
+     "F196": "7.7500",
+     "F1140": "7.7500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "13.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "13.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
