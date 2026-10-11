@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924203244226148",
-   "applied_at": "2026-09-24T20:32:44",
-   "change": {
-    "code": "0482310540074",
-    "title": "VERES RÂGOUT DE LÉGUMES",
-    "pos_title": "VERES RÂGOUT DE LÉGUMES",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:32:42.223Z",
-    "id": "c1790296362223"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES RAGOUT VEGETABLES",
-     "F1744": "1000.0",
-     "F22": "500G",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "VERES RAGOUT VEGETABLES 500G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5000",
-     "F196": "3.5000",
-     "F1140": "3.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924203552066078",
    "applied_at": "2026-09-24T20:35:52",
    "change": {
@@ -24583,6 +24533,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011165531328876",
+   "applied_at": "2026-10-11T16:55:31",
+   "change": {
+    "code": "0066415500168",
+    "title": "AMORA CREVETTES BLANCHES DU PACIFIQUE CUITES 100/150",
+    "pos_title": "AMORA CREVETTES BLANCHES DU PACIFIQUE CU",
+    "size_num": 300,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T20:54:45.767Z",
+    "id": "c1791752085767"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SEA ROY CREVETTES100-150",
+     "F1744": "340.0",
+     "F22": "300G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "SEA ROY CREVETTES100-150 300G",
+     "F04": "23",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "91.0000",
+     "F196": "91.0000",
+     "F1140": "4.5500",
+     "F27": "ZA03"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
