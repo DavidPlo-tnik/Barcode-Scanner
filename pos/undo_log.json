@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924202008604219",
-   "applied_at": "2026-09-24T20:20:08",
-   "change": {
-    "code": "0482310540071",
-    "title": "VERES AUBERGINES DANS ADJIKA",
-    "pos_title": "VERES AUBERGINES DANS ADJIKA",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:19:31.479Z",
-    "id": "c1790295571479"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES AUBERGINES DANS ADZHIKA",
-     "F1744": "500.0",
-     "F22": "500G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "VERES AUBERGINES DANS ADZHIKA 500G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5000",
-     "F196": "3.5000",
-     "F1140": "3.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924202219176449",
    "applied_at": "2026-09-24T20:22:19",
    "change": {
@@ -24577,6 +24527,56 @@
      "F196": "5.5000",
      "F1140": "5.5000",
      "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011164502086171",
+   "applied_at": "2026-10-11T16:45:02",
+   "change": {
+    "code": "0729000013102",
+    "title": "SHAHAF FEUILLE DE PÂTE FEUILLETÉE",
+    "pos_title": "SHAHAF FEUILLE DE PÂTE FEUILLETÉE",
+    "size_num": 1000,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T20:45:01.380Z",
+    "id": "c1791751501380"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "PUFF PASTRY ",
+     "F1744": "1000.0",
+     "F22": "1000 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "PUFF PASTRY  1000G",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "59.4000",
+     "F196": "59.4000",
+     "F1140": "4.9500",
+     "F27": "ZB01"
     },
     "PRICE_TAB": {
      "F30": "7.9900",
