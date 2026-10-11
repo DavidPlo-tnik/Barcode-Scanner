@@ -1461,7 +1461,31 @@
    "mp": null,
    "cost": 2.9,
    "at": "2026-10-11 16:47:12"
+  },
+  "0426012339323": {
+   "pt": "FLAVORS PÂTE SURGELÉE POUR CHEBUREKS",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 800.0,
+   "nm": "FLAVORS PÂTE SURGELÉE POUR CHEBUREKS",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 31.2,
+   "at": "2026-10-11 16:50:19"
   }
  },
- "updated": "2026-10-11 16:47:12"
+ "updated": "2026-10-11 16:50:19"
 }
