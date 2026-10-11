@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260923164827159807",
-   "applied_at": "2026-09-23T16:48:27",
-   "change": {
-    "code": "0482307764098",
-    "title": "ROSHEN WAFERS COCO ET AMANDE",
-    "pos_title": "ROSHEN WAFERS COCO ET AMANDE",
-    "size_num": 216,
-    "size_unit": "",
-    "queued_at": "2026-09-23T20:47:55.826Z",
-    "id": "c1790196475826"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ROSHEN WAFERS ",
-     "F1744": "216.0",
-     "F22": "216G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "ROSHEN WAFERS  216G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "39.2000",
-     "F196": "39.2000",
-     "F1140": "2.4500",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "3.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260923232933077643",
    "applied_at": "2026-09-23T23:29:33",
    "change": {
@@ -24620,6 +24570,56 @@
      "F38": "14.8000",
      "F196": "14.8000",
      "F1140": "1.8500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011152809116047",
+   "applied_at": "2026-10-11T15:28:09",
+   "change": {
+    "code": "0462000268302",
+    "title": "ROSTAGROEXPORT BARRE DE FROMAGE AUX RAISINS SECS",
+    "pos_title": "ROSTAGROEXPORT BARRE DE FROMAGE AUX RAIS",
+    "size_num": 90,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T19:27:24.933Z",
+    "id": "c1791746844933"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ROSTAGRO MINI GATEAU AU FROMAGE ",
+     "F1744": "90.0",
+     "F22": "90G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "ROSTAGRO MINI GATEAU AU FROMAGE  90G",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "54.0000",
+     "F196": "54.0000",
+     "F1140": "1.8000",
      "F27": "ZE01"
     },
     "PRICE_TAB": {
