@@ -1629,7 +1629,31 @@
    "mp": null,
    "cost": 59.31,
    "at": "2026-10-11 17:07:12"
+  },
+  "0085313500105": {
+   "pt": "GGOOD MOOOD FARM KÉFIR NATURE 3,25%",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 3,
+   "un": "ML",
+   "sn": 2000.0,
+   "nm": "GGOOD MOOOD FARM KÉFIR NATURE 3,25%",
+   "rp": 9.39,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 9.39,
+   "mp": null,
+   "cost": 6.89,
+   "at": "2026-10-11 17:08:21"
   }
  },
- "updated": "2026-10-11 17:07:12"
+ "updated": "2026-10-11 17:08:21"
 }
