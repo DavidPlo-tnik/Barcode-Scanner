@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260923163245181353",
-   "applied_at": "2026-09-23T16:32:45",
-   "change": {
-    "code": "0075148867351",
-    "pos_title": "ILIOS CORNICHONS  750ML",
-    "size_num": 750,
-    "size_unit": "ML",
-    "queued_at": "2026-09-23T20:32:13.918Z",
-    "id": "c1790195533918"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ILIOS CORNICHONS ",
-     "F1744": "750.0",
-     "F22": "750ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "ILIOS CORNICHONS  750ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "33.0000",
-     "F196": "33.0000",
-     "F1140": "2.7500",
-     "F27": "0000202372"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260923163456159183",
    "applied_at": "2026-09-23T16:34:56",
    "change": {
@@ -24644,6 +24595,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "22.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011150814263149",
+   "applied_at": "2026-10-11T15:08:14",
+   "change": {
+    "code": "0066416605159",
+    "title": "WIEJSKA CHATA CORNICHONS POLONAIS",
+    "pos_title": "WIEJSKA CHATA CORNICHONS POLONAIS",
+    "size_num": 1500,
+    "size_unit": "ML",
+    "queued_at": "2026-10-11T19:08:03.337Z",
+    "id": "c1791745683337"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "WIEJSKA CHATA CORNICHONS",
+     "F1744": "1332.0",
+     "F22": "1500ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "WIEJSKA CHATA CORNICHONS 1500ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "5.9900",
+     "F196": "5.9900",
+     "F1140": "5.9900",
+     "F27": "0000202257"
+    },
+    "PRICE_TAB": {
+     "F30": "8.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "8.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
