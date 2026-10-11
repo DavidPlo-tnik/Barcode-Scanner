@@ -814,7 +814,31 @@
    "mp": null,
    "cost": 54.0,
    "at": "2026-10-11 15:28:09"
+  },
+  "0462000268303": {
+   "pt": "ROSTAGROEXPORT BARRE DE FROMAGE VANILLE",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 4,
+   "un": "GR",
+   "sn": 90.0,
+   "nm": "ROSTAGROEXPORT BARRE DE FROMAGE VANILLE",
+   "rp": 2.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 2.99,
+   "mp": null,
+   "cost": 54.0,
+   "at": "2026-10-11 15:29:18"
   }
  },
- "updated": "2026-10-11 15:28:09"
+ "updated": "2026-10-11 15:29:18"
 }
