@@ -1,53 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924142136184259",
-   "applied_at": "2026-09-24T14:21:36",
-   "change": {
-    "code": "0020994700000",
-    "price": 11.99,
-    "queued_at": "2026-09-24T18:21:13.934Z",
-    "id": "c1790274073934"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "MARMELADE GELÉE DE FRUITS",
-     "F1744": null,
-     "F22": "",
-     "F23": "KG"
-    },
-    "POS_TAB": {
-     "F02": "MARMELADE GELÉE DE FRUITS",
-     "F04": "2",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "5.5000",
-     "F196": "5.5000",
-     "F1140": "5.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924142447175394",
    "applied_at": "2026-09-24T14:24:47",
    "change": {
@@ -24624,6 +24577,56 @@
      "F38": "14.8000",
      "F196": "14.8000",
      "F1140": "1.8500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011153130075600",
+   "applied_at": "2026-10-11T15:31:30",
+   "change": {
+    "code": "0462000268300",
+    "title": "ROSTAGROEXPORT BARRE DE FROMAGE ÉCRÉMÉ AUX RAISINS SECS",
+    "pos_title": "ROSTAGROEXPORT BARRE DE FROMAGE ÉCRÉMÉ A",
+    "size_num": 90,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T19:31:29.388Z",
+    "id": "c1791747089388"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ROSTAGRO MINI GATEAU AU FROMAGE ",
+     "F1744": "90.0",
+     "F22": "90G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "ROSTAGRO MINI GATEAU AU FROMAGE  90G",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "54.0000",
+     "F196": "54.0000",
+     "F1140": "1.8000",
      "F27": "ZE01"
     },
     "PRICE_TAB": {
