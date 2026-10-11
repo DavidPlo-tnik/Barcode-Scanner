@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260923151826347321",
-   "applied_at": "2026-09-23T15:18:26",
-   "change": {
-    "code": "0070498124136",
-    "title": "CHECHIL TRESSE DE FROMAGE FUME",
-    "pos_title": "CHECHIL TRESSE DE FROMAGE FUME",
-    "size_num": 150,
-    "size_unit": "GR",
-    "queued_at": "2026-09-23T19:18:19.190Z",
-    "id": "c1790191099190"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "CHECIL TRESSE DE FROMAGE FUME",
-     "F1744": "150.0",
-     "F22": "150 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "CHECIL TRESSE DE FROMAGE FUME",
-     "F04": "32",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "7.0000",
-     "F196": "7.0000",
-     "F1140": "7.0000",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260923160146250888",
    "applied_at": "2026-09-23T16:01:46",
    "change": {
@@ -24658,6 +24608,54 @@
      "F1014": "2026-10-12 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011144527074747",
+   "applied_at": "2026-10-11T14:45:27",
+   "change": {
+    "code": "0021009500000",
+    "pos_title": "Salade Hareng Shuba UN",
+    "price": 13.99,
+    "queued_at": "2026-10-11T18:45:20.529Z",
+    "id": "c1791744320529"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "Salade Hareng Shuba",
+     "F1744": null,
+     "F22": "UN",
+     "F23": "UN"
+    },
+    "POS_TAB": {
+     "F02": "Salade Hareng Shuba UN",
+     "F04": "61",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.9900",
+     "F196": "3.9900",
+     "F1140": "3.9900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
