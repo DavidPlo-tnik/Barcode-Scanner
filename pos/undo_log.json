@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924214952104076",
-   "applied_at": "2026-09-24T21:49:52",
-   "change": {
-    "code": "0871100051376",
-    "size_num": 200,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T01:49:07.861Z",
-    "id": "c1790300947861"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "JACOBS ",
-     "F1744": "100.0",
-     "F22": "200GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "JACOBS 200GR",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "12.5900",
-     "F196": "12.5900",
-     "F1140": "12.5900",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "17.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "17.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924215159072699",
    "applied_at": "2026-09-24T21:51:59",
    "change": {
@@ -24584,6 +24536,56 @@
     },
     "POS_TAB": {
      "F02": "ODESSA JUS DE PRUNES 950ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.0500",
+     "F196": "2.0500",
+     "F1140": "2.0500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011172212142288",
+   "applied_at": "2026-10-11T17:22:12",
+   "change": {
+    "code": "0482026429030",
+    "title": "NASH SIK JUS DE CERISE ET ARONIA",
+    "pos_title": "NASH SIK JUS DE CERISE ET ARONIA",
+    "size_num": 950,
+    "size_unit": "ML",
+    "queued_at": "2026-10-11T21:21:47.461Z",
+    "id": "c1791753707461"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ODESSA JUS ",
+     "F1744": "950.0",
+     "F22": "950ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ODESSA JUS  950ML",
      "F04": "1",
      "F81": "0",
      "F96": "0",
