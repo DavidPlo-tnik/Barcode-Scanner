@@ -13,6 +13,21 @@
    },
    "queued_at": "2026-10-11T21:49:17.355Z",
    "id": "c1791755357355"
+  },
+  {
+   "code": "0075468489940",
+   "pos_title": "BELEVINI CRÊPES FROMAGE ET RAISINS 350GR",
+   "size_num": 350,
+   "size_unit": "GR",
+   "price": 4.99,
+   "promo": {
+    "price": 2.99,
+    "qty": 1,
+    "start": "2026-10-07",
+    "end": "2026-10-14"
+   },
+   "queued_at": "2026-10-11T21:49:45.820Z",
+   "id": "c1791755385820"
   }
  ]
 }
