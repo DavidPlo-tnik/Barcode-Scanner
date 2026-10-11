@@ -1509,7 +1509,31 @@
    "mp": null,
    "cost": 91.0,
    "at": "2026-10-11 16:55:31"
+  },
+  "0066415500156": {
+   "pt": "AMORA CREVETTES BLANCHES DU PACIFIQUE CU",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 22,
+   "un": "GR",
+   "sn": 340.0,
+   "nm": "AMORA CREVETTES BLANCHES DU PACIFIQUE CUITES 41/50",
+   "rp": 11.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 11.99,
+   "mp": null,
+   "cost": 84.0,
+   "at": "2026-10-11 16:56:37"
   }
  },
- "updated": "2026-10-11 16:55:31"
+ "updated": "2026-10-11 16:56:37"
 }
