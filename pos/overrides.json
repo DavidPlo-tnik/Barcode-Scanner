@@ -742,7 +742,31 @@
    "mp": null,
    "cost": 100.8,
    "at": "2026-10-11 15:19:46"
+  },
+  "0482019983100": {
+   "pt": "ZAIKA GRAINES DE TOURNESOL RÔTIES XXL",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 320.0,
+   "nm": "ZAIKA GRAINES DE TOURNESOL RÔTIES XXL",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 95.0,
+   "at": "2026-10-11 15:20:51"
   }
  },
- "updated": "2026-10-11 15:19:46"
+ "updated": "2026-10-11 15:20:51"
 }
