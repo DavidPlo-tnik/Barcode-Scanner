@@ -1653,7 +1653,31 @@
    "mp": null,
    "cost": 6.89,
    "at": "2026-10-11 17:08:21"
+  },
+  "0089568100029": {
+   "pt": "ELEGANT AYRAN BOISSON AU YOGOURT",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 3,
+   "un": "ML",
+   "sn": 473.0,
+   "nm": "ELEGANT AYRAN BOISSON AU YOGOURT",
+   "rp": 2.39,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 2.39,
+   "mp": null,
+   "cost": 35.0,
+   "at": "2026-10-11 17:09:26"
   }
  },
- "updated": "2026-10-11 17:08:21"
+ "updated": "2026-10-11 17:09:26"
 }
