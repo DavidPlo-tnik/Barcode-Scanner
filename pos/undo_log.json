@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924211810177936",
-   "applied_at": "2026-09-24T21:18:10",
-   "change": {
-    "code": "0006718570250",
-    "title": "DUTCHMANS SIRUP D'ÉRABLE",
-    "pos_title": "DUTCHMANS SIRUP D'ÉRABLE",
-    "size_num": 250,
-    "size_unit": "ML",
-    "queued_at": "2026-09-25T01:17:45.191Z",
-    "id": "c1790299065191"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "DUTCHIMANS SIRUP DÈRABLE",
-     "F1744": "320.0",
-     "F22": "250ML",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "DUTCHIMANS SIRUP DÈRABLE 250ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "84.0000",
-     "F196": "84.0000",
-     "F1140": "7.0000",
-     "F27": "ZE05"
-    },
-    "PRICE_TAB": {
-     "F30": "12.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "12.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924212118158266",
    "applied_at": "2026-09-24T21:21:18",
    "change": {
@@ -24567,6 +24517,56 @@
     },
     "POS_TAB": {
      "F02": "CREVETTES BLANCHES DU PACIFIQUE 41/50 45",
+     "F04": "22",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "65.0000",
+     "F196": "65.0000",
+     "F1140": "6.5000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011165953128536",
+   "applied_at": "2026-10-11T16:59:53",
+   "change": {
+    "code": "0066415500191",
+    "title": "AMORA CREVETTES BLANCHES DU PACIFIQUE CRUES 31/40",
+    "pos_title": "AMORA CREVETTES BLANCHES DU PACIFIQUE CR",
+    "size_num": 454,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T20:59:31.435Z",
+    "id": "c1791752371435"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CREVETTES BLANCHES DU PACIFIQUE 31/40",
+     "F1744": "454.0",
+     "F22": "454GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CREVETTES BLANCHES DU PACIFIQUE 31/40 45",
      "F04": "22",
      "F81": "0",
      "F96": "0",
