@@ -1,848 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924142447237795",
-   "applied_at": "2026-09-24T14:24:47",
-   "change": {
-    "code": "0426012339067",
-    "pos_title": "FLAVORS TOMATES  3LT",
-    "size_num": 1.5,
-    "size_unit": "LT",
-    "price": 13.99,
-    "queued_at": "2026-09-24T18:24:36.201Z",
-    "id": "c1790274276202"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "FLAVORS TOMATES ",
-     "F1744": "1.5",
-     "F22": "3LT",
-     "F23": "LT"
-    },
-    "POS_TAB": {
-     "F02": "FLAVORS TOMATES  3LT",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "32.0000",
-     "F196": "32.0000",
-     "F1140": "8.0000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "11.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "11.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924193310183296",
-   "applied_at": "2026-09-24T19:33:10",
-   "change": {
-    "code": "0058264914728",
-    "pos_title": "PAIN QUOTIDIEN        750G",
-    "size_num": 750,
-    "size_unit": "",
-    "queued_at": "2026-09-24T23:32:07.929Z",
-    "id": "c1790292727929"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "PAIN QUOTIDIEN       ",
-     "F1744": "750.0",
-     "F22": "750G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "PAIN QUOTIDIEN        750G",
-     "F04": "51",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "5.0000",
-     "F196": "5.0000",
-     "F1140": "5.0000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "6.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "6.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924193828205454",
-   "applied_at": "2026-09-24T19:38:28",
-   "change": {
-    "code": "0482310540582",
-    "title": "VERES TOMATES MARINÉES",
-    "pos_title": "VERES TOMATES MARINÉES",
-    "size_num": 760,
-    "size_unit": "GR",
-    "queued_at": "2026-09-24T23:38:19.897Z",
-    "id": "c1790293099897"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES TOMATES MARINEES ",
-     "F1744": "1000.0",
-     "F22": "760ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "VERES TOMATES MARINEES  760ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "4.2000",
-     "F196": "4.2000",
-     "F1140": "4.2000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924194035142877",
-   "applied_at": "2026-09-24T19:40:35",
-   "change": {
-    "code": "0482310540011",
-    "title": "VERES CORNICHONS MARINÉS",
-    "pos_title": "VERES CORNICHONS MARINÉS",
-    "size_num": 770,
-    "size_unit": "GR",
-    "queued_at": "2026-09-24T23:40:03.422Z",
-    "id": "c1790293203422"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES CORNICHONS MARINEES ",
-     "F1744": "1000.0",
-     "F22": "760ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "VERES CORNICHONS MARINEES  760ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "4.2000",
-     "F196": "4.2000",
-     "F1140": "4.2000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924194242205101",
-   "applied_at": "2026-09-24T19:42:42",
-   "change": {
-    "code": "0482310540061",
-    "title": "VERES TOMATES CERISES MARINÉES",
-    "pos_title": "VERES TOMATES CERISES MARINÉES",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-24T23:41:59.408Z",
-    "id": "c1790293319408"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES TOMATES CERISES",
-     "F1744": "1000.0",
-     "F22": "500G",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "VERES TOMATES CERISES 500G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5000",
-     "F196": "3.5000",
-     "F1140": "3.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924194452324929",
-   "applied_at": "2026-09-24T19:44:52",
-   "change": {
-    "code": "0482310540848",
-    "title": "VERES CORNICHONS MARINÉS",
-    "pos_title": "VERES CORNICHONS MARINÉS",
-    "size_num": 435,
-    "size_unit": "GR",
-    "queued_at": "2026-09-24T23:44:04.672Z",
-    "id": "c1790293444672"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES CORNICHONS MARINEES ",
-     "F1744": "435.0",
-     "F22": "435G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "VERES CORNICHONS MARINEES  435G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5000",
-     "F196": "3.5000",
-     "F1140": "3.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924194557345843",
-   "applied_at": "2026-09-24T19:45:57",
-   "change": {
-    "code": "0482310540018",
-    "title": "VERES CHAMPIGNONS MARINÉS",
-    "pos_title": "VERES CHAMPIGNONS MARINÉS",
-    "size_num": 730,
-    "size_unit": "GR",
-    "queued_at": "2026-09-24T23:45:29.735Z",
-    "id": "c1790293529735"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES CHAMPIGNONS MARINEE",
-     "F1744": "1000.0",
-     "F22": "730G",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "VERES CHAMPIGNONS MARINEE 460G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "8.4000",
-     "F196": "8.4000",
-     "F1140": "8.4000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "11.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "11.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924195110237593",
-   "applied_at": "2026-09-24T19:51:10",
-   "change": {
-    "code": "0482310540801",
-    "title": "VERES MAïS",
-    "pos_title": "VERES MAïS",
-    "size_num": 340,
-    "size_unit": "GR",
-    "queued_at": "2026-09-24T23:50:16.773Z",
-    "id": "c1790293816773"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES MAIS",
-     "F1744": "25.0",
-     "F22": "420G",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "VERES MAIS 420G",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "2.1000",
-     "F196": "2.1000",
-     "F1140": "2.1000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "3.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924195219111714",
-   "applied_at": "2026-09-24T19:52:19",
-   "change": {
-    "code": "0482310540795",
-    "size_num": 420,
-    "size_unit": "GR",
-    "queued_at": "2026-09-24T23:51:21.981Z",
-    "id": "c1790293881981"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES POIS VERTS",
-     "F1744": "25.0",
-     "F22": "420G",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "VERES POIS VERTS 420G",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "2.1000",
-     "F196": "2.1000",
-     "F1140": "2.1000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "3.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924195833153571",
-   "applied_at": "2026-09-24T19:58:33",
-   "change": {
-    "code": "0482310540205",
-    "title": "VERES HARICOTS STYLE UKRAINIEN",
-    "pos_title": "VERES HARICOTS STYLE UKRAINIEN",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-24T23:57:35.391Z",
-    "id": "c1790294255391"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES HARICOTS UKRAINIEN",
-     "F1744": "1000.0",
-     "F22": "500G",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "VERES HARICOTS UKRAINIEN 500G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.4500",
-     "F196": "2.4500",
-     "F1140": "2.4500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924195942121292",
-   "applied_at": "2026-09-24T19:59:42",
-   "change": {
-    "code": "0482310540621",
-    "title": "VERES MOUTARDE",
-    "pos_title": "VERES MOUTARDE",
-    "size_num": 190,
-    "size_unit": "GR",
-    "queued_at": "2026-09-24T23:59:15.161Z",
-    "id": "c1790294355161"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES MOUTARD",
-     "F1744": "25.0",
-     "F22": "190G",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "VERES MOUTARD 190G",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "1.7500",
-     "F196": "1.7500",
-     "F1140": "1.7500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "2.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "2.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924200149150919",
-   "applied_at": "2026-09-24T20:01:49",
-   "change": {
-    "code": "0482310540287",
-    "size_num": 190,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:01:17.258Z",
-    "id": "c1790294477258"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES RAIFORT ",
-     "F1744": "25.0",
-     "F22": "190G",
-     "F23": "UN"
-    },
-    "POS_TAB": {
-     "F02": "VERES RAIFORT  190G",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "1.7500",
-     "F196": "1.7500",
-     "F1140": "1.7500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "2.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "2.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924200149194922",
-   "applied_at": "2026-09-24T20:01:49",
-   "change": {
-    "code": "0482310540287",
-    "size_num": 190,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:01:25.044Z",
-    "id": "c1790294485044"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES RAIFORT ",
-     "F1744": "190.0",
-     "F22": "190 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "VERES RAIFORT  190G",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "1.7500",
-     "F196": "1.7500",
-     "F1140": "1.7500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "2.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "2.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924200356163184",
-   "applied_at": "2026-09-24T20:03:56",
-   "change": {
-    "code": "0482310540044",
-    "title": "VERES ADJIKA ÉPICÉE",
-    "pos_title": "VERES ADJIKA ÉPICÉE",
-    "size_num": 220,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:03:28.610Z",
-    "id": "c1790294608610"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES SAUCE EPICE ",
-     "F1744": "220.0",
-     "F22": "220G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "VERES SAUCE EPICE  220G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.1000",
-     "F196": "2.1000",
-     "F1140": "2.1000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "3.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924200607216742",
-   "applied_at": "2026-09-24T20:06:07",
-   "change": {
-    "code": "0482310540039",
-    "title": "VERES ADJIKA STYLE GÉORGIEN",
-    "size_num": 310,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:05:37.142Z",
-    "id": "c1790294737142"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES SAUCE EPICE ",
-     "F1744": "1000.0",
-     "F22": "310G",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "VERES SAUCE EPICE  310G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.8000",
-     "F196": "2.8000",
-     "F1140": "2.8000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924200814154165",
-   "applied_at": "2026-09-24T20:08:14",
-   "change": {
-    "code": "0482310540075",
-    "title": "VERES SAUTÉ DE LÉGUMES",
-    "pos_title": "VERES SAUTÉ DE LÉGUMES",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:08:00.287Z",
-    "id": "c1790294880287"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES SOTE",
-     "F1744": "1000.0",
-     "F22": "500G",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "VERES SOTE 500G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5000",
-     "F196": "3.5000",
-     "F1140": "3.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924201025147595",
-   "applied_at": "2026-09-24T20:10:25",
-   "change": {
-    "code": "0482310540903",
-    "title": "VERES LECHO BULGARE",
-    "pos_title": "VERES LECHO BULGARE",
-    "size_num": 440,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:10:08.116Z",
-    "id": "c1790295008116"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES LECHO",
-     "F1744": "440.0",
-     "F22": "440G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "VERES LECHO 440G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.1500",
-     "F196": "3.1500",
-     "F1140": "3.1500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924201131182511",
    "applied_at": "2026-09-24T20:11:31",
    "change": {
@@ -24634,6 +23792,805 @@
      "F1014": null,
      "F1015": null,
      "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820390429",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020236500000",
+    "cost": 14.49,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664662"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BACON DOUBLEMENT FUME",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "BACON DOUBLEMENT FUME KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "24.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "24.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820437229",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020234700000",
+    "cost": 12.99,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664663"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSON DE CRACOVIE",
+     "F1744": null,
+     "F22": "kg",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSON DE CRACOVIE KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "19.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820468429",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020234500000",
+    "cost": 11.99,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664664"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SALAMI LVIVSKA",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SALAMI LVIVSKA KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "17.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "17.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820530829",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020420100000",
+    "cost": 10.99,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664665"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSE BOUDIN NOIR",
+     "F1744": null,
+     "F22": "KG",
+     "F23": ""
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSE BOUDIN NOIR KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "5.5000",
+     "F196": "5.5000",
+     "F1140": "5.5000",
+     "F27": "L-VIAND"
+    },
+    "PRICE_TAB": {
+     "F30": "15.4100",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "15.4100",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820577629",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020238000000",
+    "cost": 12.99,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664666"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "JAMBON GRAND-MERE",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "JAMBON GRAND-MERE KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "19.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820608829",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020238100000",
+    "cost": 12.69,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664667"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "JAMBON GRAND-PÈRE",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "JAMBON GRAND-PÈRE",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "19.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820655629",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020236400000",
+    "cost": 13.99,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664668"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SOC DE PORC FUME (JAMBON MOLDOVA)",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "SOC DE PORC FUME (JAMBON MOLDOVA)",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "19.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820702429",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020233000000",
+    "cost": 12.99,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664669"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LONGE DE PORC FUMEE",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LONGE DE PORC FUMEE GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "21.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "21.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820733629",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020238300000",
+    "cost": 17.95,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664670"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "COTES DE PORC FUMES",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "COTES DE PORC FUMES KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "29.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "29.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820780429",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020234900000",
+    "cost": 12.69,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664671"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KABANOS",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "KABANOS GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "0000255266"
+    },
+    "PRICE_TAB": {
+     "F30": "20.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "20.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": null
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820827229",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020235000000",
+    "cost": 11.69,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664672"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSE VILLAGE GORALSKA",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSE VILLAGE GORALSKA GR",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "19.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "19.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": null
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820874029",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020236700000",
+    "cost": 8.89,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664673"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DEBRECYNA SAUCISSE BBQ",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "DEBRECYNA SAUCISSE BBQ KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820905230",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020236800000",
+    "cost": 8.89,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664674"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DEBRECYNA SAUCISSE BBQ PIQUANTE",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "DEBRECYNA SAUCISSE BBQ PIQUANTE KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820952030",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020235500000",
+    "cost": 8.99,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664675"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSE DE POULET",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSE DE POULET KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-BRANDT"
+    },
+    "PRICE_TAB": {
+     "F30": "14.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155820998830",
+   "applied_at": "2026-10-11T15:58:20",
+   "change": {
+    "code": "0020238600000",
+    "cost": 9.39,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664676"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FRANKFURTER",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "FRANKFURTER KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "15.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "15.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": null
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155821030030",
+   "applied_at": "2026-10-11T15:58:21",
+   "change": {
+    "code": "0020238500000",
+    "cost": 9.69,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664677"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISE VIENNOISE",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISE VIENNOISE",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "15.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "15.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011155821076830",
+   "applied_at": "2026-10-11T15:58:21",
+   "change": {
+    "code": "0020237900000",
+    "cost": 8.99,
+    "queued_at": "2026-10-11T19:57:44.662437Z",
+    "id": "c1791748664678"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSON WIENNERS POULET ET PORC",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSON WIENNERS POULET ET PORC KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "15.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "15.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": null
     }
    }
   }
