@@ -1821,7 +1821,31 @@
    "mp": null,
    "cost": 2.05,
    "at": "2026-10-11 17:22:12"
+  },
+  "0482026429112": {
+   "pt": "NASH SIK NECTAR DE POIRE ET POMME",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 950.0,
+   "nm": "NASH SIK NECTAR DE POIRE ET POMME",
+   "rp": 2.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 2.99,
+   "mp": null,
+   "cost": 2.1,
+   "at": "2026-10-11 17:24:21"
   }
  },
- "updated": "2026-10-11 17:22:12"
+ "updated": "2026-10-11 17:24:21"
 }
