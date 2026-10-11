@@ -1,57 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260923131232237650",
-   "applied_at": "2026-09-23T13:12:32",
-   "change": {
-    "code": "0482000183005",
-    "title": "SVALIANA",
-    "pos_title": "SVALIANA",
-    "size_num": 1.5,
-    "size_unit": "LT",
-    "price": 2.99,
-    "queued_at": "2026-09-23T17:11:37.810Z",
-    "id": "c1790183497810"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "EAU MINERALE LUGANSKA",
-     "F1744": "1.5",
-     "F22": "1500ML",
-     "F23": "LT"
-    },
-    "POS_TAB": {
-     "F02": "EAU MINERALE LUGANSKA 1500ML",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "2.1000",
-     "F196": "2.1000",
-     "F1140": "2.1000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "3.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260923131232315651",
    "applied_at": "2026-09-23T13:12:32",
    "change": {
@@ -24652,6 +24601,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "6.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011141007043405",
+   "applied_at": "2026-10-11T14:10:07",
+   "change": {
+    "code": "0088764300014",
+    "pos_title": "POLONIA CHOUCROUTE  796ML",
+    "size_num": 796,
+    "size_unit": "ML",
+    "queued_at": "2026-10-11T18:09:16.931Z",
+    "id": "c1791742156931"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "POLONIA CHOUCROUTE ",
+     "F1744": "796.0",
+     "F22": "796ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "POLONIA CHOUCROUTE  796ML",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.3900",
+     "F196": "2.3900",
+     "F1140": "2.3900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
