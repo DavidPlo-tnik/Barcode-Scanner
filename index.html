@@ -1977,7 +1977,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v157</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v158</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2530,7 +2530,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v157</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v158</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -9727,6 +9727,58 @@
       const v = e.target.value;
       searchTimer = setTimeout(() => doSearch(v), 120);
     });
+
+    // ── Keyboard-safe fields: when a text/number field gets focus on a phone, move it into the
+    //    TOP part of the visible screen so the on-screen keypad never covers it. Works in every
+    //    tab and modal: scrolls whichever container holds the field, and adds temporary room at
+    //    the bottom when the field is too close to the end of the page to scroll up.
+    (function keyboardSafeFields() {
+      const isTouch = matchMedia('(pointer: coarse)').matches;
+      if (!isTouch) return;
+      const TYPES = /^(text|number|tel|search|email|password|url)$/;
+      let active = null, spacer = null;
+      function scrollParent(el) {
+        for (let n = el.parentElement; n && n !== document.body; n = n.parentElement) {
+          const st = getComputedStyle(n);
+          if (/(auto|scroll)/.test(st.overflowY) && n.scrollHeight > n.clientHeight + 4) return n;
+        }
+        return null;
+      }
+      function place() {
+        if (!active || document.activeElement !== active) return;
+        const vv = window.visualViewport;
+        const top = vv ? vv.offsetTop : 0, h = vv ? vv.height : window.innerHeight;
+        const r = active.getBoundingClientRect();
+        const want = top + Math.min(h * 0.22, 140);          // field sits in the top quarter
+        const delta = r.top - want;
+        if (r.top >= top + 8 && r.bottom <= top + h * 0.5) return;   // already in the top half
+        const sp = scrollParent(active);
+        if (sp) {
+          if (!spacer) { spacer = document.createElement('div'); spacer.className = 'kb-spacer'; }
+          spacer.style.height = Math.round(h * 0.6) + 'px';
+          if (spacer.parentNode !== sp) sp.appendChild(spacer);
+          sp.scrollTop += delta;
+        } else {
+          window.scrollBy(0, delta);
+        }
+      }
+      document.addEventListener('focusin', (e) => {
+        const el = e.target;
+        const ok = (el.tagName === 'INPUT' && TYPES.test(el.type || 'text')) || el.tagName === 'TEXTAREA';
+        if (!ok || el.closest('.no-kb-scroll')) return;
+        active = el;
+        setTimeout(place, 60); setTimeout(place, 350); setTimeout(place, 700);   // keyboard animates in
+      });
+      document.addEventListener('focusout', () => {
+        setTimeout(() => {
+          const a = document.activeElement;
+          if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA')) return;   // moved to another field
+          active = null;
+          if (spacer && spacer.parentNode) spacer.parentNode.removeChild(spacer);
+        }, 150);
+      });
+      if (window.visualViewport) window.visualViewport.addEventListener('resize', () => { if (active) setTimeout(place, 30); });
+    })();
 
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(err => console.log('SW failed:', err));
