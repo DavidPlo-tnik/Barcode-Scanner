@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260923124642390528",
-   "applied_at": "2026-09-23T12:46:42",
-   "change": {
-    "code": "0003338345080",
-    "pos_title": "CHAMPIGNON BLANC",
-    "size_num": 227,
-    "size_unit": "",
-    "queued_at": "2026-09-23T16:45:59.835Z",
-    "id": "c1790181959835"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "MP champ.blanc 227g (12)             1un",
-     "F1744": "227.0",
-     "F22": "227 ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "CHAMPIGNON BLANC",
-     "F04": "41",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "12.0000",
-     "F196": "12.0000",
-     "F1140": "1.0000",
-     "F27": "L-CANADA"
-    },
-    "PRICE_TAB": {
-     "F30": "2.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "2.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": null
-    }
-   }
-  },
-  {
    "undo_id": "u20260923131232237650",
    "applied_at": "2026-09-23T13:12:32",
    "change": {
@@ -24651,6 +24602,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "13.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011140800199583",
+   "applied_at": "2026-10-11T14:08:00",
+   "change": {
+    "code": "0088764300194",
+    "title": "MAISON POLONAISE CHOUCROUTE",
+    "pos_title": "MAISON POLONAISE CHOUCROUTE",
+    "size_num": 1360,
+    "size_unit": "ML",
+    "queued_at": "2026-10-11T18:07:33.255Z",
+    "id": "c1791742053255"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "POLISH  CHOUCROUTE",
+     "F1744": "1360.0",
+     "F22": "1360ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "POLISH  CHOUCROUTE 1360ML",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "4.8900",
+     "F196": "4.8900",
+     "F1140": "4.8900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "6.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "6.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
