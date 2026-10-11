@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924214737101439",
-   "applied_at": "2026-09-24T21:47:37",
-   "change": {
-    "code": "0871100051788",
-    "size_num": 100,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T01:46:37.945Z",
-    "id": "c1790300797945"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "JACOBS CAFE",
-     "F1744": "100.0",
-     "F22": "00GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "JACOBS CAFE 00GR",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "6.9900",
-     "F196": "6.9900",
-     "F1140": "6.9900",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924214737132639",
    "applied_at": "2026-09-24T21:47:37",
    "change": {
@@ -24578,6 +24530,56 @@
     },
     "POS_TAB": {
      "F02": "FROMAGE FONDU CHEDDAR 100GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.7900",
+     "F196": "2.7900",
+     "F1140": "2.7900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011171449163910",
+   "applied_at": "2026-10-11T17:14:49",
+   "change": {
+    "code": "0590074600201",
+    "title": "SERTOP TYCHY FROMAGE FONDU ZLOTY EMENTALER",
+    "pos_title": "SERTOP TYCHY FROMAGE FONDU ZLOTY EMENTAL",
+    "size_num": 100,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T21:14:30.990Z",
+    "id": "c1791753270990"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FROMAGE FONDU EMENTALER",
+     "F1744": "100.0",
+     "F22": "100GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "FROMAGE FONDU EMENTALER 100GR",
      "F04": "1",
      "F81": null,
      "F96": null,
