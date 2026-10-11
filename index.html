@@ -140,7 +140,7 @@
   .ed-result-row .err-price { font-size: 15px; font-weight: 650; color: var(--accent); }
   .ed-result-row .err-go { color: var(--text-faint); font-size: 18px; }
   .ed-tabs { display: flex; gap: 6px; background: var(--surface-2); border-radius: 10px; padding: 4px; margin-bottom: 16px; }
-  .ed-tab { flex: 1; padding: 9px; border: none; background: none; color: var(--text-dim); font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; border-radius: 7px; cursor: pointer; }
+  .ed-tab { flex: 1; padding: 9px 4px; border: none; background: none; color: var(--text-dim); font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; border-radius: 7px; cursor: pointer; }
   .ed-tab.active { background: var(--accent); color: #000; }
   .ed-log-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; font-family: var(--font-display); font-size: 11px; letter-spacing: 0.1em; color: var(--text-dim); text-transform: uppercase; }
   .ed-log-refresh { background: var(--surface-2); border: 1px solid var(--border); color: var(--text); width: 30px; height: 30px; border-radius: 8px; font-size: 15px; cursor: pointer; }
@@ -807,6 +807,52 @@
   #pd-feat-btn.is-on { border-color: var(--warn); color: var(--warn); font-weight: 700; }
   #pd-oos-btn.is-out, .candy-row .btn.is-out { background: transparent; border-color: var(--bad); color: var(--bad); font-weight: 700; }
 
+
+  /* ---- PROMO MANAGER (editor tab) ---- */
+  .pm-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+  .pm-head h3 { margin: 0; font-family: var(--font-display); font-size: 12px; letter-spacing: .1em; color: var(--text-dim); }
+  .pm-new { background: var(--accent); color: #000; border: none; border-radius: 9px; padding: 9px 14px; font-family: var(--font-display); font-size: 11px; font-weight: 800; letter-spacing: .06em; cursor: pointer; }
+  .pm-tabs { display: flex; gap: 6px; margin-bottom: 10px; }
+  .pm-tab { flex: 1; padding: 9px 4px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text-dim); font-family: var(--font-display); font-size: 10.5px; font-weight: 700; letter-spacing: .05em; cursor: pointer; }
+  .pm-tab b { display: block; font-size: 18px; color: var(--text); margin-bottom: 2px; }
+  .pm-tab.active { border-color: var(--accent); background: rgba(212,255,58,.08); color: var(--accent); }
+  .pm-tab.active b { color: var(--accent); }
+  .pm-alert { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin-bottom: 10px; border-radius: 10px; border: 1px solid rgba(251,146,60,.5); background: rgba(251,146,60,.08); font-size: 12.5px; }
+  .pm-alert span { flex: 1; }
+  .pm-search { width: 100%; box-sizing: border-box; margin-bottom: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 9px; color: var(--text); font-size: 14px; padding: 10px 12px; }
+  .pm-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 8px; }
+  .pm-card.soon { border-color: rgba(251,146,60,.6); }
+  .pm-top { display: flex; gap: 10px; align-items: flex-start; }
+  .pm-name { flex: 1; min-width: 0; font-size: 14px; font-weight: 600; line-height: 1.25; }
+  .pm-code { font-family: var(--font-display); font-size: 10px; color: var(--text-faint); margin-top: 3px; }
+  .pm-deal { text-align: right; flex: 0 0 auto; }
+  .pm-deal .d1 { font-family: var(--font-display); font-size: 18px; font-weight: 800; color: var(--accent); line-height: 1; }
+  .pm-deal .d2 { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
+  .pm-deal .d2 s { color: var(--text-faint); }
+  .pm-off { display: inline-block; margin-left: 4px; padding: 1px 5px; border-radius: 4px; background: rgba(248,113,113,.18); color: #f87171; font-family: var(--font-display); font-size: 10px; font-weight: 800; }
+  .pm-dates { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 9px; font-family: var(--font-display); font-size: 11px; color: var(--text-dim); }
+  .pm-bar { position: relative; height: 4px; border-radius: 3px; background: var(--surface-2); margin-top: 8px; overflow: hidden; }
+  .pm-bar span { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); border-radius: 3px; }
+  .pm-chip { display: inline-block; padding: 2px 6px; border-radius: 4px; font-family: var(--font-display); font-size: 9.5px; font-weight: 800; letter-spacing: .04em; background: var(--surface-2); color: var(--text-dim); }
+  .pm-chip.warn { background: rgba(251,146,60,.18); color: #fb923c; }
+  .pm-chip.good { background: rgba(74,222,128,.15); color: var(--good); }
+  .pm-chip.web { background: rgba(220,36,28,.2); color: #ff6b63; }
+  .pm-lift { margin-top: 7px; font-size: 11.5px; color: var(--text-dim); }
+  .pm-lift b { color: var(--text); }
+  .pm-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .pm-actions button { flex: 1 1 auto; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-family: var(--font-display); font-size: 10.5px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
+  .pm-actions button.main { background: var(--accent); color: #000; border-color: var(--accent); }
+  .pm-actions button.bad { color: #f87171; border-color: rgba(248,113,113,.4); }
+  .pm-form { background: var(--surface); border: 1px solid var(--accent); border-radius: 12px; padding: 12px; margin-bottom: 12px; }
+  .pm-form label { display: block; font-family: var(--font-display); font-size: 10px; letter-spacing: .08em; color: var(--text-dim); margin: 10px 0 4px; }
+  .pm-form input { width: 100%; box-sizing: border-box; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 15px; padding: 9px 10px; }
+  .pm-row2 { display: flex; gap: 8px; } .pm-row2 > div { flex: 1; min-width: 0; }
+  .pm-quick { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+  .pm-quick button { padding: 6px 10px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text-dim); font-family: var(--font-display); font-size: 10.5px; font-weight: 700; cursor: pointer; }
+  .pm-pick { padding: 9px 10px; border-bottom: 1px solid var(--border); cursor: pointer; font-size: 13px; display: flex; justify-content: space-between; gap: 8px; }
+  .pm-pick:active { background: var(--surface-2); }
+  .pm-preview { margin-top: 10px; padding: 9px 10px; border-radius: 8px; background: var(--surface-2); font-size: 12.5px; color: var(--text-dim); line-height: 1.45; }
+  .pm-empty { text-align: center; padding: 34px 10px; color: var(--text-faint); font-size: 13px; }
   /* ---- ecom catalogue row: compact, photo fills the full height of the row ---- */
   .ecom-row {
     display: flex; align-items: stretch; gap: 0; min-height: 64px; padding: 0; overflow: hidden;
@@ -1931,7 +1977,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v155</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v156</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2161,6 +2207,7 @@
       <button class="ed-tab" data-edtab="log">LOG</button>
       <button class="ed-tab" data-edtab="depts">DEPTS</button>
       <button class="ed-tab" data-edtab="supp">SUPP</button>
+      <button class="ed-tab" data-edtab="promo">PROMOS</button>
     </div>
     <div id="ed-edit-panel">
       <button class="ed-scan-btn" id="ed-scan-btn"><span>⌘</span> Scan an item</button>
@@ -2189,6 +2236,7 @@
       <div class="ed-log-head"><span>Sous-départements</span><button class="ed-log-refresh" id="ed-depts-add">+ Add</button></div>
       <div class="ed-depts-list" id="ed-depts-list"><div class="empty-state">Loading…</div></div>
     </div>
+    <div id="ed-promo-panel" style="display:none;"></div>
     <div id="ed-supp-panel" style="display:none;">
       <div class="ed-log-head"><span>My suppliers</span><button class="ed-log-refresh" id="ed-supp-add">+ New</button></div>
       <div class="ed-depts-list" id="ed-supp-list"><div class="empty-state">Loading…</div></div>
@@ -2482,7 +2530,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v155</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v156</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3639,9 +3687,389 @@
     $('#ed-log-panel').style.display = tab === 'log' ? 'block' : 'none';
     $('#ed-depts-panel').style.display = tab === 'depts' ? 'block' : 'none';
     $('#ed-supp-panel').style.display = tab === 'supp' ? 'block' : 'none';
+    $('#ed-promo-panel').style.display = tab === 'promo' ? 'block' : 'none';
+    if (tab === 'promo') loadPromoManager();
     if (tab === 'log') loadEditorLog();
     if (tab === 'depts') loadDeptManager();
     if (tab === 'supp') loadSupplierManager();
+  }
+
+  // ════════════════════════════════════════════════════════════════
+  //  PROMO MANAGER (⚡ EDIT → PROMOS)
+  //  Dated, short promos only (a real special), grouped CURRENT / UPCOMING /
+  //  ENDED (kept 14 days). Long-running Metro prices (ending years away) are
+  //  left out. Every action goes through the same POS queue as the editor.
+  //  pos/promo_log.json remembers promos so ENDED ones can still be listed
+  //  (the POS export drops a promo once it is over) and run again.
+  // ════════════════════════════════════════════════════════════════
+  const PM_SHORT_DAYS = 120;      // a promo counts if it ends within this many days...
+  const PM_KEEP_ENDED = 14;       // ...ended ones stay listed this long
+  const PM_WEB_DAYS = 31;         // shows on the website specials if it ends within this
+  const _pm = { tab: 'current', q: '', log: null, logSha: null, form: null };
+
+  const pmToday = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+  function pmAddDays(iso, n) { const d = new Date(iso + 'T12:00:00'); d.setDate(d.getDate() + n); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
+  function pmDays(a, b) { return Math.round((new Date(b + 'T12:00:00') - new Date(a + 'T12:00:00')) / 86400000); }
+  function pmFmt(iso) { if (!iso) return '—'; const d = new Date(iso + 'T12:00:00'); return d.toLocaleDateString('en-CA', { month: 'short', day: 'numeric' }); }
+  function pmDeal(price, qty) { return (qty > 1 ? `${qty} for ` : '') + '$' + (+price).toFixed(2); }
+
+  async function pmLoadLog() {
+    try {
+      const url = `https://api.github.com/repos/${GH.GH_OWNER}/${GH.GH_REPO}/contents/pos/promo_log.json?ref=${GH.GH_BRANCH}`;
+      const r = await fetch(url, { cache: 'no-store', headers: { 'Authorization': `Bearer ${GH.GH_TOKEN}`, 'Accept': 'application/vnd.github+json' } });
+      if (r.status === 200) {
+        const d = await r.json();
+        _pm.logSha = d.sha;
+        _pm.log = JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g, '')))));
+      } else { _pm.log = { promos: {} }; _pm.logSha = null; }
+    } catch { _pm.log = _pm.log || { promos: {} }; }
+    if (!_pm.log.promos) _pm.log.promos = {};
+  }
+  async function pmSaveLog() {
+    try {
+      const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(_pm.log, null, 1))));
+      const res = await ghPutFile('pos/promo_log.json', b64, 'promo log', _pm.logSha);
+      if (res && res.content && res.content.sha) _pm.logSha = res.content.sha; else await pmLoadLog();
+    } catch (e) { if (e.isConflict) await pmLoadLog(); }
+  }
+  const pmKey = (code, p) => `${code}|${p.ps || ''}|${p.pe || ''}|${p.pp}|${p.pq || 1}`;
+  function pmLogPut(code, p, extra) {
+    const k = pmKey(code, p);
+    _pm.log.promos[k] = Object.assign(_pm.log.promos[k] || { seen: pmToday() },
+      { code, pp: +p.pp, pq: +(p.pq || 1), ps: p.ps || null, pe: p.pe || null, rp: p.rp, rq: p.rq || 1 }, extra || {});
+    return k;
+  }
+
+  function pmIsShort(e, today) {
+    if (!e || e.pp == null || !e.pe) return false;
+    if (+e.pp === +e.rp && (+(e.pq || 1)) === (+(e.rq || 1))) return false;   // "promo" = regular price
+    if (pmDays(today, e.pe) > PM_SHORT_DAYS) return false;                     // Metro long-term price
+    if (e.ps && pmDays(e.ps, e.pe) > PM_SHORT_DAYS) return false;
+    return true;
+  }
+
+  // Collect promos: live ones from the POS export (+ just-applied overrides) and ended ones from the log
+  function pmCollect() {
+    const today = pmToday();
+    const rows = [], seen = new Set();
+    const codes = new Set(Object.keys((_editData && _editData.items) || {}));
+    Object.keys(_overrides || {}).forEach(c => codes.add(c));
+    let logChanged = false;
+    for (const code of codes) {
+      const e = editStateFor(code);
+      if (!pmIsShort(e, today)) continue;
+      const k = pmKey(code, e);
+      if (!_pm.log.promos[k]) { pmLogPut(code, e); logChanged = true; }
+      seen.add(k);
+      const st = (e.ps && e.ps > today) ? 'upcoming' : (e.pe < today ? 'ended' : 'current');
+      rows.push({ code, st, pp: +e.pp, pq: +(e.pq || 1), ps: e.ps || null, pe: e.pe, rp: e.rp, rq: +(e.rq || 1), lk: e.lk === 1, key: k });
+    }
+    for (const k in _pm.log.promos) {
+      const p = _pm.log.promos[k];
+      if (!p.pe) continue;
+      const endD = p.endedEarly || p.pe;
+      if (pmDays(endD, today) > PM_KEEP_ENDED) { delete _pm.log.promos[k]; logChanged = true; continue; }   // older than 2 weeks
+      if (seen.has(k) || p.cancelled) continue;
+      if (p.pe >= today && !p.endedEarly) continue;     // not in the POS any more but not over: replaced/removed
+      rows.push({ code: p.code, st: 'ended', pp: p.pp, pq: p.pq, ps: p.ps, pe: p.endedEarly || p.pe, rp: p.rp, rq: p.rq || 1, key: k, fromLog: true });
+    }
+    if (logChanged) pmSaveLog();
+    return rows;
+  }
+
+  function pmSalesLift(r) {
+    const s = DATA.sales[resolveCode(r.code)];
+    const days = DATA.last_14_days || [];
+    if (!s || !s.dq || !r.ps || !days.length) return null;
+    let inQ = 0, inN = 0, outQ = 0, outN = 0;
+    const today = pmToday();
+    days.forEach((dt, i) => {
+      const q = s.dq[i] || 0;
+      if (dt >= today) return;                               // today is partial
+      if (dt >= r.ps && dt <= r.pe) { inQ += q; inN++; } else if (dt < r.ps) { outQ += q; outN++; }
+    });
+    if (!inN) return null;
+    return { during: inQ / inN, before: outN ? outQ / outN : null, total: inQ, n: inN };
+  }
+
+  async function loadPromoManager() {
+    const el = $('#ed-promo-panel');
+    if (!_pm.log) el.innerHTML = '<div class="empty-state">Loading promos…</div>';
+    await Promise.all([fetchEditData(), fetchOverrides().catch(() => null), pmLoadLog()]);
+    pmRender();
+  }
+
+  function pmRender() {
+    const el = $('#ed-promo-panel');
+    const today = pmToday();
+    const rows = pmCollect();
+    const by = { current: [], upcoming: [], ended: [] };
+    rows.forEach(r => by[r.st].push(r));
+    by.current.sort((a, b) => a.pe.localeCompare(b.pe));
+    by.upcoming.sort((a, b) => (a.ps || '').localeCompare(b.ps || ''));
+    by.ended.sort((a, b) => b.pe.localeCompare(a.pe));
+    const ending = by.current.filter(r => pmDays(today, r.pe) <= 3);
+    const inCat = (_ecomCatalog && _ecomCatalog.items) || {};
+
+    const q = liveNorm(_pm.q.trim());
+    const list = by[_pm.tab].filter(r => {
+      if (!q) return true;
+      const p = DATA.products[resolveCode(r.code)];
+      return liveNorm((p ? p[0] : '') + ' ' + r.code).includes(q);
+    });
+
+    const card = (r) => {
+      const p = DATA.products[resolveCode(r.code)];
+      const name = p ? String(p[0]).trim() : r.code;
+      const regUnit = r.rp != null ? r.rp / (r.rq || 1) : null;
+      const promoUnit = r.pp / (r.pq || 1);
+      const off = regUnit ? Math.round(100 * (1 - promoUnit / regUnit)) : null;
+      const len = r.ps ? pmDays(r.ps, r.pe) + 1 : null;
+      let when = '', soon = false, pct = null;
+      if (r.st === 'current') {
+        const left = pmDays(today, r.pe);
+        soon = left <= 3;
+        when = left === 0 ? 'ends TODAY' : left === 1 ? 'ends tomorrow' : `${left} days left`;
+        if (r.ps) pct = Math.min(100, Math.max(3, 100 * (pmDays(r.ps, today) + 1) / (len || 1)));
+      } else if (r.st === 'upcoming') {
+        const d = pmDays(today, r.ps);
+        when = d === 1 ? 'starts tomorrow' : `starts in ${d} days`;
+      } else {
+        const d = pmDays(r.pe, today);
+        when = d <= 0 ? 'ended today' : d === 1 ? 'ended yesterday' : `ended ${d} days ago`;
+      }
+      const onWeb = r.st === 'current' && inCat[r.code] && pmDays(today, r.pe) <= PM_WEB_DAYS && (!r.ps || pmDays(r.ps, r.pe) <= PM_WEB_DAYS);
+      const pend = (_pendingEdits || {})[r.code];
+      const lift = r.st !== 'upcoming' ? pmSalesLift(r) : null;
+      const liftTxt = lift ? `Sold <b>${liveFmtQ(lift.total)}</b> in ${lift.n} promo day${lift.n > 1 ? 's' : ''} · <b>${lift.during.toFixed(1)}/day</b>` +
+        (lift.before != null ? ` vs ${lift.before.toFixed(1)}/day before` + (lift.before > 0 ? ` (${lift.during >= lift.before ? '+' : ''}${Math.round(100 * (lift.during / lift.before - 1))}%)` : '') : '') : '';
+      const acts = r.st === 'current'
+        ? `<button class="main" data-pm="ext7">+1 WEEK</button><button data-pm="extn">+ DAYS…</button><button data-pm="edit">EDIT</button><button class="bad" data-pm="end">END NOW</button>`
+        : r.st === 'upcoming'
+        ? `<button class="main" data-pm="ext7">+1 WEEK</button><button data-pm="startnow">START TODAY</button><button data-pm="edit">EDIT</button><button class="bad" data-pm="cancel">CANCEL</button>`
+        : `<button class="main" data-pm="again">RUN AGAIN${len ? ` (${len} DAYS)` : ''}</button><button data-pm="edit">OPEN ITEM</button>`;
+      return `<div class="pm-card${soon ? ' soon' : ''}" data-key="${escapeHtml(r.key)}">
+        <div class="pm-top">
+          <div style="flex:1;min-width:0;"><div class="pm-name">${escapeHtml(name)}</div><div class="pm-code">${escapeHtml(r.code.replace(/^0+/, ''))}</div></div>
+          <div class="pm-deal"><div class="d1">${pmDeal(r.pp, r.pq)}</div>
+            <div class="d2">${r.rp != null ? `reg. <s>${pmDeal(r.rp, r.rq)}</s>` : ''}${off > 0 ? `<span class="pm-off">-${off}%</span>` : ''}</div></div>
+        </div>
+        <div class="pm-dates">${pmFmt(r.ps)} → ${pmFmt(r.pe)} · <span style="color:${soon ? '#fb923c' : 'inherit'};font-weight:${soon ? 800 : 400}">${when}</span>
+          ${onWeb ? '<span class="pm-chip web">ON WEBSITE</span>' : ''}${pend && pend.promo ? '<span class="pm-chip warn">SENT TO POS</span>' : ''}${r.lk ? '<span class="pm-chip">METRO-LOCKED</span>' : ''}</div>
+        ${pct != null ? `<div class="pm-bar"><span style="width:${pct}%"></span></div>` : ''}
+        ${liftTxt ? `<div class="pm-lift">${liftTxt}</div>` : ''}
+        <div class="pm-actions">${acts}</div>
+      </div>`;
+    };
+
+    el.innerHTML = `
+      <div class="pm-head"><h3>PROMO MANAGER</h3><button class="pm-new" id="pm-new">+ NEW PROMO</button></div>
+      <div id="pm-form-slot"></div>
+      <div class="pm-tabs">
+        <button class="pm-tab ${_pm.tab === 'current' ? 'active' : ''}" data-pmtab="current"><b>${by.current.length}</b>CURRENT</button>
+        <button class="pm-tab ${_pm.tab === 'upcoming' ? 'active' : ''}" data-pmtab="upcoming"><b>${by.upcoming.length}</b>UPCOMING</button>
+        <button class="pm-tab ${_pm.tab === 'ended' ? 'active' : ''}" data-pmtab="ended"><b>${by.ended.length}</b>ENDED</button>
+      </div>
+      ${ending.length && _pm.tab === 'current' ? `<div class="pm-alert"><span><b>${ending.length}</b> promo${ending.length > 1 ? 's end' : ' ends'} within 3 days</span><button class="pm-new" id="pm-ext-all">+1 WEEK ALL</button></div>` : ''}
+      <input class="pm-search" id="pm-search" type="search" placeholder="Search promos…" value="${escapeHtml(_pm.q)}">
+      <div id="pm-list">${list.map(card).join('') || `<div class="pm-empty">${_pm.tab === 'current' ? 'No dated promos running right now.' : _pm.tab === 'upcoming' ? 'Nothing scheduled. Tap + NEW PROMO to plan one.' : 'No promos ended in the last 2 weeks.'}</div>`}</div>
+      <div class="rpt-sub" style="margin-top:10px;">Shows promos with an end date within ${PM_SHORT_DAYS} days (long-running Metro prices are left out). Ended promos stay here ${PM_KEEP_ENDED} days. ON WEBSITE = in your ECOM catalogue and lasting a month or less, so it is in the home-page specials. Changes go to the POS like any edit.</div>`;
+
+    el.querySelectorAll('[data-pmtab]').forEach(b => b.addEventListener('click', () => { _pm.tab = b.dataset.pmtab; pmRender(); }));
+    const srch = $('#pm-search');
+    srch.addEventListener('input', () => { _pm.q = srch.value; const pos = srch.selectionStart; pmRender(); const s2 = $('#pm-search'); s2.focus(); try { s2.setSelectionRange(pos, pos); } catch {} });
+    $('#pm-new').addEventListener('click', () => pmOpenForm(null));
+    const ea = $('#pm-ext-all');
+    if (ea) ea.addEventListener('click', () => pmExtendMany(ending, 7));
+    el.querySelectorAll('.pm-card [data-pm]').forEach(b => b.addEventListener('click', () => {
+      const key = b.closest('.pm-card').dataset.key;
+      const r = rows.find(x => x.key === key);
+      if (r) pmAction(b.dataset.pm, r);
+    }));
+    if (_pm.form) pmOpenForm(_pm.form.code, _pm.form);
+  }
+
+  // Send one promo change through the normal POS queue + reflect it right away
+  async function pmQueue(code, ch, logFn) {
+    ch.code = code;
+    await queuePosChange(ch);
+    const pend = {};
+    if (ch.promo) pend.promo = ch.promo;
+    if (ch.clear_promo) pend.promo = null;
+    markPending(code, pend);
+    applyLocalOverride(code, ch);
+    repaintAfterLocalEdit(code);
+    if (logFn) logFn();
+  }
+
+  function pmLockedOk(r, what) {
+    if (!r.lk) return true;
+    return confirm(`This item's regular price is Metro-locked.\n\nWhen the promo ${what}, the register goes back to the LOCKED price, not your real price.\n\nContinue anyway?`);
+  }
+
+  async function pmAction(act, r) {
+    const today = pmToday();
+    const p = DATA.products[resolveCode(r.code)];
+    const name = p ? String(p[0]).trim() : r.code;
+    try {
+      if (act === 'edit') { openPosDirect(resolveCode(r.code)); return; }
+      if (act === 'ext7' || act === 'extn') {
+        let n = 7;
+        if (act === 'extn') {
+          const a = prompt(`Extend "${name}" by how many days?\n(now ends ${pmFmt(r.pe)})`, '7');
+          if (a === null) return;
+          n = parseInt(a, 10);
+          if (!(n > 0 && n < 120)) { showToast('Not a valid number of days', true); return; }
+        } else if (!confirm(`Extend ${pmDeal(r.pp, r.pq)} on\n${name}\n\nfrom ${pmFmt(r.pe)} to ${pmFmt(pmAddDays(r.pe, 7))}?`)) return;
+        const end = pmAddDays(r.pe, n);
+        await pmQueue(r.code, { promo: { price: r.pp, qty: r.pq, start: r.ps, end } }, () => {
+          const old = _pm.log.promos[r.key]; if (old) old.cancelled = true;
+          pmLogPut(r.code, { pp: r.pp, pq: r.pq, ps: r.ps, pe: end, rp: r.rp, rq: r.rq });
+        });
+        showToast(`Extended to ${pmFmt(end)} ✓`);
+      } else if (act === 'end') {
+        if (!confirm(`END the promo on\n${name}\nnow? The register goes back to the regular price.`)) return;
+        if (!pmLockedOk(r, 'ends')) return;
+        await pmQueue(r.code, { clear_promo: true }, () => { pmLogPut(r.code, r, { endedEarly: today }); });
+        showToast('Promo ended ✓');
+      } else if (act === 'cancel') {
+        if (!confirm(`Cancel the scheduled promo on\n${name}?`)) return;
+        await pmQueue(r.code, { clear_promo: true }, () => { const o = _pm.log.promos[r.key]; if (o) o.cancelled = true; });
+        showToast('Promo cancelled ✓');
+      } else if (act === 'startnow') {
+        if (!confirm(`Start ${pmDeal(r.pp, r.pq)} on\n${name}\nTODAY instead of ${pmFmt(r.ps)}?`)) return;
+        await pmQueue(r.code, { promo: { price: r.pp, qty: r.pq, start: today, end: r.pe } }, () => {
+          const o = _pm.log.promos[r.key]; if (o) o.cancelled = true;
+          pmLogPut(r.code, { pp: r.pp, pq: r.pq, ps: today, pe: r.pe, rp: r.rp, rq: r.rq });
+        });
+        showToast('Promo starts today ✓');
+      } else if (act === 'again') {
+        const len = r.ps ? pmDays(r.ps, r.pe) : 6;
+        pmOpenForm(r.code, { code: r.code, price: r.pp, qty: r.pq, start: today, end: pmAddDays(today, len) });
+        return;
+      }
+      await pmSaveLog();
+      pmRender();
+    } catch (e) { showToast('Could not send: ' + e.message, true); }
+  }
+
+  async function pmExtendMany(rows, n) {
+    if (!rows.length) return;
+    if (!confirm(`Extend all ${rows.length} promo${rows.length > 1 ? 's' : ''} ending within 3 days by ${n} days?`)) return;
+    let ok = 0;
+    for (const r of rows) {
+      const end = pmAddDays(r.pe, n);
+      try {
+        await pmQueue(r.code, { promo: { price: r.pp, qty: r.pq, start: r.ps, end } }, () => {
+          const old = _pm.log.promos[r.key]; if (old) old.cancelled = true;
+          pmLogPut(r.code, { pp: r.pp, pq: r.pq, ps: r.ps, pe: end, rp: r.rp, rq: r.rq });
+        });
+        ok++;
+      } catch (e) { showToast('Stopped: ' + e.message, true); break; }
+    }
+    await pmSaveLog();
+    showToast(`Extended ${ok} promo${ok === 1 ? '' : 's'} ✓`);
+    pmRender();
+  }
+
+  // New / repeat promo form
+  function pmOpenForm(code, preset) {
+    const slot = $('#pm-form-slot');
+    if (!slot) return;
+    const today = pmToday();
+    _pm.form = Object.assign({ code: code || null, price: '', qty: 1, start: today, end: pmAddDays(today, 6) }, preset || {});
+    const f = _pm.form;
+    const p = f.code ? DATA.products[resolveCode(f.code)] : null;
+    const e = f.code ? (editStateFor(resolveCode(f.code)) || {}) : {};
+    slot.innerHTML = `<div class="pm-form">
+      <div style="display:flex;justify-content:space-between;align-items:center;"><b style="font-size:13px;">${preset && preset.price ? 'RUN PROMO AGAIN' : 'NEW PROMO'}</b><button class="ed-log-refresh" id="pm-form-x">✕</button></div>
+      ${f.code ? `<div style="margin-top:8px;font-size:14px;font-weight:600;">${escapeHtml(p ? String(p[0]).trim() : f.code)}</div>
+        <div class="pm-code">${escapeHtml(f.code.replace(/^0+/, ''))} · regular ${e.rp != null ? pmDeal(e.rp, e.rq || 1) : '?'}${pmIsShort(e, today) ? ' · <span style="color:#fb923c">already has a promo until ' + pmFmt(e.pe) + ' (this replaces it)</span>' : ''}</div>`
+        : `<label>ITEM</label><input id="pm-item-q" type="search" placeholder="Search name or barcode…" autocomplete="off"><div id="pm-item-res"></div>`}
+      ${f.code ? `
+      <div class="pm-row2">
+        <div><label>PROMO PRICE $</label><input id="pm-price" type="number" inputmode="decimal" step="0.01" min="0" value="${f.price !== '' ? (+f.price).toFixed(2) : ''}"></div>
+        <div style="flex:0 0 90px;"><label>FOR QTY</label><input id="pm-qty" type="number" inputmode="numeric" min="1" step="1" value="${f.qty || 1}"></div>
+      </div>
+      <div class="pm-row2">
+        <div><label>START</label><input id="pm-start" type="date" value="${f.start}"></div>
+        <div><label>END</label><input id="pm-end" type="date" value="${f.end}"></div>
+      </div>
+      <div class="pm-quick">
+        <button data-len="6">1 WEEK</button><button data-len="13">2 WEEKS</button><button data-len="20">3 WEEKS</button><button data-len="29">1 MONTH</button>
+        <button data-nextmon="1">NEXT MONDAY</button>
+      </div>
+      <div class="pm-preview" id="pm-preview"></div>
+      <div class="pm-actions"><button class="main" id="pm-save">⚡ SEND TO POS</button></div>` : ''}
+    </div>`;
+    $('#pm-form-x').addEventListener('click', () => { _pm.form = null; slot.innerHTML = ''; });
+    if (!f.code) {
+      const inp = $('#pm-item-q'); inp.focus();
+      inp.addEventListener('input', () => {
+        const qq = liveNorm(inp.value.trim());
+        const res = $('#pm-item-res');
+        if (qq.length < 2) { res.innerHTML = ''; return; }
+        const toks = qq.split(/\s+/), out = [];
+        for (const c in DATA.products) {
+          const a = DATA.products[c];
+          const hay = liveNorm(a[0] + ' ' + c);
+          if (toks.every(t => hay.includes(t))) out.push([c, a, (DATA.sales[c] || {}).ta || 0]);
+          if (out.length > 300) break;
+        }
+        out.sort((x, y) => y[2] - x[2]);
+        res.innerHTML = out.slice(0, 8).map(([c, a]) => `<div class="pm-pick" data-c="${c}"><span>${escapeHtml(String(a[0]).trim())}</span><span style="color:var(--text-dim)">$${(+a[1] || 0).toFixed(2)}</span></div>`).join('') || '<div class="pm-pick">No match</div>';
+        res.querySelectorAll('[data-c]').forEach(d => d.addEventListener('click', () => pmOpenForm(d.dataset.c)));
+      });
+      return;
+    }
+    const upd = () => {
+      f.price = $('#pm-price').value; f.qty = parseInt($('#pm-qty').value, 10) || 1;
+      f.start = $('#pm-start').value; f.end = $('#pm-end').value;
+      const pr = parseFloat(f.price);
+      const reg = e.rp != null ? e.rp / (e.rq || 1) : null;
+      const unit = pr > 0 ? pr / f.qty : null;
+      const len = f.start && f.end ? pmDays(f.start, f.end) + 1 : null;
+      const lines = [];
+      if (unit != null && reg) lines.push(`<b>${pmDeal(pr, f.qty)}</b> instead of ${pmDeal(e.rp, e.rq || 1)} → <b>${Math.round(100 * (1 - unit / reg))}% off</b>${unit >= reg ? ' <span style="color:#f87171">(not cheaper than regular!)</span>' : ''}`);
+      if (len) lines.push(`${pmFmt(f.start)} → ${pmFmt(f.end)} · ${len} day${len > 1 ? 's' : ''}${f.start > today ? ' · scheduled' : ' · starts now'}`);
+      const inCat = (_ecomCatalog && _ecomCatalog.items) || {};
+      if (len) lines.push(inCat[resolveCode(f.code)] ? (len <= PM_WEB_DAYS + 1 ? 'Will show in the website specials ✓' : 'Too long for the website specials (over a month)') : 'Not in your ECOM catalogue — will not show on the website');
+      if (e.lk === 1) lines.push('<span style="color:#fb923c">Metro-locked item: when this ends the register goes back to the locked price.</span>');
+      $('#pm-preview').innerHTML = lines.join('<br>') || 'Enter a price.';
+    };
+    ['pm-price', 'pm-qty', 'pm-start', 'pm-end'].forEach(id => $('#' + id).addEventListener('input', upd));
+    slot.querySelectorAll('[data-len]').forEach(b => b.addEventListener('click', () => {
+      const st = $('#pm-start').value || today;
+      $('#pm-end').value = pmAddDays(st, parseInt(b.dataset.len, 10)); upd();
+    }));
+    slot.querySelectorAll('[data-nextmon]').forEach(b => b.addEventListener('click', () => {
+      const d = new Date(today + 'T12:00:00'); const add = ((8 - d.getDay()) % 7) || 7;
+      const st = pmAddDays(today, add), len = (f.start && f.end) ? pmDays(f.start, f.end) : 6;
+      $('#pm-start').value = st; $('#pm-end').value = pmAddDays(st, len); upd();
+    }));
+    upd();
+    $('#pm-save').addEventListener('click', async () => {
+      upd();
+      const pr = parseFloat(f.price);
+      if (!(pr > 0)) { showToast('Enter the promo price', true); return; }
+      if (!f.start || !f.end || f.end < f.start) { showToast('Check the dates', true); return; }
+      if (f.end < today) { showToast('End date is in the past', true); return; }
+      const reg = e.rp != null ? e.rp / (e.rq || 1) : null;
+      if (reg && pr / f.qty >= reg && !confirm('This promo is not cheaper than the regular price. Send anyway?')) return;
+      if (e.lk === 1 && !confirm('Metro-locked item: when this promo ends the register goes back to the LOCKED price. Continue?')) return;
+      const code = resolveCode(f.code);
+      const btn = $('#pm-save'); btn.disabled = true; btn.textContent = 'Sending…';
+      try {
+        await pmQueue(code, { promo: { price: pr, qty: f.qty, start: f.start, end: f.end } }, () => {
+          pmLogPut(code, { pp: pr, pq: f.qty, ps: f.start, pe: f.end, rp: e.rp, rq: e.rq || 1 });
+        });
+        await pmSaveLog();
+        _pm.form = null;
+        _pm.tab = f.start > today ? 'upcoming' : 'current';
+        showToast('Promo sent to POS ✓');
+        pmRender();
+      } catch (err) { showToast('Could not send: ' + err.message, true); btn.disabled = false; btn.textContent = '⚡ SEND TO POS'; }
+    });
   }
 
   async function loadDeptManager() {
