@@ -1931,7 +1931,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v154</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v155</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2482,7 +2482,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v154</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v155</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -9574,15 +9574,17 @@
   const _live = { data: null, view: 'items', sort: 'amt', q: '', open: null, timer: null, err: null, fetching: false };
   const LIVE_POLL_MS = 20000;
 
-  async function fetchLiveFeed() {
+  async function fetchLiveFeed(file) {
+    file = file || 'live_items.json';
     try {
       let r;
       if (GH_HAS_TOKEN) {
-        r = await fetch(`https://api.github.com/repos/${GH.GH_OWNER}/${GH.GH_REPO}/contents/live_items.json?ref=live&t=${Date.now()}`,
+        r = await fetch(`https://api.github.com/repos/${GH.GH_OWNER}/${GH.GH_REPO}/contents/${file}?ref=live&t=${Date.now()}`,
           { cache: 'no-store', headers: { 'Authorization': `Bearer ${GH.GH_TOKEN}`, 'Accept': 'application/vnd.github.raw+json' } });
       } else {
-        r = await fetch(`https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/live/live_items.json?t=${Date.now()}`, { cache: 'no-store' });
+        r = await fetch(`https://raw.githubusercontent.com/${GH.GH_OWNER}/${GH.GH_REPO}/live/${file}?t=${Date.now()}`, { cache: 'no-store' });
       }
+      if (file !== 'live_items.json') return r.ok ? await r.json() : null;
       if (r.status === 404) { _live.err = 'nofeed'; return null; }
       if (!r.ok) { _live.err = 'HTTP ' + r.status; return null; }
       const d = await r.json();
@@ -9597,6 +9599,10 @@
     const d = await fetchLiveFeed();
     _live.polls = (_live.polls || 0) + 1;
     if (_live.polls % 3 === 1) { try { await applyLiveSlice(); } catch (e) {} }   // department totals for UNSCANNED
+    // today's transactions (register journal) -- only re-read when the PC published something new
+    if (d && d.txns_n !== undefined && d.updated_at !== _live.txAt) {
+      try { const tx = await fetchLiveFeed('live_txns.json'); if (tx && tx.txns) { _live.tx = tx; _live.txAt = d.updated_at; } } catch (e) {}
+    }
     _live.fetching = false;
     if (_activeReport !== 'live') return;
     if (d) _live.data = d;
@@ -9631,7 +9637,71 @@
     for (const e of (d.events || [])) { (byCode[e[1]] = byCode[e[1]] || []).push(e); }
     return byCode;
   }
+  const TENDER = { '101': 'CASH', '103': 'DEBIT', '130': 'VISA', '131': 'MASTERCARD' };
+  function txLineName(l) {
+    if (l[0] === 's' || String(l[1]).startsWith('D:')) {
+      const sd = l[6] || String(l[1]).slice(2);
+      return ((DATA.depts || {})[sd] || l[2] || ('Dept ' + sd));
+    }
+    const p = DATA.products[resolveCode(l[1])];
+    return p ? String(p[0]).trim() : (l[2] || l[1]);
+  }
+  function txFlags(t) {
+    const f = [];
+    const items = t.l.filter(l => l[0] === 'i');
+    if (t.dr && !t.l.length) f.push(['NO SALE · DRAWER OPENED', 'bad', 3]);
+    if (t.nv) f.push([`${t.nv} VOIDED LINE${t.nv > 1 ? 'S' : ''} (${liveMoney(t.va)})`, 'bad', 3]);
+    if (t.tot < 0 || t.typ && t.typ !== 'SALE') f.push([t.tot < 0 ? 'REFUND' : t.typ, 'bad', 3]);
+    if (items.some(l => l[3] > 0 && l[4] <= 0.005)) f.push(['$0 ITEM', 'bad', 3]);
+    if (items.some(l => l[5] > 0 && l[3] > 0 && l[4] > 0 && l[4] < l[5] * l[3] * 0.85 - 0.01)) f.push(['PRICE CUT', 'hot', 2]);
+    const keyed = t.l.filter(l => l[0] === 's').reduce((x, l) => x + l[4], 0);
+    if (keyed) f.push([`KEYED ${liveMoney(keyed)}`, keyed >= 50 ? 'hot' : '', keyed >= 50 ? 2 : 0]);
+    return f;
+  }
+  function txSearchHit(t, tokens) {
+    if (!tokens.length) return true;
+    const hay = liveNorm([t.n, t.c, t.tot.toFixed(2), ...t.l.map(l => txLineName(l) + ' ' + l[1])].join(' '));
+    return tokens.every(x => hay.includes(x));
+  }
+  function txRowHtml(t, open) {
+    const flags = txFlags(t);
+    const pays = t.pay.map(p => TENDER[p[0]] || ('#' + p[0])).filter((v, i, a) => a.indexOf(v) === i).join(' + ');
+    const worst = flags.reduce((m, f) => Math.max(m, f[2]), 0);
+    const nItems = t.l.filter(l => l[0] !== 'v').length;
+    let html = `<div class="lv-row" data-tx="${escapeHtml(t.n)}" style="${worst >= 3 ? 'border-color:rgba(248,113,113,.55);' : ''}">
+      <div class="lv-time">${escapeHtml(t.t.slice(0, 8))}</div>
+      <div class="lv-main"><div class="lv-name">#${escapeHtml(t.n)} · ${escapeHtml(t.c || '—')}${flags.map(f => `<span class="lv-chip ${f[1]}">${escapeHtml(f[0])}</span>`).join('')}</div>
+        <div class="lv-meta">Reg ${escapeHtml(String(t.r).replace(/^0+/, ''))} · ${nItems} line${nItems === 1 ? '' : 's'}${pays ? ' · ' + escapeHtml(pays) : ''}</div></div>
+      <div class="lv-num"><div class="lv-qty ${t.tot < 0 ? 'lv-neg' : ''}" style="font-size:16px;">${liveMoney(t.tot)}</div></div></div>`;
+    if (open) {
+      const lines = t.l.map(l => {
+        const voided = l[0] === 'v', keyed = l[0] === 's' || String(l[1]).startsWith('D:');
+        const q = l[3] && l[3] !== 1 ? liveFmtQ(l[3]) + (l[3] % 1 ? ' kg' : ' ×') + ' ' : '';
+        return `<div class="lv-ev" style="${voided ? 'color:#f87171;text-decoration:line-through;' : ''}">
+          <span style="flex:1;min-width:0;white-space:normal;">${q}${keyed ? '<b>KEYED</b> ' : ''}${escapeHtml(txLineName(l))}${voided ? ' <b style="text-decoration:none;display:inline-block;">VOIDED</b>' : ''}</span>
+          <span>${liveMoney(l[4])}</span></div>`;
+      }).join('') || '<div>No items — drawer opened only.</div>';
+      const pay = t.pay.map(p => `<div class="lv-ev"><span>${escapeHtml(TENDER[p[0]] || ('Tender ' + p[0]))}</span><span>${liveMoney(p[1])}</span></div>`).join('');
+      html += `<div class="lv-detail">
+        ${lines}
+        <div style="border-top:1px solid var(--border);margin:6px 0 4px;"></div>
+        ${t.tax ? `<div class="lv-ev"><span>Taxes</span><span>${liveMoney(t.tax)}</span></div>` : ''}
+        <div class="lv-ev" style="font-weight:700;color:var(--text);"><span>TOTAL</span><span>${liveMoney(t.tot)}</span></div>
+        ${pay}
+        <div style="margin-top:6px;font-family:var(--font-display);font-size:9px;">${escapeHtml(t.t)} → ${escapeHtml(t.t2 || '')} · register ${escapeHtml(String(t.r))} · ${escapeHtml(t.c || '')}</div>
+      </div>`;
+    }
+    return html;
+  }
+
   function liveAlerts(d, byCode) {
+    if (_live.tx && _live.tx.date === d.date) {          // precise, from the register journal
+      return _live.tx.txns.filter(t => txFlags(t).some(f => f[2] >= 2)).map(t => {
+        const f = txFlags(t).filter(x => x[2] >= 2);
+        return { tx: t.n, kind: f.map(x => x[0]).join(' · '), sev: Math.max(...f.map(x => x[2])), t: t.t, code: t.n,
+                 name: `#${t.n} · ${t.c}`, text: `${liveMoney(t.tot)} · tap to open the transaction` };
+      }).sort((x, y) => (y.sev - x.sev) || String(y.t).localeCompare(String(x.t)));
+    }
     const out = [];
     for (const e of (d.events || [])) {
       const [t, code, dq, da] = e;
@@ -9772,7 +9842,7 @@
 
     if (!listOnly || !views.firstChild) {
       views.innerHTML = ''; sorts.innerHTML = '';
-      views.appendChild(periodBar([['items', 'COUNTERS'], ['feed', 'FEED'], ['alerts', 'ALERTS' + (alerts.length ? ' (' + alerts.length + ')' : '')], ['gap', 'UNSCANNED']],
+      views.appendChild(periodBar([['items', 'COUNTERS'], ['feed', (_live.tx && _live.tx.date === d.date) ? 'TRANSACTIONS' : 'FEED'], ['alerts', 'ALERTS' + (alerts.length ? ' (' + alerts.length + ')' : '')], ['gap', 'UNSCANNED']],
         _live.view, k => { _live.view = k; _live.open = null; paintLive(); }));
       if (_live.view === 'items') {
         sorts.appendChild(periodBar([['amt', 'TOP $'], ['qty', 'TOP QTY'], ['recent', 'LATEST'], ['ratio', 'VS USUAL']],
@@ -9815,6 +9885,26 @@
       list.innerHTML = html;
       list.querySelectorAll('.lv-row').forEach(el => el.addEventListener('click', () => {
         _live.open = _live.open === el.dataset.code ? null : el.dataset.code; paintLive(true);
+      }));
+    } else if (_live.view === 'feed' && _live.tx && _live.tx.date === d.date) {
+      const all = _live.tx.txns;
+      const cashiers = [...new Set(all.map(t => t.c).filter(Boolean))];
+      const cf = _live.cashier || 'all';
+      let txs = all.filter(t => (cf === 'all' || t.c === cf) && txSearchHit(t, tokens));
+      if (_live.flagged) txs = txs.filter(t => txFlags(t).some(f => f[2] >= 2));
+      txs = txs.slice().reverse();
+      const tot = txs.reduce((x, t) => x + t.tot, 0);
+      let html = `<div class="rpt-period" style="margin-bottom:8px;">
+          <button data-txf="all" class="${cf === 'all' ? 'active' : ''}">ALL</button>
+          ${cashiers.map(c => `<button data-txf="${escapeHtml(c)}" class="${cf === c ? 'active' : ''}">${escapeHtml(c)}</button>`).join('')}
+          <button data-txflag="1" class="${_live.flagged ? 'active' : ''}">⚑ FLAGGED</button></div>
+        <div class="rpt-sub" style="margin-bottom:8px;">${txs.length} transaction${txs.length === 1 ? '' : 's'} · ${liveMoney(tot)} · journal as of ${escapeHtml((_live.tx.updated_at || '').slice(11, 16))}</div>`;
+      html += txs.slice(0, 250).map(t => txRowHtml(t, _live.openTx === t.n)).join('') || '<div class="rpt-empty">No transactions match</div>';
+      list.innerHTML = html;
+      list.querySelectorAll('[data-txf]').forEach(b => b.addEventListener('click', () => { _live.cashier = b.dataset.txf; paintLive(true); }));
+      list.querySelectorAll('[data-txflag]').forEach(b => b.addEventListener('click', () => { _live.flagged = !_live.flagged; paintLive(true); }));
+      list.querySelectorAll('[data-tx]').forEach(el => el.addEventListener('click', () => {
+        _live.openTx = _live.openTx === el.dataset.tx ? null : el.dataset.tx; paintLive(true);
       }));
     } else if (_live.view === 'feed') {
       const evs = (d.events || []).filter(e => match(e[1], liveInfo(e[1]).name)).slice().reverse().slice(0, 300);
@@ -9862,14 +9952,20 @@
       }
       list.innerHTML = html;
     } else {
-      const al = alerts.filter(a => match(a.code, a.name));
-      let html = al.map(a => `<div class="lv-row" style="cursor:default;">
+      const al = alerts.filter(a => a.tx ? txSearchHit((_live.tx.txns.find(t => t.n === a.tx) || { n: a.tx, c: '', tot: 0, l: [] }), tokens) : match(a.code, a.name));
+      let html = al.map(a => `<div class="lv-row" ${a.tx ? `data-atx="${escapeHtml(a.tx)}"` : 'style="cursor:default;"'}>
           <div class="lv-time">${a.t ? a.t.slice(0, 8) : 'today'}</div>
-          <div class="lv-main"><div class="lv-name">${escapeHtml(a.name)}<span class="lv-chip ${a.sev >= 3 ? 'bad' : 'hot'}">${a.kind}</span></div>
+          <div class="lv-main"><div class="lv-name">${escapeHtml(a.name)}<span class="lv-chip ${a.sev >= 3 ? 'bad' : 'hot'}">${escapeHtml(a.kind)}</span></div>
           <div class="lv-meta">${escapeHtml(a.text)}</div></div></div>`).join('');
       if (!al.length) html = '<div class="rpt-empty">No alerts — nothing odd in today\'s sales so far</div>';
-      html += '<div class="rpt-sub" style="margin-top:12px;">Alerts: refunds (on items or on a department key), items rung at $0, and items rung more than 15% under their shelf price (multi-buy and promo prices can trigger this legitimately). Items selling far above normal are under COUNTERS → VS USUAL.</div>';
+      html += (_live.tx && _live.tx.date === d.date)
+        ? '<div class="rpt-sub" style="margin-top:12px;">From the register journal: drawer opened with no sale, voided lines, refunds, items rung at $0, items rung more than 15% under their own till price (multi-buy deals are accounted for), and $50+ keyed straight to a department.</div>'
+        : '<div class="rpt-sub" style="margin-top:12px;">Alerts: refunds (on items or on a department key), items rung at $0, and items rung more than 15% under their shelf price (multi-buy and promo prices can trigger this legitimately). Items selling far above normal are under COUNTERS → VS USUAL.</div>';
       list.innerHTML = html;
+      list.querySelectorAll('[data-atx]').forEach(el => el.addEventListener('click', () => {
+        _live.view = 'feed'; _live.openTx = el.dataset.atx; _live.flagged = false; _live.cashier = 'all'; paintLive();
+        setTimeout(() => { const r = document.querySelector(`#lv-list [data-tx="${CSS.escape(el.dataset.atx)}"]`); if (r) r.scrollIntoView({ block: 'center' }); }, 50);
+      }));
     }
   }
 
