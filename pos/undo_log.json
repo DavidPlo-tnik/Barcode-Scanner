@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924203552066078",
-   "applied_at": "2026-09-24T20:35:52",
-   "change": {
-    "code": "0482310540962",
-    "title": "VERES SOUPE AUX CORNICHONS RASSOLNIK",
-    "pos_title": "VERES SOUPE AUX CORNICHONS RASSOLNIK",
-    "size_num": 445,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:35:27.802Z",
-    "id": "c1790296527802"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES SOUPE AUX CORNICHONS",
-     "F1744": "410.0",
-     "F22": "410ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "VERES SOUPE AUX CORNICHONS 410ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5000",
-     "F196": "3.5000",
-     "F1140": "3.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924203702157001",
    "applied_at": "2026-09-24T20:37:02",
    "change": {
@@ -24583,6 +24533,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011165637238992",
+   "applied_at": "2026-10-11T16:56:37",
+   "change": {
+    "code": "0066415500156",
+    "title": "AMORA CREVETTES BLANCHES DU PACIFIQUE CUITES 41/50",
+    "pos_title": "AMORA CREVETTES BLANCHES DU PACIFIQUE CU",
+    "size_num": 340,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T20:56:26.241Z",
+    "id": "c1791752186241"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CREVETTES BLANCHES DU PACIFIQUE 41/50",
+     "F1744": "400.0",
+     "F22": "340GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CREVETTES BLANCHES DU PACIFIQUE 41/50 34",
+     "F04": "22",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "84.0000",
+     "F196": "84.0000",
+     "F1140": "7.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "11.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "11.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
