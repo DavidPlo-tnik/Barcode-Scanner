@@ -1,104 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924215616084151",
-   "applied_at": "2026-09-24T21:56:16",
-   "change": {
-    "code": "0479104500068",
-    "pos_title": "HYLEYS CEYLON THE BIG LEAF 250GR",
-    "size_num": 250,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T01:55:40.926Z",
-    "id": "c1790301340926"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "HYLEYS CEYLON THE BIG LEAF",
-     "F1744": "250.0",
-     "F22": "250GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "HYLEYS CEYLON THE BIG LEAF 250GR",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "7.0000",
-     "F196": "7.0000",
-     "F1140": "7.0000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "11.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "11.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924215616146551",
-   "applied_at": "2026-09-24T21:56:16",
-   "change": {
-    "code": "0479104500068",
-    "pos_title": "HYLEYS CEYLON THE BIG LEAF 250GR",
-    "size_num": 250,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T01:56:00.827Z",
-    "id": "c1790301360827"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "HYLEYS CEYLON THE BIG LEAF",
-     "F1744": "250.0",
-     "F22": "250 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "HYLEYS CEYLON THE BIG LEAF 250GR",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "7.0000",
-     "F196": "7.0000",
-     "F1140": "7.0000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "11.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "11.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924215721120665",
    "applied_at": "2026-09-24T21:57:21",
    "change": {
@@ -24604,6 +24506,117 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011175010092075",
+   "applied_at": "2026-10-11T17:50:10",
+   "change": {
+    "code": "0075468489939",
+    "size_num": 350,
+    "size_unit": "GR",
+    "price": 4.99,
+    "promo": {
+     "price": 2.99,
+     "qty": 1,
+     "start": "2026-10-08",
+     "end": "2026-10-14"
+    },
+    "queued_at": "2026-10-11T21:49:17.355Z",
+    "id": "c1791755357355"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BELEVINI CRÊPES AUX CERISES 350GR",
+     "F1744": "350.0",
+     "F22": "350 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BELEVINI CRÊPES AUX CERISES 350GR",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "25.2000",
+     "F196": "25.2000",
+     "F1140": "2.1000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011175010160079",
+   "applied_at": "2026-10-11T17:50:10",
+   "change": {
+    "code": "0075468489940",
+    "pos_title": "BELEVINI CRÊPES FROMAGE ET RAISINS 350GR",
+    "size_num": 350,
+    "size_unit": "GR",
+    "price": 4.99,
+    "promo": {
+     "price": 2.99,
+     "qty": 1,
+     "start": "2026-10-07",
+     "end": "2026-10-14"
+    },
+    "queued_at": "2026-10-11T21:49:45.820Z",
+    "id": "c1791755385820"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BELEVINI CRÊPES AU FROMAGE ET RAISINS 350GR",
+     "F1744": "350.0",
+     "F22": "350 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BELEVINI CRÊPES FROMAGE ET RAISINS 350GR",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "25.2000",
+     "F196": "25.2000",
+     "F1140": "2.1000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
