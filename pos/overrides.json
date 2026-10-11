@@ -670,7 +670,31 @@
    "mp": null,
    "cost": 55.0,
    "at": "2026-10-11 15:06:04"
+  },
+  "0066416605159": {
+   "pt": "WIEJSKA CHATA CORNICHONS POLONAIS",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 1500.0,
+   "nm": "WIEJSKA CHATA CORNICHONS POLONAIS",
+   "rp": 8.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 8.99,
+   "mp": null,
+   "cost": 5.99,
+   "at": "2026-10-11 15:08:14"
   }
  },
- "updated": "2026-10-11 15:06:04"
+ "updated": "2026-10-11 15:08:14"
 }
