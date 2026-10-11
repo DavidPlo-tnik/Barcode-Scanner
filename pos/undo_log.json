@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924213549170196",
-   "applied_at": "2026-09-24T21:35:49",
-   "change": {
-    "code": "0482014562093",
-    "pos_title": "CAFE LWIWSKA 225GR",
-    "size_num": 225,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T01:35:11.789Z",
-    "id": "c1790300111789"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "CAFE LWIWSKA",
-     "F1744": "500.0",
-     "F22": "225GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "CAFE LWIWSKA 225GR",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "7.7000",
-     "F196": "7.7000",
-     "F1140": "7.7000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "11.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "11.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924213655111512",
    "applied_at": "2026-09-24T21:36:55",
    "change": {
@@ -24581,6 +24532,56 @@
      "F196": "59.3100",
      "F1140": "6.5900",
      "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "9.3900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.3900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011170821253628",
+   "applied_at": "2026-10-11T17:08:21",
+   "change": {
+    "code": "0085313500105",
+    "title": "GGOOD MOOOD FARM KÉFIR NATURE 3,25%",
+    "pos_title": "GGOOD MOOOD FARM KÉFIR NATURE 3,25%",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "queued_at": "2026-10-11T21:07:34.596Z",
+    "id": "c1791752854596"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "GOOD MOOD FARM KEFIR PROBIOTIQUE",
+     "F1744": "2000.0",
+     "F22": "2000ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "GOOD MOOD FARM KEFIR PROBIOTIQUE 2000ML",
+     "F04": "3",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "6.8900",
+     "F196": "6.8900",
+     "F1140": "6.8900",
+     "F27": "L-EPIC"
     },
     "PRICE_TAB": {
      "F30": "9.3900",
