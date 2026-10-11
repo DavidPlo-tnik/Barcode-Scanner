@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924202631198292",
-   "applied_at": "2026-09-24T20:26:31",
-   "change": {
-    "code": "0482310540915",
-    "title": "VERES AUBERGINES STYLE CORÉEN",
-    "pos_title": "VERES AUBERGINES STYLE CORÉEN",
-    "size_num": 440,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:26:28.283Z",
-    "id": "c1790295988283"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES AUBERGINES STYLE CORÉEN",
-     "F1744": "440.0",
-     "F22": "440 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "VERES AUBERGINES STYLE CORÉEN",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.1500",
-     "F196": "3.1500",
-     "F1140": "3.1500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924203244226148",
    "applied_at": "2026-09-24T20:32:44",
    "change": {
@@ -24583,6 +24533,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011165019000727",
+   "applied_at": "2026-10-11T16:50:19",
+   "change": {
+    "code": "0426012339323",
+    "title": "FLAVORS PÂTE SURGELÉE POUR CHEBUREKS",
+    "pos_title": "FLAVORS PÂTE SURGELÉE POUR CHEBUREKS",
+    "size_num": 800,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T20:50:01.104Z",
+    "id": "c1791751801104"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DOUGH PATE POUR CHEBUREKS",
+     "F1744": "12.0",
+     "F22": "800G",
+     "F23": "UN1"
+    },
+    "POS_TAB": {
+     "F02": "DOUGH PATE POUR CHEBUREKS 800G",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "31.2000",
+     "F196": "31.2000",
+     "F1140": "3.9000",
+     "F27": "L-SAP"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
