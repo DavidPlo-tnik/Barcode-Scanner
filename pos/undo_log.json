@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260923164827097407",
-   "applied_at": "2026-09-23T16:48:27",
-   "change": {
-    "code": "0482307764131",
-    "title": "ROSHEN WAFERS CACAO",
-    "pos_title": "ROSHEN WAFERS CACAO",
-    "size_num": 216,
-    "size_unit": "",
-    "queued_at": "2026-09-23T20:47:40.769Z",
-    "id": "c1790196460769"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ROSHEN WAFERS ",
-     "F1744": "216.0",
-     "F22": "216G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "ROSHEN WAFERS  216G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "38.4000",
-     "F196": "38.4000",
-     "F1140": "2.4000",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "3.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260923164827159807",
    "applied_at": "2026-09-23T16:48:27",
    "change": {
@@ -24627,6 +24577,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011152603083426",
+   "applied_at": "2026-10-11T15:26:03",
+   "change": {
+    "code": "0467014930125",
+    "title": "ROSTAGROEXPORT BARRE DE FROMAGE MANGUE ET GRAINES DE CHIA",
+    "pos_title": "ROSTAGROEXPORT BARRE DE FROMAGE MANGUE E",
+    "size_num": 90,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T19:26:01.670Z",
+    "id": "c1791746761670"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ROSTAGRO MINI GATEAU AU FROMAGE ",
+     "F1744": "90.0",
+     "F22": "90G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "ROSTAGRO MINI GATEAU AU FROMAGE  90G",
+     "F04": "4",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "14.8000",
+     "F196": "14.8000",
+     "F1140": "1.8500",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
