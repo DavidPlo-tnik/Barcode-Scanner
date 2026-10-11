@@ -820,7 +820,7 @@
   .pm-alert { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin-bottom: 10px; border-radius: 10px; border: 1px solid rgba(251,146,60,.5); background: rgba(251,146,60,.08); font-size: 12.5px; }
   .pm-alert span { flex: 1; }
   .pm-search { width: 100%; box-sizing: border-box; margin-bottom: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 9px; color: var(--text); font-size: 14px; padding: 10px 12px; }
-  .pm-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 8px; }
+  .pm-card { cursor: pointer; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 8px; }
   .pm-card.soon { border-color: rgba(251,146,60,.6); }
   .pm-top { display: flex; gap: 10px; align-items: flex-start; }
   .pm-name { flex: 1; min-width: 0; font-size: 14px; font-weight: 600; line-height: 1.25; }
@@ -1977,7 +1977,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v156</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v157</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2530,7 +2530,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v156</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v157</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3688,6 +3688,7 @@
     $('#ed-depts-panel').style.display = tab === 'depts' ? 'block' : 'none';
     $('#ed-supp-panel').style.display = tab === 'supp' ? 'block' : 'none';
     $('#ed-promo-panel').style.display = tab === 'promo' ? 'block' : 'none';
+    if (tab !== 'promo') pmStopScan();
     if (tab === 'promo') loadPromoManager();
     if (tab === 'log') loadEditorLog();
     if (tab === 'depts') loadDeptManager();
@@ -3870,7 +3871,6 @@
         <button class="pm-tab ${_pm.tab === 'upcoming' ? 'active' : ''}" data-pmtab="upcoming"><b>${by.upcoming.length}</b>UPCOMING</button>
         <button class="pm-tab ${_pm.tab === 'ended' ? 'active' : ''}" data-pmtab="ended"><b>${by.ended.length}</b>ENDED</button>
       </div>
-      ${ending.length && _pm.tab === 'current' ? `<div class="pm-alert"><span><b>${ending.length}</b> promo${ending.length > 1 ? 's end' : ' ends'} within 3 days</span><button class="pm-new" id="pm-ext-all">+1 WEEK ALL</button></div>` : ''}
       <input class="pm-search" id="pm-search" type="search" placeholder="Search promos…" value="${escapeHtml(_pm.q)}">
       <div id="pm-list">${list.map(card).join('') || `<div class="pm-empty">${_pm.tab === 'current' ? 'No dated promos running right now.' : _pm.tab === 'upcoming' ? 'Nothing scheduled. Tap + NEW PROMO to plan one.' : 'No promos ended in the last 2 weeks.'}</div>`}</div>
       <div class="rpt-sub" style="margin-top:10px;">Shows promos with an end date within ${PM_SHORT_DAYS} days (long-running Metro prices are left out). Ended promos stay here ${PM_KEEP_ENDED} days. ON WEBSITE = in your ECOM catalogue and lasting a month or less, so it is in the home-page specials. Changes go to the POS like any edit.</div>`;
@@ -3879,8 +3879,11 @@
     const srch = $('#pm-search');
     srch.addEventListener('input', () => { _pm.q = srch.value; const pos = srch.selectionStart; pmRender(); const s2 = $('#pm-search'); s2.focus(); try { s2.setSelectionRange(pos, pos); } catch {} });
     $('#pm-new').addEventListener('click', () => pmOpenForm(null));
-    const ea = $('#pm-ext-all');
-    if (ea) ea.addEventListener('click', () => pmExtendMany(ending, 7));
+    el.querySelectorAll('.pm-card').forEach(c => c.addEventListener('click', (ev) => {
+      if (ev.target.closest('button')) return;
+      const r = rows.find(x => x.key === c.dataset.key);
+      if (r) openProduct(resolveCode(r.code));
+    }));
     el.querySelectorAll('.pm-card [data-pm]').forEach(b => b.addEventListener('click', () => {
       const key = b.closest('.pm-card').dataset.key;
       const r = rows.find(x => x.key === key);
@@ -3953,6 +3956,41 @@
     } catch (e) { showToast('Could not send: ' + e.message, true); }
   }
 
+  let _pmReader = null, _pmScanCtl = null;
+  async function pmStartScan() {
+    if (_pmReader || !window.ZXingBrowser) return;
+    $('#pm-scan-wrap').style.display = 'block';
+    try {
+      _pmReader = new ZXingBrowser.BrowserMultiFormatReader();
+      if (backCameras.length === 0) backCameras = await enumerateCameras();
+      const savedId = localStorage.getItem(CAMERA_PREF_KEY);
+      let cam = savedId ? backCameras.find(d => d.deviceId === savedId) : null;
+      if (!cam) cam = backCameras[0];
+      const vc = cam ? { deviceId: { exact: cam.deviceId }, width: { ideal: 1920 }, height: { ideal: 1080 } }
+                     : { facingMode: { ideal: 'environment' } };
+      _pmScanCtl = await _pmReader.decodeFromConstraints({ video: vc }, $('#pm-video'), (result) => {
+        if (!result) return;
+        const code = result.getText();
+        pmStopScan();
+        const p = lookup(code);
+        if (p) { if (navigator.vibrate) navigator.vibrate(40); pmOpenForm(p.code); }
+        else showToast('Product not found', true);
+      });
+    } catch (e) {
+      showToast('Camera error', true);
+      pmStopScan();
+    }
+  }
+  function pmStopScan() {
+    try {
+      if (_pmScanCtl) { _pmScanCtl.stop(); }
+      const v = document.getElementById('pm-video');
+      if (v && v.srcObject) { v.srcObject.getTracks().forEach(t => t.stop()); v.srcObject = null; }
+    } catch (e) {}
+    _pmScanCtl = null; _pmReader = null;
+    const w = document.getElementById('pm-scan-wrap'); if (w) w.style.display = 'none';
+  }
+
   async function pmExtendMany(rows, n) {
     if (!rows.length) return;
     if (!confirm(`Extend all ${rows.length} promo${rows.length > 1 ? 's' : ''} ending within 3 days by ${n} days?`)) return;
@@ -3985,7 +4023,12 @@
       <div style="display:flex;justify-content:space-between;align-items:center;"><b style="font-size:13px;">${preset && preset.price ? 'RUN PROMO AGAIN' : 'NEW PROMO'}</b><button class="ed-log-refresh" id="pm-form-x">✕</button></div>
       ${f.code ? `<div style="margin-top:8px;font-size:14px;font-weight:600;">${escapeHtml(p ? String(p[0]).trim() : f.code)}</div>
         <div class="pm-code">${escapeHtml(f.code.replace(/^0+/, ''))} · regular ${e.rp != null ? pmDeal(e.rp, e.rq || 1) : '?'}${pmIsShort(e, today) ? ' · <span style="color:#fb923c">already has a promo until ' + pmFmt(e.pe) + ' (this replaces it)</span>' : ''}</div>`
-        : `<label>ITEM</label><input id="pm-item-q" type="search" placeholder="Search name or barcode…" autocomplete="off"><div id="pm-item-res"></div>`}
+        : `<label>ITEM</label>
+          <div style="display:flex;gap:8px;"><input id="pm-item-q" type="search" placeholder="Search name or barcode…" autocomplete="off" style="flex:1;min-width:0;">
+            <button type="button" id="pm-cam" class="pm-new" style="flex:0 0 auto;padding:0 14px;font-size:18px;" aria-label="Scan with camera">📷</button></div>
+          <div id="pm-scan-wrap" style="display:none;margin-top:8px;"><div class="ed-scan-view"><video id="pm-video" playsinline muted></video><div class="scanner-overlay"><div class="reticle"></div></div></div>
+            <button class="btn ed-scan-stop" id="pm-scan-stop" type="button">Stop scanning</button></div>
+          <div id="pm-item-res"></div>`}
       ${f.code ? `
       <div class="pm-row2">
         <div><label>PROMO PRICE $</label><input id="pm-price" type="number" inputmode="decimal" step="0.01" min="0" value="${f.price !== '' ? (+f.price).toFixed(2) : ''}"></div>
@@ -4002,9 +4045,12 @@
       <div class="pm-preview" id="pm-preview"></div>
       <div class="pm-actions"><button class="main" id="pm-save">⚡ SEND TO POS</button></div>` : ''}
     </div>`;
-    $('#pm-form-x').addEventListener('click', () => { _pm.form = null; slot.innerHTML = ''; });
+    pmStopScan();
+    $('#pm-form-x').addEventListener('click', () => { pmStopScan(); _pm.form = null; slot.innerHTML = ''; });
     if (!f.code) {
-      const inp = $('#pm-item-q'); inp.focus();
+      const inp = $('#pm-item-q');
+      $('#pm-cam').addEventListener('click', pmStartScan);
+      $('#pm-scan-stop').addEventListener('click', pmStopScan);
       inp.addEventListener('input', () => {
         const qq = liveNorm(inp.value.trim());
         const res = $('#pm-item-res');
