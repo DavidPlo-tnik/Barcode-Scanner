@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924201801167596",
-   "applied_at": "2026-09-24T20:18:01",
-   "change": {
-    "code": "0482310540057",
-    "title": "VERES TARTINADE AUX AUBERGINES",
-    "pos_title": "VERES TARTINADE AUX AUBERGINES",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:17:09.495Z",
-    "id": "c1790295429495"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES TARTINADE AUBERGINES",
-     "F1744": "1000.0",
-     "F22": "500G",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "VERES TARTINADE AUBERGINES 500G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5000",
-     "F196": "3.5000",
-     "F1140": "3.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924202008604219",
    "applied_at": "2026-09-24T20:20:08",
    "change": {
@@ -24585,6 +24535,54 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011164357096457",
+   "applied_at": "2026-10-11T16:43:57",
+   "change": {
+    "code": "0020994600000",
+    "size_num": 950,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T20:43:09.891Z",
+    "id": "c1791751389891"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "PÂTE FEUILLETÉE CONGELÉE",
+     "F1744": "400.0",
+     "F22": "",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "PÂTE FEUILLETÉE CONGELÉE",
+     "F04": "5",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "5.5000",
+     "F196": "5.5000",
+     "F1140": "5.5000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
