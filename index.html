@@ -820,29 +820,27 @@
   .pm-alert { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin-bottom: 10px; border-radius: 10px; border: 1px solid rgba(251,146,60,.5); background: rgba(251,146,60,.08); font-size: 12.5px; }
   .pm-alert span { flex: 1; }
   .pm-search { width: 100%; box-sizing: border-box; margin-bottom: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 9px; color: var(--text); font-size: 14px; padding: 10px 12px; }
-  .pm-card { cursor: pointer; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 8px; }
+  .pm-card { cursor: pointer; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px; margin-bottom: 7px; }
   .pm-card.soon { border-color: rgba(251,146,60,.6); }
-  .pm-top { display: flex; gap: 10px; align-items: flex-start; }
-  .pm-name { flex: 1; min-width: 0; font-size: 14px; font-weight: 600; line-height: 1.25; }
-  .pm-code { font-family: var(--font-display); font-size: 10px; color: var(--text-faint); margin-top: 3px; }
+  .pm-row { display: flex; gap: 10px; align-items: flex-start; }
+  .pm-ph { width: 56px; height: 56px; flex: 0 0 56px; border-radius: 8px; overflow: hidden; background: var(--surface-2); }
+  .pm-ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pm-mid { flex: 1; min-width: 0; }
+  .pm-name { font-size: 13.5px; font-weight: 600; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .pm-dates { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-top: 4px; font-family: var(--font-display); font-size: 10.5px; color: var(--text-dim); }
+  .pm-soon { color: #fb923c; font-weight: 800; }
+  .pm-dot { padding: 1px 5px; border-radius: 4px; font-size: 8.5px; font-weight: 800; letter-spacing: .05em; background: var(--surface-2); color: var(--text-faint); }
+  .pm-dot.web { background: rgba(220,36,28,.2); color: #ff6b63; }
+  .pm-dot.warn { background: rgba(251,146,60,.18); color: #fb923c; }
   .pm-deal { text-align: right; flex: 0 0 auto; }
-  .pm-deal .d1 { font-family: var(--font-display); font-size: 18px; font-weight: 800; color: var(--accent); line-height: 1; }
-  .pm-deal .d2 { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
-  .pm-deal .d2 s { color: var(--text-faint); }
-  .pm-off { display: inline-block; margin-left: 4px; padding: 1px 5px; border-radius: 4px; background: rgba(248,113,113,.18); color: #f87171; font-family: var(--font-display); font-size: 10px; font-weight: 800; }
-  .pm-dates { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 9px; font-family: var(--font-display); font-size: 11px; color: var(--text-dim); }
-  .pm-bar { position: relative; height: 4px; border-radius: 3px; background: var(--surface-2); margin-top: 8px; overflow: hidden; }
+  .pm-deal .d1 { font-family: var(--font-display); font-size: 17px; font-weight: 800; color: var(--accent); line-height: 1.05; }
+  .pm-deal .d2 { font-family: var(--font-display); font-size: 11px; color: var(--text-faint); margin-top: 3px; }
+  .pm-bar { position: relative; height: 3px; border-radius: 3px; background: var(--surface-2); margin-top: 9px; overflow: hidden; }
   .pm-bar span { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); border-radius: 3px; }
-  .pm-chip { display: inline-block; padding: 2px 6px; border-radius: 4px; font-family: var(--font-display); font-size: 9.5px; font-weight: 800; letter-spacing: .04em; background: var(--surface-2); color: var(--text-dim); }
-  .pm-chip.warn { background: rgba(251,146,60,.18); color: #fb923c; }
-  .pm-chip.good { background: rgba(74,222,128,.15); color: var(--good); }
-  .pm-chip.web { background: rgba(220,36,28,.2); color: #ff6b63; }
-  .pm-lift { margin-top: 7px; font-size: 11.5px; color: var(--text-dim); }
-  .pm-lift b { color: var(--text); }
-  .pm-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-  .pm-actions button { flex: 1 1 auto; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-family: var(--font-display); font-size: 10.5px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
+  .pm-actions { display: flex; gap: 5px; margin-top: 9px; }
+  .pm-actions button { flex: 1 1 0; padding: 7px 4px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text-dim); font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: .03em; cursor: pointer; white-space: nowrap; }
   .pm-actions button.main { background: var(--accent); color: #000; border-color: var(--accent); }
-  .pm-actions button.bad { color: #f87171; border-color: rgba(248,113,113,.4); }
+  .pm-actions button.bad { color: #f87171; border-color: rgba(248,113,113,.35); background: transparent; }
   .pm-form { background: var(--surface); border: 1px solid var(--accent); border-radius: 12px; padding: 12px; margin-bottom: 12px; }
   .pm-form label { display: block; font-family: var(--font-display); font-size: 10px; letter-spacing: .08em; color: var(--text-dim); margin: 10px 0 4px; }
   .pm-form input { width: 100%; box-sizing: border-box; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 15px; padding: 9px 10px; }
@@ -1977,7 +1975,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v158</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v159</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2530,7 +2528,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v158</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v159</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3796,7 +3794,7 @@
   async function loadPromoManager() {
     const el = $('#ed-promo-panel');
     if (!_pm.log) el.innerHTML = '<div class="empty-state">Loading promos…</div>';
-    await Promise.all([fetchEditData(), fetchOverrides().catch(() => null), pmLoadLog()]);
+    await Promise.all([fetchEditData(), fetchOverrides().catch(() => null), pmLoadLog(), fetchEcomCatalog().catch(() => null)]);
     pmRender();
   }
 
@@ -3842,23 +3840,28 @@
       const onWeb = r.st === 'current' && inCat[r.code] && pmDays(today, r.pe) <= PM_WEB_DAYS && (!r.ps || pmDays(r.ps, r.pe) <= PM_WEB_DAYS);
       const pend = (_pendingEdits || {})[r.code];
       const lift = r.st !== 'upcoming' ? pmSalesLift(r) : null;
-      const liftTxt = lift ? `Sold <b>${liveFmtQ(lift.total)}</b> in ${lift.n} promo day${lift.n > 1 ? 's' : ''} · <b>${lift.during.toFixed(1)}/day</b>` +
-        (lift.before != null ? ` vs ${lift.before.toFixed(1)}/day before` + (lift.before > 0 ? ` (${lift.during >= lift.before ? '+' : ''}${Math.round(100 * (lift.during / lift.before - 1))}%)` : '') : '') : '';
+      const liftTxt = lift ? `${lift.during.toFixed(1)}/day` + (lift.before > 0 ? ` <span style="color:${lift.during >= lift.before ? 'var(--good)' : '#f87171'}">${lift.during >= lift.before ? '▲' : '▼'}${Math.abs(Math.round(100 * (lift.during / lift.before - 1)))}%</span>` : '') : '';
       const acts = r.st === 'current'
-        ? `<button class="main" data-pm="ext7">+1 WEEK</button><button data-pm="extn">+ DAYS…</button><button data-pm="edit">EDIT</button><button class="bad" data-pm="end">END NOW</button>`
+        ? `<button class="main" data-pm="ext7">+1 WEEK</button><button data-pm="extn">+ DAYS</button><button data-pm="edit">EDIT</button><button class="bad" data-pm="end">END</button>`
         : r.st === 'upcoming'
-        ? `<button class="main" data-pm="ext7">+1 WEEK</button><button data-pm="startnow">START TODAY</button><button data-pm="edit">EDIT</button><button class="bad" data-pm="cancel">CANCEL</button>`
-        : `<button class="main" data-pm="again">RUN AGAIN${len ? ` (${len} DAYS)` : ''}</button><button data-pm="edit">OPEN ITEM</button>`;
+        ? `<button class="main" data-pm="ext7">+1 WEEK</button><button data-pm="startnow">START NOW</button><button data-pm="edit">EDIT</button><button class="bad" data-pm="cancel">CANCEL</button>`
+        : `<button class="main" data-pm="again">RUN AGAIN${len ? ` · ${len}D` : ''}</button><button data-pm="edit">EDIT</button>`;
+      const ent = inCat[resolveCode(r.code)] || inCat[r.code];
+      const ph = ent && ent.photos && ent.photos[0];
+      const flags = (onWeb ? '<span class="pm-dot web" title="On the website">WEB</span>' : '') +
+                    (pend && pend.promo !== undefined ? '<span class="pm-dot warn" title="Waiting for the POS">SENT</span>' : '') +
+                    (r.lk ? '<span class="pm-dot" title="Metro-locked">LOCK</span>' : '');
       return `<div class="pm-card${soon ? ' soon' : ''}" data-key="${escapeHtml(r.key)}">
-        <div class="pm-top">
-          <div style="flex:1;min-width:0;"><div class="pm-name">${escapeHtml(name)}</div><div class="pm-code">${escapeHtml(r.code.replace(/^0+/, ''))}</div></div>
-          <div class="pm-deal"><div class="d1">${pmDeal(r.pp, r.pq)}</div>
-            <div class="d2">${r.rp != null ? `reg. <s>${pmDeal(r.rp, r.rq)}</s>` : ''}${off > 0 ? `<span class="pm-off">-${off}%</span>` : ''}</div></div>
+        <div class="pm-row">
+          <div class="pm-ph">${ph ? `<img src="${photoSrc(ph)}" loading="lazy" alt="">` : ''}</div>
+          <div class="pm-mid">
+            <div class="pm-name">${escapeHtml(name)}</div>
+            <div class="pm-dates">${pmFmt(r.ps)} – ${pmFmt(r.pe)} · <span class="${soon ? 'pm-soon' : ''}">${when}</span></div>
+            ${liftTxt || flags ? `<div class="pm-dates">${liftTxt}${flags}</div>` : ''}
+          </div>
+          <div class="pm-deal"><div class="d1">${pmDeal(r.pp, r.pq)}</div>${r.rp != null ? `<div class="d2"><s>${pmDeal(r.rp, r.rq)}</s></div>` : ''}</div>
         </div>
-        <div class="pm-dates">${pmFmt(r.ps)} → ${pmFmt(r.pe)} · <span style="color:${soon ? '#fb923c' : 'inherit'};font-weight:${soon ? 800 : 400}">${when}</span>
-          ${onWeb ? '<span class="pm-chip web">ON WEBSITE</span>' : ''}${pend && pend.promo ? '<span class="pm-chip warn">SENT TO POS</span>' : ''}${r.lk ? '<span class="pm-chip">METRO-LOCKED</span>' : ''}</div>
         ${pct != null ? `<div class="pm-bar"><span style="width:${pct}%"></span></div>` : ''}
-        ${liftTxt ? `<div class="pm-lift">${liftTxt}</div>` : ''}
         <div class="pm-actions">${acts}</div>
       </div>`;
     };
