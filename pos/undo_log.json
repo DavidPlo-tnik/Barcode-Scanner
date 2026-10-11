@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260923164721234092",
-   "applied_at": "2026-09-23T16:47:21",
-   "change": {
-    "code": "0482307762558",
-    "title": "ROSHEN WAFERS LAIT",
-    "pos_title": "ROSHEN WAFERS LAIT",
-    "size_num": 216,
-    "size_unit": "",
-    "queued_at": "2026-09-23T20:47:02.373Z",
-    "id": "c1790196422373"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ROSHEN WAFERS ",
-     "F1744": "216.0",
-     "F22": "216G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "ROSHEN WAFERS  216G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "39.2000",
-     "F196": "39.2000",
-     "F1140": "2.4500",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "3.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260923164721296492",
    "applied_at": "2026-09-23T16:47:21",
    "change": {
@@ -24605,6 +24555,56 @@
      "F29": "ZAIKA GRAIN DE TOURNESOL",
      "F1744": "230.0",
      "F22": "230GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAIKA GRAIN DE TOURNESOL 230GR",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "100.8000",
+     "F196": "100.8000",
+     "F1140": "2.8000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011151946124364",
+   "applied_at": "2026-10-11T15:19:46",
+   "change": {
+    "code": "0482019983168",
+    "title": "ZAIKA GRAINES DE TOURNESOL RÔTIES ET SALÉES",
+    "pos_title": "ZAIKA GRAINES DE TOURNESOL RÔTIES ET SAL",
+    "size_num": 230,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T19:18:53.022Z",
+    "id": "c1791746333022"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAIKA GRAIN DE TOURNESOL",
+     "F1744": "230.0",
+     "F22": "230 GR",
      "F23": "GR"
     },
     "POS_TAB": {
