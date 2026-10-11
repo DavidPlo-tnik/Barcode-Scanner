@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924202219176449",
-   "applied_at": "2026-09-24T20:22:19",
-   "change": {
-    "code": "0482310540915",
-    "title": "VERES AUBERGINES STYLE CORÉEN",
-    "pos_title": "VERES AUBERGINES STYLE CORÉEN",
-    "size_num": 440,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:21:50.511Z",
-    "id": "c1790295710511"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES AUBERGINES A LA  COREENNE",
-     "F1744": "440.0",
-     "F22": "440G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "VERES AUBERGINES A LA  COREENNE 440G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.1500",
-     "F196": "3.1500",
-     "F1140": "3.1500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924202631198292",
    "applied_at": "2026-09-24T20:26:31",
    "change": {
@@ -24583,6 +24533,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011164712143599",
+   "applied_at": "2026-10-11T16:47:12",
+   "change": {
+    "code": "0426012339285",
+    "title": "FLAVOURS PÂTE LEVÉE SURGELÉE EN PORTIONS 800G",
+    "pos_title": "FLAVOURS PÂTE LEVÉE SURGELÉE EN PORTIONS",
+    "size_num": 800,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T20:47:11.203Z",
+    "id": "c1791751631203"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FLAVOURS PLAQIES DE PÂTE LEVÉE 800GR",
+     "F1744": "800.0",
+     "F22": "800 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "FLAVOURS PLAQIES DE PÂTE LEVÉE 800GR",
+     "F04": "4",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.9000",
+     "F196": "2.9000",
+     "F1140": "2.9000",
+     "F27": "L-SAP"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
