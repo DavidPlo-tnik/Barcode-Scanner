@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924212118158266",
-   "applied_at": "2026-09-24T21:21:18",
-   "change": {
-    "code": "0482027298281",
-    "title": "KLIM ZEPHYR AU CHOCOLAT",
-    "size_num": 300,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T01:21:17.805Z",
-    "id": "c1790299277805"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KLIM ZEPHYR ",
-     "F1744": "300.0",
-     "F22": "300G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "KLIM ZEPHYR  300G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.9900",
-     "F196": "2.9900",
-     "F1140": "2.9900",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924213137073753",
    "applied_at": "2026-09-24T21:31:37",
    "change": {
@@ -24585,6 +24536,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "9.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011170058149450",
+   "applied_at": "2026-10-11T17:00:58",
+   "change": {
+    "code": "0066415500155",
+    "title": "AMORA CREVETTES BLANCHES DU PACIFIQUE CUITES 41/50",
+    "pos_title": "AMORA CREVETTES BLANCHES DU PACIFIQUE CU",
+    "size_num": 180,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T21:00:41.329Z",
+    "id": "c1791752441329"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CREVETTES BLANCHES DU PACIFIQUE 41/50",
+     "F1744": "180.0",
+     "F22": "180GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CREVETTES BLANCHES DU PACIFIQUE 41/50 18",
+     "F04": "22",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "84.0000",
+     "F196": "84.0000",
+     "F1140": "3.5000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
