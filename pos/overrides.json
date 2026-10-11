@@ -526,7 +526,31 @@
    "mp": null,
    "cost": 4.89,
    "at": "2026-10-11 14:08:00"
+  },
+  "0088764300014": {
+   "pt": "POLONIA CHOUCROUTE  796ML",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 796.0,
+   "nm": "POLONIA CHOUCROUTE",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 2.39,
+   "at": "2026-10-11 14:10:07"
   }
  },
- "updated": "2026-10-11 14:08:00"
+ "updated": "2026-10-11 14:10:07"
 }
