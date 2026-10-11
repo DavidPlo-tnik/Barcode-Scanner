@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924142447175394",
-   "applied_at": "2026-09-24T14:24:47",
-   "change": {
-    "code": "0426012339068",
-    "pos_title": "FLAVORS TOMATES  3LT",
-    "size_num": 1.5,
-    "size_unit": "LT",
-    "price": 13.99,
-    "queued_at": "2026-09-24T18:24:08.191Z",
-    "id": "c1790274248191"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "FLAVORS TOMATES ",
-     "F1744": "1.5",
-     "F22": "3LT",
-     "F23": "LT"
-    },
-    "POS_TAB": {
-     "F02": "FLAVORS TOMATES  3LT",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "32.0000",
-     "F196": "32.0000",
-     "F1140": "8.0000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "11.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "11.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924142447237795",
    "applied_at": "2026-09-24T14:24:47",
    "change": {
@@ -24634,6 +24584,48 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011153440333534",
+   "applied_at": "2026-10-11T15:34:40",
+   "change": {
+    "code": "0020143900000",
+    "title": "BATONNETS DE SANDRE SÉCHÉ SUDAK JERKY",
+    "pos_title": "BATONNETS DE SANDRE SÉCHÉ SUDAK JERKY",
+    "queued_at": "2026-10-11T19:34:25.139Z",
+    "id": "c1791747265139"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BATONNETS DESANDRE SÉCHÉ SUDAK JERKY",
+     "F1744": null,
+     "F22": "UN",
+     "F23": ""
+    },
+    "POS_TAB": {
+     "F02": "BATONNETS DESANDRE SÉCHÉ SUDAK JERKY",
+     "F04": "23",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": "0"
+    },
+    "PRICE_TAB": {
+     "F30": "49.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "49.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
