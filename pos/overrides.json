@@ -886,7 +886,30 @@
    "mp": null,
    "cost": 54.0,
    "at": "2026-10-11 15:31:30"
+  },
+  "0020143900000": {
+   "pt": "BATONNETS DE SANDRE SÉCHÉ SUDAK JERKY",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 23,
+   "un": "",
+   "sn": null,
+   "nm": "BATONNETS DE SANDRE SÉCHÉ SUDAK JERKY",
+   "rp": 49.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 49.99,
+   "mp": null,
+   "at": "2026-10-11 15:34:40"
   }
  },
- "updated": "2026-10-11 15:31:30"
+ "updated": "2026-10-11 15:34:40"
 }
