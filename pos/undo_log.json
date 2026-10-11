@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924201655148280",
-   "applied_at": "2026-09-24T20:16:55",
-   "change": {
-    "code": "0482310540103",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:16:03.171Z",
-    "id": "c1790295363171"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES SALSA ADJIKA PIQUANTE",
-     "F1744": "500.0",
-     "F22": "500 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "VERES SALSA ADJIKA PIQUANTE",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5000",
-     "F196": "3.5000",
-     "F1140": "3.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924201801167596",
    "applied_at": "2026-09-24T20:18:01",
    "change": {
@@ -24583,6 +24535,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "8.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011164150159034",
+   "applied_at": "2026-10-11T16:41:50",
+   "change": {
+    "code": "0062904581017",
+    "title": "FOREST MIX CHAMPIGNONS MIXÉS CONGELÉS",
+    "pos_title": "FOREST MIX CHAMPIGNONS MIXÉS CONGELÉS",
+    "size_num": 1000,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T20:41:32.466Z",
+    "id": "c1791751292466"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CHAMPIGNONS MIXES",
+     "F1744": "700.0",
+     "F22": "1000GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CHAMPIGNONS MIXES 1000GR",
+     "F04": "4",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "65.0000",
+     "F196": "65.0000",
+     "F1140": "6.5000",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "9.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "9.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
