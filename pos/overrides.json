@@ -1389,7 +1389,31 @@
    "mp": null,
    "cost": 65.0,
    "at": "2026-10-11 16:41:50"
+  },
+  "0020994600000": {
+   "pt": "PÂTE FEUILLETÉE CONGELÉE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 5,
+   "un": "GR",
+   "sn": 950.0,
+   "nm": "PÂTE FEUILLETÉE CONGELÉE",
+   "rp": 7.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 7.99,
+   "mp": null,
+   "cost": 5.5,
+   "at": "2026-10-11 16:43:57"
   }
  },
- "updated": "2026-10-11 16:41:50"
+ "updated": "2026-10-11 16:43:57"
 }
