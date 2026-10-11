@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924201338151134",
-   "applied_at": "2026-09-24T20:13:38",
-   "change": {
-    "code": "0482310540814",
-    "title": "VERES BORTSCH STYLE MAISON",
-    "size_num": 515,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T00:13:06.661Z",
-    "id": "c1790295186661"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES BORCHH ",
-     "F1744": "1000.0",
-     "F22": "515G",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "VERES BORCHH  515G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5000",
-     "F196": "3.5000",
-     "F1140": "3.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924201549160164",
    "applied_at": "2026-09-24T20:15:49",
    "change": {
@@ -24590,6 +24541,56 @@
      "F1014": "2026-10-12 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011163834082289",
+   "applied_at": "2026-10-11T16:38:34",
+   "change": {
+    "code": "0629045555049",
+    "title": "AMBER PAIN JUMS \"POUR VOUS\"",
+    "pos_title": "AMBER PAIN JUMS \"POUR VOUS\"",
+    "size_num": 1100,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T20:37:36.563Z",
+    "id": "c1791751056563"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "AMBER PAIN POUR TOI DE SEIGLE",
+     "F1744": "1100.0",
+     "F22": "1100GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "AMBER PAIN POUR TOI DE SEIGLE 1100GR",
+     "F04": "51",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "57.0000",
+     "F196": "57.0000",
+     "F1140": "4.7500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
