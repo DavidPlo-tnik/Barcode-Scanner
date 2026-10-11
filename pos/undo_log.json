@@ -1,102 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260924214314067377",
-   "applied_at": "2026-09-24T21:43:14",
-   "change": {
-    "code": "0871100070865",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T01:43:00.203Z",
-    "id": "c1790300580203"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "JACOBS KRONUNG CAFE",
-     "F1744": "220.0",
-     "F22": "500GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "JACOBS KRONUNG CAFE 500GR",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "13.9900",
-     "F196": "13.9900",
-     "F1140": "13.9900",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "19.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "19.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260924214524171606",
-   "applied_at": "2026-09-24T21:45:24",
-   "change": {
-    "code": "0871100057612",
-    "size_num": 250,
-    "size_unit": "GR",
-    "queued_at": "2026-09-25T01:44:39.625Z",
-    "id": "c1790300679625"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "JACOBS KRONUNG CAFE",
-     "F1744": "250.0",
-     "F22": "250GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "JACOBS KRONUNG CAFE 250GR",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "7.9900",
-     "F196": "7.9900",
-     "F1140": "7.9900",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "11.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "11.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260924214629132120",
    "applied_at": "2026-09-24T21:46:29",
    "change": {
@@ -24591,6 +24495,106 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "2.3900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011171133196365",
+   "applied_at": "2026-10-11T17:11:33",
+   "change": {
+    "code": "0590074600506",
+    "title": "SERTOP TYCHY FROMAGE FONDU GOUDA",
+    "pos_title": "SERTOP TYCHY FROMAGE FONDU GOUDA",
+    "size_num": 100,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T21:11:03.101Z",
+    "id": "c1791753063101"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FROMAGE FONDU GOUDA",
+     "F1744": "100.0",
+     "F22": "100GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "FROMAGE FONDU GOUDA 100GR",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.7900",
+     "F196": "2.7900",
+     "F1140": "2.7900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261011171133243165",
+   "applied_at": "2026-10-11T17:11:33",
+   "change": {
+    "code": "0590074600506",
+    "title": "SERTOP TYCHY FROMAGE FONDU GOUDA",
+    "pos_title": "SERTOP TYCHY FROMAGE FONDU GOUDA",
+    "size_num": 100,
+    "size_unit": "GR",
+    "queued_at": "2026-10-11T21:11:26.190Z",
+    "id": "c1791753086190"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SERTOP TYCHY FROMAGE FONDU GOUDA",
+     "F1744": "100.0",
+     "F22": "100 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SERTOP TYCHY FROMAGE FONDU GOUDA",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.7900",
+     "F196": "2.7900",
+     "F1140": "2.7900",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
