@@ -1,3 +1,13 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0075468489941",
+   "pos_title": "BELEVINI CRÊPES AUX POMME DE TERRE ET CH",
+   "size_num": 350,
+   "size_unit": "GR",
+   "price": 4.99,
+   "queued_at": "2026-10-11T21:52:02.685Z",
+   "id": "c1791755522685"
+  }
+ ]
 }
