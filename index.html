@@ -1560,6 +1560,7 @@
   .lv-day { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text-dim); font-family: var(--font-display); cursor: pointer; }
   .lv-day b { font-size: 11px; color: var(--text); }
   .lv-day span { font-size: 9.5px; }
+  .lv-day-x { justify-content: center; padding: 7px 9px; font-size: 13px; color: var(--accent); }
   .lv-day.on { border-color: var(--accent); background: rgba(212,255,58,.08); }
   .lv-day.on b { color: var(--accent); }
   .lv-cmp { margin: -6px 0 12px; }
@@ -1987,7 +1988,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v162</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v163</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2540,7 +2541,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v162</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v163</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -10111,7 +10112,7 @@
   // live_sales.py (POS PC) publishes live_items.json to the `live` branch every
   // couple of minutes; this tab polls it while it is open. The 14-day history
   // for "usual" comes from data.json (dq arrays) -- nothing extra to send.
-  const _live = { data: null, view: 'items', sort: 'amt', q: '', open: null, timer: null, err: null, fetching: false };
+  const _live = { picker: true, data: null, view: 'items', sort: 'amt', q: '', open: null, timer: null, err: null, fetching: false };
   const LIVE_POLL_MS = 20000;
 
   async function fetchLiveFeed(file) {
@@ -10160,7 +10161,6 @@
   // ── Past days (last 14) -- built from the register journal by live_sales.py ──
   const _liveDayCache = {};
   async function liveOpenDay(date) {
-    _live.picker = false;
     if (!date) {                                   // back to today
       _live.viewDate = null; _live.pastTx = null;
       _live.data = _live.todayData || _live.data; _live.tx = _live.todayTx || _live.tx;
@@ -10208,7 +10208,7 @@
       const h = parseInt(t.t.slice(0, 2), 10), m = parseInt(t.t.slice(3, 5), 10);
       if (isNaN(h)) continue;
       const i = Math.max(0, Math.min(n - 1, Math.floor((h * 60 + m - c.start) / c.step)));
-      slots[i] += t.tot || 0;
+      slots[i] += t.l.reduce((a, l) => a + (l[0] !== 'v' ? l[4] : 0), 0);   // before tax, same as SALES card
     }
     let run = 0; return slots.map(v => (run += v, Math.round(run * 100) / 100));
   }
@@ -10232,7 +10232,7 @@
     let cur;
     const isToday = !_live.viewDate;
     if (isToday) cur = liveCurveFromTx((_live.todayTx && _live.todayTx.txns) || [], c);
-    else cur = c.curves[date] || liveCurveFromTx((_live.pastTx && _live.pastTx.txns) || [], c);
+    else cur = (_live.pastTx && _live.pastTx.txns) ? liveCurveFromTx(_live.pastTx.txns, c) : c.curves[date];
     // trim to opening hours (first/last movement of the average)
     let a0 = avg.findIndex(v => v > 0); if (a0 < 0) a0 = 0; a0 = Math.max(0, a0 - 1);
     let a1 = n - 1; while (a1 > a0 && avg[a1] === avg[a1 - 1] && cur[a1] === cur[a1 - 1]) a1--; a1 = Math.min(n - 1, a1 + 1);
@@ -10251,7 +10251,7 @@
         `<br>Average full ${escapeHtml(wd)}: ${liveMoney(aEnd)} · based on ${same.length} past ${escapeHtml(wd)}${same.length > 1 ? 's' : ''}`
       : `Full day: <b>${liveMoney(cur[n - 1])}</b> vs ${liveMoney(aEnd)} on an average ${escapeHtml(wd)}` +
         (aEnd > 0 ? ` <b style="color:${cur[n - 1] >= aEnd ? 'var(--good)' : '#f87171'}">${cur[n - 1] >= aEnd ? '▲' : '▼'}${Math.abs(Math.round(100 * (cur[n - 1] / aEnd - 1)))}%</b>` : '') +
-        `<br>Based on ${same.length} earlier ${escapeHtml(wd)}${same.length > 1 ? 's' : ''} · sales incl. tax`;
+        `<br>Based on ${same.length} earlier ${escapeHtml(wd)}${same.length > 1 ? 's' : ''}`;
     if (!window.Chart) return;
     const cv = body.querySelector('canvas');
     const ds = [
@@ -10514,15 +10514,20 @@
         const dates = (idx.dates || []).slice().sort().reverse().slice(0, 14);
         const tTot = _live.todayData ? _live.todayData.total[1] + Object.values(_live.todayData.gaps || {}).reduce((a, b) => a + b, 0) : null;
         pk.innerHTML = `<div class="lv-days">
+          <button class="lv-day lv-day-x" data-close="1" aria-label="Hide days">▴</button>
           <button class="lv-day ${!_live.viewDate ? 'on' : ''}" data-day=""><b>Today</b><span>${tTot != null ? liveMoney(tTot) : ''}</span></button>
           ${dates.map(x => `<button class="lv-day ${_live.viewDate === x ? 'on' : ''}" data-day="${x}"><b>${new Date(x + 'T12:00:00').toLocaleDateString('en-CA', { weekday: 'short', day: 'numeric' })}</b><span>${idx.totals && idx.totals[x] != null ? liveMoney(idx.totals[x]) : ''}</span></button>`).join('')}
           ${dates.length ? '' : '<span class="rpt-sub" style="align-self:center;margin:0 6px;">Past days appear once the POS PC runs the latest live_sales.py</span>'}
         </div>`;
-        pk.querySelectorAll('[data-day]').forEach(b => b.addEventListener('click', () => liveOpenDay(b.dataset.day || null)));
-      } else pk.innerHTML = '';
+        pk.querySelectorAll('[data-day]').forEach(b => b.addEventListener('click', () => { const k = _live.picker; liveOpenDay(b.dataset.day || null); _live.picker = k; paintLive(true); }));
+        pk.querySelector('[data-close]').addEventListener('click', () => { _live.picker = false; paintLive(true); });
+      } else {
+        pk.innerHTML = '<div class="lv-cmp-head" id="lv-days-open" style="margin-top:-4px;">▸ Past 14 days</div>';
+        pk.querySelector('#lv-days-open').addEventListener('click', () => { _live.picker = true; paintLive(true); });
+      }
     }
     kpis.innerHTML = `
-      <div class="rpt-kpi" id="lv-sales-kpi" style="cursor:pointer;"><div class="k-label">${d.past ? 'SALES · ' + escapeHtml(pmFmt(d.date).toUpperCase()) : 'SALES TODAY'} ▾</div><div class="k-value">${liveMoney(d.past ? d.total[1] : d.total[1] + (gap ? gap.total : 0))}</div><div class="k-sub">incl. unscanned · tap for 14 days</div></div>
+      <div class="rpt-kpi" id="lv-sales-kpi" style="cursor:pointer;"><div class="k-label">${d.past ? 'SALES · ' + escapeHtml(pmFmt(d.date).toUpperCase()) : 'SALES TODAY'} ▾</div><div class="k-value">${liveMoney(d.past ? d.total[1] : d.total[1] + (gap ? gap.total : 0))}</div><div class="k-sub">incl. unscanned</div></div>
       <div class="rpt-kpi"><div class="k-label">ITEMS SOLD</div><div class="k-value">${nItems.toLocaleString()}</div></div>
       <div class="rpt-kpi" id="lv-gap-kpi" style="cursor:pointer;"><div class="k-label">UNSCANNED</div>
         <div class="k-value ${gap && gh && gh.avg != null && gap.total > Math.max(gh.avg * 2, gh.avg + 50) ? 'lv-neg' : ''}">${gap ? liveMoney(gap.total) : '—'}</div>
