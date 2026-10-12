@@ -1987,7 +1987,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v161</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v162</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2540,7 +2540,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v161</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v162</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -10512,7 +10512,7 @@
       if (_live.picker) {
         const idx = _live.daysIdx || { dates: [], totals: {} };
         const dates = (idx.dates || []).slice().sort().reverse().slice(0, 14);
-        const tTot = _live.todayData ? _live.todayData.total[1] : null;
+        const tTot = _live.todayData ? _live.todayData.total[1] + Object.values(_live.todayData.gaps || {}).reduce((a, b) => a + b, 0) : null;
         pk.innerHTML = `<div class="lv-days">
           <button class="lv-day ${!_live.viewDate ? 'on' : ''}" data-day=""><b>Today</b><span>${tTot != null ? liveMoney(tTot) : ''}</span></button>
           ${dates.map(x => `<button class="lv-day ${_live.viewDate === x ? 'on' : ''}" data-day="${x}"><b>${new Date(x + 'T12:00:00').toLocaleDateString('en-CA', { weekday: 'short', day: 'numeric' })}</b><span>${idx.totals && idx.totals[x] != null ? liveMoney(idx.totals[x]) : ''}</span></button>`).join('')}
@@ -10522,7 +10522,7 @@
       } else pk.innerHTML = '';
     }
     kpis.innerHTML = `
-      <div class="rpt-kpi" id="lv-sales-kpi" style="cursor:pointer;"><div class="k-label">${d.past ? 'SALES · ' + escapeHtml(pmFmt(d.date).toUpperCase()) : 'SALES TODAY'} ▾</div><div class="k-value">${liveMoney(d.total[1])}</div><div class="k-sub">tap for past 14 days</div></div>
+      <div class="rpt-kpi" id="lv-sales-kpi" style="cursor:pointer;"><div class="k-label">${d.past ? 'SALES · ' + escapeHtml(pmFmt(d.date).toUpperCase()) : 'SALES TODAY'} ▾</div><div class="k-value">${liveMoney(d.past ? d.total[1] : d.total[1] + (gap ? gap.total : 0))}</div><div class="k-sub">incl. unscanned · tap for 14 days</div></div>
       <div class="rpt-kpi"><div class="k-label">ITEMS SOLD</div><div class="k-value">${nItems.toLocaleString()}</div></div>
       <div class="rpt-kpi" id="lv-gap-kpi" style="cursor:pointer;"><div class="k-label">UNSCANNED</div>
         <div class="k-value ${gap && gh && gh.avg != null && gap.total > Math.max(gh.avg * 2, gh.avg + 50) ? 'lv-neg' : ''}">${gap ? liveMoney(gap.total) : '—'}</div>
