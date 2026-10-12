@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260925135503103805",
-   "applied_at": "2026-09-25T13:55:03",
-   "change": {
-    "code": "0023880800000",
-    "pos_title": "POISSON VOBLA GR",
-    "price": 44.99,
-    "cost": 30.78,
-    "queued_at": "2026-09-25T17:54:24.396Z",
-    "id": "c1790358864396"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "POISSON VOBLA",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "POISSON VOBLA GR",
-     "F04": "24",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "30.7800",
-     "F196": "30.7800",
-     "F1140": "30.7800",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "44.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "44.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260925135503166205",
    "applied_at": "2026-09-25T13:55:03",
    "change": {
@@ -24637,6 +24588,54 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "15.4100",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261012115315046475",
+   "applied_at": "2026-10-12T11:53:15",
+   "change": {
+    "code": "0020141300000",
+    "title": "POISSON BLUE SÉCHÉ SINETS",
+    "pos_title": "POISSON BLUE SÉCHÉ SINETS",
+    "queued_at": "2026-10-12T15:53:11.663Z",
+    "id": "c1791820391663"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "POISSON BLUE SECHE",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "POISSON BLUE SECHE GR",
+     "F04": "24",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "39.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "39.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
