@@ -1,24 +1,3 @@
 {
- "items": [
-  {
-   "code": "0482025094208",
-   "title": "LVIVSKE BIÈRE SANS ALCOOL",
-   "pos_title": "LVIVSKE BIÈRE SANS ALCOOL",
-   "size_num": 480,
-   "size_unit": "ML",
-   "multibuy": {
-    "qty": 2,
-    "price": 7
-   },
-   "promo": {
-    "price": 7,
-    "qty": 2,
-    "start": null,
-    "end": null
-   },
-   "deposit": 0.1,
-   "queued_at": "2026-10-13T18:02:43.487Z",
-   "id": "c1791914563487"
-  }
- ]
+ "items": []
 }
