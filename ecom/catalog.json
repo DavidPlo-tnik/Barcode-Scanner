@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:31:08.968Z",
+ "updated": "2026-10-13T18:31:24.060Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -7737,23 +7737,6 @@
    "group": "1-veladis-caviar-de",
    "dept": "1",
    "weekly": 34.1,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482309790474": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-veladis-caviar-de",
-   "dept": "1",
-   "weekly": 32.43,
    "scale": false,
    "fresh": false,
    "v": {
