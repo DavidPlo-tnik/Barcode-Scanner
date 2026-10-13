@@ -545,6 +545,19 @@
   .pos-size-value.empty { font-weight: 400; font-style: italic; color: var(--text-faint); font-size: 12px; }
   .pos-size-edit { color: var(--accent); font-size: 14px; flex-shrink: 0; }
 
+  .promo-stat .label { display: flex; align-items: center; gap: 6px; }
+  .promo-off { background: #FFD23F; color: #111; padding: 1px 5px; border-radius: 4px; font-weight: 800; letter-spacing: 0; }
+  .promo-reg { margin-top: 4px; font-family: var(--font-display); font-size: 13px; color: var(--text-dim); }
+  .promo-reg s { text-decoration-color: #f87171; text-decoration-thickness: 2px; }
+  .promo-stat .sub b { font-weight: 700; color: var(--text); } .promo-stat .sub b.promo-soon { color: #fb923c; }
+  .promo-next { margin-top: 6px; font-family: var(--font-display); font-size: 10px; color: #fb923c; }
+  .cost-line { display: flex; gap: 1px; margin: -10px 0 24px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: var(--border); }
+  .cost-line > div { flex: 1; display: flex; align-items: baseline; gap: 8px; padding: 9px 12px; background: var(--surface); }
+  .cost-line > div.cl-pack { flex: 0 0 auto; }
+  .cost-line .cl-lbl { font-family: var(--font-display); font-size: 9.5px; letter-spacing: .12em; color: var(--text-dim); }
+  .cost-line b { font-family: var(--font-display); font-size: 15px; color: var(--text); }
+  .cost-line .cl-sub { font-size: 11px; color: var(--text-dim); }
+  .photo-scan-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; margin: 8px 0 10px; border-radius: 12px; border: 1px dashed var(--border); background: var(--surface); color: var(--text); font-size: 14px; font-weight: 600; cursor: pointer; }
   .stat-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
     background: var(--border); border: 1px solid var(--border);
@@ -2107,7 +2120,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v171</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v172</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2144,6 +2157,7 @@
     <button class="btn" id="stop-btn" disabled>STOP</button>
   </div>
 
+  <button class="photo-scan-btn" id="scan-photo-btn" type="button">🖼 Barcode from a photo</button>
   <form class="manual-entry" id="manual-form">
     <input type="text" id="manual-input" placeholder="Or type barcode…" inputmode="numeric" autocomplete="off" />
     <button class="btn" type="submit">GO</button>
@@ -2277,6 +2291,7 @@
       <div class="scanner-overlay"><div class="reticle"></div></div>
       <div class="count-scanner-banner" id="count-banner"></div>
     </div>
+    <button class="photo-scan-btn" id="count-photo-btn" type="button">🖼 Barcode from a photo</button>
 
     <!-- Quantity entry overlay -->
     <div id="count-qty-pad" class="count-qty-pad">
@@ -2353,6 +2368,7 @@
     </div>
     <div id="ed-edit-panel">
       <button class="ed-scan-btn" id="ed-scan-btn"><span>⌘</span> Scan an item</button>
+      <button class="photo-scan-btn" id="ed-photo-btn" type="button" style="margin-top:-2px;">🖼 Barcode from a photo</button>
       <input type="text" id="ed-search" class="ed-search" placeholder="or search by name / barcode" autocomplete="off" />
       <div id="ed-scanner-wrap" style="display:none;">
         <div class="ed-scan-view">
@@ -2679,7 +2695,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v171</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v172</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3506,6 +3522,59 @@
     // Sort by score, highest first (best main camera at index 0)
     backs.sort((a, b) => scoreCameraLabel(b.label) - scoreCameraLabel(a.label));
     return backs;
+  }
+
+  // ── Read a barcode from a photo (camera roll / files / take a picture) ──
+  let _bcPhotoInput = null;
+  function pickBarcodePhoto(onCode) {
+    if (!_bcPhotoInput) {
+      _bcPhotoInput = document.createElement('input');
+      _bcPhotoInput.type = 'file'; _bcPhotoInput.accept = 'image/*';
+      _bcPhotoInput.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0;';
+      document.body.appendChild(_bcPhotoInput);
+    }
+    _bcPhotoInput.value = '';
+    _bcPhotoInput.onchange = async () => {
+      const f = _bcPhotoInput.files && _bcPhotoInput.files[0]; if (!f) return;
+      showToast('Reading barcode…');
+      let codes = [];
+      try { codes = await decodeBarcodesFromFile(f); } catch (e) {}
+      if (!codes.length) { showToast('No barcode found — try a closer, sharper photo', true); return; }
+      const hit = codes.find(c => lookup(c)) || codes[0];
+      if (navigator.vibrate) navigator.vibrate(40);
+      onCode(hit);
+    };
+    _bcPhotoInput.click();
+  }
+  async function decodeBarcodesFromFile(file) {
+    const url = URL.createObjectURL(file);
+    try {
+      const img = await new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = url; });
+      const found = [];
+      if ('BarcodeDetector' in window) {
+        try { (await new BarcodeDetector().detect(img)).forEach(b => { if (b.rawValue && !found.includes(b.rawValue)) found.push(b.rawValue); }); } catch (e) {}
+        if (found.length) return found;
+      }
+      if (!window.ZXingBrowser) return found;
+      const reader = new ZXingBrowser.BrowserMultiFormatReader(new Map([[3, true]]));   // 3 = TRY_HARDER
+      const W = img.naturalWidth, H = img.naturalHeight;
+      const crops = [[0, 0, 1, 1], [.15, .15, .7, .7], [0, 0, 1, .55], [0, .45, 1, .55], [0, 0, .55, 1], [.45, 0, .55, 1], [.3, .3, .4, .4]];
+      const tries = [];
+      crops.forEach((cr, i) => [1600, 1000].forEach(mx => [0, 90].forEach(rot => tries.push({ cr, mx, rot, i }))));
+      tries.sort((a, b) => a.i - b.i);
+      const cv = document.createElement('canvas'), ctx = cv.getContext('2d', { willReadFrequently: true });
+      for (const t of tries) {
+        const sx = t.cr[0] * W, sy = t.cr[1] * H, sw = t.cr[2] * W, sh = t.cr[3] * H;
+        const k = Math.min(1, t.mx / Math.max(sw, sh));
+        const dw = Math.round(sw * k), dh = Math.round(sh * k);
+        if (t.rot) { cv.width = dh; cv.height = dw; ctx.setTransform(0, 1, -1, 0, dh, 0); }
+        else { cv.width = dw; cv.height = dh; ctx.setTransform(1, 0, 0, 1, 0, 0); }
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, dw, dh);
+        try { const r = reader.decodeFromCanvas(cv); if (r && r.getText()) return [r.getText()]; } catch (e) {}
+        await new Promise(r => setTimeout(r, 0));
+      }
+      return found;
+    } finally { URL.revokeObjectURL(url); }
   }
 
   async function startScanner() {
@@ -5356,7 +5425,8 @@
         <div class="pm-code">${escapeHtml(f.code.replace(/^0+/, ''))} · regular ${e.rp != null ? pmDeal(e.rp, e.rq || 1) : '?'}${f.keepStart ? ' · <span style="color:var(--good)">running now since ' + pmFmt(e.ps) + ' — keeps that start, runs through next week</span>' : pmIsShort(e, today) ? ' · <span style="color:#fb923c">already has a promo until ' + pmFmt(e.pe) + ' (this replaces it)</span>' : ''}</div>`
         : `<label>ITEM</label>
           <div style="display:flex;gap:8px;"><input id="pm-item-q" type="search" placeholder="Search name or barcode…" autocomplete="off" style="flex:1;min-width:0;">
-            <button type="button" id="pm-cam" class="pm-new" style="flex:0 0 auto;padding:0 14px;font-size:18px;" aria-label="Scan with camera">📷</button></div>
+            <button type="button" id="pm-cam" class="pm-new" style="flex:0 0 auto;padding:0 14px;font-size:18px;" aria-label="Scan with camera">📷</button>
+            <button type="button" id="pm-photo" class="pm-new" style="flex:0 0 auto;padding:0 12px;font-size:18px;background:var(--surface-2);border:1px solid var(--border);" aria-label="Barcode from a photo">🖼</button></div>
           <div id="pm-scan-wrap" style="display:none;margin-top:8px;"><div class="ed-scan-view"><video id="pm-video" playsinline muted></video><div class="scanner-overlay"><div class="reticle"></div></div></div>
             <button class="btn ed-scan-stop" id="pm-scan-stop" type="button">Stop scanning</button></div>
           <div id="pm-item-res"></div>`}
@@ -5381,6 +5451,10 @@
     if (!f.code) {
       const inp = $('#pm-item-q');
       $('#pm-cam').addEventListener('click', pmStartScan);
+      $('#pm-photo').addEventListener('click', () => pickBarcodePhoto((code) => {
+        const p = lookup(code);
+        if (p) pmOpenForm(p.code); else showToast('Product not found: ' + code, true);
+      }));
       $('#pm-scan-stop').addEventListener('click', pmStopScan);
       inp.addEventListener('input', () => {
         const qq = liveNorm(inp.value.trim());
@@ -5727,6 +5801,53 @@
   // is opened, so it doesn't weigh down normal app loads.
   let _editData = null;
   let _editDataAt = 0;
+  // Small promo table (code -> [pp,pq,ps,pe,rp,rq]) kept in localStorage so the
+  // normal product view can show promos without downloading the 11 MB edit.json.
+  let _promoMap = null;
+  function promoMapSave() {
+    try {
+      const m = {};
+      const it = (_editData && _editData.items) || {};
+      for (const c in it) { const e = it[c]; if (e && e.pp != null && e.pe) m[c] = [e.pp, e.pq || 1, e.ps || null, e.pe, e.rp, e.rq || 1]; }
+      _promoMap = { at: Date.now(), m };
+      localStorage.setItem('promoMap', JSON.stringify(_promoMap));
+    } catch (e) {}
+  }
+  function promoMapGet() {
+    if (!_promoMap) { try { _promoMap = JSON.parse(localStorage.getItem('promoMap') || 'null'); } catch (e) {} }
+    // refresh in the background when missing or older than 2 h
+    const had = !!_promoMap;
+    if ((!_promoMap || Date.now() - _promoMap.at > 2 * 3600e3) && !_promoMapLoading) {
+      _promoMapLoading = true;
+      fetchEditData().finally(() => {
+        _promoMapLoading = false;
+        // first time: redraw the product that is open so its promo shows up
+        const lr = _lastProductRender;
+        if (!had && lr && $('#modal-label') && $('#modal-label').textContent === `CODE ${lr[0].code}`) { try { renderProduct(lr[0], lr[1]); } catch (e) {} }
+      });
+    }
+    return _promoMap ? _promoMap.m : null;
+  }
+  let _promoMapLoading = false, _lastProductRender = null;
+  // Active or upcoming short promo for a code (overrides = edits just sent from the app)
+  function promoInfo(code) {
+    let e = null;
+    if (_editData && _editData.items && _editData.items[code]) e = editStateFor(code);
+    else {
+      const m = promoMapGet(); const a = m && m[code];
+      e = a ? { pp: a[0], pq: a[1], ps: a[2], pe: a[3], rp: a[4], rq: a[5] } : {};
+      const o = overrideFor(code);
+      if (o) ['rp', 'pp', 'ps', 'pe', 'rq', 'pq'].forEach(k => { if (o[k] !== undefined) e[k] = o[k]; });
+    }
+    if (!e || e.pp == null || !e.pe) return null;
+    const today = pmToday();
+    if (e.pe < today) return null;
+    if (+e.pp === +e.rp && +(e.pq || 1) === +(e.rq || 1)) return null;
+    if (pmDays(today, e.pe) > PM_SHORT_DAYS) return null;           // Metro long-term price, not a real special
+    return { pp: +e.pp, pq: +(e.pq || 1), ps: e.ps || null, pe: e.pe, rp: e.rp != null ? +e.rp : null, rq: +(e.rq || 1),
+             upcoming: !!(e.ps && e.ps > today) };
+  }
+
   async function fetchEditData(force) {
     // edit.json was previously cached in memory for the whole session with no
     // invalidation, so a session that started before a pipeline run would show
@@ -5737,7 +5858,7 @@
     if (_editData && fresh && !force) return _editData;
     try {
       const r = await fetch(recipeRawUrl('edit.json'), { cache: 'no-store' });
-      if (r.ok) { _editData = await r.json(); _editDataAt = Date.now(); }
+      if (r.ok) { _editData = await r.json(); _editDataAt = Date.now(); promoMapSave(); }
       else if (!_editData) _editData = { items: {} };
     } catch { if (!_editData) _editData = { items: {} }; }
     if (!_editData.items) _editData.items = {};
@@ -6898,6 +7019,7 @@
   }
 
   function renderProduct(p, scannedRaw) {
+    _lastProductRender = [p, scannedRaw];
     $('#modal-label').textContent = `CODE ${p.code}`;
     const c = $('#modal-content');
     const sales = p.sales;
@@ -6934,6 +7056,19 @@
           <div class="value">${pv}</div>
           <div class="sub">queued — updates on next refresh</div>
         </div>`;
+    } else if (!isScale && promoInfo(p.code) && !promoInfo(p.code).upcoming) {
+      const pr = promoInfo(p.code);
+      const today = pmToday();
+      const left = pmDays(today, pr.pe);
+      const reg = pr.rp != null ? pmDeal(pr.rp, pr.rq) : null;
+      const off = pr.rp ? Math.round(100 * (1 - (pr.pp / pr.pq) / (pr.rp / pr.rq))) : null;
+      priceBlock = `
+        <div class="stat accent promo-stat">
+          <div class="label">PROMO${off > 0 ? ` <span class="promo-off">−${off}%</span>` : ''}</div>
+          <div class="value">${pr.pq > 1 ? `${pr.pq}/${fmtMoney(pr.pp)}` : fmtMoney(pr.pp)}</div>
+          ${reg ? `<div class="promo-reg"><s>${reg}</s></div>` : ''}
+          <div class="sub">${pmFmt(pr.ps)} → ${pmFmt(pr.pe)} · <b class="${left <= 2 ? 'promo-soon' : ''}">${left === 0 ? 'ends today' : left === 1 ? 'ends tomorrow' : left + ' days left'}</b></div>
+        </div>`;
     } else if (p.price !== null && p.price !== undefined) {
       if (p.multipack) {
         priceBlock = `
@@ -6948,6 +7083,7 @@
             <div class="label">${isScale ? 'POS PRICE ⚠' : 'PRICE'}</div>
             <div class="value">${priceText(p.code, p.price)}</div>
             <div class="sub">${isScale ? 'set on scale — may differ' : (p.depuis ? 'since ' + escapeHtml(p.depuis) : '')}</div>
+            ${(() => { const pr = !isScale && promoInfo(p.code); return pr && pr.upcoming ? `<div class="promo-next">PROMO ${pmDeal(pr.pp, pr.pq)} · ${pmFmt(pr.ps)} → ${pmFmt(pr.pe)}</div>` : ''; })()}
           </div>`;
       }
     } else {
@@ -7467,27 +7603,14 @@
     if (p.unitCost === null && p.caseCost === null && !p.unitsPerCase) return '';
     const hasCase = p.unitsPerCase && p.unitsPerCase > 1;
     return `
-      <div class="section-title"><span>COST &amp; PACKAGING</span><span class="hint">FROM PRICE LIST</span></div>
-      <div class="stat-grid">
-        <div class="stat">
-          <div class="label">UNIT COST</div>
-          <div class="value">${p.unitCost !== null ? fmtMoney(p.unitCost) : '—'}</div>
-          <div class="sub">cost per unit</div>
-        </div>
-        ${hasCase ? `
-        <div class="stat">
-          <div class="label">CASE COST</div>
-          <div class="value">${p.caseCost !== null ? fmtMoney(p.caseCost) : '—'}</div>
-          <div class="sub">${p.unitsPerCase} units/case</div>
-        </div>` : `
-        <div class="stat">
-          <div class="label">PACK</div>
-          <div class="value">${p.unitsPerCase ? Math.round(p.unitsPerCase) : '1'}</div>
-          <div class="sub">unit${p.unitsPerCase === 1 ? '' : 's'} per case</div>
-        </div>`}
+      <div class="cost-line">
+        <div><span class="cl-lbl">UNIT COST</span><b>${p.unitCost !== null ? fmtMoney(p.unitCost) : '—'}</b></div>
+        ${hasCase ? `<div><span class="cl-lbl">CASE</span><b>${p.caseCost !== null ? fmtMoney(p.caseCost) : '—'}</b><span class="cl-sub">${p.unitsPerCase}/case</span></div>`
+                  : `<div class="cl-pack"><span class="cl-lbl">PACK</span><b>${p.unitsPerCase ? Math.round(p.unitsPerCase) : 1}</b></div>`}
       </div>
     `;
   }
+
 
   function renderDailyGrid(sales, days) {
     const maxQ = Math.max(...sales.dq, 1);
@@ -10918,6 +11041,8 @@
     renderRecent();
 
     $('#start-btn').addEventListener('click', startScanner);
+    $('#scan-photo-btn').addEventListener('click', () => pickBarcodePhoto((code) => { lastScanCode = null; onScanSuccess(code); }));
+    $('#count-photo-btn').addEventListener('click', () => pickBarcodePhoto((code) => { countLastCode = null; onCountScanSuccess(code); }));
     $('#stop-btn').addEventListener('click', stopScanner);
     $('#switch-camera-btn').addEventListener('click', switchCamera);
 
@@ -11270,6 +11395,10 @@
     $('#ed-unlock-btn').addEventListener('click', edUnlock);
     $('#pm-unlock-btn').addEventListener('click', pmUnlock);
     $('#ed-scan-btn').addEventListener('click', startEdScanner);
+    $('#ed-photo-btn').addEventListener('click', () => pickBarcodePhoto((code) => {
+      const p = lookup(code);
+      if (p) showPosDirectEditor(p.code); else showToast('Product not found: ' + code, true);
+    }));
     $('#ed-scan-stop').addEventListener('click', stopEdScanner);
     $('#ed-search').addEventListener('input', (e) => edSearch(e.target.value));
     document.querySelectorAll('.ed-tab').forEach(b =>
