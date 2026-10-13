@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:31:33.851Z",
+ "updated": "2026-10-13T18:31:42.566Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -12559,23 +12559,6 @@
    "group": "1-odessa-jus-de",
    "dept": "1",
    "weekly": 14.01,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482001625263": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-odessa-jus-de",
-   "dept": "1",
-   "weekly": 13.29,
    "scale": false,
    "fresh": false,
    "v": {
