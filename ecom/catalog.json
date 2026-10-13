@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:33:35.331Z",
+ "updated": "2026-10-13T18:33:49.204Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -11488,23 +11488,6 @@
    "group": "2-mont-blanc",
    "dept": "2",
    "weekly": 14.99,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0076740833081": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": null,
-   "dept": "1",
-   "weekly": 22.16,
    "scale": false,
    "fresh": false,
    "v": {
