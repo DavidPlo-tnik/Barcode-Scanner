@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:33:16.539Z",
+ "updated": "2026-10-13T18:33:28.839Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -8695,23 +8695,6 @@
    "dept": "61",
    "weekly": 29.72,
    "scale": true,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482017566820": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-korolivskyi-huile-tournesol",
-   "dept": "1",
-   "weekly": 29.56,
-   "scale": false,
    "fresh": false,
    "v": {
     "title": false,
