@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260928222028262443",
-   "applied_at": "2026-09-28T22:20:28",
-   "change": {
-    "code": "0083839600977",
-    "pos_title": "ZAKYCOH STRAW SMORCHKI 1L",
-    "size_num": 1000,
-    "size_unit": "ML",
-    "queued_at": "2026-09-29T02:20:15.485Z",
-    "id": "c1790648415485"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ZAKYCOH STRAW SMORCHKI",
-     "F1744": "250.0",
-     "F22": "1L",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "ZAKYCOH STRAW SMORCHKI 1L",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "90.4000",
-     "F196": "90.4000",
-     "F1140": "7.5333",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "10.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "10.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260928222238241871",
    "applied_at": "2026-09-28T22:22:38",
    "change": {
@@ -24677,6 +24628,56 @@
      "F38": "2.1000",
      "F196": "2.1000",
      "F1140": "2.1000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013142033081059",
+   "applied_at": "2026-10-13T14:20:33",
+   "change": {
+    "code": "0460701877182",
+    "title": "ESSENTUKI EAU MINÉRALE NO 4",
+    "pos_title": "ESSENTUKI EAU MINÉRALE NO 4",
+    "size_num": 500,
+    "size_unit": "ML",
+    "queued_at": "2026-10-13T18:20:31.138Z",
+    "id": "c1791915631138"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ESSENTUKI",
+     "F1744": "400.0",
+     "F22": "450ML",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ESSENTUKI 450ML",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.4000",
+     "F196": "2.4000",
+     "F1140": "2.4000",
      "F27": "L-EPIC"
     },
     "PRICE_TAB": {
