@@ -102,8 +102,8 @@
   }
   .updated-line .live { color: var(--accent-dim); }
 
-  #scanner-view, #search-view, #lists-view, #ecom-view, #count-view, #editor-view { display: none; padding: 16px; }
-  #scanner-view.active, #search-view.active, #lists-view.active, #ecom-view.active, #count-view.active, #editor-view.active { display: block; }
+  #scanner-view, #search-view, #lists-view, #ecom-view, #count-view, #editor-view, #promo-view { display: none; padding: 16px; }
+  #scanner-view.active, #search-view.active, #lists-view.active, #ecom-view.active, #count-view.active, #editor-view.active, #promo-view.active { display: block; }
 
   /* POS Editor workspace */
   .ed-lock { display: flex; align-items: center; justify-content: center; min-height: 60vh; }
@@ -2107,7 +2107,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v170</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v171</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2129,6 +2129,7 @@
   <button class="tab" data-tab="ecom">◉ ECOM</button>
   <button class="tab" data-tab="count"># COUNT</button>
   <button class="tab" data-tab="editor">⚡ EDIT</button>
+  <button class="tab" data-tab="promo">% PROMO</button>
 </nav>
 
 <section id="scanner-view" class="active">
@@ -2322,6 +2323,18 @@
   </div>
 </section>
 
+<section id="promo-view">
+  <div class="ed-lock" id="pm-lock">
+    <div class="ed-lock-inner">
+      <div class="ed-lock-icon">🔒</div>
+      <div class="ed-lock-title">Promos</div>
+      <div class="ed-lock-sub">Enter your PIN to manage promos and flyers.</div>
+      <button class="btn primary" id="pm-unlock-btn">Unlock</button>
+    </div>
+  </div>
+  <div id="ed-promo-panel" style="display:none;"></div>
+</section>
+
 <section id="editor-view">
   <div class="ed-lock" id="ed-lock">
     <div class="ed-lock-inner">
@@ -2337,7 +2350,6 @@
       <button class="ed-tab" data-edtab="log">LOG</button>
       <button class="ed-tab" data-edtab="depts">DEPTS</button>
       <button class="ed-tab" data-edtab="supp">SUPP</button>
-      <button class="ed-tab" data-edtab="promo">PROMOS</button>
     </div>
     <div id="ed-edit-panel">
       <button class="ed-scan-btn" id="ed-scan-btn"><span>⌘</span> Scan an item</button>
@@ -2366,7 +2378,6 @@
       <div class="ed-log-head"><span>Sous-départements</span><button class="ed-log-refresh" id="ed-depts-add">+ Add</button></div>
       <div class="ed-depts-list" id="ed-depts-list"><div class="empty-state">Loading…</div></div>
     </div>
-    <div id="ed-promo-panel" style="display:none;"></div>
     <div id="ed-supp-panel" style="display:none;">
       <div class="ed-log-head"><span>My suppliers</span><button class="ed-log-refresh" id="ed-supp-add">+ New</button></div>
       <div class="ed-depts-list" id="ed-supp-list"><div class="empty-state">Loading…</div></div>
@@ -2668,7 +2679,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v170</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v171</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3808,6 +3819,20 @@
   // ============ EDITOR VIEW (dedicated PIN-gated section) ============
   let _edCodeReader = null, _edScanControls = null;
 
+  function openPromoView() {
+    const ok = !!_posUnlocked;
+    $('#pm-lock').style.display = ok ? 'none' : 'flex';
+    $('#ed-promo-panel').style.display = ok ? 'block' : 'none';
+    if (ok) loadPromoManager();
+  }
+  function pmUnlock() {
+    _pdPendingCode = null;
+    _pmUnlockMode = true;
+    _pinBuffer = ''; renderPinDots(); $('#pin-error').textContent = '';
+    $('#pos-pin-modal').classList.add('open');
+  }
+  let _pmUnlockMode = false;
+
   function openEditorView() {
     // reflect unlock state
     if (_posUnlocked) {
@@ -3825,9 +3850,6 @@
     $('#ed-log-panel').style.display = tab === 'log' ? 'block' : 'none';
     $('#ed-depts-panel').style.display = tab === 'depts' ? 'block' : 'none';
     $('#ed-supp-panel').style.display = tab === 'supp' ? 'block' : 'none';
-    $('#ed-promo-panel').style.display = tab === 'promo' ? 'block' : 'none';
-    if (tab !== 'promo') pmStopScan();
-    if (tab === 'promo') loadPromoManager();
     if (tab === 'log') loadEditorLog();
     if (tab === 'depts') loadDeptManager();
     if (tab === 'supp') loadSupplierManager();
@@ -5206,6 +5228,8 @@
     let tagBottom = py + phh;
     ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.25)'; ctx.shadowBlur = pS * .14; ctx.shadowOffsetY = pS * .05;
     ctx.fillStyle = T.RED; flRound(ctx, px, py, pw, phh, phh * .24); ctx.fill(); ctx.restore();
+    // white sticker edge so the tag never melts into the red background
+    ctx.save(); ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(3, Math.round(pS * .075)); flRound(ctx, px, py, pw, phh, phh * .24); ctx.stroke(); ctx.restore();
     ctx.fillStyle = '#fff'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
     flFont(ctx, T.PRICE, pS); ctx.fillText(deal, px + padX, py + phh / 2 + pS * .03);
     if (unitTxt) { flFont(ctx, T.PRICE, pS * .45); ctx.fillText(unitTxt, px + padX + dw + pS * .06, py + phh / 2 + pS * .2); }
@@ -5682,6 +5706,9 @@
         if (_ecomUnlockMode) {
           _ecomUnlockMode = false;
           renderEcom();
+        } else if (_pmUnlockMode) {
+          _pmUnlockMode = false;
+          openPromoView();
         } else if (_edUnlockMode) {
           _edUnlockMode = false;
           openEditorView();
@@ -8852,6 +8879,8 @@
     $('#ecom-view').classList.toggle('active', name === 'ecom');
     $('#count-view').classList.toggle('active', name === 'count');
     $('#editor-view').classList.toggle('active', name === 'editor');
+    $('#promo-view').classList.toggle('active', name === 'promo');
+    if (name !== 'promo') pmStopScan();
     if (name !== 'scanner' && codeReader) stopScanner();
     if (name !== 'count' && countCodeReader) stopCountScanner();
     if (name !== 'editor' && _edCodeReader) stopEdScanner();
@@ -8864,6 +8893,7 @@
     }
     if (name === 'count') openCountView();
     if (name === 'editor') openEditorView();
+    if (name === 'promo') { if (!_posUnlocked) { openPromoView(); pmUnlock(); } else openPromoView(); }
   }
 
   // ============== ECOM CATALOG ==============
@@ -11238,6 +11268,7 @@
 
     // POS Editor view
     $('#ed-unlock-btn').addEventListener('click', edUnlock);
+    $('#pm-unlock-btn').addEventListener('click', pmUnlock);
     $('#ed-scan-btn').addEventListener('click', startEdScanner);
     $('#ed-scan-stop').addEventListener('click', stopEdScanner);
     $('#ed-search').addEventListener('input', (e) => edSearch(e.target.value));
