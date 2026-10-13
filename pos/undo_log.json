@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260926152141071848",
-   "applied_at": "2026-09-26T15:21:41",
-   "change": {
-    "code": "0062531500001",
-    "pos_title": "SUPREME PIEROGIES POMME TERRE OIGNON 454",
-    "size_num": 454,
-    "size_unit": "GR",
-    "price": 4.79,
-    "queued_at": "2026-09-26T19:21:38.718Z",
-    "id": "c1790450498718"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SUPREME PIEROGIES POMME TERRE OIGNON",
-     "F1744": "454.0",
-     "F22": "454 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SUPREME PIEROGIES POMME TERRE OIGNON 454",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "42.0000",
-     "F196": "42.0000",
-     "F1140": "3.5000",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "4.7900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.7900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260926152447102175",
    "applied_at": "2026-09-26T15:24:47",
    "change": {
@@ -24628,6 +24578,56 @@
     },
     "POS_TAB": {
      "F02": "NASH CIK JUS MULTIFRUIT 1930ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.7500",
+     "F196": "3.7500",
+     "F1140": "3.7500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013132520059436",
+   "applied_at": "2026-10-13T13:25:20",
+   "change": {
+    "code": "0482000368938",
+    "title": "NASH SIK JUS CERISES 1930ML",
+    "pos_title": "NASH SIK JUS CERISES 1930ML",
+    "size_num": 1930,
+    "size_unit": "ML",
+    "queued_at": "2026-10-13T17:24:26.801Z",
+    "id": "c1791912266801"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "NASH CIK JUS CERISES 1930ML",
+     "F1744": "1930.0",
+     "F22": "1930 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "NASH CIK JUS CERISES 1930ML",
      "F04": "1",
      "F81": "0",
      "F96": "0",
