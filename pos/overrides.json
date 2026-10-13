@@ -550,7 +550,31 @@
    "mp": "2/$5.00",
    "cost": 1.4,
    "at": "2026-10-13 14:06:40"
+  },
+  "0482028225012": {
+   "pt": "ROSINKA BOISSON AU CITRON",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "ML",
+   "sn": 2000.0,
+   "nm": "ROSINKA BOISSON AU CITRON",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 2.1,
+   "at": "2026-10-13 14:08:48"
   }
  },
- "updated": "2026-10-13 14:06:40"
+ "updated": "2026-10-13 14:08:48"
 }
