@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:36:56.965Z",
+ "updated": "2026-10-13T18:37:07.026Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -8177,23 +8177,6 @@
    "group": "2-grains-de-tournesol",
    "dept": "2",
    "weekly": 23.1,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482310581347": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-avk-bambuk",
-   "dept": "1",
-   "weekly": 30.75,
    "scale": false,
    "fresh": false,
    "v": {
