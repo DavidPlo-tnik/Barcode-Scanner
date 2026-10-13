@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260928094015192105",
-   "applied_at": "2026-09-28T09:40:15",
-   "change": {
-    "code": "0085007784004",
-    "pos_title": "TRESSE DE FROMAGE FUME 150GR",
-    "size_num": 150,
-    "size_unit": "GR",
-    "price": 6.99,
-    "queued_at": "2026-09-28T13:39:37.678Z",
-    "id": "c1790602777678"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "TRESSE DE FROMAGE FUME",
-     "F1744": "150.0",
-     "F22": "150GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "TRESSE DE FROMAGE FUME 150GR",
-     "F04": "32",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "7.0000",
-     "F196": "7.0000",
-     "F1140": "7.0000",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260928120418293086",
    "applied_at": "2026-09-28T12:04:18",
    "change": {
@@ -24641,6 +24591,66 @@
      "F38": "30.0000",
      "F196": "30.0000",
      "F1140": "1.5000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "7.0000",
+     "F31": "2.0",
+     "F1006": "2.0",
+     "F1007": "7.0000",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013135153132036",
+   "applied_at": "2026-10-13T13:51:53",
+   "change": {
+    "code": "0482025094206",
+    "title": "LVIVSKE BIÈRE SANS ALCOOL",
+    "pos_title": "LVIVSKE BIÈRE SANS ALCOOL",
+    "size_num": 450,
+    "size_unit": "ML",
+    "multibuy": {
+     "qty": 2,
+     "price": 7
+    },
+    "promo": {
+     "price": 7,
+     "qty": 2,
+     "start": null,
+     "end": null
+    },
+    "queued_at": "2026-10-13T17:51:42.505Z",
+    "id": "c1791913902505"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BIERE LWIWSKE 0%",
+     "F1744": "800.0",
+     "F22": "450ML",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "BIERE LWIWSKE 0% 450ML",
+     "F04": "81",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.1000",
+     "F196": "2.1000",
+     "F1140": "2.1000",
      "F27": "L-EPIC"
     },
     "PRICE_TAB": {
