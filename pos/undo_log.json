@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260927164240165788",
-   "applied_at": "2026-09-27T16:42:40",
-   "change": {
-    "code": "0062904581001",
-    "title": "CHAMPIGNONS MARINE SLIPPERY JACK",
-    "pos_title": "CHAMPIGNONS MARINE SLIPPERY JACK",
-    "size_num": 500,
-    "size_unit": "ML",
-    "queued_at": "2026-09-27T20:42:06.942Z",
-    "id": "c1790541726942"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "CHAMPIGNONS MARINE",
-     "F1744": "800.0",
-     "F22": "500ML",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "CHAMPIGNONS MARINE 500ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "39.0000",
-     "F196": "39.0000",
-     "F1140": "3.2500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260927164446120409",
    "applied_at": "2026-09-27T16:44:46",
    "change": {
@@ -24623,6 +24573,56 @@
     },
     "POS_TAB": {
      "F02": "KVAS DANILO CLASSIQUE",
+     "F04": "1",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "18.0000",
+     "F196": "18.0000",
+     "F1140": "3.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013133913069100",
+   "applied_at": "2026-10-13T13:39:13",
+   "change": {
+    "code": "0482000337093",
+    "title": "DANYLO KVAS CLASSIQUE",
+    "pos_title": "DANYLO KVAS CLASSIQUE",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "queued_at": "2026-10-13T17:39:17.397Z",
+    "id": "c1791913157397"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DANYLO KVAS CLASSIQUE",
+     "F1744": "2000.0",
+     "F22": "2000 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "DANYLO KVAS CLASSIQUE",
      "F04": "1",
      "F81": "1",
      "F96": "1",
