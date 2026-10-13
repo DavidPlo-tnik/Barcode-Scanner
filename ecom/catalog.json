@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:29:54.780Z",
+ "updated": "2026-10-13T18:30:08.530Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -16128,23 +16128,6 @@
    }
   },
   "0069252182120": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-toi-et-moi",
-   "dept": "1",
-   "weekly": 14.99,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0069252191120": {
    "added": "2026-09-06",
    "photos": [],
    "listed": false,
