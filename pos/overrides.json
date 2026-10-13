@@ -598,7 +598,31 @@
    "mp": null,
    "cost": 2.1,
    "at": "2026-10-13 14:10:00"
+  },
+  "0482028225011": {
+   "pt": "ROSINKA BOISSON DUCHESSE",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "ML",
+   "sn": 2000.0,
+   "nm": "ROSINKA BOISSON DUCHESSE",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 2.1,
+   "at": "2026-10-13 14:12:08"
   }
  },
- "updated": "2026-10-13 14:10:00"
+ "updated": "2026-10-13 14:12:08"
 }
