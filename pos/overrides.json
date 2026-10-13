@@ -646,7 +646,31 @@
    "mp": null,
    "cost": 2.1,
    "at": "2026-10-13 14:19:23"
+  },
+  "0460701877182": {
+   "pt": "ESSENTUKI EAU MINÉRALE NO 4",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "ML",
+   "sn": 500.0,
+   "nm": "ESSENTUKI EAU MINÉRALE NO 4",
+   "rp": 3.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.49,
+   "mp": null,
+   "cost": 2.4,
+   "at": "2026-10-13 14:20:33"
   }
  },
- "updated": "2026-10-13 14:19:23"
+ "updated": "2026-10-13 14:20:33"
 }
