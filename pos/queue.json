@@ -1,3 +1,24 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0482019303004",
+   "title": "OBOLON BIÈRE SANS ALCOOL",
+   "pos_title": "OBOLON BIÈRE SANS ALCOOL",
+   "size_num": 500,
+   "size_unit": "ML",
+   "multibuy": {
+    "qty": 2,
+    "price": 7
+   },
+   "promo": {
+    "price": 7,
+    "qty": 2,
+    "start": null,
+    "end": null
+   },
+   "deposit": 0.1,
+   "queued_at": "2026-10-13T17:50:23.068Z",
+   "id": "c1791913823068"
+  }
+ ]
 }
