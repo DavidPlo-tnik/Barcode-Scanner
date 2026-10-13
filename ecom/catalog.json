@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:33:28.839Z",
+ "updated": "2026-10-13T18:33:35.331Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -8855,23 +8855,6 @@
    "group": "1-ferarra-premium-coffee",
    "dept": "1",
    "weekly": 19.23,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482019887241": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-ferarra-premium-coffee",
-   "dept": "1",
-   "weekly": 18.26,
    "scale": false,
    "fresh": false,
    "v": {
