@@ -526,7 +526,31 @@
    "mp": "2/$7.00",
    "cost": 2.1,
    "at": "2026-10-13 14:03:28"
+  },
+  "0482000019548": {
+   "pt": "ZHYVCHYK BOISSON AUX POMMES",
+   "tf": 1,
+   "tp": 1,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "ML",
+   "sn": 500.0,
+   "nm": "ZHYVCHYK BOISSON AUX POMMES",
+   "rp": 5.0,
+   "ap": 1,
+   "pp": 5.0,
+   "ps": null,
+   "pe": null,
+   "rq": 2,
+   "pq": 2,
+   "lk": 0,
+   "price": 2.5,
+   "mp": "2/$5.00",
+   "cost": 1.4,
+   "at": "2026-10-13 14:06:40"
   }
  },
- "updated": "2026-10-13 14:03:28"
+ "updated": "2026-10-13 14:06:40"
 }
