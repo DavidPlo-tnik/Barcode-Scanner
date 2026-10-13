@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:35:28.313Z",
+ "updated": "2026-10-13T18:35:34.448Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -8804,23 +8804,6 @@
    "group": "1-mais-gonfle",
    "dept": "1",
    "weekly": 20.28,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482311540425": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-ferarra-premium-coffee",
-   "dept": "1",
-   "weekly": 19.23,
    "scale": false,
    "fresh": false,
    "v": {
