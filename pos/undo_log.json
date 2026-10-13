@@ -1,205 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260926151318158165",
-   "applied_at": "2026-09-26T15:13:18",
-   "change": {
-    "code": "0062531500017",
-    "pos_title": "SUPREME PIEROGIES BROCOLI POMME DE 454G",
-    "size_num": 907,
-    "size_unit": "",
-    "price": 4.79,
-    "queued_at": "2026-09-26T19:12:24.501Z",
-    "id": "c1790449944502"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SUPREME PIEROGIES BROCOLI",
-     "F1744": "907.0",
-     "F22": "454G ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "SUPREME PIEROGIES BROCOLI POMME DE 454G",
-     "F04": "21",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "42.0000",
-     "F196": "42.0000",
-     "F1140": "3.5000",
-     "F27": "ZV01"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260926151318251765",
-   "applied_at": "2026-09-26T15:13:18",
-   "change": {
-    "code": "0062531500015",
-    "pos_title": "SUPREME PIEROGIES POMME TERRE OIGNON 454",
-    "size_num": 454,
-    "size_unit": "GR",
-    "price": 4.79,
-    "queued_at": "2026-09-26T19:12:31.746Z",
-    "id": "c1790449951746"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SUPREME PIEROGIES POMME TERRE OIGNON",
-     "F1744": "454.0",
-     "F22": "454GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SUPREME PIEROGIES POMME TERRE OIGNON 454",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "42.0000",
-     "F196": "42.0000",
-     "F1140": "3.5000",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260926151424068281",
-   "applied_at": "2026-09-26T15:14:24",
-   "change": {
-    "code": "0062531500003",
-    "size_num": 454,
-    "size_unit": "GR",
-    "price": 4.79,
-    "queued_at": "2026-09-26T19:13:39.780Z",
-    "id": "c1790450019780"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SUPREME PIEROGIES CHOUCROUTE CHAMPIGNONS",
-     "F1744": "454.0",
-     "F22": "454GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SUPREME PIEROGIES CHOUCROUTE CHAMPIGNONS",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "42.0000",
-     "F196": "42.0000",
-     "F1140": "3.5000",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260926151424130681",
-   "applied_at": "2026-09-26T15:14:24",
-   "change": {
-    "code": "0062531500001",
-    "pos_title": "SUPREME PIEROGIES POMME TERRE OIGNON 454",
-    "size_num": 454,
-    "size_unit": "GR",
-    "price": 4.79,
-    "queued_at": "2026-09-26T19:13:48.711Z",
-    "id": "c1790450028711"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SUPREME PIEROGIES POMME TERRE OIGNON",
-     "F1744": "454.0",
-     "F22": "454GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SUPREME PIEROGIES POMME TERRE OIGNON 454",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "42.0000",
-     "F196": "42.0000",
-     "F1140": "3.5000",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260926152141071848",
    "applied_at": "2026-09-26T15:21:41",
    "change": {
@@ -24653,6 +24454,206 @@
      "F1014": "2026-10-14 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013132411261315",
+   "applied_at": "2026-10-13T13:24:11",
+   "change": {
+    "code": "0482000368937",
+    "title": "NASH SIK JUS DE POMME 1930ML",
+    "pos_title": "NASH SIK JUS DE POMME 1930ML",
+    "size_num": 1930,
+    "size_unit": "ML",
+    "queued_at": "2026-10-13T17:23:39.290Z",
+    "id": "c1791912219290"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "NASH CIK JUS DE POMME 1930ML",
+     "F1744": "1930.0",
+     "F22": "1930 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "NASH CIK JUS DE POMME 1930ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.5000",
+     "F196": "3.5000",
+     "F1140": "3.5000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013132411323715",
+   "applied_at": "2026-10-13T13:24:11",
+   "change": {
+    "code": "0482019226283",
+    "title": "NASH SIK JUS DE POMME RAISIN 1930ML",
+    "pos_title": "NASH SIK JUS DE POMME RAISIN 1930ML",
+    "size_num": 1930,
+    "size_unit": "ML",
+    "queued_at": "2026-10-13T17:23:49.128Z",
+    "id": "c1791912229128"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "NASH CIK JUS DE POMME RAISIN 1930ML",
+     "F1744": "1930.0",
+     "F22": "1930 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "NASH CIK JUS DE POMME RAISIN 1930ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.7500",
+     "F196": "3.7500",
+     "F1140": "3.7500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013132411401716",
+   "applied_at": "2026-10-13T13:24:11",
+   "change": {
+    "code": "0482026429001",
+    "title": "NASH SIK JUS DE POMME PECHE 1930ML",
+    "pos_title": "NASH SIK JUS DE POMME PECHE 1930ML",
+    "size_num": 1930,
+    "size_unit": "ML",
+    "queued_at": "2026-10-13T17:23:59.820Z",
+    "id": "c1791912239820"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "NASH CIK JUS DE POMME PECHE 1930ML",
+     "F1744": "1930.0",
+     "F22": "1930 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "NASH CIK JUS DE POMME PECHE 1930ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.4500",
+     "F196": "3.4500",
+     "F1140": "3.4500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013132411464116",
+   "applied_at": "2026-10-13T13:24:11",
+   "change": {
+    "code": "0482000368932",
+    "title": "NASH SIK JUS MULTIFRUIT 1930ML",
+    "pos_title": "NASH SIK JUS MULTIFRUIT 1930ML",
+    "size_num": 1930,
+    "size_unit": "ML",
+    "queued_at": "2026-10-13T17:24:09.234Z",
+    "id": "c1791912249234"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "NASH CIK JUS MULTIFRUIT 1930ML",
+     "F1744": "1930.0",
+     "F22": "1930 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "NASH CIK JUS MULTIFRUIT 1930ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "3.7500",
+     "F196": "3.7500",
+     "F1140": "3.7500",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
