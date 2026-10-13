@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260928220354072697",
-   "applied_at": "2026-09-28T22:03:54",
-   "change": {
-    "code": "0083839600256",
-    "title": "ZAKUSON CHAMPIGNONS WINE CAPS STROPHARIA",
-    "pos_title": "ZAKUSON CHAMPIGNONS WINE CAPS STROPHARIA",
-    "size_num": 500,
-    "size_unit": "ML",
-    "queued_at": "2026-09-29T02:02:55.104Z",
-    "id": "c1790647375104"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ZAKUSON  CHAMPIGNONS",
-     "F1744": "500.0",
-     "F22": "500ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "ZAKUSON  CHAMPIGNONS 500ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "33.0000",
-     "F196": "33.0000",
-     "F1140": "2.7500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260928220603147324",
    "applied_at": "2026-09-28T22:06:03",
    "change": {
@@ -24655,6 +24605,56 @@
     "size_unit": "ML",
     "queued_at": "2026-10-13T18:09:58.845Z",
     "id": "c1791914998845"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ROSINKA BOISSON GAZEUSE",
+     "F1744": "2.0",
+     "F22": "2LT",
+     "F23": "LT"
+    },
+    "POS_TAB": {
+     "F02": "ROSINKA BOISSON GAZEUSE 2LT",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "2.1000",
+     "F196": "2.1000",
+     "F1140": "2.1000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013141208583773",
+   "applied_at": "2026-10-13T14:12:08",
+   "change": {
+    "code": "0482028225011",
+    "title": "ROSINKA BOISSON DUCHESSE",
+    "pos_title": "ROSINKA BOISSON DUCHESSE",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "queued_at": "2026-10-13T18:11:20.039Z",
+    "id": "c1791915080039"
    },
    "before": {
     "OBJ_TAB": {
