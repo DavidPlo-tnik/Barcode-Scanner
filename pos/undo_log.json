@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260926152447102175",
-   "applied_at": "2026-09-26T15:24:47",
-   "change": {
-    "code": "0062531500016",
-    "pos_title": "SUPREME PIEROGIES CHEDDAR BACON 454GR",
-    "size_num": 454,
-    "size_unit": "GR",
-    "price": 4.79,
-    "queued_at": "2026-09-26T19:23:54.792Z",
-    "id": "c1790450634792"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SUPREME PIEROGIES CHEDDAR BACON",
-     "F1744": "454.0",
-     "F22": "454GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SUPREME PIEROGIES CHEDDAR BACON 454GR",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "42.0000",
-     "F196": "42.0000",
-     "F1140": "3.5000",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260926160556178712",
    "applied_at": "2026-09-26T16:05:56",
    "change": {
@@ -24646,6 +24596,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013132734192472",
+   "applied_at": "2026-10-13T13:27:34",
+   "change": {
+    "code": "0482002996133",
+    "title": "DARLIS JUS DE BOULEAU AVEC SUCRE 3000ML",
+    "pos_title": "DARLIS JUS DE BOULEAU AVEC SUCRE 3000ML",
+    "size_num": 3000,
+    "size_unit": "ML",
+    "queued_at": "2026-10-13T17:26:40.383Z",
+    "id": "c1791912400383"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DARLIS JUS DE BOULEAU 3000ML",
+     "F1744": "3000.0",
+     "F22": "3000 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "DARLIS JUS DE BOULEAU 3000ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "7.0000",
+     "F196": "7.0000",
+     "F1140": "7.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "11.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "11.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
