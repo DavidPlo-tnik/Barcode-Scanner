@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:33:58.075Z",
+ "updated": "2026-10-13T18:34:09.578Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -9413,23 +9413,6 @@
    "group": "1-boguslavna-zefir",
    "dept": "1",
    "weekly": 22.86,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482002789293": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-boguslavna-zefir",
-   "dept": "1",
-   "weekly": 22.46,
    "scale": false,
    "fresh": false,
    "v": {
