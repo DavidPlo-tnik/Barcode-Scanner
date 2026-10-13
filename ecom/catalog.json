@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:37:07.026Z",
+ "updated": "2026-10-13T18:37:21.589Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -8194,23 +8194,6 @@
    "group": "1-avk-bambuk",
    "dept": "1",
    "weekly": 25.9,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482310581356": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-avk-bambuk",
-   "dept": "1",
-   "weekly": 17.93,
    "scale": false,
    "fresh": false,
    "v": {
