@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260926151210890847",
-   "applied_at": "2026-09-26T15:12:10",
-   "change": {
-    "code": "0062531500002",
-    "pos_title": "SUPREME PIEROGIES CHEDDAR POMME TERRE 45",
-    "size_num": 454,
-    "size_unit": "GR",
-    "price": 4.79,
-    "queued_at": "2026-09-26T19:12:06.511Z",
-    "id": "c1790449926511"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SUPREME PIEROGIES CHEDDAR POMME TERRE",
-     "F1744": "454.0",
-     "F22": "454GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SUPREME PIEROGIES CHEDDAR POMME TERRE 45",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "42.0000",
-     "F196": "42.0000",
-     "F1140": "3.5000",
-     "F27": "L-GLOU"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260926151318158165",
    "applied_at": "2026-09-26T15:13:18",
    "change": {
@@ -24651,6 +24601,58 @@
      "F1014": null,
      "F1015": null,
      "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013122223352599",
+   "applied_at": "2026-10-13T12:22:23",
+   "change": {
+    "promo": {
+     "price": 2.99,
+     "qty": 1,
+     "start": "2026-10-08",
+     "end": "2026-10-21"
+    },
+    "code": "0482007857605",
+    "queued_at": "2026-10-13T16:21:54.267Z",
+    "id": "c1791908514267"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "CHUMAK HUILE DE TOURNESOL NON-RAFFINÉ",
+     "F1744": "900.0",
+     "F22": "900 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "CHUMAK HUILE DE TOURNESOL NON-RAFFINÉ",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "4.9000",
+     "F196": "4.9000",
+     "F1140": "4.9000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "STOR",
+     "F1133": "2.9900",
+     "F1216": "2026-10-08 00:00:00",
+     "F1217": "2026-10-14 00:00:00",
+     "F1013": "4.9900",
+     "F1014": "2026-10-14 00:00:00",
+     "F1015": "2359",
+     "F1011": "REG"
     }
    }
   }
