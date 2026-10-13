@@ -1,3 +1,23 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0482000019548",
+   "title": "ZHYVCHYK BOISSON AUX POMMES",
+   "pos_title": "ZHYVCHYK BOISSON AUX POMMES",
+   "size_num": 500,
+   "size_unit": "ML",
+   "multibuy": {
+    "qty": 2,
+    "price": 5
+   },
+   "promo": {
+    "price": 5,
+    "qty": 2,
+    "start": null,
+    "end": null
+   },
+   "queued_at": "2026-10-13T18:06:17.523Z",
+   "id": "c1791914777523"
+  }
+ ]
 }
