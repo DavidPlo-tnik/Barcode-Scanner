@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260927163414210099",
-   "applied_at": "2026-09-27T16:34:14",
-   "change": {
-    "code": "0062904581007",
-    "title": "CHAMPIGNONS MARINE FOREST MIX",
-    "pos_title": "CHAMPIGNONS MARINE FOREST MIX",
-    "size_num": 500,
-    "size_unit": "ML",
-    "queued_at": "2026-09-27T20:33:52.053Z",
-    "id": "c1790541232053"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "CHAMPIGNONS MARINE",
-     "F1744": "800.0",
-     "F22": "500ML",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "CHAMPIGNONS MARINE 500ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "39.0000",
-     "F196": "39.0000",
-     "F1140": "3.2500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260927163623409526",
    "applied_at": "2026-09-27T16:36:23",
    "change": {
@@ -24625,6 +24575,54 @@
      "F02": "DARLIS JUS DE BOULEAU AUX CERISES 3000ML",
      "F04": "1",
      "F81": "1",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "7.0000",
+     "F196": "7.0000",
+     "F1140": "7.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "11.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "11.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013133148055718",
+   "applied_at": "2026-10-13T13:31:48",
+   "change": {
+    "code": "0426012339654",
+    "size_num": 3000,
+    "size_unit": "ML",
+    "queued_at": "2026-10-13T17:31:25.082Z",
+    "id": "c1791912685082"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FLAVORS JUS DE TOMATE",
+     "F1744": "3000.0",
+     "F22": "3000 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "FLAVORS JUS DE TOMATE 3000ML",
+     "F04": "1",
+     "F81": "0",
      "F96": "0",
      "F05": null,
      "F82": null,
