@@ -118,7 +118,31 @@
    "mp": null,
    "cost": 1.0,
    "at": "2026-10-13 11:16:15"
+  },
+  "0482007857605": {
+   "pt": "CHUMAK HUILE DE TOURNESOL NON-RAFFINÉ",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 900.0,
+   "nm": "CHUMAK HUILE DE TOURNESOL NON-RAFFINÉ",
+   "rp": 4.99,
+   "ap": 1,
+   "pp": 2.99,
+   "ps": "2026-10-08",
+   "pe": "2026-10-21",
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 2.99,
+   "mp": null,
+   "cost": 4.9,
+   "at": "2026-10-13 12:22:23"
   }
  },
- "updated": "2026-10-13 11:16:15"
+ "updated": "2026-10-13 12:22:23"
 }
