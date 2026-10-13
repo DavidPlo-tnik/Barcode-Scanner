@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260928121039276955",
-   "applied_at": "2026-09-28T12:10:39",
-   "change": {
-    "code": "0000000004068",
-    "pos_title": "OIGNON VERT",
-    "size_num": 1,
-    "size_unit": "",
-    "queued_at": "2026-09-28T16:10:09.272Z",
-    "id": "c1790611809272"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "Oignon vert                     (48) 1un",
-     "F1744": "1.0",
-     "F22": "1 ",
-     "F23": "UN1"
-    },
-    "POS_TAB": {
-     "F02": "OIGNON VERT",
-     "F04": "41",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": "1"
-    },
-    "COST_TAB": {
-     "F38": "12.0000",
-     "F196": "12.0000",
-     "F1140": "0.2500",
-     "F27": "L-CANADA"
-    },
-    "PRICE_TAB": {
-     "F30": "1.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "1.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": null
-    }
-   }
-  },
-  {
    "undo_id": "u20260928121246151978",
    "applied_at": "2026-09-28T12:12:46",
    "change": {
@@ -24678,6 +24629,66 @@
      "F1007": "7.0000",
      "F113": "REG",
      "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013140640148396",
+   "applied_at": "2026-10-13T14:06:40",
+   "change": {
+    "code": "0482000019548",
+    "title": "ZHYVCHYK BOISSON AUX POMMES",
+    "pos_title": "ZHYVCHYK BOISSON AUX POMMES",
+    "size_num": 500,
+    "size_unit": "ML",
+    "multibuy": {
+     "qty": 2,
+     "price": 5
+    },
+    "promo": {
+     "price": 5,
+     "qty": 2,
+     "start": null,
+     "end": null
+    },
+    "queued_at": "2026-10-13T18:06:17.523Z",
+    "id": "c1791914777523"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZHIVCHIK AVEC POMME",
+     "F1744": "500.0",
+     "F22": "500 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZHIVCHIK AVEC POMME 500ML",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "1.4000",
+     "F196": "1.4000",
+     "F1140": "1.4000",
+     "F27": "0000202257"
+    },
+    "PRICE_TAB": {
+     "F30": "5.0000",
+     "F31": "2.0",
+     "F1006": "2.0",
+     "F1007": "5.0000",
+     "F113": "STOR",
+     "F1133": "5.0000",
      "F1216": null,
      "F1217": null,
      "F1013": null,
