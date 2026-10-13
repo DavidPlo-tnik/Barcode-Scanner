@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:36:33.819Z",
+ "updated": "2026-10-13T18:36:49.162Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -6886,23 +6886,6 @@
    "group": "1-brest-litovsk-beurre",
    "dept": "1",
    "weekly": 38.4,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0481026804988": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-brest-litovsk-beurre",
-   "dept": "1",
-   "weekly": 35.53,
    "scale": false,
    "fresh": false,
    "v": {
