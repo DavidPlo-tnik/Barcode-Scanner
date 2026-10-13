@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260927164857111250",
-   "applied_at": "2026-09-27T16:48:57",
-   "change": {
-    "code": "0062904581006",
-    "title": "CHAMPIGNONS SHIITAKE",
-    "pos_title": "CHAMPIGNONS SHIITAKE",
-    "size_num": 500,
-    "size_unit": "ML",
-    "queued_at": "2026-09-27T20:48:33.820Z",
-    "id": "c1790542113820"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "CHAMPIGNONS NAMECO",
-     "F1744": "800.0",
-     "F22": "500ML",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "CHAMPIGNONS NAMECO 500ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "39.0000",
-     "F196": "39.0000",
-     "F1140": "3.2500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260928093905241582",
    "applied_at": "2026-09-28T09:39:05",
    "change": {
@@ -24621,6 +24571,54 @@
     },
     "POS_TAB": {
      "F02": "KVAS MONASTYRSKIY OKROSHKA",
+     "F04": "1",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "18.0000",
+     "F196": "18.0000",
+     "F1140": "3.0000",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013134432064461",
+   "applied_at": "2026-10-13T13:44:32",
+   "change": {
+    "code": "0482000077028",
+    "size_num": 2000,
+    "size_unit": "ML",
+    "queued_at": "2026-10-13T17:43:44.535Z",
+    "id": "c1791913424535"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "KVAS MONASTYRSKIY",
+     "F1744": "2000.0",
+     "F22": "2000 ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "KVAS MONASTYRSKIY",
      "F04": "1",
      "F81": "1",
      "F96": "1",
