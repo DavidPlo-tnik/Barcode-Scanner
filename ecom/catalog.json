@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:32:53.408Z",
+ "updated": "2026-10-13T18:33:16.539Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -14171,23 +14171,6 @@
    "group": "1-korolivski-smak-sauce",
    "dept": "1",
    "weekly": 14.01,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0844529109857": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": null,
-   "dept": "1",
-   "weekly": 17.46,
    "scale": false,
    "fresh": false,
    "v": {
