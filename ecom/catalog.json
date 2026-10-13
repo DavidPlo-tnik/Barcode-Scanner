@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T18:30:08.530Z",
+ "updated": "2026-10-13T18:31:08.968Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -9150,23 +9150,6 @@
    "group": "1-foie-de-morue",
    "dept": "1",
    "weekly": 28.24,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0062904577726": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-foie-de-morue",
-   "dept": "1",
-   "weekly": 12.96,
    "scale": false,
    "fresh": false,
    "v": {
