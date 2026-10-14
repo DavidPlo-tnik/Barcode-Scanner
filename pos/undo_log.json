@@ -1,154 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260929201857230387",
-   "applied_at": "2026-09-29T20:18:57",
-   "change": {
-    "code": "0426042846484",
-    "pos_title": "EMELA  ARGOUSIER AU SUCRE 350G",
-    "size_num": 350,
-    "size_unit": "GR",
-    "queued_at": "2026-09-30T00:18:06.281Z",
-    "id": "c1790727486281"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "EMELA  ARGOUSIER AU SUCRE",
-     "F1744": "350.0",
-     "F22": "350 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "EMELA  ARGOUSIER AU SUCRE 350G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5400",
-     "F196": "3.5400",
-     "F1140": "3.5400",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260929202003234103",
-   "applied_at": "2026-09-29T20:20:03",
-   "change": {
-    "code": "0426042846099",
-    "title": "EMELA CONFITURE DE CERISES",
-    "pos_title": "EMELA CONFITURE DE CERISES",
-    "size_num": 630,
-    "size_unit": "GR",
-    "queued_at": "2026-09-30T00:19:12.709Z",
-    "id": "c1790727552709"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "EMELA CONFITURE DE CERICES",
-     "F1744": "200.0",
-     "F22": "630G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "EMELA CONFITURE DE CERICES 630G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "4.2900",
-     "F196": "4.2900",
-     "F1140": "4.2900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "6.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "6.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260929202214224027",
-   "applied_at": "2026-09-29T20:22:14",
-   "change": {
-    "code": "0426042846101",
-    "pos_title": "EMELA CONFITURE DE FRAISE 630G",
-    "size_num": 630,
-    "size_unit": "GR",
-    "queued_at": "2026-09-30T00:22:08.477Z",
-    "id": "c1790727728477"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "EMELA CONFITURE DE FRAISE",
-     "F1744": "630.0",
-     "F22": "630G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "EMELA CONFITURE DE FRAISE 630G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "4.3000",
-     "F196": "4.3000",
-     "F1140": "4.3000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "6.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "6.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260929202421171299",
    "applied_at": "2026-09-29T20:24:21",
    "change": {
@@ -24815,6 +24667,171 @@
      "F1014": "2026-10-15 00:00:00",
      "F1015": "0000",
      "F1011": "STOR"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014151805039398",
+   "applied_at": "2026-10-14T15:18:05",
+   "change": {
+    "code": "0762220222437",
+    "size_num": 125,
+    "size_unit": "GR",
+    "price": 4.99,
+    "promo": {
+     "price": 3.99,
+     "qty": 1,
+     "start": "2026-10-14",
+     "end": "2026-10-21"
+    },
+    "queued_at": "2026-10-14T19:17:19.391Z",
+    "id": "c1792005439391"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LUX CROUSTILLES FROMAGE",
+     "F1744": "125.0",
+     "F22": "125 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LUX CROUSTILLES FROMAGE",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "66.0000",
+     "F196": "66.0000",
+     "F1140": "3.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014151805101798",
+   "applied_at": "2026-10-14T15:18:05",
+   "change": {
+    "code": "0762220228559",
+    "size_num": 125,
+    "size_unit": "GR",
+    "price": 4.99,
+    "promo": {
+     "price": 3.99,
+     "qty": 1,
+     "start": "2026-10-14",
+     "end": "2026-10-21"
+    },
+    "queued_at": "2026-10-14T19:17:36.536Z",
+    "id": "c1792005456536"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LUX CROUSTILLES SAUMON",
+     "F1744": "125.0",
+     "F22": "125 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LUX CROUSTILLES SAUMON",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "66.0000",
+     "F196": "66.0000",
+     "F1140": "3.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014151805148598",
+   "applied_at": "2026-10-14T15:18:05",
+   "change": {
+    "code": "0762220226794",
+    "size_num": 125,
+    "size_unit": "GR",
+    "price": 4.99,
+    "promo": {
+     "price": 3.99,
+     "qty": 1,
+     "start": "2026-10-14",
+     "end": "2026-10-21"
+    },
+    "queued_at": "2026-10-14T19:18:08.864Z",
+    "id": "c1792005488864"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LUX CROUSTILLES CHAMPIGNONS",
+     "F1744": "125.0",
+     "F22": "125 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LUX CROUSTILLES CHAMPIGNONS",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "66.0000",
+     "F196": "66.0000",
+     "F1140": "3.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
