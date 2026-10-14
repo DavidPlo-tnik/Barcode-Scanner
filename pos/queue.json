@@ -1,17 +1,3 @@
 {
- "items": [
-  {
-   "code": "0020234500000",
-   "pos_title": "SALAMI LVIVSKA KG",
-   "price": 19.99,
-   "promo": {
-    "price": 17.99,
-    "qty": 1,
-    "start": "2026-10-15",
-    "end": "2026-10-21"
-   },
-   "queued_at": "2026-10-14T19:33:32.897Z",
-   "id": "c1792006412897"
-  }
- ]
+ "items": []
 }
