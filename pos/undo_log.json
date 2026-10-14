@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20261001191928094571",
-   "applied_at": "2026-10-01T19:19:28",
-   "change": {
-    "code": "0080138688701",
-    "title": "SALADE D'ALGUES CONGELÉE",
-    "pos_title": "SALADE D'ALGUES CONGELÉE",
-    "size_num": 1000,
-    "size_unit": "GR",
-    "queued_at": "2026-10-01T23:19:16.144Z",
-    "id": "c1790896756144"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": " SALADE D ALGUES",
-     "F1744": "454.0",
-     "F22": "1000GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": " SALADE D ALGUES 1000GR",
-     "F04": "4",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "6.3000",
-     "F196": "6.3000",
-     "F1140": "6.3000",
-     "F27": "L-ISABELLE"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20261001192134175992",
    "applied_at": "2026-10-01T19:21:34",
    "change": {
@@ -24907,6 +24857,56 @@
      "F29": "crev.nordique décortiqué          4 DISC",
      "F1744": "1000.0",
      "F22": "1000G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "CREVETTES NORDIQUES DECORTIQ",
+     "F04": "24",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "129.3900",
+     "F196": "129.3900",
+     "F1140": "28.5000",
+     "F27": "ZA03"
+    },
+    "PRICE_TAB": {
+     "F30": "41.8600",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "41.8600",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014175323006583",
+   "applied_at": "2026-10-14T17:53:23",
+   "change": {
+    "code": "0020831300000",
+    "pos_title": "CREVETTES NORDIQUES DECORTIQ",
+    "size_num": 1000,
+    "size_unit": "",
+    "price": 79.99,
+    "queued_at": "2026-10-14T21:53:16.896Z",
+    "id": "c1792014796896"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "crev.nordique décortiqué          4 DISC",
+     "F1744": "1000.0",
+     "F22": "1000 ",
      "F23": "G"
     },
     "POS_TAB": {
