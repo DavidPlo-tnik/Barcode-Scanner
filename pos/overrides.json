@@ -886,7 +886,31 @@
    "mp": null,
    "cost": 25.2,
    "at": "2026-10-14 09:51:46"
+  },
+  "0020235500000": {
+   "pt": "SAUCISSE DE POULET KG",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "GR",
+   "sn": null,
+   "nm": "SAUCISSE DE POULET",
+   "rp": 15.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 15.99,
+   "mp": null,
+   "cost": 8.99,
+   "at": "2026-10-14 13:49:13"
   }
  },
- "updated": "2026-10-14 09:51:46"
+ "updated": "2026-10-14 13:49:13"
 }
