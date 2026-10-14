@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260929163040190378",
-   "applied_at": "2026-09-29T16:30:40",
-   "change": {
-    "code": "0000000000101",
-    "pos_title": "CAVIAR DE SAUMON ROUGE",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-29T20:30:22.583Z",
-    "id": "c1790713822583"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "GRAINES DE TOURNESOL ",
-     "F1744": "500.0",
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "CAVIAR DE SAUMON ROUGE",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260929163147161295",
    "applied_at": "2026-09-29T16:31:47",
    "change": {
@@ -24717,6 +24668,53 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "14.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014135935105924",
+   "applied_at": "2026-10-14T13:59:35",
+   "change": {
+    "code": "0023881600000",
+    "price": 39.99,
+    "queued_at": "2026-10-14T17:58:58.069Z",
+    "id": "c1792000738069"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "FLANCS DE SAUMON FUME",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "FLANCS DE SAUMON FUME",
+     "F04": "24",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "34.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "34.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
