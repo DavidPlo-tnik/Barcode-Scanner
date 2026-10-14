@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260928223823275931",
-   "applied_at": "2026-09-28T22:38:23",
-   "change": {
-    "code": "0083839600972",
-    "title": "ZAKUSON CHAMPIGNONS MÉLANGÉS NAMEKO OPIATA",
-    "pos_title": "ZAKUSON CHAMPIGNONS MÉLANGÉS NAMEKO",
-    "size_num": 1000,
-    "size_unit": "ML",
-    "queued_at": "2026-09-29T02:37:54.337Z",
-    "id": "c1790649474337"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ZAKUSON NAMECO OPIATA",
-     "F1744": "540.0",
-     "F22": "1L",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "ZAKUSON NAMECO OPIATA 1L",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "57.9000",
-     "F196": "57.9000",
-     "F1140": "4.8250",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "6.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "6.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260928224030400555",
    "applied_at": "2026-09-28T22:40:30",
    "change": {
@@ -24695,6 +24645,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "4.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013210816332413",
+   "applied_at": "2026-10-13T21:08:16",
+   "change": {
+    "code": "0006969401723",
+    "title": "MR. GARDEN BOISSON AU JUS DE CERISE SURE",
+    "pos_title": "MR. GARDEN BOISSON AU JUS DE CERISE SURE",
+    "size_num": 1000,
+    "size_unit": "ML",
+    "queued_at": "2026-10-14T01:08:11.920Z",
+    "id": "c1791940091920"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "MR GARDEN NECTAR DE CERISE",
+     "F1744": "1.0",
+     "F22": "1LT",
+     "F23": "LT"
+    },
+    "POS_TAB": {
+     "F02": "MR GARDEN NECTAR DE CERISE 1LT",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "21.0000",
+     "F196": "21.0000",
+     "F1140": "3.5000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
