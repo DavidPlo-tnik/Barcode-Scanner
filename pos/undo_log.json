@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260929163358263926",
-   "applied_at": "2026-09-29T16:33:58",
-   "change": {
-    "code": "0460701235209",
-    "title": "MARTIN GRAINES DE TOURNESOL",
-    "pos_title": "MARTIN GRAINES DE TOURNESOL",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-29T20:33:03.651Z",
-    "id": "c1790713983651"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "GRAINES OT MARTINA ",
-     "F1744": "500.0",
-     "F22": "500GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "GRAINES OT MARTINA  500GR",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "6.9900",
-     "F196": "6.9900",
-     "F1140": "6.9900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "9.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "9.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260929163504345642",
    "applied_at": "2026-09-29T16:35:04",
    "change": {
@@ -24721,6 +24671,54 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "26.4300",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014140153244167",
+   "applied_at": "2026-10-14T14:01:53",
+   "change": {
+    "code": "0023881800000",
+    "pos_title": "VOMER SECHE  GR",
+    "price": 39.99,
+    "queued_at": "2026-10-14T18:01:37.115Z",
+    "id": "c1792000897115"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VOMER SECHE ",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "VOMER SECHE  GR",
+     "F04": "24",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "59.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "59.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
