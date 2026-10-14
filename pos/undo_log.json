@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260928223717100615",
-   "applied_at": "2026-09-28T22:37:17",
-   "change": {
-    "code": "0083839600974",
-    "title": "ZAKUSON CHAMPIGNONS MARINÉS MÉLANGÉS",
-    "size_num": 1000,
-    "size_unit": "ML",
-    "queued_at": "2026-09-29T02:36:10.651Z",
-    "id": "c1790649370651"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ZAKUSON MELANGES",
-     "F1744": "540.0",
-     "F22": "1L",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "ZAKUSON MELANGES 1L",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "55.6000",
-     "F196": "55.6000",
-     "F1140": "4.6333",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "6.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "6.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260928223823275931",
    "applied_at": "2026-09-28T22:38:23",
    "change": {
@@ -24693,6 +24644,57 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013210604369781",
+   "applied_at": "2026-10-13T21:06:04",
+   "change": {
+    "code": "0006969401701",
+    "title": "MR. GARDEN COCKTAIL DE CAROTTE",
+    "pos_title": "MR. GARDEN COCKTAIL DE CAROTTE",
+    "size_num": 750,
+    "size_unit": "ML",
+    "deposit": 0.1,
+    "queued_at": "2026-10-14T01:05:39.941Z",
+    "id": "c1791939939941"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "MR GARDEN COCKTAIL DE CAROTTES",
+     "F1744": "1.0",
+     "F22": "1LT",
+     "F23": "LT"
+    },
+    "POS_TAB": {
+     "F02": "MR GARDEN COCKTAIL DE CAROTTES 1LT",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": "2",
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "20.0000",
+     "F196": "20.0000",
+     "F1140": "3.3333",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "4.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "4.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
