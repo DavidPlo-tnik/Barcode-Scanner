@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260929200045353388",
-   "applied_at": "2026-09-29T20:00:45",
-   "change": {
-    "code": "0482014537238",
-    "pos_title": "DNIPRO CONFITURE FRAISE 395GR",
-    "size_num": 395,
-    "size_unit": "GR",
-    "queued_at": "2026-09-29T23:59:38.179Z",
-    "id": "c1790726378179"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "DNIPRO CONFITURE FRAISE",
-     "F1744": "395.0",
-     "F22": "395GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "DNIPRO CONFITURE FRAISE 395GR",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5000",
-     "F196": "3.5000",
-     "F1140": "3.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260929200151191153",
    "applied_at": "2026-09-29T20:01:51",
    "change": {
@@ -24781,6 +24732,53 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "2.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014150802051539",
+   "applied_at": "2026-10-14T15:08:02",
+   "change": {
+    "code": "0023881800000",
+    "pos_title": "VOMER SECHE  GR",
+    "queued_at": "2026-10-14T19:07:14.655Z",
+    "id": "c1792004834655"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "VOMER SECHE ",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "VOMER SECHE  GR",
+     "F04": "24",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "39.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "39.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
