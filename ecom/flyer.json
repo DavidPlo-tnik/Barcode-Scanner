@@ -145,7 +145,16 @@
    },
    "hero": "0482309790387",
    "note": "2 saveurs disponibles",
-   "name": "Veladis"
+   "name": "Veladis",
+   "ph": {
+    "post": {
+     "0482309790387_1788827216678.webp": {
+      "dx": 0,
+      "dy": 0,
+      "s": 1.203068632538885
+     }
+    }
+   }
   },
   {
    "id": "gmv8hzpfx",
