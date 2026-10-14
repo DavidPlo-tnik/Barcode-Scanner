@@ -2130,7 +2130,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v179</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v180</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2705,7 +2705,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v179</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v180</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4034,17 +4034,13 @@
   // ── Planning the next promo week ────────────────────────────────────
   // The usual rhythm: planned Wednesday, active Thursday → Wednesday. The next
   // week starts the day after most current promos end (else next Thursday).
-  function pmNextWeek(rows) {
+  // The week being planned is fixed by the calendar: the next Thursday → Wednesday.
+  // (It used to follow the promos' end dates, so every KEEP moved the week and all
+  // earlier keep/drop choices "disappeared" -- that was the bug.)
+  function pmNextWeek() {
     const today = pmToday();
-    const cnt = {};
-    (rows || _pm.rows || []).filter(r => r.st === 'current').forEach(r => { cnt[r.pe] = (cnt[r.pe] || 0) + 1; });
-    let best = null;
-    for (const k in cnt) if (!best || cnt[k] > cnt[best] || (cnt[k] === cnt[best] && k < best)) best = k;
-    let start = best ? pmAddDays(best, 1) : null;
-    if (!start || start <= today) {
-      const d = new Date(today + 'T12:00:00');
-      start = pmAddDays(today, ((4 - d.getDay() + 7) % 7) || 7);
-    }
+    const d = new Date(today + 'T12:00:00');
+    const start = pmAddDays(today, ((4 - d.getDay() + 7) % 7) || 7);   // next Thursday (a Thursday itself → the following one)
     return { start, end: pmAddDays(start, 6) };
   }
   function pmWeekLocal() { try { return JSON.parse(localStorage.getItem('pmWeeks') || '{}'); } catch (e) { return {}; } }
@@ -4052,12 +4048,22 @@
   function pmWeekLog(nw) {
     _pm.log.weeks = _pm.log.weeks || {};
     const loc = pmWeekLocal()[nw.start];
-    if (loc && (!_pm.log.weeks[nw.start] || (loc.at || 0) > (_pm.log.weeks[nw.start].at || 0))) _pm.log.weeks[nw.start] = { drop: loc.drop.slice(), at: loc.at };
-    return _pm.log.weeks[nw.start] || (_pm.log.weeks[nw.start] = { drop: [], at: 0 });
+    if (loc && (!_pm.log.weeks[nw.start] || (loc.at || 0) > (_pm.log.weeks[nw.start].at || 0))) _pm.log.weeks[nw.start] = { drop: loc.drop.slice(), at: loc.at, fixed: loc.fixed };
+    const wk = _pm.log.weeks[nw.start] || (_pm.log.weeks[nw.start] = { drop: [], at: 0 });
+    if (!wk.fixed) {                       // drops saved under the shifted weeks (bug) belong to this one
+      const allLoc = pmWeekLocal();
+      Object.keys(_pm.log.weeks).concat(Object.keys(allLoc)).forEach(k => {
+        if (k > nw.start && k <= pmAddDays(nw.start, 21)) {
+          [(_pm.log.weeks[k] || {}).drop, (allLoc[k] || {}).drop].forEach(list => (list || []).forEach(c => { if (!wk.drop.includes(c)) wk.drop.push(c); }));
+        }
+      });
+      wk.fixed = 1;
+    }
+    return wk;
   }
   function pmWeekPersist(nw) {
     const wk = pmWeekLog(nw); wk.at = Date.now() + 1;
-    try { const all = pmWeekLocal(); all[nw.start] = { drop: wk.drop, at: wk.at };
+    try { const all = pmWeekLocal(); all[nw.start] = { drop: wk.drop, at: wk.at, fixed: 1 };
       Object.keys(all).forEach(k => { if (k < pmAddDays(pmToday(), -21)) delete all[k]; });
       localStorage.setItem('pmWeeks', JSON.stringify(all)); } catch (e) {}
     Object.keys(_pm.log.weeks || {}).forEach(k => { if (k < pmAddDays(pmToday(), -21)) delete _pm.log.weeks[k]; });
@@ -4068,11 +4074,11 @@
   function pmReviewRows(nw, rows) {
     rows = rows || pmCollect();
     const wk = pmWeekLog(nw);
-    return rows.filter(r => r.st === 'current' && r.pe < nw.start && !wk.drop.includes(resolveCode(r.code)) && !_pm.keeping.has(resolveCode(r.code)));
+    return rows.filter(r => r.st === 'current' && r.pe < nw.end && !wk.drop.includes(resolveCode(r.code)) && !_pm.keeping.has(resolveCode(r.code)));
   }
   function pmReviewHtml(list, nw) {
     const inCat = (_ecomCatalog && _ecomCatalog.items) || {};
-    return `<div class="pm-rv-head"><b>${list.length} promo${list.length > 1 ? 's' : ''} end before ${pmFmt(nw.start)}</b><span>Keep = runs one more week (same start date, ends ${pmFmt(nw.end)})</span></div>
+    return `<div class="pm-rv-head"><b>${list.length} promo${list.length > 1 ? 's' : ''} end before ${pmFmt(nw.end)}</b><span>Keep = runs one more week (same start date, ends ${pmFmt(nw.end)})</span></div>
       ${list.map(r => {
         const p = DATA.products[resolveCode(r.code)];
         const ent = inCat[resolveCode(r.code)] || inCat[r.code];
@@ -4155,8 +4161,8 @@
     // UPCOMING = the week being planned: scheduled promos + current ones that run into it
     const review = pmReviewRows(nw, rows);
     const wkLog = pmWeekLog(nw);
-    const dropped = rows.filter(r => r.st === 'current' && r.pe < nw.start && wkLog.drop.includes(resolveCode(r.code)));
-    by.upcoming = by.upcoming.concat(by.current.filter(r => r.pe >= nw.start).map(r => Object.assign({}, r, { cont: true })));
+    const dropped = rows.filter(r => r.st === 'current' && r.pe < nw.end && wkLog.drop.includes(resolveCode(r.code)));
+    by.upcoming = by.upcoming.concat(by.current.filter(r => r.pe >= nw.end && !_pm.keeping.has(resolveCode(r.code))).map(r => Object.assign({}, r, { cont: true })));
     // CURRENT = website order: the order you set by dragging (catalog.specialsOrder), new ones after
     const ord = ((_ecomCatalog && _ecomCatalog.specialsOrder) || []).map(c => resolveCode(c));
     const rank = (r) => { const i = ord.indexOf(resolveCode(r.code)); return i < 0 ? 9999 : i; };
@@ -4564,7 +4570,7 @@
     const nw = pmNextWeek(all);
     _fl.week = nw;
     let src;
-    if (_fl.mode === 'next') src = all.filter(r => r.st !== 'ended' && (r.ps || '0000') <= nw.end && r.pe >= nw.start);
+    if (_fl.mode === 'next') { const wk = pmWeekLog(nw); src = all.filter(r => r.st !== 'ended' && (r.ps || '0000') <= nw.end && r.pe >= nw.start && !(r.st === 'current' && r.pe < nw.end && wk.drop.includes(resolveCode(r.code)))); }
     else src = all.filter(r => r.st === 'current');
     const cat = _ecomCatalog || { items: {} };
     _fl.rows = src.map(r => {
