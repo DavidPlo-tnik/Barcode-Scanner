@@ -1098,7 +1098,30 @@
    "mp": null,
    "cost": 5.6,
    "at": "2026-10-14 14:39:27"
+  },
+  "0023881500000": {
+   "pt": "FLANCS DE SAUMON FUMÉ PLAVNIKI",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 24,
+   "un": "GR",
+   "sn": null,
+   "nm": "FLANCS DE SAUMON FUMÉ PLAVNIKI",
+   "rp": 24.99,
+   "ap": 1,
+   "pp": 19.99,
+   "ps": "2026-10-08",
+   "pe": "2026-10-21",
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 19.99,
+   "mp": null,
+   "at": "2026-10-14 14:40:34"
   }
  },
- "updated": "2026-10-14 14:39:27"
+ "updated": "2026-10-14 14:40:34"
 }
