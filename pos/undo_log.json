@@ -1,156 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20261001111008139650",
-   "applied_at": "2026-10-01T11:10:08",
-   "change": {
-    "code": "0088764300068",
-    "pos_title": "WHITE EAGLE KATZUBY CORNICHONS 750ML",
-    "size_num": 750,
-    "size_unit": "ML",
-    "price": 3.99,
-    "queued_at": "2026-10-01T15:09:34.670Z",
-    "id": "c1790867374670"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "WHITE EAGLE KATZUBY CORNICHONS",
-     "F1744": "750.0",
-     "F22": "750ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "WHITE EAGLE KATZUBY CORNICHONS 750ML",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.3900",
-     "F196": "2.3900",
-     "F1140": "2.3900",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20261001111118261773",
-   "applied_at": "2026-10-01T11:11:18",
-   "change": {
-    "code": "0000000004040",
-    "pos_title": "PRUNE NOIRE",
-    "size_num": 1000,
-    "size_unit": "",
-    "price": 8.8,
-    "queued_at": "2026-10-01T15:10:16.323Z",
-    "id": "c1790867416323"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "Prune noire gr50-70 (20)             /lb",
-     "F1744": "1000.0",
-     "F22": "1000G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "PRUNE NOIRE",
-     "F04": "41",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "41.5000",
-     "F196": "41.5000",
-     "F1140": "4.5746",
-     "F27": "ZJ01"
-    },
-    "PRICE_TAB": {
-     "F30": "6.5900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "6.5900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20261001152810168980",
-   "applied_at": "2026-10-01T15:28:10",
-   "change": {
-    "code": "0482000117171",
-    "title": "EKO HMELI SYNELI",
-    "pos_title": "EKO HMELI SYNELI",
-    "size_num": 15,
-    "size_unit": "GR",
-    "queued_at": "2026-10-01T19:28:06.246Z",
-    "id": "c1790882886246"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ECO SPICES",
-     "F1744": "20.0",
-     "F22": "20G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "ECO SPICES 20G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "30.0000",
-     "F196": "30.0000",
-     "F1140": "0.8571",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "1.2900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "1.2900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20261001185640103166",
    "applied_at": "2026-10-01T18:56:40",
    "change": {
@@ -24950,6 +24800,148 @@
      "F1014": "2026-10-21 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014163700210333",
+   "applied_at": "2026-10-14T16:37:00",
+   "change": {
+    "code": "0020239300000",
+    "price": 59.99,
+    "queued_at": "2026-10-14T20:36:09.718Z",
+    "id": "c1792010169718"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SALAMI SEC DELICATESNAYA",
+     "F1744": null,
+     "F22": "",
+     "F23": "UN"
+    },
+    "POS_TAB": {
+     "F02": "SALAMI SEC DELICATESNAYA",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "9.9900",
+     "F196": "9.9900",
+     "F1140": "9.9900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "44.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "44.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014163700288333",
+   "applied_at": "2026-10-14T16:37:00",
+   "change": {
+    "code": "0020237200000",
+    "pos_title": "ZERNISTAYA SALAMI SEC KG",
+    "price": 59.99,
+    "queued_at": "2026-10-14T20:36:37.352Z",
+    "id": "c1792010197353"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZERNISTAYA SALAMI SEC",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "ZERNISTAYA SALAMI SEC KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "39.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "39.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014163700335133",
+   "applied_at": "2026-10-14T16:37:00",
+   "change": {
+    "code": "0020239300000",
+    "price": 44.99,
+    "queued_at": "2026-10-14T20:36:51.529Z",
+    "id": "c1792010211529"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SALAMI SEC DELICATESNAYA",
+     "F1744": null,
+     "F22": "",
+     "F23": "UN"
+    },
+    "POS_TAB": {
+     "F02": "SALAMI SEC DELICATESNAYA",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "9.9900",
+     "F196": "9.9900",
+     "F1140": "9.9900",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "59.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "59.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
