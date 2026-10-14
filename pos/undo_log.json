@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260928224030400555",
-   "applied_at": "2026-09-28T22:40:30",
-   "change": {
-    "code": "0482014333098",
-    "title": "LEKORNA GAUFRES CACAO",
-    "pos_title": "LEKORNA GAUFRES CACAO",
-    "size_num": 90,
-    "size_unit": "GR",
-    "queued_at": "2026-09-29T02:40:21.957Z",
-    "id": "c1790649621957"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LEKORNA GAUFRES",
-     "F1744": "90.0",
-     "F22": "90G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LEKORNA GAUFRES 90G",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "2.2000",
-     "F196": "2.2000",
-     "F1140": "2.2000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "3.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260928224240223983",
    "applied_at": "2026-09-28T22:42:40",
    "change": {
@@ -24695,6 +24645,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013211126095146",
+   "applied_at": "2026-10-13T21:11:26",
+   "change": {
+    "code": "0083839600855",
+    "title": "ZAKUSON GOUSSES D'AIL MARINÉES",
+    "pos_title": "ZAKUSON GOUSSES D'AIL MARINÉES",
+    "size_num": 370,
+    "size_unit": "ML",
+    "queued_at": "2026-10-14T01:11:00.324Z",
+    "id": "c1791940260324"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKUSON AIL ENTIER",
+     "F1744": "370.0",
+     "F22": "370ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "ZAKUSON AIL ENTIER 370ML",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "28.2000",
+     "F196": "28.2000",
+     "F1140": "2.3500",
+     "F27": "L-GLOU"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
