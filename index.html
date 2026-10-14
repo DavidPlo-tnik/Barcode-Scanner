@@ -896,6 +896,14 @@
   .fl-vact button { flex: 1; padding: 13px; border-radius: 10px; border: none; background: var(--accent); color: #000; font-family: var(--font-display); font-size: 12px; font-weight: 800; cursor: pointer; }
   .fl-vact button.alt { flex: 0 0 auto; background: #222; color: #fff; border: 1px solid #444; }
   .fl-vhint { margin-top: 8px; text-align: center; color: #999; font-size: 11.5px; }
+  .fl-phbox { position: absolute; border: 1.5px dashed rgba(255,255,255,.85); border-radius: 6px; pointer-events: none; box-shadow: 0 0 0 1px rgba(0,0,0,.35); }
+  .fl-ph-h { position: absolute; right: -9px; bottom: -9px; width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 3px solid #111; pointer-events: auto; touch-action: none; cursor: nwse-resize; }
+  .fl-ph-h::after { content: ''; position: absolute; inset: -12px; }
+  .fl-pages { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: -2px 0 8px; }
+  .fl-pages:empty { display: none; }
+  .fl-pages span { font-size: 11px; color: #fb923c; margin-right: 4px; }
+  .fl-pages button { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text-dim); font-family: var(--font-display); font-size: 10.5px; font-weight: 800; }
+  .fl-pages button.on { background: var(--accent); color: #000; border-color: var(--accent); }
   .fl-help { font-size: 11.5px; color: var(--text-dim); line-height: 1.45; margin: 2px 0 10px; }
   .fl-help b { color: var(--text); }
   #fl-list { padding-bottom: 70px; }
@@ -2120,7 +2128,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v172</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v173</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2695,7 +2703,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v172</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v173</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4453,12 +4461,12 @@
   //  Settings live in ecom/flyer.json.
   // ════════════════════════════════════════════════════════════════
   const FL_FORMATS = {
-    post:   { w: 1080, h: 1350, cols: 6, label: 'POST 4:5' },
-    square: { w: 1080, h: 1080, cols: 6, label: 'SQUARE' },
-    story:  { w: 1080, h: 1920, cols: 6, label: 'STORY 9:16' },
-    tv:     { w: 1920, h: 1080, cols: 10, label: 'TV 16:9' },
+    post:   { w: 1080, h: 1350, cols: 6, rows: 8, label: 'POST 4:5' },
+    square: { w: 1080, h: 1080, cols: 6, rows: 6, label: 'SQUARE' },
+    story:  { w: 1080, h: 1920, cols: 6, rows: 11, label: 'STORY 9:16' },
+    tv:     { w: 1920, h: 1080, cols: 10, rows: 6, label: 'TV 16:9' },
   };
-  const _fl = { fmt: 'post', cfg: null, sha: null, rows: [], imgs: {}, timer: 0, select: null, sel: null, layout: null };
+  const _fl = { page: 0, fmt: 'post', cfg: null, sha: null, rows: [], imgs: {}, timer: 0, select: null, sel: null, layout: null };
 
   async function flyerLoadCfg() {
     try {
@@ -4596,10 +4604,11 @@
       ${review.length ? `<div class="pm-review" id="fl-review">${pmReviewHtml(review, nw)}</div>` : ''}
       <div class="fl-formats">${Object.entries(FL_FORMATS).map(([k, f]) => `<button data-fmt="${k}" class="${_fl.fmt === k ? 'on' : ''}">${f.label}</button>`).join('')}</div>
       <div class="fl-preview"><div class="fl-stage" id="fl-stage"><canvas id="fl-canvas"></canvas><div class="fl-overlay" id="fl-overlay"></div></div></div>
+      <div class="fl-pages" id="fl-pages"></div>
       <div class="fl-tools" id="fl-tools"></div>
       <div class="fl-actions"><button id="fl-dl">⬇ SAVE THIS SIZE</button><button class="alt" id="fl-dl-all">⬇ ALL SIZES</button></div>
       <div class="fl-dates"><div><label>FROM</label><input type="date" id="fl-from" value="${_fl.from}"></div><div><label>TO</label><input type="date" id="fl-to" value="${_fl.to}"></div></div>
-      <div class="fl-help"><b>On the flyer:</b> tap a box, then drag its <b>edge or corner</b> to resize. <b>Hold</b> a box and drag it onto another to move it.
+      <div class="fl-help"><b>On the flyer:</b> tap a box, then drag its <b>edge or corner</b> to resize · drag a <b>photo</b> inside it to move it, its <b>dot</b> to resize it. <b>Hold</b> a box and drag it onto another to move it.
         <b>In the list:</b> tap a name to edit it · <b>hold</b> a row to select several and <b>GROUP</b> · hold <b>≡</b> to reorder.</div>
       <div id="fl-list" class="${sel ? 'fl-selmode' : ''}">${units.map((u, i) => flyerUnitHtml(u, i, sel)).join('') || `<div class="empty-state">${_fl.mode === 'next' ? 'Nothing planned for next week yet (with a photo).' : 'No current promos with a photo.'}</div>`}</div>
       <div class="fl-selbar ${sel ? 'on' : ''}" id="fl-selbar">
@@ -4609,7 +4618,7 @@
       </div>`;
     body.querySelectorAll('[data-week]').forEach(b => b.addEventListener('click', () => { if (b.dataset.week !== _fl.mode) flyerOpen(b.dataset.week); }));
     if (review.length) pmReviewBind($('#fl-review'), review, nw, () => flyerOpen('next'));
-    body.querySelectorAll('[data-fmt]').forEach(b => b.addEventListener('click', () => { _fl.fmt = b.dataset.fmt; _fl.sel = null; body.querySelectorAll('[data-fmt]').forEach(x => x.classList.toggle('on', x === b)); flyerDraw(); }));
+    body.querySelectorAll('[data-fmt]').forEach(b => b.addEventListener('click', () => { _fl.fmt = b.dataset.fmt; _fl.sel = null; _fl.page = 0; body.querySelectorAll('[data-fmt]').forEach(x => x.classList.toggle('on', x === b)); flyerDraw(); }));
     $('#fl-from').addEventListener('change', e => { _fl.from = e.target.value; flyerDraw(); });
     $('#fl-to').addEventListener('change', e => { _fl.to = e.target.value; flyerDraw(); });
     $('#fl-dl').addEventListener('click', () => { _fl.sel = null; flyerPaintOverlay(); flyerExport([_fl.fmt]); });
@@ -4880,7 +4889,7 @@
     ov.innerHTML = `<div class="fl-selbox" style="left:${b.x * k}px;top:${b.y * k}px;width:${b.w * k}px;height:${b.h * k}px;">
         <span class="fl-h fl-h-r" data-h="r"></span><span class="fl-h fl-h-b" data-h="b"></span><span class="fl-h fl-h-rb" data-h="rb"></span>
         <span class="fl-dim">${b.cw} × ${b.ch}</span>
-      </div>`;
+      </div>${(b.photos || []).map((r, i) => `<div class="fl-phbox" style="left:${r.x * k}px;top:${r.y * k}px;width:${r.w * k}px;height:${r.h * k}px;"><span class="fl-ph-h" data-ph="${i}"></span></div>`).join('')}`;
     flyerRenderTools();
   }
   function flyerRenderTools() {
@@ -4891,10 +4900,18 @@
     el.innerHTML = `<div class="fl-toolrow"><b>${escapeHtml(flyerUnitName(u))}</b>
       <span>${sz.w}×${sz.h}${sz.manual ? '' : ' · auto'}</span>
       ${_fl.fmt !== 'post' && sz.manual ? '<button class="fl-chip" data-reset="1">MATCH POST</button>' : ''}
+      ${u.cfg.ph && u.cfg.ph[_fl.fmt] && Object.keys(u.cfg.ph[_fl.fmt]).length ? '<button class="fl-chip" data-phreset="1">AUTO PHOTOS</button>' : ''}
       <button class="fl-chip" data-desel="1">DONE</button></div>`;
     const rs = el.querySelector('[data-reset]');
-    if (rs) rs.addEventListener('click', () => { delete u.cfg.sz[_fl.fmt]; flyerSaveCfg(); flyerDraw(); });
+    if (rs) rs.addEventListener('click', () => { delete u.cfg.sz[_fl.fmt]; if (u.cfg.ph) delete u.cfg.ph[_fl.fmt]; flyerSaveCfg(); flyerDraw(); });
+    const pr = el.querySelector('[data-phreset]');
+    if (pr) pr.addEventListener('click', () => { delete u.cfg.ph[_fl.fmt]; flyerSaveCfg(); flyerDraw(); });
     el.querySelector('[data-desel]').addEventListener('click', () => { _fl.sel = null; flyerPaintOverlay(); flyerRenderTools(); });
+  }
+  function flyerPhCfg(u, f) {
+    u.cfg.ph = u.cfg.ph || {};
+    const per = u.cfg.ph[_fl.fmt] = u.cfg.ph[_fl.fmt] || {};
+    return per[f] = per[f] || { dx: 0, dy: 0, s: 1 };
   }
   function flyerBindStage() {
     const stage = $('#fl-stage'); if (!stage) return;
@@ -4903,6 +4920,18 @@
     const boxAt = (p) => _fl.layout && _fl.layout.boxes.find(b => p.x >= b.x && p.x <= b.x + b.w && p.y >= b.y && p.y <= b.y + b.h);
     stage.addEventListener('pointerdown', (e) => {
       const p = toCanvas(e);
+      const phH = e.target.closest('[data-ph]');
+      if (phH && _fl.sel) {                                     // photo scale handle
+        e.preventDefault();
+        const b = _fl.layout.boxes.find(x => x.key === _fl.sel);
+        const u = flyerUnits().find(x => x.key === _fl.sel);
+        const r = b && b.photos[+phH.dataset.ph];
+        if (!r) return;
+        const o = flyerPhCfg(u, r.f);
+        mode = 'phscale'; start = { b, u, r, o, s0: o.s || 1, c: { x: r.x + r.w / 2, y: r.y + r.h / 2 }, d0: Math.hypot(p.x - (r.x + r.w / 2), p.y - (r.y + r.h / 2)) || 1 };
+        try { stage.setPointerCapture(e.pointerId); } catch (er) {}
+        return;
+      }
       const h = e.target.closest('[data-h]');
       if (h && _fl.sel) {                                       // resize handle
         e.preventDefault();
@@ -4914,7 +4943,9 @@
       }
       const b = boxAt(p);
       if (!b) { _fl.sel = null; flyerPaintOverlay(); flyerRenderTools(); return; }
-      start = { b, p, moved: false };
+      // inside the selected box, on a photo: a plain drag moves that photo
+      const phr = _fl.sel === b.key ? [...(b.photos || [])].reverse().find(r => p.x >= r.x && p.x <= r.x + r.w && p.y >= r.y && p.y <= r.y + r.h) : null;
+      start = { b, p, moved: false, phr };
       mode = 'tap';
       holdT = setTimeout(() => {                                 // hold → move this box
         holdT = null; mode = 'move'; _fl.sel = b.key; flyerPaintOverlay();
@@ -4927,7 +4958,21 @@
       if (!mode) return;
       const p = toCanvas(e);
       if (mode === 'tap') {
-        if (Math.abs(p.x - start.p.x) > 12 / flyerStageScale() || Math.abs(p.y - start.p.y) > 12 / flyerStageScale()) { clearTimeout(holdT); mode = null; }
+        if (Math.abs(p.x - start.p.x) > 12 / flyerStageScale() || Math.abs(p.y - start.p.y) > 12 / flyerStageScale()) {
+          clearTimeout(holdT);
+          if (start.phr) {
+            const u = flyerUnits().find(x => x.key === start.b.key);
+            const o = flyerPhCfg(u, start.phr.f);
+            mode = 'phmove'; start.u = u; start.o = o; start.dx0 = o.dx || 0; start.dy0 = o.dy || 0;
+            try { stage.setPointerCapture(e.pointerId); } catch (er) {}
+          } else { mode = null; return; }
+        } else return;
+      }
+      if (mode === 'phmove' || mode === 'phscale') {
+        e.preventDefault();
+        if (mode === 'phmove') { start.o.dx = start.dx0 + (p.x - start.p.x) / start.b.w; start.o.dy = start.dy0 + (p.y - start.p.y) / start.b.h; }
+        else { start.o.s = Math.max(.3, Math.min(3, start.s0 * Math.hypot(p.x - start.c.x, p.y - start.c.y) / start.d0)); }
+        if (!_fl.phRaf) _fl.phRaf = requestAnimationFrame(() => { _fl.phRaf = 0; flyerDraw(); });
         return;
       }
       e.preventDefault();
@@ -4960,7 +5005,8 @@
       const m = mode; mode = null;
       stage.classList.remove('fl-moving');
       if (m === 'tap') { _fl.sel = start.b.key; flyerPaintOverlay(); flyerRenderTools(); }
-      else if (m === 'resize') { flyerSaveCfg(); flyerRenderTools(); }
+      else if (m === 'resize') { if (start.u.cfg.ph) delete start.u.cfg.ph[_fl.fmt]; flyerSaveCfg(); flyerDraw(); flyerRenderTools(); }   // new box size → fresh auto photo placement
+      else if (m === 'phmove' || m === 'phscale') { flyerSaveCfg(); flyerRenderTools(); }
       else if (m === 'move') {
         const tgt = _fl.moveTarget; _fl.moveTarget = null;
         if (tgt) { await flyerMoveUnit(start.b.key, tgt); flyerSaveCfg(); flyerRenderUI(); _fl.sel = start.b.key; }
@@ -5108,7 +5154,7 @@
     return lines;
   }
 
-  async function flyerRenderTo(canvas, fmtKey) {
+  async function flyerRenderTo(canvas, fmtKey, page) {
     const F = FL_FORMATS[fmtKey];
     const W = F.w, H = F.h, tv = fmtKey === 'tv', story = fmtKey === 'story';
     canvas.width = W; canvas.height = H;
@@ -5151,10 +5197,11 @@
     ctx.restore();
     // dates
     const fd = (d) => new Date(d + 'T12:00:00');
+    const MOIS_AB = ['JANV.', 'FÉVR.', 'MARS', 'AVR.', 'MAI', 'JUIN', 'JUIL.', 'AOÛT', 'SEPT.', 'OCT.', 'NOV.', 'DÉC.'];
     const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
     const a1 = fd(_fl.from), a2 = fd(_fl.to);
     const dTop = a1.getMonth() === a2.getMonth() && a1.getFullYear() === a2.getFullYear()
-      ? `${a1.getDate()} AU ${a2.getDate()}` : `${a1.getDate()} ${MOIS[a1.getMonth()].slice(0, 4).replace(/\.?$/, '.').toUpperCase()} AU ${a2.getDate()} ${MOIS[a2.getMonth()].slice(0, 4).replace(/\.?$/, '.').toUpperCase()}`;
+      ? `${a1.getDate()} AU ${a2.getDate()}` : `${a1.getDate()} ${MOIS_AB[a1.getMonth()]} AU ${a2.getDate()} ${MOIS_AB[a2.getMonth()]}`;
     const dBot = a1.getMonth() === a2.getMonth() ? `${MOIS[a2.getMonth()].toUpperCase()} ${a2.getFullYear()}`
       : (a1.getFullYear() === a2.getFullYear() ? `${a2.getFullYear()}` : `${a1.getFullYear()} – ${a2.getFullYear()}`);
     const padIn = Math.round(pH * .2);
@@ -5207,41 +5254,114 @@
 
     // grid
     const bodyTop = headTop + headH + Math.round(H * (tv ? .028 : .02)), bodyBot = H - footH - Math.round(H * .018);
-    const units = flyerUnits().filter(u => !u.cfg.hide).map(u => { const s = flyerUnitSize(u, fmtKey); return { u, w: s.w, h: s.h, manual: s.manual }; });
+    const all = flyerUnits().filter(u => !u.cfg.hide).map(u => { const s = flyerUnitSize(u, fmtKey); return { u, w: s.w, h: s.h, manual: s.manual }; });
     const cols = F.cols;
-    const { place, rows } = flyerPack(units, cols);
+    // pages: fill a page until the next box would push it past its row limit
+    const pages = []; let cur = [];
+    for (const it of all) {
+      const test = cur.concat([it]);
+      if (cur.length && flyerPack(test, cols).rows > F.rows) { pages.push(cur); cur = [it]; } else cur = test;
+    }
+    if (cur.length) pages.push(cur);
+    const pageN = Math.max(1, pages.length);
+    page = Math.min(page || 0, pageN - 1);
+    const units = pages[page] || [];
+    const packed = flyerPack(units, cols);
+    const place = packed.place;
+    // later pages keep a similar box size instead of blowing a few boxes up to full page
+    const rows = pageN > 1 ? Math.max(packed.rows, Math.ceil(F.rows * .75)) : packed.rows;
     const cw = (W - M * 2 - GAP * (cols - 1)) / cols;
     const ch = rows ? (bodyBot - bodyTop - GAP * (rows - 1)) / rows : 0;
     const boxes = [];
-    // one type scale for the whole flyer (based on the median box), so every box reads the same
+    // ONE size for price tags / badges / names across the flyer, so small boxes stay readable
+    // and big boxes don't get giant tags (grows only a little with box size)
+    const ref = Math.min(W, H);
+    const S = { tag: Math.round(ref * (tv ? .05 : .056)), name: Math.round(ref * (tv ? .021 : .024)), refMin: Math.min(cw * 2 + GAP, ch * 2 + GAP) };
     const unitBase = Math.min(cw * 2 + GAP, ch * 2 + GAP);
     for (let i = 0; i < units.length; i++) {
       const pl = place[i];
       const x = M + pl.c * (cw + GAP), y = bodyTop + pl.r * (ch + GAP);
       const w = cw * pl.w + GAP * (pl.w - 1), h = ch * pl.h + GAP * (pl.h - 1);
       const base = Math.min(unitBase * 1.15, Math.max(unitBase * .7, Math.min(w, h)));
-      await flyerCard(ctx, units[i].u, x, y, w, h, base, T);
-      boxes.push({ key: units[i].u.key, x, y, w, h, cw: pl.w, ch: pl.h });
+      const photos = await flyerCard(ctx, units[i].u, x, y, w, h, base, T, S, fmtKey);
+      boxes.push({ key: units[i].u.key, x, y, w, h, cw: pl.w, ch: pl.h, photos });
     }
-    return { boxes, cw, ch, gap: GAP, cols, rows, M, bodyTop };
+    return { boxes, cw, ch, gap: GAP, cols, rows, M, bodyTop, page, pages: pageN };
   }
 
-  async function flyerCard(ctx, u, x, y, w, h, base, T) {
+  // Price tag drawn like a shelf tag: small "$", big dollars, raised cents, "/kg" under the cents.
+  // Every piece is placed from measured glyph heights so it sits dead-centre in the red tag.
+  function flDrawTag(ctx, T, r0, right, top, size, maxW) {
+    const v = (+r0.pp).toFixed(2).split('.');
+    const pre = r0.pq > 1 ? `${r0.pq}/` : '', dol = v[0], cents = v[1], unit = r0.kg && r0.pq <= 1 ? '/KG' : '';
+    let big = size, L;
+    const lay = () => {
+      const sup = big * .5, preS = big * .6, unS = big * .27;
+      const cap = (s) => { flFont(ctx, T.PRICE, s); const mt = ctx.measureText('8'); return mt.actualBoundingBoxAscent || s * .74; };
+      const wid = (t, s) => { flFont(ctx, T.PRICE, s); return t ? ctx.measureText(t).width : 0; };
+      const capB = cap(big), capS = cap(sup), capP = cap(preS), capU = cap(unS);
+      const g = big * .05;
+      const wPre = wid(pre, preS), wSym = wid('$', sup), wDol = wid(dol, big), wC = wid(cents, sup), wU = wid(unit, unS);
+      const tail = Math.max(wC, wU);
+      const padX = big * .2, padY = big * .17;
+      const tw = (pre ? wPre + g * 1.6 : 0) + wSym + g * .6 + wDol + g * .9 + tail;
+      return { sup, preS, unS, capB, capS, capP, capU, g, wPre, wSym, wDol, wC, wU, tail, padX, padY, w: tw + padX * 2, h: capB + padY * 2 };
+    };
+    L = lay();
+    if (L.w > maxW) { big = Math.max(size * .62, big * maxW / L.w); L = lay(); }
+    const x = right - L.w, y = top;
+    ctx.save(); ctx.shadowColor = 'rgba(60,0,0,.35)'; ctx.shadowBlur = big * .16; ctx.shadowOffsetY = big * .06;
+    ctx.fillStyle = T.RED; flRound(ctx, x, y, L.w, L.h, L.h * .2); ctx.fill(); ctx.restore();
+    ctx.save(); ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(3, Math.round(big * .065)); flRound(ctx, x, y, L.w, L.h, L.h * .2); ctx.stroke(); ctx.restore();
+    ctx.save(); ctx.fillStyle = '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    const base = y + L.padY + L.capB, topLine = y + L.padY;
+    let cx = x + L.padX;
+    if (pre) { flFont(ctx, T.PRICE, L.preS); ctx.fillText(pre, cx, base); cx += L.wPre + L.g * 1.6; }
+    flFont(ctx, T.PRICE, L.sup); ctx.fillText('$', cx, topLine + L.capS); cx += L.wSym + L.g * .6;
+    flFont(ctx, T.PRICE, big); ctx.fillText(dol, cx, base); cx += L.wDol + L.g * .9;
+    flFont(ctx, T.PRICE, L.sup); ctx.fillText(cents, cx + (L.tail - L.wC) / 2, topLine + L.capS);
+    if (unit) { flFont(ctx, T.PRICE, L.unS); ctx.fillText(unit, cx + (L.tail - L.wU) / 2, base); }
+    ctx.restore();
+    return { x, y, w: L.w, h: L.h, big };
+  }
+
+  // Photos sit side by side at the SAME height (so one bag isn't bigger than the others),
+  // standing on a common line, slightly overlapping. Manual nudges (cfg.ph) are applied on top.
+  function flyerPhotoAuto(imgs, left, top, right, bottom) {
+    const aw = right - left, ah = Math.max(10, bottom - top), n = imgs.length;
+    const ov = n > 1 ? .16 : 0;
+    const oneRow = n <= 3 || aw / ah > 1.5;
+    const rowsArr = oneRow ? [imgs.map((t, k) => k)] : [imgs.map((t, k) => k).slice(0, Math.ceil(n / 2)), imgs.map((t, k) => k).slice(Math.ceil(n / 2))];
+    const rowH = ah / rowsArr.length;
+    const out = [];
+    rowsArr.forEach((idx, ri) => {
+      const ars = idx.map(k => imgs[k].sw / imgs[k].sh);
+      const unitW = ars.slice(0, -1).reduce((s, a) => s + a * (1 - ov), 0) + ars[ars.length - 1];
+      const hh = Math.min(rowH * (rowsArr.length > 1 ? 1.06 : 1), aw / unitW);
+      const total = unitW * hh;
+      let cx = left + (aw - total) / 2;
+      const by = top + rowH * (ri + 1);                      // stand on the row's bottom line
+      idx.forEach((k, j) => { const ww = ars[j] * hh; out[k] = { x: cx, y: by - hh, w: ww, h: hh }; cx += ww * (1 - ov); });
+    });
+    return out;
+  }
+
+  async function flyerCard(ctx, u, x, y, w, h, base, T, S, fmtKey) {
     const r0 = u.members[0];
     const P = Math.round(base * .06);
     const R = Math.round(base * .07);
+    const grow = Math.max(1, Math.min(1.4, Math.min(w, h) / S.refMin));   // bigger boxes: slightly bigger tags
     // card
     ctx.save(); ctx.shadowColor = 'rgba(70,5,2,.35)'; ctx.shadowBlur = Math.round(base * .06); ctx.shadowOffsetY = Math.round(base * .02);
     ctx.fillStyle = '#fff'; flRound(ctx, x, y, w, h, R); ctx.fill(); ctx.restore();
-    // wide, short boxes (TV, banners): name on the left, photos fill the full height on the right
     const wide = w / h > 2.1;
-    const nS = Math.round(wide ? Math.max(base * .082, Math.min(h * .12, w * .028)) : base * .082), noteS = Math.round(nS * .78);
+    const nS = Math.round(S.name * Math.min(1.25, grow)), noteS = Math.round(nS * .8);
     const name = flyerUnitName(u), note = flyerUnitNote(u);
     const colW = wide ? Math.min(w * .3, Math.max(base * 1.1, w * .2)) : w;
     const maxTextW = colW - P * 2;
     const maxLines = wide ? (note ? 2 : 3) : (note ? 1 : 2);
     let size = nS, lines;
-    for (;;) { flFont(ctx, T.SANS(800), size); lines = flWrap(ctx, name, maxTextW, 99); if (lines.length <= maxLines || size <= nS * .72) break; size -= 1; }
+    for (;;) { flFont(ctx, T.SANS(800), size); lines = flWrap(ctx, name, maxTextW, 99); if (lines.length <= maxLines || size <= nS * .78) break; size -= 1; }
     flFont(ctx, T.SANS(800), size);
     lines = flWrap(ctx, name, maxTextW, maxLines);
     const textH = P * .7 + lines.length * size * 1.16 + (note ? noteS * 1.25 : 0) + P * .65;
@@ -5249,29 +5369,28 @@
     ctx.save(); flRound(ctx, x, y, w, h, R); ctx.clip();
     ctx.fillStyle = T.CREAM; ctx.fillRect(x, y, w, ph);
     ctx.restore();
-    // price tag size (needed early so wide boxes keep photos clear of it)
-    let pS = Math.round(wide ? Math.max(base * .165, Math.min(h * .2, w * .05)) : base * .165);
-    // photos — as big as possible (backgrounds cut away); may spill a little past the cream area
-    const photos = flyerUnitPhotos(u);
-    const imgs = (await Promise.all(photos.map(f => flyerImg(photoSrc(f))))).filter(Boolean);
+    const tagS = Math.round(S.tag * grow);
+    // photos
+    const files = flyerUnitPhotos(u);
+    const loaded = await Promise.all(files.map(f => flyerImg(photoSrc(f))));
+    const imgs = [], fnames = [];
+    loaded.forEach((t, i) => { if (t) { imgs.push(t); fnames.push(files[i]); } });
+    const rects = [];
     if (imgs.length) {
       const top = y + P * .35, bottom = wide ? y + h - P * .35 : y + ph + P * .25;
-      const left = wide ? x + colW : x + P * .3, right = x + w - (wide ? P + pS * 1.6 : P * .3);
-      const aw = right - left, ah = Math.max(10, bottom - top);
-      const n = imgs.length;
-      const oneRow = n <= 3 || aw / ah > 1.5;
-      const cols = oneRow ? n : Math.ceil(n / 2), rws = oneRow ? 1 : 2;
-      const cwid = aw / cols, chgt = ah / rws;
-      const over = n > 1 ? 1.3 : 1.0;                     // neighbours may overlap a little
+      const left = wide ? x + colW : x + P * .3, right = x + w - (wide ? P + tagS * 2.2 : P * .3);
+      const auto = flyerPhotoAuto(imgs, left, top, right, bottom);
+      const man = (u.cfg.ph && u.cfg.ph[fmtKey]) || {};
       imgs.forEach((t, k) => {
-        const cx = left + (k % cols) * cwid, cy = top + Math.floor(k / cols) * chgt;
-        const sc = Math.min(cwid * over / t.sw, chgt * 1.0 / t.sh);
-        const dw = t.sw * sc, dh = t.sh * sc;
+        let r = auto[k];
+        const o = man[fnames[k]];
+        if (o) { const s = o.s || 1; const cx = r.x + r.w / 2 + (o.dx || 0) * w, cy = r.y + r.h / 2 + (o.dy || 0) * h; r = { x: cx - r.w * s / 2, y: cy - r.h * s / 2, w: r.w * s, h: r.h * s }; }
         ctx.save();
         ctx.shadowColor = t.cut ? 'rgba(40,10,0,.28)' : 'rgba(0,0,0,.18)'; ctx.shadowBlur = base * (t.cut ? .045 : .03); ctx.shadowOffsetY = base * (t.cut ? .02 : .012);
         if (!t.cut) ctx.globalCompositeOperation = 'multiply';
-        ctx.drawImage(t.img, t.sx, t.sy, t.sw, t.sh, cx + (cwid - dw) / 2, cy + (chgt - dh) / 2, dw, dh);
+        ctx.drawImage(t.img, t.sx, t.sy, t.sw, t.sh, r.x, r.y, r.w, r.h);
         ctx.restore();
+        rects.push({ f: fnames[k], x: r.x, y: r.y, w: r.w, h: r.h, ax: auto[k].x, ay: auto[k].y, aw: auto[k].w, ah: auto[k].h });
       });
     }
     // name + note
@@ -5280,65 +5399,55 @@
     let ty = (wide ? y + h - textH : y + ph) + P * .7 + size;
     lines.forEach((l, i) => { ctx.fillText(l, x + P, ty); if (i < lines.length - 1) ty += size * 1.16; });
     if (note) { ctx.fillStyle = T.RED; flFit(ctx, note, maxTextW, noteS, T.SANS(800), noteS * .62); ctx.fillText(flWrap(ctx, note, maxTextW, 1)[0], x + P, ty + noteS * 1.3); }
-    // price tag — top right
+    // price tag — pinned to the top-right corner, a little off the card
     const regUnit = r0.rp != null ? r0.rp / (r0.rq || 1) : null, promoUnit = r0.pp / (r0.pq || 1);
     const off = regUnit ? Math.floor(100 * (1 - promoUnit / regUnit)) : 0;
-    const deal = r0.pq > 1 ? `${r0.pq}/${flyerMoney(r0.pp)}` : flyerMoney(r0.pp);
-    const unitTxt = r0.kg && r0.pq <= 1 ? '/KG' : '';
-    let dw, uw, padX, pw, phh;
-    const measure = () => {
-      flFont(ctx, T.PRICE, pS); dw = ctx.measureText(deal).width;
-      flFont(ctx, T.PRICE, pS * .45); uw = unitTxt ? ctx.measureText(unitTxt).width + pS * .06 : 0;
-      padX = pS * .28; pw = dw + uw + padX * 2; phh = Math.round(pS * 1.24);
-    };
-    measure();
-    if (pw > w * .82) { pS = Math.max(10, Math.floor(pS * w * .82 / pw)); measure(); }   // keep the tag inside the card
-    const px = x + w - pw + Math.round(pS * .1), py = y - Math.round(phh * .16);   // pinned to the corner, a little off the card
-    let tagBottom = py + phh;
-    ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.25)'; ctx.shadowBlur = pS * .14; ctx.shadowOffsetY = pS * .05;
-    ctx.fillStyle = T.RED; flRound(ctx, px, py, pw, phh, phh * .24); ctx.fill(); ctx.restore();
-    // white sticker edge so the tag never melts into the red background
-    ctx.save(); ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(3, Math.round(pS * .075)); flRound(ctx, px, py, pw, phh, phh * .24); ctx.stroke(); ctx.restore();
-    ctx.fillStyle = '#fff'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
-    flFont(ctx, T.PRICE, pS); ctx.fillText(deal, px + padX, py + phh / 2 + pS * .03);
-    if (unitTxt) { flFont(ctx, T.PRICE, pS * .45); ctx.fillText(unitTxt, px + padX + dw + pS * .06, py + phh / 2 + pS * .2); }
+    const tg = flDrawTag(ctx, T, r0, x + w + Math.round(tagS * .08), y - Math.round(tagS * .16), tagS, w * .96);
+    let tagBottom = tg.y + tg.h;
     if (regUnit && regUnit > promoUnit + 0.001) {
       const reg = (r0.rq > 1 ? `${r0.rq}/` : '') + flyerMoney(r0.rp) + (r0.kg && r0.rq <= 1 ? '/KG' : '');
-      const rS = Math.round(pS * .42);
+      const rS = Math.round(tg.big * .34);
       flFont(ctx, T.SANS(800), rS);
-      const tw = ctx.measureText(reg).width, rw = tw + rS * .9, rh = Math.round(rS * 1.45);
-      const rx = px + pw - rw - pS * .12, ry = py + phh + rS * .18;
+      const tw = ctx.measureText(reg).width, rw = tw + rS * .9, rh = Math.round(rS * 1.5);
+      const rx = tg.x + tg.w - rw - tg.big * .1, ry = tg.y + tg.h + rS * .22;
       tagBottom = ry + rh;
-      ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.12)'; ctx.shadowBlur = rS * .3;
+      ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.14)'; ctx.shadowBlur = rS * .3;
       ctx.fillStyle = '#fff'; flRound(ctx, rx, ry, rw, rh, rh / 2); ctx.fill(); ctx.restore();
-      ctx.fillStyle = T.GREY; ctx.textAlign = 'center'; ctx.fillText(reg, rx + rw / 2, ry + rh / 2 + 1);
+      ctx.fillStyle = T.GREY; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(reg, rx + rw / 2, ry + rh / 2 + 1);
       ctx.strokeStyle = T.RED; ctx.lineWidth = Math.max(2, rS * .12);
       ctx.beginPath(); ctx.moveTo(rx + rw / 2 - tw / 2 - 2, ry + rh * .56); ctx.lineTo(rx + rw / 2 + tw / 2 + 2, ry + rh * .44); ctx.stroke();
     }
-    // % off badge — top left
+    // % off badge — top left (drops under the price on narrow cards)
     if (off >= 5) {
-      let bTop = y + P;
-      const bS = Math.round(base * .09), txt = `-${off}%`;
-      flFont(ctx, T.PRICE, bS);
-      const bw = ctx.measureText(txt).width + bS * .7, bh = bS * 1.3;
-      if (x + P + bw + P * .4 > px) bTop = tagBottom + P * .35;     // narrow card: badge goes under the price
+      const bS = Math.round(tagS * .4), txt = `-${off}%`;
+      flFont(ctx, T.SANS(900), bS);
+      const bw = ctx.measureText(txt).width + bS * .8, bh = Math.round(bS * 1.45);
+      let bTop = y + P * .8;
+      if (x + P + bw + P * .4 > tg.x) bTop = tagBottom + P * .35;
       ctx.save(); ctx.translate(x + P + bw / 2, bTop + bh / 2); ctx.rotate(-0.05);
       ctx.shadowColor = 'rgba(0,0,0,.18)'; ctx.shadowBlur = bS * .2; ctx.shadowOffsetY = bS * .06;
-      ctx.fillStyle = T.YEL; flRound(ctx, -bw / 2, -bh / 2, bw, bh, bh * .28); ctx.fill();
+      ctx.fillStyle = T.YEL; flRound(ctx, -bw / 2, -bh / 2, bw, bh, bh * .3); ctx.fill();
       ctx.shadowColor = 'transparent';
-      ctx.fillStyle = T.INK; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(txt, 0, bS * .04);
+      ctx.fillStyle = T.INK; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(txt, 0, bS * .06);
       ctx.restore();
     }
+    return rects;
   }
 
   async function flyerDraw() {
     const cv = document.getElementById('fl-canvas'); if (!cv) return;
     const my = (_fl.drawSeq = (_fl.drawSeq || 0) + 1);
     const off = document.createElement('canvas');
-    const layout = await flyerRenderTo(off, _fl.fmt);
+    const layout = await flyerRenderTo(off, _fl.fmt, _fl.page);
     if (my !== _fl.drawSeq) return;
     cv.width = off.width; cv.height = off.height; cv.getContext('2d').drawImage(off, 0, 0);
     _fl.layout = layout;
+    _fl.page = layout.page;
+    const pg = $('#fl-pages');
+    if (pg) {
+      pg.innerHTML = layout.pages > 1 ? `<span>${layout.pages} pages (too many for one)</span>` + Array.from({ length: layout.pages }, (_, i) => `<button data-page="${i}" class="${i === layout.page ? 'on' : ''}">PAGE ${i + 1}</button>`).join('') : '';
+      pg.querySelectorAll('[data-page]').forEach(b => b.addEventListener('click', () => { _fl.page = +b.dataset.page; _fl.sel = null; flyerDraw(); }));
+    }
     flyerPaintOverlay();
   }
   // Saving: render the PNGs first, then show them in a viewer. The SHARE button there
@@ -5351,10 +5460,14 @@
     const files = [];
     try {
       for (const k of fmts) {
-        const cv = document.createElement('canvas');
-        await flyerRenderTo(cv, k);
-        const blob = await new Promise(r => cv.toBlob(r, 'image/png'));
-        if (blob) files.push({ k, file: new File([blob], `flyer-${_fl.from}-${k}.png`, { type: 'image/png' }), url: URL.createObjectURL(blob) });
+        for (let pgi = 0, n = 1; pgi < n; pgi++) {
+          const cv = document.createElement('canvas');
+          const lay = await flyerRenderTo(cv, k, pgi);
+          n = lay.pages;
+          const blob = await new Promise(r => cv.toBlob(r, 'image/png'));
+          const suf = n > 1 ? `-p${pgi + 1}` : '';
+          if (blob) files.push({ k, pg: n > 1 ? pgi + 1 : 0, file: new File([blob], `flyer-${_fl.from}-${k}${suf}.png`, { type: 'image/png' }), url: URL.createObjectURL(blob) });
+        }
       }
     } finally { btns.forEach(b => { b.disabled = false; }); if ($('#fl-dl')) $('#fl-dl').textContent = lbl; }
     if (!files.length) { showToast('Could not create the image', true); return; }
@@ -5362,7 +5475,7 @@
     if (!v) { v = document.createElement('div'); v.id = 'fl-viewer'; v.className = 'fl-viewer'; document.body.appendChild(v); }
     const canShare = !!(navigator.canShare && navigator.canShare({ files: files.map(f => f.file) }));
     v.innerHTML = `<div class="fl-vbar"><b>${files.length > 1 ? files.length + ' flyers ready' : 'Flyer ready'}</b><button id="fl-vx" aria-label="Close">✕</button></div>
-      <div class="fl-vimgs">${files.map(f => `<figure><img src="${f.url}" alt=""><figcaption>${FL_FORMATS[f.k].label}</figcaption></figure>`).join('')}</div>
+      <div class="fl-vimgs">${files.map(f => `<figure><img src="${f.url}" alt=""><figcaption>${FL_FORMATS[f.k].label}${f.pg ? ' · page ' + f.pg : ''}</figcaption></figure>`).join('')}</div>
       <div class="fl-vact">
         ${canShare ? `<button id="fl-vshare">⇪ SHARE / SAVE TO PHOTOS</button>` : ''}
         <button class="${canShare ? 'alt' : ''}" id="fl-vdl">⬇ DOWNLOAD</button>
