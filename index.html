@@ -2128,7 +2128,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v173</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v174</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2703,7 +2703,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v173</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v174</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -5179,12 +5179,40 @@
     // header
     const headTop = awH + sw / 2 + Math.round(H * .012);
     const headH = Math.round(H * (tv ? .15 : story ? .09 : .115));
-    const logoD = headH;
-    const logo = await flyerImg('images/logo-round.png');
-    if (logo) {
-      ctx.save(); ctx.shadowColor = 'rgba(60,0,0,.35)'; ctx.shadowBlur = 16; ctx.shadowOffsetY = 5;
-      ctx.drawImage(logo.img, M, headTop, logoD, logoD); ctx.restore();
-      ctx.save(); ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(3, logoD * .025); ctx.beginPath(); ctx.arc(M + logoD / 2, headTop + logoD / 2, logoD / 2 - 1, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+    // logo — the storefront sign: red board, dark metal frame, white inset border,
+    // small "MARCHÉ" over a tall condensed "DÉCARIE"
+    const logoH = headH, logoW = Math.round(headH * 1.5), logoD = logoW;
+    {
+      const lx = M, ly = headTop, fr = Math.max(4, Math.round(logoH * .045));
+      ctx.save(); ctx.shadowColor = 'rgba(40,0,0,.45)'; ctx.shadowBlur = Math.round(logoH * .12); ctx.shadowOffsetY = Math.round(logoH * .04);
+      ctx.fillStyle = '#1d1d1f'; flRound(ctx, lx, ly, logoW, logoH, logoH * .05); ctx.fill(); ctx.restore();
+      ctx.fillStyle = '#E3261C'; ctx.fillRect(lx + fr, ly + fr, logoW - fr * 2, logoH - fr * 2);
+      // soft light from the top, like a lit sign
+      const gr = ctx.createLinearGradient(0, ly, 0, ly + logoH);
+      gr.addColorStop(0, 'rgba(255,255,255,.14)'); gr.addColorStop(.5, 'rgba(255,255,255,0)'); gr.addColorStop(1, 'rgba(0,0,0,.12)');
+      ctx.fillStyle = gr; ctx.fillRect(lx + fr, ly + fr, logoW - fr * 2, logoH - fr * 2);
+      const ins = fr + Math.round(logoH * .045);
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(2, Math.round(logoH * .022));
+      ctx.strokeRect(lx + ins, ly + ins, logoW - ins * 2, logoH - ins * 2);
+      const iw = logoW - ins * 2, ih = logoH - ins * 2, ix = lx + ins, iy = ly + ins;
+      ctx.fillStyle = '#fff'; ctx.textBaseline = 'alphabetic';
+      // MARCHÉ
+      const mS = Math.round(ih * .2);
+      flFont(ctx, T.SANS(900), mS);
+      if ('letterSpacing' in ctx) ctx.letterSpacing = Math.round(mS * .12) + 'px';
+      ctx.textAlign = 'center'; ctx.fillText('MARCHÉ', ix + iw / 2, iy + ih * .3);
+      if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
+      // DÉCARIE
+      let dS = Math.round(ih * .62);
+      flFont(ctx, T.PRICE, dS);
+      const dw0 = ctx.measureText('DÉCARIE').width, maxw = iw * .88;
+      if (dw0 > maxw) { dS = Math.floor(dS * maxw / dw0); flFont(ctx, T.PRICE, dS); }
+      const capD = ctx.measureText('D').actualBoundingBoxAscent || dS * .74;
+      const yb = iy + ih * .36 + (ih * .6 + capD) / 2;
+      ctx.fillText('DÉCARIE', ix + iw / 2, yb);
+      // thin rule between the two words, like the panel line on the sign
+      ctx.fillRect(ix + iw * .18, iy + ih * .37, iw * .64, Math.max(1.5, ih * .012));
+      ctx.textAlign = 'left';
     }
     // title panel — a white card like the product boxes: red "EN SPÉCIAL" in the
     // price-tag face, "CETTE SEMAINE" tracked out, the dates in a red tag on the right
