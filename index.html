@@ -2128,7 +2128,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v176</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v177</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2703,7 +2703,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v176</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v177</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4495,7 +4495,7 @@
     const small = /^(de|du|des|la|le|les|au|aux|a|à|et|en|of|in|with|and)$/i;
     return String(n || '').trim().toLowerCase().replace(/\s+/g, ' ')
       .replace(/(^|[\s\-(/])([a-zà-ÿ])/g, (m, a, b) => a + b.toUpperCase())
-      .replace(/\b(\d+)\s?(gr|g|kg|ml|l)\b/gi, (m, a, b) => a + b.toLowerCase())
+      .replace(/\b(\d+)\s?(gr|g|kg|ml|l)\b/gi, (m, a, b) => a + ({ gr: 'g', l: 'L' }[b.toLowerCase()] || b.toLowerCase()))
       .split(' ').map((w, i) => i && small.test(w) ? w.toLowerCase() : w).join(' ');
   }
   const flyerMoney = (v) => '$' + (+v).toFixed(2);
@@ -4521,7 +4521,7 @@
       const e = editStateFor(code) || {};
       const p = DATA.products[code];
       return { code, photos: ent.photos || [], kg: e.bal === 1, pp: r.pp, pq: r.pq || 1, rp: r.rp, rq: r.rq || 1,
-               ps: r.ps, pe: r.pe, posName: p ? String(p[0]).trim() : code };
+               ps: r.ps, pe: r.pe, posName: p ? String(p[0]).trim() : code, size: p && p[10] ? String(p[10]).trim() : '' };
     }).filter(r => r.photos.length);
     const ord = (_fl.mode === 'next' && _fl.cfg.weekOrder && _fl.cfg.weekOrder[nw.start]) || (cat.specialsOrder || []).map(c => resolveCode(c));
     const rank = (r) => { const i = ord.indexOf(r.code); return i < 0 ? 9999 : i; };
@@ -4554,8 +4554,25 @@
     }
     return units;
   }
+  // "500 GR" → "500g", "1,5 L" → "1.5L"
+  function flyerNiceSize(sz) {
+    const mm = String(sz || '').replace(',', '.').match(/(\d+(?:\.\d+)?)\s*(kg|gr|g|ml|l|cl)\b/i);
+    if (!mm) return '';
+    const u = mm[2].toLowerCase();
+    return mm[1] + (u === 'gr' ? 'g' : u === 'l' ? 'L' : u);
+  }
+  const FL_HAS_SIZE = /\d+(?:[.,]\d+)?\s?(kg|gr|g|ml|l|cl|oz|lb)\b/i;
+  // name + package size (from the POS size field) when the name doesn't already say it; not for items sold by the kg
+  function flyerWithSize(name, members) {
+    if (FL_HAS_SIZE.test(name) || members.some(m => m.kg)) return name;
+    const sizes = [...new Set(members.map(m => flyerNiceSize(m.size)).filter(Boolean))];
+    return sizes.length === 1 ? `${name} ${sizes[0]}` : name;
+  }
   function flyerUnitName(u) {
     if (u.cfg.name != null && u.cfg.name !== '') return u.cfg.name;
+    return flyerWithSize(flyerUnitBaseName(u), u.members);
+  }
+  function flyerUnitBaseName(u) {
     if (u.members.length === 1) return flyerNiceName(u.members[0].posName);
     const toks = u.members.map(m => flyerNiceName(m.posName).split(' '));
     const common = [];
@@ -5282,7 +5299,7 @@
     // ONE size for price tags / badges / names across the flyer, so small boxes stay readable
     // and big boxes don't get giant tags (grows only a little with box size)
     const ref = Math.min(W, H);
-    const S = { tag: Math.round(ref * (tv ? .05 : .056)), name: Math.round(ref * (tv ? .021 : .024)), refMin: Math.min(cw * 2 + GAP, ch * 2 + GAP) };
+    const S = { tag: Math.round(ref * (tv ? .05 : .056)), name: Math.round(ref * (tv ? .017 : .02)), refMin: Math.min(cw * 2 + GAP, ch * 2 + GAP) };
     const unitBase = Math.min(cw * 2 + GAP, ch * 2 + GAP);
     for (let i = 0; i < units.length; i++) {
       const pl = place[i];
@@ -5361,15 +5378,16 @@
     ctx.save(); ctx.shadowColor = 'rgba(70,5,2,.35)'; ctx.shadowBlur = Math.round(base * .06); ctx.shadowOffsetY = Math.round(base * .02);
     ctx.fillStyle = '#fff'; flRound(ctx, x, y, w, h, R); ctx.fill(); ctx.restore();
     const wide = w / h > 2.1;
-    const nS = Math.round(S.name * Math.min(1.25, grow)), noteS = Math.round(nS * .8);
+    const nS = Math.round(Math.min(S.name * Math.min(1.2, grow), w * .062)), noteS = Math.round(nS * .82);
     const name = flyerUnitName(u), note = flyerUnitNote(u);
     const colW = wide ? Math.min(w * .3, Math.max(base * 1.1, w * .2)) : w;
     const maxTextW = colW - P * 2;
     const maxLines = wide ? (note ? 2 : 3) : (note ? 1 : 2);
+    // full name, never cut off: shrink until it fits the allowed lines (then allow one more line)
     let size = nS, lines;
-    for (;;) { flFont(ctx, T.SANS(800), size); lines = flWrap(ctx, name, maxTextW, 99); if (lines.length <= maxLines || size <= nS * .78) break; size -= 1; }
+    for (;;) { flFont(ctx, T.SANS(800), size); lines = flWrap(ctx, name, maxTextW, 99); if (lines.length <= maxLines || size <= nS * .66) break; size -= 1; }
     flFont(ctx, T.SANS(800), size);
-    lines = flWrap(ctx, name, maxTextW, maxLines);
+    lines = flWrap(ctx, name, maxTextW, 99);
     const textH = P * .7 + lines.length * size * 1.16 + (note ? noteS * 1.25 : 0) + P * .65;
     const ph = wide ? h : h - textH;
     ctx.save(); flRound(ctx, x, y, w, h, R); ctx.clip();
