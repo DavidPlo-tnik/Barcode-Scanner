@@ -1,103 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260929163504392442",
-   "applied_at": "2026-09-29T16:35:04",
-   "change": {
-    "code": "0482306312531",
-    "size_num": 120,
-    "size_unit": "GR",
-    "queued_at": "2026-09-29T20:34:27.951Z",
-    "id": "c1790714067951"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "LAYS  CROUSTILLES CRABE",
-     "F1744": "120.0",
-     "F22": "120 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "LAYS  CROUSTILLES CRABE",
-     "F04": "2",
-     "F81": "1",
-     "F96": "1",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.1500",
-     "F196": "3.1500",
-     "F1140": "3.1500",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260929163712250266",
-   "applied_at": "2026-09-29T16:37:12",
-   "change": {
-    "code": "0482310540858",
-    "pos_title": "VERES TARTINADE ZUCCINI  440G",
-    "size_num": 440,
-    "size_unit": "GR",
-    "queued_at": "2026-09-29T20:36:16.953Z",
-    "id": "c1790714176953"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "VERES TARTINADE ZUCCINI ",
-     "F1744": "440.0",
-     "F22": "440G",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "VERES TARTINADE ZUCCINI  440G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "3.5000",
-     "F196": "3.5000",
-     "F1140": "3.5000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260929164226185218",
    "applied_at": "2026-09-29T16:42:26",
    "change": {
@@ -24701,6 +24604,104 @@
     },
     "POS_TAB": {
      "F02": "VOMER SECHE  GR",
+     "F04": "24",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "39.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "39.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014140609193816",
+   "applied_at": "2026-10-14T14:06:09",
+   "change": {
+    "code": "0020143800000",
+    "pos_title": "SAUMON JERKI                      rég 10",
+    "size_num": 1000,
+    "size_unit": "",
+    "price": 49.99,
+    "queued_at": "2026-10-14T18:05:37.276Z",
+    "id": "c1792001137277"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUMON JERKI                      rég",
+     "F1744": "1000.0",
+     "F22": "1000G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "SAUMON JERKI                      rég 10",
+     "F04": "21",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "9.7000",
+     "F196": "9.7000",
+     "F1140": "9.7000",
+     "F27": "ZV01"
+    },
+    "PRICE_TAB": {
+     "F30": "24.2300",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "24.2300",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014140609240616",
+   "applied_at": "2026-10-14T14:06:09",
+   "change": {
+    "code": "0023882300000",
+    "pos_title": "SMELT SEC FUME KORJUSHKA GR",
+    "price": 44.99,
+    "queued_at": "2026-10-14T18:06:00.817Z",
+    "id": "c1792001160817"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SMELT SEC FUME KORJUSHKA",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SMELT SEC FUME KORJUSHKA GR",
      "F04": "24",
      "F81": null,
      "F96": null,
