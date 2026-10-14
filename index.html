@@ -1996,6 +1996,8 @@
     max-width: 80%;
     height: 0.6cm;
   }
+  .labels-sheet .label .lbl-plu, #print-container .label .lbl-plu { font-family: Helvetica, Arial, sans-serif; font-size: 9pt; color: #000; letter-spacing: .02em; }
+  .labels-sheet .label .lbl-plu b, #print-container .label .lbl-plu b { font-size: 16pt; font-weight: 800; }
   .labels-sheet .label .lbl-nobc, #print-container .label .lbl-nobc {
     font-family: monospace;
     font-size: 8pt;
@@ -2128,7 +2130,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v178</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v179</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2703,7 +2705,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v178</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v179</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -10663,8 +10665,10 @@
       // a proposed price replaces the shelf price, so an old multibuy string
       // (e.g. "2/$7.99") would contradict it -- drop it in that case
       const mp = (proposed != null) ? null : multipack;
+      // scale items: print the short PLU (what you key on the scale) instead of the long barcode
+      const plu = (p[11] || scalePluFromCode(resolveCode(code)) || '').toString().replace(/^0+/, '') || null;
       return { code: cleanCode, name, price: safePrice, dept, multipack: mp,
-               taxed: !!taxed, sizeStr: sizeStr || '', proposed: proposed != null };
+               taxed: !!taxed, sizeStr: sizeStr || '', proposed: proposed != null, plu };
     }).filter(Boolean);
 
     if (items.length === 0) { showToast('LIST IS EMPTY', true); return; }
@@ -10710,7 +10714,8 @@
 
       // Barcode via temporary attached SVG
       let barcodeSvg = '';
-      try {
+      if (item.plu) barcodeSvg = `<div class="lbl-plu">PLU <b>${escapeHtml(item.plu)}</b></div>`;
+      else try {
         const holder = document.createElement('div');
         holder.style.position = 'absolute';
         holder.style.left = '-9999px';
@@ -11016,7 +11021,9 @@
     const bcH = 9;
     const bcW = Math.min(leftW + 6, 40);
     const bcY = y + h - bcH - 4;
-    if (item.code) {
+    if (item.plu) {
+      drawPluPdf(doc, item.plu, inX, bcY, bcW, bcH + 2, false, 13);
+    } else if (item.code) {
       try { drawBarcode128(doc, item.code, inX, bcY, bcW, bcH); } catch (e) {}
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(5);
@@ -11111,7 +11118,9 @@
     }
 
     // BARCODE — smaller to be less visually dominant
-    if (item.code) {
+    if (item.plu) {
+      drawPluPdf(doc, item.plu, x + pad, bcY, w - 2 * pad, bcH, true);
+    } else if (item.code) {
       const bcWidth = (w - 2 * pad) * 0.85;     // 85% of label width (was full width)
       const bcXStart = x + (w - bcWidth) / 2;   // center horizontally
       drawBarcode128(doc, item.code, bcXStart, bcY, bcWidth, bcH);
@@ -11192,7 +11201,9 @@
     }
 
     // === BARCODE (centered at bottom — fixed position from bottom of label) ===
-    if (item.code) {
+    if (item.plu) {
+      drawPluPdf(doc, item.plu, cx - w * .3, y + h - 13, w * .6, 11, true);
+    } else if (item.code) {
       const bcW = w * 0.6;
       const bcH = 11;
       const bcX = cx - bcW / 2;
@@ -11201,6 +11212,23 @@
     }
   }
 
+  // Scale items get "PLU 1420" in place of the barcode
+  function drawPluPdf(doc, plu, x, y, w, h, center, maxFs) {
+    doc.setTextColor(0, 0, 0);
+    let fs = Math.min(h * 2.4, maxFs || 22);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(fs * .55);
+    const a = 'PLU ', wa = doc.getTextWidth(a);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(fs);
+    let wb = doc.getTextWidth(plu);
+    if (wa + wb > w) { fs *= w / (wa + wb); doc.setFontSize(fs); wb = doc.getTextWidth(plu); }
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(fs * .55);
+    const wa2 = doc.getTextWidth(a);
+    const x0 = center ? x + (w - wa2 - wb) / 2 : x;
+    const base = y + h * .5 + fs * .3528 * .36;     // pt → mm, roughly centred
+    doc.text(a, x0, base);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(fs);
+    doc.text(plu, x0 + wa2, base);
+  }
   function drawBarcode128(doc, value, x, y, maxW, maxH) {
     const bars = code128bEncode(String(value));
     if (!bars) return;
