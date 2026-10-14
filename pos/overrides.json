@@ -1,29 +1,5 @@
 {
  "items": {
-  "0006563322757": {
-   "pt": "TEST ITEM",
-   "tf": 1,
-   "tp": 1,
-   "dp": "0",
-   "bal": 0,
-   "qte": 0,
-   "sd": 2,
-   "un": "ML",
-   "sn": 1000.0,
-   "nm": "TEST ITEM",
-   "rp": 1.0,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 0,
-   "price": 1.0,
-   "mp": null,
-   "cost": 1.0,
-   "at": "2026-10-13 11:16:15"
-  },
   "0482007857605": {
    "pt": "CHUMAK HUILE DE TOURNESOL NON-RAFFINÉ",
    "tf": 0,
@@ -1649,7 +1625,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-10-14 16:43:15"
+  },
+  "0020831300000": {
+   "pt": "CREVETTES NORDIQUES DECORTIQ",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 24,
+   "un": "G",
+   "sn": 1000.0,
+   "nm": "crev.nordique décortiqué          4 DISC",
+   "rp": 41.86,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 41.86,
+   "mp": null,
+   "cost": 129.39,
+   "at": "2026-10-14 17:52:17"
   }
  },
- "updated": "2026-10-14 16:43:15"
+ "updated": "2026-10-14 17:52:17"
 }
