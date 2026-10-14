@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260928222552165812",
-   "applied_at": "2026-09-28T22:25:52",
-   "change": {
-    "code": "0083839600971",
-    "pos_title": "ZAKYCOH BOLET MASLATA 1L",
-    "size_num": 1000,
-    "size_unit": "ML",
-    "queued_at": "2026-09-29T02:24:50.191Z",
-    "id": "c1790648690191"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "ZAKYCOH BOLET MASLATA",
-     "F1744": "250.0",
-     "F22": "1L",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "ZAKYCOH BOLET MASLATA 1L",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "63.9000",
-     "F196": "63.9000",
-     "F1140": "5.3250",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "8.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "8.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260928223717100615",
    "applied_at": "2026-09-28T22:37:17",
    "change": {
@@ -24699,6 +24650,57 @@
      "F1014": "2036-09-09 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261013210154484542",
+   "applied_at": "2026-10-13T21:01:54",
+   "change": {
+    "code": "0594221900005",
+    "title": "BORSEC EAU MINÉRALE GAZEUSE",
+    "pos_title": "BORSEC EAU MINÉRALE GAZEUSE",
+    "size_num": 1500,
+    "size_unit": "ML",
+    "deposit": 0.1,
+    "queued_at": "2026-10-14T01:01:16.085Z",
+    "id": "c1791939676085"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BORSEC EAU MINERALE NATURELLE",
+     "F1744": "1500.0",
+     "F22": "1500ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "BORSEC EAU MINERALE NATURELLE 1500ML",
+     "F04": "1",
+     "F81": "1",
+     "F96": "1",
+     "F05": "2",
+     "F82": null,
+     "F85": "0"
+    },
+    "COST_TAB": {
+     "F38": "2.1900",
+     "F196": "2.1900",
+     "F1140": "2.1900",
+     "F27": "L-MAXIM"
+    },
+    "PRICE_TAB": {
+     "F30": "2.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
