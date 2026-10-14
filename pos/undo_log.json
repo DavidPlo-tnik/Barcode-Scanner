@@ -1,151 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260929202421171299",
-   "applied_at": "2026-09-29T20:24:21",
-   "change": {
-    "code": "0426042846102",
-    "pos_title": "EMELA CONFITURE DE POMMES 630G",
-    "size_num": 630,
-    "size_unit": "GR",
-    "queued_at": "2026-09-30T00:23:32.616Z",
-    "id": "c1790727812616"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "EMELA CONFITURE DE POMMES",
-     "F1744": "630.0",
-     "F22": "630G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "EMELA CONFITURE DE POMMES 630G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "4.2900",
-     "F196": "4.2900",
-     "F1140": "4.2900",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "6.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "6.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260929202733114036",
-   "applied_at": "2026-09-29T20:27:33",
-   "change": {
-    "code": "0062315700266",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-30T00:26:52.194Z",
-    "id": "c1790728012194"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "IMP. BH BEUURE D'ARACHIDE CREMEUX",
-     "F1744": "500.0",
-     "F22": "500GR",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "IMP. BH BEUURE D'ARACHIDE CREMEUX",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "A001"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20260929202839164552",
-   "applied_at": "2026-09-29T20:28:39",
-   "change": {
-    "code": "0062315700265",
-    "size_num": 500,
-    "size_unit": "GR",
-    "queued_at": "2026-09-30T00:28:13.007Z",
-    "id": "c1790728093007"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "IMP. BH BEURRE D'ARACHIDE CROQUANT",
-     "F1744": "500.0",
-     "F22": "500GR",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "IMP. BH BEURRE D'ARACHIDE CROQUANT",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "A001"
-    },
-    "PRICE_TAB": {
-     "F30": "5.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "5.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260929202945230668",
    "applied_at": "2026-09-29T20:29:45",
    "change": {
@@ -24806,6 +24661,171 @@
     },
     "POS_TAB": {
      "F02": "LUX CROUSTILLES CHAMPIGNONS",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "66.0000",
+     "F196": "66.0000",
+     "F1140": "3.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014151912088315",
+   "applied_at": "2026-10-14T15:19:12",
+   "change": {
+    "code": "0762220222443",
+    "size_num": 125,
+    "size_unit": "GR",
+    "price": 4.99,
+    "promo": {
+     "price": 3.99,
+     "qty": 1,
+     "start": "2026-10-15",
+     "end": "2026-10-21"
+    },
+    "queued_at": "2026-10-14T19:18:27.107Z",
+    "id": "c1792005507107"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LUX CROUSTILLES PAPRIKA",
+     "F1744": "125.0",
+     "F22": "125 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LUX CROUSTILLES PAPRIKA",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "66.0000",
+     "F196": "66.0000",
+     "F1140": "3.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014151912135116",
+   "applied_at": "2026-10-14T15:19:12",
+   "change": {
+    "code": "0762220222440",
+    "size_num": 125,
+    "size_unit": "GR",
+    "price": 4.99,
+    "promo": {
+     "price": 3.99,
+     "qty": 1,
+     "start": "2026-10-14",
+     "end": "2026-10-21"
+    },
+    "queued_at": "2026-10-14T19:18:47.556Z",
+    "id": "c1792005527556"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LUX CROUSTILLES BACON",
+     "F1744": "125.0",
+     "F22": "125 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LUX CROUSTILLES BACON",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "66.0000",
+     "F196": "66.0000",
+     "F1140": "3.0000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014151912181916",
+   "applied_at": "2026-10-14T15:19:12",
+   "change": {
+    "code": "0762220222449",
+    "size_num": 125,
+    "size_unit": "GR",
+    "price": 4.99,
+    "promo": {
+     "price": 3.99,
+     "qty": 1,
+     "start": "2026-10-14",
+     "end": "2026-10-21"
+    },
+    "queued_at": "2026-10-14T19:19:08.148Z",
+    "id": "c1792005548148"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "LUX CROUSTILLES CRÈME SURE OIGNONS",
+     "F1744": "125.0",
+     "F22": "125 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "LUX CROUSTILLES CRÈME SURE OIGNONS",
      "F04": "2",
      "F81": "1",
      "F96": "1",
