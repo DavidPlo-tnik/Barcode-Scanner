@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260930123950477412",
-   "applied_at": "2026-09-30T12:39:50",
-   "change": {
-    "code": "0068492407001",
-    "pos_title": "FRAISE             1un 340G",
-    "size_num": 340,
-    "size_unit": "",
-    "price": 2.99,
-    "queued_at": "2026-09-30T16:39:20.787Z",
-    "id": "c1790786360787"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "FRAISE             1un",
-     "F1744": "340.0",
-     "F22": "340 ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "FRAISE             1un 340G",
-     "F04": "41",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "31.7500",
-     "F196": "31.7500",
-     "F1140": "2.6458",
-     "F27": "ZJ01"
-    },
-    "PRICE_TAB": {
-     "F30": "1.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "1.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": null
-    }
-   }
-  },
-  {
    "undo_id": "u20260930124403197856",
    "applied_at": "2026-09-30T12:44:03",
    "change": {
@@ -24866,6 +24816,59 @@
      "F1014": null,
      "F1015": null,
      "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014152753255031",
+   "applied_at": "2026-10-14T15:27:53",
+   "change": {
+    "code": "0020237900000",
+    "pos_title": "SAUCISSON WIENNERS POULET ET PORC KG",
+    "promo": {
+     "price": 11.99,
+     "qty": 1,
+     "start": "2026-10-15",
+     "end": "2026-10-21"
+    },
+    "queued_at": "2026-10-14T19:27:57.928Z",
+    "id": "c1792006077928"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSON WIENNERS POULET ET PORC",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSON WIENNERS POULET ET PORC KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "8.9900",
+     "F196": "8.9900",
+     "F1140": "8.9900",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "15.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "15.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": null
     }
    }
   }
