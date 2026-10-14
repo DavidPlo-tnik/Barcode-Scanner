@@ -2128,7 +2128,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v177</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v178</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2703,7 +2703,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v177</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v178</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3963,13 +3963,27 @@
     } catch { _pm.log = _pm.log || { promos: {} }; }
     if (!_pm.log.promos) _pm.log.promos = {};
   }
-  async function pmSaveLog() {
-    try {
-      const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(_pm.log, null, 1))));
-      const res = await ghPutFile('pos/promo_log.json', b64, 'promo log', _pm.logSha);
-      if (res && res.content && res.content.sha) _pm.logSha = res.content.sha; else await pmLoadLog();
-    } catch (e) { if (e.isConflict) await pmLoadLog(); }
+  // Saves run one at a time; on a conflict the newer file is reloaded and OUR changes are
+  // laid back on top (before, a conflict reloaded the file and silently threw our edits away).
+  let _pmSaveChain = Promise.resolve();
+  function pmSaveLog() { _pmSaveChain = _pmSaveChain.then(pmSaveLogNow, pmSaveLogNow); return _pmSaveChain; }
+  async function pmSaveLogNow() {
+    for (let i = 0; i < 4; i++) {
+      try {
+        const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(_pm.log, null, 1))));
+        const res = await ghPutFile('pos/promo_log.json', b64, 'promo log', _pm.logSha);
+        if (res && res.content && res.content.sha) _pm.logSha = res.content.sha;
+        return;
+      } catch (e) {
+        if (!e.isConflict) return;
+        const mine = _pm.log;
+        await pmLoadLog();
+        _pm.log.promos = Object.assign(_pm.log.promos || {}, mine.promos || {});
+        _pm.log.weeks = Object.assign(_pm.log.weeks || {}, mine.weeks || {});
+      }
+    }
   }
+
   const pmKey = (code, p) => `${code}|${p.ps || ''}|${p.pe || ''}|${p.pp}|${p.pq || 1}`;
   function pmLogPut(code, p, extra) {
     const k = pmKey(code, p);
@@ -4031,12 +4045,28 @@
     }
     return { start, end: pmAddDays(start, 6) };
   }
-  const pmWeekLog = (nw) => { _pm.log.weeks = _pm.log.weeks || {}; return _pm.log.weeks[nw.start] || (_pm.log.weeks[nw.start] = { drop: [] }); };
+  function pmWeekLocal() { try { return JSON.parse(localStorage.getItem('pmWeeks') || '{}'); } catch (e) { return {}; } }
+  // this phone's choices win (they are saved instantly); the shared log carries them to other phones
+  function pmWeekLog(nw) {
+    _pm.log.weeks = _pm.log.weeks || {};
+    const loc = pmWeekLocal()[nw.start];
+    if (loc && (!_pm.log.weeks[nw.start] || (loc.at || 0) > (_pm.log.weeks[nw.start].at || 0))) _pm.log.weeks[nw.start] = { drop: loc.drop.slice(), at: loc.at };
+    return _pm.log.weeks[nw.start] || (_pm.log.weeks[nw.start] = { drop: [], at: 0 });
+  }
+  function pmWeekPersist(nw) {
+    const wk = pmWeekLog(nw); wk.at = Date.now() + 1;
+    try { const all = pmWeekLocal(); all[nw.start] = { drop: wk.drop, at: wk.at };
+      Object.keys(all).forEach(k => { if (k < pmAddDays(pmToday(), -21)) delete all[k]; });
+      localStorage.setItem('pmWeeks', JSON.stringify(all)); } catch (e) {}
+    Object.keys(_pm.log.weeks || {}).forEach(k => { if (k < pmAddDays(pmToday(), -21)) delete _pm.log.weeks[k]; });
+    pmSaveLog();                      // background, no waiting
+  }
+  _pm.keeping = new Set();            // codes being sent to the POS right now (hidden from the review list)
   // current promos that stop before next week and haven't been decided yet
   function pmReviewRows(nw, rows) {
     rows = rows || pmCollect();
-    const wk = (_pm.log.weeks || {})[nw.start] || { drop: [] };
-    return rows.filter(r => r.st === 'current' && r.pe < nw.start && !wk.drop.includes(resolveCode(r.code)));
+    const wk = pmWeekLog(nw);
+    return rows.filter(r => r.st === 'current' && r.pe < nw.start && !wk.drop.includes(resolveCode(r.code)) && !_pm.keeping.has(resolveCode(r.code)));
   }
   function pmReviewHtml(list, nw) {
     const inCat = (_ecomCatalog && _ecomCatalog.items) || {};
@@ -4054,38 +4084,41 @@
       <div class="pm-rv-all"><button data-rvall="drop">DROP ALL</button><button class="keep" data-rvall="keep">KEEP ALL</button></div>`;
   }
   function pmReviewBind(el, list, nw, done) {
-    const run = async (rows, how, btns) => {
-      btns.forEach(b => { b.disabled = true; });
+    const drop = (rows) => {
       const wk = pmWeekLog(nw);
-      let ok = 0;
-      for (const r of rows) {
-        const code = resolveCode(r.code);
-        if (how === 'drop') { if (!wk.drop.includes(code)) wk.drop.push(code); ok++; continue; }
-        try {
-          await pmQueue(r.code, { promo: { price: r.pp, qty: r.pq, start: r.ps, end: nw.end } }, () => {
-            const old = _pm.log.promos[r.key]; if (old) old.cancelled = true;
-            pmLogPut(r.code, { pp: r.pp, pq: r.pq, ps: r.ps, pe: nw.end, rp: r.rp, rq: r.rq });
-          });
-          ok++;
-        } catch (e) { showToast('Stopped: ' + e.message, true); break; }
-      }
-      Object.keys(_pm.log.weeks || {}).forEach(k => { if (k < pmAddDays(pmToday(), -21)) delete _pm.log.weeks[k]; });
-      await pmSaveLog();
-      showToast(how === 'keep' ? `Kept ${ok} for next week ✓ (sent to POS)` : `Dropped ${ok} from next week`);
+      rows.forEach(r => { const c = resolveCode(r.code); if (!wk.drop.includes(c)) wk.drop.push(c); });
+      pmWeekPersist(nw);
+      done();                                                        // instant
+    };
+    const keep = async (rows) => {
+      rows.forEach(r => _pm.keeping.add(resolveCode(r.code)));
+      done();                                                        // rows leave the list right away
+      showToast(`Keeping ${rows.length} for next week…`);
+      try {
+        await pmQueueMany(rows.map(r => ({ code: r.code, ch: { promo: { price: r.pp, qty: r.pq, start: r.ps, end: nw.end } }, logFn: () => {
+          const old = _pm.log.promos[r.key]; if (old) old.cancelled = true;
+          pmLogPut(r.code, { pp: r.pp, pq: r.pq, ps: r.ps, pe: nw.end, rp: r.rp, rq: r.rq });
+        } })));
+        pmSaveLog();
+        showToast(`Kept ${rows.length} until ${pmFmt(nw.end)} ✓ (sent to POS)`);
+      } catch (e) { showToast('Could not send: ' + e.message, true); }
+      rows.forEach(r => _pm.keeping.delete(resolveCode(r.code)));
       done();
     };
     el.querySelectorAll('.pm-rv').forEach(row => row.querySelectorAll('[data-rv]').forEach(b => b.addEventListener('click', (ev) => {
       ev.stopPropagation();
       const r = list.find(x => x.key === row.dataset.key); if (!r) return;
       row.classList.add(b.dataset.rv === 'keep' ? 'kept' : 'dropped');
-      run([r], b.dataset.rv, [...row.querySelectorAll('button')]);
+      row.querySelectorAll('button').forEach(x => { x.disabled = true; });
+      setTimeout(() => (b.dataset.rv === 'keep' ? keep : drop)([r]), 160);   // let the slide-out play
     })));
     el.querySelectorAll('[data-rvall]').forEach(b => b.addEventListener('click', () => {
       const how = b.dataset.rvall;
       if (how === 'keep' && !confirm(`Keep all ${list.length} for one more week (until ${pmFmt(nw.end)})?\nThis sends the new end dates to the POS.`)) return;
-      run(list, how, [...el.querySelectorAll('button')]);
+      (how === 'keep' ? keep : drop)(list);
     }));
   }
+
 
   function pmSalesLift(r) {
     const s = DATA.sales[resolveCode(r.code)];
@@ -4119,7 +4152,7 @@
     const nw = _pm.next = pmNextWeek(rows);
     // UPCOMING = the week being planned: scheduled promos + current ones that run into it
     const review = pmReviewRows(nw, rows);
-    const wkLog = (_pm.log.weeks || {})[nw.start] || { drop: [] };
+    const wkLog = pmWeekLog(nw);
     const dropped = rows.filter(r => r.st === 'current' && r.pe < nw.start && wkLog.drop.includes(resolveCode(r.code)));
     by.upcoming = by.upcoming.concat(by.current.filter(r => r.pe >= nw.start).map(r => Object.assign({}, r, { cont: true })));
     // CURRENT = website order: the order you set by dragging (catalog.specialsOrder), new ones after
@@ -4211,7 +4244,7 @@
     $('#pm-flyer').addEventListener('click', () => flyerOpen(_pm.tab === 'upcoming' ? 'next' : 'current'));
     if ($('#pm-review')) pmReviewBind($('#pm-review'), review, nw, pmRender);
     el.querySelectorAll('[data-undrop]').forEach(b => b.addEventListener('click', async () => {
-      const wk = pmWeekLog(nw); wk.drop = wk.drop.filter(c => c !== b.dataset.undrop); await pmSaveLog(); pmRender();
+      const wk = pmWeekLog(nw); wk.drop = wk.drop.filter(c => c !== b.dataset.undrop); pmWeekPersist(nw); pmRender();
     }));
     if (_pm.tab === 'current' && !_pm.q) pmBindReorder($('#pm-list'));
     el.querySelectorAll('.pm-card').forEach(c => c.addEventListener('click', (ev) => {
@@ -4238,6 +4271,21 @@
     applyLocalOverride(code, ch);
     repaintAfterLocalEdit(code);
     if (logFn) logFn();
+  }
+
+  async function pmQueueMany(items) {
+    if (!items.length) return;
+    items.forEach(it => { it.ch.code = it.code; });
+    await queuePosChanges(items.map(it => it.ch));
+    items.forEach(it => {
+      const pend = {};
+      if (it.ch.promo) pend.promo = it.ch.promo;
+      if (it.ch.clear_promo) pend.promo = null;
+      markPending(it.code, pend);
+      applyLocalOverride(it.code, it.ch);
+      if (it.logFn) it.logFn();
+    });
+    repaintAfterLocalEdit(items[items.length - 1].code);
   }
 
   function pmLockedOk(r, what) {
@@ -4503,11 +4551,13 @@
 
   // mode 'current' = this week's promos · 'next' = the week being planned
   // (everything active during the next Thu→Wed window: new promos + prolonged ones)
-  async function flyerOpen(mode) {
+  async function flyerOpen(mode, quick) {
     _fl.mode = mode === 'next' ? 'next' : 'current';
     $('#flyer-modal').classList.add('open');
-    $('#flyer-body').innerHTML = '<div class="empty-state">Preparing flyer…</div>';
-    await Promise.all([flyerLoadCfg(), fetchEcomCatalog(), _pm.log ? null : pmLoadLog()]);
+    if (!quick || !_fl.cfg) {
+      $('#flyer-body').innerHTML = '<div class="empty-state">Preparing flyer…</div>';
+      await Promise.all([flyerLoadCfg(), fetchEcomCatalog(), _pm.log ? null : pmLoadLog()]);
+    }
     const all = pmCollect();
     const nw = pmNextWeek(all);
     _fl.week = nw;
@@ -4634,7 +4684,7 @@
         <button id="fl-sel-group" ${!sel || sel.size < 2 ? 'disabled' : ''}>GROUP</button>
       </div>`;
     body.querySelectorAll('[data-week]').forEach(b => b.addEventListener('click', () => { if (b.dataset.week !== _fl.mode) flyerOpen(b.dataset.week); }));
-    if (review.length) pmReviewBind($('#fl-review'), review, nw, () => flyerOpen('next'));
+    if (review.length) pmReviewBind($('#fl-review'), review, nw, () => flyerOpen('next', true));
     body.querySelectorAll('[data-fmt]').forEach(b => b.addEventListener('click', () => { _fl.fmt = b.dataset.fmt; _fl.sel = null; _fl.page = 0; body.querySelectorAll('[data-fmt]').forEach(x => x.classList.toggle('on', x === b)); flyerDraw(); }));
     $('#fl-from').addEventListener('change', e => { _fl.from = e.target.value; flyerDraw(); });
     $('#fl-to').addEventListener('change', e => { _fl.to = e.target.value; flyerDraw(); });
@@ -6973,6 +7023,26 @@
   }
 
   // Append the change to pos/queue.json in the repo (the PC applier drains it).
+  // Several changes in ONE write (KEEP ALL used to do one slow GitHub round-trip per item)
+  async function queuePosChanges(changes) {
+    for (let attempt = 0; attempt < 5; attempt++) {
+      let queue = { items: [] }, sha = null;
+      try {
+        const url = `https://api.github.com/repos/${GH.GH_OWNER}/${GH.GH_REPO}/contents/pos/queue.json?ref=${GH.GH_BRANCH}`;
+        const r = await fetch(url, { cache: 'no-store', headers: { 'Authorization': `Bearer ${GH.GH_TOKEN}`, 'Accept': 'application/vnd.github+json' } });
+        if (r.status === 200) { const d = await r.json(); sha = d.sha; queue = JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g, ''))))); }
+      } catch {}
+      if (!queue.items) queue.items = [];
+      const t = Date.now();
+      changes.forEach((c, i) => { c.queued_at = new Date().toISOString(); c.id = 'c' + t + '_' + i; queue.items.push(c); });
+      const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(queue, null, 1))));
+      try { await ghPutFile('pos/queue.json', b64, `pos edit x${changes.length}`, sha); return; }
+      catch (e) {
+        if (e.isConflict && attempt < 4) { await new Promise(r => setTimeout(r, 250 * (attempt + 1))); continue; }
+        throw e;
+      }
+    }
+  }
   async function queuePosChange(change) {
     for (let attempt = 0; attempt < 5; attempt++) {
       let queue = { items: [] }, sha = null;
