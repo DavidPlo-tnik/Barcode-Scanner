@@ -1,54 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260930124403197856",
-   "applied_at": "2026-09-30T12:44:03",
-   "change": {
-    "code": "0023881500000",
-    "pos_title": "FLANCS DE SAUMON FUMÉ GR",
-    "price": 24.99,
-    "queued_at": "2026-09-30T16:43:50.841Z",
-    "id": "c1790786630841"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "FLANCS DE SAUMON FUMÉ",
-     "F1744": null,
-     "F22": "GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "FLANCS DE SAUMON FUMÉ GR",
-     "F04": "24",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": "1",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": null,
-     "F1140": "0.0000",
-     "F27": "L-VIANDE"
-    },
-    "PRICE_TAB": {
-     "F30": "19.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "19.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260930140418208114",
    "applied_at": "2026-09-30T14:04:18",
    "change": {
@@ -24869,6 +24821,60 @@
      "F1014": null,
      "F1015": null,
      "F1011": null
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014153408188090",
+   "applied_at": "2026-10-14T15:34:08",
+   "change": {
+    "code": "0020234500000",
+    "pos_title": "SALAMI LVIVSKA KG",
+    "price": 19.99,
+    "promo": {
+     "price": 17.99,
+     "qty": 1,
+     "start": "2026-10-15",
+     "end": "2026-10-21"
+    },
+    "queued_at": "2026-10-14T19:33:32.897Z",
+    "id": "c1792006412897"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SALAMI LVIVSKA",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "SALAMI LVIVSKA KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "11.9900",
+     "F196": "11.9900",
+     "F1140": "11.9900",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "17.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "17.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
