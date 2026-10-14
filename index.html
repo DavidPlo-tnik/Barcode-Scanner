@@ -2130,7 +2130,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v180</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v181</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2705,7 +2705,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v180</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v181</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2979,7 +2979,39 @@
     } catch { /* optional file -- ignore */ }
     return _overrides;
   }
+  // ── Sticky edits: what YOU sent from this phone wins until the POS export really
+  // shows the same values. (The hourly export and the PC's override file can lag or
+  // mis-read a scheduled promo -- that made "4 for $9.99" fall back to "1 for" and
+  // brand-new promos vanish after a while.)
+  let _sticky = null;
+  function stickyAll() { if (!_sticky) { try { _sticky = JSON.parse(localStorage.getItem('stickyEdits') || '{}'); } catch (e) { _sticky = {}; } } return _sticky; }
+  function stickySave() { try { localStorage.setItem('stickyEdits', JSON.stringify(_sticky || {})); } catch (e) {} }
+  function stickyPut(code, f) {
+    const all = stickyAll();
+    all[code] = { f: Object.assign((all[code] && all[code].f) || {}, f), t: Date.now() };
+    stickySave();
+  }
+  function stickyFor(code) {
+    const all = stickyAll(), st = all[code];
+    if (!st) return null;
+    const d0 = new Date(), today = `${d0.getFullYear()}-${String(d0.getMonth() + 1).padStart(2, '0')}-${String(d0.getDate()).padStart(2, '0')}`;
+    // done: too old, or the promo it carries is over
+    if (Date.now() - st.t > 14 * 864e5 || (st.f.pe && st.f.pe < today)) { delete all[code]; stickySave(); return null; }
+    // confirmed by a FRESH export (fetched after the edit) that carries the same values
+    let fresh = null;
+    try { fresh = _editData && _editDataAt && _editDataAt > st.t + 60000 && _editData.items && _editData.items[code]; } catch (e) {}
+    if (fresh) {
+      const same = ['rp', 'rq', 'pp', 'pq', 'ps', 'pe'].every(k => !(k in st.f) || String(st.f[k] ?? '') === String(fresh[k] ?? ''));
+      if (same) { delete all[code]; stickySave(); return null; }
+    }
+    return st.f;
+  }
   function overrideFor(code) {
+    const st = stickyFor(code);
+    if (st) return Object.assign({}, overrideForServer(code) || {}, st);
+    return overrideForServer(code);
+  }
+  function overrideForServer(code) {
     const o = _overrides[code];
     if (!o || !DATA) return null;
     // Drop the override once the full rebuild has clearly caught up. Use a
@@ -3003,7 +3035,8 @@
   function applyOverridesToProducts() {
     if (!DATA || !DATA.products) return 0;
     let n = 0;
-    for (const code in _overrides) {
+    const codes = new Set(Object.keys(_overrides).concat(Object.keys(stickyAll())));
+    for (const code of codes) {
       const o = overrideFor(code);
       if (!o) continue;
       const p = DATA.products[code];
@@ -6865,6 +6898,11 @@
     o.at = new Date().toISOString().slice(0, 19).replace('T', ' ');
     o._local = true;                                 // replaced when the PC publishes
     _overrides[code] = o;
+    if (ch.promo || ch.clear_promo || ch.multibuy || ch.price != null) {
+      const f = {};
+      ['rp', 'rq', 'pp', 'pq', 'ps', 'pe', 'ap', 'price', 'mp'].forEach(k => { f[k] = o[k] === undefined ? null : o[k]; });
+      stickyPut(code, f);
+    }
   }
 
   // Re-render whatever is on screen so a just-made edit is visible everywhere.
