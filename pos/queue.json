@@ -1,3 +1,18 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0482309790387",
+   "pos_title": "VELADIS HARENG 500GR",
+   "size_num": 500,
+   "size_unit": "GR",
+   "promo": {
+    "price": 4.99,
+    "qty": 1,
+    "start": "2026-10-08",
+    "end": "2026-10-21"
+   },
+   "queued_at": "2026-10-14T18:56:34.678Z",
+   "id": "c1792004194678"
+  }
+ ]
 }
