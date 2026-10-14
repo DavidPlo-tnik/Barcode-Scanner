@@ -933,7 +933,31 @@
    "price": 39.99,
    "mp": null,
    "at": "2026-10-14 13:59:35"
+  },
+  "0020142400000": {
+   "pt": "ROTENGLE SECHE KASNOPERKA 1000G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 24,
+   "un": "G",
+   "sn": 1000.0,
+   "nm": "ROTENGLE SECHE KASNOPERKA",
+   "rp": 39.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 39.99,
+   "mp": null,
+   "cost": 10.7,
+   "at": "2026-10-14 14:00:41"
   }
  },
- "updated": "2026-10-14 13:59:35"
+ "updated": "2026-10-14 14:00:41"
 }
