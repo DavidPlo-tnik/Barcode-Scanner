@@ -1,3 +1,14 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0594221900005",
+   "title": "BORSEC EAU MINÉRALE GAZEUSE",
+   "pos_title": "BORSEC EAU MINÉRALE GAZEUSE",
+   "size_num": 1500,
+   "size_unit": "ML",
+   "deposit": 0.1,
+   "queued_at": "2026-10-14T01:01:16.085Z",
+   "id": "c1791939676085"
+  }
+ ]
 }
