@@ -743,7 +743,31 @@
    "mp": null,
    "cost": 28.2,
    "at": "2026-10-13 21:11:26"
+  },
+  "0083839600110": {
+   "pt": "ZAKUSON SALADE D'ALGUES JAPONAISE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "ML",
+   "sn": 370.0,
+   "nm": "ZAKUSON SALADE D'ALGUES JAPONAISE",
+   "rp": 3.49,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.49,
+   "mp": null,
+   "cost": 25.2,
+   "at": "2026-10-13 21:15:39"
   }
  },
- "updated": "2026-10-13 21:11:26"
+ "updated": "2026-10-13 21:15:39"
 }
