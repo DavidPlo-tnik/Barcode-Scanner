@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20260929200717241558",
-   "applied_at": "2026-09-29T20:07:17",
-   "change": {
-    "code": "0482014537410",
-    "title": "DNIPRO CONFITURE CASSIS",
-    "pos_title": "DNIPRO CONFITURE CASSIS",
-    "size_num": 600,
-    "size_unit": "GR",
-    "queued_at": "2026-09-30T00:07:11.077Z",
-    "id": "c1790726831077"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "DNIPRO CONFITURE CASIS",
-     "F1744": "600.0",
-     "F22": "600GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "DNIPRO CONFITURE CASIS 600GR",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "5.6000",
-     "F196": "5.6000",
-     "F1140": "5.6000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "7.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "7.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20260929201129197600",
    "applied_at": "2026-09-29T20:11:29",
    "change": {
@@ -24764,6 +24714,60 @@
     },
     "POS_TAB": {
      "F02": "AVK BAMBUK LAIT CONDENSÉ",
+     "F04": "1",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "1.4000",
+     "F196": "1.4000",
+     "F1140": "1.4000",
+     "F27": "ZJ01"
+    },
+    "PRICE_TAB": {
+     "F30": "2.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261014151335096524",
+   "applied_at": "2026-10-14T15:13:35",
+   "change": {
+    "code": "0482310581423",
+    "size_num": 200,
+    "size_unit": "GR",
+    "promo": {
+     "price": 1.79,
+     "qty": 1,
+     "start": "2026-10-15",
+     "end": "2026-10-21"
+    },
+    "queued_at": "2026-10-14T19:12:57.940Z",
+    "id": "c1792005177940"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "AVK BAMBUK FRAISE",
+     "F1744": "200.0",
+     "F22": "200 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "AVK BAMBUK FRAISE",
      "F04": "1",
      "F81": "0",
      "F96": "0",
