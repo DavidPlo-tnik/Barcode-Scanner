@@ -1073,7 +1073,30 @@
    "price": 49.99,
    "mp": null,
    "at": "2026-10-15 11:45:55"
+  },
+  "0021438000000": {
+   "pt": "POISSON SECHE BREME LECHE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 23,
+   "un": "",
+   "sn": null,
+   "nm": "POISSON SECHE BREME LECHE",
+   "rp": 29.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 29.99,
+   "mp": null,
+   "at": "2026-10-15 11:47:06"
   }
  },
- "updated": "2026-10-15 11:45:55"
+ "updated": "2026-10-15 11:47:06"
 }
