@@ -1002,7 +1002,31 @@
    "mp": null,
    "cost": 37.75,
    "at": "2026-10-15 08:55:25"
+  },
+  "0020237700000": {
+   "pt": "SAUCISSON CSABAI KG",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 31,
+   "un": "KG",
+   "sn": null,
+   "nm": "SAUCISSON CSABAI",
+   "rp": 39.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 39.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-10-15 11:09:41"
   }
  },
- "updated": "2026-10-15 08:55:25"
+ "updated": "2026-10-15 11:09:41"
 }
