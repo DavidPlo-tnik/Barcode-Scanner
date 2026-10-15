@@ -978,7 +978,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-10-15 08:54:14"
+  },
+  "0062789300001": {
+   "pt": "MINI CONCOMBRES",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 41,
+   "un": "G",
+   "sn": 397.0,
+   "nm": "MP mini concombre 397g (12)          1un",
+   "rp": 1.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 1.99,
+   "mp": null,
+   "cost": 37.75,
+   "at": "2026-10-15 08:55:25"
   }
  },
- "updated": "2026-10-15 08:54:14"
+ "updated": "2026-10-15 08:55:25"
 }
