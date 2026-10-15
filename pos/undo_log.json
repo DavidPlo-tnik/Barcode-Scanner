@@ -1,56 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20261001192900030776",
-   "applied_at": "2026-10-01T19:29:00",
-   "change": {
-    "code": "0482019551516",
-    "title": "PRIPRAVKA KETCHUP AVEC AIL",
-    "pos_title": "PRIPRAVKA KETCHUP AVEC AIL",
-    "size_num": 400,
-    "size_unit": "ML",
-    "queued_at": "2026-10-01T23:28:39.668Z",
-    "id": "c1790897319668"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "PRIPRAVKA KETCHUP BBQ",
-     "F1744": "400.0",
-     "F22": "400G",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "PRIPRAVKA KETCHUP BBQ 400G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.1000",
-     "F196": "2.1000",
-     "F1140": "2.1000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "3.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20261001193311431217",
    "applied_at": "2026-10-01T19:33:11",
    "change": {
@@ -24940,6 +24890,54 @@
      "F1014": null,
      "F1015": null,
      "F1011": null
+    }
+   }
+  },
+  {
+   "undo_id": "u20261015110941199210",
+   "applied_at": "2026-10-15T11:09:41",
+   "change": {
+    "code": "0020237700000",
+    "pos_title": "SAUCISSON CSABAI KG",
+    "price": 39.99,
+    "queued_at": "2026-10-15T15:08:59.293Z",
+    "id": "c1792076939293"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SAUCISSON CSABAI",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "SAUCISSON CSABAI KG",
+     "F04": "31",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "21.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "21.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
