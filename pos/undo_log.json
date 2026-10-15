@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20261001193311431217",
-   "applied_at": "2026-10-01T19:33:11",
-   "change": {
-    "code": "0482015676640",
-    "pos_title": "CHUMAK SAUCE SATSEBELI 200GR",
-    "size_num": 200,
-    "size_unit": "GR",
-    "queued_at": "2026-10-01T23:32:19.870Z",
-    "id": "c1790897539870"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "CHUMAK SAUCE SATSEBELI",
-     "F1744": "200.0",
-     "F22": "200GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "CHUMAK SAUCE SATSEBELI 200GR",
-     "F04": "1",
-     "F81": null,
-     "F96": null,
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "2.1000",
-     "F196": "2.1000",
-     "F1140": "2.1000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "3.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20261001222032158485",
    "applied_at": "2026-10-01T22:20:32",
    "change": {
@@ -24930,6 +24881,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "21.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261015112513300847",
+   "applied_at": "2026-10-15T11:25:13",
+   "change": {
+    "code": "0005646899020",
+    "pos_title": "ZAKUSON SHISHKEBAB SAUCE 250G",
+    "size_num": 250,
+    "size_unit": "GR",
+    "queued_at": "2026-10-15T15:25:08.787Z",
+    "id": "c1792077908787"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "ZAKUSON SHISHKEBAB SAUCE",
+     "F1744": "250.0",
+     "F22": "250G",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "ZAKUSON SHISHKEBAB SAUCE 250G",
+     "F04": "1",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "32.4000",
+     "F196": "32.4000",
+     "F1140": "2.7000",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "3.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "3.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
