@@ -1026,7 +1026,31 @@
    "mp": null,
    "cost": 0.01,
    "at": "2026-10-15 11:09:41"
+  },
+  "0005646899020": {
+   "pt": "ZAKUSON SHISHKEBAB SAUCE 250G",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 250.0,
+   "nm": "ZAKUSON SHISHKEBAB SAUCE",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 32.4,
+   "at": "2026-10-15 11:25:13"
   }
  },
- "updated": "2026-10-15 11:09:41"
+ "updated": "2026-10-15 11:25:13"
 }
