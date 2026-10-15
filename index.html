@@ -904,6 +904,45 @@
   .fl-pages span { font-size: 11px; color: #fb923c; margin-right: 4px; }
   .fl-pages button { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text-dim); font-family: var(--font-display); font-size: 10.5px; font-weight: 800; }
   .fl-pages button.on { background: var(--accent); color: #000; border-color: var(--accent); }
+  .fl-stage { cursor: zoom-in; }
+  .fl-edit-hint { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); padding: 5px 10px; border-radius: 99px; background: rgba(0,0,0,.65); color: #fff; font-family: var(--font-display); font-size: 10px; letter-spacing: .08em; pointer-events: none; }
+  .fl-actions button.on { border-color: var(--accent); color: var(--accent); }
+  .fle { position: fixed; inset: 0; z-index: 260; display: none; flex-direction: column; background: #0b0b0c; color: var(--text); padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+  .fle.open { display: flex; }
+  .fle-top, .fle-fmts { display: flex; gap: 6px; align-items: center; padding: 8px 10px; }
+  .fle-fmts { padding-top: 0; overflow-x: auto; }
+  .fle-top button, .fle-fmts button, .fle-bar button { min-width: 44px; height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: var(--font-display); font-size: 12px; font-weight: 800; cursor: pointer; }
+  .fle-top button:disabled, .fle-bar button:disabled { opacity: .35; }
+  .fle-top .fle-done, .fle-bar button.pri { background: var(--accent); color: #000; border-color: var(--accent); }
+  .fle-fmts button { height: 32px; font-size: 10.5px; white-space: nowrap; }
+  .fle-fmts button.on, .fle-bar button.on { border-color: var(--accent); color: var(--accent); }
+  .fle-sp { flex: 1; }
+  .fle-zl { min-width: 62px !important; }
+  .fle-vp { position: relative; flex: 1; min-height: 0; overflow: hidden; touch-action: none; background: repeating-conic-gradient(#141416 0% 25%, #101012 0% 50%) 0 0 / 24px 24px; -webkit-user-select: none; user-select: none; }
+  .fle-world { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+  .fle-world canvas { display: block; box-shadow: 0 10px 40px rgba(0,0,0,.6); }
+  .fle-ov { position: absolute; inset: 0; pointer-events: none; }
+  .fle-sel { position: absolute; border: solid #d4ff3a; border-radius: 6px; box-shadow: 0 0 0 9999px rgba(0,0,0,.32); }
+  .fle-sel.locked { border-color: #fb923c; }
+  .fle-h { position: absolute; pointer-events: auto; display: flex; align-items: center; justify-content: center; cursor: nwse-resize; touch-action: none; }
+  .fle-h.r { cursor: ew-resize; } .fle-h.b { cursor: ns-resize; }
+  .fle-h i { display: block; width: 34%; height: 34%; border-radius: 50%; background: #d4ff3a; border: solid #111; box-shadow: 0 2px 8px rgba(0,0,0,.6); }
+  .fle-h.r i { width: 30%; height: 50%; border-radius: 99px; } .fle-h.b i { width: 50%; height: 30%; border-radius: 99px; }
+  .fle-dim { position: absolute; background: #d4ff3a; color: #000; font-family: var(--font-display); font-weight: 800; white-space: nowrap; border-radius: 6px; }
+  .fle-lock { position: absolute; background: rgba(0,0,0,.7); color: #fff; line-height: 1; transform: translate(-30%, -30%); }
+  .fle-ph { position: absolute; border: dashed rgba(255,255,255,.9); border-radius: 4px; box-shadow: 0 0 0 1px rgba(0,0,0,.35); }
+  .fle-ph.on { border-style: solid; border-color: #d4ff3a; }
+  .fle-phh { position: absolute; pointer-events: auto; display: flex; align-items: center; justify-content: center; cursor: nwse-resize; touch-action: none; }
+  .fle-phh i { width: 45%; height: 45%; border-radius: 50%; background: #fff; border: solid #111; }
+  .fle-ghost { position: absolute; display: none; border: dashed #d4ff3a; border-radius: 6px; background: rgba(212,255,58,.12); color: #d4ff3a; font-family: var(--font-display); font-weight: 800; display: none; align-items: center; justify-content: center; text-shadow: 0 1px 3px #000; }
+  .fle-ghost.drop { background: rgba(212,255,58,.25); border-style: solid; }
+  .fle-bar { padding: 8px 10px 10px; border-top: 1px solid var(--border); background: #111113; display: flex; flex-direction: column; gap: 8px; }
+  .fle-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .fle-name { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fle-name span { font-family: var(--font-display); font-size: 11px; color: var(--accent); margin-left: 6px; }
+  .fle-grp { display: inline-flex; align-items: center; gap: 4px; padding: 2px 4px 2px 8px; border-radius: 12px; background: var(--surface-2); }
+  .fle-grp em { font-style: normal; font-family: var(--font-display); font-size: 11px; color: var(--text-dim); margin-right: 2px; }
+  .fle-hint { font-size: 11.5px; color: var(--text-dim); }
   .fl-help { font-size: 11.5px; color: var(--text-dim); line-height: 1.45; margin: 2px 0 10px; }
   .fl-help b { color: var(--text); }
   #fl-list { padding-bottom: 70px; }
@@ -2130,7 +2169,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v181</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v182</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2705,7 +2744,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v181</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v182</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4711,12 +4750,13 @@
       </div>
       ${review.length ? `<div class="pm-review" id="fl-review">${pmReviewHtml(review, nw)}</div>` : ''}
       <div class="fl-formats">${Object.entries(FL_FORMATS).map(([k, f]) => `<button data-fmt="${k}" class="${_fl.fmt === k ? 'on' : ''}">${f.label}</button>`).join('')}</div>
-      <div class="fl-preview"><div class="fl-stage" id="fl-stage"><canvas id="fl-canvas"></canvas><div class="fl-overlay" id="fl-overlay"></div></div></div>
+      <div class="fl-preview"><div class="fl-stage" id="fl-stage"><canvas id="fl-canvas"></canvas><div class="fl-edit-hint">✎ TAP TO EDIT LAYOUT</div></div></div>
       <div class="fl-pages" id="fl-pages"></div>
-      <div class="fl-tools" id="fl-tools"></div>
+      <div class="fl-actions"><button class="alt" id="fl-edit" style="flex:1">✎ EDIT LAYOUT</button>
+        <button class="alt ${_fl.cfg.onePage && _fl.cfg.onePage[_fl.fmt] ? 'on' : ''}" id="fl-one" style="flex:1">${_fl.cfg.onePage && _fl.cfg.onePage[_fl.fmt] ? '✓ ' : ''}ALL ON ONE PAGE</button></div>
       <div class="fl-actions"><button id="fl-dl">⬇ SAVE THIS SIZE</button><button class="alt" id="fl-dl-all">⬇ ALL SIZES</button></div>
       <div class="fl-dates"><div><label>FROM</label><input type="date" id="fl-from" value="${_fl.from}"></div><div><label>TO</label><input type="date" id="fl-to" value="${_fl.to}"></div></div>
-      <div class="fl-help"><b>On the flyer:</b> tap a box, then drag its <b>edge or corner</b> to resize · drag a <b>photo</b> inside it to move it, its <b>dot</b> to resize it. <b>Hold</b> a box and drag it onto another to move it.
+      <div class="fl-help"><b>Layout:</b> tap the flyer (or ✎ EDIT LAYOUT) for the full-screen editor — zoom, resize, move, photos, lock, undo.
         <b>In the list:</b> tap a name to edit it · <b>hold</b> a row to select several and <b>GROUP</b> · hold <b>≡</b> to reorder.</div>
       <div id="fl-list" class="${sel ? 'fl-selmode' : ''}">${units.map((u, i) => flyerUnitHtml(u, i, sel)).join('') || `<div class="empty-state">${_fl.mode === 'next' ? 'Nothing planned for next week yet (with a photo).' : 'No current promos with a photo.'}</div>`}</div>
       <div class="fl-selbar ${sel ? 'on' : ''}" id="fl-selbar">
@@ -4726,9 +4766,11 @@
       </div>`;
     body.querySelectorAll('[data-week]').forEach(b => b.addEventListener('click', () => { if (b.dataset.week !== _fl.mode) flyerOpen(b.dataset.week); }));
     if (review.length) pmReviewBind($('#fl-review'), review, nw, () => flyerOpen('next', true));
-    body.querySelectorAll('[data-fmt]').forEach(b => b.addEventListener('click', () => { _fl.fmt = b.dataset.fmt; _fl.sel = null; _fl.page = 0; body.querySelectorAll('[data-fmt]').forEach(x => x.classList.toggle('on', x === b)); flyerDraw(); }));
+    body.querySelectorAll('[data-fmt]').forEach(b => b.addEventListener('click', () => { _fl.fmt = b.dataset.fmt; _fl.sel = null; _fl.page = 0; flyerRenderUI(); }));
     $('#fl-from').addEventListener('change', e => { _fl.from = e.target.value; flyerDraw(); });
     $('#fl-to').addEventListener('change', e => { _fl.to = e.target.value; flyerDraw(); });
+    $('#fl-edit').addEventListener('click', flyerEditorOpen);
+    $('#fl-one').addEventListener('click', () => { _fl.cfg.onePage = _fl.cfg.onePage || {}; _fl.cfg.onePage[_fl.fmt] = !_fl.cfg.onePage[_fl.fmt]; _fl.page = 0; flyerSaveCfg(); flyerRenderUI(); });
     $('#fl-dl').addEventListener('click', () => { _fl.sel = null; flyerPaintOverlay(); flyerExport([_fl.fmt]); });
     $('#fl-dl-all').addEventListener('click', () => { _fl.sel = null; flyerPaintOverlay(); flyerExport(Object.keys(FL_FORMATS)); });
     $('#fl-sel-cancel').addEventListener('click', () => flyerSelectMode(null));
@@ -4982,153 +5024,371 @@
   }
 
   // ---------- editing on the flyer itself ----------
-  function flyerStageScale() {
-    const cv = $('#fl-canvas'); if (!cv || !cv.width) return 1;
-    return cv.getBoundingClientRect().width / cv.width;
+  // ════════════════ FULL-SCREEN LAYOUT EDITOR ════════════════
+  // Pinch / wheel to zoom, drag empty space to pan. Tap a box to select it.
+  // Selected box: drag its big edge/corner handles (a ghost shows the new size,
+  // applied on release) or use the W/H buttons; hold & drag to move it onto another box.
+  // PHOTOS mode: drag a photo to move it, its dot to resize it, or use − / +.
+  // LOCK pins a box's size and spot. UNDO / REDO for every layout change.
+  const _fle = { open: false, z: 1, tx: 0, ty: 0, photoMode: false, phSel: null, hist: [], redo: [] };
+
+  function flyerSnap() {
+    _fle.hist.push({ cfg: JSON.stringify(_fl.cfg), order: _fl.rows.map(r => r.code) });
+    if (_fle.hist.length > 60) _fle.hist.shift();
+    _fle.redo = [];
+    flyerEdTools();
   }
-  function flyerPaintOverlay() {
-    const ov = $('#fl-overlay'), L = _fl.layout;
-    if (!ov) return;
-    if (!_fl.sel || !L) { ov.innerHTML = ''; ov.classList.remove('on'); return; }
-    const b = L.boxes.find(x => x.key === _fl.sel);
-    if (!b) { ov.innerHTML = ''; return; }
-    const k = flyerStageScale();
-    ov.classList.add('on');
-    ov.innerHTML = `<div class="fl-selbox" style="left:${b.x * k}px;top:${b.y * k}px;width:${b.w * k}px;height:${b.h * k}px;">
-        <span class="fl-h fl-h-r" data-h="r"></span><span class="fl-h fl-h-b" data-h="b"></span><span class="fl-h fl-h-rb" data-h="rb"></span>
-        <span class="fl-dim">${b.cw} × ${b.ch}</span>
-      </div>${(b.photos || []).map((r, i) => `<div class="fl-phbox" style="left:${r.x * k}px;top:${r.y * k}px;width:${r.w * k}px;height:${r.h * k}px;"><span class="fl-ph-h" data-ph="${i}"></span></div>`).join('')}`;
-    flyerRenderTools();
+  async function flyerUndo(redo) {
+    const from = redo ? _fle.redo : _fle.hist, to = redo ? _fle.hist : _fle.redo;
+    const st = from.pop(); if (!st) return;
+    to.push({ cfg: JSON.stringify(_fl.cfg), order: _fl.rows.map(r => r.code) });
+    _fl.cfg = JSON.parse(st.cfg);
+    const cur = _fl.rows.map(r => r.code).join(',');
+    if (st.order.join(',') !== cur) await flyerApplyOrder(st.order);
+    flyerSaveCfg(); _fle.phSel = null;
+    await flyerDraw();
   }
-  function flyerRenderTools() {
-    const el = $('#fl-tools'); if (!el) return;
-    const u = _fl.sel && flyerUnits().find(x => x.key === _fl.sel);
-    if (!u) { el.innerHTML = ''; return; }
-    const sz = flyerUnitSize(u, _fl.fmt);
-    el.innerHTML = `<div class="fl-toolrow"><b>${escapeHtml(flyerUnitName(u))}</b>
-      <span>${sz.w}×${sz.h}${sz.manual ? '' : ' · auto'}</span>
-      ${_fl.fmt !== 'post' && sz.manual ? '<button class="fl-chip" data-reset="1">MATCH POST</button>' : ''}
-      ${u.cfg.ph && u.cfg.ph[_fl.fmt] && Object.keys(u.cfg.ph[_fl.fmt]).length ? '<button class="fl-chip" data-phreset="1">AUTO PHOTOS</button>' : ''}
-      <button class="fl-chip" data-desel="1">DONE</button></div>`;
-    const rs = el.querySelector('[data-reset]');
-    if (rs) rs.addEventListener('click', () => { delete u.cfg.sz[_fl.fmt]; if (u.cfg.ph) delete u.cfg.ph[_fl.fmt]; flyerSaveCfg(); flyerDraw(); });
-    const pr = el.querySelector('[data-phreset]');
-    if (pr) pr.addEventListener('click', () => { delete u.cfg.ph[_fl.fmt]; flyerSaveCfg(); flyerDraw(); });
-    el.querySelector('[data-desel]').addEventListener('click', () => { _fl.sel = null; flyerPaintOverlay(); flyerRenderTools(); });
+
+  function flyerEditorOpen() {
+    let el = $('#fle');
+    if (!el) { el = document.createElement('div'); el.id = 'fle'; el.className = 'fle'; document.body.appendChild(el); }
+    el.innerHTML = `
+      <div class="fle-top">
+        <button data-a="close" class="fle-done">✓ DONE</button>
+        <button data-a="undo" title="Undo">↶</button><button data-a="redo" title="Redo">↷</button>
+        <span class="fle-sp"></span>
+        <button data-a="zout">−</button><button data-a="fit" class="fle-zl">FIT</button><button data-a="zin">+</button>
+      </div>
+      <div class="fle-fmts">${Object.entries(FL_FORMATS).map(([k, f]) => `<button data-fmt="${k}" class="${_fl.fmt === k ? 'on' : ''}">${f.label}</button>`).join('')}</div>
+      <div class="fle-vp" id="fle-vp"><div class="fle-world" id="fle-world"><canvas id="fle-canvas"></canvas><div class="fle-ov" id="fle-ov"></div></div></div>
+      <div class="fle-bar" id="fle-bar"></div>`;
+    el.classList.add('open');
+    document.body.classList.add('body-locked');
+    _fle.open = true; _fle.photoMode = false; _fle.phSel = null;
+    el.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => {
+      const a = b.dataset.a;
+      if (a === 'close') flyerEditorClose();
+      else if (a === 'undo') flyerUndo(false);
+      else if (a === 'redo') flyerUndo(true);
+      else if (a === 'zin') flyerZoomBy(1.35);
+      else if (a === 'zout') flyerZoomBy(1 / 1.35);
+      else if (a === 'fit') flyerFit();
+    }));
+    el.querySelectorAll('[data-fmt]').forEach(b => b.addEventListener('click', () => {
+      _fl.fmt = b.dataset.fmt; _fl.sel = null; _fl.page = 0; _fle.photoMode = false; _fle.phSel = null;
+      el.querySelectorAll('[data-fmt]').forEach(x => x.classList.toggle('on', x === b));
+      document.querySelectorAll('#flyer-body [data-fmt]').forEach(x => x.classList.toggle('on', x.dataset.fmt === _fl.fmt));
+      flyerDraw().then(flyerFit);
+    }));
+    flyerEdBind();
+    flyerDraw().then(flyerFit);
+  }
+  function flyerEditorClose() {
+    const el = $('#fle'); if (el) { el.classList.remove('open'); el.innerHTML = ''; }
+    document.body.classList.remove('body-locked');
+    _fle.open = false; _fl.sel = null;
+    flyerRenderUI();
+  }
+  function flyerApplyView() {
+    const w = $('#fle-world'); if (!w) return;
+    w.style.transform = `translate(${_fle.tx}px,${_fle.ty}px) scale(${_fle.z})`;
+    const zl = document.querySelector('#fle .fle-zl'); if (zl) zl.textContent = _fle.fitZ ? Math.round(100 * _fle.z / _fle.fitZ) + '%' : 'FIT';
+    flyerEdPaint();
+  }
+  function flyerFit() {
+    const vp = $('#fle-vp'), cv = $('#fle-canvas'); if (!vp || !cv || !cv.width) return;
+    const r = vp.getBoundingClientRect(), pad = 14;
+    const z = Math.min((r.width - pad * 2) / cv.width, (r.height - pad * 2) / cv.height);
+    _fle.fitZ = z; _fle.z = z;
+    _fle.tx = (r.width - cv.width * z) / 2; _fle.ty = (r.height - cv.height * z) / 2;
+    flyerApplyView();
+  }
+  function flyerZoomBy(f, cx, cy) {
+    const vp = $('#fle-vp'); if (!vp) return;
+    const r = vp.getBoundingClientRect();
+    if (cx == null) { cx = r.left + r.width / 2; cy = r.top + r.height / 2; }
+    const z2 = Math.max(_fle.fitZ * .6, Math.min(_fle.fitZ * 8, _fle.z * f));
+    const k = z2 / _fle.z;
+    _fle.tx = (cx - r.left) - ((cx - r.left) - _fle.tx) * k;
+    _fle.ty = (cy - r.top) - ((cy - r.top) - _fle.ty) * k;
+    _fle.z = z2;
+    flyerApplyView();
+  }
+
+  // ---- overlay (drawn in canvas pixels inside the zoomed world; handles keep a constant on-screen size)
+  function flyerEdPaint() {
+    const ov = $('#fle-ov'), L = _fl.layout; if (!ov || !L) return;
+    const px = (n) => (n / _fle.z).toFixed(1) + 'px';            // n screen px → canvas px
+    let h = '';
+    L.boxes.forEach(b => {
+      const u = flyerUnitByKey(b.key);
+      if (u && u.cfg.lock) h += `<div class="fle-lock" style="left:${b.x}px;top:${b.y}px;font-size:${px(16)};padding:${px(3)} ${px(6)};border-radius:${px(6)}">🔒</div>`;
+    });
+    const b = _fl.sel && L.boxes.find(x => x.key === _fl.sel);
+    if (b) {
+      const u = flyerUnitByKey(b.key), locked = u && u.cfg.lock;
+      h += `<div class="fle-sel ${locked ? 'locked' : ''}" style="left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px;border-width:${px(2.5)}"></div>`;
+      if (!locked && !_fle.photoMode) {
+        const H = 46 / _fle.z, V = 12 / _fle.z;              // touch target / visible knob (screen px)
+        const knob = (cls, x, y, w, hh) => `<div class="fle-h ${cls}" data-h="${cls}" style="left:${x - w / 2}px;top:${y - hh / 2}px;width:${w}px;height:${hh}px"><i style="border-width:${px(2.5)}"></i></div>`;
+        h += knob('r', b.x + b.w, b.y + b.h / 2, H, H * 1.6);
+        h += knob('b', b.x + b.w / 2, b.y + b.h, H * 1.6, H);
+        h += knob('rb', b.x + b.w, b.y + b.h, H * 1.15, H * 1.15);
+        h += `<div class="fle-dim" style="left:${b.x}px;top:${b.y + b.h}px;font-size:${px(12)};padding:${px(3)} ${px(7)};margin-top:${px(6)}">${b.cw} × ${b.ch}</div>`;
+      }
+      if (_fle.photoMode && !locked) {
+        (b.photos || []).forEach((r, i) => {
+          const on = _fle.phSel === r.f;
+          const D = 40 / _fle.z;
+          h += `<div class="fle-ph ${on ? 'on' : ''}" style="left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;border-width:${px(on ? 2.5 : 1.5)}">
+                  <div class="fle-phh" data-ph="${i}" style="right:${-D / 2}px;bottom:${-D / 2}px;width:${D}px;height:${D}px"><i style="border-width:${px(2.5)}"></i></div></div>`;
+        });
+      }
+    }
+    ov.innerHTML = h + '<div class="fle-ghost" id="fle-ghost"></div>';
+  }
+  const flyerUnitByKey = (k) => flyerUnits().find(x => x.key === k);
+
+  // ---- contextual bottom bar
+  function flyerEdTools() {
+    const el = $('#fle-bar'); if (!el) return;
+    const top = document.querySelector('#fle [data-a="undo"]'), rd = document.querySelector('#fle [data-a="redo"]');
+    if (top) top.disabled = !_fle.hist.length; if (rd) rd.disabled = !_fle.redo.length;
+    const L = _fl.layout || {}, F = FL_FORMATS[_fl.fmt];
+    const one = !!(_fl.cfg.onePage && _fl.cfg.onePage[_fl.fmt]);
+    const u = _fl.sel && flyerUnitByKey(_fl.sel);
+    const pages = (L.pages || 1) > 1 ? `<div class="fle-row">${Array.from({ length: L.pages }, (_, i) => `<button data-pg="${i}" class="${i === L.page ? 'on' : ''}">PAGE ${i + 1}</button>`).join('')}</div>` : '';
+    if (!u) {
+      el.innerHTML = `${pages}<div class="fle-row">
+          <button data-t="one" class="${one ? 'on' : ''}">${one ? '✓ ' : ''}ALL ON ONE PAGE</button>
+          <span class="fle-hint">Tap a box to edit it · pinch or wheel to zoom · drag to move around</span></div>`;
+    } else if (u.cfg.lock) {
+      el.innerHTML = `${pages}<div class="fle-name">${escapeHtml(flyerUnitName(u))}</div>
+        <div class="fle-row"><button data-t="lock" class="on">🔓 UNLOCK</button><button data-t="desel">DONE</button>
+        <span class="fle-hint">Locked: size and spot stay put.</span></div>`;
+    } else if (_fle.photoMode) {
+      el.innerHTML = `<div class="fle-name">PHOTOS · ${escapeHtml(flyerUnitName(u))}</div>
+        <div class="fle-row">
+          <button data-t="phm" ${_fle.phSel ? '' : 'disabled'}>−</button><button data-t="php" ${_fle.phSel ? '' : 'disabled'}>+</button>
+          <button data-t="phreset" ${_fle.phSel ? '' : 'disabled'}>RESET</button>
+          <button data-t="phauto">AUTO ALL</button>
+          <button data-t="phdone" class="pri">DONE</button></div>
+        <div class="fle-hint">Tap a photo to pick it · drag it to move · drag its dot to resize</div>`;
+    } else {
+      const s = flyerUnitSize(u, _fl.fmt);
+      const b = (L.boxes || []).find(x => x.key === u.key) || {};
+      const cw = b.cw || s.w, chh = b.ch || s.h;
+      el.innerHTML = `${pages}<div class="fle-name">${escapeHtml(flyerUnitName(u))} <span>${cw} × ${chh}${s.manual ? '' : ' · auto'}</span></div>
+        <div class="fle-row">
+          <span class="fle-grp"><em>W</em><button data-t="w-">−</button><button data-t="w+">+</button></span>
+          <span class="fle-grp"><em>H</em><button data-t="h-">−</button><button data-t="h+">+</button></span>
+          <span class="fle-grp"><button data-t="prev" title="Earlier">◀</button><button data-t="next" title="Later">▶</button></span>
+        </div>
+        <div class="fle-row">
+          <button data-t="photos">📷 PHOTOS</button>
+          <button data-t="lock">🔒 LOCK</button>
+          <button data-t="auto" ${s.manual || (u.cfg.ph && u.cfg.ph[_fl.fmt]) ? '' : 'disabled'}>AUTO</button>
+          <button data-t="hide">HIDE</button>
+          <button data-t="desel" class="pri">DONE</button>
+        </div>`;
+    }
+    el.querySelectorAll('[data-pg]').forEach(x => x.addEventListener('click', () => { _fl.page = +x.dataset.pg; _fl.sel = null; flyerDraw(); }));
+    el.querySelectorAll('[data-t]').forEach(x => x.addEventListener('click', () => flyerEdAct(x.dataset.t)));
+  }
+
+  async function flyerEdAct(t) {
+    const u = _fl.sel && flyerUnitByKey(_fl.sel);
+    const L = _fl.layout, F = FL_FORMATS[_fl.fmt];
+    if (t === 'one') { flyerSnap(); _fl.cfg.onePage = _fl.cfg.onePage || {}; _fl.cfg.onePage[_fl.fmt] = !_fl.cfg.onePage[_fl.fmt]; _fl.page = 0; flyerSaveCfg(); await flyerDraw(); flyerFit(); return; }
+    if (t === 'desel') { _fl.sel = null; _fle.photoMode = false; _fle.phSel = null; flyerEdPaint(); flyerEdTools(); return; }
+    if (!u) return;
+    const b = L.boxes.find(x => x.key === u.key);
+    if (t === 'lock') {
+      flyerSnap();
+      if (u.cfg.lock) { u.cfg.lock = false; if (u.cfg.pos) delete u.cfg.pos[_fl.fmt]; }
+      else if (b) {
+        u.cfg.lock = true;
+        u.cfg.sz = u.cfg.sz || {}; u.cfg.sz[_fl.fmt] = { w: b.cw, h: b.ch };
+        u.cfg.pos = u.cfg.pos || {}; u.cfg.pos[_fl.fmt] = { r: b.r, c: b.c, page: L.page, cols: L.cols };
+      }
+      flyerSaveCfg(); await flyerDraw(); return;
+    }
+    if (t === 'w-' || t === 'w+' || t === 'h-' || t === 'h+') {
+      const cur = b ? { w: b.cw, h: b.ch } : flyerUnitSize(u, _fl.fmt);
+      const nw = Math.max(1, Math.min(L.cols, cur.w + (t === 'w+' ? 1 : t === 'w-' ? -1 : 0)));
+      const nh = Math.max(1, Math.min(12, cur.h + (t === 'h+' ? 1 : t === 'h-' ? -1 : 0)));
+      if (nw === cur.w && nh === cur.h) return;
+      flyerSnap();
+      u.cfg.sz = u.cfg.sz || {}; u.cfg.sz[_fl.fmt] = { w: nw, h: nh };
+      if (u.cfg.ph) delete u.cfg.ph[_fl.fmt];
+      flyerSaveCfg(); await flyerDraw(); return;
+    }
+    if (t === 'prev' || t === 'next') {
+      const keys = flyerUnits().filter(x => !x.cfg.hide).map(x => x.key), i = keys.indexOf(u.key), j = i + (t === 'next' ? 1 : -1);
+      if (i < 0 || j < 0 || j >= keys.length) return;
+      flyerSnap(); await flyerMoveUnit(u.key, keys[j]); await flyerDraw(); return;
+    }
+    if (t === 'auto') { flyerSnap(); if (u.cfg.sz) delete u.cfg.sz[_fl.fmt]; if (u.cfg.ph) delete u.cfg.ph[_fl.fmt]; flyerSaveCfg(); await flyerDraw(); return; }
+    if (t === 'hide') { flyerSnap(); u.cfg.hide = true; _fl.sel = null; flyerSaveCfg(); await flyerDraw(); return; }
+    if (t === 'photos') { _fle.photoMode = true; _fle.phSel = null; flyerEdPaint(); flyerEdTools(); return; }
+    if (t === 'phdone') { _fle.photoMode = false; _fle.phSel = null; flyerEdPaint(); flyerEdTools(); return; }
+    if (t === 'phauto') { flyerSnap(); if (u.cfg.ph) delete u.cfg.ph[_fl.fmt]; flyerSaveCfg(); await flyerDraw(); return; }
+    if (!_fle.phSel) return;
+    const o = flyerPhCfg(u, _fle.phSel);
+    flyerSnap();
+    if (t === 'php') o.s = Math.min(3, (o.s || 1) * 1.1);
+    if (t === 'phm') o.s = Math.max(.3, (o.s || 1) / 1.1);
+    if (t === 'phreset') { o.s = 1; o.dx = 0; o.dy = 0; }
+    flyerSaveCfg(); await flyerDraw();
   }
   function flyerPhCfg(u, f) {
     u.cfg.ph = u.cfg.ph || {};
     const per = u.cfg.ph[_fl.fmt] = u.cfg.ph[_fl.fmt] || {};
     return per[f] = per[f] || { dx: 0, dy: 0, s: 1 };
   }
-  function flyerBindStage() {
-    const stage = $('#fl-stage'); if (!stage) return;
-    let mode = null, start = null, holdT = null;
-    const toCanvas = (e) => { const r = $('#fl-canvas').getBoundingClientRect(), k = flyerStageScale(); return { x: (e.clientX - r.left) / k, y: (e.clientY - r.top) / k }; };
+
+  // ---- gestures
+  function flyerEdBind() {
+    const vp = $('#fle-vp'); if (!vp) return;
+    const pts = new Map();
+    let g = null;                     // current gesture
+    let holdT = 0, liveRaf = 0, liveBusy = false;
+    const toCanvas = (x, y) => { const cv = $('#fle-canvas'), r = cv.getBoundingClientRect(); return { x: (x - r.left) * cv.width / r.width, y: (y - r.top) * cv.height / r.height }; };
     const boxAt = (p) => _fl.layout && _fl.layout.boxes.find(b => p.x >= b.x && p.x <= b.x + b.w && p.y >= b.y && p.y <= b.y + b.h);
-    stage.addEventListener('pointerdown', (e) => {
-      const p = toCanvas(e);
-      const phH = e.target.closest('[data-ph]');
-      if (phH && _fl.sel) {                                     // photo scale handle
-        e.preventDefault();
-        const b = _fl.layout.boxes.find(x => x.key === _fl.sel);
-        const u = flyerUnits().find(x => x.key === _fl.sel);
-        const r = b && b.photos[+phH.dataset.ph];
-        if (!r) return;
-        const o = flyerPhCfg(u, r.f);
-        mode = 'phscale'; start = { b, u, r, o, s0: o.s || 1, c: { x: r.x + r.w / 2, y: r.y + r.h / 2 }, d0: Math.hypot(p.x - (r.x + r.w / 2), p.y - (r.y + r.h / 2)) || 1 };
-        try { stage.setPointerCapture(e.pointerId); } catch (er) {}
+    const ghost = (r, label, drop) => {
+      const gEl = $('#fle-ghost'); if (!gEl) return;
+      if (!r) { gEl.style.display = 'none'; return; }
+      gEl.style.cssText = `display:flex;left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;border-width:${(3 / _fle.z).toFixed(1)}px;font-size:${(14 / _fle.z).toFixed(1)}px`;
+      gEl.className = 'fle-ghost' + (drop ? ' drop' : '');
+      gEl.textContent = label || '';
+    };
+    const live = () => {                       // redraw while dragging photos, one frame at a time
+      if (liveRaf || liveBusy) { g && (g.dirty = true); return; }
+      liveRaf = requestAnimationFrame(async () => { liveRaf = 0; liveBusy = true; await flyerDraw(); liveBusy = false; if (g && g.dirty) { g.dirty = false; live(); } });
+    };
+    vp.addEventListener('pointerdown', (e) => {
+      try { vp.setPointerCapture(e.pointerId); } catch (er) {}
+      pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (pts.size === 2) {                                 // pinch: cancel whatever one finger was doing
+        clearTimeout(holdT); ghost(null);
+        const [a, b] = [...pts.values()];
+        g = { type: 'pinch', d0: Math.hypot(a.x - b.x, a.y - b.y) || 1, z0: _fle.z, cx: (a.x + b.x) / 2, cy: (a.y + b.y) / 2, tx0: _fle.tx, ty0: _fle.ty };
         return;
       }
-      const h = e.target.closest('[data-h]');
-      if (h && _fl.sel) {                                       // resize handle
-        e.preventDefault();
-        const b = _fl.layout.boxes.find(x => x.key === _fl.sel);
-        const u = flyerUnits().find(x => x.key === _fl.sel);
-        mode = 'resize'; start = { h: h.dataset.h, b, u, p, sz: flyerUnitSize(u, _fl.fmt) };
-        try { stage.setPointerCapture(e.pointerId); } catch (er) {}
-        return;
+      if (pts.size > 2) return;
+      const p = toCanvas(e.clientX, e.clientY);
+      const L = _fl.layout;
+      const selB = _fl.sel && L && L.boxes.find(x => x.key === _fl.sel);
+      const hEl = e.target.closest('[data-h]'), phEl = e.target.closest('[data-ph]');
+      if (hEl && selB) { g = { type: 'resize', h: hEl.dataset.h, b: selB, w: selB.cw, hh: selB.ch }; return; }
+      if (phEl && selB) {
+        const r = selB.photos[+phEl.dataset.ph]; const u = flyerUnitByKey(selB.key);
+        if (r && u) { flyerSnap(); const o = flyerPhCfg(u, r.f); _fle.phSel = r.f;
+          g = { type: 'phscale', o, s0: o.s || 1, c: { x: r.x + r.w / 2, y: r.y + r.h / 2 }, d0: Math.hypot(p.x - r.x - r.w / 2, p.y - r.y - r.h / 2) || 1 }; return; }
       }
       const b = boxAt(p);
-      if (!b) { _fl.sel = null; flyerPaintOverlay(); flyerRenderTools(); return; }
-      // inside the selected box, on a photo: a plain drag moves that photo
-      const phr = _fl.sel === b.key ? [...(b.photos || [])].reverse().find(r => p.x >= r.x && p.x <= r.x + r.w && p.y >= r.y && p.y <= r.y + r.h) : null;
-      start = { b, p, moved: false, phr };
-      mode = 'tap';
-      holdT = setTimeout(() => {                                 // hold → move this box
-        holdT = null; mode = 'move'; _fl.sel = b.key; flyerPaintOverlay();
+      g = { type: 'pending', b, p, sx: e.clientX, sy: e.clientY, t: Date.now(), tx0: _fle.tx, ty0: _fle.ty };
+      // photo under the finger (photo mode, selected box)
+      if (_fle.photoMode && selB && b && b.key === selB.key) g.phr = [...(b.photos || [])].reverse().find(r => p.x >= r.x && p.x <= r.x + r.w && p.y >= r.y && p.y <= r.y + r.h);
+      const ub = b && flyerUnitByKey(b.key);
+      if (b && !_fle.photoMode && ub && !ub.cfg.lock) holdT = setTimeout(() => {
+        if (!g || g.type !== 'pending') return;
+        g.type = 'move'; _fl.sel = b.key; flyerEdPaint(); flyerEdTools();
         if (navigator.vibrate) { try { navigator.vibrate(15); } catch (er) {} }
-        stage.classList.add('fl-moving');
-        try { stage.setPointerCapture(e.pointerId); } catch (er) {}
-      }, 380);
+        ghost({ x: b.x, y: b.y, w: b.w, h: b.h }, 'move onto another box');
+      }, 400);
     });
-    stage.addEventListener('pointermove', (e) => {
-      if (!mode) return;
-      const p = toCanvas(e);
-      if (mode === 'tap') {
-        if (Math.abs(p.x - start.p.x) > 12 / flyerStageScale() || Math.abs(p.y - start.p.y) > 12 / flyerStageScale()) {
-          clearTimeout(holdT);
-          if (start.phr) {
-            const u = flyerUnits().find(x => x.key === start.b.key);
-            const o = flyerPhCfg(u, start.phr.f);
-            mode = 'phmove'; start.u = u; start.o = o; start.dx0 = o.dx || 0; start.dy0 = o.dy || 0;
-            try { stage.setPointerCapture(e.pointerId); } catch (er) {}
-          } else { mode = null; return; }
-        } else return;
+    vp.addEventListener('pointermove', (e) => {
+      if (!pts.has(e.pointerId)) return;
+      pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (!g) return;
+      if (g.type === 'pinch') {
+        if (pts.size < 2) return;
+        const [a, b] = [...pts.values()];
+        const d = Math.hypot(a.x - b.x, a.y - b.y), cx = (a.x + b.x) / 2, cy = (a.y + b.y) / 2;
+        const r = $('#fle-vp').getBoundingClientRect();
+        const z2 = Math.max(_fle.fitZ * .6, Math.min(_fle.fitZ * 8, g.z0 * d / g.d0)), k = z2 / g.z0;
+        _fle.z = z2;
+        _fle.tx = (cx - r.left) - ((g.cx - r.left) - g.tx0) * k;
+        _fle.ty = (cy - r.top) - ((g.cy - r.top) - g.ty0) * k;
+        flyerApplyView(); return;
       }
-      if (mode === 'phmove' || mode === 'phscale') {
-        e.preventDefault();
-        if (mode === 'phmove') { start.o.dx = start.dx0 + (p.x - start.p.x) / start.b.w; start.o.dy = start.dy0 + (p.y - start.p.y) / start.b.h; }
-        else { start.o.s = Math.max(.3, Math.min(3, start.s0 * Math.hypot(p.x - start.c.x, p.y - start.c.y) / start.d0)); }
-        if (!_fl.phRaf) _fl.phRaf = requestAnimationFrame(() => { _fl.phRaf = 0; flyerDraw(); });
+      const p = toCanvas(e.clientX, e.clientY);
+      if (g.type === 'pending') {
+        if (Math.hypot(e.clientX - g.sx, e.clientY - g.sy) < 8) return;
+        clearTimeout(holdT);
+        if (g.phr) {
+          const u = flyerUnitByKey(g.b.key); flyerSnap();
+          const o = flyerPhCfg(u, g.phr.f); _fle.phSel = g.phr.f;
+          Object.assign(g, { type: 'phmove', o, dx0: o.dx || 0, dy0: o.dy || 0 });
+        } else g.type = 'pan';
+      }
+      if (g.type === 'pan') { _fle.tx = g.tx0 + (e.clientX - g.sx); _fle.ty = g.ty0 + (e.clientY - g.sy); flyerApplyView(); return; }
+      if (g.type === 'resize') {
+        const L = _fl.layout, b = g.b, sx = L.cw + L.gap, sy = L.ch + L.gap;
+        if (g.h !== 'b') g.w = Math.max(1, Math.min(L.cols - b.c, Math.round((p.x - b.x + L.gap) / sx)));
+        if (g.h !== 'r') g.hh = Math.max(1, Math.min(12, Math.round((p.y - b.y + L.gap) / sy)));
+        ghost({ x: b.x, y: b.y, w: g.w * sx - L.gap, h: g.hh * sy - L.gap }, `${g.w} × ${g.hh}`);
         return;
       }
-      e.preventDefault();
-      const L = _fl.layout;
-      if (mode === 'resize') {
-        const { b, u, h, sz } = start;
-        const stepX = L.cw + L.gap, stepY = L.ch + L.gap;
-        let w = sz.w, hh = sz.h;
-        if (h.includes('r')) w = Math.max(1, Math.min(L.cols, Math.round((p.x - b.x + L.gap) / stepX)));
-        if (h.includes('b')) hh = Math.max(1, Math.min(12, Math.round((p.y - b.y + L.gap) / stepY)));
-        if (w !== start.lw || hh !== start.lh) {
-          start.lw = w; start.lh = hh;
-          u.cfg.sz = u.cfg.sz || {};
-          u.cfg.sz[_fl.fmt] = { w, h: hh };
-          if (navigator.vibrate) { try { navigator.vibrate(4); } catch (er) {} }
-          flyerDraw();
-        }
-      } else if (mode === 'move') {
-        const t = boxAt(p);
-        _fl.moveTarget = t && t.key !== start.b.key ? t.key : null;
-        $('#fl-overlay').querySelectorAll('.fl-drop').forEach(x => x.remove());
-        if (t && _fl.moveTarget) {
-          const k = flyerStageScale();
-          $('#fl-overlay').insertAdjacentHTML('beforeend', `<div class="fl-drop" style="left:${t.x * k}px;top:${t.y * k}px;width:${t.w * k}px;height:${t.h * k}px;"></div>`);
-        }
+      if (g.type === 'move') {
+        const b = g.b, t = boxAt(p);
+        g.target = t && t.key !== b.key && !(flyerUnitByKey(t.key) || { cfg: {} }).cfg.lock ? t : null;
+        if (g.target) ghost({ x: g.target.x, y: g.target.y, w: g.target.w, h: g.target.h }, 'drop here', true);
+        else ghost({ x: p.x - b.w / 2, y: p.y - b.h / 2, w: b.w, h: b.h }, '');
+        return;
       }
+      if (g.type === 'phmove') { g.o.dx = g.dx0 + (p.x - toCanvas(g.sx, g.sy).x) / g.b.w; g.o.dy = g.dy0 + (p.y - toCanvas(g.sx, g.sy).y) / g.b.h; live(); return; }
+      if (g.type === 'phscale') { g.o.s = Math.max(.3, Math.min(3, g.s0 * Math.hypot(p.x - g.c.x, p.y - g.c.y) / g.d0)); live(); return; }
     });
-    const end = async () => {
+    const end = async (e) => {
+      if (!pts.has(e.pointerId)) return;
+      pts.delete(e.pointerId);
       clearTimeout(holdT);
-      const m = mode; mode = null;
-      stage.classList.remove('fl-moving');
-      if (m === 'tap') { _fl.sel = start.b.key; flyerPaintOverlay(); flyerRenderTools(); }
-      else if (m === 'resize') { if (start.u.cfg.ph) delete start.u.cfg.ph[_fl.fmt]; flyerSaveCfg(); flyerDraw(); flyerRenderTools(); }   // new box size → fresh auto photo placement
-      else if (m === 'phmove' || m === 'phscale') { flyerSaveCfg(); flyerRenderTools(); }
-      else if (m === 'move') {
-        const tgt = _fl.moveTarget; _fl.moveTarget = null;
-        if (tgt) { await flyerMoveUnit(start.b.key, tgt); flyerSaveCfg(); flyerRenderUI(); _fl.sel = start.b.key; }
-        flyerDraw();
+      if (!g) return;
+      const gg = g;
+      if (gg.type === 'pinch') { if (pts.size === 0) g = null; return; }
+      g = null;
+      ghost(null);
+      if (gg.type === 'pending') {                             // a tap
+        if (gg.phr) { _fle.phSel = gg.phr.f; flyerEdPaint(); flyerEdTools(); return; }
+        if (_fle.photoMode && gg.b && gg.b.key === _fl.sel) { _fle.phSel = null; flyerEdPaint(); flyerEdTools(); return; }
+        _fl.sel = gg.b ? gg.b.key : null; _fle.photoMode = false; _fle.phSel = null;
+        flyerEdPaint(); flyerEdTools(); return;
       }
+      if (gg.type === 'resize') {
+        if (gg.w === gg.b.cw && gg.hh === gg.b.ch) return;
+        const u = flyerUnitByKey(gg.b.key); if (!u) return;
+        flyerSnap();
+        u.cfg.sz = u.cfg.sz || {}; u.cfg.sz[_fl.fmt] = { w: gg.w, h: gg.hh };
+        if (u.cfg.ph) delete u.cfg.ph[_fl.fmt];               // new size → fresh automatic photo placement
+        flyerSaveCfg(); await flyerDraw(); return;
+      }
+      if (gg.type === 'move') {
+        if (gg.target) { flyerSnap(); await flyerMoveUnit(gg.b.key, gg.target.key); flyerSaveCfg(); }
+        await flyerDraw(); return;
+      }
+      if (gg.type === 'phmove' || gg.type === 'phscale') { flyerSaveCfg(); await flyerDraw(); flyerEdTools(); }
     };
-    stage.addEventListener('pointerup', end);
-    stage.addEventListener('pointercancel', end);
-    stage.addEventListener('touchmove', (e) => { if (mode === 'resize' || mode === 'move') e.preventDefault(); }, { passive: false });
-    stage.addEventListener('contextmenu', (e) => e.preventDefault());
-    stage.addEventListener('dragstart', (e) => e.preventDefault());   // a native drag would steal the pointer
+    vp.addEventListener('pointerup', end);
+    vp.addEventListener('pointercancel', end);
+    vp.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (e.ctrlKey || Math.abs(e.deltaY) >= Math.abs(e.deltaX)) flyerZoomBy(Math.exp(-e.deltaY * (e.ctrlKey ? .01 : .0018)), e.clientX, e.clientY);
+      else { _fle.tx -= e.deltaX; flyerApplyView(); }
+    }, { passive: false });
+    vp.addEventListener('dragstart', (e) => e.preventDefault());
+    vp.addEventListener('contextmenu', (e) => e.preventDefault());
+    window.addEventListener('resize', () => { if (_fle.open) flyerFit(); });
+  }
+  // the small preview in the flyer screen just opens the editor
+  function flyerPaintOverlay() { if (_fle.open) { flyerEdPaint(); flyerEdTools(); } }
+  function flyerRenderTools() { if (_fle.open) flyerEdTools(); }
+  function flyerBindStage() {
+    const st = $('#fl-stage'); if (!st) return;
+    st.addEventListener('click', flyerEditorOpen);
   }
 
-  // ---------- drawing ----------
   function flyerRawImg(src) {
     _fl.raw = _fl.raw || {};
     return _fl.raw[src] || (_fl.raw[src] = new Promise(res => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; }));
@@ -5213,35 +5473,42 @@
     const grid = []; const place = [];
     const free = (r, c, w, h) => { if (c + w > cols) return false; for (let y = r; y < r + h; y++) for (let x = c; x < c + w; x++) if (grid[y] && grid[y][x] != null) return false; return true; };
     const take = (r, c, w, h, i) => { for (let y = r; y < r + h; y++) { grid[y] = grid[y] || new Array(cols).fill(null); for (let x = c; x < c + w; x++) grid[y][x] = i; } };
+    items.forEach((it, i) => {                          // locked boxes go exactly where they were pinned
+      if (!it.fix) return;
+      const w = Math.min(it.w, cols), h = it.h;
+      if (it.fix.c + w <= cols && free(it.fix.r, it.fix.c, w, h)) { take(it.fix.r, it.fix.c, w, h, i); place[i] = { r: it.fix.r, c: it.fix.c, w, h }; }
+    });
     items.forEach((it, i) => {
+      if (place[i]) return;
       const w = Math.min(it.w, cols), h = it.h;
       for (let r = 0; ; r++) { let ok = false; for (let c = 0; c < cols; c++) if (free(r, c, w, h)) { take(r, c, w, h, i); place[i] = { r, c, w, h }; ok = true; break; } if (ok) break; }
     });
     const rows = grid.length;
+    for (let r = 0; r < rows; r++) grid[r] = grid[r] || new Array(cols).fill(null);
     for (let pass = 0; pass < 3; pass++) for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) if (grid[r][c] == null) {
       // grow the box on the left across the hole (all of its rows must be free)
       const li = c > 0 ? grid[r][c - 1] : null;
-      if (li != null && !items[li].manual) {
+      if (li != null && !items[li].manual && !items[li].fix) {
         const pl = place[li];
         let ok = true; for (let y = pl.r; y < pl.r + pl.h; y++) if (!grid[y] || grid[y][c] != null) ok = false;
         if (ok) { for (let y = pl.r; y < pl.r + pl.h; y++) grid[y][c] = li; pl.w++; continue; }
       }
       const ui = r > 0 ? grid[r - 1][c] : null;
-      if (ui != null && !items[ui].manual) {
+      if (ui != null && !items[ui].manual && !items[ui].fix) {
         const pl = place[ui];
         let ok = pl.r + pl.h === r; for (let x = pl.c; x < pl.c + pl.w; x++) if (grid[r][x] != null) ok = false;
         if (ok) { for (let x = pl.c; x < pl.c + pl.w; x++) grid[r][x] = ui; pl.h++; continue; }
       }
       // box below grows up into the hole
       const di = r + 1 < rows ? grid[r + 1][c] : null;
-      if (di != null && !items[di].manual) {
+      if (di != null && !items[di].manual && !items[di].fix) {
         const pl = place[di];
         let ok = pl.r === r + 1; for (let x = pl.c; x < pl.c + pl.w; x++) if (grid[r][x] != null) ok = false;
         if (ok) { for (let x = pl.c; x < pl.c + pl.w; x++) grid[r][x] = di; pl.r--; pl.h++; continue; }
       }
       // box on the right grows left
       const ri = c + 1 < cols ? grid[r][c + 1] : null;
-      if (ri != null && !items[ri].manual) {
+      if (ri != null && !items[ri].manual && !items[ri].fix) {
         const pl = place[ri];
         let ok = pl.c === c + 1; for (let y = pl.r; y < pl.r + pl.h; y++) if (grid[y][c] != null) ok = false;
         if (ok) { for (let y = pl.r; y < pl.r + pl.h; y++) grid[y][c] = ri; pl.c--; pl.w++; }
@@ -5368,29 +5635,45 @@
 
     // grid
     const bodyTop = headTop + headH + Math.round(H * (tv ? .028 : .02)), bodyBot = H - footH - Math.round(H * .018);
-    const all = flyerUnits().filter(u => !u.cfg.hide).map(u => { const s = flyerUnitSize(u, fmtKey); return { u, w: s.w, h: s.h, manual: s.manual }; });
-    const cols = F.cols;
-    // pages: fill a page until the next box would push it past its row limit
-    const pages = []; let cur = [];
-    for (const it of all) {
-      const test = cur.concat([it]);
-      if (cur.length && flyerPack(test, cols).rows > F.rows) { pages.push(cur); cur = [it]; } else cur = test;
+    const onePage = !!(_fl.cfg.onePage && _fl.cfg.onePage[fmtKey]);
+    const mk = (cols) => flyerUnits().filter(u => !u.cfg.hide).map(u => {
+      const s = flyerUnitSize(u, fmtKey);
+      const pos = u.cfg.lock && u.cfg.pos && u.cfg.pos[fmtKey];
+      return { u, w: Math.min(s.w, cols), h: s.h, manual: s.manual, fix: pos && pos.cols === cols ? pos : null };
+    });
+    let cols = F.cols, maxRows = F.rows, all = mk(cols);
+    if (onePage) {
+      // everything on one page: make the grid finer (more, smaller cells) until it all fits
+      for (let k = 0; k <= 14; k++) {
+        const c2 = F.cols + 2 * k, r2 = Math.round(F.rows * c2 / F.cols), a2 = mk(c2);
+        if (flyerPack(a2, c2).rows <= r2 || k === 14) { cols = c2; maxRows = r2; all = a2; break; }
+      }
     }
-    if (cur.length) pages.push(cur);
-    const pageN = Math.max(1, pages.length);
+    // pages: locked boxes stay on their page; the rest flow in order until a page is full
+    const lockedOn = (p) => all.filter(it => it.fix && (it.fix.page || 0) === p);
+    const pages = []; let cur = lockedOn(0);
+    for (const it of all) {
+      if (it.fix) continue;
+      const test = cur.concat([it]);
+      if (!onePage && cur.length && flyerPack(test, cols).rows > maxRows) { pages.push(cur); cur = lockedOn(pages.length).concat([it]); } else cur = test;
+    }
+    pages.push(cur);
+    while (all.some(it => it.fix && (it.fix.page || 0) >= pages.length)) pages.push(lockedOn(pages.length));
+    const pageN = Math.max(1, pages.filter((pg, i) => pg.length || i === 0).length);
     page = Math.min(page || 0, pageN - 1);
     const units = pages[page] || [];
     const packed = flyerPack(units, cols);
     const place = packed.place;
     // later pages keep a similar box size instead of blowing a few boxes up to full page
-    const rows = pageN > 1 ? Math.max(packed.rows, Math.ceil(F.rows * .75)) : packed.rows;
+    const rows = pageN > 1 ? Math.max(packed.rows, Math.ceil(maxRows * .75)) : (onePage ? Math.max(packed.rows, Math.ceil(maxRows * .6)) : packed.rows);
     const cw = (W - M * 2 - GAP * (cols - 1)) / cols;
     const ch = rows ? (bodyBot - bodyTop - GAP * (rows - 1)) / rows : 0;
     const boxes = [];
     // ONE size for price tags / badges / names across the flyer, so small boxes stay readable
     // and big boxes don't get giant tags (grows only a little with box size)
     const ref = Math.min(W, H);
-    const S = { tag: Math.round(ref * (tv ? .05 : .056)), name: Math.round(ref * (tv ? .017 : .02)), refMin: Math.min(cw * 2 + GAP, ch * 2 + GAP) };
+    const fine = Math.max(.55, Math.sqrt(F.cols / cols));     // finer grid (ALL ON ONE PAGE) → smaller tags/names
+    const S = { tag: Math.round(ref * (tv ? .05 : .056) * fine), name: Math.round(ref * (tv ? .017 : .02) * fine), refMin: Math.min(cw * 2 + GAP, ch * 2 + GAP) };
     const unitBase = Math.min(cw * 2 + GAP, ch * 2 + GAP);
     for (let i = 0; i < units.length; i++) {
       const pl = place[i];
@@ -5398,7 +5681,7 @@
       const w = cw * pl.w + GAP * (pl.w - 1), h = ch * pl.h + GAP * (pl.h - 1);
       const base = Math.min(unitBase * 1.15, Math.max(unitBase * .7, Math.min(w, h)));
       const photos = await flyerCard(ctx, units[i].u, x, y, w, h, base, T, S, fmtKey);
-      boxes.push({ key: units[i].u.key, x, y, w, h, cw: pl.w, ch: pl.h, photos });
+      boxes.push({ key: units[i].u.key, x, y, w, h, cw: pl.w, ch: pl.h, r: pl.r, c: pl.c, photos });
     }
     return { boxes, cw, ch, gap: GAP, cols, rows, M, bodyTop, page, pages: pageN };
   }
@@ -5556,11 +5839,13 @@
     const layout = await flyerRenderTo(off, _fl.fmt, _fl.page);
     if (my !== _fl.drawSeq) return;
     cv.width = off.width; cv.height = off.height; cv.getContext('2d').drawImage(off, 0, 0);
+    const ec = document.getElementById('fle-canvas');
+    if (ec) { if (ec.width !== off.width || ec.height !== off.height) { ec.width = off.width; ec.height = off.height; } ec.getContext('2d').drawImage(off, 0, 0); }
     _fl.layout = layout;
     _fl.page = layout.page;
     const pg = $('#fl-pages');
     if (pg) {
-      pg.innerHTML = layout.pages > 1 ? `<span>${layout.pages} pages (too many for one)</span>` + Array.from({ length: layout.pages }, (_, i) => `<button data-page="${i}" class="${i === layout.page ? 'on' : ''}">PAGE ${i + 1}</button>`).join('') : '';
+      pg.innerHTML = layout.pages > 1 ? `<span>${layout.pages} pages — or tap ALL ON ONE PAGE</span>` + Array.from({ length: layout.pages }, (_, i) => `<button data-page="${i}" class="${i === layout.page ? 'on' : ''}">PAGE ${i + 1}</button>`).join('') : '';
       pg.querySelectorAll('[data-page]').forEach(b => b.addEventListener('click', () => { _fl.page = +b.dataset.page; _fl.sel = null; flyerDraw(); }));
     }
     flyerPaintOverlay();
