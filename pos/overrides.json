@@ -314,7 +314,7 @@
    "tf": 0,
    "tp": 0,
    "dp": null,
-   "bal": 0,
+   "bal": 1,
    "qte": 0,
    "sd": 23,
    "un": "",
@@ -330,7 +330,7 @@
    "lk": 0,
    "price": 39.99,
    "mp": null,
-   "at": "2026-10-14 14:07:20"
+   "at": "2026-10-15 11:45:55"
   },
   "0590148313003": {
    "pt": "BIOFIX MELISA 40GR",
@@ -1050,7 +1050,30 @@
    "mp": null,
    "cost": 32.4,
    "at": "2026-10-15 11:30:26"
+  },
+  "0020143900000": {
+   "pt": "BATONNETS DE SANDRE SÉCHÉ SUDAK JERKY",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 23,
+   "un": "",
+   "sn": null,
+   "nm": "BATONNETS DE SANDRE SÉCHÉ SUDAK JERKY",
+   "rp": 49.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 49.99,
+   "mp": null,
+   "at": "2026-10-15 11:45:55"
   }
  },
- "updated": "2026-10-15 11:30:26"
+ "updated": "2026-10-15 11:45:55"
 }
