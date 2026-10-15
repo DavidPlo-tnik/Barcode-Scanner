@@ -1,104 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20261001222238083907",
-   "applied_at": "2026-10-01T22:22:38",
-   "change": {
-    "code": "0761303635214",
-    "pos_title": "TORCHIN ADZGHIKA  180G",
-    "size_num": 180,
-    "size_unit": "GR",
-    "queued_at": "2026-10-02T02:21:45.104Z",
-    "id": "c1790907705104"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "TORCHIN ADZGHIKA ",
-     "F1744": "180.0",
-     "F22": "180G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "TORCHIN ADZGHIKA  180G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": "69.3000",
-     "F196": "69.3000",
-     "F1140": "2.1000",
-     "F27": "L-EPIC"
-    },
-    "PRICE_TAB": {
-     "F30": "3.4900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.4900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20261001222548033840",
-   "applied_at": "2026-10-01T22:25:48",
-   "change": {
-    "code": "0482017566924",
-    "pos_title": "KOROLIVSKI SMAK ADZHIKA 180G",
-    "size_num": 180,
-    "size_unit": "GR",
-    "queued_at": "2026-10-02T02:24:51.980Z",
-    "id": "c1790907891980"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "KOROLIVSKI SMAK ADZHIKA",
-     "F1744": "1000.0",
-     "F22": "180G",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "KOROLIVSKI SMAK ADZHIKA 180G",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": null,
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "1.2000",
-     "F196": "1.2000",
-     "F1140": "1.2000",
-     "F27": "L-TONSELL"
-    },
-    "PRICE_TAB": {
-     "F30": "1.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "1.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20261002094558219945",
    "applied_at": "2026-10-02T09:45:58",
    "change": {
@@ -24929,6 +24831,89 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "3.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261015114555142028",
+   "applied_at": "2026-10-15T11:45:55",
+   "change": {
+    "code": "0020142000000",
+    "pos_title": "SANDRE SECHE SUDAK UN",
+    "balance": 1,
+    "queued_at": "2026-10-15T15:45:22.333Z",
+    "id": "c1792079122333"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "SANDRE SECHE SUDAK",
+     "F1744": null,
+     "F22": "UN",
+     "F23": ""
+    },
+    "POS_TAB": {
+     "F02": "SANDRE SECHE SUDAK UN",
+     "F04": "23",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": "0"
+    },
+    "PRICE_TAB": {
+     "F30": "39.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "39.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261015114555188828",
+   "applied_at": "2026-10-15T11:45:55",
+   "change": {
+    "code": "0020143900000",
+    "balance": 1,
+    "queued_at": "2026-10-15T15:45:34.418Z",
+    "id": "c1792079134418"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BATONNETS DE SANDRE SÉCHÉ SUDAK JERKY",
+     "F1744": null,
+     "F22": "UN",
+     "F23": ""
+    },
+    "POS_TAB": {
+     "F02": "BATONNETS DE SANDRE SÉCHÉ SUDAK JERKY",
+     "F04": "23",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": "0"
+    },
+    "PRICE_TAB": {
+     "F30": "49.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "49.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
