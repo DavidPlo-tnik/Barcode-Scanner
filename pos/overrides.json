@@ -308,7 +308,31 @@
    "mp": null,
    "cost": 11.99,
    "at": "2026-10-16 10:56:40"
+  },
+  "0475102427024": {
+   "pt": "CHECHILTOP FOOD TRESSE DE FROMAGE",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 32,
+   "un": "GR",
+   "sn": 150.0,
+   "nm": "TOP FOOD TRESSE DE FROMAGE EFFILOCHÉ CHECHIL",
+   "rp": 7.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 7.99,
+   "mp": null,
+   "cost": 77.0,
+   "at": "2026-10-16 11:05:57"
   }
  },
- "updated": "2026-10-16 10:56:40"
+ "updated": "2026-10-16 11:05:57"
 }
