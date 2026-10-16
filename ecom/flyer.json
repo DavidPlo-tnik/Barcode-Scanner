@@ -266,6 +266,6 @@
   ]
  },
  "onePage": {
-  "post": false
+  "post": true
  }
 }
