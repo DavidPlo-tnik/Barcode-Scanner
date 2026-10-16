@@ -2188,7 +2188,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v184</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v185</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2701,6 +2701,8 @@
         <div class="pd-photos-head">
           <span>PHOTOS</span>
           <button type="button" class="btn small" id="pd-studio-btn" title="Camera → background removed, colours fixed, 2000×2000 white">✨ STUDIO</button>
+          <input type="file" accept="image/*" capture="environment" id="pd-studio-file"
+                 style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
           <button type="button" class="btn small" id="pd-photo-btn">+ PHOTO</button>
           <input type="file" accept="image/*" id="pd-photo-file"
                  style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
@@ -2764,7 +2766,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v184</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v185</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7182,12 +7184,22 @@
     if (st) st.textContent = 'Photo added ✓';
   }
 
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest && e.target.closest('#pd-studio-btn');
+    if (!b) return;
+    e.preventDefault();
+    try {
+      if (!_pdCtx || !_pdCtx.code) { showToast('Open a product first', true); return; }
+      const code = _pdCtx.code;
+      showToast('✨ Opening camera…');
+      studioOpen(code, (img) => pdSavePhoto(code, img));
+    } catch (err) { showToast('Studio: ' + err.message, true); }
+  });
+
   function bindPdPhotoUpload() {
     const btn = $('#pd-photo-btn'), input = $('#pd-photo-file');
     if (!btn || !input || btn.dataset.bound) return;
     btn.dataset.bound = '1';
-    const sb = $('#pd-studio-btn');
-    if (sb) sb.addEventListener('click', () => { if (_pdCtx) { const code = _pdCtx.code; studioOpen(code, (img) => pdSavePhoto(code, img)); } });
     // explicit .click() on an offscreen input -- label-wrapping fails silently on mobile
     btn.addEventListener('click', () => input.click());
     input.addEventListener('change', async () => {
@@ -7353,8 +7365,8 @@
     return c;
   }
 
-  async function studioOpen(code, onDone) {
-    let input = document.getElementById('studio-file');
+  function studioOpen(code, onDone) {
+    let input = document.getElementById('pd-studio-file') || document.getElementById('studio-file');
     if (!input) {
       input = document.createElement('input'); input.type = 'file'; input.accept = 'image/*'; input.id = 'studio-file';
       input.setAttribute('capture', 'environment');
@@ -7363,8 +7375,8 @@
     }
     input.value = '';
     input.onchange = () => { const f = input.files && input.files[0]; if (f) studioRun(code, f, onDone); };
-    input.click();
-    studioLoad().catch(() => {});                     // start loading the cut-out engine while the camera is open
+    input.click();                                    // must stay synchronous inside the tap, or iPhone ignores it
+    try { studioLoad().catch(() => {}); } catch (e) {}   // warm up the cut-out engine while the camera is open
   }
 
   async function studioRun(code, file, onDone) {
