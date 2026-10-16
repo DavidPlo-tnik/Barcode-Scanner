@@ -236,7 +236,31 @@
    "mp": null,
    "cost": 31.96,
    "at": "2026-10-16 10:33:46"
+  },
+  "0005500020972": {
+   "pt": "MAISON PERRIER CITRON 500ML",
+   "tf": 1,
+   "tp": 1,
+   "dp": "2",
+   "bal": 0,
+   "qte": 0,
+   "sd": 2,
+   "un": "ML",
+   "sn": 500.0,
+   "nm": "MAISON PERRIER CITRON",
+   "rp": 1.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 1.99,
+   "mp": null,
+   "cost": 20.38,
+   "at": "2026-10-16 10:35:56"
   }
  },
- "updated": "2026-10-16 10:33:46"
+ "updated": "2026-10-16 10:35:56"
 }
