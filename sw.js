@@ -1,4 +1,5 @@
-const CACHE = 'decarie-v183';
+const CACHE = 'decarie-v184';
+const MODELS = 'decarie-models';   // studio-photo cut-out model: kept across app updates
 const ASSETS = [
   './manifest.webmanifest',
   './icon-192.png',
@@ -20,7 +21,7 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE && k !== MODELS).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -31,6 +32,15 @@ self.addEventListener('fetch', (e) => {
 
   // Never intercept GitHub API calls (recipe writes / sha lookups).
   if (url.hostname === 'api.github.com') return;
+
+  // Studio photo model + wasm (~80 MB): download once, keep forever (own cache)
+  if (url.hostname === 'staticimgly.com') {
+    e.respondWith(caches.open(MODELS).then((c) => c.match(e.request).then((hit) => hit || fetch(e.request).then((res) => {
+      if (res && res.status === 200) c.put(e.request, res.clone());
+      return res;
+    }))));
+    return;
+  }
 
   // index.html and config.js: always network-first so SW updates propagate.
   if (url.pathname.endsWith('/') || url.pathname.endsWith('index.html') || url.pathname.endsWith('config.js')) {
