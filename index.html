@@ -864,10 +864,10 @@
   .fl-dates > div { flex: 1; } .fl-dates label { display: block; font-family: var(--font-display); font-size: 9.5px; color: var(--text-dim); margin-bottom: 3px; }
   .fl-item input { -webkit-user-select: text; user-select: text; }
   .fl-dates input, .fl-item input { width: 100%; box-sizing: border-box; background: var(--surface-2); border: 1px solid var(--border); border-radius: 7px; color: var(--text); font-size: 13px; padding: 7px 8px; }
-  .fl-themes { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 10px; }
-  .fl-themes button { flex: 1 1 30%; display: flex; align-items: center; gap: 6px; padding: 7px 8px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-family: var(--font-display); font-size: 10.5px; font-weight: 700; cursor: pointer; }
-  .fl-themes button.on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
-  .fl-themes i { width: 18px; height: 18px; border-radius: 5px; flex: none; border: 1px solid rgba(0,0,0,.25); }
+  .fl-themes { display: flex; align-items: center; gap: 8px; margin: 4px 0 10px; }
+  .fl-themes label { font-family: var(--font-display); font-size: 9.5px; color: var(--text-dim); }
+  .fl-themes i { width: 22px; height: 22px; border-radius: 6px; flex: none; border: 1px solid rgba(0,0,0,.25); }
+  .fl-themes select { flex: 1; min-width: 0; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 13px; padding: 8px; }
   .fl-actions { display: flex; gap: 8px; margin: 4px 0 14px; }
   .fl-actions button { flex: 1; padding: 11px; border-radius: 9px; border: none; background: var(--accent); color: #000; font-family: var(--font-display); font-size: 11.5px; font-weight: 800; cursor: pointer; }
   .fl-actions button.alt { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
@@ -2204,7 +2204,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v188</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v189</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2780,7 +2780,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v188</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v189</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4645,21 +4645,87 @@
     [...Object.values(_fl.cfg.items), ..._fl.cfg.groups].forEach(c => { delete c.join; delete c.size; });
   }
   let _flSaveT = 0;
-  // colour themes for the flyer (picked in the flyer screen, saved in cfg.theme)
+  // colour themes for the flyer (dropdown in the flyer screen, saved in cfg.theme).
+  // Each is a small palette that works as a set: ground, one accent for the price tags,
+  // one for the % badges. Light grounds outline the product cards so they don't wash out.
+  //   BG/PAT/PATA/PATK  page colour + pattern (lines | dots | snow | bats | stars) and its strength
+  //   AW1/AW2           awning stripes        PANEL/PLINE  title panel (+ outline)
+  //   TITLE/SUB/STRIP   title text, "CETTE SEMAINE", panel edge strip
+  //   DTAG/DTXT/DYR     date tag, its text, the year line
+  //   FOOT/FLINE/FNAME/FINFO  footer, its top rule, store name, info text
+  //   TAG/TAGTXT/TAGRIM price tag            BADGE/BADGETXT  % off badge
+  //   CARD/CREAM/CARDLINE  card, photo area, card outline (null = none)   SH  shadow rgb
+  const FL_BASE = { PATK: 'lines', PLINE: null, TAGRIM: '#fff', BADGE: '#FFD23F', BADGETXT: '#171717', CARD: '#fff', CARDLINE: null, STRIKE: '#DC241C', NOTE: '#DC241C' };
   const FL_THEMES = {
-    classique: { name: 'Classique', BG: '#DC241C', PAT: '#fff', PATA: .07, AW1: '#E63A30', AW2: '#fff', PANEL: '#fff', TITLE: '#DC241C', SUB: '#171717', STRIP: '#FFD23F',
+    classique: { name: 'Classique (rouge)', BG: '#DC241C', PAT: '#fff', PATA: .07, AW1: '#E63A30', AW2: '#fff', PANEL: '#fff', TITLE: '#DC241C', SUB: '#171717', STRIP: '#FFD23F',
                  DTAG: '#DC241C', DTXT: '#fff', DYR: '#FFD23F', FOOT: '#fff', FLINE: '#FFD23F', FNAME: '#DC241C', FINFO: '#171717', TAG: '#DC241C', TAGTXT: '#fff', CREAM: '#FFF4E8', SH: '70,5,2' },
-    vert:      { name: 'Marché vert', BG: '#1F7A3D', PAT: '#fff', PATA: .06, AW1: '#2E9A50', AW2: '#fff', PANEL: '#fff', TITLE: '#1F7A3D', SUB: '#171717', STRIP: '#FFD23F',
-                 DTAG: '#DC241C', DTXT: '#fff', DYR: '#FFD23F', FOOT: '#fff', FLINE: '#FFD23F', FNAME: '#1F7A3D', FINFO: '#171717', TAG: '#DC241C', TAGTXT: '#fff', CREAM: '#F3F8EE', SH: '5,40,15' },
-    creme:     { name: 'Crème', BG: '#FBF1E1', PAT: '#C9A87A', PATA: .16, AW1: '#DC241C', AW2: '#fff', PANEL: '#fff', TITLE: '#DC241C', SUB: '#171717', STRIP: '#DC241C',
-                 DTAG: '#171717', DTXT: '#fff', DYR: '#FFD23F', FOOT: '#171717', FLINE: '#DC241C', FNAME: '#fff', FINFO: '#E9E2D6', TAG: '#DC241C', TAGTXT: '#fff', CREAM: '#FFF8EE', SH: '90,60,20' },
-    nuit:      { name: 'Nuit', BG: '#18191C', PAT: '#fff', PATA: .045, AW1: '#DC241C', AW2: '#2A2B30', PANEL: '#26272C', TITLE: '#FFD23F', SUB: '#fff', STRIP: '#DC241C',
-                 DTAG: '#FFD23F', DTXT: '#171717', DYR: '#DC241C', FOOT: '#26272C', FLINE: '#FFD23F', FNAME: '#FFD23F', FINFO: '#ddd', TAG: '#FFD23F', TAGTXT: '#171717', CREAM: '#F4F1EA', SH: '0,0,0' },
-    kraft:     { name: 'Kraft', BG: '#D9C3A0', PAT: '#7A5A30', PATA: .1, AW1: '#2F6B3A', AW2: '#F6EEDC', PANEL: '#F6EEDC', TITLE: '#2F6B3A', SUB: '#3A2A18', STRIP: '#DC241C',
-                 DTAG: '#2F6B3A', DTXT: '#fff', DYR: '#FFD23F', FOOT: '#2F6B3A', FLINE: '#DC241C', FNAME: '#fff', FINFO: '#F6EEDC', TAG: '#DC241C', TAGTXT: '#fff', CREAM: '#FBF6EA', SH: '70,45,10' },
-    marine:    { name: 'Marine', BG: '#13315C', PAT: '#fff', PATA: .06, AW1: '#1E4A85', AW2: '#fff', PANEL: '#fff', TITLE: '#13315C', SUB: '#171717', STRIP: '#FFD23F',
-                 DTAG: '#DC241C', DTXT: '#fff', DYR: '#FFD23F', FOOT: '#fff', FLINE: '#FFD23F', FNAME: '#13315C', FINFO: '#171717', TAG: '#FFD23F', TAGTXT: '#13315C', CREAM: '#F1F5FB', SH: '0,15,45' },
+    // farmers' market: forest green, cream, tomato tags, mustard badges
+    vert:      { name: 'Marché vert', BG: '#1E5B38', PAT: '#fff', PATA: .05, AW1: '#27744A', AW2: '#F6EEDC', PANEL: '#FBF6EA', TITLE: '#1E5B38', SUB: '#2B2B2B', STRIP: '#E8B23A',
+                 DTAG: '#D8432E', DTXT: '#fff', DYR: '#FFE08A', FOOT: '#FBF6EA', FLINE: '#E8B23A', FNAME: '#1E5B38', FINFO: '#2B2B2B', TAG: '#D8432E', TAGTXT: '#fff',
+                 BADGE: '#E8B23A', BADGETXT: '#1F1F1F', CARD: '#FFFDF7', CREAM: '#F5EFE0', STRIKE: '#D8432E', NOTE: '#1E5B38', SH: '5,35,15' },
+    // light & clean: warm paper ground, red only on tags/title; cards outlined
+    creme:     { name: 'Crème (clair)', BG: '#F5ECDD', PATK: 'dots', PAT: '#B9966A', PATA: .22, AW1: '#DC241C', AW2: '#FFFDF8', PANEL: '#FFFDF8', PLINE: '#E2D3BC', TITLE: '#DC241C', SUB: '#2A2A2A', STRIP: '#DC241C',
+                 DTAG: '#2A2A2A', DTXT: '#fff', DYR: '#FFD23F', FOOT: '#2A2A2A', FLINE: '#DC241C', FNAME: '#fff', FINFO: '#EEE6D8', TAG: '#DC241C', TAGTXT: '#fff',
+                 CARD: '#FFFDF8', CREAM: '#FBF4E8', CARDLINE: '#DCCAB0', SH: '110,80,40' },
+    // charcoal + gold: good on the TV
+    nuit:      { name: 'Nuit (or)', BG: '#1B1D22', PAT: '#fff', PATA: .035, AW1: '#2B2E36', AW2: '#E9B949', PANEL: '#25282F', PLINE: '#3A3E48', TITLE: '#F2C14E', SUB: '#F2F2F2', STRIP: '#F2C14E',
+                 DTAG: '#F2C14E', DTXT: '#1B1D22', DYR: '#7A4A00', FOOT: '#25282F', FLINE: '#F2C14E', FNAME: '#F2C14E', FINFO: '#D9D9D9', TAG: '#F2C14E', TAGTXT: '#1B1D22', TAGRIM: '#1B1D22',
+                 BADGE: '#DC241C', BADGETXT: '#fff', CARD: '#fff', CREAM: '#F4F1EA', SH: '0,0,0' },
+    // navy + coral + sky
+    marine:    { name: 'Marine', BG: '#16325C', PAT: '#fff', PATA: .05, AW1: '#21477F', AW2: '#fff', PANEL: '#fff', TITLE: '#16325C', SUB: '#2A2A2A', STRIP: '#F25C54',
+                 DTAG: '#F25C54', DTXT: '#fff', DYR: '#FFE3A3', FOOT: '#fff', FLINE: '#F25C54', FNAME: '#16325C', FINFO: '#2A2A2A', TAG: '#F25C54', TAGTXT: '#fff',
+                 BADGE: '#A9DAF5', BADGETXT: '#16325C', CREAM: '#F0F5FB', STRIKE: '#F25C54', NOTE: '#16325C', SH: '0,15,45' },
+    // kraft paper, brown ink, olive and tomato; cards outlined
+    kraft:     { name: 'Kraft', BG: '#DCC7A3', PATK: 'dots', PAT: '#6E5130', PATA: .14, AW1: '#55702F', AW2: '#F6EEDC', PANEL: '#FBF6EA', PLINE: '#B89C70', TITLE: '#3B2A1A', SUB: '#55702F', STRIP: '#D8432E',
+                 DTAG: '#55702F', DTXT: '#fff', DYR: '#FFE08A', FOOT: '#3B2A1A', FLINE: '#D8432E', FNAME: '#F6EEDC', FINFO: '#E6D8BE', TAG: '#D8432E', TAGTXT: '#fff',
+                 BADGE: '#55702F', BADGETXT: '#fff', CARD: '#FFFCF4', CREAM: '#F8F0E0', CARDLINE: '#A88B5E', STRIKE: '#D8432E', NOTE: '#55702F', SH: '70,45,10' },
+    // ── seasonal ──
+    halloween: { name: '🎃 Halloween', BG: '#1E1426', PATK: 'bats', PAT: '#6B3FA0', PATA: .45, AW1: '#F07A1A', AW2: '#2A1D35', PANEL: '#2A1D35', PLINE: '#4A3560', TITLE: '#FF8A1F', SUB: '#E8DDF5', STRIP: '#8E4CC9',
+                 DTAG: '#8E4CC9', DTXT: '#fff', DYR: '#FFB566', FOOT: '#2A1D35', FLINE: '#F07A1A', FNAME: '#FF8A1F', FINFO: '#E8DDF5', TAG: '#F07A1A', TAGTXT: '#1E1426', TAGRIM: '#1E1426',
+                 BADGE: '#8E4CC9', BADGETXT: '#fff', CARD: '#fff', CREAM: '#FFF3E6', STRIKE: '#F07A1A', NOTE: '#8E4CC9', SH: '0,0,0' },
+    hiver:     { name: '❄ Hiver', BG: '#D7E8F4', PATK: 'snow', PAT: '#fff', PATA: 1, AW1: '#2D6CA6', AW2: '#fff', PANEL: '#fff', PLINE: '#B7D2E8', TITLE: '#1F4E7D', SUB: '#2A3A4A', STRIP: '#6FB3E0',
+                 DTAG: '#1F4E7D', DTXT: '#fff', DYR: '#BFE3FA', FOOT: '#1F4E7D', FLINE: '#6FB3E0', FNAME: '#fff', FINFO: '#DCEBF7', TAG: '#D62A3A', TAGTXT: '#fff',
+                 BADGE: '#1F4E7D', BADGETXT: '#fff', CARD: '#fff', CREAM: '#F2F8FC', CARDLINE: '#B7D2E8', STRIKE: '#D62A3A', NOTE: '#1F4E7D', SH: '30,70,110' },
+    fetes:     { name: '🎄 Temps des fêtes', BG: '#0F4A31', PATK: 'stars', PAT: '#E7C35A', PATA: .45, AW1: '#C8202F', AW2: '#fff', PANEL: '#FFF8EC', PLINE: '#E7C35A', TITLE: '#C8202F', SUB: '#0F4A31', STRIP: '#D4A73A',
+                 DTAG: '#C8202F', DTXT: '#fff', DYR: '#F3D27A', FOOT: '#FFF8EC', FLINE: '#D4A73A', FNAME: '#C8202F', FINFO: '#0F4A31', TAG: '#C8202F', TAGTXT: '#fff', TAGRIM: '#F3D27A',
+                 BADGE: '#D4A73A', BADGETXT: '#1F1F1F', CARD: '#FFFDF8', CREAM: '#FBF3E4', CARDLINE: '#E7C35A', STRIKE: '#C8202F', NOTE: '#0F4A31', SH: '0,30,15' },
   };
+  for (const k in FL_THEMES) FL_THEMES[k] = Object.assign({}, FL_BASE, FL_THEMES[k]);
+  // background pattern; a fixed seed so the scattered ones don't jump between redraws
+  function flPattern(ctx, TH, W, H, top) {
+    ctx.save(); ctx.globalAlpha = TH.PATA; ctx.strokeStyle = TH.PAT; ctx.fillStyle = TH.PAT;
+    const k = TH.PATK, U = Math.min(W, H);
+    let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    if (k === 'lines') { ctx.lineWidth = 2; for (let x = -H; x < W + H; x += 26) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + H, H); ctx.stroke(); } }
+    else if (k === 'dots') { const g = Math.round(U * .028), r = Math.max(1.5, U * .0024); for (let y = top; y < H; y += g) for (let x = ((y / g) % 2) * g / 2; x < W; x += g) { ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); } }
+    else if (k === 'snow') {
+      const n = Math.round(W * H / 26000);
+      for (let i = 0; i < n; i++) {
+        const x = rnd() * W, y = top + rnd() * (H - top), r = U * (.006 + rnd() * .016);
+        ctx.lineWidth = Math.max(1.2, r * .16); ctx.lineCap = 'round';
+        for (let a = 0; a < 6; a++) { const c = Math.cos(a * Math.PI / 3), sn = Math.sin(a * Math.PI / 3);
+          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + c * r, y + sn * r); ctx.stroke();
+          const bx = x + c * r * .55, by = y + sn * r * .55, c2 = Math.cos(a * Math.PI / 3 + .7), s2 = Math.sin(a * Math.PI / 3 + .7), c3 = Math.cos(a * Math.PI / 3 - .7), s3 = Math.sin(a * Math.PI / 3 - .7);
+          ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx + c2 * r * .3, by + s2 * r * .3); ctx.moveTo(bx, by); ctx.lineTo(bx + c3 * r * .3, by + s3 * r * .3); ctx.stroke(); }
+      }
+    } else if (k === 'stars') {
+      const n = Math.round(W * H / 30000);
+      for (let i = 0; i < n; i++) { const x = rnd() * W, y = top + rnd() * (H - top), r = U * (.004 + rnd() * .01);
+        ctx.beginPath(); for (let j = 0; j < 10; j++) { const rr = j % 2 ? r * .42 : r, a = -Math.PI / 2 + j * Math.PI / 5; ctx.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr); } ctx.closePath(); ctx.fill(); }
+    } else if (k === 'bats') {
+      // a big pale moon top-right, then little bats
+      ctx.save(); ctx.globalAlpha = .1; ctx.fillStyle = '#FFE7B0'; ctx.beginPath(); ctx.arc(W * .9, top + U * .2, U * .16, 0, 7); ctx.fill(); ctx.restore();
+      const n = Math.round(W * H / 60000);
+      for (let i = 0; i < n; i++) { const x = rnd() * W, y = top + rnd() * (H - top), r = U * (.012 + rnd() * .014), t = (rnd() - .5) * .5;
+        ctx.save(); ctx.translate(x, y); ctx.rotate(t); ctx.scale(r, r); ctx.beginPath();
+        ctx.moveTo(0, -.25); ctx.quadraticCurveTo(.25, -.55, .45, -.3); ctx.quadraticCurveTo(.8, -.6, 1.3, -.35); ctx.quadraticCurveTo(1.1, -.1, 1.15, .15);
+        ctx.quadraticCurveTo(.9, 0, .75, .2); ctx.quadraticCurveTo(.55, 0, .35, .3); ctx.quadraticCurveTo(.15, .1, 0, .4);
+        ctx.quadraticCurveTo(-.15, .1, -.35, .3); ctx.quadraticCurveTo(-.55, 0, -.75, .2); ctx.quadraticCurveTo(-.9, 0, -1.15, .15); ctx.quadraticCurveTo(-1.1, -.1, -1.3, -.35);
+        ctx.quadraticCurveTo(-.8, -.6, -.45, -.3); ctx.quadraticCurveTo(-.25, -.55, 0, -.25); ctx.fill(); ctx.restore(); }
+    }
+    ctx.restore();
+  }
+  const flSwatch = (t) => `linear-gradient(135deg,${t.BG} 0 45%,${t.TAG} 45% 70%,${t.BADGE} 70%)`;
   const flTheme = () => FL_THEMES[(_fl.cfg && _fl.cfg.theme) || 'classique'] || FL_THEMES.classique;
   // QR codes on the TV screen (drawn as crisp modules, no image files)
   const FL_QR = [
@@ -4827,7 +4893,8 @@
       <div class="fl-pages" id="fl-pages"></div>
       <div class="fl-actions"><button class="alt" id="fl-edit" style="flex:1">✎ EDIT LAYOUT</button>
         <button class="alt ${_fl.cfg.onePage && _fl.cfg.onePage[_fl.fmt] ? 'on' : ''}" id="fl-one" style="flex:1">${_fl.cfg.onePage && _fl.cfg.onePage[_fl.fmt] ? '✓ ' : ''}ALL ON ONE PAGE</button></div>
-      <div class="fl-themes" id="fl-themes">${Object.entries(FL_THEMES).map(([k, t]) => `<button data-theme="${k}" class="${((_fl.cfg.theme || 'classique') === k) ? 'on' : ''}"><i style="background:linear-gradient(135deg,${t.BG} 0 50%,${t.TAG} 50% 75%,${t.PANEL} 75%)"></i>${t.name}</button>`).join('')}</div>
+      <div class="fl-themes"><label for="fl-theme">COLOURS</label><i id="fl-theme-sw" style="background:${flSwatch(flTheme())}"></i>
+        <select id="fl-theme">${Object.entries(FL_THEMES).map(([k, t]) => `<option value="${k}" ${((_fl.cfg.theme || 'classique') === k) ? 'selected' : ''}>${t.name}</option>`).join('')}</select></div>
       ${_fl.fmt === 'tv' ? `<div class="fl-actions"><button class="alt ${_fl.cfg.qr !== false ? 'on' : ''}" id="fl-qr">${_fl.cfg.qr !== false ? '✓ ' : ''}QR CODES ON TV</button></div>` : ''}
       <div class="fl-actions"><button id="fl-dl">⬇ SAVE THIS SIZE</button><button class="alt" id="fl-dl-all">⬇ ALL SIZES</button></div>
       <div class="fl-dates"><div><label>FROM</label><input type="date" id="fl-from" value="${_fl.from}"></div><div><label>TO</label><input type="date" id="fl-to" value="${_fl.to}"></div></div>
@@ -4845,7 +4912,7 @@
     $('#fl-from').addEventListener('change', e => { _fl.from = e.target.value; flyerDraw(); });
     $('#fl-to').addEventListener('change', e => { _fl.to = e.target.value; flyerDraw(); });
     $('#fl-edit').addEventListener('click', flyerEditorOpen);
-    $$('#fl-themes button').forEach(b => b.addEventListener('click', () => { _fl.cfg.theme = b.dataset.theme; flyerSaveCfg(); flyerRenderUI(); }));
+    $('#fl-theme').addEventListener('change', (e) => { _fl.cfg.theme = e.target.value; $('#fl-theme-sw').style.background = flSwatch(flTheme()); flyerSaveCfg(); _fl.page = 0; flyerDraw(); });
     if ($('#fl-qr')) $('#fl-qr').addEventListener('click', () => { _fl.cfg.qr = _fl.cfg.qr === false; flyerSaveCfg(); flyerRenderUI(); });
     $('#fl-one').addEventListener('click', () => { _fl.cfg.onePage = _fl.cfg.onePage || {}; _fl.cfg.onePage[_fl.fmt] = !_fl.cfg.onePage[_fl.fmt]; _fl.page = 0; flyerSaveCfg(); flyerRenderUI(); });
     $('#fl-dl').addEventListener('click', () => { _fl.sel = null; flyerPaintOverlay(); flyerExport([_fl.fmt]); });
@@ -5620,16 +5687,14 @@
     const ctx = canvas.getContext('2d');
     await flyerFonts();
     const TH = flTheme();
-    const T = { RED: '#DC241C', YEL: '#FFD23F', INK: '#171717', GREY: '#6b6b6b', CREAM: TH.CREAM, TAG: TH.TAG, TAGTXT: TH.TAGTXT, TH,
+    const T = { RED: TH.STRIKE, YEL: '#FFD23F', INK: '#171717', GREY: '#6b6b6b', CREAM: TH.CREAM, TAG: TH.TAG, TAGTXT: TH.TAGTXT, TH,
                 PRICE: '{s}px Anton, Impact, "Arial Narrow", sans-serif',
                 SANS: (wgt) => wgt + ' {s}px Archivo, "Helvetica Neue", Arial, sans-serif' };
     const M = Math.round(W * (tv ? .026 : .04));
     const GAP = Math.round(W * (tv ? .01 : .02));
 
     ctx.fillStyle = TH.BG; ctx.fillRect(0, 0, W, H);
-    ctx.save(); ctx.globalAlpha = TH.PATA; ctx.strokeStyle = TH.PAT; ctx.lineWidth = 2;
-    for (let x = -H; x < W + H; x += 26) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + H, H); ctx.stroke(); }
-    ctx.restore();
+    flPattern(ctx, TH, W, H, 0);
     const nStripe = tv ? 24 : 14, sw = W / nStripe, awH = Math.round(H * (tv ? .04 : .026));
     for (let i = 0; i < nStripe; i++) {
       ctx.fillStyle = i % 2 ? TH.AW2 : TH.AW1;
@@ -5654,6 +5719,7 @@
     const pH = Math.round(headH * .86), pY = headTop + (headH - pH) / 2, pR = Math.round(pH * .16);
     ctx.save(); ctx.shadowColor = `rgba(${TH.SH},.35)`; ctx.shadowBlur = Math.round(pH * .14); ctx.shadowOffsetY = Math.round(pH * .04);
     ctx.fillStyle = TH.PANEL; flRound(ctx, tx, pY, tW, pH, pR); ctx.fill(); ctx.restore();
+    if (TH.PLINE) { ctx.save(); ctx.strokeStyle = TH.PLINE; ctx.lineWidth = Math.max(2, Math.round(pH * .018)); flRound(ctx, tx, pY, tW, pH, pR); ctx.stroke(); ctx.restore(); }
     ctx.save(); flRound(ctx, tx, pY, tW, pH, pR); ctx.clip();
     ctx.fillStyle = TH.STRIP; ctx.fillRect(tx, pY, Math.max(6, Math.round(pH * .07)), pH);
     ctx.restore();
@@ -5846,7 +5912,7 @@
     const x = right - L.w, y = top;
     ctx.save(); ctx.shadowColor = 'rgba(60,0,0,.35)'; ctx.shadowBlur = big * .16; ctx.shadowOffsetY = big * .06;
     ctx.fillStyle = T.TAG || T.RED; flRound(ctx, x, y, L.w, L.h, L.h * .2); ctx.fill(); ctx.restore();
-    ctx.save(); ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(3, Math.round(big * .065)); flRound(ctx, x, y, L.w, L.h, L.h * .2); ctx.stroke(); ctx.restore();
+    ctx.save(); ctx.strokeStyle = (T.TH && T.TH.TAGRIM) || '#fff'; ctx.lineWidth = Math.max(3, Math.round(big * .065)); flRound(ctx, x, y, L.w, L.h, L.h * .2); ctx.stroke(); ctx.restore();
     ctx.save(); ctx.fillStyle = T.TAGTXT || '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
     const base = y + L.padY + L.capB, topLine = y + L.padY;
     let cx = x + L.padX;
@@ -5886,8 +5952,9 @@
     const R = Math.round(base * .07);
     const grow = Math.max(1, Math.min(1.4, Math.min(w, h) / S.refMin));   // bigger boxes: slightly bigger tags
     // card
-    ctx.save(); ctx.shadowColor = 'rgba(70,5,2,.35)'; ctx.shadowBlur = Math.round(base * .06); ctx.shadowOffsetY = Math.round(base * .02);
-    ctx.fillStyle = '#fff'; flRound(ctx, x, y, w, h, R); ctx.fill(); ctx.restore();
+    const TH = T.TH || {};
+    ctx.save(); ctx.shadowColor = `rgba(${TH.SH || '70,5,2'},${TH.CARDLINE ? .18 : .35})`; ctx.shadowBlur = Math.round(base * .06); ctx.shadowOffsetY = Math.round(base * .02);
+    ctx.fillStyle = TH.CARD || '#fff'; flRound(ctx, x, y, w, h, R); ctx.fill(); ctx.restore();
     const wide = w / h > 2.1;
     const nS = Math.round(Math.min(S.name * Math.min(1.2, grow), w * .062)), noteS = Math.round(nS * .82);
     const name = flyerUnitName(u), note = flyerUnitNote(u);
@@ -5933,7 +6000,7 @@
     flFont(ctx, T.SANS(800), size);
     let ty = (wide ? y + h - textH : y + ph) + P * .7 + size;
     lines.forEach((l, i) => { ctx.fillText(l, x + P, ty); if (i < lines.length - 1) ty += size * 1.16; });
-    if (note) { ctx.fillStyle = T.RED; flFit(ctx, note, maxTextW, noteS, T.SANS(800), noteS * .62); ctx.fillText(flWrap(ctx, note, maxTextW, 1)[0], x + P, ty + noteS * 1.3); }
+    if (note) { ctx.fillStyle = TH.NOTE || T.RED; flFit(ctx, note, maxTextW, noteS, T.SANS(800), noteS * .62); ctx.fillText(flWrap(ctx, note, maxTextW, 1)[0], x + P, ty + noteS * 1.3); }
     // price tag — pinned to the top-right corner, a little off the card
     const regUnit = r0.rp != null ? r0.rp / (r0.rq || 1) : null, promoUnit = r0.pp / (r0.pq || 1);
     const off = regUnit ? Math.floor(100 * (1 - promoUnit / regUnit)) : 0;
@@ -5961,11 +6028,12 @@
       if (x + P + bw + P * .4 > tg.x) bTop = tagBottom + P * .35;
       ctx.save(); ctx.translate(x + P + bw / 2, bTop + bh / 2); ctx.rotate(-0.05);
       ctx.shadowColor = 'rgba(0,0,0,.18)'; ctx.shadowBlur = bS * .2; ctx.shadowOffsetY = bS * .06;
-      ctx.fillStyle = T.YEL; flRound(ctx, -bw / 2, -bh / 2, bw, bh, bh * .3); ctx.fill();
+      ctx.fillStyle = TH.BADGE || T.YEL; flRound(ctx, -bw / 2, -bh / 2, bw, bh, bh * .3); ctx.fill();
       ctx.shadowColor = 'transparent';
-      ctx.fillStyle = T.INK; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(txt, 0, bS * .06);
+      ctx.fillStyle = TH.BADGETXT || T.INK; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(txt, 0, bS * .06);
       ctx.restore();
     }
+    if (TH.CARDLINE) { ctx.save(); ctx.strokeStyle = TH.CARDLINE; ctx.lineWidth = Math.max(2, Math.round(base * .008)); flRound(ctx, x + .5, y + .5, w - 1, h - 1, R); ctx.stroke(); ctx.restore(); }
     return rects;
   }
 
