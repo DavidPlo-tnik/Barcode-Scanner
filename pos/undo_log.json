@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20261003122506434748",
-   "applied_at": "2026-10-03T12:25:06",
-   "change": {
-    "code": "0485001587132",
-    "pos_title": "NAIRI  ADJIKA 350ML",
-    "size_num": 350,
-    "size_unit": "ML",
-    "queued_at": "2026-10-03T16:24:57.103Z",
-    "id": "c1791044697103"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "NAIRI  ADJIKA",
-     "F1744": "350.0",
-     "F22": "350ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "NAIRI  ADJIKA 350ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "39.0000",
-     "F196": "39.0000",
-     "F1140": "3.2500",
-     "F27": "L-SAP"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20261003122616122071",
    "applied_at": "2026-10-03T12:26:16",
    "change": {
@@ -24851,6 +24802,50 @@
      "F1014": "2033-08-07 00:00:00",
      "F1015": "2359",
      "F1011": "REG"
+    }
+   }
+  },
+  {
+   "undo_id": "u20261016141535149749",
+   "applied_at": "2026-10-16T14:15:35",
+   "change": {
+    "code": "0077507568591",
+    "title": "SKOTIDAKIS FETA STYLE BULGARE",
+    "pos_title": "SKOTIDAKIS FETA STYLE BULGARE",
+    "size_num": 200,
+    "size_unit": "GR",
+    "queued_at": "2026-10-16T18:15:07.657Z",
+    "id": "c1792174507657"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "Skotidak.FETA STULE BULGURE.grec   ",
+     "F1744": "200.0",
+     "F22": "200G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "Skotidak.FETA STULE BULGURE.grec    200G",
+     "F04": "31",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
     }
    }
   }
