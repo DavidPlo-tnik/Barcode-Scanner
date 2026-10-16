@@ -670,6 +670,9 @@
     color: var(--text); border: 1px solid var(--border); border-radius: 6px; font-size: 13px;
   }
   .candy-row .btn { flex-shrink: 0; }
+  .up-chip { position: fixed; left: 12px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 430; padding: 8px 12px; border-radius: 99px; background: #1c1c1e; border: 1px solid var(--accent); color: var(--accent); font-family: var(--font-display); font-size: 11px; font-weight: 800; box-shadow: 0 4px 16px rgba(0,0,0,.5); opacity: 0; transform: translateY(10px); transition: opacity .2s, transform .2s; pointer-events: none; }
+  .up-chip.on { opacity: 1; transform: none; }
+  .up-chip.bad { border-color: #fb923c; color: #fb923c; }
   .studio-ov { position: fixed; inset: 0; z-index: 420; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.86); padding: 16px; }
   .studio-ov.open { display: flex; }
   .studio-ov.cam { background: #000; padding: max(10px, env(safe-area-inset-top)) 10px max(10px, env(safe-area-inset-bottom)); }
@@ -2197,7 +2200,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v186</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v187</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2773,7 +2776,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v186</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v187</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7015,7 +7018,8 @@
   function renderPdPhotos(code, photos) {
     const wrap = $('#pd-photos');
     if (!wrap) return;
-    photos = photos || [];
+    photos = (photos || []).slice();
+    ((window._upPending && window._upPending[code]) || []).forEach(fn => { if (!photos.includes(fn)) photos.push(fn); });
     wrap.innerHTML = photos.length
       ? photos.map((fn, i) => `
           <div class="pd-photo${i === 0 && photos.length > 1 ? ' is-main' : ''}" data-i="${i}">
@@ -7165,30 +7169,80 @@
     });
   }
 
-  // shared by + PHOTO and ✨ STUDIO: upload a finished image and add it to the item
-  async function pdSavePhoto(code, img) {
-    const st = $('#pd-photo-status');
-    const { dataUrl, blob, ext, width } = img;
-    const fn = `${code}_${Date.now()}.${ext}`;
-    if (st) st.textContent = `Uploading ${width}px (${Math.round(blob.size/1024)} KB)…`;
-    await ghPutFile(`images/ecom/${fn}`, dataUrl.split(',')[1], `ecom photo ${fn}`);
-    // Remember the local bytes: raw.githubusercontent.com serves a new file
-    // with a delay, so the <img> would 404 and the photo appeared missing
-    // even though the upload succeeded.
-    _freshPhotos[fn] = dataUrl;
-    const cat = await mutateEcomCatalog(cat => {
-      if (!cat.items[code]) {
-        cat.items[code] = { added: new Date().toISOString().slice(0,10), photos: [],
-                            listed: false, status: 'draft' };
-      }
-      const e = cat.items[code];
-      e.photos = e.photos || [];
-      e.photos.push(fn);
+  // ── Photos save in the BACKGROUND: kept in the phone (IndexedDB) until GitHub has
+  // them, so you can move to the next item / press APPLY TO POS straight away.
+  // Survives closing the editor; if the app is closed, it resumes on next start.
+  const _upPending = window._upPending = {};   // code -> [fn] shown immediately, not yet in the catalog
+  function upDb() {
+    return new Promise((res, rej) => {
+      const r = indexedDB.open('decarie-uploads', 1);
+      r.onupgradeneeded = () => r.result.createObjectStore('q', { keyPath: 'fn' });
+      r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
     });
-    // Use the object mutateEcomCatalog just wrote, NOT a re-fetch: the CDN
-    // lags and would hand back the previous catalog, losing the new photo.
-    renderPdPhotos(code, (cat.items[code] || {}).photos);
-    if (st) st.textContent = 'Photo added ✓';
+  }
+  async function upTx(mode, fn) {
+    const db = await upDb();
+    return new Promise((res, rej) => { const tx = db.transaction('q', mode); const st = tx.objectStore('q'); let out; const r = fn(st); if (r) r.onsuccess = () => { out = r.result; }; tx.oncomplete = () => res(out); tx.onerror = () => rej(tx.error); });
+  }
+  const upAll = () => upTx('readonly', st => st.getAll()).then(x => x || []).catch(() => []);
+  const upPut = (rec) => upTx('readwrite', st => st.put(rec));
+  const upDel = (fn) => upTx('readwrite', st => st.delete(fn));
+  function upChip(n, failed) {
+    let c = document.getElementById('up-chip');
+    if (!c) { c = document.createElement('div'); c.id = 'up-chip'; c.className = 'up-chip'; document.body.appendChild(c); }
+    c.textContent = failed ? `⚠ ${n} photo${n > 1 ? 's' : ''} waiting — will retry` : `⬆ Saving ${n} photo${n > 1 ? 's' : ''}…`;
+    c.classList.toggle('on', n > 0); c.classList.toggle('bad', !!failed);
+  }
+  let _upRunning = false;
+  async function upPump() {
+    if (_upRunning || !GH_HAS_TOKEN) return;
+    _upRunning = true;
+    let failed = false;
+    try {
+      for (;;) {
+        const list = (await upAll()).sort((a, b) => a.t - b.t);
+        upChip(list.length, false);
+        if (!list.length) break;
+        const r = list[0];
+        (_upPending[r.code] = _upPending[r.code] || []).includes(r.fn) || _upPending[r.code].push(r.fn);
+        try {
+          if (!r.imgDone) {
+            try { await ghPutFile(`images/ecom/${r.fn}`, r.dataUrl.split(',')[1], `ecom photo ${r.fn}`); }
+            catch (e) { if (!e.isConflict) throw e; }        // already there from an earlier try
+            r.imgDone = true; await upPut(r);
+          }
+          const cat = await mutateEcomCatalog(cat => {
+            if (!cat.items[r.code]) cat.items[r.code] = { added: new Date().toISOString().slice(0, 10), photos: [], listed: false, status: 'draft' };
+            const e = cat.items[r.code]; e.photos = e.photos || [];
+            if (!e.photos.includes(r.fn)) e.photos.push(r.fn);
+          });
+          await upDel(r.fn);
+          _upPending[r.code] = (_upPending[r.code] || []).filter(f => f !== r.fn);
+          if (_pdCtx && _pdCtx.code === r.code) renderPdPhotos(r.code, (cat.items[r.code] || {}).photos);
+        } catch (e) {
+          console.warn('photo upload', e);
+          r.tries = (r.tries || 0) + 1; await upPut(r).catch(() => {});
+          failed = true;
+          upChip(list.length, true);
+          setTimeout(upPump, Math.min(60000, 4000 * r.tries));   // back off, try again
+          break;
+        }
+      }
+    } finally { _upRunning = false; if (!failed) upChip(0); }
+  }
+  setTimeout(upPump, 4000);                                 // finish anything left from last time
+  window.addEventListener('online', () => upPump());
+
+  // shared by + PHOTO and ✨ STUDIO: returns at once, the upload happens in the background
+  async function pdSavePhoto(code, img) {
+    const { dataUrl, ext } = img;
+    const fn = `${code}_${Date.now()}.${ext}`;
+    _freshPhotos[fn] = dataUrl;                              // shows instantly from the phone's copy
+    (_upPending[code] = _upPending[code] || []).push(fn);
+    await upPut({ fn, code, dataUrl, t: Date.now() });
+    const st = $('#pd-photo-status'); if (st) st.textContent = 'Photo added ✓ — saving in the background';
+    if (_pdCtx && _pdCtx.code === code) renderPdPhotos(code, ((_ecomCatalog && _ecomCatalog.items[code]) || {}).photos);
+    upPump();
   }
 
   document.addEventListener('click', (e) => {
@@ -7347,6 +7401,39 @@
     out.getContext('2d').drawImage(cut, x0, y0, out.width, out.height, 0, 0, out.width, out.height);
     return out;
   }
+  // Turn the product upright: find the rotation (±30°) that gives the tightest box
+  // around its outline (boxes, bags, jars line up with the frame), then re-crop.
+  function studioStraighten(prod) {
+    const W = prod.width, H = prod.height;
+    const d = prod.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, W, H).data;
+    const step = Math.max(1, Math.round(Math.sqrt(W * H / 40000)));
+    const xs = [], ys = [];
+    for (let y = 0; y < H; y += step) for (let x = 0; x < W; x += step) if (d[(y * W + x) * 4 + 3] > 128) { xs.push(x - W / 2); ys.push(y - H / 2); }
+    if (xs.length < 50) return prod;
+    const area = (deg) => {
+      const a = deg * Math.PI / 180, c = Math.cos(a), s = Math.sin(a);
+      let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+      for (let i = 0; i < xs.length; i++) { const X = xs[i] * c - ys[i] * s, Y = xs[i] * s + ys[i] * c; if (X < x0) x0 = X; if (X > x1) x1 = X; if (Y < y0) y0 = Y; if (Y > y1) y1 = Y; }
+      return (x1 - x0) * (y1 - y0);
+    };
+    let best = 0, bestA = area(0);
+    for (let g = -30; g <= 30; g += 1) { const v = area(g); if (v < bestA) { bestA = v; best = g; } }
+    for (let g = best - 1; g <= best + 1; g += .2) { const v = area(g); if (v < bestA) { bestA = v; best = g; } }
+    if (Math.abs(best) < .6 || bestA > area(0) * .985) return prod;          // already straight
+    const a = best * Math.PI / 180, c = Math.abs(Math.cos(a)), sn = Math.abs(Math.sin(a));
+    const RW = Math.ceil(W * c + H * sn), RH = Math.ceil(W * sn + H * c);
+    const r = document.createElement('canvas'); r.width = RW; r.height = RH;
+    const x = r.getContext('2d', { willReadFrequently: true });
+    x.imageSmoothingQuality = 'high';
+    x.translate(RW / 2, RH / 2); x.rotate(a); x.drawImage(prod, -W / 2, -H / 2);
+    const rd = x.getImageData(0, 0, RW, RH).data;
+    let bx0 = RW, by0 = RH, bx1 = -1, by1 = -1;
+    for (let yy = 0; yy < RH; yy++) for (let xx = 0; xx < RW; xx++) if (rd[(yy * RW + xx) * 4 + 3] > 40) { if (xx < bx0) bx0 = xx; if (xx > bx1) bx1 = xx; if (yy < by0) by0 = yy; if (yy > by1) by1 = yy; }
+    if (bx1 < 0) return prod;
+    const out = document.createElement('canvas'); out.width = bx1 - bx0 + 1; out.height = by1 - by0 + 1;
+    out.getContext('2d').drawImage(r, bx0, by0, out.width, out.height, 0, 0, out.width, out.height);
+    return out;
+  }
   // product → 2000×2000 white square, centred, soft shadow
   function studioCompose(prod, opt) {
     const S = 2000, fit = 1640;
@@ -7354,7 +7441,8 @@
     const x = c.getContext('2d');
     x.fillStyle = '#fff'; x.fillRect(0, 0, S, S);
     const k = Math.min(fit / prod.width, fit / prod.height);
-    const w = prod.width * k, h = prod.height * k, px = (S - w) / 2, py = (S - h) / 2;
+    const w = prod.width * k, h = prod.height * k, px = (S - w) / 2;
+    const py = (S - h) / 2 - (opt.shadow ? h * .015 : 0);     // product + floor shadow centred together
     if (opt.shadow) {
       // contact shadow under the product
       const cy = py + h - h * .01, rx = w * .42, ry = Math.max(14, h * .035);
@@ -7460,9 +7548,10 @@
       const cutImg = await createImageBitmap(cutBlob);
       const cut = document.createElement('canvas'); cut.width = cutImg.width; cut.height = cutImg.height;
       cut.getContext('2d').drawImage(cutImg, 0, 0);
-      const st = { color: true, shadow: true };
+      const st = { color: true, shadow: true, straight: true };
+      const studioBuild = () => { let p = studioCorrect(cutCopy(), st); if (st.straight) p = studioStraighten(p); return studioCompose(p, st); };
       const cutCopy = () => { const c = document.createElement('canvas'); c.width = cut.width; c.height = cut.height; c.getContext('2d').drawImage(cut, 0, 0); return c; };
-      let out = studioCompose(studioCorrect(cutCopy(), st), st);
+      let out = studioBuild();
       const before = src.toDataURL('image/jpeg', .8);
       const show = () => {
         v.innerHTML = `<div class="studio-card">
@@ -7472,19 +7561,20 @@
           <div class="studio-opts">
             <button data-o="color" class="${st.color ? 'on' : ''}">${st.color ? '✓ ' : ''}COLOUR FIX</button>
             <button data-o="shadow" class="${st.shadow ? 'on' : ''}">${st.shadow ? '✓ ' : ''}SHADOW</button>
+            <button data-o="straight" class="${st.straight ? 'on' : ''}">${st.straight ? '✓ ' : ''}STRAIGHTEN</button>
           </div>
           <div class="studio-acts"><button class="alt" data-a="retake">↺ RETAKE</button><button class="alt" data-a="cancel">CANCEL</button><button data-a="use">✓ USE PHOTO</button></div>
           <div class="studio-status" id="studio-status"></div></div>`;
-        v.querySelectorAll('[data-o]').forEach(b => b.addEventListener('click', () => { st[b.dataset.o] = !st[b.dataset.o]; out = studioCompose(studioCorrect(cutCopy(), st), st); show(); }));
+        v.querySelectorAll('[data-o]').forEach(b => b.addEventListener('click', () => { st[b.dataset.o] = !st[b.dataset.o]; out = studioBuild(); show(); }));
         v.querySelector('[data-a="cancel"]').addEventListener('click', () => v.classList.remove('open'));
         v.querySelector('[data-a="retake"]').addEventListener('click', () => studioOpen(code, onDone));
         v.querySelector('[data-a="use"]').addEventListener('click', async (e) => {
-          e.target.disabled = true; $('#studio-status').textContent = 'Saving…';
+          e.target.disabled = true;
           try {
-            const blob = await studioBlob(out, 'image/jpeg', .92);
+            const blob = await studioBlob(out, 'image/jpeg', .9);
             const dataUrl = await new Promise((res, rej) => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.onerror = rej; fr.readAsDataURL(blob); });
-            await onDone({ dataUrl, blob, ext: 'jpg', width: 2000, height: 2000 });
             v.classList.remove('open');
+            await onDone({ dataUrl, blob, ext: 'jpg', width: 2000, height: 2000 });
           } catch (err) { $('#studio-status').textContent = 'Failed: ' + err.message; e.target.disabled = false; }
         });
       };
