@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20261003122721285385",
-   "applied_at": "2026-10-03T12:27:21",
-   "change": {
-    "code": "0485001587137",
-    "pos_title": "NAIRI  CAVIAR DE ZUCCHINI EPICE 350ML",
-    "size_num": 350,
-    "size_unit": "ML",
-    "queued_at": "2026-10-03T16:27:15.449Z",
-    "id": "c1791044835449"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "NAIRI  CAVIAR DE ZUCCHINI EPICE",
-     "F1744": "350.0",
-     "F22": "350ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "NAIRI  CAVIAR DE ZUCCHINI EPICE 350ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "30.6000",
-     "F196": "30.6000",
-     "F1140": "2.5500",
-     "F27": "L-SAP"
-    },
-    "PRICE_TAB": {
-     "F30": "3.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "3.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20261003122827008301",
    "applied_at": "2026-10-03T12:28:27",
    "change": {
@@ -24811,6 +24762,56 @@
     "size_unit": "GR",
     "queued_at": "2026-10-16T18:16:36.371Z",
     "id": "c1792174596371"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "Skotid.feta                200g",
+     "F1744": "200.0",
+     "F22": "200G",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "Skotid.feta                200g 200G",
+     "F04": "32",
+     "F81": "0",
+     "F96": "0",
+     "F05": null,
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "25.7500",
+     "F196": "25.7500",
+     "F1140": "4.2917",
+     "F27": "0000251964"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261016141750386387",
+   "applied_at": "2026-10-16T14:17:50",
+   "change": {
+    "code": "0077507500221",
+    "title": "SKOTIDAKIS FETA VACHE",
+    "pos_title": "SKOTIDAKIS FETA VACHE",
+    "size_num": 200,
+    "size_unit": "GR",
+    "queued_at": "2026-10-16T18:17:39.506Z",
+    "id": "c1792174659506"
    },
    "before": {
     "OBJ_TAB": {
