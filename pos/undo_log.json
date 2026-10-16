@@ -1,57 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20261002125229445403",
-   "applied_at": "2026-10-02T12:52:29",
-   "change": {
-    "code": "0062798781203",
-    "title": "SODA INDIGO ROSE CLIP",
-    "pos_title": "SODA INDIGO ROSE CLIP",
-    "size_num": 410,
-    "size_unit": "GR",
-    "deposit": 15,
-    "queued_at": "2026-10-02T16:52:32.352Z",
-    "id": "c1790959952352"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SODA INDIGO ROSE CLIP",
-     "F1744": "164.0",
-     "F22": "164 ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "SODA INDIGO ROSE CLIP",
-     "F04": "1",
-     "F81": "1",
-     "F96": "1",
-     "F05": "300",
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": "0.0000",
-     "F1140": "0.0000",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "12.5000",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "12.5000",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20261002125335293119",
    "applied_at": "2026-10-02T12:53:35",
    "change": {
@@ -24881,6 +24830,55 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "5.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261016105640091384",
+   "applied_at": "2026-10-16T10:56:40",
+   "change": {
+    "code": "0062869366997",
+    "pos_title": "BOB SNAIL CALENDRIER 140G",
+    "size_num": 140,
+    "size_unit": "",
+    "queued_at": "2026-10-16T14:56:39.247Z",
+    "id": "c1792162599247"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "BOB SNAIL CALENDRIER",
+     "F1744": "140.0",
+     "F22": "140 ",
+     "F23": "G"
+    },
+    "POS_TAB": {
+     "F02": "BOB SNAIL CALENDRIER 140G",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "11.9900",
+     "F196": "11.9900",
+     "F1140": "11.9900",
+     "F27": "L-APEX"
+    },
+    "PRICE_TAB": {
+     "F30": "17.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "17.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
