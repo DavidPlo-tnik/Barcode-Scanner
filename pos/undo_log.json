@@ -1,57 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20261002125229336203",
-   "applied_at": "2026-10-02T12:52:29",
-   "change": {
-    "code": "0005149742997",
-    "title": "SODA INDIGO ROSE CLIP",
-    "pos_title": "SODA INDIGO ROSE CLIP",
-    "size_num": 410,
-    "size_unit": "GR",
-    "deposit": 15,
-    "queued_at": "2026-10-02T16:52:02.329Z",
-    "id": "c1790959922329"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SODA INDIGO ROSE CLIP",
-     "F1744": "164.0",
-     "F22": "164 ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "SODA INDIGO ROSE CLIP",
-     "F04": "1",
-     "F81": "1",
-     "F96": "1",
-     "F05": "300",
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": "0.0000",
-     "F1140": "0.0000",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "12.5000",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "12.5000",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20261002125229383003",
    "applied_at": "2026-10-02T12:52:29",
    "change": {
@@ -24878,6 +24827,57 @@
      "F38": "31.9600",
      "F196": "31.9600",
      "F1140": "1.3317",
+     "F27": "ZE01"
+    },
+    "PRICE_TAB": {
+     "F30": "2.4900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "2.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261016103556113197",
+   "applied_at": "2026-10-16T10:35:56",
+   "change": {
+    "code": "0005500020972",
+    "pos_title": "MAISON PERRIER CITRON 500ML",
+    "size_num": 500,
+    "size_unit": "ML",
+    "price": 1.99,
+    "deposit": 0.1,
+    "queued_at": "2026-10-16T14:35:03.000Z",
+    "id": "c1792161303000"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "MAISON PERRIER CITRON",
+     "F1744": "500.0",
+     "F22": "500ML",
+     "F23": "ML"
+    },
+    "POS_TAB": {
+     "F02": "MAISON PERRIER CITRON 500ML",
+     "F04": "2",
+     "F81": "1",
+     "F96": "1",
+     "F05": "2",
+     "F82": "0",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "20.3800",
+     "F196": "20.3800",
+     "F1140": "0.8492",
      "F27": "ZE01"
     },
     "PRICE_TAB": {
