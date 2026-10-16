@@ -1,3 +1,14 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0005500021220",
+   "pos_title": "MAISON PERRIER LIME 500ML",
+   "size_num": 500,
+   "size_unit": "ML",
+   "price": 1.99,
+   "deposit": 0.1,
+   "queued_at": "2026-10-16T14:33:38.854Z",
+   "id": "c1792161218854"
+  }
+ ]
 }
