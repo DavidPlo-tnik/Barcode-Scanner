@@ -428,7 +428,31 @@
    "mp": null,
    "cost": 23.9,
    "at": "2026-10-16 14:10:17"
+  },
+  "0077507500210": {
+   "pt": "SKOTIDAKIS FETA EN DÉS LÉGER",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 32,
+   "un": "GR",
+   "sn": 200.0,
+   "nm": "SKOTIDAKIS FETA EN DÉS LÉGER",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 5.99,
+   "mp": null,
+   "cost": 23.9,
+   "at": "2026-10-16 14:13:28"
   }
  },
- "updated": "2026-10-16 14:10:17"
+ "updated": "2026-10-16 14:13:28"
 }
