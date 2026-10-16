@@ -864,6 +864,10 @@
   .fl-dates > div { flex: 1; } .fl-dates label { display: block; font-family: var(--font-display); font-size: 9.5px; color: var(--text-dim); margin-bottom: 3px; }
   .fl-item input { -webkit-user-select: text; user-select: text; }
   .fl-dates input, .fl-item input { width: 100%; box-sizing: border-box; background: var(--surface-2); border: 1px solid var(--border); border-radius: 7px; color: var(--text); font-size: 13px; padding: 7px 8px; }
+  .fl-themes { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 10px; }
+  .fl-themes button { flex: 1 1 30%; display: flex; align-items: center; gap: 6px; padding: 7px 8px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-family: var(--font-display); font-size: 10.5px; font-weight: 700; cursor: pointer; }
+  .fl-themes button.on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+  .fl-themes i { width: 18px; height: 18px; border-radius: 5px; flex: none; border: 1px solid rgba(0,0,0,.25); }
   .fl-actions { display: flex; gap: 8px; margin: 4px 0 14px; }
   .fl-actions button { flex: 1; padding: 11px; border-radius: 9px; border: none; background: var(--accent); color: #000; font-family: var(--font-display); font-size: 11.5px; font-weight: 800; cursor: pointer; }
   .fl-actions button.alt { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
@@ -2200,7 +2204,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v187</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v188</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2776,7 +2780,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v187</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v188</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4641,6 +4645,43 @@
     [...Object.values(_fl.cfg.items), ..._fl.cfg.groups].forEach(c => { delete c.join; delete c.size; });
   }
   let _flSaveT = 0;
+  // colour themes for the flyer (picked in the flyer screen, saved in cfg.theme)
+  const FL_THEMES = {
+    classique: { name: 'Classique', BG: '#DC241C', PAT: '#fff', PATA: .07, AW1: '#E63A30', AW2: '#fff', PANEL: '#fff', TITLE: '#DC241C', SUB: '#171717', STRIP: '#FFD23F',
+                 DTAG: '#DC241C', DTXT: '#fff', DYR: '#FFD23F', FOOT: '#fff', FLINE: '#FFD23F', FNAME: '#DC241C', FINFO: '#171717', TAG: '#DC241C', TAGTXT: '#fff', CREAM: '#FFF4E8', SH: '70,5,2' },
+    vert:      { name: 'Marché vert', BG: '#1F7A3D', PAT: '#fff', PATA: .06, AW1: '#2E9A50', AW2: '#fff', PANEL: '#fff', TITLE: '#1F7A3D', SUB: '#171717', STRIP: '#FFD23F',
+                 DTAG: '#DC241C', DTXT: '#fff', DYR: '#FFD23F', FOOT: '#fff', FLINE: '#FFD23F', FNAME: '#1F7A3D', FINFO: '#171717', TAG: '#DC241C', TAGTXT: '#fff', CREAM: '#F3F8EE', SH: '5,40,15' },
+    creme:     { name: 'Crème', BG: '#FBF1E1', PAT: '#C9A87A', PATA: .16, AW1: '#DC241C', AW2: '#fff', PANEL: '#fff', TITLE: '#DC241C', SUB: '#171717', STRIP: '#DC241C',
+                 DTAG: '#171717', DTXT: '#fff', DYR: '#FFD23F', FOOT: '#171717', FLINE: '#DC241C', FNAME: '#fff', FINFO: '#E9E2D6', TAG: '#DC241C', TAGTXT: '#fff', CREAM: '#FFF8EE', SH: '90,60,20' },
+    nuit:      { name: 'Nuit', BG: '#18191C', PAT: '#fff', PATA: .045, AW1: '#DC241C', AW2: '#2A2B30', PANEL: '#26272C', TITLE: '#FFD23F', SUB: '#fff', STRIP: '#DC241C',
+                 DTAG: '#FFD23F', DTXT: '#171717', DYR: '#DC241C', FOOT: '#26272C', FLINE: '#FFD23F', FNAME: '#FFD23F', FINFO: '#ddd', TAG: '#FFD23F', TAGTXT: '#171717', CREAM: '#F4F1EA', SH: '0,0,0' },
+    kraft:     { name: 'Kraft', BG: '#D9C3A0', PAT: '#7A5A30', PATA: .1, AW1: '#2F6B3A', AW2: '#F6EEDC', PANEL: '#F6EEDC', TITLE: '#2F6B3A', SUB: '#3A2A18', STRIP: '#DC241C',
+                 DTAG: '#2F6B3A', DTXT: '#fff', DYR: '#FFD23F', FOOT: '#2F6B3A', FLINE: '#DC241C', FNAME: '#fff', FINFO: '#F6EEDC', TAG: '#DC241C', TAGTXT: '#fff', CREAM: '#FBF6EA', SH: '70,45,10' },
+    marine:    { name: 'Marine', BG: '#13315C', PAT: '#fff', PATA: .06, AW1: '#1E4A85', AW2: '#fff', PANEL: '#fff', TITLE: '#13315C', SUB: '#171717', STRIP: '#FFD23F',
+                 DTAG: '#DC241C', DTXT: '#fff', DYR: '#FFD23F', FOOT: '#fff', FLINE: '#FFD23F', FNAME: '#13315C', FINFO: '#171717', TAG: '#FFD23F', TAGTXT: '#13315C', CREAM: '#F1F5FB', SH: '0,15,45' },
+  };
+  const flTheme = () => FL_THEMES[(_fl.cfg && _fl.cfg.theme) || 'classique'] || FL_THEMES.classique;
+  // QR codes on the TV screen (drawn as crisp modules, no image files)
+  const FL_QR = [
+    { url: 'https://www.instagram.com/marche_decarie/', top: 'INSTAGRAM', bot: '@marche_decarie' },
+    { url: 'https://g.page/r/CS90YWQiStFoEBM/review', top: 'LAISSEZ UN AVIS', bot: '★★★★★ Google', star: true },
+    { url: 'https://www.facebook.com/marchedecarie', top: 'FACEBOOK', bot: 'Marché Décarie' },
+  ];
+  let _qrLib = null;
+  function flQrLib() {
+    if (window.qrcode) return Promise.resolve(window.qrcode);
+    return _qrLib || (_qrLib = new Promise((res) => { const sc = document.createElement('script'); sc.src = 'vendor/qrcode.js'; sc.onload = () => res(window.qrcode || null); sc.onerror = () => { _qrLib = null; res(null); }; document.head.appendChild(sc); }));
+  }
+  async function flDrawQR(ctx, url, x, y, size, dark) {
+    const lib = await flQrLib(); if (!lib) return false;
+    const q = lib(0, 'M'); q.addData(url); q.make();
+    const n = q.getModuleCount(), quiet = 2, cell = Math.floor(size / (n + quiet * 2)), real = cell * (n + quiet * 2);
+    const ox = Math.round(x + (size - real) / 2), oy = Math.round(y + (size - real) / 2);
+    ctx.fillStyle = '#fff'; flRound(ctx, ox, oy, real, real, cell * 1.5); ctx.fill();
+    ctx.fillStyle = dark || '#111';
+    for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (q.isDark(r, c)) ctx.fillRect(ox + (c + quiet) * cell, oy + (r + quiet) * cell, cell, cell);
+    return true;
+  }
   function flyerSaveCfg() {
     clearTimeout(_flSaveT);
     _flSaveT = setTimeout(async () => {
@@ -4786,6 +4827,8 @@
       <div class="fl-pages" id="fl-pages"></div>
       <div class="fl-actions"><button class="alt" id="fl-edit" style="flex:1">✎ EDIT LAYOUT</button>
         <button class="alt ${_fl.cfg.onePage && _fl.cfg.onePage[_fl.fmt] ? 'on' : ''}" id="fl-one" style="flex:1">${_fl.cfg.onePage && _fl.cfg.onePage[_fl.fmt] ? '✓ ' : ''}ALL ON ONE PAGE</button></div>
+      <div class="fl-themes" id="fl-themes">${Object.entries(FL_THEMES).map(([k, t]) => `<button data-theme="${k}" class="${((_fl.cfg.theme || 'classique') === k) ? 'on' : ''}"><i style="background:linear-gradient(135deg,${t.BG} 0 50%,${t.TAG} 50% 75%,${t.PANEL} 75%)"></i>${t.name}</button>`).join('')}</div>
+      ${_fl.fmt === 'tv' ? `<div class="fl-actions"><button class="alt ${_fl.cfg.qr !== false ? 'on' : ''}" id="fl-qr">${_fl.cfg.qr !== false ? '✓ ' : ''}QR CODES ON TV</button></div>` : ''}
       <div class="fl-actions"><button id="fl-dl">⬇ SAVE THIS SIZE</button><button class="alt" id="fl-dl-all">⬇ ALL SIZES</button></div>
       <div class="fl-dates"><div><label>FROM</label><input type="date" id="fl-from" value="${_fl.from}"></div><div><label>TO</label><input type="date" id="fl-to" value="${_fl.to}"></div></div>
       <div class="fl-help"><b>Layout:</b> tap the flyer (or ✎ EDIT LAYOUT) for the full-screen editor — zoom, resize, move, photos, lock, undo.
@@ -4802,6 +4845,8 @@
     $('#fl-from').addEventListener('change', e => { _fl.from = e.target.value; flyerDraw(); });
     $('#fl-to').addEventListener('change', e => { _fl.to = e.target.value; flyerDraw(); });
     $('#fl-edit').addEventListener('click', flyerEditorOpen);
+    $$('#fl-themes button').forEach(b => b.addEventListener('click', () => { _fl.cfg.theme = b.dataset.theme; flyerSaveCfg(); flyerRenderUI(); }));
+    if ($('#fl-qr')) $('#fl-qr').addEventListener('click', () => { _fl.cfg.qr = _fl.cfg.qr === false; flyerSaveCfg(); flyerRenderUI(); });
     $('#fl-one').addEventListener('click', () => { _fl.cfg.onePage = _fl.cfg.onePage || {}; _fl.cfg.onePage[_fl.fmt] = !_fl.cfg.onePage[_fl.fmt]; _fl.page = 0; flyerSaveCfg(); flyerRenderUI(); });
     $('#fl-dl').addEventListener('click', () => { _fl.sel = null; flyerPaintOverlay(); flyerExport([_fl.fmt]); });
     $('#fl-dl-all').addEventListener('click', () => { _fl.sel = null; flyerPaintOverlay(); flyerExport(Object.keys(FL_FORMATS)); });
@@ -5574,19 +5619,20 @@
     canvas.width = W; canvas.height = H;
     const ctx = canvas.getContext('2d');
     await flyerFonts();
-    const T = { RED: '#DC241C', YEL: '#FFD23F', INK: '#171717', GREY: '#6b6b6b', CREAM: '#FFF4E8',
+    const TH = flTheme();
+    const T = { RED: '#DC241C', YEL: '#FFD23F', INK: '#171717', GREY: '#6b6b6b', CREAM: TH.CREAM, TAG: TH.TAG, TAGTXT: TH.TAGTXT, TH,
                 PRICE: '{s}px Anton, Impact, "Arial Narrow", sans-serif',
                 SANS: (wgt) => wgt + ' {s}px Archivo, "Helvetica Neue", Arial, sans-serif' };
     const M = Math.round(W * (tv ? .026 : .04));
     const GAP = Math.round(W * (tv ? .01 : .02));
 
-    ctx.fillStyle = T.RED; ctx.fillRect(0, 0, W, H);
-    ctx.save(); ctx.globalAlpha = .07; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2;
+    ctx.fillStyle = TH.BG; ctx.fillRect(0, 0, W, H);
+    ctx.save(); ctx.globalAlpha = TH.PATA; ctx.strokeStyle = TH.PAT; ctx.lineWidth = 2;
     for (let x = -H; x < W + H; x += 26) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + H, H); ctx.stroke(); }
     ctx.restore();
     const nStripe = tv ? 24 : 14, sw = W / nStripe, awH = Math.round(H * (tv ? .04 : .026));
     for (let i = 0; i < nStripe; i++) {
-      ctx.fillStyle = i % 2 ? '#fff' : '#E63A30';
+      ctx.fillStyle = i % 2 ? TH.AW2 : TH.AW1;
       ctx.fillRect(i * sw, 0, sw, awH);
       ctx.beginPath(); ctx.arc(i * sw + sw / 2, awH, sw / 2, 0, Math.PI); ctx.fill();
     }
@@ -5606,10 +5652,10 @@
     // price-tag face, "CETTE SEMAINE" tracked out, the dates in a red tag on the right
     const tx = M + logoD + Math.round(W * .025), tW = W - M - tx;
     const pH = Math.round(headH * .86), pY = headTop + (headH - pH) / 2, pR = Math.round(pH * .16);
-    ctx.save(); ctx.shadowColor = 'rgba(70,5,2,.35)'; ctx.shadowBlur = Math.round(pH * .14); ctx.shadowOffsetY = Math.round(pH * .04);
-    ctx.fillStyle = '#fff'; flRound(ctx, tx, pY, tW, pH, pR); ctx.fill(); ctx.restore();
+    ctx.save(); ctx.shadowColor = `rgba(${TH.SH},.35)`; ctx.shadowBlur = Math.round(pH * .14); ctx.shadowOffsetY = Math.round(pH * .04);
+    ctx.fillStyle = TH.PANEL; flRound(ctx, tx, pY, tW, pH, pR); ctx.fill(); ctx.restore();
     ctx.save(); flRound(ctx, tx, pY, tW, pH, pR); ctx.clip();
-    ctx.fillStyle = T.YEL; ctx.fillRect(tx, pY, Math.max(6, Math.round(pH * .07)), pH);
+    ctx.fillStyle = TH.STRIP; ctx.fillRect(tx, pY, Math.max(6, Math.round(pH * .07)), pH);
     ctx.restore();
     // dates
     const fd = (d) => new Date(d + 'T12:00:00');
@@ -5629,13 +5675,13 @@
     const tagW2 = Math.max(dW1, dW2) + pH * .3, tagH2 = Math.round(pH * .7);
     const tagX = tx + tW - padIn * .7 - tagW2, tagY = pY + (pH - tagH2) / 2;
     ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.22)'; ctx.shadowBlur = pH * .08; ctx.shadowOffsetY = pH * .025;
-    ctx.fillStyle = T.RED; flRound(ctx, tagX, tagY, tagW2, tagH2, tagH2 * .2); ctx.fill(); ctx.restore();
-    ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = TH.DTAG; flRound(ctx, tagX, tagY, tagW2, tagH2, tagH2 * .2); ctx.fill(); ctx.restore();
+    ctx.fillStyle = TH.DTXT; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
     flFont(ctx, T.PRICE, dS);
     ctx.fillText('DU ' + dTop, tagX + tagW2 / 2, tagY + tagH2 * .54);
     flFont(ctx, T.SANS(900), dbS);
     if ('letterSpacing' in ctx) ctx.letterSpacing = Math.round(dbS * .1) + 'px';
-    ctx.fillStyle = T.YEL; ctx.fillText(dBot, tagX + tagW2 / 2, tagY + tagH2 * .86);
+    ctx.fillStyle = TH.DYR; ctx.fillText(dBot, tagX + tagW2 / 2, tagY + tagH2 * .86);
     if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
     // title
     const titleX = tx + padIn + pH * .05, titleW = tagX - titleX - padIn * .6;
@@ -5652,21 +5698,47 @@
     if (ls > s2 * .6) ls = s2 * .6;
     const blockH1 = s1 * .92 + s2 * 1.25;
     const by0 = pY + (pH - blockH1) / 2;
-    ctx.textAlign = 'left'; ctx.fillStyle = T.RED;
+    ctx.textAlign = 'left'; ctx.fillStyle = TH.TITLE;
     flFont(ctx, T.PRICE, s1); ctx.fillText(t1, titleX, by0 + s1 * .9);
-    ctx.fillStyle = T.INK; flFont(ctx, T.SANS(900), s2);
+    ctx.fillStyle = TH.SUB; flFont(ctx, T.SANS(900), s2);
     if ('letterSpacing' in ctx) { ctx.letterSpacing = ls + 'px'; ctx.fillText(t2, titleX + 1, by0 + s1 * .92 + s2 * 1.12); ctx.letterSpacing = '0px'; }
     else { let cx = titleX + 1; for (const ch of t2) { ctx.fillText(ch, cx, by0 + s1 * .92 + s2 * 1.12); cx += ctx.measureText(ch).width + ls; } }
-    // footer
-    const footH = Math.round(H * (tv ? .07 : story ? .045 : .055));
-    ctx.fillStyle = '#fff'; ctx.fillRect(0, H - footH, W, footH);
-    ctx.fillStyle = T.YEL; ctx.fillRect(0, H - footH, W, Math.max(4, Math.round(footH * .07)));
-    const fy = H - footH / 2 + footH * .04;
-    ctx.textBaseline = 'middle'; ctx.textAlign = 'left'; ctx.fillStyle = T.RED;
-    flFit(ctx, 'MARCHÉ DÉCARIE', W * .32, footH * .38, T.SANS(900)); ctx.fillText('MARCHÉ DÉCARIE', M, fy);
-    ctx.textAlign = 'right'; ctx.fillStyle = T.INK;
+    // footer — on the TV it is taller and carries the 3 QR codes (Instagram · Google review · Facebook)
+    const qrOn = tv && (_fl.cfg.qr !== false);
+    const footH = Math.round(H * (qrOn ? .165 : tv ? .07 : story ? .045 : .055));
+    ctx.fillStyle = TH.FOOT; ctx.fillRect(0, H - footH, W, footH);
+    ctx.fillStyle = TH.FLINE; ctx.fillRect(0, H - footH, W, Math.max(4, Math.round(footH * (qrOn ? .035 : .07))));
     const info = '(514) 484-8421  ·  3824 boul. Décarie, Montréal';
-    flFit(ctx, info, W * .58, footH * .32, T.SANS(800)); ctx.fillText(info, W - M, fy);
+    if (qrOn) {
+      const fTop = H - footH + Math.round(footH * .035), fH = footH - Math.round(footH * .035);
+      const qS = Math.round(fH * .84), qY = fTop + (fH - qS) / 2;
+      ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+      ctx.fillStyle = TH.FNAME; flFit(ctx, 'MARCHÉ DÉCARIE', W * .26, fH * .3, T.SANS(900)); ctx.fillText('MARCHÉ DÉCARIE', M, fTop + fH * .46);
+      ctx.fillStyle = TH.FINFO; flFit(ctx, '(514) 484-8421', W * .26, fH * .2, T.SANS(800)); ctx.fillText('(514) 484-8421', M, fTop + fH * .7);
+      flFit(ctx, '3824 boul. Décarie, Montréal', W * .26, fH * .16, T.SANS(700)); ctx.fillText('3824 boul. Décarie, Montréal', M, fTop + fH * .9);
+      // three QR blocks: [QR] + two lines of text, laid out right-to-left from the margin
+      const lblW = Math.round(W * .115), blkW = qS + Math.round(qS * .12) + lblW, gapB = Math.round(W * .022);
+      let bx = W - M - blkW * 3 - gapB * 2;
+      for (const q of FL_QR) {
+        if (q.star) {   // the review one gets a highlight behind it
+          ctx.save(); ctx.fillStyle = TH.FLINE; ctx.globalAlpha = .22; flRound(ctx, bx - qS * .1, qY - fH * .04, blkW + qS * .2, qS + fH * .08, qS * .14); ctx.fill(); ctx.restore();
+        }
+        await flDrawQR(ctx, q.url, bx, qY, qS);
+        const lx = bx + qS + Math.round(qS * .12);
+        ctx.textAlign = 'left'; ctx.fillStyle = q.star ? TH.FNAME : TH.FINFO;
+        flFit(ctx, q.top, lblW, fH * .17, T.SANS(900)); ctx.fillText(q.top, lx, qY + qS * .44);
+        ctx.fillStyle = q.star ? '#F5B400' : TH.FINFO;
+        flFit(ctx, q.bot, lblW, fH * .14, T.SANS(800)); ctx.fillText(q.bot, lx, qY + qS * .7);
+        if (q.star) { ctx.fillStyle = TH.FINFO; flFit(ctx, 'Merci! ♥', lblW, fH * .12, T.SANS(700)); ctx.fillText('Merci! ♥', lx, qY + qS * .92); }
+        bx += blkW + gapB;
+      }
+    } else {
+      const fy = H - footH / 2 + footH * .04;
+      ctx.textBaseline = 'middle'; ctx.textAlign = 'left'; ctx.fillStyle = TH.FNAME;
+      flFit(ctx, 'MARCHÉ DÉCARIE', W * .32, footH * .38, T.SANS(900)); ctx.fillText('MARCHÉ DÉCARIE', M, fy);
+      ctx.textAlign = 'right'; ctx.fillStyle = TH.FINFO;
+      flFit(ctx, info, W * .58, footH * .32, T.SANS(800)); ctx.fillText(info, W - M, fy);
+    }
 
     // grid
     const bodyTop = headTop + headH + Math.round(H * (tv ? .028 : .02)), bodyBot = H - footH - Math.round(H * .018);
@@ -5773,9 +5845,9 @@
     if (L.w > maxW) { big = Math.max(size * .62, big * maxW / L.w); L = lay(); }
     const x = right - L.w, y = top;
     ctx.save(); ctx.shadowColor = 'rgba(60,0,0,.35)'; ctx.shadowBlur = big * .16; ctx.shadowOffsetY = big * .06;
-    ctx.fillStyle = T.RED; flRound(ctx, x, y, L.w, L.h, L.h * .2); ctx.fill(); ctx.restore();
+    ctx.fillStyle = T.TAG || T.RED; flRound(ctx, x, y, L.w, L.h, L.h * .2); ctx.fill(); ctx.restore();
     ctx.save(); ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(3, Math.round(big * .065)); flRound(ctx, x, y, L.w, L.h, L.h * .2); ctx.stroke(); ctx.restore();
-    ctx.save(); ctx.fillStyle = '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.save(); ctx.fillStyle = T.TAGTXT || '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
     const base = y + L.padY + L.capB, topLine = y + L.padY;
     let cx = x + L.padX;
     if (pre) { flFont(ctx, T.PRICE, L.preS); ctx.fillText(pre, cx, base); cx += L.wPre + L.g * 1.6; }
