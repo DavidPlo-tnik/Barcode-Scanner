@@ -267,5 +267,6 @@
  },
  "onePage": {
   "post": true
- }
+ },
+ "theme": "creme"
 }
