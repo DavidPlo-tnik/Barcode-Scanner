@@ -47,30 +47,6 @@
    "cost": 0.01,
    "at": "2026-10-15 11:49:24"
   },
-  "0062789300001": {
-   "pt": "MINI CONCOMBRES",
-   "tf": 0,
-   "tp": 0,
-   "dp": null,
-   "bal": 0,
-   "qte": 0,
-   "sd": 41,
-   "un": "G",
-   "sn": 397.0,
-   "nm": "MP mini concombre 397g (12)          1un",
-   "rp": 1.99,
-   "ap": 0,
-   "pp": null,
-   "ps": null,
-   "pe": null,
-   "rq": 1,
-   "pq": 1,
-   "lk": 1,
-   "price": 1.99,
-   "mp": null,
-   "cost": 37.75,
-   "at": "2026-10-15 08:55:25"
-  },
   "0020237700000": {
    "pt": "SAUCISSON CSABAI KG",
    "tf": 0,
@@ -523,7 +499,31 @@
    "mp": null,
    "cost": 25.75,
    "at": "2026-10-16 14:17:50"
+  },
+  "0000000094011": {
+   "pt": "BANANE BIO",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 41,
+   "un": "G",
+   "sn": 1000.0,
+   "nm": "Banane bio (40)                      /lb",
+   "rp": 3.28,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 1,
+   "price": 3.28,
+   "mp": null,
+   "cost": 20.0,
+   "at": "2026-10-16 15:01:04"
   }
  },
- "updated": "2026-10-16 14:17:50"
+ "updated": "2026-10-16 15:01:04"
 }
