@@ -1,3 +1,15 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0005500021663",
+   "title": "MAISON PERRIER",
+   "pos_title": "MAISON PERRIER",
+   "size_num": 500,
+   "size_unit": "ML",
+   "price": 1.99,
+   "deposit": 0.1,
+   "queued_at": "2026-10-16T21:33:12.739Z",
+   "id": "c1792186392739"
+  }
+ ]
 }
