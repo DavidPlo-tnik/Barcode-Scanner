@@ -672,6 +672,15 @@
   .candy-row .btn { flex-shrink: 0; }
   .studio-ov { position: fixed; inset: 0; z-index: 420; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.86); padding: 16px; }
   .studio-ov.open { display: flex; }
+  .studio-ov.cam { background: #000; padding: max(10px, env(safe-area-inset-top)) 10px max(10px, env(safe-area-inset-bottom)); }
+  .studio-cam { position: relative; width: 100%; height: 100%; max-width: 640px; display: flex; flex-direction: column; }
+  .studio-cam video { flex: 1; min-height: 0; width: 100%; object-fit: cover; border-radius: 14px; background: #000; }
+  .studio-frame { position: absolute; left: 10%; right: 10%; top: 12%; bottom: 22%; border: 2px dashed rgba(255,255,255,.55); border-radius: 12px; pointer-events: none; }
+  .studio-camtip { position: absolute; left: 0; right: 0; top: 14px; text-align: center; color: #fff; font-size: 12.5px; text-shadow: 0 1px 4px #000; padding: 0 20px; }
+  .studio-cambar { display: flex; align-items: center; justify-content: space-around; padding: 16px 0 6px; }
+  .studio-cambar button.alt { width: 54px; height: 54px; border-radius: 50%; border: 1px solid #444; background: #1c1c1e; color: #fff; font-size: 20px; }
+  .studio-shutter { width: 76px; height: 76px; border-radius: 50%; border: 5px solid #fff; background: var(--accent); box-shadow: 0 0 0 3px rgba(0,0,0,.5); }
+  .studio-shutter:active { transform: scale(.94); }
   .studio-card { width: 100%; max-width: 520px; max-height: 100%; overflow: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 14px; }
   .studio-title { font-family: var(--font-display); font-size: 12px; letter-spacing: .12em; color: var(--accent); margin-bottom: 10px; }
   .studio-prog { text-align: center; padding: 26px 6px; color: var(--text-dim); font-size: 13px; }
@@ -2188,7 +2197,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v185</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v186</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2701,8 +2710,6 @@
         <div class="pd-photos-head">
           <span>PHOTOS</span>
           <button type="button" class="btn small" id="pd-studio-btn" title="Camera → background removed, colours fixed, 2000×2000 white">✨ STUDIO</button>
-          <input type="file" accept="image/*" capture="environment" id="pd-studio-file"
-                 style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
           <button type="button" class="btn small" id="pd-photo-btn">+ PHOTO</button>
           <input type="file" accept="image/*" id="pd-photo-file"
                  style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
@@ -2766,7 +2773,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v185</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v186</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7191,8 +7198,7 @@
     try {
       if (!_pdCtx || !_pdCtx.code) { showToast('Open a product first', true); return; }
       const code = _pdCtx.code;
-      showToast('✨ Opening camera…');
-      studioOpen(code, (img) => pdSavePhoto(code, img));
+            studioOpen(code, (img) => pdSavePhoto(code, img));
     } catch (err) { showToast('Studio: ' + err.message, true); }
   });
 
@@ -7365,18 +7371,68 @@
     return c;
   }
 
+  // In-app camera (no hand-off to the phone's camera app: on many phones the browser
+  // gets closed while the camera app is open, so the photo never came back).
+  let _studioStream = null;
+  function studioStopCam() {
+    try { if (_studioStream) _studioStream.getTracks().forEach(t => t.stop()); } catch (e) {}
+    _studioStream = null;
+  }
   function studioOpen(code, onDone) {
-    let input = document.getElementById('pd-studio-file') || document.getElementById('studio-file');
-    if (!input) {
-      input = document.createElement('input'); input.type = 'file'; input.accept = 'image/*'; input.id = 'studio-file';
-      input.setAttribute('capture', 'environment');
-      input.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0;';
-      document.body.appendChild(input);
-    }
-    input.value = '';
-    input.onchange = () => { const f = input.files && input.files[0]; if (f) studioRun(code, f, onDone); };
-    input.click();                                    // must stay synchronous inside the tap, or iPhone ignores it
-    try { studioLoad().catch(() => {}); } catch (e) {}   // warm up the cut-out engine while the camera is open
+    let v = document.getElementById('studio-ov');
+    if (!v) { v = document.createElement('div'); v.id = 'studio-ov'; v.className = 'studio-ov'; document.body.appendChild(v); }
+    v.innerHTML = `<div class="studio-cam">
+        <video id="studio-video" playsinline autoplay muted></video>
+        <div class="studio-frame"></div>
+        <div class="studio-camtip" id="studio-camtip">Starting camera…</div>
+        <div class="studio-cambar">
+          <button class="alt" data-c="cancel">✕</button>
+          <button class="studio-shutter" data-c="snap" aria-label="Take photo"></button>
+          <button class="alt" data-c="gallery">🖼</button>
+        </div>
+        <input type="file" accept="image/*" id="studio-gal" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+      </div>`;
+    v.classList.add('open', 'cam');
+    try { studioLoad().catch(() => {}); } catch (e) {}   // warm up the cut-out engine meanwhile
+    const close = () => { studioStopCam(); v.classList.remove('open', 'cam'); };
+    const go = (file) => { studioStopCam(); v.classList.remove('cam'); studioRun(code, file, onDone); };
+    const gal = v.querySelector('#studio-gal');
+    gal.addEventListener('change', () => { const f = gal.files && gal.files[0]; if (f) go(f); });
+    v.querySelector('[data-c="gallery"]').addEventListener('click', () => gal.click());
+    v.querySelector('[data-c="cancel"]').addEventListener('click', close);
+    const video = v.querySelector('#studio-video'), tip = v.querySelector('#studio-camtip');
+    (async () => {
+      try {
+        if (typeof backCameras !== 'undefined' && backCameras.length === 0 && typeof enumerateCameras === 'function') { try { backCameras = await enumerateCameras(); } catch (e) {} }
+        const savedId = localStorage.getItem(CAMERA_PREF_KEY);
+        let cam = savedId && backCameras ? backCameras.find(d => d.deviceId === savedId) : null;
+        if (!cam && backCameras) cam = backCameras[0];
+        const base = { width: { ideal: 3840 }, height: { ideal: 2160 } };
+        const vc = cam ? Object.assign({ deviceId: { exact: cam.deviceId } }, base) : Object.assign({ facingMode: { ideal: 'environment' } }, base);
+        _studioStream = await navigator.mediaDevices.getUserMedia({ video: vc, audio: false });
+        if (!v.classList.contains('open')) { studioStopCam(); return; }
+        video.srcObject = _studioStream;
+        await video.play().catch(() => {});
+        tip.textContent = 'Fill the frame with the product · plain light background works best';
+      } catch (e) {
+        tip.textContent = 'Camera not available (' + (e.name || e.message) + ') — use 🖼 to pick a photo';
+      }
+    })();
+    v.querySelector('[data-c="snap"]').addEventListener('click', async () => {
+      if (!_studioStream || !video.videoWidth) { gal.click(); return; }
+      tip.textContent = 'Capturing…';
+      let blob = null;
+      try {                                             // full-resolution still when the phone supports it
+        const track = _studioStream.getVideoTracks()[0];
+        if (window.ImageCapture && track) blob = await new ImageCapture(track).takePhoto();
+      } catch (e) { blob = null; }
+      if (!blob) {
+        const c = document.createElement('canvas'); c.width = video.videoWidth; c.height = video.videoHeight;
+        c.getContext('2d').drawImage(video, 0, 0);
+        blob = await new Promise(r => c.toBlob(r, 'image/jpeg', .95));
+      }
+      if (blob) go(blob); else tip.textContent = 'Could not capture — try again';
+    });
   }
 
   async function studioRun(code, file, onDone) {
@@ -7421,7 +7477,7 @@
           <div class="studio-status" id="studio-status"></div></div>`;
         v.querySelectorAll('[data-o]').forEach(b => b.addEventListener('click', () => { st[b.dataset.o] = !st[b.dataset.o]; out = studioCompose(studioCorrect(cutCopy(), st), st); show(); }));
         v.querySelector('[data-a="cancel"]').addEventListener('click', () => v.classList.remove('open'));
-        v.querySelector('[data-a="retake"]').addEventListener('click', () => { v.classList.remove('open'); studioOpen(code, onDone); });
+        v.querySelector('[data-a="retake"]').addEventListener('click', () => studioOpen(code, onDone));
         v.querySelector('[data-a="use"]').addEventListener('click', async (e) => {
           e.target.disabled = true; $('#studio-status').textContent = 'Saving…';
           try {
