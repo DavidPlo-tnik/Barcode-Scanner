@@ -380,7 +380,31 @@
    "mp": null,
    "cost": 3.15,
    "at": "2026-10-16 13:27:00"
+  },
+  "0075148867228": {
+   "pt": "ILIOS SAUMON À LA SAUCE TERIYAKI",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 0,
+   "qte": 0,
+   "sd": 1,
+   "un": "GR",
+   "sn": 120.0,
+   "nm": "ILIOS SAUMON À LA SAUCE TERIYAKI",
+   "rp": 3.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 3.99,
+   "mp": null,
+   "cost": 28.5,
+   "at": "2026-10-16 13:54:47"
   }
  },
- "updated": "2026-10-16 13:27:00"
+ "updated": "2026-10-16 13:54:47"
 }
