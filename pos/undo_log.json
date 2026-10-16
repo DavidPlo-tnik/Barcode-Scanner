@@ -1,116 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20261002125335293119",
-   "applied_at": "2026-10-02T12:53:35",
-   "change": {
-    "code": "0062798781203",
-    "title": "SODA INDIGO ROSE EASY CONNECT",
-    "pos_title": "SODA INDIGO ROSE EASY CONNECT",
-    "size_num": 410,
-    "size_unit": "GR",
-    "deposit": 15,
-    "queued_at": "2026-10-02T16:52:58.688Z",
-    "id": "c1790959978688"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SODA INDIGO ROSE CLIP",
-     "F1744": "410.0",
-     "F22": "410 GR",
-     "F23": "GR"
-    },
-    "POS_TAB": {
-     "F02": "SODA INDIGO ROSE CLIP",
-     "F04": "1",
-     "F81": "1",
-     "F96": "1",
-     "F05": "300",
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": "0.0000",
-     "F1140": "0.0000",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "12.5000",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "12.5000",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
-   "undo_id": "u20261002145447030491",
-   "applied_at": "2026-10-02T14:54:47",
-   "change": {
-    "code": "0068492407001",
-    "pos_title": "FRAISE             1un 340G",
-    "size_num": 340,
-    "size_unit": "",
-    "multibuy": {
-     "qty": 3,
-     "price": 500
-    },
-    "promo": {
-     "price": 5,
-     "qty": 3,
-     "start": null,
-     "end": null
-    },
-    "queued_at": "2026-10-02T18:54:02.396Z",
-    "id": "c1790967242396"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "FRAISE             1un",
-     "F1744": "340.0",
-     "F22": "340 ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "FRAISE             1un 340G",
-     "F04": "41",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "31.7500",
-     "F196": "31.7500",
-     "F1140": "2.6458",
-     "F27": "ZJ01"
-    },
-    "PRICE_TAB": {
-     "F30": "500.0000",
-     "F31": "3.0",
-     "F1006": "3.0",
-     "F1007": "500.0000",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20261002145859173734",
    "applied_at": "2026-10-02T14:58:59",
    "change": {
@@ -24879,6 +24769,104 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "17.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261016110557105962",
+   "applied_at": "2026-10-16T11:05:57",
+   "change": {
+    "code": "0475102427024",
+    "pos_title": "CHECHILTOP FOOD TRESSE DE FROMAGE",
+    "size_num": 150,
+    "size_unit": "GR",
+    "queued_at": "2026-10-16T15:05:42.223Z",
+    "id": "c1792163142223"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "TOP FOOD TRESSE DE FROMAGE EFFILOCHÉ CHECHIL ",
+     "F1744": "150.0",
+     "F22": "150 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CHECHILTOP FOOD TRESSE DE FROMAGE",
+     "F04": "32",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "77.0000",
+     "F196": "77.0000",
+     "F1140": "5.5000",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261016110557168363",
+   "applied_at": "2026-10-16T11:05:57",
+   "change": {
+    "code": "0475102427024",
+    "pos_title": "CHECHILTOP FOOD TRESSE DE FROMAGE",
+    "size_num": 150,
+    "size_unit": "GR",
+    "queued_at": "2026-10-16T15:05:55.770Z",
+    "id": "c1792163155770"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "TOP FOOD TRESSE DE FROMAGE EFFILOCHÉ CHECHIL ",
+     "F1744": "150.0",
+     "F22": "150 GR",
+     "F23": "GR"
+    },
+    "POS_TAB": {
+     "F02": "CHECHILTOP FOOD TRESSE DE FROMAGE",
+     "F04": "32",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": null,
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "77.0000",
+     "F196": "77.0000",
+     "F1140": "5.5000",
+     "F27": "L-TONSELL"
+    },
+    "PRICE_TAB": {
+     "F30": "7.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "7.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
