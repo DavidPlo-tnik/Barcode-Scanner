@@ -266,7 +266,8 @@
   ]
  },
  "onePage": {
-  "post": true
+  "post": true,
+  "tv": true
  },
  "theme": "classique"
 }
