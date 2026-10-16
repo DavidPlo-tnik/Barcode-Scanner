@@ -260,7 +260,31 @@
    "mp": null,
    "cost": 20.38,
    "at": "2026-10-16 10:35:56"
+  },
+  "0021051400000": {
+   "pt": "DESSERT TOURNESOL HALVA CHOCOLAT KG",
+   "tf": 0,
+   "tp": 0,
+   "dp": null,
+   "bal": 1,
+   "qte": 0,
+   "sd": 51,
+   "un": "KG",
+   "sn": null,
+   "nm": "DESSERT TOURNESOL HALVA CHOCOLAT",
+   "rp": 5.99,
+   "ap": 0,
+   "pp": null,
+   "ps": null,
+   "pe": null,
+   "rq": 1,
+   "pq": 1,
+   "lk": 0,
+   "price": 5.99,
+   "mp": null,
+   "cost": 0.01,
+   "at": "2026-10-16 10:54:30"
   }
  },
- "updated": "2026-10-16 10:35:56"
+ "updated": "2026-10-16 10:54:30"
 }
