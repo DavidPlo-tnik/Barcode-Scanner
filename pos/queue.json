@@ -1,27 +1,3 @@
 {
- "items": [
-  {
-   "code": "0000000094011",
-   "pos_title": "BANANE BIO",
-   "size_num": 1000,
-   "size_unit": "",
-   "promo": {
-    "price": 2.84,
-    "qty": 1,
-    "start": "2026-10-07",
-    "end": "2032-10-07"
-   },
-   "queued_at": "2026-10-16T19:00:48.380Z",
-   "id": "c1792177248381"
-  },
-  {
-   "code": "0000000094011",
-   "pos_title": "BANANE BIO",
-   "size_num": 1000,
-   "size_unit": "",
-   "clear_promo": true,
-   "queued_at": "2026-10-16T19:01:07.485Z",
-   "id": "c1792177267485"
-  }
- ]
+ "items": []
 }
