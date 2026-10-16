@@ -1,57 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20261002125229383003",
-   "applied_at": "2026-10-02T12:52:29",
-   "change": {
-    "code": "0062798781203",
-    "title": "SODA INDIGO ROSE CLIP",
-    "pos_title": "SODA INDIGO ROSE CLIP",
-    "size_num": 164,
-    "size_unit": "",
-    "deposit": 15,
-    "queued_at": "2026-10-02T16:52:25.997Z",
-    "id": "c1790959945997"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "SODA quebec",
-     "F1744": "164.0",
-     "F22": "410G ",
-     "F23": "G"
-    },
-    "POS_TAB": {
-     "F02": "SODASTREAM  410G",
-     "F04": "1",
-     "F81": "1",
-     "F96": "1",
-     "F05": "300",
-     "F82": "0",
-     "F85": null
-    },
-    "COST_TAB": {
-     "F38": null,
-     "F196": "0.0000",
-     "F1140": "0.0000",
-     "F27": "ZE01"
-    },
-    "PRICE_TAB": {
-     "F30": "12.5000",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "12.5000",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20261002125229445403",
    "applied_at": "2026-10-02T12:52:29",
    "change": {
@@ -24885,6 +24834,53 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "2.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261016105430111956",
+   "applied_at": "2026-10-16T10:54:30",
+   "change": {
+    "code": "0021051400000",
+    "pos_title": "DESSERT TOURNESOL HALVA CHOCOLAT KG",
+    "queued_at": "2026-10-16T14:54:13.450Z",
+    "id": "c1792162453450"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "DESSERT TOURNESOL HALVA CHOCOLAT",
+     "F1744": null,
+     "F22": "KG",
+     "F23": "KG"
+    },
+    "POS_TAB": {
+     "F02": "DESSERT TOURNESOL HALVA CHOCOLAT KG",
+     "F04": "51",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": "0.0100",
+     "F196": "0.0100",
+     "F1140": "0.0100",
+     "F27": "L-EPIC"
+    },
+    "PRICE_TAB": {
+     "F30": "5.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "5.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
