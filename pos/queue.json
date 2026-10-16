@@ -1,3 +1,14 @@
 {
- "items": []
+ "items": [
+  {
+   "code": "0005500020972",
+   "pos_title": "MAISON PERRIER CITRON 500ML",
+   "size_num": 500,
+   "size_unit": "ML",
+   "price": 1.99,
+   "deposit": 0.1,
+   "queued_at": "2026-10-16T14:35:03.000Z",
+   "id": "c1792161303000"
+  }
+ ]
 }
