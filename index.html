@@ -2169,7 +2169,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v182</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v183</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2744,7 +2744,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v182</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v183</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -5209,7 +5209,9 @@
       else if (b) {
         u.cfg.lock = true;
         u.cfg.sz = u.cfg.sz || {}; u.cfg.sz[_fl.fmt] = { w: b.cw, h: b.ch };
-        u.cfg.pos = u.cfg.pos || {}; u.cfg.pos[_fl.fmt] = { r: b.r, c: b.c, page: L.page, cols: L.cols };
+        u.cfg.pos = u.cfg.pos || {};
+        u.cfg.pos[_fl.fmt] = { r: b.r, c: b.c, page: L.page, cols: L.cols, rows: L.onePage ? 0 : L.rows,
+                               pw: Math.round(b.w), ph: Math.round(b.h), base: b.base, S: b.S };
       }
       flyerSaveCfg(); await flyerDraw(); return;
     }
@@ -5533,6 +5535,7 @@
     return lines;
   }
 
+  let _flOneRows = 0;
   async function flyerRenderTo(canvas, fmtKey, page) {
     const F = FL_FORMATS[fmtKey];
     const W = F.w, H = F.h, tv = fmtKey === 'tv', story = fmtKey === 'story';
@@ -5636,26 +5639,47 @@
     // grid
     const bodyTop = headTop + headH + Math.round(H * (tv ? .028 : .02)), bodyBot = H - footH - Math.round(H * .018);
     const onePage = !!(_fl.cfg.onePage && _fl.cfg.onePage[fmtKey]);
-    const mk = (cols) => flyerUnits().filter(u => !u.cfg.hide).map(u => {
+    // a LOCKED box keeps its real size: on its own page the grid keeps the row count it had
+    // when it was locked; on a finer one-page grid its size in cells is converted so the
+    // box (and its photos / price tag) come out the same size in pixels.
+    const cellW = (c) => (W - M * 2 - GAP * (c - 1)) / c, cellH = (r) => (bodyBot - bodyTop - GAP * (r - 1)) / r;
+    const mk = (cols, rowsFor) => flyerUnits().filter(u => !u.cfg.hide).map(u => {
       const s = flyerUnitSize(u, fmtKey);
       const pos = u.cfg.lock && u.cfg.pos && u.cfg.pos[fmtKey];
-      return { u, w: Math.min(s.w, cols), h: s.h, manual: s.manual, fix: pos && pos.cols === cols ? pos : null };
+      let w = Math.min(s.w, cols), h = s.h;
+      if (pos && pos.cols !== cols && pos.pw && rowsFor) {
+        // enough cells to hold it (rounded up); the card itself is drawn at its exact locked size
+        w = Math.max(1, Math.min(cols, Math.ceil((pos.pw + GAP) / (cellW(cols) + GAP) - .08)));
+        h = Math.max(1, Math.ceil((pos.ph + GAP) / (cellH(rowsFor) + GAP) - .08));
+      }
+      return { u, w, h, manual: s.manual || !!pos, fix: pos && pos.cols === cols ? pos : null, lockPos: pos || null };
     });
     let cols = F.cols, maxRows = F.rows, all = mk(cols);
     if (onePage) {
       // everything on one page: make the grid finer (more, smaller cells) until it all fits
       for (let k = 0; k <= 14; k++) {
-        const c2 = F.cols + 2 * k, r2 = Math.round(F.rows * c2 / F.cols), a2 = mk(c2);
+        const c2 = F.cols + 2 * k, r2 = Math.round(F.rows * c2 / F.cols), a2 = mk(c2, r2);
         if (flyerPack(a2, c2).rows <= r2 || k === 14) { cols = c2; maxRows = r2; all = a2; break; }
+      }
+      // locked boxes were sized for maxRows; settle on the rows actually used so there is no empty band
+      if (all.some(it => it.lockPos)) {
+        let rr = Math.max(Math.ceil(maxRows * .6), flyerPack(all, cols).rows);
+        for (let it = 0; it < 4; it++) {
+          const a3 = mk(cols, rr), r3 = Math.max(Math.ceil(maxRows * .6), flyerPack(a3, cols).rows);
+          all = a3; if (r3 === rr) break; rr = r3;
+        }
+        _flOneRows = rr;
       }
     }
     // pages: locked boxes stay on their page; the rest flow in order until a page is full
     const lockedOn = (p) => all.filter(it => it.fix && (it.fix.page || 0) === p);
+    const lockRows = (p) => Math.max(0, ...lockedOn(p).map(it => it.fix.rows || 0));   // rows the page had when locked
+    const limit = (p) => lockRows(p) || maxRows;
     const pages = []; let cur = lockedOn(0);
     for (const it of all) {
       if (it.fix) continue;
       const test = cur.concat([it]);
-      if (!onePage && cur.length && flyerPack(test, cols).rows > maxRows) { pages.push(cur); cur = lockedOn(pages.length).concat([it]); } else cur = test;
+      if (!onePage && cur.length && flyerPack(test, cols).rows > limit(pages.length)) { pages.push(cur); cur = lockedOn(pages.length).concat([it]); } else cur = test;
     }
     pages.push(cur);
     while (all.some(it => it.fix && (it.fix.page || 0) >= pages.length)) pages.push(lockedOn(pages.length));
@@ -5665,7 +5689,9 @@
     const packed = flyerPack(units, cols);
     const place = packed.place;
     // later pages keep a similar box size instead of blowing a few boxes up to full page
-    const rows = pageN > 1 ? Math.max(packed.rows, Math.ceil(maxRows * .75)) : (onePage ? Math.max(packed.rows, Math.ceil(maxRows * .6)) : packed.rows);
+    let rows = pageN > 1 ? Math.max(packed.rows, Math.ceil(maxRows * .75)) : (onePage ? Math.max(packed.rows, Math.ceil(maxRows * .6)) : packed.rows);
+    if (!onePage && lockRows(page)) rows = Math.max(packed.rows, lockRows(page));          // same cell size as when locked
+    if (onePage && all.some(it => it.lockPos)) rows = Math.max(packed.rows, _flOneRows || packed.rows);   // the rows the locked box was converted for
     const cw = (W - M * 2 - GAP * (cols - 1)) / cols;
     const ch = rows ? (bodyBot - bodyTop - GAP * (rows - 1)) / rows : 0;
     const boxes = [];
@@ -5677,13 +5703,20 @@
     const unitBase = Math.min(cw * 2 + GAP, ch * 2 + GAP);
     for (let i = 0; i < units.length; i++) {
       const pl = place[i];
-      const x = M + pl.c * (cw + GAP), y = bodyTop + pl.r * (ch + GAP);
-      const w = cw * pl.w + GAP * (pl.w - 1), h = ch * pl.h + GAP * (pl.h - 1);
-      const base = Math.min(unitBase * 1.15, Math.max(unitBase * .7, Math.min(w, h)));
-      const photos = await flyerCard(ctx, units[i].u, x, y, w, h, base, T, S, fmtKey);
-      boxes.push({ key: units[i].u.key, x, y, w, h, cw: pl.w, ch: pl.h, r: pl.r, c: pl.c, photos });
+      let x = M + pl.c * (cw + GAP), y = bodyTop + pl.r * (ch + GAP);
+      let w = cw * pl.w + GAP * (pl.w - 1), h = ch * pl.h + GAP * (pl.h - 1);
+      const lk = units[i].lockPos;
+      if (lk && lk.pw && lk.cols !== cols) {               // locked box on a different grid: exact locked size, centred in its cells
+        const w2 = Math.min(w, lk.pw), h2 = Math.min(h, lk.ph);
+        x += (w - w2) / 2; y += (h - h2) / 2; w = w2; h = h2;
+      }
+      let base = Math.min(unitBase * 1.15, Math.max(unitBase * .7, Math.min(w, h))), Sb = S;
+      const lp = units[i].lockPos;
+      if (lp && lp.S && lp.base) { base = lp.base; Sb = lp.S; }        // locked: same text / tag sizes as when it was locked
+      const photos = await flyerCard(ctx, units[i].u, x, y, w, h, base, T, Sb, fmtKey);
+      boxes.push({ key: units[i].u.key, x, y, w, h, cw: pl.w, ch: pl.h, r: pl.r, c: pl.c, photos, base, S: Sb });
     }
-    return { boxes, cw, ch, gap: GAP, cols, rows, M, bodyTop, page, pages: pageN };
+    return { boxes, cw, ch, gap: GAP, cols, rows, M, bodyTop, page, pages: pageN, onePage };
   }
 
   // Price tag drawn like a shelf tag: small "$", big dollars, raised cents, "/kg" under the cents.
