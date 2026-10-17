@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-17T16:27:13.926Z",
+ "updated": "2026-10-17T16:27:18.537Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -2688,23 +2688,6 @@
    "group": "21-haut-cuiss-poulet",
    "dept": "21",
    "weekly": 86.27,
-   "scale": true,
-   "fresh": true,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0020616200000": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "21-haut-cuiss-poulet",
-   "dept": "21",
-   "weekly": 11.26,
    "scale": true,
    "fresh": true,
    "v": {
