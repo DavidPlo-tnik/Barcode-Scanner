@@ -1,4 +1,4 @@
-const CACHE = 'decarie-v189';
+const CACHE = 'decarie-v190';
 const MODELS = 'decarie-models';   // studio-photo cut-out model: kept across app updates
 const ASSETS = [
   './manifest.webmanifest',
@@ -43,9 +43,13 @@ self.addEventListener('fetch', (e) => {
   }
 
   // index.html and config.js: always network-first so SW updates propagate.
+  // no-store: skip the browser's 10-minute HTTP cache so a new version shows right away
   if (url.pathname.endsWith('/') || url.pathname.endsWith('index.html') || url.pathname.endsWith('config.js')) {
     e.respondWith(
-      fetch(e.request).catch(() => caches.match('./index.html'))
+      fetch(e.request.url, { cache: 'no-store', credentials: 'same-origin' }).then((res) => {
+        if (res && res.ok && !url.pathname.endsWith('config.js')) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put('./index.html', copy)); }
+        return res;
+      }).catch(() => caches.match('./index.html'))
     );
     return;
   }

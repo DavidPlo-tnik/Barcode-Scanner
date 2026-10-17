@@ -2204,7 +2204,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v189</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v190</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2780,7 +2780,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v189</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v190</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2927,6 +2927,18 @@
   }[c]));
 
   // ============== DATA ==============
+  let _dataTag = null;      // ETag of the data.json on screen (auto-reload compares against it)
+  // something open / being typed in → don't reload under the user's fingers
+  function appBusy() {
+    const a = document.activeElement;
+    if (a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)) return true;
+    if (typeof _fle !== 'undefined' && _fle.open) return true;
+    for (const el of document.querySelectorAll('.open')) {
+      const cs = getComputedStyle(el);
+      if ((cs.position === 'fixed' || cs.position === 'absolute') && cs.display !== 'none' && el.offsetWidth > 100) return true;
+    }
+    return false;
+  }
   async function loadData() {
     try {
       // Cache-bust with current minute so service worker / browser can't serve
@@ -2941,6 +2953,7 @@
       $('#meta-info').textContent = 'LOADING…';
       const res = await fetch(`data.json?v=${cacheBust}`, { cache: 'no-store' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
+      _dataTag = res.headers.get('etag') || res.headers.get('last-modified') || _dataTag;
 
       // Progress WITHOUT holding the file in memory.
       // The old version collected chunks, concatenated them, decoded to a
@@ -12401,7 +12414,26 @@
     })();
 
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').catch(err => console.log('SW failed:', err));
+      // App updates load by themselves: check for a new version whenever the app comes
+      // back on screen (and every 10 min while open); when the new version takes over,
+      // reload as soon as nothing is being edited.
+      let hadSW = !!navigator.serviceWorker.controller;
+      navigator.serviceWorker.register('sw.js').then((reg) => {
+        const check = () => { reg.update().catch(() => {}); };
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) check(); });
+        setInterval(() => { if (!document.hidden) check(); }, 600000);
+      }).catch(err => console.log('SW failed:', err));
+      let reloading = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!hadSW) { hadSW = true; return; }     // first install taking control: nothing old on screen
+        if (reloading) return;
+        const go = () => {
+          if (reloading) return;
+          if (!document.hidden && appBusy()) { setTimeout(go, 5000); return; }
+          reloading = true; location.reload();
+        };
+        go();
+      });
     }
 
     bindCountEvents();
@@ -12509,6 +12541,31 @@
     })();
 
 
+    // A new hourly data.json is picked up without the ⟳ button: a tiny HEAD request
+    // compares its ETag with the one we loaded; if it changed, reload quietly
+    // (waits while something is being edited or a window is open).
+    let _autoBusy = false;
+    async function autoReloadIfNewData() {
+      if (_autoBusy || _refreshing || document.hidden || !DATA) return;
+      _autoBusy = true;
+      try {
+        const r = await fetch(`data.json?h=${Date.now()}`, { method: 'HEAD', cache: 'no-store' });
+        const tag = r.ok && (r.headers.get('etag') || r.headers.get('last-modified'));
+        if (!tag || !_dataTag || tag === _dataTag) return;
+        if (appBusy()) return;                      // try again next round
+        const tab = (document.querySelector('.tab.active') || {}).dataset;
+        const ok = await loadData();
+        await Promise.all([fetchEditData(true).catch(() => null), fetchOverrides(true).catch(() => null)]);
+        if (ok) {
+          clearConfirmedPending(); applyOverridesToProducts(); await applyLiveSlice();
+          // re-draw the current screen unless it is one where you work on a form
+          if (tab && !['editor', 'promo', 'count', 'lists'].includes(tab.tab) && !appBusy()) switchTab(tab.tab);
+          showToast('Prices updated ✓');
+        }
+      } catch { /* offline — next round */ } finally { _autoBusy = false; }
+    }
+    setInterval(autoReloadIfNewData, 120000);
+
     // Keep the dashboard live: re-pull the small slice every 3 minutes (only
     // while the app is visible, so it costs nothing in the background) and
     // re-render if the numbers moved.
@@ -12531,6 +12588,7 @@
     }, 180000);
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) {
+        setTimeout(autoReloadIfNewData, 1500);
         applyLiveSlice();
         fetchOverrides(true).then(() => applyOverridesToProducts());
       }
