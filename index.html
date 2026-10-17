@@ -10378,8 +10378,8 @@
       el.innerHTML = `<div class="or-pass">
         <div class="or-h">ONLINE ORDERS</div>
         <p>${_or.err === 'badpass' ? '<b class="or-bad">That passphrase does not open the orders file.</b><br>' : ''}
-        Type the orders passphrase once on this phone. It is on the store PC, in <code>online_orders_config.json</code>
-        (and in <code>online_orders.log</code> the first time it starts).</p>
+        Type the orders passphrase once on this phone. It is on the store PC: open <code>online_orders_config.json</code>
+        (next to the other scripts) and copy the "passphrase" line.</p>
         <input id="or-pass-in" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="word-word-word-…">
         <button class="btn primary" id="or-pass-save">OPEN ORDERS</button></div>`;
       $('#or-pass-save').onclick = () => { const v = $('#or-pass-in').value.trim(); if (!v) return; try { localStorage.setItem('orPass', v); } catch {} _or.err = ''; el.innerHTML = '<div class="empty-state">Opening…</div>'; orFetch(); };
