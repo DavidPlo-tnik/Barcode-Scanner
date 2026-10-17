@@ -1,55 +1,6 @@
 {
  "entries": [
   {
-   "undo_id": "u20261003123247251958",
-   "applied_at": "2026-10-03T12:32:47",
-   "change": {
-    "code": "0485001587157",
-    "pos_title": "NAIRI CAVIAR DE ZUCCHINI 450ML",
-    "size_num": 450,
-    "size_unit": "ML",
-    "queued_at": "2026-10-03T16:32:16.114Z",
-    "id": "c1791045136114"
-   },
-   "before": {
-    "OBJ_TAB": {
-     "F29": "NAIRI CAVIAR DE ZUCCHINI",
-     "F1744": "450.0",
-     "F22": "450ML",
-     "F23": "ML"
-    },
-    "POS_TAB": {
-     "F02": "NAIRI CAVIAR DE ZUCCHINI 450ML",
-     "F04": "1",
-     "F81": "0",
-     "F96": "0",
-     "F05": null,
-     "F82": "0",
-     "F85": "0"
-    },
-    "COST_TAB": {
-     "F38": "37.8000",
-     "F196": "37.8000",
-     "F1140": "3.1500",
-     "F27": "L-SAP"
-    },
-    "PRICE_TAB": {
-     "F30": "4.9900",
-     "F31": "1.0",
-     "F1006": "1.0",
-     "F1007": "4.9900",
-     "F113": "REG",
-     "F1133": null,
-     "F1216": null,
-     "F1217": null,
-     "F1013": null,
-     "F1014": null,
-     "F1015": null,
-     "F1011": ""
-    }
-   }
-  },
-  {
    "undo_id": "u20261003123453146179",
    "applied_at": "2026-10-03T12:34:53",
    "change": {
@@ -24849,6 +24800,56 @@
      "F31": "1.0",
      "F1006": "1.0",
      "F1007": "2.4900",
+     "F113": "REG",
+     "F1133": null,
+     "F1216": null,
+     "F1217": null,
+     "F1013": null,
+     "F1014": null,
+     "F1015": null,
+     "F1011": ""
+    }
+   }
+  },
+  {
+   "undo_id": "u20261017152359126618",
+   "applied_at": "2026-10-17T15:23:59",
+   "change": {
+    "code": "0023882400000",
+    "pos_title": "TRIMURES DE SAUMON FUMÉ GR",
+    "size_num": 454,
+    "size_unit": "GR",
+    "balance": 0,
+    "queued_at": "2026-10-17T19:24:02.675Z",
+    "id": "c1792265042675"
+   },
+   "before": {
+    "OBJ_TAB": {
+     "F29": "TRIMURES DE SAUMON FUMÉ",
+     "F1744": null,
+     "F22": "GR",
+     "F23": "UN"
+    },
+    "POS_TAB": {
+     "F02": "TRIMURES DE SAUMON FUMÉ GR",
+     "F04": "24",
+     "F81": null,
+     "F96": null,
+     "F05": null,
+     "F82": "1",
+     "F85": null
+    },
+    "COST_TAB": {
+     "F38": null,
+     "F196": null,
+     "F1140": "0.0000",
+     "F27": "L-VIANDE"
+    },
+    "PRICE_TAB": {
+     "F30": "13.9900",
+     "F31": "1.0",
+     "F1006": "1.0",
+     "F1007": "13.9900",
      "F113": "REG",
      "F1133": null,
      "F1216": null,
