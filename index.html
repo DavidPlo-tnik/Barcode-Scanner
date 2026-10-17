@@ -2260,7 +2260,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v191</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v192</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2849,7 +2849,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v191</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v192</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -10401,7 +10401,7 @@
         <button data-v="done" class="${_or.view === 'done' ? 'on' : ''}">DELIVERED · ${groups.done.length}</button>
         <button data-v="cancelled" class="${_or.view === 'cancelled' ? 'on' : ''}">CANCELLED · ${groups.cancelled.length}</button>
       </div>
-      ${!_or.data.pos_auto && groups.open.some(o => o.status === 'on_hold') ? `<div class="or-warn">The PC cannot read held sales from the POS yet — run <b>find_held_sale.py</b> on the PC and send the report to Claude.</div>` : ''}
+      ${!_or.data.pos_auto && groups.open.some(o => o.status === 'on_hold') ? `<div class="or-warn">The PC cannot read held sales from the register journals right now — check that online_orders.py is running.</div>` : ''}
       <div class="or-list">${list.map(o => {
         const picked = (orLS('orPick:' + o.id) || []).length;
         return `<button class="or-card st-${o.status}" data-id="${escapeHtml(o.id)}">
@@ -10442,18 +10442,18 @@
       case 'on_hold':
         if (_or.data.pos_auto) {
           act = holds.length ? `<p class="or-hint">Which held sale is ${escapeHtml(o.name)}?</p>` + holds.map((h, i) => `
-            <div class="or-hold"><div><b>${orMoney(h.total)}</b> · ${h.items || '?'} items<br><span>Hold ${escapeHtml(h.ref || '')} · reg ${escapeHtml(h.register || '')} · ${escapeHtml(h.time || '')}</span></div>
+            <div class="or-hold"><div><b>${orMoney(h.total)}</b> · ${escapeHtml(h.time || '')}${h.date && h.date !== new Date().toISOString().slice(0, 10) ? ' ' + escapeHtml(orDay(h.date)) : ''}<br><span>Register ${escapeHtml(String(h.register || '').replace(/^0+/, ''))}${h.cashier ? ' · ' + escapeHtml(h.cashier) : ''} · #${escapeHtml(h.ref || '')}</span></div>
             <button data-hold="${i}">USE THIS</button></div>`).join('')
-            : `<p class="or-hint">Looking for the held sale at the register… (the PC checks every minute)</p>`;
+            : `<p class="or-hint">Looking for the held sale… Put it on hold with <b>Sauvegarder</b>; it shows here within a few minutes (the registers copy their journal to the PC every few minutes).</p>`;
         } else {
-          act = `<p class="or-hint">Waiting for the POS total. The PC cannot read held sales yet (find_held_sale.py).</p>`;
+          act = `<p class="or-hint">Waiting for the POS total. The PC is not reading the register journals (is online_orders.py running?).</p>`;
         }
         act += _or.manual
           ? `<div class="or-manual"><input id="or-man" type="number" inputmode="decimal" step="0.01" placeholder="Register total incl. taxes"><button id="or-man-ok">SAVE</button></div>`
           : `<button class="or-link" id="or-man-show">Type the total instead</button>`;
         break;
       case 'total_ready':
-        act = `<div class="or-total">${orMoney(o.pos.total)}<span>${o.pos.src === 'pos' ? 'from the register' + (o.pos.ref ? ' · hold ' + escapeHtml(o.pos.ref) : '') : 'typed in'}</span></div>
+        act = `<div class="or-total">${orMoney(o.pos.total)}<span>${o.pos.src === 'pos' ? 'held at register ' + escapeHtml(String(o.pos.register || '').replace(/^0+/, '')) + (o.pos.time ? ' · ' + escapeHtml(o.pos.time) : '') : 'typed in'}</span></div>
           <a class="or-big" id="or-sms-total" href="${orSmsLink(o, orMsg(o, 'total'))}">📱 TEXT THE TOTAL TO ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())}</a>
           <button class="or-link" data-a="on_hold">Wrong total? Pick the held sale again</button>`; break;
       case 'payment_requested':
