@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-17T16:29:49.100Z",
+ "updated": "2026-10-17T16:30:34.074Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -2999,23 +2999,6 @@
     "price": false
    },
    "oos": true
-  },
-  "0021007000000": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "61-mets-cuisines",
-   "dept": "61",
-   "weekly": 79.75,
-   "scale": true,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
   },
   "0021007100000": {
    "added": "2026-09-06",
