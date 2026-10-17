@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-17T16:28:55.030Z",
+ "updated": "2026-10-17T16:29:00.114Z",
  "items": {
   "0000000000086": {
    "added": "2026-09-06",
@@ -5013,23 +5013,6 @@
    "group": null,
    "dept": "1",
    "weekly": 50.75,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0082918300425": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "31-sikorski-mini-kabanos",
-   "dept": "31",
-   "weekly": 50.34,
    "scale": false,
    "fresh": false,
    "v": {
