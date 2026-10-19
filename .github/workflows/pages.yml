@@ -1,0 +1,30 @@
+# Publishes the app to GitHub Pages.
+# Why not "Deploy from a branch": the PC saves live sales every minute, and the built-in
+# Pages build cancels itself on every new save, so it never finished. Here a deploy that has
+# started always finishes, and only the newest waiting save is deployed after it.
+name: Deploy app
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - id: deployment
+        uses: actions/deploy-pages@v4
