@@ -2278,7 +2278,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v208</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v209</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2867,7 +2867,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v208</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v209</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3002,6 +3002,25 @@
     return te.encode(JSON.stringify({ v: 2, kdf: 'pbkdf2-sha256', iter: ITER, salt, iv: b64e(iv), z: 'gzip', ct: b64e(ct) }));
   }
   window.vaultSeal = seal;
+
+  // App key: a phone that has the passphrase but not the key yet unlocks it from vault.json (runs before the app starts)
+  async function fetchAppKey() {
+    try {
+      if (localStorage.getItem('ghTok')) return false;
+      const pass = getPass(); if (!pass) return false;
+      const c = window.DECARIE_CONFIG || {};
+      const r = await of(`https://raw.githubusercontent.com/${c.GH_OWNER}/${c.GH_REPO}/${c.GH_BRANCH}/vault.json?t=${Date.now()}`, { cache: 'no-store' });
+      if (!r.ok) return false;
+      const env = await r.json();
+      const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64d(env.iv) }, await keyFor(pass, env.salt), b64d(env.ct));
+      const d = JSON.parse(td.decode(pt));
+      if (d && d.token) { localStorage.setItem('ghTok', d.token); location.reload(); return true; }
+    } catch (e) { /* wrong passphrase / offline: try next time */ }
+    return false;
+  }
+  window.fetchAppKey = fetchAppKey;
+  fetchAppKey();
+  window.addEventListener('vault-pass', fetchAppKey);
 
   const cleanHeaders = (h) => { const n = new Headers(h); n.delete('content-length'); n.delete('content-encoding'); return n; };
   window.fetch = async function (input, init) {
@@ -6849,7 +6868,7 @@
   }
 
   function openPosDirect(code) {
-    if (!GH_HAS_TOKEN) { showToast('No token — POS editor disabled', true); return; }
+    if (!GH_HAS_TOKEN) { showToast('Getting the app key… (if this repeats: reopen the app, check the staff passphrase)', true); if (window.fetchAppKey) window.fetchAppKey(); return; }
     _pdPendingCode = code;
     if (_posUnlocked) { showPosDirectEditor(code); return; }
     _pinBuffer = ''; renderPinDots(); $('#pin-error').textContent = '';
