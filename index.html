@@ -2278,7 +2278,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v207</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v208</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2867,7 +2867,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v207</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v208</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4909,7 +4909,20 @@
     fetes:     { name: '🎄 Temps des fêtes', BG: '#0F4A31', PATK: 'stars', PAT: '#E7C35A', PATA: .45, AW1: '#C8202F', AW2: '#fff', PANEL: '#FFF8EC', PLINE: '#E7C35A', TITLE: '#C8202F', SUB: '#0F4A31', STRIP: '#D4A73A',
                  DTAG: '#C8202F', DTXT: '#fff', DYR: '#F3D27A', FOOT: '#FFF8EC', FLINE: '#D4A73A', FNAME: '#C8202F', FINFO: '#0F4A31', TAG: '#C8202F', TAGTXT: '#fff', TAGRIM: '#F3D27A',
                  BADGE: '#D4A73A', BADGETXT: '#1F1F1F', CARD: '#FFFDF8', CREAM: '#FBF3E4', CARDLINE: '#E7C35A', STRIKE: '#C8202F', NOTE: '#0F4A31', SH: '0,30,15' },
+    paques:    { name: '🐣 Pâques', BG: '#E6F2E1', PATK: 'eggs', PAT: '#F4B6C2', PATA: .35, AW1: '#F4B6C2', AW2: '#FFF8E7', PANEL: '#FFFDF6', PLINE: '#F2D38B', TITLE: '#C2456B', SUB: '#3F5D45', STRIP: '#F2C94C',
+                 DTAG: '#7FB77E', DTXT: '#fff', DYR: '#FFF2B3', FOOT: '#3F5D45', FLINE: '#F2C94C', FNAME: '#FFF8E7', FINFO: '#E8F2E4', TAG: '#C2456B', TAGTXT: '#fff',
+                 BADGE: '#F2C94C', BADGETXT: '#3F3F3F', CARD: '#fff', CREAM: '#FFFBEF', CARDLINE: '#CFE3C9', STRIKE: '#C2456B', NOTE: '#3F5D45', SH: '60,90,60', DECO: 'easter' },
+    valentin:  { name: '💘 Saint-Valentin', BG: '#8E1B3A', PATK: 'hearts', PAT: '#FFC2CF', PATA: .16, AW1: '#D7263D', AW2: '#FFF1F3', PANEL: '#FFF6F7', PLINE: '#F4B6C2', TITLE: '#C8102E', SUB: '#5A1428', STRIP: '#F49AAE',
+                 DTAG: '#C8102E', DTXT: '#fff', DYR: '#FFD1DA', FOOT: '#FFF6F7', FLINE: '#F49AAE', FNAME: '#C8102E', FINFO: '#5A1428', TAG: '#C8102E', TAGTXT: '#fff', TAGRIM: '#FFD1DA',
+                 BADGE: '#F49AAE', BADGETXT: '#5A1428', CARD: '#fff', CREAM: '#FFF4F6', STRIKE: '#C8102E', NOTE: '#8E1B3A', SH: '60,0,15', DECO: 'valentine' },
+    novygod:   { name: '🎆 Новый год · Nouvel An', BG: '#0E1F4D', PATK: 'snow', PAT: '#fff', PATA: .35, AW1: '#B3122E', AW2: '#F5E6C4', PANEL: '#FFF9EC', PLINE: '#D9B45A', TITLE: '#B3122E', SUB: '#0E1F4D', STRIP: '#D9B45A',
+                 DTAG: '#B3122E', DTXT: '#fff', DYR: '#F7D98B', FOOT: '#FFF9EC', FLINE: '#D9B45A', FNAME: '#B3122E', FINFO: '#0E1F4D', TAG: '#B3122E', TAGTXT: '#fff', TAGRIM: '#F7D98B',
+                 BADGE: '#D9B45A', BADGETXT: '#1A1A1A', CARD: '#fff', CREAM: '#FBF6EA', CARDLINE: '#D9B45A', STRIKE: '#B3122E', NOTE: '#0E1F4D', SH: '0,5,30', DECO: 'newyear' },
+    gatsby:    { name: '🥂 Gatsby russe (années 20)', BG: '#141210', PATK: 'deco', PAT: '#C9A24A', PATA: .12, AW1: '#141210', AW2: '#C9A24A', PANEL: '#1D1913', PLINE: '#C9A24A', TITLE: '#E3C26B', SUB: '#F3E9D2', STRIP: '#7A1F2B',
+                 DTAG: '#7A1F2B', DTXT: '#F3E9D2', DYR: '#E3C26B', FOOT: '#1D1913', FLINE: '#C9A24A', FNAME: '#E3C26B', FINFO: '#F3E9D2', TAG: '#7A1F2B', TAGTXT: '#F7EBD0', TAGRIM: '#E3C26B',
+                 BADGE: '#C9A24A', BADGETXT: '#141210', CARD: '#FBF7EE', CREAM: '#F4ECDC', CARDLINE: '#C9A24A', STRIKE: '#7A1F2B', NOTE: '#7A1F2B', SH: '0,0,0', DECO: 'deco' },
   };
+  FL_THEMES.halloween.DECO = 'halloween'; FL_THEMES.hiver.DECO = 'icicles'; FL_THEMES.fetes.DECO = 'holly';
   for (const k in FL_THEMES) FL_THEMES[k] = Object.assign({}, FL_BASE, FL_THEMES[k]);
   // background pattern; a fixed seed so the scattered ones don't jump between redraws
   function flPattern(ctx, TH, W, H, top) {
@@ -4932,6 +4945,20 @@
       const n = Math.round(W * H / 30000);
       for (let i = 0; i < n; i++) { const x = rnd() * W, y = top + rnd() * (H - top), r = U * (.004 + rnd() * .01);
         ctx.beginPath(); for (let j = 0; j < 10; j++) { const rr = j % 2 ? r * .42 : r, a = -Math.PI / 2 + j * Math.PI / 5; ctx.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr); } ctx.closePath(); ctx.fill(); }
+    } else if (k === 'hearts') {
+      const n = Math.round(W * H / 34000);
+      for (let i = 0; i < n; i++) { const x = rnd() * W, y = top + rnd() * (H - top), r = U * (.006 + rnd() * .012);
+        ctx.beginPath(); ctx.moveTo(x, y + r * .35); ctx.bezierCurveTo(x, y - r * .2, x - r, y - r * .25, x - r, y + r * .25); ctx.bezierCurveTo(x - r, y + r * .75, x - r * .2, y + r * 1.05, x, y + r * 1.35);
+        ctx.bezierCurveTo(x + r * .2, y + r * 1.05, x + r, y + r * .75, x + r, y + r * .25); ctx.bezierCurveTo(x + r, y - r * .25, x, y - r * .2, x, y + r * .35); ctx.fill(); }
+    } else if (k === 'eggs') {
+      const n = Math.round(W * H / 40000), cols = [TH.PAT, '#FFE59A', '#BFE3F5', '#D9C6F0'];
+      for (let i = 0; i < n; i++) { const x = rnd() * W, y = top + rnd() * (H - top), r = U * (.008 + rnd() * .01), a = (rnd() - .5) * .8;
+        ctx.fillStyle = cols[i % 4]; ctx.beginPath(); ctx.ellipse(x, y, r * .78, r, a, 0, 7); ctx.fill(); }
+    } else if (k === 'deco') {
+      // art-deco scallop (fan) lattice
+      const s = U * .07; ctx.lineWidth = Math.max(1, U * .0018);
+      for (let y = top, row = 0; y < H + s; y += s * .5, row++) for (let x = (row % 2) * s / 2; x < W + s; x += s) {
+        ctx.beginPath(); ctx.arc(x, y, s / 2, Math.PI, 0); ctx.stroke(); ctx.beginPath(); ctx.arc(x, y, s / 4, Math.PI, 0); ctx.stroke(); }
     } else if (k === 'bats') {
       // a big pale moon top-right, then little bats
       ctx.save(); ctx.globalAlpha = .1; ctx.fillStyle = '#FFE7B0'; ctx.beginPath(); ctx.arc(W * .9, top + U * .2, U * .16, 0, 7); ctx.fill(); ctx.restore();
@@ -4942,6 +4969,134 @@
         ctx.quadraticCurveTo(.9, 0, .75, .2); ctx.quadraticCurveTo(.55, 0, .35, .3); ctx.quadraticCurveTo(.15, .1, 0, .4);
         ctx.quadraticCurveTo(-.15, .1, -.35, .3); ctx.quadraticCurveTo(-.55, 0, -.75, .2); ctx.quadraticCurveTo(-.9, 0, -1.15, .15); ctx.quadraticCurveTo(-1.1, -.1, -1.3, -.35);
         ctx.quadraticCurveTo(-.8, -.6, -.45, -.3); ctx.quadraticCurveTo(-.25, -.55, 0, -.25); ctx.fill(); ctx.restore(); }
+    }
+    ctx.restore();
+  }
+  // ── themed decals: things hanging from the awning + small ornaments on the header corners ──
+  // Drawn last and kept to the edges, so they never cover a price, photo or name.
+  function flDecals(ctx, TH, g, layer) {
+    const back = layer === 'back';               // 'back' = behind the header (things hanging from the awning), else on top (corner ornaments)
+    const k = TH.DECO; if (!k) return;
+    const { W, awH, sw, M, logoX, logoY, logoW, logoH, tx, pY, tW, pH } = g;
+    const tip = awH + sw / 2;                         // bottom of each awning scallop
+    const U = pH * 1.6;                               // size unit (from the title panel height)
+    const B = g.band || U * .3;                       // height of the strip between the awning and the header
+    let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const P = Math.PI;
+    const heart = (x, y, r) => { ctx.beginPath(); ctx.moveTo(x, y + r * .35); ctx.bezierCurveTo(x, y - r * .2, x - r, y - r * .25, x - r, y + r * .25);
+      ctx.bezierCurveTo(x - r, y + r * .75, x - r * .2, y + r * 1.05, x, y + r * 1.35); ctx.bezierCurveTo(x + r * .2, y + r * 1.05, x + r, y + r * .75, x + r, y + r * .25);
+      ctx.bezierCurveTo(x + r, y - r * .25, x, y - r * .2, x, y + r * .35); ctx.closePath(); };
+    const leaf = (x, y, len, ang, col) => {          // holly leaf: pointed with scalloped edges
+      ctx.save(); ctx.translate(x, y); ctx.rotate(ang); ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(0, 0);
+      const n = 4; for (let i = 1; i <= n; i++) { const t = i / n; ctx.quadraticCurveTo(len * (t - .12), -len * .34 * Math.sin(t * P) - len * .04, len * t, -len * .17 * Math.sin(t * P)); }
+      for (let i = n - 1; i >= 0; i--) { const t = i / n; ctx.quadraticCurveTo(len * (t + .12), len * .34 * Math.sin((t + .25) * P) + len * .04, len * t, len * .17 * Math.sin(t * P)); }
+      ctx.fill(); ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = Math.max(1, len * .03); ctx.beginPath(); ctx.moveTo(len * .05, 0); ctx.lineTo(len * .9, 0); ctx.stroke(); ctx.restore(); };
+    const berry = (x, y, r, col) => { ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.beginPath(); ctx.arc(x - r * .35, y - r * .35, r * .3, 0, 7); ctx.fill(); };
+    const holly = (x, y, s, rot) => { ctx.save(); ctx.translate(x, y); ctx.rotate(rot || 0);
+      leaf(0, 0, s, -2.5, '#1F6B3A'); leaf(0, 0, s * .95, -.6, '#2A8248'); leaf(0, 0, s * .8, 1.1, '#1F6B3A');
+      berry(-s * .08, -s * .06, s * .14, '#C8202F'); berry(s * .14, s * .02, s * .13, '#D8303D'); berry(-s * .02, s * .17, s * .12, '#B51A28'); ctx.restore(); };
+    const bauble = (x, y, r, col) => { ctx.fillStyle = '#C9A24A'; ctx.fillRect(x - r * .28, y - r * 1.18, r * .56, r * .3);
+      const gr = ctx.createRadialGradient(x - r * .35, y - r * .4, r * .1, x, y, r); gr.addColorStop(0, '#fff'); gr.addColorStop(.25, col); gr.addColorStop(1, 'rgba(0,0,0,.35)');
+      ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); ctx.fillStyle = gr; ctx.globalAlpha *= .55; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); ctx.globalAlpha /= .55;
+      ctx.strokeStyle = 'rgba(255,255,255,.6)'; ctx.lineWidth = Math.max(1, r * .08); ctx.beginPath(); ctx.arc(x, y, r * .62, P * .15, P * .85); ctx.stroke(); };
+    const egg = (x, y, r, c1, c2) => { ctx.save(); ctx.beginPath(); ctx.ellipse(x, y, r * .78, r, 0, 0, 7); ctx.fillStyle = c1; ctx.fill(); ctx.clip();
+      ctx.fillStyle = c2; ctx.fillRect(x - r, y - r * .18, r * 2, r * .36);                     // pysanka band
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(1, r * .07); ctx.beginPath();
+      for (let i = 0; i <= 8; i++) { const xx = x - r + i * r / 4, yy = y + (i % 2 ? -r * .14 : r * .14); i ? ctx.lineTo(xx, yy) : ctx.moveTo(xx, yy); } ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,255,.75)'; for (const dy of [-.55, .55]) for (const dx of [-.3, 0, .3]) { ctx.beginPath(); ctx.arc(x + dx * r, y + dy * r, r * .06, 0, 7); ctx.fill(); }
+      ctx.restore(); ctx.strokeStyle = 'rgba(0,0,0,.12)'; ctx.lineWidth = Math.max(1, r * .04); ctx.beginPath(); ctx.ellipse(x, y, r * .78, r, 0, 0, 7); ctx.stroke(); };
+    const tulip = (x, y, s, col) => { ctx.strokeStyle = '#4E8B4F'; ctx.lineWidth = Math.max(2, s * .07); ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo(x - s * .05, y + s * .5, x, y + s); ctx.stroke();
+      ctx.fillStyle = '#5FA05F'; ctx.beginPath(); ctx.ellipse(x + s * .17, y + s * .66, s * .1, s * .3, .6, 0, 7); ctx.fill();
+      ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(x - s * .22, y - s * .35); ctx.lineTo(x - s * .1, y - s * .12); ctx.lineTo(x, y - s * .38); ctx.lineTo(x + s * .1, y - s * .12); ctx.lineTo(x + s * .22, y - s * .35);
+      ctx.quadraticCurveTo(x + s * .26, y + s * .02, x, y + s * .04); ctx.quadraticCurveTo(x - s * .26, y + s * .02, x - s * .22, y - s * .35); ctx.fill(); };
+    const spider = (x, y0, len, r) => { ctx.strokeStyle = 'rgba(232,221,245,.7)'; ctx.lineWidth = Math.max(1, r * .08); ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y0 + len); ctx.stroke();
+      const y = y0 + len + r; ctx.strokeStyle = '#120A18'; ctx.lineWidth = Math.max(1.5, r * .16);
+      for (const sd of [-1, 1]) for (let i = 0; i < 4; i++) { const a = (-.55 + i * .37); ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo(x + sd * r * 1.3, y + (a - .5) * r * 1.6, x + sd * r * 1.9, y + a * r * 2.2); ctx.stroke(); }
+      ctx.fillStyle = '#120A18'; ctx.beginPath(); ctx.arc(x, y, r * .62, 0, 7); ctx.fill(); ctx.beginPath(); ctx.arc(x, y - r * .7, r * .38, 0, 7); ctx.fill();
+      ctx.fillStyle = '#FF8A1F'; ctx.beginPath(); ctx.arc(x - r * .14, y - r * .76, r * .08, 0, 7); ctx.arc(x + r * .14, y - r * .76, r * .08, 0, 7); ctx.fill(); };
+    const web = (x, y, R, a0, a1) => { ctx.strokeStyle = 'rgba(232,221,245,.75)'; ctx.lineWidth = Math.max(1, R * .012);
+      const n = 6; for (let i = 0; i <= n; i++) { const a = a0 + (a1 - a0) * i / n; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(a) * R, y + Math.sin(a) * R); ctx.stroke(); }
+      for (let ring = 1; ring <= 4; ring++) { const rr = R * ring / 4.3; ctx.beginPath();
+        for (let i = 0; i <= n; i++) { const a = a0 + (a1 - a0) * i / n; const px = x + Math.cos(a) * rr, py = y + Math.sin(a) * rr;
+          if (!i) ctx.moveTo(px, py); else { const am = a - (a1 - a0) / n / 2, sag = rr * .86; ctx.quadraticCurveTo(x + Math.cos(am) * sag, y + Math.sin(am) * sag, px, py); } } ctx.stroke(); } };
+    const fan = (x, y, R, a0, col) => { ctx.save(); ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = Math.max(1.5, R * .03);
+      for (const f of [1, .72, .46]) { ctx.beginPath(); ctx.arc(x, y, R * f, a0, a0 + P / 2); ctx.stroke(); }
+      for (let i = 0; i <= 6; i++) { const a = a0 + P / 2 * i / 6; ctx.beginPath(); ctx.moveTo(x + Math.cos(a) * R * .2, y + Math.sin(a) * R * .2); ctx.lineTo(x + Math.cos(a) * R * .46, y + Math.sin(a) * R * .46); ctx.stroke(); }
+      ctx.beginPath(); ctx.arc(x, y, R * .14, a0, a0 + P / 2); ctx.lineTo(x, y); ctx.fill(); ctx.restore(); };
+    const sparkle = (x, y, r, col) => { ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(x, y - r); ctx.quadraticCurveTo(x, y, x + r, y); ctx.quadraticCurveTo(x, y, x, y + r); ctx.quadraticCurveTo(x, y, x - r, y); ctx.quadraticCurveTo(x, y, x, y - r); ctx.fill(); };
+    const n = Math.round(W / sw);
+    ctx.save();
+    if (k === 'holly') {
+      // string of lights swagging between the awning tips, holly on the header corners
+      if (back) {
+      ctx.strokeStyle = '#1B3A26'; ctx.lineWidth = Math.max(1.5, U * .012);
+      const cols = ['#FFD23F', '#E84A4A', '#5BC0EB', '#7BD389', '#F08CC0'];
+      for (let i = 0; i < n - 1; i++) { const x0 = i * sw + sw / 2, x1 = x0 + sw, sag = B * .38;
+        ctx.beginPath(); ctx.moveTo(x0, tip); ctx.quadraticCurveTo((x0 + x1) / 2, tip + sag * 2, x1, tip); ctx.stroke();
+        const bx = (x0 + x1) / 2, by = tip + sag, r = B * .16; ctx.save(); ctx.shadowColor = cols[i % 5]; ctx.shadowBlur = r * 2.2;
+        ctx.fillStyle = cols[i % 5]; ctx.beginPath(); ctx.ellipse(bx, by + r * 1.1, r * .7, r * 1.05, 0, 0, 7); ctx.fill(); ctx.restore();
+        ctx.fillStyle = '#2B2B2B'; ctx.fillRect(bx - r * .45, by - r * .05, r * .9, r * .45); }
+      }
+      if (!back) { holly(tx + tW - U * .05, pY + U * .02, U * .42, .2); holly(logoX + U * .06, logoY + logoH - U * .02, U * .34, 2.9); }
+    } else if (k === 'newyear') {
+      // gold tinsel, baubles on ribbons, a fir sprig with a bauble on the corners, sparkles
+      if (back) {
+      ctx.strokeStyle = '#D9B45A'; ctx.lineWidth = Math.max(2, U * .02); ctx.setLineDash([U * .03, U * .02]);
+      for (let i = 0; i < n - 1; i++) { const x0 = i * sw + sw / 2, x1 = x0 + sw; ctx.beginPath(); ctx.moveTo(x0, tip); ctx.quadraticCurveTo((x0 + x1) / 2, tip + B * .7, x1, tip); ctx.stroke(); }
+      ctx.setLineDash([]);
+      const cols = ['#B3122E', '#D9B45A', '#2E6FBF', '#E8E8E8'];
+      for (let i = 1; i < n - 1; i += 2) { const x = i * sw + sw / 2, len = B * (i % 4 === 1 ? .42 : .2), r = B * .17;
+        ctx.strokeStyle = 'rgba(217,180,90,.9)'; ctx.lineWidth = Math.max(1, U * .008); ctx.beginPath(); ctx.moveTo(x, tip); ctx.lineTo(x, tip + len); ctx.stroke();
+        bauble(x, tip + len + r * 1.15, r, cols[(i >> 1) % 4]); }
+      } else {
+      const sprig = (x, y, s, rot) => { ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.strokeStyle = '#2F6B45'; ctx.lineWidth = Math.max(1, s * .025);
+        for (let j = 0; j < 3; j++) { ctx.save(); ctx.rotate((j - 1) * .45); ctx.strokeStyle = '#3B7D52'; ctx.lineWidth = Math.max(2, s * .04); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(s, 0); ctx.stroke();
+          ctx.lineWidth = Math.max(1, s * .02); ctx.strokeStyle = '#2F6B45'; for (let t = .12; t < 1; t += .07) { ctx.beginPath(); ctx.moveTo(s * t, 0); ctx.lineTo(s * (t + .1), -s * .12); ctx.moveTo(s * t, 0); ctx.lineTo(s * (t + .1), s * .12); ctx.stroke(); } ctx.restore(); }
+        ctx.restore(); bauble(x, y + s * .12, s * .16, '#B3122E'); };
+      sprig(tx + tW - U * .02, pY + U * .02, U * .5, -2.6);
+      sprig(logoX + U * .02, logoY + logoH - U * .02, U * .42, .5);
+      for (const [sx, sy, sr] of [[logoX + logoW + (tx - logoX - logoW) / 2, pY + pH * .5, .05], [tx + tW * .3, pY + pH + U * .05, .035]]) sparkle(sx, sy, U * sr, '#F7D98B');
+      }
+    } else if (k === 'icicles') {
+      if (back) for (let i = 0; i < n; i++) { const x = i * sw + sw / 2, len = B * (.55 + rnd() * .55), w = sw * .16;
+        const gr = ctx.createLinearGradient(x, tip, x, tip + len); gr.addColorStop(0, 'rgba(255,255,255,.95)'); gr.addColorStop(1, 'rgba(190,225,250,.6)');
+        ctx.fillStyle = gr; ctx.beginPath(); ctx.moveTo(x - w, tip - 2); ctx.quadraticCurveTo(x - w * .3, tip + len * .55, x, tip + len); ctx.quadraticCurveTo(x + w * .3, tip + len * .55, x + w, tip - 2); ctx.fill();
+        if (i % 3 === 1) { const x2 = x + sw * .3, l2 = len * .55; ctx.beginPath(); ctx.moveTo(x2 - w * .6, tip - 4); ctx.quadraticCurveTo(x2, tip + l2 * .6, x2, tip + l2); ctx.quadraticCurveTo(x2, tip + l2 * .6, x2 + w * .6, tip - 4); ctx.fill(); } }
+    } else if (k === 'halloween') {
+      if (back) { web(W, tip, U * .8, P * .5, P); for (let i = 1; i < n; i += 3) spider(i * sw + sw / 2, tip, B * (.15 + rnd() * .25), B * .2); }
+      else { web(logoX - M * .2, logoY + logoH + M * .2, U * .32, -P * .5, 0); spider(tx + tW + M * .5, tip, (pY + pH * .55) - tip, U * .035); }
+    } else if (k === 'valentine') {
+      // little hearts on ribbons, and a heart pair on the corners
+      if (back) for (let i = 0; i < n; i++) { const x = i * sw + sw / 2, len = B * (.12 + (i % 3) * .14), r = B * (.15 + (i % 2) * .04);
+        ctx.strokeStyle = 'rgba(255,209,218,.9)'; ctx.lineWidth = Math.max(1, U * .008); ctx.beginPath(); ctx.moveTo(x, tip); ctx.lineTo(x, tip + len); ctx.stroke();
+        ctx.fillStyle = i % 2 ? '#FFD1DA' : '#E8314F'; heart(x, tip + len, r); ctx.fill(); }
+      const pair = (x, y, s) => { ctx.fillStyle = '#E8314F'; heart(x, y, s); ctx.fill(); ctx.fillStyle = '#FFD1DA'; heart(x + s * .9, y + s * .5, s * .62); ctx.fill(); };
+      if (!back) { pair(tx + tW - U * .2, pY - U * .16, U * .16); pair(logoX - U * .05, logoY + logoH - U * .16, U * .13); }
+    } else if (k === 'easter') {
+      // painted eggs (pysanky) on ribbons, tulips on the corners
+      const ec = [['#F4B6C2', '#C2456B'], ['#FFE59A', '#7FB77E'], ['#BFE3F5', '#4F7FBF'], ['#D9C6F0', '#8A5CB8']];
+      if (back) for (let i = 0; i < n; i += 2) { const x = i * sw + sw / 2, len = B * (i % 4 ? .3 : .12), r = B * .24;
+        ctx.strokeStyle = 'rgba(194,69,107,.55)'; ctx.lineWidth = Math.max(1, U * .008); ctx.beginPath(); ctx.moveTo(x, tip); ctx.lineTo(x, tip + len); ctx.stroke();
+        egg(x, tip + len + r, r, ec[(i >> 1) % 4][0], ec[(i >> 1) % 4][1]); }
+      if (!back) { tulip(tx + tW - U * .1, pY - U * .14, U * .3, '#E8607E'); tulip(tx + tW + U * .02, pY - U * .04, U * .24, '#F2C94C');
+        egg(logoX + U * .06, logoY + logoH - U * .04, U * .1, '#FFE59A', '#C2456B'); }
+    } else if (k === 'deco') {
+      // 1920s: a gold double frame with stepped corners, fans on the panel, beaded tassels
+      const gold = '#C9A24A', inset = M * .45, H = g.H, fy = g.footTop;
+      if (back) { for (let i = 0; i < n; i += 3) { const x = i * sw + sw / 2; ctx.fillStyle = gold;
+        for (let b = 0; b < 4; b++) { ctx.beginPath(); ctx.arc(x, tip + B * (.1 + b * .13), B * (.06 - b * .006), 0, 7); ctx.fill(); }
+        ctx.beginPath(); ctx.moveTo(x - B * .08, tip + B * .6); ctx.lineTo(x + B * .08, tip + B * .6); ctx.lineTo(x + B * .13, tip + B * .9); ctx.lineTo(x - B * .13, tip + B * .9); ctx.fill(); }
+        ctx.restore(); return; }
+      ctx.strokeStyle = gold; ctx.globalAlpha = .9;
+      for (const [o, lw] of [[0, Math.max(2, U * .018)], [U * .05, Math.max(1, U * .008)]]) { ctx.lineWidth = lw; const x0 = inset + o, y0 = tip + B * .25 + o, x1 = W - inset - o, y1 = fy - U * .06 - o, st = U * .12;
+        ctx.beginPath(); ctx.moveTo(x0 + st, y0); ctx.lineTo(x1 - st, y0); ctx.lineTo(x1 - st, y0 + st * .5); ctx.lineTo(x1 - st * .5, y0 + st * .5); ctx.lineTo(x1 - st * .5, y0 + st); ctx.lineTo(x1, y0 + st);
+        ctx.lineTo(x1, y1 - st); ctx.lineTo(x1 - st * .5, y1 - st); ctx.lineTo(x1 - st * .5, y1 - st * .5); ctx.lineTo(x1 - st, y1 - st * .5); ctx.lineTo(x1 - st, y1);
+        ctx.lineTo(x0 + st, y1); ctx.lineTo(x0 + st, y1 - st * .5); ctx.lineTo(x0 + st * .5, y1 - st * .5); ctx.lineTo(x0 + st * .5, y1 - st); ctx.lineTo(x0, y1 - st);
+        ctx.lineTo(x0, y0 + st); ctx.lineTo(x0 + st * .5, y0 + st); ctx.lineTo(x0 + st * .5, y0 + st * .5); ctx.lineTo(x0 + st, y0 + st * .5); ctx.closePath(); ctx.stroke(); }
+      ctx.globalAlpha = 1;
+      // little sunburst fans in the 4 frame corners (in the margin, never over a card)
+      const fr = M * .85, fy0 = tip + B * .25, fy1 = fy - U * .06;
+      fan(inset, fy0, fr, 0, gold); fan(W - inset, fy0, fr, P / 2, gold); fan(W - inset, fy1, fr, P, gold); fan(inset, fy1, fr, P * 1.5, gold);
     }
     ctx.restore();
   }
@@ -5921,8 +6076,13 @@
       ctx.fillRect(i * sw, 0, sw, awH);
       ctx.beginPath(); ctx.arc(i * sw + sw / 2, awH, sw / 2, 0, Math.PI); ctx.fill();
     }
+    {   // decorations hanging from the awning (drawn before the header, so the boxes sit in front of them)
+      const hT = awH + sw / 2 + Math.round(H * .012) + (TH.DECO ? Math.round(H * (tv ? .034 : story ? .018 : .026)) : 0), hH = Math.round(H * (tv ? .15 : story ? .09 : .115)), lH = Math.round(hH * (tv ? .86 : .8)), pH0 = Math.round(hH * .86);
+      flDecals(ctx, TH, { W, H, awH, sw, M, logoX: M, logoY: hT + (hH - lH) / 2, logoW: Math.round(lH * 2.9), logoH: lH, tx: 0, pY: hT + (hH - pH0) / 2, tW: W, pH: pH0, footTop: H, band: hT - (awH + sw / 2) }, 'back');
+    }
     // header
-    const headTop = awH + sw / 2 + Math.round(H * .012);
+    const decoGap = TH.DECO ? Math.round(H * (tv ? .034 : story ? .018 : .026)) : 0;   // room for the hanging decorations
+    const headTop = awH + sw / 2 + Math.round(H * .012) + decoGap;
     const headH = Math.round(H * (tv ? .15 : story ? .09 : .115));
     // logo — rectangular store logo (images/logo-rect.png: white rim, red body, MARCHÉ / DÉCARIE box)
     const logoH = Math.round(headH * (tv ? .86 : .8)), logoW = Math.round(logoH * 2.9), logoD = logoW;
@@ -6106,6 +6266,7 @@
       const photos = await flyerCard(ctx, units[i].u, x, y, w, h, base, T, Sb, fmtKey);
       boxes.push({ key: units[i].u.key, x, y, w, h, cw: pl.w, ch: pl.h, r: pl.r, c: pl.c, photos, base, S: Sb });
     }
+    flDecals(ctx, TH, { W, H, awH, sw, M, logoX: M, logoY: headTop + (headH - logoH) / 2, logoW, logoH, tx, pY, tW, pH, footTop: H - footH, band: headTop - (awH + sw / 2) }, 'front');
     return { boxes, cw, ch, gap: GAP, cols, rows, M, bodyTop, page, pages: pageN, onePage };
   }
 
