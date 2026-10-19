@@ -2278,7 +2278,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v206</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v207</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2867,7 +2867,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v206</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v207</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2953,7 +2953,8 @@
           <button id="vault-go" style="margin-top:12px;width:100%;padding:14px;border:0;border-radius:10px;background:#d4ff3a;color:#000;font-weight:700;font-size:15px">UNLOCK</button></div>`;
         document.body.appendChild(ov);
         const done = () => { const v = ov.querySelector('#vault-pass').value.trim(); if (!v) return;
-          try { localStorage.setItem('orPass', v); } catch {} ov.remove(); asking = null; resolve(v); };
+          try { localStorage.setItem('orPass', v); } catch {} ov.remove(); asking = null; resolve(v);
+          setTimeout(() => window.dispatchEvent(new Event('vault-pass')), 300); };
         ov.querySelector('#vault-go').onclick = done;
         ov.querySelector('#vault-pass').onkeydown = (e) => { if (e.key === 'Enter') done(); };
       };
@@ -10690,6 +10691,7 @@
     } catch (e) { /* wrong passphrase or offline: try again next launch */ }
   }
   setTimeout(vaultBootstrap, 2500);
+  window.addEventListener('vault-pass', vaultBootstrap);      // passphrase typed after start-up: pick up the key now
 
   function orRender() {
     const el = $('#or-panel'); if (!el || el.style.display === 'none') return;
@@ -10701,7 +10703,7 @@
         (next to the other scripts) and copy the "passphrase" line.</p>
         <input id="or-pass-in" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="word-word-word-…">
         <button class="btn primary" id="or-pass-save">OPEN ORDERS</button></div>`;
-      $('#or-pass-save').onclick = () => { const v = $('#or-pass-in').value.trim(); if (!v) return; try { localStorage.setItem('orPass', v); } catch {} _or.err = ''; el.innerHTML = '<div class="empty-state">Opening…</div>'; orFetch(); };
+      $('#or-pass-save').onclick = () => { const v = $('#or-pass-in').value.trim(); if (!v) return; try { localStorage.setItem('orPass', v); } catch {} _or.err = ''; vaultBootstrap(); el.innerHTML = '<div class="empty-state">Opening…</div>'; orFetch(); };
       return;
     }
     if (!_or.data) { el.innerHTML = `<div class="empty-state">${_or.err ? 'Could not load orders: ' + escapeHtml(_or.err) : 'Loading orders…'}</div>`; return; }
