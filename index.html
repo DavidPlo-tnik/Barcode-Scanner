@@ -2278,7 +2278,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v214</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v215</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2867,7 +2867,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v214</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v215</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -9074,7 +9074,7 @@
   // return a mismatched pair -> unresolvable 409 on write. The API returns both
   // atomically for the same commit, so they always agree.
   async function ghGetJsonAndSha(path) {
-    const url = `https://api.github.com/repos/${GH.GH_OWNER}/${GH.GH_REPO}/contents/${path}?ref=${GH.GH_BRANCH}`;
+    const url = `https://api.github.com/repos/${GH.GH_OWNER}/${GH.GH_REPO}/contents/${path}?ref=${GH.GH_BRANCH}&_=${Date.now()}`;
     const r = await fetch(url, {
       cache: 'no-store',
       headers: {
@@ -10677,9 +10677,21 @@
   // pending = buttons pressed here that the PC has not applied yet (shown right away)
   function orPending() { return orLS('orPending') || {}; }
   // a pending step is shown until the PC's status moves away from what it was when the button was pressed
+  // order steps in sequence: a stale copy of the orders file must never move an order backwards
+  const OR_RANK = { new: 0, preparing: 1, on_hold: 2, total_ready: 3, payment_requested: 4, paid: 5, out_for_delivery: 6, delivered: 7, cancelled: 8 };
+  const orRank = (st) => (st in OR_RANK ? OR_RANK[st] : -1);
+  // is this pending tap still ahead of what the PC has written?
+  function orPendingLive(o, p) {
+    if (!p) return false;
+    if (Date.now() - (p.t || 0) > 6 * 3600e3) return false;
+    if (o.status === p.status) return false;                                   // the PC caught up
+    const fwd = orRank(p.status) >= orRank(p.base);
+    if (fwd) return orRank(o.status) < orRank(p.status) && o.status !== 'cancelled';   // PC is behind (or the copy is stale)
+    return o.status === p.base;                                               // going back a step (pick the held sale again, reopen)
+  }
   function orApplyPending(o) {
     const p = orPending()[o.id];
-    if (!p || o.status !== p.base) return o;
+    if (!orPendingLive(o, p)) return o;
     return Object.assign({}, o, { status: p.status, pos: p.pos || o.pos, deliver_on: p.deliver_on || o.deliver_on, pod: p.pod || o.pod, _pending: true });
   }
   function orCleanPending() {
@@ -10687,20 +10699,26 @@
     const pend = orPending(); let ch = false;
     for (const id in pend) {
       const o = _or.data.orders.find(x => x.id === id);
-      if (!o || o.status !== pend[id].base || Date.now() - (pend[id].t || 0) > 6 * 3600e3) { delete pend[id]; ch = true; }
+      if (!o || !orPendingLive(o, pend[id])) { delete pend[id]; ch = true; }
     }
     if (ch) orLS('orPending', pend);
   }
 
   async function orFetch(quiet) {
     const pass = orPass();
-    if (!pass || _or.loading) return;
-    _or.loading = true;
+    // a read cut off when the phone went to sleep never finishes: don't let it block every later refresh
+    if (!pass || (_or.loading && Date.now() - (_or.loadT || 0) < 20000)) return;
+    _or.loading = true; _or.loadT = Date.now();
     try {
       const { json } = await ghGetJsonAndSha(OR_FILE);
       if (!json) { _or.data = { orders: [], holds: [], pos_auto: false, updated: null }; _or.err = ''; }
       else {
-        try { _or.data = await orDecrypt(json, pass); _or.err = ''; }
+        try {
+          const d = await orDecrypt(json, pass);
+          // GitHub can hand back an older copy for a minute: keep the newer one we already have
+          if (!(_or.data && _or.data.updated && d && d.updated && String(d.updated) < String(_or.data.updated))) _or.data = d;
+          _or.err = '';
+        }
         catch { _or.err = 'badpass'; }
       }
       _or.at = Date.now();
@@ -10726,14 +10744,14 @@
       cancelled: 'cancelled', reopen: 'preparing' };
     const pend = orPending();
     const raw = _or.data && _or.data.orders.find(x => x.id === o.id);
-    const p = { status: map[act], t: Date.now(), base: raw ? raw.status : o.status };
+    const p = { status: map[act], t: Date.now(), base: raw ? orApplyPending(raw).status : o.status };
     if (act === 'use_hold') p.pos = Object.assign({ src: 'pos' }, extra.hold);
     if (act === 'manual_total') p.pos = { total: extra.total, src: 'manual' };
     if (act === 'delivered' && extra && extra.pod) p.pod = extra.pod;
     if (act === 'paid') p.deliver_on = orNextDay(new Date()).toISOString().slice(0, 10);
     // several steps before the PC catches up: keep what the earlier ones knew (the chosen total)
     const prev = pend[o.id];
-    if (prev && prev.base === p.base) { if (!p.pos && prev.pos) p.pos = prev.pos; if (!p.deliver_on && prev.deliver_on) p.deliver_on = prev.deliver_on; }
+    if (prev && orRank(p.status) >= orRank(prev.status) && act !== 'on_hold') { if (!p.pos && prev.pos) p.pos = prev.pos; if (!p.deliver_on && prev.deliver_on) p.deliver_on = prev.deliver_on; }
     pend[o.id] = p; orLS('orPending', pend);
     orRender();
     for (let attempt = 0; attempt < 6; attempt++) {
@@ -10756,14 +10774,53 @@
     return (items || []).map(it => `<div class="or-rl"><span>${it.kg ? (+it.kg).toFixed(3) + ' kg' : (+it.q || 1) + ' ×'}</span><b>${escapeHtml(it.name || it.code)}</b><em>${orMoney(it.amt)}</em></div>`).join('');
   }
   // website order vs what was rung at the register (by POS code)
+  const OR_COMBO_TIERS = ['0021010400000', '0021010700000', '0021010800000'].map(orNorm);
+  // site item -> the POS code the cashier actually rings
+  function orPosKey(code) {
+    let c = String(code || '').trim();
+    // items listed under one code (combo sides/meats/salads, pastries, candies): "candy-<home>-<id>[-0.5KG]"
+    const m = c.match(/^candy-(\d+)-([a-z0-9]+)(?:-[\d.]+KG)?$/i);
+    if (m) {
+      const groups = (_ecomCatalog && _ecomCatalog.candyGroups) || {};
+      let tier = m[1];
+      for (const t in groups) if ((groups[t] || []).some(e => e.id === m[2])) { tier = t; break; }
+      c = tier;
+    }
+    if (/^COMBO-PLATE$/i.test(c)) return 'combo';
+    let n = orNorm(c);
+    if (/^2\d{10,11}$/.test(n)) n = n.slice(0, 6) + '00000';     // scale label with the price inside -> its scale code
+    const l = produceLeadOf(n.padStart(13, '0')) || produceLeadOf(c);
+    if (l) return 'fam:' + l;                                       // any brand of the same fruit/vegetable
+    if (OR_COMBO_TIERS.includes(n)) return 'combo:' + n;
+    return n;
+  }
   function orMatch(o) {
     if (!o.pos || !o.pos.items || !o.pos.items.length) return null;
-    const K = (c) => { const l = produceLeadOf(c); return l ? 'fam:' + l : orNorm(c); };   // any brand of the same fruit/vegetable
-    const rung = {}; o.pos.items.forEach(it => { const k = K(it.code); rung[k] = (rung[k] || 0) + 1; });
-    const ordered = new Set(o.items.map(it => K(it.code)));
-    const missing = o.items.filter(it => !rung[K(it.code)]);
-    const extra = o.pos.items.filter(it => !ordered.has(K(it.code)));
-    return { rung, missing, extra };
+    const K = orPosKey;
+    const rungLeft = o.pos.items.map(it => ({ it, k: K(it.code), used: false }));
+    const take = (pred) => { const r = rungLeft.find(x => !x.used && pred(x)); if (r) r.used = true; return !!r; };
+    const ok = new Array(o.items.length).fill(false);
+    // 1) same POS code (or same fruit/vegetable family, or same ready-made food code)
+    o.items.forEach((it, i) => { const k = K(it.code); if (k !== 'combo') ok[i] = take(x => x.k === k); });
+    // 2) combo plate: rung as its side / meat / salad on the ready-made food codes (or one line)
+    o.items.forEach((it, i) => {
+      if (K(it.code) !== 'combo') return;
+      let any = false;
+      for (let n = 0; n < 3 * (+it.q || 1); n++) if (take(x => x.k.startsWith('combo:'))) any = true;
+      ok[i] = any;
+    });
+    // 3) anything left: a register line at the same price is the same thing under another code
+    o.items.forEach((it, i) => {
+      if (ok[i]) return;
+      const want = +(it.p * (+it.q || 1)).toFixed(2), unit = +(+it.p).toFixed(2);
+      ok[i] = take(x => Math.abs((+x.it.amt || 0) - want) < 0.015 || Math.abs((+x.it.amt || 0) - unit) < 0.015);
+    });
+    // a second unit of something already matched is not "extra"
+    const okKeys = new Set(o.items.filter((_, i) => ok[i]).map(it => K(it.code)));
+    if (okKeys.has('combo')) rungLeft.forEach(x => { if (x.k.startsWith('combo:')) okKeys.add(x.k); });
+    const missing = o.items.filter((_, i) => !ok[i]);
+    const extra = rungLeft.filter(x => !x.used && !okKeys.has(x.k)).map(x => x.it);
+    return { ok, missing, extra };
   }
   // the website shows no taxes: the 10% rule compares totals BEFORE taxes
   const orEst = (o) => +(o.subtotal || o.est_total || 0);
@@ -11015,7 +11072,7 @@
           ${img(it) ? `<img src="${escapeHtml(img(it))}" alt="" loading="lazy">` : '<span class="or-noimg"></span>'}
           <span class="or-it"><b>${it.q} ×</b> ${escapeHtml(it.t)}${it.v ? ` <em>${escapeHtml(it.v)}</em>` : ''}
             ${it.attrs && it.attrs.length ? `<small>${it.attrs.map(a => escapeHtml(a[0] + ': ' + a[1])).join(' · ')}</small>` : ''}
-            <small>${escapeHtml(it.code || '')} · ${orMoney(it.p * it.q)}${(() => { const mt = orMatch(o); if (!mt) return ''; return mt.rung[orNorm(it.code)] ? ' · <span class="or-y">✓ rung</span>' : ' · <span class="or-n">⚠ not rung</span>'; })()}</small></span>
+            <small>${escapeHtml(it.code || '')} · ${orMoney(it.p * it.q)}${(() => { const mt = orMatch(o); if (!mt) return ''; return mt.ok[i] ? ' · <span class="or-y">✓ rung</span>' : ' · <span class="or-n">⚠ not rung</span>'; })()}</small></span>
         </button>`).join('')}</div>
       ${!['delivered', 'cancelled'].includes(o.status) ? `<button class="or-link or-cancel" data-a="cancelled">Cancel this order</button>` : ''}
     </div>`;
@@ -11057,6 +11114,9 @@
 
   // new orders show as a number on the tab even while you are elsewhere in the app
   setInterval(() => { if (!document.hidden && _posUnlocked && orPass()) orFetch(true); }, 120000);
+  // back in the app (phone woke up / switched back): load the latest order steps right away
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && _posUnlocked && orPass()) { _or.loading = false; orFetch(true); } });
+  window.addEventListener('pageshow', (e) => { if (e.persisted && _posUnlocked && orPass()) { _or.loading = false; orFetch(true); } });
 
   // ============== ECOM CATALOG ==============
   // The website catalog lives in the repo at ecom/catalog.json — the app edits
