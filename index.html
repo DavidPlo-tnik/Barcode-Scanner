@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
 <meta name="theme-color" content="#0a0a0a" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -2278,7 +2278,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v213</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v214</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2867,7 +2867,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v213</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v214</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2944,16 +2944,17 @@
     asking = new Promise((resolve) => {
       const go = () => {
         const ov = document.createElement('div');
-        ov.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#0b0b0b;display:flex;align-items:center;justify-content:center;padding:24px;font-family:system-ui,sans-serif;color:#eee';
+        ov.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#0b0b0b;display:flex;align-items:flex-start;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 12vh) 24px 24px;overflow-y:auto;overscroll-behavior:contain;touch-action:manipulation;-webkit-text-size-adjust:100%;font-family:system-ui,sans-serif;color:#eee';
         ov.innerHTML = `<div style="max-width:360px;width:100%;text-align:center">
           <div style="font-size:42px">🔒</div><h2 style="margin:8px 0 6px;font-size:20px">Staff passphrase</h2>
           <p style="color:#aaa;font-size:14px;line-height:1.4;margin:0 0 16px">${wrong ? '<b style="color:#ff6b6b">That passphrase does not open the store data.</b><br>' : ''}The store data is private. Type the staff passphrase once on this phone (ask the owner).</p>
           <input id="vault-pass" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="word-word-word-…"
             style="width:100%;box-sizing:border-box;padding:14px;border-radius:10px;border:1px solid #333;background:#151515;color:#fff;font-size:16px">
-          <button id="vault-go" style="margin-top:12px;width:100%;padding:14px;border:0;border-radius:10px;background:#d4ff3a;color:#000;font-weight:700;font-size:15px">UNLOCK</button></div>`;
+          <button id="vault-go" style="margin-top:12px;width:100%;padding:14px;border:0;border-radius:10px;background:#d4ff3a;color:#000;font-weight:700;font-size:16px;min-height:52px;touch-action:manipulation">UNLOCK</button></div>`;
         document.body.appendChild(ov);
+        const prevOv = document.documentElement.style.overflow; document.documentElement.style.overflow = 'hidden';
         const done = () => { const v = ov.querySelector('#vault-pass').value.trim(); if (!v) return;
-          try { localStorage.setItem('orPass', v); } catch {} ov.remove(); asking = null; resolve(v);
+          try { localStorage.setItem('orPass', v); } catch {} document.documentElement.style.overflow = prevOv; ov.remove(); window.scrollTo(0, 0); asking = null; resolve(v);
           setTimeout(() => window.dispatchEvent(new Event('vault-pass')), 300); };
         ov.querySelector('#vault-go').onclick = done;
         ov.querySelector('#vault-pass').onkeydown = (e) => { if (e.key === 'Enter') done(); };
