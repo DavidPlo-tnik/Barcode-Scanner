@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-19T15:36:44.074Z",
+ "updated": "2026-10-19T15:37:12.078Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -3605,25 +3605,6 @@
     "title": false,
     "size": false,
     "photo": true,
-    "price": false
-   }
-  },
-  "0021051800000": {
-   "added": "2026-07-29",
-   "photos": [
-    "0021051800000_1792424044352.webp"
-   ],
-   "listed": false,
-   "status": "draft",
-   "group": "61-gateau-au-gaufres",
-   "dept": "61",
-   "weekly": 52.79,
-   "scale": true,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
     "price": false
    }
   },
