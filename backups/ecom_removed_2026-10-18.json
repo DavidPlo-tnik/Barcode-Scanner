@@ -1,0 +1,4653 @@
+{
+ "date": "2026-10-18",
+ "removed": {
+  "0023881000000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "26-caviar-de-saumon",
+   "dept": "26",
+   "weekly": 515.48,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0021006500000": {
+   "added": "2026-07-28",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "63-mets-cuisines",
+   "dept": "63",
+   "weekly": 723.88,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0021013000000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "63-mets-cuisines",
+   "dept": "63",
+   "weekly": 262.7,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0020154300000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 685.13,
+   "scale": true,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0021050300000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "51",
+   "weekly": 489.63,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0071022834443": {
+   "added": "2026-07-29",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "32-string-cheese",
+   "dept": "32",
+   "weekly": 185.65,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0475102427001": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "32-string-cheese",
+   "dept": "32",
+   "weekly": 22.58,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0426005107777": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 179.43,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482307762010": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "4",
+   "weekly": 172.9,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482025094459": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-kvas-taras",
+   "dept": "2",
+   "weekly": 17.16,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006820001021": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "3-lactan-purfiltre-lait",
+   "dept": "3",
+   "weekly": 30.81,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006820001032": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "3-lactan-purfiltre-lait",
+   "dept": "3",
+   "weekly": 29.53,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0460006800904": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-kvas-all-star",
+   "dept": "2",
+   "weekly": 13.02,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0021006400000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "61-mets-cuisin-s",
+   "dept": "61",
+   "weekly": 19.59,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0067926204153": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "52",
+   "weekly": 133.71,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0029498000000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-fruits-l-gumes",
+   "dept": "41",
+   "weekly": 16.27,
+   "scale": true,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0020994300000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "5-guimauve-zefir",
+   "dept": "5",
+   "weekly": 13.77,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0066529005040": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-chopine-12-disc",
+   "dept": "41",
+   "weekly": 82.77,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0081204900690": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-chopine-12-disc",
+   "dept": "41",
+   "weekly": 36.74,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0780012200029": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-chopine-12-disc",
+   "dept": "41",
+   "weekly": 35.13,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0082424300418": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-chopine-12-disc",
+   "dept": "41",
+   "weekly": 33.46,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0082082403001": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-chopine-12-disc",
+   "dept": "41",
+   "weekly": 23.14,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0003338322201": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-chopine-12-disc",
+   "dept": "41",
+   "weekly": 16.56,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0067926204156": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "52",
+   "weekly": 104.51,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0477904060083": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "4-happy-family-9x65g",
+   "dept": "4",
+   "weekly": 17.06,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0023880600000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "26",
+   "weekly": 93.75,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0088520200015": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 92.28,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0076919740402": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-fraises-454g-8",
+   "dept": "41",
+   "weekly": 81.94,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0003338320127": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-fraises-454g-8",
+   "dept": "41",
+   "weekly": 46.96,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0078035378403": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-fraises-454g-8",
+   "dept": "41",
+   "weekly": 24.74,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0085078900203": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-fraises-454g-8",
+   "dept": "41",
+   "weekly": 22.98,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0081133402015": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-fraises-454g-8",
+   "dept": "41",
+   "weekly": 11.52,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0021051300000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "51-dessert-tournesol-halva",
+   "dept": "51",
+   "weekly": 18.63,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0021007100000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "61-mets-cuisines",
+   "dept": "61",
+   "weekly": 23.98,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0062602781102": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 78.33,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0085178100565": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-mp-tomate-raisin",
+   "dept": "41",
+   "weekly": 27.52,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0068925900031": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-mp-tomate-raisin",
+   "dept": "41",
+   "weekly": 11.46,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0071575650401": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 70.88,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482014861072": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-coffret-cadeau",
+   "dept": "1",
+   "weekly": 70.57,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482308861325": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-coffret-cadeau",
+   "dept": "1",
+   "weekly": 49.46,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482014861081": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-coffret-cadeau",
+   "dept": "1",
+   "weekly": 47.05,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482308861339": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-coffret-cadeau",
+   "dept": "1",
+   "weekly": 37.35,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482308861329": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-coffret-cadeau",
+   "dept": "1",
+   "weekly": 24.91,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482308861333": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-coffret-cadeau",
+   "dept": "1",
+   "weekly": 24.21,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482308861327": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-coffret-cadeau",
+   "dept": "1",
+   "weekly": 23.07,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482308861340": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-coffret-cadeau",
+   "dept": "1",
+   "weekly": 23.03,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482308861321": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-coffret-cadeau",
+   "dept": "1",
+   "weekly": 16.15,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005783602284": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 68.52,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0481152700305": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-riga-gold-sprats",
+   "dept": "1",
+   "weekly": 13.81,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482000230059": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 64.6,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0611125943781": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 63.46,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0750301951909": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-170g-12",
+   "dept": "41",
+   "weekly": 34.33,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0007143001109": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-170g-12",
+   "dept": "41",
+   "weekly": 34.04,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0066529005034": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-170g-12",
+   "dept": "41",
+   "weekly": 32.88,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0066529000203": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-170g-12",
+   "dept": "41",
+   "weekly": 23.02,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482310581882": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-set-abk",
+   "dept": "2",
+   "weekly": 57.63,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482310581880": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-set-abk",
+   "dept": "2",
+   "weekly": 45.65,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482310581884": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-set-abk",
+   "dept": "2",
+   "weekly": 36.32,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0067926204155": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "52",
+   "weekly": 55.33,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0426012339549": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 54.95,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0067926204152": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "52",
+   "weekly": 54.18,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482023781011": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-semki",
+   "dept": "1",
+   "weekly": 31.74,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0000000004258": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 52.51,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482001895040": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 50.75,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0475100570333": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 44.69,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482020587048": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "4-bkk-patisserie",
+   "dept": "4",
+   "weekly": 44.56,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482020587046": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "4-bkk-patisserie",
+   "dept": "4",
+   "weekly": 14.82,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0000065100321": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-laitue-coeur-romaine",
+   "dept": "41",
+   "weekly": 17.65,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0002791820524": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-laitue-coeur-romaine",
+   "dept": "41",
+   "weekly": 15.19,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482008841485": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 44.22,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0081588701068": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-bluets",
+   "dept": "41",
+   "weekly": 43.82,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0775726900002": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-bluets",
+   "dept": "41",
+   "weekly": 29.9,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0775076500629": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-bluets",
+   "dept": "41",
+   "weekly": 26.75,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0003338322230": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-bluets",
+   "dept": "41",
+   "weekly": 24.5,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0089973400280": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-bluets",
+   "dept": "41",
+   "weekly": 12.59,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482307762428": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-roshen-bonbon",
+   "dept": "2",
+   "weekly": 43.65,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482307762587": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-roshen-bonbon",
+   "dept": "2",
+   "weekly": 37.62,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0000000011013": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "71",
+   "weekly": 42.92,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0477163407012": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "4-cerises-congele",
+   "dept": "4",
+   "weekly": 42.41,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0020100200000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "21",
+   "weekly": 41.96,
+   "scale": true,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005974997681": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 41.5,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482007589009": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-peintures-aux-oeufs",
+   "dept": "1",
+   "weekly": 41.4,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482007589018": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-peintures-aux-oeufs",
+   "dept": "1",
+   "weekly": 15.73,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0085865500105": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-peintures-aux-oeufs",
+   "dept": "1",
+   "weekly": 12.55,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005783665585": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-sunset-tomate-angel",
+   "dept": "41",
+   "weekly": 11.1,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0000000004539": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 39.44,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0085007459809": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 38.9,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006107757123": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "5-pom-sign-pain",
+   "dept": "5",
+   "weekly": 18.91,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0475100570083": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 38.01,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005783602090": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-tomate-raisin-serre",
+   "dept": "41",
+   "weekly": 36.52,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0069905810015": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-tomate-raisin-serre",
+   "dept": "41",
+   "weekly": 23.87,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0062893800001": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-tomate-raisin-serre",
+   "dept": "41",
+   "weekly": 17.2,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482312731349": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-flint-grenki",
+   "dept": "1",
+   "weekly": 35.79,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482018274690": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-flint-grenki",
+   "dept": "1",
+   "weekly": 20.41,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0062872122101": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-mp-mini-concombre",
+   "dept": "41",
+   "weekly": 22.46,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005783616826": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-mp-mini-concombre",
+   "dept": "41",
+   "weekly": 18.88,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0067950805100": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-mp-mini-concombre",
+   "dept": "41",
+   "weekly": 16.79,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0085001594357": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-bleuets",
+   "dept": "41",
+   "weekly": 33.19,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0085001594348": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-bleuets",
+   "dept": "41",
+   "weekly": 26.6,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005783670017": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-bleuets",
+   "dept": "41",
+   "weekly": 22.34,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0071575650010": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-bleuets",
+   "dept": "41",
+   "weekly": 17.97,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0085612200160": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 33.16,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0023880500000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "24",
+   "weekly": 33.04,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0089269100102": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "4",
+   "weekly": 32.48,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0067399210008": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 32.08,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482016448018": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-happy-tails-mais",
+   "dept": "1",
+   "weekly": 31.6,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0082988200462": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-happy-tails-mais",
+   "dept": "1",
+   "weekly": 15.23,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482000131618": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-torchin-mayonnaise",
+   "dept": "1",
+   "weekly": 31.35,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482000131624": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-torchin-mayonnaise",
+   "dept": "1",
+   "weekly": 15.12,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482000131628": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-torchin-mayonnaise",
+   "dept": "1",
+   "weekly": 15.09,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0020142300000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "24",
+   "weekly": 31.17,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482009781767": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 30.45,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0426000724051": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-emela-tartinade-de",
+   "dept": "1",
+   "weekly": 30.4,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0082889914546": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 30.35,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0000008076825": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-kinder-joy",
+   "dept": "2",
+   "weekly": 11.42,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0761040009452": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 29.51,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0002914509951": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "51-p-moisson-pain",
+   "dept": "51",
+   "weekly": 19.63,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0002914508106": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "51-p-moisson-pain",
+   "dept": "51",
+   "weekly": 14.57,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482017881018": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "4-organic-milk-beurre",
+   "dept": "4",
+   "weekly": 28.89,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482017881256": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "4-organic-milk-beurre",
+   "dept": "4",
+   "weekly": 14.34,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482020587584": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "4",
+   "weekly": 27.69,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482310300905": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 27.67,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482002789192": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-boguslavna-zefir",
+   "dept": "1",
+   "weekly": 24.33,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482002789176": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-boguslavna-zefir",
+   "dept": "1",
+   "weekly": 22.86,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482002789128": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-boguslavna-zefir",
+   "dept": "1",
+   "weekly": 19.72,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482002789129": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-boguslavna-zefir",
+   "dept": "1",
+   "weekly": 17.29,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0003338344120": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 26.91,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005783679985": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 26.91,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0000000004440": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 26.54,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0062845117474": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "4",
+   "weekly": 26.45,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006310020870": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "31-mleaf-nat-minc",
+   "dept": "31",
+   "weekly": 13.14,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0002791804583": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 26.22,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0071575610061": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 25.93,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0062907100088": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-red-bull-boisson",
+   "dept": "2",
+   "weekly": 19.73,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0475100570055": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 25.22,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006354999387": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "32",
+   "weekly": 24.88,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0089578700010": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 24.84,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005974996943": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "3-selection-from-bloc",
+   "dept": "3",
+   "weekly": 19.6,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006491208716": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "3-riviera-yog-grec",
+   "dept": "3",
+   "weekly": 16.18,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482305461238": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-lukas-biscuits",
+   "dept": "1",
+   "weekly": 23.97,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482305460061": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-lukas-biscuits",
+   "dept": "1",
+   "weekly": 23.52,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482305461237": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-lukas-biscuits",
+   "dept": "1",
+   "weekly": 11.3,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006107794030": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "5",
+   "weekly": 23.61,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0000000004959": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 23.57,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0003338346290": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 23.52,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0085308500313": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-m-re-150",
+   "dept": "41",
+   "weekly": 23.46,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0003338324026": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-m-re-150",
+   "dept": "41",
+   "weekly": 22.32,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0071575650201": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-m-re-150",
+   "dept": "41",
+   "weekly": 19.32,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0400257501625": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-marzipan",
+   "dept": "2",
+   "weekly": 11.36,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0003338344663": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 23.05,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0082988200106": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "24",
+   "weekly": 22.78,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0085007459810": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 22.77,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0426012339614": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-belevini-marmelade",
+   "dept": "1",
+   "weekly": 22.57,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0426012339612": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-belevini-marmelade",
+   "dept": "1",
+   "weekly": 15.78,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482027415018": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-flint",
+   "dept": "1",
+   "weekly": 20.77,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482307763249": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-mont-blanc",
+   "dept": "2",
+   "weekly": 22.2,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482307763251": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-mont-blanc",
+   "dept": "2",
+   "weekly": 15.57,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482307763250": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-mont-blanc",
+   "dept": "2",
+   "weekly": 14.99,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0062893800002": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-tomate-283g-12",
+   "dept": "41",
+   "weekly": 22.1,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005783602189": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-tomate-283g-12",
+   "dept": "41",
+   "weekly": 15.26,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0085001461905": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 22.08,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0023983200000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "32",
+   "weekly": 21.95,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0071575610062": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 21.65,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0484000803127": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 21.62,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005530013202": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 21.27,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005783602301": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 21.02,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0075354000007": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-abricots",
+   "dept": "41",
+   "weekly": 20.97,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0075354000008": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-abricots",
+   "dept": "41",
+   "weekly": 17.74,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0068492401077": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 20.9,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482019509191": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 20.76,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0000000003302": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 20.75,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482001625227": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-odessa-jus-de",
+   "dept": "1",
+   "weekly": 14.01,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0619150990505": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 19.73,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006810089645": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 19.7,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482014861064": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 19.6,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482014861048": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 19.6,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482000131644": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 19.4,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006820046608": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 19.36,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0021001800000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "62",
+   "weekly": 19.36,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0082692000135": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 19.29,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005974997960": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "3-irrs-jus-r",
+   "dept": "3",
+   "weekly": 19.21,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005974997959": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "3-irrs-jus-r",
+   "dept": "3",
+   "weekly": 18.62,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482018274303": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 19.19,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0062714600929": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 18.86,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0020151800000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "62",
+   "weekly": 18.83,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0003338344690": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-nectarine-panier-2l",
+   "dept": "41",
+   "weekly": 11.53,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0020519700000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "32",
+   "weekly": 18.5,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005587228186": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 18.44,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482000519307": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-golden-nut",
+   "dept": "2",
+   "weekly": 11.74,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0083839600199": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 18.07,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0069505800197": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "4",
+   "weekly": 17.99,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005926302001": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "4-coaticook-cr-gl",
+   "dept": "4",
+   "weekly": 17.43,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0762221070356": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-milka",
+   "dept": "2",
+   "weekly": 17.74,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006107750845": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "5",
+   "weekly": 17.73,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0004195300477": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 17.53,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482024152305": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-korolivski-smak-sauce",
+   "dept": "1",
+   "weekly": 17.47,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482024152313": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-korolivski-smak-sauce",
+   "dept": "1",
+   "weekly": 14.01,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0077624103130": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 17.3,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0474008601240": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 17.3,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0023881700000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "24",
+   "weekly": 17.19,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0023980300000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "32",
+   "weekly": 16.77,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0003338325045": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 16.63,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0071575610004": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 16.59,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482002667277": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 16.59,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0004150880376": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 16.31,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005500020402": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-perrier-eau-s",
+   "dept": "2",
+   "weekly": 12.58,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482019509073": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 16.06,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0003338365325": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-c-leri-gr30",
+   "dept": "41",
+   "weekly": 13.5,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0843700893202": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-c-leri-gr30",
+   "dept": "41",
+   "weekly": 13.11,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0400041767091": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 15.83,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006354987373": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "32",
+   "weekly": 15.67,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006300400500": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "5",
+   "weekly": 15.65,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0484000802977": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "4",
+   "weekly": 15.57,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005783602101": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 15.46,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0000000004218": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 15.3,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0085495700131": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 15.21,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0077033810002": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 15.14,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006310045220": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 15.13,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006354910527": {
+   "added": "2026-07-29",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "32",
+   "weekly": 15.06,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0625336125648": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 15.06,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006202000093": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 15.05,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0871100057615": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "1-jacobs-kronung-cafe",
+   "dept": "1",
+   "weekly": 13.84,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006565101310": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 14.99,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0081318701132": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 14.99,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0071022834019": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 14.92,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005907205748": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 14.62,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0020151500000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 14.55,
+   "scale": true,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482307151676": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "4-smacom-pierogies-au",
+   "dept": "4",
+   "weekly": 14.52,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482307151674": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "4-smacom-pierogies-au",
+   "dept": "4",
+   "weekly": 11.69,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482000057010": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 14.39,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006132853606": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "7",
+   "weekly": 14.39,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0077033302202": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "31-fsant-hummus-traditionnel",
+   "dept": "31",
+   "weekly": 12.91,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0062784320785": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 14.32,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0762220226417": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 14.31,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0476008870470": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 14.18,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006041007998": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "2-lay-s-croust",
+   "dept": "2",
+   "weekly": 11.86,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0628451413165": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "51-omas-rezept-pain",
+   "dept": "51",
+   "weekly": 14.14,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0460524601662": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 14.06,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482018274301": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 13.88,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482019509197": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 13.84,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005500012841": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "4",
+   "weekly": 13.83,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0082493500007": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 13.8,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482009781995": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 13.63,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0022679700000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "61",
+   "weekly": 13.62,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0069671302009": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "41-savoura-tomate-cerizo",
+   "dept": "41",
+   "weekly": 13.36,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006810001117": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 13.34,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006820091053": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "3-lactantia-lait-bio",
+   "dept": "3",
+   "weekly": 13.14,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006820001052": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": "3-lactantia-lait-bio",
+   "dept": "3",
+   "weekly": 11.76,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005587227186": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 12.91,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006810008424": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 12.91,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006820046649": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 12.91,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005783602310": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 12.89,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0062907100170": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 12.71,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005530011308": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 12.67,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0008968617079": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 12.58,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "3482023781319": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 12.51,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0088764300184": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 12.49,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0484000801828": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 12.47,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006568400470": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "3",
+   "weekly": 12.45,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482000043001": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 12.35,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0006041000464": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 12.16,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0083213900018": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 12.1,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0069034560181": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "4",
+   "weekly": 11.99,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0482014861069": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 11.76,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0003338366001": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 11.71,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0020142200000": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "24",
+   "weekly": 11.67,
+   "scale": true,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0484080100033": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 11.66,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0082988200537": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 11.55,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0880107311389": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 11.49,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0000000004427": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "41",
+   "weekly": 11.45,
+   "scale": false,
+   "fresh": true,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0403874560240": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "2",
+   "weekly": 11.27,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0005833611102": {
+   "added": "2026-09-06",
+   "photos": [],
+   "listed": false,
+   "status": "draft",
+   "group": null,
+   "dept": "1",
+   "weekly": 11.19,
+   "scale": false,
+   "fresh": false,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0020142100000": {
+   "added": "2026-07-29",
+   "photos": [],
+   "status": "draft",
+   "group": null,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  },
+  "0075148866987": {
+   "added": "2026-07-29",
+   "photos": [],
+   "status": "draft",
+   "group": null,
+   "v": {
+    "title": false,
+    "size": false,
+    "photo": false,
+    "price": false
+   }
+  }
+ }
+}
