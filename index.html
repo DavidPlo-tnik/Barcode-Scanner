@@ -2278,7 +2278,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v215</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v216</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2867,7 +2867,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v215</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v216</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -10778,8 +10778,9 @@
   // site item -> the POS code the cashier actually rings
   function orPosKey(code) {
     let c = String(code || '').trim();
+    c = c.replace(/-[\d.]+KG$/i, '');                            // sold by weight on the site: "<code>-0.5KG" -> <code>
     // items listed under one code (combo sides/meats/salads, pastries, candies): "candy-<home>-<id>[-0.5KG]"
-    const m = c.match(/^candy-(\d+)-([a-z0-9]+)(?:-[\d.]+KG)?$/i);
+    const m = c.match(/^candy-(\d+)-([a-z0-9]+)$/i);
     if (m) {
       const groups = (_ecomCatalog && _ecomCatalog.candyGroups) || {};
       let tier = m[1];
