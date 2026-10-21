@@ -2281,7 +2281,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v221</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v222</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2872,7 +2872,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v221</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v222</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -6322,24 +6322,55 @@
     const lockedOn = (p) => all.filter(it => it.fix && (it.fix.page || 0) === p);
     const lockRows = (p) => Math.max(0, ...lockedOn(p).map(it => it.fix.rows || 0));   // rows the page had when locked
     const limit = (p) => lockRows(p) || breakRows || maxRows;
+    // TV + FIT TO N PAGES: every box the same size, items spread evenly over the pages,
+    // boxes in a neat grid (a short last row is centred)
+    const uni = want > 0 && fmtKey === 'tv';
+    let uniC = 0, uniR = 0;
     const pages = []; let cur = lockedOn(0);
-    for (const it of all) {
+    if (uni) {
+      const list = all.map(it => Object.assign({}, it, { fix: null, lockPos: null }));
+      const nP = Math.max(1, Math.min(want, list.length));
+      let k = 0;
+      for (let pI = 0; pI < nP; pI++) { const take = Math.floor(list.length / nP) + (pI < list.length % nP ? 1 : 0); pages.push(list.slice(k, k + take)); k += take; }
+      const nMax = Math.max(1, ...pages.map(x => x.length));
+      const aW = W - M * 2, aH = bodyBot - bodyTop;
+      let bestSc = -1;
+      for (let C = 1; C <= nMax; C++) {
+        const R = Math.ceil(nMax / C);
+        const cwU = (aW - GAP * (C - 1)) / C, chU = (aH - GAP * (R - 1)) / R;
+        const sc = Math.min(cwU / 1.25, chU) - (C * R - nMax) * .5;     // biggest card around 5:4, few empty slots
+        if (sc > bestSc) { bestSc = sc; uniC = C; uniR = R; }
+      }
+      cur = null;
+    }
+    for (const it of (uni ? [] : all)) {
       if (it.fix) continue;
       const test = cur.concat([it]);
       if (!onePage && cur.length && flyerPack(test, cols).rows > limit(pages.length)) { pages.push(cur); cur = lockedOn(pages.length).concat([it]); } else cur = test;
     }
-    pages.push(cur);
-    while (all.some(it => it.fix && (it.fix.page || 0) >= pages.length)) pages.push(lockedOn(pages.length));
+    if (!uni) {
+      pages.push(cur);
+      while (all.some(it => it.fix && (it.fix.page || 0) >= pages.length)) pages.push(lockedOn(pages.length));
+    }
     const pageN = Math.max(1, pages.filter((pg, i) => pg.length || i === 0).length);
     page = Math.min(page || 0, pageN - 1);
     const units = pages[page] || [];
-    const packed = flyerPack(units, cols);
-    const place = packed.place;
+    let packed = uni ? null : flyerPack(units, cols);
+    let place = uni ? [] : packed.place;
+    if (uni) {
+      cols = uniC * 2;                       // half-cells so a short last row can sit centred
+      units.forEach((it, i) => {
+        const r = Math.floor(i / uniC), j = i % uniC;
+        const inRow = Math.min(uniC, units.length - r * uniC);
+        place[i] = { r, c: (uniC - inRow) + j * 2, w: 2, h: 1 };
+      });
+      packed = { rows: uniR, place };
+    }
     // later pages keep a similar box size instead of blowing a few boxes up to full page
-    let rows = want > 1 ? Math.max(packed.rows, Math.ceil(maxRows * .6))
+    let rows = uni ? uniR : want > 1 ? Math.max(packed.rows, Math.ceil(maxRows * .6))
       : pageN > 1 ? Math.max(packed.rows, Math.ceil(maxRows * .75)) : (onePage ? Math.max(packed.rows, Math.ceil(maxRows * .6)) : packed.rows);
-    if (!onePage && lockRows(page)) rows = Math.max(packed.rows, lockRows(page));          // same cell size as when locked
-    if (onePage && all.some(it => it.lockPos)) rows = Math.max(packed.rows, _flOneRows || packed.rows);   // the rows the locked box was converted for
+    if (!uni && !onePage && lockRows(page)) rows = Math.max(packed.rows, lockRows(page));          // same cell size as when locked
+    if (!uni && onePage && all.some(it => it.lockPos)) rows = Math.max(packed.rows, _flOneRows || packed.rows);   // the rows the locked box was converted for
     const cw = (W - M * 2 - GAP * (cols - 1)) / cols;
     const ch = rows ? (bodyBot - bodyTop - GAP * (rows - 1)) / rows : 0;
     const boxes = [];
