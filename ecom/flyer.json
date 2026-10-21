@@ -210,24 +210,8 @@
    "note": "2 saveurs disponibles",
    "name": "Veladis Hareng 500g",
    "ph": {},
-   "lock": true,
-   "pos": {
-    "post": {
-     "r": 0,
-     "c": 0,
-     "page": 0,
-     "cols": 16,
-     "rows": 0,
-     "pw": 359,
-     "ph": 312,
-     "base": 102.78809523809522,
-     "S": {
-      "tag": 37,
-      "name": 13,
-      "refMin": 89.38095238095238
-     }
-    }
-   }
+   "lock": false,
+   "pos": {}
   },
   {
    "id": "gmv8hzpfx",
