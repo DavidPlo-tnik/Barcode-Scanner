@@ -2281,7 +2281,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v220</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v221</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2872,7 +2872,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v220</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v221</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -6265,7 +6265,8 @@
         w = Math.max(1, Math.min(cols, Math.ceil((pos.pw + GAP) / (cellW(cols) + GAP) - .08)));
         h = Math.max(1, Math.ceil((pos.ph + GAP) / (cellH(rowsFor) + GAP) - .08));
       }
-      return { u, w, h, manual: s.manual || !!pos, fix: pos && pos.cols === cols ? pos : null, lockPos: pos || null };
+      // FIT TO N PAGES: hand-sized boxes may also grow into empty spots (only LOCKED boxes stay exact)
+      return { u, w, h, manual: (want > 0 ? false : s.manual) || !!pos, fix: pos && pos.cols === cols ? pos : null, lockPos: pos || null };
     });
     let cols = F.cols, maxRows = F.rows, all = mk(cols);
     if (onePage) {
@@ -6294,16 +6295,24 @@
       };
       // biggest boxes (fewest columns) that come out to EXACTLY N pages; a page may break a little
       // early (fewer rows used) so the boxes spread over N pages instead of jumping from N+1 to N-1
+      // empty cells over all pages when each page breaks after mr rows (pages are drawn at least 60% tall)
+      const holes = (list, c, mr, r2) => {
+        let tot = 0, cur = [];
+        const close = () => { if (!cur.length) return; const pk = flyerPack(cur, c); const rd = Math.max(pk.rows, Math.ceil(r2 * .6));
+          tot += rd * c - pk.place.reduce((q, pl) => q + (pl ? pl.w * pl.h : 0), 0); };
+        for (const it of list) { const t = cur.concat([it]); if (cur.length && flyerPack(t, c).rows > mr) { close(); cur = [it]; } else cur = t; }
+        close(); return tot;
+      };
       let best = null, fallback = null;
       for (let k = 0; k <= 28 && !best; k++) {
         const c2 = F.cols + k, r2 = Math.round(F.rows * c2 / F.cols), a2 = mk(c2, r2);
         const full = countPages(a2, c2, r2);
         if (full > want) continue;
         if (!fallback) fallback = { c2, r2, a2, br: 0 };
-        if (full === want) { best = { c2, r2, a2, br: 0 }; break; }
-        for (let mr = r2 - 1; mr >= Math.ceil(r2 * .5); mr--) {
-          const n = countPages(a2, c2, mr);
-          if (n === want) { best = { c2, r2, a2, br: mr }; break; }
+        for (let mr = r2; mr >= Math.ceil(r2 * .5); mr--) {
+          if (countPages(a2, c2, mr) !== want) continue;
+          const hl = holes(a2, c2, mr, r2);
+          if (!best || hl < best.hl) best = { c2, r2, a2, br: mr === r2 ? 0 : mr, hl };
         }
       }
       const pick = best || fallback;
@@ -6327,7 +6336,8 @@
     const packed = flyerPack(units, cols);
     const place = packed.place;
     // later pages keep a similar box size instead of blowing a few boxes up to full page
-    let rows = pageN > 1 ? Math.max(packed.rows, Math.ceil(maxRows * .75)) : (onePage ? Math.max(packed.rows, Math.ceil(maxRows * .6)) : packed.rows);
+    let rows = want > 1 ? Math.max(packed.rows, Math.ceil(maxRows * .6))
+      : pageN > 1 ? Math.max(packed.rows, Math.ceil(maxRows * .75)) : (onePage ? Math.max(packed.rows, Math.ceil(maxRows * .6)) : packed.rows);
     if (!onePage && lockRows(page)) rows = Math.max(packed.rows, lockRows(page));          // same cell size as when locked
     if (onePage && all.some(it => it.lockPos)) rows = Math.max(packed.rows, _flOneRows || packed.rows);   // the rows the locked box was converted for
     const cw = (W - M * 2 - GAP * (cols - 1)) / cols;
@@ -6396,11 +6406,19 @@
 
   // Photos sit side by side at the SAME height (so one bag isn't bigger than the others),
   // standing on a common line, slightly overlapping. Manual nudges (cfg.ph) are applied on top.
-  function flyerPhotoAuto(imgs, left, top, right, bottom) {
+  function flyerPhotoAuto(imgs, left, top, right, bottom, keepOld) {
     const aw = right - left, ah = Math.max(10, bottom - top), n = imgs.length;
     const ov = n > 1 ? .16 : 0;
-    const oneRow = n <= 3 || aw / ah > 1.5;
-    const rowsArr = oneRow ? [imgs.map((t, k) => k)] : [imgs.map((t, k) => k).slice(0, Math.ceil(n / 2)), imgs.map((t, k) => k).slice(Math.ceil(n / 2))];
+    // try 1, 2 or 3 rows and keep the arrangement that draws the photos biggest (least empty card)
+    const split = (R) => { const out = [], per = Math.ceil(n / R); for (let i = 0; i < n; i += per) out.push(imgs.map((t, k) => k).slice(i, i + per)); return out; };
+    const score = (rr) => { const rh = ah / rr.length; return rr.reduce((sum, idx) => {
+      const ars = idx.map(k => imgs[k].sw / imgs[k].sh);
+      const uw = ars.slice(0, -1).reduce((q, a) => q + a * (1 - ov), 0) + ars[ars.length - 1];
+      const hh = Math.min(rh * (rr.length > 1 ? 1.06 : 1), aw / uw);
+      return sum + ars.reduce((q, a) => q + a * hh * hh, 0); }, 0); };
+    let rowsArr = split(1), bestS = score(rowsArr);
+    if (keepOld) rowsArr = n <= 3 || aw / ah > 1.5 ? split(1) : split(2);   // photos moved by hand: keep the arrangement they were moved in
+    else for (let R = 2; R <= Math.min(3, n); R++) { const rr = split(R), sc = score(rr); if (sc > bestS * 1.08) { rowsArr = rr; bestS = sc; } }
     const rowH = ah / rowsArr.length;
     const out = [];
     rowsArr.forEach((idx, ri) => {
@@ -6450,8 +6468,8 @@
     if (imgs.length) {
       const top = y + P * .35, bottom = wide ? y + h - P * .35 : y + ph + P * .25;
       const left = wide ? x + colW : x + P * .3, right = x + w - (wide ? P + tagS * 2.2 : P * .3);
-      const auto = flyerPhotoAuto(imgs, left, top, right, bottom);
       const man = (u.cfg.ph && u.cfg.ph[fmtKey]) || {};
+      const auto = flyerPhotoAuto(imgs, left, top, right, bottom, Object.keys(man).length > 0);
       imgs.forEach((t, k) => {
         let r = auto[k];
         const o = man[fnames[k]];
