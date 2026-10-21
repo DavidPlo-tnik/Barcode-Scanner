@@ -924,6 +924,7 @@
   .ecom-star::after { content: ''; position: absolute; inset: -6px; }
   .ecom-star.on { border-color: var(--warn); color: var(--warn); }
   #pd-feat-btn.is-on { border-color: var(--warn); color: var(--warn); font-weight: 700; }
+  #pd-flyer-btn.is-on { border-color: var(--accent); color: var(--accent); font-weight: 700; }
   #pd-oos-btn.is-out, .candy-row .btn.is-out { background: transparent; border-color: var(--bad); color: var(--bad); font-weight: 700; }
 
 
@@ -966,7 +967,8 @@
   .fl-note { margin-top: 2px; font-size: 11.5px; font-weight: 600; color: #ff7a72; cursor: text; }
   .fl-note.empty { color: var(--text-faint); font-weight: 400; }
   .fl-edit { width: 100%; box-sizing: border-box; background: var(--surface-2); border: 1px solid var(--accent); border-radius: 7px; color: var(--text); font-size: 13px; padding: 6px 8px; }
-  .fl-pick { gap: 6px; }
+  .fl-pick { gap: 6px; flex-wrap: wrap; }
+  .fl-picknote { font-family: var(--font-display); font-size: 10px; color: var(--text-dim); letter-spacing: .04em; }
   .fl-pickimg { width: 34px; height: 34px; padding: 0; border-radius: 7px; border: 2px solid var(--border); background: #fff; overflow: hidden; cursor: pointer; }
   .fl-pickimg img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .fl-pickimg.on { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(212,255,58,.35); }
@@ -2278,7 +2280,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v216</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v217</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2789,6 +2791,7 @@
       <div class="pd-note" id="pd-ecom-note"></div>
       <button type="button" class="btn small" id="pd-oos-btn" style="display:none;margin-top:8px;">MARK OUT OF STOCK</button>
       <button type="button" class="btn small" id="pd-feat-btn" style="display:none;margin-top:8px;">\u2606 FEATURE ON HOME PAGE</button>
+      <button type="button" class="btn small" id="pd-flyer-btn" style="margin-top:8px;">📰 ADD TO FLYER</button>
 
       <!-- Only shown for the bulk candy/chocolate price-level codes. These
            codes have one POS price for many different physical products, so
@@ -2867,7 +2870,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v216</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v217</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -5187,13 +5190,24 @@
       return { code, photos: ent.photos || [], kg: e.bal === 1, pp: r.pp, pq: r.pq || 1, rp: r.rp, rq: r.rq || 1,
                ps: r.ps, pe: r.pe, posName: p ? String(p[0]).trim() : code, size: p && p[10] ? String(p[10]).trim() : '' };
     }).filter(r => r.photos.length);
+    // items added with "ADD TO FLYER": no promo, shown at their regular price (no % off)
+    const onFlyer = new Set(_fl.rows.map(r => r.code));
+    Object.keys(_fl.cfg.extras || {}).forEach(c0 => {
+      const code = resolveCode(c0), p = DATA.products[code];
+      if (!p || onFlyer.has(code)) return;
+      const ent = cat.items[code] || {}, e = editStateFor(code) || {};
+      if (!(ent.photos || []).length) return;
+      onFlyer.add(code);
+      _fl.rows.push({ code, photos: ent.photos, kg: e.bal === 1, pp: e.rp != null ? e.rp : p[1], pq: e.rq || 1, rp: null, rq: 1,
+                      ps: null, pe: null, posName: String(p[0]).trim(), size: p[10] ? String(p[10]).trim() : '', extra: c0 });
+    });
     const ord = (_fl.mode === 'next' && _fl.cfg.weekOrder && _fl.cfg.weekOrder[nw.start]) || (cat.specialsOrder || []).map(c => resolveCode(c));
     const rank = (r) => { const i = ord.indexOf(r.code); return i < 0 ? 9999 : i; };
     _fl.rows.sort((a, b) => (rank(a) - rank(b)) || String(a.ps || '').localeCompare(String(b.ps || '')));
     if (_fl.mode === 'next') { _fl.from = nw.start; _fl.to = nw.end; }
     else {
       _fl.from = _fl.rows.map(r => r.ps).filter(Boolean).sort().reverse()[0] || pmToday();
-      const ends = {}; _fl.rows.forEach(r => { ends[r.pe] = (ends[r.pe] || 0) + 1; });
+      const ends = {}; _fl.rows.forEach(r => { if (r.pe) ends[r.pe] = (ends[r.pe] || 0) + 1; });
       _fl.to = Object.keys(ends).sort((x, y) => ends[y] - ends[x])[0] || pmAddDays(pmToday(), 6);
       if (_fl.from > _fl.to) _fl.from = pmAddDays(_fl.to, -6);
     }
@@ -5252,10 +5266,17 @@
     const firsts = new Set(u.members.map(m => flyerNiceName(m.posName).split(' ')[0].toLowerCase()));
     return firsts.size === 1 ? `${u.members.length} saveurs disponibles` : `${u.members.length} variétés disponibles`;
   }
+  // which members of a group show a photo: any number of them (empty = all). Old single "hero" still works.
+  function flyerPicked(u) {
+    const c = u.cfg, codes = u.members.map(m => m.code);
+    const pick = Array.isArray(c.pick) ? c.pick : (c.hero ? [c.hero] : []);
+    return pick.filter(x => codes.includes(x));
+  }
   function flyerUnitPhotos(u) {
     if (u.members.length > 1) {
-      const hero = u.cfg.hero && u.members.find(m => m.code === u.cfg.hero);
-      return hero ? [hero.photos[0]] : u.members.map(m => m.photos[0]).slice(0, 6);
+      const pick = flyerPicked(u);
+      const ms = pick.length ? u.members.filter(m => pick.includes(m.code)) : u.members;
+      return ms.map(m => m.photos[0]).slice(0, 6);
     }
     const r = u.members[0];
     return u.cfg.all ? r.photos.slice(0, 6) : [r.photos[0]];
@@ -5331,8 +5352,9 @@
     const note = c.note != null && c.note !== '' ? c.note : flyerUnitNote(u, true);
     const photoPick = multi
       ? `<div class="fl-row fl-pick"><span class="fl-lbl">PHOTO</span>
-           <button class="fl-chip ${!c.hero ? 'on' : ''}" data-hero="">ALL ${u.members.length}</button>
-           ${u.members.map(m => `<button class="fl-pickimg ${c.hero === m.code ? 'on' : ''}" data-hero="${m.code}" title="Only this one"><img src="${photoSrc(m.photos[0])}" alt=""></button>`).join('')}
+           <button class="fl-chip ${!flyerPicked(u).length ? 'on' : ''}" data-hero="">ALL ${u.members.length}</button>
+           ${u.members.map(m => `<button class="fl-pickimg ${flyerPicked(u).includes(m.code) ? 'on' : ''}" data-hero="${m.code}" title="Tap the ones to show"><img src="${photoSrc(m.photos[0])}" alt=""></button>`).join('')}
+           <span class="fl-picknote">${flyerPicked(u).length ? flyerPicked(u).length + ' of ' + u.members.length : 'tap photos to pick'}</span>
          </div>`
       : (r0.photos.length > 1 ? `<div class="fl-row"><span class="fl-lbl">PHOTO</span><button class="fl-chip ${!c.all ? 'on' : ''}" data-all="0">1</button><button class="fl-chip ${c.all ? 'on' : ''}" data-all="1">ALL ${r0.photos.length}</button></div>` : '');
     return `<div class="fl-item ${multi ? 'fl-group' : ''} ${c.hide ? 'off' : ''} ${sel && sel.has(u.key) ? 'picked' : ''}" data-key="${escapeHtml(u.key)}" style="--i:${i}">
@@ -5342,7 +5364,7 @@
           <div class="fl-item-mid">
             <div class="fl-name" data-edit="name">${escapeHtml(flyerUnitName(u))}</div>
             <div class="fl-note ${note ? '' : 'empty'}" data-edit="note">${escapeHtml(note || '+ add a note')}</div>
-            <div class="fl-sub">${multi ? `<b>GROUP · ${u.members.length}</b> · ` : ''}${escapeHtml(deal)}</div>
+            <div class="fl-sub">${multi ? `<b>GROUP · ${u.members.length}</b> · ` : ''}${escapeHtml(deal)}${r0.extra && !multi ? ' · <b>NO PROMO</b> (regular price)' : ''}</div>
           </div>
           <div class="fl-grip" title="Hold, then drag to reorder">≡</div>
         </div>
@@ -5350,6 +5372,7 @@
         <div class="fl-row">
           <button class="fl-chip ${c.hide ? 'on' : ''}" data-hide="1">${c.hide ? 'HIDDEN' : 'HIDE'}</button>
           ${multi ? '<button class="fl-chip" data-ungroup="1">UNGROUP</button>' : ''}
+          ${r0.extra && !multi ? `<button class="fl-chip" data-unflyer="${escapeHtml(r0.extra)}">REMOVE FROM FLYER</button>` : ''}
         </div>
       </div>
     </div>`;
@@ -5360,8 +5383,19 @@
     const c = u.cfg;
     el.querySelectorAll('[data-all]').forEach(b => b.addEventListener('click', () => { c.all = b.dataset.all === '1'; el.querySelectorAll('[data-all]').forEach(x => x.classList.toggle('on', x === b)); flyerSaveCfg(); flyerDraw(); }));
     el.querySelectorAll('[data-hero]').forEach(b => b.addEventListener('click', () => {
-      c.hero = b.dataset.hero || null; el.querySelectorAll('[data-hero]').forEach(x => x.classList.toggle('on', x === b)); flyerSaveCfg(); flyerDraw();
+      // tap photos to add / remove them; ALL clears the pick. Picking every one = ALL.
+      let pick = flyerPicked(u);
+      const code = b.dataset.hero;
+      if (!code) pick = [];
+      else pick = pick.includes(code) ? pick.filter(x => x !== code) : pick.concat(code);
+      if (pick.length >= u.members.length) pick = [];
+      c.pick = pick; delete c.hero;
+      el.querySelectorAll('[data-hero]').forEach(x => x.classList.toggle('on', x.dataset.hero ? pick.includes(x.dataset.hero) : !pick.length));
+      const pn = el.querySelector('.fl-picknote'); if (pn) pn.textContent = pick.length ? pick.length + ' of ' + u.members.length : 'tap photos to pick';
+      flyerSaveCfg(); flyerDraw();
     }));
+    const rx = el.querySelector('[data-unflyer]');
+    if (rx) rx.addEventListener('click', () => { delete (_fl.cfg.extras || {})[rx.dataset.unflyer]; flyerSaveCfg(); flyerOpen(_fl.mode, true); });
     el.querySelector('[data-hide]').addEventListener('click', (ev) => { c.hide = !c.hide; el.classList.toggle('off', c.hide); ev.target.classList.toggle('on', c.hide); ev.target.textContent = c.hide ? 'HIDDEN' : 'HIDE'; flyerSaveCfg(); flyerDraw(); });
     const ug = el.querySelector('[data-ungroup]');
     if (ug) ug.addEventListener('click', () => { _fl.cfg.groups = _fl.cfg.groups.filter(g => g !== u.group); flyerSaveCfg(); flyerRenderUI(); });
@@ -7157,6 +7191,7 @@
 
     const candyBtn = $('#pd-candy-btn');
     if (candyBtn) candyBtn.style.display = isCandyTierCode(code) ? 'block' : 'none';
+    pdPaintFlyer(code);
 
     bindPdPhotoUpload();
     renderQueuedForItem(code);
@@ -7512,6 +7547,31 @@
   // Earlier this button toggled a 'listed' sub-flag, which is why existing
   // catalogue items (added as drafts, listed:false) confusingly showed
   // "+ ECOM" as if they weren't in it at all.
+  // ---- "add to flyer" without a promo: shows at its regular price, no % off ----
+  async function pdPaintFlyer(code) {
+    const b = $('#pd-flyer-btn'); if (!b) return;
+    if (!_fl.cfg) { b.textContent = '📰 ADD TO FLYER'; b.classList.remove('is-on'); try { await flyerLoadCfg(); } catch (e) {} }
+    if (!_pdCtx || _pdCtx.code !== code) return;
+    const on = !!(_fl.cfg && _fl.cfg.extras && _fl.cfg.extras[code]);
+    b.textContent = on ? '✓ ON THE FLYER (tap to remove)' : '📰 ADD TO FLYER';
+    b.classList.toggle('is-on', on);
+  }
+  async function pdToggleFlyer(code) {
+    const b = $('#pd-flyer-btn'); b.disabled = true;
+    try {
+      if (!_fl.cfg) await flyerLoadCfg();
+      _fl.cfg.extras = _fl.cfg.extras || {};
+      if (_fl.cfg.extras[code]) { delete _fl.cfg.extras[code]; showToast('Removed from the flyer'); }
+      else {
+        const cat = await fetchEcomCatalog().catch(() => null);
+        const ent = cat && cat.items && cat.items[code];
+        _fl.cfg.extras[code] = { at: pmToday() };
+        showToast(ent && ent.photos && ent.photos.length ? 'On the flyer at its regular price (no promo)' : 'Added — it shows on the flyer once it has a website photo');
+      }
+      flyerSaveCfg();
+    } finally { b.disabled = false; pdPaintFlyer(code); }
+  }
+
   function paintPdEcomBtn(ent) {
     const btn = $('#pd-ecom-btn'), note = $('#pd-ecom-note');
     if (!btn) return;
@@ -13328,6 +13388,7 @@
     $('#pd-ecom-btn').addEventListener('click', togglePdEcom);
     $('#pd-oos-btn').addEventListener('click', () => { if (_pdCtx && _pdCtx.code) ecomToggleOos(_pdCtx.code); });
     $('#pd-feat-btn').addEventListener('click', () => { if (_pdCtx && _pdCtx.code) ecomToggleFeatured(_pdCtx.code); });
+    $('#pd-flyer-btn').addEventListener('click', () => { if (_pdCtx && _pdCtx.code) pdToggleFlyer(_pdCtx.code); });
     $('#pd-candy-btn').addEventListener('click', () => { if (_pdCtx) openCandyManager(_pdCtx.code); });
     $('#close-flyer-modal').addEventListener('click', () => $('#flyer-modal').classList.remove('open'));
     $('#close-candy-modal').addEventListener('click', () => {
