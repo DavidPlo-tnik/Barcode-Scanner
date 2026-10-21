@@ -30,24 +30,8 @@
    },
    "ph": {},
    "name": "Chumak Huile de Tournesol Non-Raffiné 900ml MA: 2026/10/23",
-   "lock": true,
-   "pos": {
-    "post": {
-     "r": 0,
-     "c": 6,
-     "page": 0,
-     "cols": 8,
-     "rows": 11,
-     "pw": 232,
-     "ph": 434,
-     "base": 184.29870129870127,
-     "S": {
-      "tag": 52,
-      "name": 19,
-      "refMin": 160.25974025974025
-     }
-    }
-   }
+   "lock": false,
+   "pos": {}
   },
   "0482017460008": {},
   "0460178000539": {},
