@@ -397,7 +397,7 @@
   ]
  },
  "onePage": {
-  "post": true,
+  "post": false,
   "tv": true
  },
  "theme": "classique"
