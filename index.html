@@ -942,6 +942,7 @@
   .fl-themes { display: flex; align-items: center; gap: 8px; margin: 4px 0 10px; }
   .fl-themes label { font-family: var(--font-display); font-size: 9.5px; color: var(--text-dim); }
   .fl-themes i { width: 22px; height: 22px; border-radius: 6px; flex: none; border: 1px solid rgba(0,0,0,.25); }
+  .fl-pages-sel { flex: 1; min-width: 0; background: var(--surface-2); border: 1px solid var(--accent); border-radius: 9px; color: var(--accent); font-family: var(--font-display); font-size: 11.5px; font-weight: 800; padding: 10px 8px; }
   .fl-themes select { flex: 1; min-width: 0; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 13px; padding: 8px; }
   .fl-actions { display: flex; gap: 8px; margin: 4px 0 14px; }
   .fl-actions button { flex: 1; padding: 11px; border-radius: 9px; border: none; background: var(--accent); color: #000; font-family: var(--font-display); font-size: 11.5px; font-weight: 800; cursor: pointer; }
@@ -2280,7 +2281,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v218</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v219</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2871,7 +2872,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v218</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v219</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -5310,7 +5311,7 @@
       <div class="fl-preview"><div class="fl-stage" id="fl-stage"><canvas id="fl-canvas"></canvas><div class="fl-edit-hint">✎ TAP TO EDIT LAYOUT</div></div></div>
       <div class="fl-pages" id="fl-pages"></div>
       <div class="fl-actions"><button class="alt" id="fl-edit" style="flex:1">✎ EDIT LAYOUT</button>
-        <button class="alt ${_fl.cfg.onePage && _fl.cfg.onePage[_fl.fmt] ? 'on' : ''}" id="fl-one" style="flex:1">${_fl.cfg.onePage && _fl.cfg.onePage[_fl.fmt] ? '✓ ' : ''}ALL ON ONE PAGE</button></div>
+        ${flyerPagesSelect('fl-one')}</div>
       <div class="fl-themes"><label for="fl-theme">COLOURS</label><i id="fl-theme-sw" style="background:${flSwatch(flTheme())}"></i>
         <select id="fl-theme">${Object.entries(FL_THEMES).map(([k, t]) => `<option value="${k}" ${((_fl.cfg.theme || 'classique') === k) ? 'selected' : ''}>${t.name}</option>`).join('')}</select></div>
       ${_fl.fmt === 'tv' ? `<div class="fl-actions"><button class="alt ${_fl.cfg.qr !== false ? 'on' : ''}" id="fl-qr">${_fl.cfg.qr !== false ? '✓ ' : ''}QR CODES ON TV</button></div>` : ''}
@@ -5332,7 +5333,7 @@
     $('#fl-edit').addEventListener('click', flyerEditorOpen);
     $('#fl-theme').addEventListener('change', (e) => { _fl.cfg.theme = e.target.value; $('#fl-theme-sw').style.background = flSwatch(flTheme()); flyerSaveCfg(); _fl.page = 0; flyerDraw(); });
     if ($('#fl-qr')) $('#fl-qr').addEventListener('click', () => { _fl.cfg.qr = _fl.cfg.qr === false; flyerSaveCfg(); flyerRenderUI(); });
-    $('#fl-one').addEventListener('click', () => { _fl.cfg.onePage = _fl.cfg.onePage || {}; _fl.cfg.onePage[_fl.fmt] = !_fl.cfg.onePage[_fl.fmt]; _fl.page = 0; flyerSaveCfg(); flyerRenderUI(); });
+    $('#fl-one').addEventListener('change', (e) => { flyerSetPages(+e.target.value); flyerRenderUI(); });
     $('#fl-dl').addEventListener('click', () => { _fl.sel = null; flyerPaintOverlay(); flyerExport([_fl.fmt]); });
     $('#fl-dl-all').addEventListener('click', () => { _fl.sel = null; flyerPaintOverlay(); flyerExport(Object.keys(FL_FORMATS)); });
     $('#fl-sel-cancel').addEventListener('click', () => flyerSelectMode(null));
@@ -5723,6 +5724,10 @@
     ov.innerHTML = h + '<div class="fle-ghost" id="fle-ghost"></div>';
   }
   const flyerUnitByKey = (k) => flyerUnits().find(x => x.key === k);
+  // FIT TO N PAGES (0 = automatic). Older flyers saved true for "all on one page".
+  function flyerPagesWanted(fmt) { const v = _fl.cfg.onePage && _fl.cfg.onePage[fmt || _fl.fmt]; return v === true ? 1 : Math.max(0, Math.min(10, +v || 0)); }
+  function flyerSetPages(n) { _fl.cfg.onePage = _fl.cfg.onePage || {}; if (n) _fl.cfg.onePage[_fl.fmt] = n; else delete _fl.cfg.onePage[_fl.fmt]; _fl.page = 0; flyerSaveCfg(); }
+  const flyerPagesSelect = (id) => { const n = flyerPagesWanted(); return `<select id="${id}" class="fl-pages-sel">${['AUTO PAGES', ...Array.from({ length: 10 }, (_, i) => `FIT TO ${i + 1} PAGE${i ? 'S' : ''}`)].map((t, i) => `<option value="${i}" ${n === i ? 'selected' : ''}>${t}</option>`).join('')}</select>`; };
 
   // ---- contextual bottom bar
   function flyerEdTools() {
@@ -5735,7 +5740,7 @@
     const pages = (L.pages || 1) > 1 ? `<div class="fle-row">${Array.from({ length: L.pages }, (_, i) => `<button data-pg="${i}" class="${i === L.page ? 'on' : ''}">PAGE ${i + 1}</button>`).join('')}</div>` : '';
     if (!u) {
       el.innerHTML = `${pages}<div class="fle-row">
-          <button data-t="one" class="${one ? 'on' : ''}">${one ? '✓ ' : ''}ALL ON ONE PAGE</button>
+          ${flyerPagesSelect('fle-pages')}
           <span class="fle-hint">Tap a box to edit it · pinch or wheel to zoom · drag to move around</span></div>`;
     } else if (u.cfg.lock) {
       el.innerHTML = `${pages}<div class="fle-name">${escapeHtml(flyerUnitName(u))}</div>
@@ -5769,6 +5774,8 @@
     }
     el.querySelectorAll('[data-pg]').forEach(x => x.addEventListener('click', () => { _fl.page = +x.dataset.pg; _fl.sel = null; flyerDraw(); }));
     el.querySelectorAll('[data-t]').forEach(x => x.addEventListener('click', () => flyerEdAct(x.dataset.t)));
+    const ps = el.querySelector('#fle-pages');
+    if (ps) ps.addEventListener('change', async () => { flyerSnap(); flyerSetPages(+ps.value); await flyerDraw(); flyerFit(); });
   }
 
   async function flyerEdAct(t) {
@@ -6244,7 +6251,7 @@
 
     // grid
     const bodyTop = headTop + headH + Math.round(H * (tv ? .028 : .02)), bodyBot = H - footH - Math.round(H * .018);
-    const onePage = !!(_fl.cfg.onePage && _fl.cfg.onePage[fmtKey]);
+    const want = flyerPagesWanted(fmtKey), onePage = want === 1;
     // a LOCKED box keeps its real size: on its own page the grid keeps the row count it had
     // when it was locked; on a finer one-page grid its size in cells is converted so the
     // box (and its photos / price tag) come out the same size in pixels.
@@ -6275,6 +6282,18 @@
           all = a3; if (r3 === rr) break; rr = r3;
         }
         _flOneRows = rr;
+      }
+    }
+    if (want > 1) {
+      // FIT TO N PAGES: the coarsest grid (biggest boxes) whose pages come out to N or fewer
+      const countPages = (list, c, mr) => {
+        let n = 1, cur = [];
+        for (const it of list) { const t = cur.concat([it]); if (cur.length && flyerPack(t, c).rows > mr) { n++; cur = [it]; } else cur = t; }
+        return n;
+      };
+      for (let k = 0; k <= 14; k++) {
+        const c2 = F.cols + 2 * k, r2 = Math.round(F.rows * c2 / F.cols), a2 = mk(c2, r2);
+        if (countPages(a2, c2, r2) <= want || k === 14) { cols = c2; maxRows = r2; all = a2; break; }
       }
     }
     // pages: locked boxes stay on their page; the rest flow in order until a page is full
@@ -6487,7 +6506,7 @@
     _fl.page = layout.page;
     const pg = $('#fl-pages');
     if (pg) {
-      pg.innerHTML = layout.pages > 1 ? `<span>${layout.pages} pages — or tap ALL ON ONE PAGE</span>` + Array.from({ length: layout.pages }, (_, i) => `<button data-page="${i}" class="${i === layout.page ? 'on' : ''}">PAGE ${i + 1}</button>`).join('') : '';
+      pg.innerHTML = layout.pages > 1 ? `<span>${layout.pages} pages — change it with FIT TO … PAGES</span>` + Array.from({ length: layout.pages }, (_, i) => `<button data-page="${i}" class="${i === layout.page ? 'on' : ''}">PAGE ${i + 1}</button>`).join('') : '';
       pg.querySelectorAll('[data-page]').forEach(b => b.addEventListener('click', () => { _fl.page = +b.dataset.page; _fl.sel = null; flyerDraw(); }));
     }
     flyerPaintOverlay();
