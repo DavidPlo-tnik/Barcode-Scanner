@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21T01:16:58.717Z",
+ "updated": "2026-10-21T01:32:28.562Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -5066,23 +5066,6 @@
    "group": "31-pate-de-foie",
    "dept": "31",
    "weekly": 36.54,
-   "scale": true,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0020775000000": {
-   "added": "2026-07-30",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "31-pate-de-foie",
-   "dept": "31",
-   "weekly": 33.66,
    "scale": true,
    "fresh": false,
    "v": {
