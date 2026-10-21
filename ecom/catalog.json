@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21T00:19:30.008Z",
+ "updated": "2026-10-21T00:20:07.641Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -2857,23 +2857,6 @@
    "group": "4-vol-pole-mini",
    "dept": "4",
    "weekly": 65.68,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482000423746": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "4-vol-pole-mini",
-   "dept": "4",
-   "weekly": 62.37,
    "scale": false,
    "fresh": false,
    "v": {
