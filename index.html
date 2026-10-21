@@ -2281,7 +2281,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v219</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v220</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2872,7 +2872,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v219</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v220</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -6284,6 +6284,7 @@
         _flOneRows = rr;
       }
     }
+    let breakRows = 0;
     if (want > 1) {
       // FIT TO N PAGES: the coarsest grid (biggest boxes) whose pages come out to N or fewer
       const countPages = (list, c, mr) => {
@@ -6291,15 +6292,27 @@
         for (const it of list) { const t = cur.concat([it]); if (cur.length && flyerPack(t, c).rows > mr) { n++; cur = [it]; } else cur = t; }
         return n;
       };
-      for (let k = 0; k <= 14; k++) {
-        const c2 = F.cols + 2 * k, r2 = Math.round(F.rows * c2 / F.cols), a2 = mk(c2, r2);
-        if (countPages(a2, c2, r2) <= want || k === 14) { cols = c2; maxRows = r2; all = a2; break; }
+      // biggest boxes (fewest columns) that come out to EXACTLY N pages; a page may break a little
+      // early (fewer rows used) so the boxes spread over N pages instead of jumping from N+1 to N-1
+      let best = null, fallback = null;
+      for (let k = 0; k <= 28 && !best; k++) {
+        const c2 = F.cols + k, r2 = Math.round(F.rows * c2 / F.cols), a2 = mk(c2, r2);
+        const full = countPages(a2, c2, r2);
+        if (full > want) continue;
+        if (!fallback) fallback = { c2, r2, a2, br: 0 };
+        if (full === want) { best = { c2, r2, a2, br: 0 }; break; }
+        for (let mr = r2 - 1; mr >= Math.ceil(r2 * .5); mr--) {
+          const n = countPages(a2, c2, mr);
+          if (n === want) { best = { c2, r2, a2, br: mr }; break; }
+        }
       }
+      const pick = best || fallback;
+      if (pick) { cols = pick.c2; maxRows = pick.r2; all = pick.a2; breakRows = pick.br; }
     }
     // pages: locked boxes stay on their page; the rest flow in order until a page is full
     const lockedOn = (p) => all.filter(it => it.fix && (it.fix.page || 0) === p);
     const lockRows = (p) => Math.max(0, ...lockedOn(p).map(it => it.fix.rows || 0));   // rows the page had when locked
-    const limit = (p) => lockRows(p) || maxRows;
+    const limit = (p) => lockRows(p) || breakRows || maxRows;
     const pages = []; let cur = lockedOn(0);
     for (const it of all) {
       if (it.fix) continue;
