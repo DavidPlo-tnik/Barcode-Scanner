@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21T00:38:08.589Z",
+ "updated": "2026-10-21T00:38:36.271Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -1192,23 +1192,6 @@
    "group": "61-mets-cuisin-s",
    "dept": "61",
    "weekly": 138.19,
-   "scale": true,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0021006800000": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "61-mets-cuisin-s",
-   "dept": "61",
-   "weekly": 67.78,
    "scale": true,
    "fresh": false,
    "v": {
