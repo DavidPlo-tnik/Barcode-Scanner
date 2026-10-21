@@ -2280,7 +2280,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v217</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v218</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2598,6 +2598,7 @@
     </div>
     <div class="par-row">
       <button class="btn small" id="open-pos-direct-btn">⚡ POS EDITOR</button>
+      <button class="btn small" id="open-candy-btn" style="display:none">🍬 ITEMS UNDER THIS CODE</button>
     </div>
   </div>
   <div class="modal-content" id="modal-content"></div>
@@ -2870,7 +2871,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v217</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v218</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4091,6 +4092,7 @@
     if (!p) { showToast('PRODUCT NOT FOUND', true); return; }
     currentProductCode = code;
     renderProduct(p, scannedRaw);
+    const cb = $('#open-candy-btn'); if (cb) cb.style.display = isCandyTierCode(p.code) ? '' : 'none';
     refreshEcomToggle(code);
     $('#product-modal').classList.add('open');
   }
@@ -6902,6 +6904,7 @@
     $('#ed-scanner-wrap').style.display = 'none';
   }
 
+  let _candyAfterPin = null;
   function openPosDirect(code) {
     if (!GH_HAS_TOKEN) { showToast('Getting the app key… (if this repeats: reopen the app, check the staff passphrase)', true); if (window.fetchAppKey) window.fetchAppKey(); return; }
     _pdPendingCode = code;
@@ -6943,6 +6946,9 @@
           _edUnlockMode = false;
           openEditorView();
           setTimeout(() => $('#ed-search') && $('#ed-search').focus(), 100);
+        } else if (_candyAfterPin) {
+          const c = _candyAfterPin; _candyAfterPin = null;
+          openCandyManager(c);
         } else {
           showPosDirectEditor(_pdPendingCode);
         }
@@ -13347,7 +13353,13 @@
     $('#add-to-list-btn').addEventListener('click', openAddToList);
     // Direct POS editor
     $('#open-pos-direct-btn').addEventListener('click', () => openPosDirect(currentProductCode));
-    $('#close-pos-pin').addEventListener('click', () => $('#pos-pin-modal').classList.remove('open'));
+    // candy / ready-made-food codes: straight to the list of items under the code (behind the PIN)
+    $('#open-candy-btn').addEventListener('click', () => {
+      const p = lookup(currentProductCode); if (!p) return;
+      if (_posUnlocked) { openCandyManager(p.code); return; }
+      _candyAfterPin = p.code; openPosDirect(p.code);
+    });
+    $('#close-pos-pin').addEventListener('click', () => { _candyAfterPin = null; $('#pos-pin-modal').classList.remove('open'); });
     $('#pin-pad').addEventListener('click', e => { const k = e.target.dataset.k; if (k) pinKey(k); });
     $('#close-pos-direct').addEventListener('click', () => $('#pos-direct-modal').classList.remove('open'));
     const priceEach = () => {
