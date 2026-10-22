@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22T18:28:20.396Z",
+ "updated": "2026-10-22T18:28:29.758Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -7721,23 +7721,6 @@
    "group": null,
    "dept": "3",
    "weekly": 22.61,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482312730205": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-flint",
-   "dept": "1",
-   "weekly": 22.53,
    "scale": false,
    "fresh": false,
    "v": {
