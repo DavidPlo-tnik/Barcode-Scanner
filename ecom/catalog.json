@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22T18:23:58.069Z",
+ "updated": "2026-10-22T18:24:58.466Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -12620,23 +12620,6 @@
    "listed": false,
    "status": "draft",
    "group": null,
-   "dept": "1",
-   "weekly": 11.97,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0005737918050": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-naya-eau-de",
    "dept": "1",
    "weekly": 11.97,
    "scale": false,
