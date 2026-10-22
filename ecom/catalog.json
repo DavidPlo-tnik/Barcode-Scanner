@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22T18:28:07.635Z",
+ "updated": "2026-10-22T18:28:20.396Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -5285,23 +5285,6 @@
    "group": "1-klim-zephyr",
    "dept": "1",
    "weekly": 34.93,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482021809683": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-klim-zephyr",
-   "dept": "1",
-   "weekly": 33.52,
    "scale": false,
    "fresh": false,
    "v": {
