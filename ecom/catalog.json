@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22T01:57:29.762Z",
+ "updated": "2026-10-22T01:57:42.187Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -4525,24 +4525,6 @@
    "group": "1-korol-smak-mayonnaise",
    "dept": "1",
    "weekly": 41.17,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   },
-   "oos": true
-  },
-  "0482024152091": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-korol-smak-mayonnaise",
-   "dept": "1",
-   "weekly": 29.52,
    "scale": false,
    "fresh": false,
    "v": {
