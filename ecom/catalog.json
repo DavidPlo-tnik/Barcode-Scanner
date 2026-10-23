@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T20:07:04.529Z",
+ "updated": "2026-10-23T20:07:13.129Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -8899,23 +8899,6 @@
    "group": "1-monarch-grain-de",
    "dept": "1",
    "weekly": 18.5,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0859418146201": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-monarch-grain-de",
-   "dept": "1",
-   "weekly": 18.15,
    "scale": false,
    "fresh": false,
    "v": {
