@@ -19368,7 +19368,11 @@
   },
   "0000000004020": {
    "title": "POMMES DÉLICIEUSES JAUNES",
-   "key": "pomme delicieuse jaune|KG"
+   "key": "pomme delicieuse jaune|KG",
+   "pin": {
+    "code": "0000000004020",
+    "at": "2026-10-23 11:53:27"
+   }
   },
   "0020153100000": {
    "title": "PERSIL ITALIEN",

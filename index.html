@@ -2281,7 +2281,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v224</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v225</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2872,7 +2872,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v224</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v225</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4643,6 +4643,7 @@
   async function pmQueue(code, ch, logFn) {
     ch.code = code;
     await queuePosChange(ch);
+    producePin(code, ch);
     const pend = {};
     if (ch.promo) pend.promo = ch.promo;
     if (ch.clear_promo) pend.promo = null;
@@ -8489,6 +8490,7 @@
     const btn = $('#pd-save'); btn.disabled = true; btn.textContent = 'Applying…';
     try {
       await queuePosChange(ch);
+      producePin(_pdCtx.code, ch);
       // optimistic: reflect the change in-app immediately (highlighted as pending)
       const pend = {};
       if (ch.price != null) pend.price = ch.price;
@@ -11500,6 +11502,18 @@
     _produceIdx = idx; _produceIdxFor = DATA.products;
     return idx;
   }
+  // A price you change on ONE brand of a fruit/vegetable becomes the family's official price
+  // (website + app) until another brand is repriced later. Saved in catalog.produce[lead].pin.
+  async function producePin(code, ch) {
+    if (!(ch && (ch.price != null || ch.multibuy || ch.promo || ch.clear_promo))) return;
+    try {
+      if (!_ecomCatalog) await fetchEcomCatalog();
+      const lead = produceLeadOf(code); if (!lead) return;
+      const c = resolveCode(code), at = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 19).replace('T', ' ');
+      await mutateEcomCatalog(cat => { if (cat.produce && cat.produce[lead]) cat.produce[lead].pin = { code: c, at }; });
+      if (_ecomCatalog && _ecomCatalog.produce && _ecomCatalog.produce[lead]) _ecomCatalog.produce[lead].pin = { code: c, at };
+    } catch (e) { console.warn('produce pin', e); }
+  }
   function produceFamily(lead, fam) {
     const keys = fam.keys || [fam.key];   // several keys = merged families (e.g. all small tomatoes)
     const set = new Set([...keys.flatMap(k => produceIndex()[k] || []), lead, ...(fam.add || [])]);
@@ -11509,10 +11523,16 @@
     const wk = (m, n) => (((DATA.sales[m] || {}).wq) || []).slice(-n).reduce((a, b) => a + b, 0);
     const live = members.filter(m => wk(m, 26) > 0 || ((DATA.sales[m] || {}).dq || []).some(x => x > 0) || (DATA.products[m][8] || '') >= soon);
     const cand = live.length ? live : (members.length ? members : [lead]);
-    const official = cand.reduce((a, b) => {
+    let official = cand.reduce((a, b) => {
       const da = (DATA.products[a] || [])[8] || '', db = (DATA.products[b] || [])[8] || '';
       return db > da || (db === da && wk(b, 8) > wk(a, 8)) ? b : a;
     });
+    // the brand you edited last wins, unless another brand was repriced after that
+    const pin = fam.pin;
+    if (pin && members.includes(pin.code)) {
+      const later = members.some(m => m !== pin.code && ((DATA.products[m] || [])[8] || '') > String(pin.at).slice(0, 10));
+      if (!later) official = pin.code;
+    }
     const rev = members.reduce((t, m) => t + ((DATA.sales[m] || {}).ta || 0), 0);
     return { members, official, rev };
   }
