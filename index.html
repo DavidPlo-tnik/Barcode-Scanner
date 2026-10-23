@@ -2281,7 +2281,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v223</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v224</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2872,7 +2872,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v223</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v224</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3304,7 +3304,16 @@
   // mis-read a scheduled promo -- that made "4 for $9.99" fall back to "1 for" and
   // brand-new promos vanish after a while.)
   let _sticky = null;
-  function stickyAll() { if (!_sticky) { try { _sticky = JSON.parse(localStorage.getItem('stickyEdits') || '{}'); } catch (e) { _sticky = {}; } } return _sticky; }
+  function stickyAll() {
+    if (!_sticky) {
+      try { _sticky = JSON.parse(localStorage.getItem('stickyEdits') || '{}'); } catch (e) { _sticky = {}; }
+      // v224: older versions saved the whole merged price state, so a stale promo could live on
+      // for weeks and show a price the register doesn't have. Drop those.
+      let ch = false; for (const c in _sticky) if (!_sticky[c] || !_sticky[c].f || !_sticky[c].f.t0) { delete _sticky[c]; ch = true; }
+      if (ch) try { localStorage.setItem('stickyEdits', JSON.stringify(_sticky)); } catch (e) {}
+    }
+    return _sticky;
+  }
   function stickySave() { try { localStorage.setItem('stickyEdits', JSON.stringify(_sticky || {})); } catch (e) {} }
   function stickyPut(code, f) {
     const all = stickyAll();
@@ -3316,7 +3325,15 @@
     if (!st) return null;
     const d0 = new Date(), today = `${d0.getFullYear()}-${String(d0.getMonth() + 1).padStart(2, '0')}-${String(d0.getDate()).padStart(2, '0')}`;
     // done: too old, or the promo it carries is over
-    if (Date.now() - st.t > 14 * 864e5 || (st.f.pe && st.f.pe < today)) { delete all[code]; stickySave(); return null; }
+    if (Date.now() - st.t > 2 * 864e5 || (st.f.pe && st.f.pe < today)) { delete all[code]; stickySave(); return null; }
+    // The POS wins as soon as it has published anything newer than this edit: the PC's
+    // own override for the item (written right after it applies the change) or an
+    // edit.json exported 10+ minutes after the edit. A local copy that disagrees with
+    // that is a change that failed or was overwritten -- never show it as the price.
+    const srv = _overrides[code];
+    const srvT = srv && srv.at && !srv._local ? new Date(srv.at.replace(' ', 'T')).getTime() : 0;
+    const expT = _editData && _editData.updated ? new Date(String(_editData.updated).replace(' ', 'T')).getTime() : 0;
+    if ((srvT && srvT >= st.t - 120000) || (expT && expT > st.t + 10 * 60000)) { delete all[code]; stickySave(); return null; }
     // confirmed by a FRESH export (fetched after the edit) that carries the same values
     let fresh = null;
     try { fresh = _editData && _editDataAt && _editDataAt > st.t + 60000 && _editData.items && _editData.items[code]; } catch (e) {}
@@ -8284,7 +8301,8 @@
   // version to pos/overrides.json within a cycle; this just bridges the gap so
   // you can see what you have and have not done yet.
   function applyLocalOverride(code, ch) {
-    const prev = _overrides[code] || {};
+    const prev = (_overrides[code] && !_overrides[code]._local) ? _overrides[code] : {};
+    const all0 = stickyAll(); delete all0[code]; stickySave();   // drop any older local guess for this item first
     const base = Object.assign({}, editStateFor(code) || {}, prev);
     const o = Object.assign({}, base);
 
@@ -8319,8 +8337,12 @@
     o._local = true;                                 // replaced when the PC publishes
     _overrides[code] = o;
     if (ch.promo || ch.clear_promo || ch.multibuy || ch.price != null) {
-      const f = {};
-      ['rp', 'rq', 'pp', 'pq', 'ps', 'pe', 'ap', 'price', 'mp'].forEach(k => { f[k] = o[k] === undefined ? null : o[k]; });
+      const keys = [];
+      if (ch.multibuy || ch.price != null) keys.push('rp', 'rq');
+      if (ch.promo || ch.clear_promo) keys.push('pp', 'pq', 'ps', 'pe', 'ap');
+      const f = { t0: Date.now() };
+      keys.concat(['price', 'mp']).forEach(k => { f[k] = o[k] === undefined ? null : o[k]; });
+      const all = stickyAll(); delete all[code];          // start clean: no leftovers from an older edit
       stickyPut(code, f);
     }
   }
