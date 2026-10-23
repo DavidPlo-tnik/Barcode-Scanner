@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T19:44:16.289Z",
+ "updated": "2026-10-23T19:55:26.262Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -5064,23 +5064,6 @@
    "group": null,
    "dept": "1",
    "weekly": 35.94,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482018274694": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-flint-grenki",
-   "dept": "1",
-   "weekly": 16.75,
    "scale": false,
    "fresh": false,
    "v": {
