@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T03:27:18.509Z",
+ "updated": "2026-10-23T03:29:00.100Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -5944,7 +5944,9 @@
   },
   "0482004409221": {
    "added": "2026-09-06",
-   "photos": [],
+   "photos": [
+    "0482004409221_1792726138092.webp"
+   ],
    "listed": false,
    "status": "draft",
    "group": "1-korolivskyi-huile-tournesol",
