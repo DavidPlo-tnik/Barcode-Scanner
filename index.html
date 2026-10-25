@@ -2281,7 +2281,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v226</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v227</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2872,7 +2872,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v226</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v227</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3542,6 +3542,31 @@
   //   C       = optional check digit
   // POS stores these as 20 + PLU + 6 zeros (12 digits with check) or with trailing zeros stripped (11 digits).
   // To match: detect 13-digit code starting with "20", extract PLU, look up "20XXXXX0000" (11d) or "20XXXXX00000" (12d).
+  // UPC-E (the short 6–8 digit barcode on small packages, e.g. 0 683491 9 on Kraft Singles):
+  // expand to the full UPC-A the POS stores (0 68100 00349 -> 0006810000349).
+  function upcEToA(six, ns) {
+    const d = six.split(''), l = d[5];
+    let body;
+    if (l <= '2') body = d[0] + d[1] + l + '0000' + d[2] + d[3] + d[4];
+    else if (l === '3') body = d[0] + d[1] + d[2] + '00000' + d[3] + d[4];
+    else if (l === '4') body = d[0] + d[1] + d[2] + d[3] + '00000' + d[4];
+    else body = d[0] + d[1] + d[2] + d[3] + d[4] + '0000' + l;
+    return (ns || '0') + body;                 // 11 digits, no check digit
+  }
+  function upcECandidates(raw) {
+    raw = String(raw || '').replace(/\D/g, '');
+    const out = [];
+    if (raw.length === 6) out.push(upcEToA(raw, '0'), upcEToA(raw, '1'));
+    if (raw.length === 7) { if ('01'.includes(raw[0])) out.push(upcEToA(raw.slice(1), raw[0])); out.push(upcEToA(raw.slice(0, 6), '0')); }
+    if (raw.length === 8 && '01'.includes(raw[0])) out.push(upcEToA(raw.slice(1, 7), raw[0]));
+    return [...new Set(out)].map(a => a.padStart(13, '0'));
+  }
+  function upcEMatch(raw) {
+    if (!DATA || !DATA.products) return null;
+    for (const c of upcECandidates(raw)) { const r = resolveCode(c); if (DATA.products[r]) return r; }
+    return null;
+  }
+
   function lookup(code) {
     if (!DATA) return null;
     const raw = String(code).trim();
@@ -3592,6 +3617,8 @@
       const resolved = resolveCode(c);
       if (DATA.products[resolved]) return { code: resolved, scanned: raw, ...packProduct(resolved) };
     }
+    const e = /^\d{6,8}$/.test(raw) ? upcEMatch(raw) : null;      // short UPC-E barcode
+    if (e) return { code: e, scanned: raw, ...packProduct(e) };
     return null;
   }
 
@@ -6955,7 +6982,10 @@
     const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     const tokens = norm(q).split(/\s+/).filter(t => t.length >= 1);
     const out = [];
+    const ue = /^\d{6,8}$/.test(q) ? upcEMatch(q) : null;
+    if (ue) { const pu = lookup(ue); if (pu) out.push(pu); }
     for (const code in DATA.products) {
+      if (code === ue) continue;
       const p = lookup(code);
       if (!p || !p.name) continue;
       const hay = norm(p.name + ' ' + code);
@@ -9505,12 +9535,14 @@
     // "tvorog ricotta" finds "RICOTTA 6% TVOROG".
     const tokens = norm(q).split(/\s+/).filter(t => t.length >= 1);
 
+    const upcE = isNum && q.length >= 6 && q.length <= 8 ? upcEMatch(q) : null;
     for (const code in DATA.products) {
       const arr = DATA.products[resolveCode(code)] || [];
       const name = arr[0], price = arr[1];
       if (name == null) continue;
       const scalePlu = arr[11] || scalePluFromCode(code);
       let matchScore = 0;
+      if (upcE && code === upcE) matchScore = 300;   // short UPC-E barcode typed from the package
 
       if (isNum) {
         // Scale PLU match is the strongest numeric signal (short, memorable codes)
@@ -11952,7 +11984,7 @@
       const arr = DATA.products[code];
       const name = arr[0]; if (!name) continue;
       let hit = false;
-      if (isNum) hit = code.includes(q) || String(arr[11]||'').includes(q);
+      if (isNum) hit = code.includes(q) || String(arr[11]||'').includes(q) || (q.length >= 6 && q.length <= 8 && upcECandidates(q).includes(code));
       else hit = name.toLowerCase().includes(q);
       if (hit) {
         const s = DATA.sales[code];
