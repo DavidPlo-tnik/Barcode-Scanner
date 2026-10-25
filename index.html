@@ -2281,7 +2281,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v227</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v228</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2872,7 +2872,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v227</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v228</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -10937,8 +10937,31 @@
 
   function orBadge() {
     const tab = document.querySelector('.tab[data-tab="orders"]'); if (!tab) return;
-    const n = _or.data ? _or.data.orders.map(orApplyPending).filter(o => o.status === 'new').length : 0;
+    const fresh = _or.data ? _or.data.orders.map(orApplyPending).filter(o => o.status === 'new') : [];
+    const n = fresh.length;
     tab.innerHTML = '🛒 ORDERS' + (n ? ` <span class="or-dot">${n}</span>` : '');
+    // a NEW order since the last check: banner on every screen, no PIN needed to see it
+    // (opening the order still asks for the PIN)
+    let seen = null; try { seen = JSON.parse(localStorage.getItem('orSeenNew') || 'null'); } catch (e) {}
+    const ids = fresh.map(o => o.id);
+    if (seen) {
+      const added = fresh.filter(o => !seen.includes(o.id));
+      if (added.length) orAlert(added);
+    }
+    try { localStorage.setItem('orSeenNew', JSON.stringify(ids)); } catch (e) {}
+  }
+  function orAlert(list) {
+    let b = document.getElementById('or-alert');
+    if (!b) {
+      b = document.createElement('button'); b.id = 'or-alert'; b.type = 'button';
+      b.style.cssText = 'position:fixed;left:12px;right:12px;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:9000;padding:16px 18px;border:0;border-radius:14px;background:#d4ff3a;color:#000;font:800 16px system-ui,sans-serif;text-align:left;box-shadow:0 10px 30px rgba(0,0,0,.5);display:flex;gap:12px;align-items:center';
+      document.body.appendChild(b);
+    }
+    const o = list[0];
+    b.innerHTML = `<span style="font-size:28px">🛒</span><span style="flex:1">${list.length > 1 ? list.length + ' nouvelles commandes en ligne' : 'Nouvelle commande en ligne'}<br><span style="font-weight:600;font-size:13px">${escapeHtml(o.name || '')}${o.first ? ' · ' + escapeHtml(o.first) : ''} · ${orMoney(orEst(o))} — tap to open</span></span><span data-x="1" style="font-size:20px;padding:4px 8px">✕</span>`;
+    b.onclick = (e) => { const close = e.target.closest && e.target.closest('[data-x]'); b.remove(); if (!close) switchTab('orders'); };
+    try { if (navigator.vibrate) navigator.vibrate([200, 100, 200]); } catch (e) {}
+    try { const a = new (window.AudioContext || window.webkitAudioContext)(); [0, .18].forEach(t => { const g = a.createGain(), os = a.createOscillator(); os.frequency.value = 880; g.gain.setValueAtTime(.25, a.currentTime + t); g.gain.exponentialRampToValueAtTime(.001, a.currentTime + t + .15); os.connect(g).connect(a.destination); os.start(a.currentTime + t); os.stop(a.currentTime + t + .16); }); } catch (e) {}
   }
 
   async function orAct(o, act, extra) {
@@ -11320,10 +11343,12 @@
   }
 
   // new orders show as a number on the tab even while you are elsewhere in the app
-  setInterval(() => { if (!document.hidden && _posUnlocked && orPass()) orFetch(true); }, 120000);
+  // checked every minute on every phone with the staff passphrase -- the PIN is NOT needed for the alert
+  setInterval(() => { if (!document.hidden && orPass()) orFetch(true); }, 60000);
+  setTimeout(() => { if (orPass()) orFetch(true); }, 5000);
   // back in the app (phone woke up / switched back): load the latest order steps right away
-  document.addEventListener('visibilitychange', () => { if (!document.hidden && _posUnlocked && orPass()) { _or.loading = false; orFetch(true); } });
-  window.addEventListener('pageshow', (e) => { if (e.persisted && _posUnlocked && orPass()) { _or.loading = false; orFetch(true); } });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && orPass()) { _or.loading = false; orFetch(true); } });
+  window.addEventListener('pageshow', (e) => { if (e.persisted && orPass()) { _or.loading = false; orFetch(true); } });
 
   // ============== ECOM CATALOG ==============
   // The website catalog lives in the repo at ecom/catalog.json — the app edits
