@@ -2281,7 +2281,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v228</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v229</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2872,7 +2872,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v228</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v229</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3752,8 +3752,17 @@
   function productThumbHtml(code, size) {
     size = size || 42;
     const cat = _ecomCatalog;
-    const ent = cat && cat.items && cat.items[resolveCode(code)];
-    const photos = ent && ent.photos;
+    const rc = resolveCode(code);
+    const ent = cat && cat.items && cat.items[rc];
+    let photos = ent && ent.photos;
+    // codes with several items under them (candies, honey, ready-made food): first item's photo;
+    // a fruit/vegetable brand: the family's photo
+    if (!(photos && photos[0]) && cat) {
+      const kids = cat.candyGroups && (cat.candyGroups[rc] || cat.candyGroups[code]);
+      const k = kids && kids.find(e => e.photos && e.photos[0]);
+      if (k) photos = k.photos;
+      else { try { const lead = produceLeadOf(rc); const le = lead && cat.items[lead]; if (le && le.photos && le.photos[0]) photos = le.photos; } catch (e) {} }
+    }
     if (photos && photos[0]) {
       return `<img class="js-photo-thumb" data-full="${photoSrc(photos[0])}" style="width:${size}px;height:${size}px;border-radius:7px;object-fit:cover;background:var(--surface-2);flex-shrink:0;cursor:zoom-in;" src="${photoSrc(photos[0])}" loading="lazy" alt="">`;
     }
@@ -14522,6 +14531,7 @@
     const match = (code, name) => !tokens.length || tokens.every(t => liveNorm(name).includes(t) || code.includes(t));
 
     if (_live.view === 'items') {
+      if (!_ecomCatalog && !_live.catAsk) { _live.catAsk = true; fetchEcomCatalog().then(() => paintLive(true)).catch(() => {}); }   // photos
       const rows = [];
       for (const code in d.items) {
         const [qty, amt] = d.items[code];
@@ -14542,7 +14552,7 @@
           ? `<span class="lv-chip ${r.ratio >= 3 ? 'hot' : ''}">${r.ratio.toFixed(1)}× USUAL</span>` : '';
         const meta = `${escapeHtml(r.code.replace(/^0+/, '') || r.code)}${r.u ? ' · usual ' + r.u.avg.toFixed(1) + '/day' : ''}${r.last ? ' · last ' + r.last.slice(0, 5) : ''}`;
         const open = _live.open === r.code;
-        return `<div class="lv-row" data-code="${escapeHtml(r.code)}">
+        return `<div class="lv-row" data-code="${escapeHtml(r.code)}">${productThumbHtml(r.code, 38)}
             <div class="lv-main"><div class="lv-name">${escapeHtml(r.inf.name)}${chip}</div><div class="lv-meta">${meta}</div></div>
             <div class="lv-num"><div class="lv-qty ${r.qty < 0 ? 'lv-neg' : ''}">${liveFmtQ(r.qty)}</div><div class="lv-amt">${liveMoney(r.amt)}</div></div>
           </div>${open ? liveDetailHtml(r, byCode[r.code] || [], d) : ''}`;
@@ -14589,7 +14599,7 @@
         if (dq < 0 || da < 0) chip = '<span class="lv-chip bad">REFUND / RETURN</span>';
         else if (dq > 0 && da <= 0.005 && (inf.shelf || 0) > 0) chip = '<span class="lv-chip bad">$0</span>';
         else if (unit !== null && inf.shelf > 0 && unit < inf.shelf * 0.85) chip = '<span class="lv-chip hot">BELOW SHELF</span>';
-        return `<div class="lv-row" style="cursor:default;"><div class="lv-time">${t.slice(0, 8)}</div>
+        return `<div class="lv-row" style="cursor:default;"><div class="lv-time">${t.slice(0, 8)}</div>${productThumbHtml(code, 34)}
           <div class="lv-main"><div class="lv-name">${escapeHtml(inf.name)}${chip}</div>
           <div class="lv-meta">${escapeHtml(code.replace(/^0+/, '') || code)}${unit !== null ? ' · ' + money2(unit) + ' each' : ''}</div></div>
           <div class="lv-num"><div class="lv-qty ${dq < 0 ? 'lv-neg' : ''}" style="font-size:16px;">${dq > 0 ? '+' : ''}${liveFmtQ(dq)}</div><div class="lv-amt ${da < 0 ? 'lv-neg' : ''}">${liveMoney(da)}</div></div></div>`;
