@@ -80,7 +80,7 @@ SHELF_CSS="""
   .dshelf__media { position: relative; display: block; aspect-ratio: 1; border-radius: 1.4rem; background: #fff; border: 1px solid rgba(0,0,0,.07); overflow: hidden;
     transition: transform .18s ease, box-shadow .18s ease; }
   .dshelf__card:hover .dshelf__media { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(0,0,0,.08); }
-  .dshelf__media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .dshelf__media img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: contain; display: block; }
   .dshelf__new { position: absolute; left: .6rem; top: .6rem; padding: .3rem .6rem; border-radius: .6rem; background: #FFD23F; color: #1a1a1a;
     font-size: 1rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; transform: rotate(-3deg); }
   .dshelf__ua { position: absolute; right: .6rem; top: .5rem; font-size: 1.5rem; line-height: 1; }
@@ -133,14 +133,13 @@ PLAN=DEFS+"""
   .dplan__aisle { display: flex; flex-direction: column; align-items: center; gap: .3rem; padding: .7rem .4rem .8rem; border-radius: 1.2rem; background: #fff;
     color: #1a1a1a; text-decoration: none; text-align: center; height: 100%; box-sizing: border-box; transition: transform .15s ease, box-shadow .15s ease; }
   .dplan__aisle:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,.08); }
-  .dplan__pic { width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
-  .dplan__pic img { max-width: 86%; max-height: 86%; object-fit: contain; }
+  .dplan__pic { position: relative; display: block; width: 100%; aspect-ratio: 1; overflow: hidden; }
+  .dplan__pic img { position: absolute; inset: 6%; width: 88%; height: 88%; max-width: none; object-fit: contain; }
   .dplan__aname { font-size: 1.2rem; font-weight: 700; line-height: 1.2; }
   .dplan__n { font-size: 1.05rem; color: #777; }
   @media screen and (min-width: 750px) {
     .dplan__zones { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
-    .dplan__aisles { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-    .dplan__zone--cuisine .dplan__aisles, .dplan__zone--sucre .dplan__aisles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .dplan__aisles { grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr)); }
   }
   ZONECSS
 {%- endstyle -%}
@@ -228,7 +227,7 @@ SHELVES=DEFS+"""
           {%- endfor -%}
         </div>
       </section>
-      {%- if n_done == 6 -%}
+      {%- if n_done == 2 -%}
         {%- assign ua = collections['saveurs-ukraine'] -%}
         {%- if ua != blank and ua.products_count > 0 -%}
           <div class="dua"><a class="dua__link" href="{{ ua.url }}">
@@ -251,31 +250,16 @@ open(T+'sections/decarie-aisle-shelves.liquid','w').write(SHELVES)
 # ---------------- aisle (collection) page ----------------
 AISLE=DEFS+"""
 {%- style -%}
-  .daisle { padding: 1.6rem 0 3rem; }
+  .daisle { padding: 1.8rem 0 .4rem; }
   .daisle__crumb { font-size: 1.15rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--zfg); margin: 0 0 .4rem; }
   .daisle__crumb a { color: inherit; text-decoration: none; }
   .daisle__title { margin: 0; font-size: clamp(2.8rem, 7vw, 4.4rem); font-weight: 900; letter-spacing: -.02em; line-height: 1; }
   .daisle__count { margin: .6rem 0 0; color: rgba(var(--color-foreground), .65); font-size: 1.4rem; }
-  .daisle__chips { position: sticky; top: var(--dnav-h, 0px); z-index: 3; display: flex; gap: .6rem; overflow-x: auto; scrollbar-width: none; padding: 1rem 1.5rem; margin: 1.2rem -1.5rem 0;
-    background: rgb(var(--color-background)); border-bottom: 1px solid rgba(var(--color-foreground), .08); }
-  .daisle__chips::-webkit-scrollbar { display: none; }
-  .daisle__chip { flex: 0 0 auto; padding: .75rem 1.2rem; border-radius: 99px; background: var(--zbg); color: var(--zfg); font-size: 1.3rem; font-weight: 700; text-decoration: none; white-space: nowrap; border: 1.5px solid transparent; }
-  .daisle__chip.is-on { border-color: var(--zfg); background: #fff; }
-  .daisle__chip small { opacity: .7; font-weight: 600; margin-left: .3rem; }
-  .daisle__shelf { scroll-margin-top: calc(var(--dnav-h, 0px) + 7rem); padding-top: 2.2rem; }
-  .daisle__sname { margin: 0 0 1rem; font-size: clamp(1.9rem, 4.6vw, 2.4rem); font-weight: 800; display: flex; align-items: baseline; gap: .8rem; }
-  .daisle__sname small { font-size: 1.3rem; font-weight: 600; color: #888; }
-  .daisle__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 1rem; list-style: none; margin: 0; padding: 0; }
-  @media screen and (min-width: 750px) { .daisle__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.4rem 1.6rem; } .daisle__chips { margin: 1.2rem 0 0; padding: 1rem 0; } }
-  @media screen and (min-width: 990px) { .daisle__grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
-  .daisle__next { margin-top: 3.4rem; padding: 1.6rem; border-radius: 1.8rem; background: var(--zbg); }
-  .daisle__next h2 { margin: 0 0 1rem; font-size: 1.15rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--zfg); }
-  .daisle__next ul { display: flex; flex-wrap: wrap; gap: .6rem; list-style: none; margin: 0; padding: 0; }
-  .daisle__next a { display: inline-block; padding: .8rem 1.3rem; border-radius: 99px; background: #fff; color: #1a1a1a; font-weight: 700; font-size: 1.35rem; text-decoration: none; }
+  .daisle__next { display: flex; gap: .6rem; overflow-x: auto; scrollbar-width: none; margin: 1.2rem 0 0; padding: 0; list-style: none; }
+  .daisle__next::-webkit-scrollbar { display: none; }
+  .daisle__next a { display: inline-block; padding: .7rem 1.2rem; border-radius: 99px; background: var(--zbg); color: var(--zfg); font-weight: 700; font-size: 1.3rem; text-decoration: none; white-space: nowrap; }
   ZONECSS
 {%- endstyle -%}
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
 {%- liquid
   assign aid = collection.handle | remove_first: 'allee-'
   assign a = nil
@@ -285,18 +269,15 @@ AISLE=DEFS+"""
       assign a = ap
     endif
   endfor
-  if a == nil
-    assign aname = collection.title
-    assign zone = ''
-    assign subs = '' | split: '^'
-  else
+  assign zone = ''
+  assign aname = collection.title
+  if a
+    assign zone = a[3]
     if en
       assign aname = a[2]
     else
       assign aname = a[1]
     endif
-    assign zone = a[3]
-    assign subs = a[4] | split: '^'
   endif
   assign zrec = nil
   for zd in zones_def
@@ -311,103 +292,26 @@ AISLE=DEFS+"""
     {%- if zrec -%}<p class="daisle__crumb"><a href="{{ routes.root_url }}#plan">{% if en %}{{ zrec[2] }}{% else %}{{ zrec[1] }}{% endif %}</a></p>{%- endif -%}
     <h1 class="daisle__title">{{ aname }}</h1>
     <p class="daisle__count">{{ collection.products_count }} {% if en %}products{% else %}produits{% endif %}</p>
-
-    {%- paginate collection.products by 250 -%}
-      {%- assign used = '' -%}
-      {%- capture shelves -%}
-        {%- for sd in subs -%}
-          {%- assign sp = sd | split: '~' -%}
-          {%- assign stag = 'rayon-' | append: sp[0] -%}
-          {%- assign n = 0 -%}
-          {%- capture cards -%}
-            {%- for pl in (1..5) -%}
-              {%- assign ptag = 'pop-' | append: pl -%}
-              {%- for product in collection.products -%}
-                {%- assign key = ',' | append: product.id | append: ',' -%}
-                {%- if product.tags contains stag and product.tags contains ptag -%}
-                  {%- unless used contains key -%}
-                    {%- assign used = used | append: key -%}
-                    {%- assign n = n | plus: 1 -%}
-                    <li class="grid__item">{%- render 'card-product', card_product: product, media_aspect_ratio: 'square', image_shape: 'default', lazy_load: true, show_secondary_image: false, show_vendor: false, show_rating: false, section_id: section.id, quick_add: 'standard' -%}</li>
-                  {%- endunless -%}
-                {%- endif -%}
-              {%- endfor -%}
-            {%- endfor -%}
-          {%- endcapture -%}
-          {%- if n > 0 -%}
-            <section class="daisle__shelf" id="r-{{ sp[0] }}" data-chip-name="{% if en %}{{ sp[2] }}{% else %}{{ sp[1] }}{% endif %}" data-chip-n="{{ n }}">
-              <h2 class="daisle__sname">{% if en %}{{ sp[2] }}{% else %}{{ sp[1] }}{% endif %}<small>{{ n }}</small></h2>
-              <ul class="daisle__grid" role="list">{{ cards }}</ul>
-            </section>
-          {%- endif -%}
-        {%- endfor -%}
-        {%- assign n = 0 -%}
-        {%- capture cards -%}
-          {%- for product in collection.products -%}
-            {%- assign key = ',' | append: product.id | append: ',' -%}
-            {%- unless used contains key -%}
-              {%- assign n = n | plus: 1 -%}
-              <li class="grid__item">{%- render 'card-product', card_product: product, media_aspect_ratio: 'square', image_shape: 'default', lazy_load: true, show_secondary_image: false, show_vendor: false, show_rating: false, section_id: section.id, quick_add: 'standard' -%}</li>
-            {%- endunless -%}
-          {%- endfor -%}
-        {%- endcapture -%}
-        {%- if n > 0 -%}
-          <section class="daisle__shelf" id="r-autres" data-chip-name="{% if en %}More{% else %}Autres{% endif %}" data-chip-n="{{ n }}">
-            <h2 class="daisle__sname">{% if en %}More{% else %}Autres{% endif %}<small>{{ n }}</small></h2>
-            <ul class="daisle__grid" role="list">{{ cards }}</ul>
-          </section>
-        {%- endif -%}
-      {%- endcapture -%}
-      <nav class="daisle__chips" data-daisle-chips aria-label="{% if en %}Shelves{% else %}Rayons{% endif %}"></nav>
-      {{ shelves }}
-    {%- endpaginate -%}
-
     {%- if zrec -%}
       {%- assign zaisles = zrec[3] | split: ',' -%}
-      <div class="daisle__next">
-        <h2>{% if en %}Next aisles{% else %}Allées voisines{% endif %}</h2>
-        <ul role="list">
-          {%- for ad in aisles_def -%}
-            {%- assign ap = ad | split: '|' -%}
-            {%- assign hh = 'allee-' | append: ap[0] -%}
-            {%- if ap[0] != aid and collections[hh].products_count > 0 -%}
-              {%- if zaisles contains ap[0] -%}
-                <li><a href="{{ collections[hh].url }}">{% if en %}{{ ap[2] }}{% else %}{{ ap[1] }}{% endif %}</a></li>
-              {%- endif -%}
-            {%- endif -%}
-          {%- endfor -%}
-          <li><a href="{{ routes.root_url }}#plan">🧭 {% if en %}Store map{% else %}Plan du magasin{% endif %}</a></li>
-        </ul>
-      </div>
+      <ul class="daisle__next" role="list">
+        {%- for ad in aisles_def -%}
+          {%- assign ap = ad | split: '|' -%}
+          {%- assign hh = 'allee-' | append: ap[0] -%}
+          {%- if ap[0] != aid and zaisles contains ap[0] and collections[hh].products_count > 0 -%}
+            <li><a href="{{ collections[hh].url }}">{% if en %}{{ ap[2] }}{% else %}{{ ap[1] }}{% endif %} →</a></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
     {%- endif -%}
   </div>
 </div>
-<script>
-  (function () {
-    var nav = document.querySelector('[data-daisle-chips]'); if (!nav) return;
-    var shelves = document.querySelectorAll('.daisle__shelf');
-    if (shelves.length < 2) { nav.remove(); return; }
-    shelves.forEach(function (s) {
-      var a = document.createElement('a'); a.className = 'daisle__chip'; a.href = '#' + s.id;
-      a.innerHTML = s.getAttribute('data-chip-name') + '<small>' + s.getAttribute('data-chip-n') + '</small>';
-      a.addEventListener('click', function (e) { e.preventDefault(); s.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
-      nav.appendChild(a);
-    });
-    var chips = nav.querySelectorAll('.daisle__chip');
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (en) { if (en.isIntersecting) {
-        chips.forEach(function (c) { var on = c.getAttribute('href') === '#' + en.target.id; c.classList.toggle('is-on', on); if (on) c.scrollIntoView({ block: 'nearest', inline: 'center' }); });
-      } });
-    }, { rootMargin: '-35% 0px -60% 0px' });
-    shelves.forEach(function (s) { io.observe(s); });
-  })();
-</script>
 {% schema %}
-{ "name": "Aisle page", "settings": [] }
+{ "name": "Aisle header", "settings": [] }
 {% endschema %}
 """.replace('ZONECSS',zone_css)
 open(T+'sections/decarie-aisle-page.liquid','w').write(AISLE)
-open(T+'templates/collection.allee.json','w').write(json.dumps({"sections":{"aisle":{"type":"decarie-aisle-page","settings":{}},"combo":{"type":"decarie-combo","settings":{"show_on":"allee-pret-a-manger","demo_meat":"candy-0021010800000-cmuyx97c9","demo_salad":"candy-0021010700000-cmuyx813r"}}},"order":["combo","aisle"]},indent=2))
+open(T+'templates/collection.allee.json','w').write(json.dumps({'sections':{'aisle':{'type':'decarie-aisle-page','settings':{}},'combo':{'type':'decarie-combo','settings':{'show_on':'allee-pret-a-manger','demo_meat':'candy-0021010800000-cmuyx97c9','demo_salad':'candy-0021010700000-cmuyx813r'}},'product-grid':{'type':'main-collection-product-grid','settings':{'products_per_page': 48, 'columns_desktop': 5, 'color_scheme': 'scheme-1', 'image_ratio': 'square', 'image_shape': 'default', 'show_secondary_image': False, 'show_vendor': False, 'show_rating': False, 'quick_add': 'standard', 'enable_filtering': False, 'filter_type': 'horizontal', 'enable_sorting': True, 'columns_mobile': '2', 'padding_top': 16, 'padding_bottom': 36}}},'order':['aisle','combo','product-grid']},indent=2))
 
 # ---------------- product page: goes with ----------------
 GOES=DEFS+"""
