@@ -107,6 +107,47 @@
 
   /* POS Editor workspace */
 
+
+  /* ── SUPPLIER ORDERS ── */
+  .or-mode { display: flex; gap: 0; margin-bottom: 12px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .or-mode button { flex: 1; padding: 10px 6px; border: 0; background: var(--surface); color: var(--text-dim); font-family: var(--font-display); font-size: 10.5px; letter-spacing: .06em; font-weight: 700; }
+  .or-mode button.on { background: var(--accent); color: #000; }
+  #sup-panel { padding: 0 0 90px; }
+  .sup-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+  .sup-c1 { display: flex; justify-content: space-between; align-items: baseline; font-size: 17px; } .sup-c1 span { font-size: 11px; color: var(--text-faint); }
+  .sup-c2 { font-size: 12.5px; color: var(--text-dim); margin: 6px 0 12px; }
+  .sup-btns { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; } .sup-btns .btn { flex: 1 1 140px; }
+  .sup-up { display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+  .sup-ord { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; text-align: left; padding: 9px 10px; margin-top: 6px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 12.5px; }
+  .sup-st { font-style: normal; font-family: var(--font-display); font-size: 9px; letter-spacing: .06em; padding: 3px 6px; border-radius: 5px; background: var(--surface); color: var(--text-dim); white-space: nowrap; }
+  .sup-st.sent { background: #0a84ff; color: #fff; } .sup-st.received { background: #30d158; color: #000; }
+  .sup-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .sup-total { display: flex; justify-content: space-between; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; position: sticky; top: 112px; z-index: 3; }
+  .sup-total b { font-size: 22px; display: block; } .sup-total span { font-size: 11.5px; color: var(--text-dim); }
+  .sup-cover { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 12.5px; color: var(--text-dim); margin-bottom: 10px; }
+  .sup-cover select { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 7px; padding: 6px; }
+  .sup-search { width: 100%; box-sizing: border-box; padding: 11px 12px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 15px; margin-bottom: 10px; }
+  .sup-sec { font-family: var(--font-display); font-size: 9.5px; letter-spacing: .12em; color: var(--accent); margin: 14px 2px 6px; }
+  .sup-line { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px; margin-bottom: 6px; }
+  .sup-line.in { border-color: var(--accent); } .sup-line.na { opacity: .5; } .sup-line.diff { border-color: #ff9f0a; }
+  .sup-l1 { display: flex; align-items: center; gap: 9px; }
+  .sup-noimg { width: 40px; height: 40px; flex: none; border-radius: 6px; background: var(--surface-2); color: var(--text-faint); display: flex; align-items: center; justify-content: center; }
+  .sup-names { flex: 1; min-width: 0; font-size: 13px; line-height: 1.3; cursor: pointer; } .sup-names b { display: block; } .sup-names small { display: block; color: var(--text-dim); font-size: 11px; margin-top: 2px; }
+  .sup-step { display: flex; align-items: center; gap: 4px; flex: none; }
+  .sup-step button { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 18px; }
+  .sup-step span { min-width: 24px; text-align: center; font-weight: 700; font-size: 16px; }
+  .sup-sugg { display: block; width: 100%; margin-top: 6px; padding: 6px; border-radius: 7px; border: 1px dashed var(--accent); background: transparent; color: var(--accent); font-size: 12px; }
+  .sup-ok { color: #30d158; } .sup-bad { color: #ff6b5e; } .sup-warn { color: #ff9f0a; } .sup-new { color: #000; background: #ffd23f; padding: 0 4px; border-radius: 3px; font-size: 9.5px; font-weight: 700; }
+  .sup-wide { display: block; width: 100%; margin-bottom: 8px; padding: 13px; }
+  .sup-recap { font-size: 12.5px; color: var(--text-dim); line-height: 1.6; margin-top: 10px; }
+  .sup-them { background: var(--surface-2); border-radius: 9px; padding: 9px 11px; } .sup-them b { display: block; font-size: 13.5px; } .sup-them small { display: block; font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  .sup-pos { display: flex; align-items: center; gap: 9px; width: 100%; text-align: left; padding: 7px; margin-bottom: 6px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text); }
+  .sup-pos span { flex: 1; min-width: 0; font-size: 13px; } .sup-pos small { display: block; color: var(--text-dim); font-size: 11px; } .sup-x { font-style: normal; color: #ff6b5e; }
+  .sup-mrow { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px; margin-bottom: 8px; }
+  .sup-qs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .sup-qs button { flex: 1 1 140px; text-align: left; padding: 8px 9px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 12px; }
+  .sup-qs button small { color: var(--text-dim); } .sup-qs button[data-qlink] { border-style: dashed; }
+
   /* ── ONLINE ORDERS ── */
   .or-dot { display: inline-block; min-width: 16px; padding: 0 4px; border-radius: 8px; background: #ff3b30; color: #fff; font-size: 10px; line-height: 16px; margin-left: 3px; }
   #or-panel { padding: 0 0 90px; }
@@ -2302,7 +2343,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v233</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v234</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2556,7 +2597,9 @@
       <button class="btn primary" id="or-unlock-btn">Unlock</button>
     </div>
   </div>
+  <div class="or-mode" id="or-mode" style="display:none;"><button data-om="web">🛒 WEBSITE ORDERS</button><button data-om="sup">📦 SUPPLIERS</button></div>
   <div id="or-panel" style="display:none;"></div>
+  <div id="sup-panel" style="display:none;"></div>
 </section>
 
 <section id="editor-view">
@@ -2907,7 +2950,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v233</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v234</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -2960,7 +3003,7 @@
    This wraps fetch(): locked files are unlocked on the way in, and changes this app saves to them
    are locked on the way out (the PC refuses unlocked changes). Rules shared with decarie_vault.py. */
 (function () {
-  const PRIV = /^(data\.json|edit\.json|live\.json|live_items\.json|live_txns\.json|days\/[^\/]+\.json|txns\/[^\/]+\.json|pos\/[^\/]+\.json|orders\/actions\.json)$/;
+  const PRIV = /^(data\.json|edit\.json|live\.json|live_items\.json|live_txns\.json|days\/[^\/]+\.json|txns\/[^\/]+\.json|pos\/[^\/]+\.json|orders\/actions\.json|suppliers\/[^\/]+)$/;
   const ITER = 250000;
   const of = window.fetch.bind(window);
   const te = new TextEncoder(), td = new TextDecoder();
@@ -11165,11 +11208,503 @@
       : `Hi ${first}, your Marché Décarie order ${o.name} is on its way! See you soon.`;
   }
 
+  // ════════════════════════════════════════════════════════════════
+  //  SUPPLIER ORDERS (🛒 ORDERS tab > 📦 SUPPLIERS)
+  //  suppliers/<id>.json  : the supplier's price list (parsed from THEIR order sheet) + which of
+  //                         our POS codes each line is (map) + suggestions + lines we don't carry
+  //  suppliers/<id>_list.xlsx : their original sheet; the order is sent back IN IT (ORDER column)
+  //  suppliers/orders.json : drafts, sent and received orders
+  //  All three are private (locked with the staff passphrase like the sales data).
+  // ════════════════════════════════════════════════════════════════
+  const SUP_IDS = ['knv'];
+  const _sup = { cfg: {}, orders: null, view: 'home', sid: 'knv', draftId: null, filter: 'sugg', q: '', open: {}, saveT: null, matchQ: '', busy: false };
+  const supKey = (s) => String(s || '').toUpperCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ').trim();
+  const supMoney = (n) => n == null || isNaN(n) ? '—' : '$' + Number(n).toFixed(2);
+  const supToday = () => new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+
+  async function supLoad(force) {
+    const jobs = [];
+    for (const id of SUP_IDS) if (force || !_sup.cfg[id]) jobs.push((async () => {
+      const { json } = await ghGetJsonAndSha(`suppliers/${id}.json`);
+      if (json) _sup.cfg[id] = json;
+    })());
+    if (force || !_sup.orders) jobs.push((async () => {
+      const { json } = await ghGetJsonAndSha('suppliers/orders.json');
+      _sup.orders = json || { orders: [] };
+      if (!_sup.orders.orders) _sup.orders.orders = [];
+    })());
+    await Promise.all(jobs);
+  }
+  // read-modify-write with retry (other phone / tab may have saved in between)
+  async function supMutate(path, fn) {
+    for (let a = 0; a < 5; a++) {
+      const { json, sha } = await ghGetJsonAndSha(path);
+      const doc = json || {};
+      fn(doc);
+      doc.updated = new Date().toISOString();
+      const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(doc))));
+      try { await ghPutFile(path, b64, 'supplier: ' + path, sha); return doc; }
+      catch (e) { if (e.isConflict) { await new Promise(r => setTimeout(r, 300 * (a + 1))); continue; } throw e; }
+    }
+    throw new Error('Could not save ' + path);
+  }
+  async function supSaveCfg(id, fn) {
+    _sup.cfg[id] = await supMutate(`suppliers/${id}.json`, fn);
+  }
+  async function supSaveOrders(fn) {
+    _sup.orders = await supMutate('suppliers/orders.json', d => { if (!d.orders) d.orders = []; fn(d); });
+  }
+  function supLoadLib(src, global) {
+    if (window[global]) return Promise.resolve(window[global]);
+    return new Promise((res, rej) => {
+      const s = document.createElement('script'); s.src = src;
+      s.onload = () => res(window[global]); s.onerror = () => rej(new Error('Could not load ' + global + ' (offline?)'));
+      document.head.appendChild(s);
+    });
+  }
+
+  // ---- numbers per supplier line ----
+  function supCodes(cfg, it) { return ((cfg.map || {})[it.k] || []).filter(c => DATA.products[c] || DATA.products[resolveCode(c)]); }
+  function supRate(codes) {   // units (or kg) sold per week, stockout-adjusted, all our codes for this line together
+    let r = 0;
+    codes.forEach(c => { r += ecomSalesStats(c).rateUnits || 0; });
+    return r;
+  }
+  function supUnitsPerBox(it) {   // in OUR selling unit (kg for weighed items)
+    if (!it.bn) return null;
+    if (it.unit === 'lb') return it.bn / 2.2046;
+    return it.bn;
+  }
+  function supCostPerOurUnit(it) {
+    if (it.p == null) return null;
+    return it.unit === 'lb' ? it.p * 2.2046 : it.p;
+  }
+  function supLastOrderLine(sid, k, excludeId) {
+    const list = ((_sup.orders || {}).orders || []).filter(o => o.sid === sid && o.id !== excludeId && o.status !== 'draft' && (o.lines || {})[k]);
+    list.sort((a, b) => String(b.sentAt || b.created).localeCompare(String(a.sentAt || a.created)));
+    if (!list.length) return null;
+    const o = list[0], l = o.lines[k];
+    return { date: String(o.receivedAt || o.sentAt || o.created).slice(0, 10), qty: l.recv != null ? l.recv : l.q, received: !!o.receivedAt };
+  }
+  function supSuggest(cfg, it, cover) {
+    const codes = supCodes(cfg, it); if (!codes.length || it.p == null) return null;
+    const rate = supRate(codes), per = supUnitsPerBox(it);
+    if (!rate || !per) return { rate, boxes: 0 };
+    let need = rate * cover;
+    const last = supLastOrderLine(cfg.id, it.k, _sup.draftId);
+    if (last && last.received) {   // what is probably still on the shelf from the last delivery
+      const weeks = Math.max(0, (Date.now() - new Date(last.date).getTime()) / (7 * 864e5));
+      need -= Math.max(0, last.qty * per - rate * weeks);
+    }
+    const x = need / per;
+    return { rate, boxes: x >= 0.5 ? Math.max(1, Math.round(x)) : 0, last };
+  }
+
+  // ---- views ----
+  function supRender() {
+    const el = $('#sup-panel'); if (!el) return;
+    if (!_sup.orders) { el.innerHTML = '<div class="empty-state">LOADING SUPPLIERS…</div>'; supLoad().then(supRender).catch(e => { el.innerHTML = `<div class="or-warn">${escapeHtml(e.message)}</div>`; }); return; }
+    if (_sup.view === 'order') return supRenderOrder(el);
+    if (_sup.view === 'match') return supRenderMatch(el);
+    if (_sup.view === 'receive') return supRenderReceive(el);
+    supRenderHome(el);
+  }
+  function supRenderHome(el) {
+    const orders = (_sup.orders.orders || []).slice().sort((a, b) => String(b.created).localeCompare(String(a.created)));
+    el.innerHTML = SUP_IDS.map(id => {
+      const c = _sup.cfg[id]; if (!c) return `<div class="or-warn">No data yet for ${escapeHtml(id)}.</div>`;
+      const items = c.list.items, mapped = items.filter(it => (c.map || {})[it.k] && c.map[it.k].length).length;
+      const review = items.filter(it => !(c.map || {})[it.k] && !(c.skip || []).includes(it.k) && it.p != null && ((c.sugg || {})[it.k] || []).length).length;
+      const draft = orders.find(o => o.sid === id && o.status === 'draft');
+      const mine = orders.filter(o => o.sid === id);
+      return `<div class="sup-card">
+        <div class="sup-c1"><b>${escapeHtml(c.name)}</b><span>price list ${escapeHtml(c.list.date || '?')}</span></div>
+        <div class="sup-c2">${items.length} products on their list · <b>${mapped}</b> matched to our POS${review ? ` · <span class="sup-warn">${review} to confirm</span>` : ''}</div>
+        <div class="sup-btns">
+          <button class="btn primary" data-sa="order" data-sid="${id}">${draft ? '✏️ CONTINUE ORDER' : '＋ NEW ORDER'}</button>
+          <button class="btn" data-sa="match" data-sid="${id}">🔗 MATCH${review ? ' (' + review + ')' : ''}</button>
+          <label class="btn sup-up">⬆ NEW PRICE LIST<input type="file" accept=".xlsx,.xls" data-sup-upload="${id}" hidden></label>
+        </div>
+        ${mine.filter(o => o.status !== 'draft').slice(0, 8).map(o => {
+          const n = Object.values(o.lines || {}).reduce((t, l) => t + (l.q || 0), 0);
+          return `<button class="sup-ord" data-sa="${o.status === 'sent' ? 'receive' : 'view'}" data-oid="${o.id}" data-sid="${id}">
+            <span>${escapeHtml(String(o.sentAt || o.created).slice(0, 10))} · ${Object.keys(o.lines || {}).length} lines · ${n} boxes · ${supMoney(o.total)}</span>
+            <em class="sup-st ${o.status}">${o.status === 'sent' ? 'SENT · tap when delivered' : o.status === 'received' ? 'RECEIVED' : o.status.toUpperCase()}</em></button>`;
+        }).join('')}
+      </div>`;
+    }).join('');
+    supBindCommon(el);
+  }
+
+  function supDraft(sid) {
+    const all = _sup.orders.orders;
+    let d = all.find(o => o.sid === sid && o.status === 'draft');
+    if (!d) { d = { id: 'po' + Date.now().toString(36), sid, status: 'draft', created: new Date().toISOString(), lines: {}, cover: 2 }; all.push(d); }
+    _sup.draftId = d.id;
+    return d;
+  }
+  function supQueueSave() {
+    clearTimeout(_sup.saveT);
+    _sup.saveT = setTimeout(async () => {
+      const d = _sup.orders.orders.find(o => o.id === _sup.draftId); if (!d) return;
+      const snap = JSON.parse(JSON.stringify(d));
+      try { await supSaveOrders(doc => { const i = doc.orders.findIndex(o => o.id === snap.id); if (i >= 0) doc.orders[i] = snap; else doc.orders.push(snap); }); $('#sup-saved') && ($('#sup-saved').textContent = 'saved'); }
+      catch (e) { showToast(e.message, true); }
+    }, 1200);
+    $('#sup-saved') && ($('#sup-saved').textContent = 'saving…');
+  }
+  function supLineHtml(c, it, d, cover) {
+    const codes = supCodes(c, it), q = ((d.lines[it.k] || {}).q) || 0;
+    const sg = supSuggest(c, it, cover);
+    const p0 = codes.length ? (DATA.products[resolveCode(codes[0])] || []) : [];
+    const ourName = codes.length ? (p0[0] || '').trim() : '';
+    const cost = supCostPerOurUnit(it), our = p0[1];
+    const margin = cost != null && our ? Math.round(100 * (our - cost) / our) : null;
+    const posCost = p0[4];
+    const costMove = cost != null && posCost && Math.abs(cost - posCost) > 0.05 * posCost;
+    const na = it.p == null;
+    const per = it.unit === 'lb' ? '/lb' : it.unit === 'kg' ? '/kg' : '/u';
+    return `<div class="sup-line${q ? ' in' : ''}${na ? ' na' : ''}" data-k="${escapeHtml(it.k)}">
+      <div class="sup-l1">
+        ${codes.length ? productThumbHtml(codes[0], 40) : '<span class="sup-noimg">?</span>'}
+        <div class="sup-names"><b>${escapeHtml(ourName || it.d)}</b>${ourName ? `<small>${escapeHtml(it.d)}</small>` : ''}
+          <small>${escapeHtml(it.b || '?')} per box · ${na ? '<span class="sup-bad">no price on their list</span>' : supMoney(it.p) + per + ' = ' + supMoney(it.p * (it.bn || 0)) + '/box'}${our ? ' · we sell ' + supMoney(our) : ''}${margin != null ? ` · <b class="${margin < 25 ? 'sup-bad' : 'sup-ok'}">${margin}%</b>` : ''}${it.n ? ` · <span class="sup-new">${escapeHtml(it.n)}</span>` : ''}</small>
+          ${codes.length ? `<small>${sg && sg.rate ? 'sells ' + (sg.rate >= 10 ? Math.round(sg.rate) : sg.rate.toFixed(1)) + (it.unit !== 'ea' ? ' kg' : '') + '/wk' : 'no recent sales'}${sg && sg.last ? ' · last: ' + sg.last.qty + ' bx ' + sg.last.date.slice(5) : ''}${costMove ? ` · <span class="sup-warn">cost ${supMoney(cost)} vs POS ${supMoney(posCost)}</span>` : ''}</small>` : ''}
+        </div>
+        ${na ? '' : `<div class="sup-step"><button data-sq="-1">−</button><span>${q}</span><button data-sq="1">＋</button></div>`}
+      </div>
+      ${sg && sg.boxes && sg.boxes !== q && !na ? `<button class="sup-sugg" data-sset="${sg.boxes}">suggest ${sg.boxes} box${sg.boxes > 1 ? 'es' : ''} → tap</button>` : ''}
+    </div>`;
+  }
+  function supRenderOrder(el) {
+    const c = _sup.cfg[_sup.sid], d = supDraft(_sup.sid), cover = d.cover || 2;
+    const items = c.list.items;
+    const q = supKey(_sup.q);
+    const carried = it => supCodes(c, it).length > 0;
+    const sugMap = {};
+    items.forEach(it => { if (carried(it)) { const s = supSuggest(c, it, cover); if (s && s.boxes) sugMap[it.k] = s.boxes; } });
+    let list;
+    if (q) list = items.filter(it => supKey(it.d).includes(q) || (supCodes(c, it).some(cd => supKey((DATA.products[cd] || [])[0]).includes(q))));
+    else if (_sup.filter === 'sugg') list = items.filter(it => sugMap[it.k] || (d.lines[it.k] || {}).q);
+    else if (_sup.filter === 'in') list = items.filter(it => (d.lines[it.k] || {}).q);
+    else if (_sup.filter === 'carried') list = items.filter(carried);
+    else list = items.filter(it => !carried(it));
+    const lines = Object.entries(d.lines).filter(([, l]) => l.q > 0);
+    const byK = Object.fromEntries(items.map(it => [it.k, it]));
+    const total = lines.reduce((t, [k, l]) => t + ((byK[k] || {}).p || 0) * ((byK[k] || {}).bn || 0) * l.q, 0);
+    const boxes = lines.reduce((t, [, l]) => t + l.q, 0);
+    const sections = {};
+    list.forEach(it => { (sections[it.s || 'Other'] = sections[it.s || 'Other'] || []).push(it); });
+    const nIn = lines.length, nSug = Object.keys(sugMap).length;
+    el.innerHTML = `
+      <div class="sup-top"><button class="or-refresh" data-sa="home">‹</button><div class="or-h">${escapeHtml(c.name)} · ORDER</div><span class="or-upd" id="sup-saved"></span></div>
+      <div class="sup-total"><div><b>${supMoney(total)}</b><span>${boxes} boxes · ${nIn} products</span></div>
+        <button class="btn primary" data-sa="send" ${nIn ? '' : 'disabled'}>SEND ›</button></div>
+      <div class="sup-cover">Order enough for <select id="sup-cover">${[1, 2, 3, 4, 6, 8].map(w => `<option value="${w}"${w === cover ? ' selected' : ''}>${w} week${w > 1 ? 's' : ''}</option>`).join('')}</select>
+        ${nSug ? `<button class="btn small" data-sa="fillsugg">FILL ${nSug} SUGGESTIONS</button>` : ''}</div>
+      <input id="sup-q" class="sup-search" placeholder="Search their list or our products…" value="${escapeHtml(_sup.q)}" autocomplete="off">
+      <div class="or-chips">${[['sugg', 'SUGGESTED ' + nSug], ['in', 'IN ORDER ' + nIn], ['carried', 'WE CARRY'], ['new', 'NOT CARRIED']].map(([f, l]) =>
+        `<button class="${_sup.filter === f && !q ? 'on' : ''}" data-sf="${f}">${l}</button>`).join('')}</div>
+      ${list.length > 400 ? '<div class="or-c3">Showing the first 400, search to narrow.</div>' : ''}
+      ${Object.entries(sections).map(([s, its]) => `<div class="sup-sec">${escapeHtml(s)}</div>` + its.slice(0, 400).map(it => supLineHtml(c, it, d, cover)).join('')).join('') || '<div class="empty-state">NOTHING HERE</div>'}`;
+    const setQ = (k, n) => {
+      const it = byK[k]; if (!it || it.p == null) return;
+      n = Math.max(0, n);
+      if (n) d.lines[k] = Object.assign(d.lines[k] || {}, { q: n, p: it.p, d: it.d, r: it.r, sku: it.sku }); else delete d.lines[k];
+      supQueueSave(); supRenderOrder(el);
+    };
+    el.querySelectorAll('[data-sq]').forEach(b => b.onclick = () => { const k = b.closest('.sup-line').dataset.k; setQ(k, ((d.lines[k] || {}).q || 0) + (+b.dataset.sq)); });
+    el.querySelectorAll('[data-sset]').forEach(b => b.onclick = () => setQ(b.closest('.sup-line').dataset.k, +b.dataset.sset));
+    el.querySelectorAll('[data-sf]').forEach(b => b.onclick = () => { _sup.filter = b.dataset.sf; _sup.q = ''; supRenderOrder(el); });
+    const qi = $('#sup-q'); qi.oninput = () => { _sup.q = qi.value; clearTimeout(_sup.qT); _sup.qT = setTimeout(() => { supRenderOrder(el); const n = $('#sup-q'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 350); };
+    $('#sup-cover').onchange = (e) => { d.cover = +e.target.value; supQueueSave(); supRenderOrder(el); };
+    el.querySelectorAll('.sup-line').forEach(row => row.querySelector('.sup-names').onclick = () => {
+      const it = byK[row.dataset.k]; if (!supCodes(c, it).length) supOpenLink(_sup.sid, it.k);
+    });
+    supBindCommon(el);
+  }
+
+  // ---- sending: their own sheet with the ORDER column filled in ----
+  async function supBuildXlsx(c, d) {
+    const JSZip = await supLoadLib('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js', 'JSZip');
+    const r = await fetch(recipeRawUrl(c.list.file), { cache: 'no-store' });
+    if (!r.ok) throw new Error('Their order sheet is missing (upload the price list again)');
+    const zip = await JSZip.loadAsync(await r.arrayBuffer());
+    const sheetPath = Object.keys(zip.files).find(p => /^xl\/worksheets\/sheet1\.xml$/.test(p)) || Object.keys(zip.files).find(p => /^xl\/worksheets\/sheet\d+\.xml$/.test(p));
+    let xml = await zip.file(sheetPath).async('string');
+    const col = (c.cols && c.cols.ORDER) || 'G';
+    const colNum = s => s.split('').reduce((n, ch) => n * 26 + ch.charCodeAt(0) - 64, 0);
+    for (const [k, l] of Object.entries(d.lines)) {
+      if (!(l.q > 0) || !l.r) continue;
+      const ref = col + l.r, cell = `<c r="${ref}"><v>${l.q}</v></c>`;
+      const rowRe = new RegExp(`<row[^>]*\\sr="${l.r}"[^>]*?(/>|>[\\s\\S]*?</row>)`);
+      const m = xml.match(rowRe);
+      if (!m) continue;
+      let row = m[0];
+      if (row.endsWith('/>')) row = row.slice(0, -2) + '>' + cell + '</row>';
+      else {
+        const existing = new RegExp(`<c r="${ref}"[^>]*?(/>|>[\\s\\S]*?</c>)`);
+        if (existing.test(row)) row = row.replace(existing, (old) => { const s = (old.match(/\ss="\d+"/) || [''])[0]; return `<c r="${ref}"${s}><v>${l.q}</v></c>`; });
+        else {
+          const cells = [...row.matchAll(/<c r="([A-Z]+)\d+"/g)];
+          const after = cells.find(x => colNum(x[1]) > colNum(col));
+          row = after ? row.replace(after[0], cell + after[0]) : row.replace('</row>', cell + '</row>');
+        }
+      }
+      xml = xml.replace(m[0], row);
+    }
+    zip.file(sheetPath, xml);
+    zip.remove('xl/calcChain.xml');
+    return zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  }
+  function supOrderText(c, d) {
+    const byK = Object.fromEntries(c.list.items.map(it => [it.k, it]));
+    return `Marché Décarie — order ${supToday()}\n` + Object.entries(d.lines).filter(([, l]) => l.q > 0)
+      .map(([k, l]) => `${l.q} box  ${byK[k] ? byK[k].sku + '  ' + byK[k].d : l.d}`).join('\n');
+  }
+  async function supSend() {
+    const c = _sup.cfg[_sup.sid], d = supDraft(_sup.sid);
+    const el = $('#sup-panel');
+    const byK = Object.fromEntries(c.list.items.map(it => [it.k, it]));
+    const lines = Object.entries(d.lines).filter(([, l]) => l.q > 0);
+    const total = lines.reduce((t, [k, l]) => t + ((byK[k] || {}).p || 0) * ((byK[k] || {}).bn || 0) * l.q, 0);
+    el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="order">‹</button><div class="or-h">SEND TO ${escapeHtml(c.name.toUpperCase())}</div></div>
+      <div class="sup-total"><div><b>${supMoney(total)}</b><span>${lines.reduce((t, [, l]) => t + l.q, 0)} boxes · ${lines.length} products</span></div></div>
+      <p class="or-c3">Their own order sheet, with your quantities in the ORDER column. Share it by email or WhatsApp.</p>
+      <button class="btn primary sup-wide" id="sup-share">📎 SHARE THEIR SHEET (.xlsx)</button>
+      <button class="btn sup-wide" id="sup-dl">⬇ DOWNLOAD THE SHEET</button>
+      <button class="btn sup-wide" id="sup-copy">📋 COPY AS TEXT</button>
+      <button class="btn sup-wide" id="sup-mark">✓ MARK AS SENT</button>
+      <div class="sup-recap">${lines.map(([k, l]) => `<div><b>${l.q}</b> × ${escapeHtml((byK[k] || {}).d || l.d)}</div>`).join('')}</div>`;
+    const fname = `Marche_Decarie_order_${supToday()}.xlsx`;
+    const getFile = async () => new File([await supBuildXlsx(c, d)], fname, { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    $('#sup-share').onclick = async () => {
+      try {
+        const f = await getFile();
+        if (navigator.canShare && navigator.canShare({ files: [f] })) await navigator.share({ files: [f], title: 'Order Marché Décarie', text: 'Order from Marché Décarie' });
+        else { showToast('Sharing files not supported here, downloading instead'); supDownload(f); }
+      } catch (e) { if (e.name !== 'AbortError') showToast(e.message, true); }
+    };
+    $('#sup-dl').onclick = async () => { try { supDownload(await getFile()); } catch (e) { showToast(e.message, true); } };
+    $('#sup-copy').onclick = async () => { try { await navigator.clipboard.writeText(supOrderText(c, d)); showToast('COPIED ✓'); } catch { prompt('Copy:', supOrderText(c, d)); } };
+    $('#sup-mark').onclick = async () => {
+      if (!confirm('Mark this order as sent?')) return;
+      d.status = 'sent'; d.sentAt = new Date().toISOString(); d.total = Math.round(total * 100) / 100;
+      const snap = JSON.parse(JSON.stringify(d));
+      try { await supSaveOrders(doc => { const i = doc.orders.findIndex(o => o.id === snap.id); if (i >= 0) doc.orders[i] = snap; else doc.orders.push(snap); }); _sup.draftId = null; _sup.view = 'home'; showToast('ORDER SENT ✓'); supRender(); }
+      catch (e) { showToast(e.message, true); }
+    };
+    supBindCommon(el);
+  }
+  function supDownload(file) {
+    const a = document.createElement('a'); a.href = URL.createObjectURL(file); a.download = file.name;
+    document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+  }
+
+  // ---- receiving ----
+  function supRenderReceive(el) {
+    const o = _sup.orders.orders.find(x => x.id === _sup.recvId); if (!o) { _sup.view = 'home'; return supRender(); }
+    const c = _sup.cfg[o.sid], byK = Object.fromEntries(c.list.items.map(it => [it.k, it]));
+    const ro = o.status === 'received';
+    el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="home">‹</button><div class="or-h">${ro ? 'RECEIVED' : 'DELIVERY'} · ${escapeHtml(String(o.sentAt || o.created).slice(0, 10))}</div></div>
+      <p class="or-c3">${ro ? 'What came in.' : 'Check each line as you unpack. Change the number if a box is missing or extra.'}</p>
+      ${Object.entries(o.lines).map(([k, l]) => {
+        const codes = supCodes(c, byK[k] || { k }), r = l.recv != null ? l.recv : l.q;
+        return `<div class="sup-line${r !== l.q ? ' diff' : ''}" data-k="${escapeHtml(k)}"><div class="sup-l1">
+          ${codes.length ? productThumbHtml(codes[0], 40) : '<span class="sup-noimg">?</span>'}
+          <div class="sup-names"><b>${escapeHtml(codes.length ? (DATA.products[resolveCode(codes[0])] || [''])[0] : (byK[k] || {}).d || l.d)}</b><small>ordered ${l.q} box${l.q > 1 ? 'es' : ''}</small></div>
+          ${ro ? `<b>${r}</b>` : `<div class="sup-step"><button data-rq="-1">−</button><span>${r}</span><button data-rq="1">＋</button></div>`}
+        </div></div>`;
+      }).join('')}
+      ${ro ? '' : '<button class="btn primary sup-wide" id="sup-recv">✓ DELIVERY RECEIVED</button>'}
+      ${ro ? '' : '<button class="btn sup-wide" id="sup-cancel">Cancel this order</button>'}`;
+    el.querySelectorAll('[data-rq]').forEach(b => b.onclick = () => {
+      const k = b.closest('.sup-line').dataset.k, l = o.lines[k];
+      l.recv = Math.max(0, (l.recv != null ? l.recv : l.q) + (+b.dataset.rq)); supRenderReceive(el);
+    });
+    const save = async (patch) => {
+      Object.assign(o, patch); const snap = JSON.parse(JSON.stringify(o));
+      try { await supSaveOrders(doc => { const i = doc.orders.findIndex(x => x.id === snap.id); if (i >= 0) doc.orders[i] = snap; }); _sup.view = 'home'; supRender(); }
+      catch (e) { showToast(e.message, true); }
+    };
+    if ($('#sup-recv')) $('#sup-recv').onclick = () => { Object.values(o.lines).forEach(l => { if (l.recv == null) l.recv = l.q; }); save({ status: 'received', receivedAt: new Date().toISOString() }); showToast('RECEIVED ✓'); };
+    if ($('#sup-cancel')) $('#sup-cancel').onclick = () => { if (confirm('Cancel this order?')) save({ status: 'cancelled' }); };
+    supBindCommon(el);
+  }
+
+  // ---- matching their lines to our POS codes ----
+  function supPosSearch(q, limit) {
+    q = supKey(q); if (q.length < 2) return [];
+    const words = q.split(' ');
+    const out = [];
+    for (const [code, p] of Object.entries(DATA.products)) {
+      if (code === q || code.endsWith(q)) { out.push([1e9, code]); continue; }
+      const t = supKey(p[0]);
+      if (words.every(w => t.includes(w))) out.push([((DATA.sales[code] || {}).ta || 0), code]);
+    }
+    return out.sort((a, b) => b[0] - a[0]).slice(0, limit || 12).map(x => x[1]);
+  }
+  function supPosRow(code, extra) {
+    const p = DATA.products[code] || [];
+    return `<button class="sup-pos" data-link="${code}">${productThumbHtml(code, 34)}<span><b>${escapeHtml((p[0] || '').trim())}</b>
+      <small>${escapeHtml(productSizeText(code) || '')} · ${p[1] != null ? priceText(code, p[1]) : ''} · ${Math.round(((DATA.sales[code] || {}).ta) || 0)}$/yr · ${code.replace(/^0+/, '')}</small></span>${extra || ''}</button>`;
+  }
+  function supOpenLink(sid, k) { _sup.linkK = k; _sup.linkSid = sid; _sup.view = 'match'; _sup.matchQ = ''; supRender(); }
+  function supRenderMatch(el) {
+    const c = _sup.cfg[_sup.linkSid || _sup.sid];
+    const items = c.list.items;
+    if (_sup.linkK) {   // one line: pick the product(s)
+      const it = items.find(x => x.k === _sup.linkK); const cur = (c.map || {})[it.k] || [];
+      const sug = ((c.sugg || {})[it.k] || []).filter(x => !cur.includes(x) && DATA.products[x]);
+      const found = _sup.matchQ ? supPosSearch(_sup.matchQ).filter(x => !cur.includes(x)) : [];
+      el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="matchlist">‹</button><div class="or-h">MATCH</div></div>
+        <div class="sup-them"><small>${escapeHtml(c.name)} sells:</small><b>${escapeHtml(it.d)}</b><small>${escapeHtml(it.b || '')} per box · ${supMoney(it.p)}</small></div>
+        ${cur.length ? `<div class="sup-sec">LINKED TO (tap to remove)</div>` + cur.map(x => supPosRow(x, '<em class="sup-x">✕</em>').replace('data-link=', 'data-unlink=')).join('') : ''}
+        ${sug.length ? `<div class="sup-sec">SUGGESTIONS</div>` + sug.map(x => supPosRow(x)).join('') : ''}
+        <div class="sup-sec">FIND OUR PRODUCT (name or barcode)</div>
+        <input id="sup-mq" class="sup-search" placeholder="e.g. veres lecho, or scan/type the barcode" value="${escapeHtml(_sup.matchQ)}" autocomplete="off">
+        ${found.map(x => supPosRow(x)).join('')}
+        <button class="btn sup-wide" data-sa="skip">${(c.skip || []).includes(it.k) ? 'Undo "we don\'t carry this"' : "We don't carry this"}</button>`;
+      const save = async (fn) => { try { await supSaveCfg(c.id, doc => { doc.map = doc.map || {}; doc.skip = doc.skip || []; fn(doc); }); supRenderMatch(el); } catch (e) { showToast(e.message, true); } };
+      el.querySelectorAll('[data-link]').forEach(b => b.onclick = () => save(doc => { doc.map[it.k] = [...new Set([...(doc.map[it.k] || []), b.dataset.link])]; doc.skip = doc.skip.filter(x => x !== it.k); }));
+      el.querySelectorAll('[data-unlink]').forEach(b => b.onclick = () => save(doc => { doc.map[it.k] = (doc.map[it.k] || []).filter(x => x !== b.dataset.unlink); if (!doc.map[it.k].length) delete doc.map[it.k]; }));
+      el.querySelector('[data-sa="skip"]').onclick = (e) => { e.stopPropagation(); save(doc => { doc.skip = doc.skip.includes(it.k) ? doc.skip.filter(x => x !== it.k) : doc.skip.concat(it.k); }); };
+      const mq = $('#sup-mq'); mq.oninput = () => { _sup.matchQ = mq.value; clearTimeout(_sup.qT); _sup.qT = setTimeout(() => { supRenderMatch(el); const n = $('#sup-mq'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 350); };
+      supBindCommon(el);
+      return;
+    }
+    // the review list: suggestions to confirm first, then everything not matched
+    const todo = items.filter(it => !(c.map || {})[it.k] && !(c.skip || []).includes(it.k) && it.p != null);
+    const withSug = todo.filter(it => ((c.sugg || {})[it.k] || []).length);
+    const q = supKey(_sup.matchQ);
+    const list = (q ? items.filter(it => supKey(it.d).includes(q)) : withSug.concat(todo.filter(it => !withSug.includes(it)))).slice(0, 150);
+    el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="home">‹</button><div class="or-h">${escapeHtml(c.name)} · MATCH</div></div>
+      <p class="or-c3">Tell the app which of our products each line of their list is. ${withSug.length} have a possible match to check, ${todo.length - withSug.length} more have none yet (most are things we don't carry).</p>
+      <input id="sup-mq" class="sup-search" placeholder="Search their list…" value="${escapeHtml(_sup.matchQ)}" autocomplete="off">
+      ${list.map(it => {
+        const cur = (c.map || {})[it.k] || [], sg = ((c.sugg || {})[it.k] || []).filter(x => DATA.products[x]);
+        return `<div class="sup-mrow" data-k="${escapeHtml(it.k)}"><div class="sup-them"><b>${escapeHtml(it.d)}</b><small>${escapeHtml(it.s)} · ${escapeHtml(it.b || '')}/box · ${supMoney(it.p)}${cur.length ? ' · <span class="sup-ok">linked ✓</span>' : ''}${(c.skip || []).includes(it.k) ? ' · not carried' : ''}</small></div>
+          ${!cur.length && sg.length ? `<div class="sup-qs">${sg.slice(0, 2).map(x => `<button data-qlink="${x}">Is it ${escapeHtml(((DATA.products[x] || [])[0] || '').trim())} <small>${escapeHtml(productSizeText(x) || '')}</small></button>`).join('')}</div>` : ''}
+          <div class="sup-qs"><button data-open="1">${cur.length ? 'Change' : 'Find / other'} ›</button>${cur.length ? '' : '<button data-noc="1">Not carried</button>'}</div></div>`;
+      }).join('')}`;
+    const save = async (k, fn) => { try { await supSaveCfg(c.id, doc => { doc.map = doc.map || {}; doc.skip = doc.skip || []; fn(doc); }); supRenderMatch(el); } catch (e) { showToast(e.message, true); } };
+    el.querySelectorAll('.sup-mrow').forEach(row => {
+      const k = row.dataset.k;
+      row.querySelectorAll('[data-qlink]').forEach(b => b.onclick = () => save(k, doc => { doc.map[k] = [b.dataset.qlink]; }));
+      row.querySelector('[data-open]').onclick = () => { _sup.linkK = k; _sup.linkSid = c.id; _sup.matchQ = ''; supRenderMatch(el); };
+      const nc = row.querySelector('[data-noc]'); if (nc) nc.onclick = () => save(k, doc => { if (!doc.skip.includes(k)) doc.skip.push(k); });
+    });
+    const mq = $('#sup-mq'); mq.oninput = () => { _sup.matchQ = mq.value; clearTimeout(_sup.qT); _sup.qT = setTimeout(() => { supRenderMatch(el); const n = $('#sup-mq'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 350); };
+    supBindCommon(el);
+  }
+
+  // ---- new price list: parse THEIR sheet, keep every match we already made ----
+  function supParseRows(rows) {
+    const H = (rows[0] || []).map(x => String(x == null ? '' : x).trim().toUpperCase());
+    const ix = n => H.indexOf(n);
+    const col = {}; ['SORTID', 'PURCHASEDESC', 'PRICE', 'IN BOX', 'ORDER', 'COMMENTS1', 'OUT OF STOCK'].forEach(n => { if (ix(n) >= 0) col[n] = ix(n); });
+    if (col.PURCHASEDESC == null || col.ORDER == null) throw new Error('This does not look like their order sheet (no PURCHASEDESC / ORDER column)');
+    const boxnum = (b) => { if (b == null || b === '') return null; if (typeof b === 'number') return b; const s = String(b).toLowerCase().replace(/\s/g, ''); let m = s.match(/^(\d+(?:\.\d+)?)x(\d+(?:\.\d+)?)$/); if (m) return m[1] * m[2]; m = s.match(/^x?(\d+(?:\.\d+)?)/); return m ? +m[1] : null; };
+    const cont = (desc) => /^(with |flavour|aroma|15 |[a-z])/.test(desc) || /FILTER/i.test(desc);
+    const items = []; let section = '', prev = null;
+    for (let i = 1; i < rows.length; i++) {
+      const r = rows[i] || [], g = n => col[n] == null ? null : r[col[n]];
+      let sid = g('SORTID'), desc = g('PURCHASEDESC'), price = g('PRICE'), box = g('IN BOX');
+      if (desc == null || !String(desc).trim()) { prev = null; continue; }
+      desc = String(desc).trim();
+      const isSid = typeof sid === 'string' && sid.trim();
+      if ((price == null || price === '') && (box == null || box === '') && !isSid) {
+        if (prev && cont(desc)) { prev.d += ' ' + desc; continue; }
+        section = desc.split(',')[0].trim(); prev = null; continue;
+      }
+      if (!isSid && prev && cont(desc)) {
+        prev.d += ' ' + desc;
+        if (typeof price === 'number') { prev.p = price; prev.r = i + 1; }
+        if (box != null && box !== '') { prev.b = String(box); prev.bn = boxnum(box); }
+        continue;
+      }
+      const u = supKey(desc);
+      const it = { sku: isSid ? sid.trim() : '', d: desc, s: section, p: typeof price === 'number' ? price : null, b: box == null ? '' : String(box), bn: boxnum(box), r: i + 1,
+        n: String(g('COMMENTS1') || '').trim(), oos: !!g('OUT OF STOCK'), unit: /[, ]LB\b/.test(u) ? 'lb' : (/,\s*KG\b|\bKG$/.test(u) ? 'kg' : 'ea') };
+      items.push(it); prev = it;
+    }
+    items.forEach(it => { it.k = supKey(it.d); });
+    const L = 'ABCDEFGHIJKLMNOP';
+    return { items, cols: Object.fromEntries(Object.entries(col).map(([k, v]) => [k, L[v]])) };
+  }
+  async function supUpload(id, file) {
+    try {
+      showToast('Reading their list…');
+      const XLSX = await supLoadLib('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js', 'XLSX');
+      const buf = await file.arrayBuffer();
+      const wb = XLSX.read(buf, { type: 'array' });
+      const rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, raw: true, defval: null, blankrows: true });
+      const { items, cols } = supParseRows(rows);
+      if (!/\.xlsx$/i.test(file.name)) throw new Error('Please save it as .xlsx first (the order is sent back in their own sheet)');
+      const old = _sup.cfg[id] || { map: {} };
+      const oldBySku = {}; ((old.list || {}).items || []).forEach(it => { if (it.sku) oldBySku[it.sku] = it.k; });
+      let carried = 0, newLines = 0, priceUp = 0, priceDown = 0;
+      const oldByK = Object.fromEntries(((old.list || {}).items || []).map(it => [it.k, it]));
+      const addMap = {};
+      items.forEach(it => {
+        const o = oldByK[it.k] || (it.sku && oldByK[oldBySku[it.sku]]);
+        if (!o) { newLines++; return; }
+        if (o.k !== it.k && (old.map || {})[o.k]) addMap[it.k] = old.map[o.k];   // description reworded: same SKU, keep the match
+        if (o.p != null && it.p != null) { if (it.p > o.p + 0.004) priceUp++; else if (it.p < o.p - 0.004) priceDown++; }
+      });
+      // upload their sheet (kept to send the order back in it), then the parsed list
+      const b64 = await new Promise(res => { const fr = new FileReader(); fr.onload = () => res(String(fr.result).split(',')[1]); fr.readAsDataURL(file); });
+      const path = `suppliers/${id}_list.xlsx`;
+      await ghPutFile(path, b64, 'supplier price list ' + id, await ghGetSha(path));
+      const m = file.name.match(/(\d{2})[.\-_](\d{2})[.\-_](\d{4})/);
+      const date = m ? `${m[3]}-${m[2]}-${m[1]}` : supToday();
+      await supSaveCfg(id, doc => {
+        doc.id = id; doc.name = doc.name || id.toUpperCase(); doc.map = Object.assign(doc.map || {}, addMap); doc.cols = cols;
+        doc.list = { date, file: path, name: file.name, items };
+      });
+      items.forEach(it => { if ((_sup.cfg[id].map || {})[it.k]) carried++; });
+      showToast(`List of ${date}: ${items.length} lines · ${newLines} new · prices ↑${priceUp} ↓${priceDown} · ${carried} matched`);
+      supRender();
+    } catch (e) { showToast(e.message, true); }
+  }
+
+  function supBindCommon(el) {
+    el.querySelectorAll('[data-sa]').forEach(b => {
+      if (b.dataset.sa === 'skip') return;
+      b.onclick = async () => {
+        const a = b.dataset.sa;
+        if (b.dataset.sid) _sup.sid = b.dataset.sid;
+        if (a === 'home') { _sup.view = 'home'; _sup.linkK = null; supRender(); }
+        else if (a === 'order') { _sup.view = 'order'; supRender(); }
+        else if (a === 'match') { _sup.view = 'match'; _sup.linkK = null; _sup.linkSid = _sup.sid; _sup.matchQ = ''; supRender(); }
+        else if (a === 'matchlist') { _sup.linkK = null; _sup.matchQ = ''; supRender(); }
+        else if (a === 'send') supSend();
+        else if (a === 'receive' || a === 'view') { _sup.recvId = b.dataset.oid; _sup.view = 'receive'; supRender(); }
+        else if (a === 'fillsugg') {
+          const c = _sup.cfg[_sup.sid], d = supDraft(_sup.sid);
+          c.list.items.forEach(it => { if (supCodes(c, it).length && !(d.lines[it.k] || {}).q) { const s = supSuggest(c, it, d.cover || 2); if (s && s.boxes) d.lines[it.k] = { q: s.boxes, p: it.p, d: it.d, r: it.r, sku: it.sku }; } });
+          _sup.filter = 'in'; supQueueSave(); supRender();
+        }
+      };
+    });
+    el.querySelectorAll('[data-sup-upload]').forEach(inp => inp.onchange = () => { if (inp.files[0]) supUpload(inp.dataset.supUpload, inp.files[0]); });
+  }
+  function orSetMode(mode) {
+    _sup.mode = mode; try { localStorage.setItem('orMode', mode); } catch {}
+    document.querySelectorAll('#or-mode [data-om]').forEach(b => b.classList.toggle('on', b.dataset.om === mode));
+    const web = mode !== 'sup';
+    $('#or-panel').style.display = web ? 'block' : 'none';
+    $('#sup-panel').style.display = web ? 'none' : 'block';
+    if (!web) supRender();
+  }
+
   function openOrdersView() {
     const ok = !!_posUnlocked;
     $('#or-lock').style.display = ok ? 'none' : 'flex';
     $('#or-panel').style.display = ok ? 'block' : 'none';
-    if (!ok) return;
+    $('#or-mode').style.display = ok ? 'flex' : 'none';
+    if (!ok) { $('#sup-panel').style.display = 'none'; return; }
+    orSetMode(_sup.mode || (() => { try { return localStorage.getItem('orMode') || 'web'; } catch { return 'web'; } })());
     orRender();
     orFetch();
     Promise.all([fetchEcomCatalog(), fetchEditData()]).catch(() => {});   // produce families for order matching
@@ -14175,6 +14710,7 @@
     $('#ed-unlock-btn').addEventListener('click', edUnlock);
     $('#pm-unlock-btn').addEventListener('click', pmUnlock);
     $('#or-unlock-btn').addEventListener('click', orUnlock);
+    document.querySelectorAll('#or-mode [data-om]').forEach(b => b.addEventListener('click', () => orSetMode(b.dataset.om)));
     $('#ed-scan-btn').addEventListener('click', startEdScanner);
     $('#ed-photo-btn').addEventListener('click', () => pickBarcodePhoto((code) => {
       const p = lookup(code);
