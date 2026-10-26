@@ -188,7 +188,7 @@ PLAN=DEFS+"""
 { "name": "Store map (aisles)", "settings": [], "presets": [{ "name": "Store map (aisles)" }] }
 {% endschema %}
 """.replace('ZONECSS',zone_css)
-open(T+'sections/decarie-store-plan.liquid','w').write(PLAN)
+# store map removed from the home page (Oct 25)
 
 # ---------------- home: aisle shelves ----------------
 SHELVES=DEFS+"""
@@ -289,18 +289,9 @@ AISLE=DEFS+"""
 -%}
 <div class="daisle dplan__zone--{{ zone }}">
   <div class="page-width">
-    {%- if zrec -%}<p class="daisle__crumb"><a href="{{ routes.root_url }}#plan">{% if en %}{{ zrec[2] }}{% else %}{{ zrec[1] }}{% endif %}</a></p>{%- endif -%}
+    {%- if zrec -%}<p class="daisle__crumb"><a href="{{ routes.root_url }}">{% if en %}{{ zrec[2] }}{% else %}{{ zrec[1] }}{% endif %}</a></p>{%- endif -%}
     <h1 class="daisle__title">{{ aname }}</h1>
     <p class="daisle__count">{{ collection.products_count }} {% if en %}products{% else %}produits{% endif %}</p>
-    {%- if zrec -%}
-      {%- assign zaisles = zrec[3] | split: ',' -%}
-      <ul class="daisle__next" role="list">
-        {%- for ad in aisles_def -%}
-          {%- assign ap = ad | split: '|' -%}
-          {%- assign hh = 'allee-' | append: ap[0] -%}
-          {%- if ap[0] != aid and zaisles contains ap[0] and collections[hh].products_count > 0 -%}
-            <li><a href="{{ collections[hh].url }}">{% if en %}{{ ap[2] }}{% else %}{{ ap[1] }}{% endif %} →</a></li>
-          {%- endif -%}
         {%- endfor -%}
       </ul>
     {%- endif -%}
