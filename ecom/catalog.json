@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T01:14:03.821Z",
+ "updated": "2026-10-26T03:40:08.170Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -13356,6 +13356,12 @@
     "size": false,
     "photo": false,
     "price": false
+   },
+   "aisle": {
+    "a": "surgeles",
+    "also": [
+     "pains"
+    ]
    }
   },
   "0077033302200": {
