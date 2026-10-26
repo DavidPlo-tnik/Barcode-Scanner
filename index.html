@@ -2354,7 +2354,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v236</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v237</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2961,7 +2961,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v236</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v237</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11754,6 +11754,7 @@
         </div></div>`;
       }).join('')}
       ${ro ? '' : '<button class="btn primary sup-wide" id="sup-recv">✓ DELIVERY RECEIVED</button>'}
+      ${ro ? '' : '<button class="btn sup-wide" id="sup-edit">✏️ EDIT THIS ORDER (back to draft)</button>'}
       ${ro ? '' : '<button class="btn sup-wide" id="sup-cancel">Cancel this order</button>'}`;
     el.querySelectorAll('[data-rq]').forEach(b => b.onclick = () => {
       const k = b.closest('.sup-line').dataset.k, l = o.lines[k];
@@ -11765,6 +11766,14 @@
       catch (e) { showToast(e.message, true); }
     };
     if ($('#sup-recv')) $('#sup-recv').onclick = () => { Object.values(o.lines).forEach(l => { if (l.recv == null) l.recv = l.q + (l.free || 0); }); save({ status: 'received', receivedAt: new Date().toISOString() }); showToast('RECEIVED ✓'); };
+    if ($('#sup-edit')) $('#sup-edit').onclick = async () => {
+      if (_sup.orders.orders.some(x => x.sid === o.sid && x.status === 'draft' && x.id !== o.id)) { showToast('There is already a draft for this supplier: send or empty it first', true); return; }
+      if (!confirm('Put this order back to draft so you can change it? Remember to send the new version to the supplier.')) return;
+      try {
+        await supSaveOrders(doc => { const x = doc.orders.find(y => y.id === o.id); if (x) { x.status = 'draft'; delete x.sentAt; delete x.total; x.editedAt = new Date().toISOString(); } });
+        _sup.sid = o.sid; _sup.draftId = o.id; _sup.filter = 'in'; _sup.view = 'order'; supRender();
+      } catch (e) { showToast(e.message, true); }
+    };
     if ($('#sup-cancel')) $('#sup-cancel').onclick = () => { if (confirm('Cancel this order?')) save({ status: 'cancelled' }); };
     supBindCommon(el);
   }
