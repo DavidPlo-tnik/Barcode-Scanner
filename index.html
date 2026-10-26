@@ -922,6 +922,7 @@
   .ecom-aisle-chip.ov { border-style: solid; border-color: var(--accent); color: var(--accent); }
   .ecom-aisle-chip.none { border-style: solid; border-color: var(--bad); color: var(--bad); }
   .ecom-row.also { opacity: .62; }
+  .or-frz { color: #5ab4ff; font-weight: 700; }
   .ecom-also-note { font-family: var(--font-display); font-size: 8.5px; color: var(--text-faint); letter-spacing: .04em; }
   .ap-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
   .ap-auto { font-family: var(--font-display); font-size: 10px; color: var(--text-dim); margin-bottom: 14px; line-height: 1.5; }
@@ -2301,7 +2302,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v230</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v231</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2906,7 +2907,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v230</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v231</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11067,6 +11068,24 @@
     if (OR_COMBO_TIERS.includes(n)) return 'combo:' + n;
     return n;
   }
+  // ❄️ frozen items in an order (website aisle Surgelés, main or "also"), for packing
+  function orFrozen(it) {
+    if (!_aisleCfg || !_ecomCatalog) return false;
+    let c = String(it.code || '').trim().replace(/-[\d.]+KG$/i, '');
+    const m = c.match(/^candy-(\d+)-([a-z0-9]+)$/i);
+    try {
+      if (m) {
+        for (const [t, kids] of Object.entries(_ecomCatalog.candyGroups || {})) {
+          const k = (kids || []).find(e => e.id === m[2]);
+          if (k) { const pl = aisleOfKid(t, k); return pl.a === 'surgeles' || pl.also.includes('surgeles'); }
+        }
+        return false;
+      }
+      const code = Object.keys(_ecomCatalog.items).find(k => k === c.padStart(13, '0') || k === c) || c.padStart(13, '0');
+      if (!_ecomCatalog.items[code] && !DATA.products[resolveCode(code)]) return false;
+      const pl = aisleOfItem(code); return pl.a === 'surgeles' || pl.also.includes('surgeles');
+    } catch { return false; }
+  }
   function orMatch(o) {
     if (!o.pos || !o.pos.items || !o.pos.items.length) return null;
     const K = orPosKey;
@@ -11338,12 +11357,12 @@
           ${mt.missing.length ? `<div class="or-warn">⚠ Ordered but NOT rung: ${mt.missing.map(it => escapeHtml(it.t)).join(', ')}</div>` : ''}
           ${mt.extra.length ? `<div class="or-warn">＋ Rung but not in the order: ${mt.extra.map(it => escapeHtml(it.name || it.code)).join(', ')}</div>` : ''}
           ${!mt.missing.length && !mt.extra.length ? `<div class="or-ok">✓ Everything ordered was rung</div>` : ''}`; })()}
-      <div class="or-ih">ITEMS · picked ${nPicked}/${o.items.length}</div>
+      <div class="or-ih">ITEMS · picked ${nPicked}/${o.items.length}${(() => { const n = o.items.filter(orFrozen).length; return n ? ` · <span class="or-frz">❄️ ${n} frozen: cooler bag</span>` : ''; })()}</div>
       <div class="or-items">${o.items.map((it, i) => `
         <button class="or-item ${picked.has(i) ? 'done' : ''}" data-i="${i}">
           <span class="or-chk">${picked.has(i) ? '✓' : ''}</span>
           ${img(it) ? `<img src="${escapeHtml(img(it))}" alt="" loading="lazy">` : '<span class="or-noimg"></span>'}
-          <span class="or-it"><b>${it.q} ×</b> ${escapeHtml(it.t)}${it.v ? ` <em>${escapeHtml(it.v)}</em>` : ''}
+          <span class="or-it"><b>${it.q} ×</b> ${orFrozen(it) ? '<span class="or-frz">❄️</span> ' : ''}${escapeHtml(it.t)}${it.v ? ` <em>${escapeHtml(it.v)}</em>` : ''}
             ${it.attrs && it.attrs.length ? `<small>${it.attrs.map(a => escapeHtml(a[0] + ': ' + a[1])).join(' · ')}</small>` : ''}
             <small>${escapeHtml(it.code || '')} · ${orMoney(it.p * it.q)}${(() => { const mt = orMatch(o); if (!mt) return ''; return mt.ok[i] ? ' · <span class="or-y">✓ rung</span>' : ' · <span class="or-n">⚠ not rung</span>'; })()}</small></span>
         </button>`).join('')}</div>
@@ -11426,6 +11445,7 @@
   }
 
   async function fetchEcomCatalog(force) {
+    if (!_aisleCfg) fetchAisleCfg();   // website aisles (ECOM tab + ❄️ frozen flags on orders)
     if (_ecomCatalog && !force) return _ecomCatalog;
     try {
       const r = await fetch(recipeRawUrl('ecom/catalog.json'), { cache: 'no-store' });

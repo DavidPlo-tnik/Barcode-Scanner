@@ -55,10 +55,14 @@
    "fr": "Fruits & légumes",
    "en": "Fruits & vegetables",
    "subs": [
-    "Petits fruits surgelés",
     "Herbes fraîches",
     "Fruits",
     "Légumes"
+   ],
+   "subsEn": [
+    "Fresh herbs",
+    "Fruits",
+    "Vegetables"
    ]
   },
   {
@@ -70,6 +74,12 @@
     "Poisson séché",
     "Crevettes & fruits de mer",
     "Poisson fumé & salé"
+   ],
+   "subsEn": [
+    "Fresh meat",
+    "Dried fish",
+    "Shrimp & seafood",
+    "Smoked & salted fish"
    ]
   },
   {
@@ -82,6 +92,13 @@
     "Saucissons & salamis",
     "Tartinades & pâtés",
     "Jambons & viandes fumées"
+   ],
+   "subsEn": [
+    "Salo & lard",
+    "Sausages & wieners",
+    "Salami & kielbasa",
+    "Spreads & pâtés",
+    "Ham & smoked meats"
    ]
   },
   {
@@ -93,6 +110,12 @@
     "Fumés & chechil",
     "Fondus, tranchés & blocs",
     "Fromages à la coupe"
+   ],
+   "subsEn": [
+    "Feta & brined cheese",
+    "Smoked & chechil",
+    "Processed, sliced & blocks",
+    "Deli cheeses"
    ]
   },
   {
@@ -106,6 +129,14 @@
     "Crème sure",
     "Tvorog, cottage & fromage frais",
     "Lait & crème"
+   ],
+   "subsEn": [
+    "Eggs",
+    "Butter",
+    "Kefir, ryazhenka & ayran",
+    "Sour cream",
+    "Tvorog, cottage & fresh cheese",
+    "Milk & cream"
    ]
   },
   {
@@ -118,6 +149,13 @@
     "Soupes & bortsch",
     "Pâtes à cuire",
     "Salades & plats maison"
+   ],
+   "subsEn": [
+    "Pelmeni & varenyky",
+    "Crêpes & syrniki",
+    "Soups & borscht",
+    "Doughs",
+    "Salads & homemade dishes"
    ]
   },
   {
@@ -130,6 +168,13 @@
     "Pains plats",
     "Gâteaux",
     "Beignets, strudels & éclairs"
+   ],
+   "subsEn": [
+    "Rye breads",
+    "Breads",
+    "Flatbreads",
+    "Cakes",
+    "Donuts, strudels & éclairs"
    ]
   },
   {
@@ -147,6 +192,18 @@
     "Gâteaux",
     "Pain surgelé",
     "Beurre & fromage frais"
+   ],
+   "subsEn": [
+    "Pelmeni & pierogi",
+    "Crêpes",
+    "Doughs",
+    "Fish & shrimp",
+    "Fruit & mushrooms",
+    "Syrki & cheesecakes",
+    "Ice cream",
+    "Cakes",
+    "Frozen bread",
+    "Butter & fresh cheese"
    ]
   },
   {
@@ -155,6 +212,9 @@
    "en": "Bulk candy",
    "subs": [
     "Bonbons au kilo"
+   ],
+   "subsEn": [
+    "Candy by the kilo"
    ]
   },
   {
@@ -166,6 +226,12 @@
     "Guimauve & zéphyr",
     "Gaufres & biscuits",
     "Chocolats & barres"
+   ],
+   "subsEn": [
+    "Halva",
+    "Zefir & marshmallow",
+    "Wafers & cookies",
+    "Chocolates & bars"
    ]
   },
   {
@@ -177,6 +243,12 @@
     "Lait condensé",
     "Beurres de noix",
     "Confitures & fruits au sucre"
+   ],
+   "subsEn": [
+    "Honey",
+    "Condensed milk",
+    "Nut butters",
+    "Jams & preserves"
    ]
   },
   {
@@ -190,6 +262,14 @@
     "Cornichons, tomates & ail",
     "Ragoûts de viande",
     "Caviars & légumes cuisinés"
+   ],
+   "subsEn": [
+    "Canned fish",
+    "Mushrooms",
+    "Sauerkraut",
+    "Pickles, tomatoes & garlic",
+    "Canned meat",
+    "Vegetable spreads & stews"
    ]
   },
   {
@@ -201,6 +281,12 @@
     "Moutarde & raifort",
     "Ketchup & sauces tomate",
     "Adjika & sauces géorgiennes"
+   ],
+   "subsEn": [
+    "Mayonnaise",
+    "Mustard & horseradish",
+    "Ketchup & tomato sauces",
+    "Adjika & Georgian sauces"
    ]
   },
   {
@@ -212,6 +298,12 @@
     "Huiles & vinaigre",
     "Épices & bouillons",
     "Farine, sucre & cuisson"
+   ],
+   "subsEn": [
+    "Buckwheat, rice & grains",
+    "Oils & vinegar",
+    "Spices & bouillon",
+    "Flour, sugar & baking"
    ]
   },
   {
@@ -223,6 +315,12 @@
     "Chicorée",
     "Thés Lovaré",
     "Thés & coffrets"
+   ],
+   "subsEn": [
+    "Coffee",
+    "Chicory",
+    "Lovaré teas",
+    "Teas & gift sets"
    ]
   },
   {
@@ -235,6 +333,13 @@
     "Eaux minérales",
     "Bières",
     "Boissons gazeuses"
+   ],
+   "subsEn": [
+    "Kvass",
+    "Juices & nectars",
+    "Mineral water",
+    "Beer",
+    "Soft drinks"
    ]
   },
   {
@@ -247,6 +352,13 @@
     "Noix",
     "Calmar & poisson séché",
     "Maïs soufflé & autres"
+   ],
+   "subsEn": [
+    "Sunflower & pumpkin seeds",
+    "Chips & croutons",
+    "Nuts",
+    "Dried squid & fish",
+    "Puffed corn & more"
    ]
   },
   {
@@ -258,6 +370,12 @@
     "Lessive & nettoyage",
     "Animaux",
     "Cuisine & divers"
+   ],
+   "subsEn": [
+    "Paper & towels",
+    "Laundry & cleaning",
+    "Pets",
+    "Kitchen & misc"
    ]
   }
  ],
@@ -543,10 +661,6 @@
  ],
  "subRules": {
   "fruits-legumes": [
-   {
-    "sub": "Petits fruits surgelés",
-    "re": "CONGEL|FOREST MIX|CHOKEBERR"
-   },
    {
     "sub": "Herbes fraîches",
     "re": "ANETH|PERSIL|CORIANDRE|OIGNON VERT"
