@@ -1287,5 +1287,26 @@
   ],
   "maison": []
  },
- "ukrainePrefix": "0482"
+ "ukrainePrefix": "0482",
+ "taxonomy": {
+  "fruits-legumes": "fb-2-10",
+  "viande-poisson": "fb-2-12",
+  "charcuterie": "fb-2-12-2-3",
+  "fromages": "fb-2-6-2",
+  "laitiers": "fb-2-6",
+  "pret-a-manger": "fb-2-15",
+  "pains": "fb-2-1",
+  "surgeles": "fb-2",
+  "bonbons": "fb-2-3-1",
+  "chocolats": "fb-2-3",
+  "tartinades": "fb-2-7-6",
+  "conserves": "fb-2-4-15",
+  "sauces": "fb-2-4",
+  "epicerie-base": "fb-2-5",
+  "the-cafe": "fb-1",
+  "boissons": "fb-1",
+  "grignotines": "fb-2-17",
+  "maison": "hg-10"
+ },
+ "_doc_taxonomy": "Shopify Standard Product Taxonomy id per aisle (Google Shopping / tax only, not the site menu)."
 }
