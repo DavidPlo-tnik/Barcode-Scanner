@@ -2354,7 +2354,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v237</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v238</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2961,7 +2961,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v237</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v238</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -8884,18 +8884,20 @@
           <div class="value">${pv}</div>
           <div class="sub">queued — updates on next refresh</div>
         </div>`;
-    } else if (!isScale && promoInfo(p.code) && !promoInfo(p.code).upcoming) {
+    } else if (promoInfo(p.code) && !promoInfo(p.code).upcoming) {
       const pr = promoInfo(p.code);
       const today = pmToday();
       const left = pmDays(today, pr.pe);
-      const reg = pr.rp != null ? pmDeal(pr.rp, pr.rq) : null;
+      const kg = isWeighed(p.code) ? '/kg' : '';
+      const reg = pr.rp != null ? pmDeal(pr.rp, pr.rq) + kg : null;
       const off = pr.rp ? Math.round(100 * (1 - (pr.pp / pr.pq) / (pr.rp / pr.rq))) : null;
       priceBlock = `
         <div class="stat accent promo-stat">
           <div class="label">PROMO${off > 0 ? ` <span class="promo-off">−${off}%</span>` : ''}</div>
-          <div class="value">${pr.pq > 1 ? `${pr.pq}/${fmtMoney(pr.pp)}` : fmtMoney(pr.pp)}</div>
+          <div class="value">${pr.pq > 1 ? `${pr.pq}/${fmtMoney(pr.pp)}` : fmtMoney(pr.pp) + kg}</div>
           ${reg ? `<div class="promo-reg"><s>${reg}</s></div>` : ''}
           <div class="sub">${pmFmt(pr.ps)} → ${pmFmt(pr.pe)} · <b class="${left <= 2 ? 'promo-soon' : ''}">${left === 0 ? 'ends today' : left === 1 ? 'ends tomorrow' : left + ' days left'}</b></div>
+          ${isScale ? '<div class="sub">set on scale — check the scale price too</div>' : ''}
         </div>`;
     } else if (p.price !== null && p.price !== undefined) {
       if (p.multipack) {
@@ -8911,7 +8913,7 @@
             <div class="label">${isScale ? 'POS PRICE ⚠' : 'PRICE'}</div>
             <div class="value">${priceText(p.code, p.price)}</div>
             <div class="sub">${isScale ? 'set on scale — may differ' : (p.depuis ? 'since ' + escapeHtml(p.depuis) : '')}</div>
-            ${(() => { const pr = !isScale && promoInfo(p.code); return pr && pr.upcoming ? `<div class="promo-next">PROMO ${pmDeal(pr.pp, pr.pq)} · ${pmFmt(pr.ps)} → ${pmFmt(pr.pe)}</div>` : ''; })()}
+            ${(() => { const pr = promoInfo(p.code); return pr && pr.upcoming ? `<div class="promo-next">PROMO ${pmDeal(pr.pp, pr.pq)} · ${pmFmt(pr.ps)} → ${pmFmt(pr.pe)}</div>` : ''; })()}
           </div>`;
       }
     } else {
