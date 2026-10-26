@@ -1,0 +1,1177 @@
+{
+ "_doc": "Website aisles. Rules are checked top to bottom on the POS title (uppercase, accents removed) + POS department; first match wins. Per-product overrides live in the catalog (items[code].aisle). Used by the app (ECOM tab) and shopify_sync.py — keep the JS and Python readers identical.",
+ "version": 1,
+ "zones": [
+  {
+   "id": "frais",
+   "fr": "Frais",
+   "en": "Fresh",
+   "aisles": [
+    "fruits-legumes",
+    "viande-poisson",
+    "charcuterie",
+    "fromages",
+    "laitiers"
+   ]
+  },
+  {
+   "id": "cuisine",
+   "fr": "Cuisine, pain & surgelés",
+   "en": "Kitchen, bread & frozen",
+   "aisles": [
+    "pret-a-manger",
+    "pains",
+    "surgeles"
+   ]
+  },
+  {
+   "id": "garde-manger",
+   "fr": "Garde-manger",
+   "en": "Pantry",
+   "aisles": [
+    "conserves",
+    "sauces",
+    "epicerie-base",
+    "tartinades",
+    "the-cafe",
+    "maison"
+   ]
+  },
+  {
+   "id": "sucre",
+   "fr": "Sucré & boissons",
+   "en": "Sweets & drinks",
+   "aisles": [
+    "bonbons",
+    "chocolats",
+    "grignotines",
+    "boissons"
+   ]
+  }
+ ],
+ "aisles": [
+  {
+   "id": "fruits-legumes",
+   "fr": "Fruits & légumes",
+   "en": "Fruits & vegetables",
+   "subs": [
+    "Petits fruits surgelés",
+    "Herbes fraîches",
+    "Fruits",
+    "Légumes"
+   ]
+  },
+  {
+   "id": "viande-poisson",
+   "fr": "Viande & poisson",
+   "en": "Meat & fish",
+   "subs": [
+    "Viande fraîche",
+    "Poisson séché",
+    "Crevettes & fruits de mer",
+    "Poisson fumé & salé"
+   ]
+  },
+  {
+   "id": "charcuterie",
+   "fr": "Charcuterie",
+   "en": "Deli meats",
+   "subs": [
+    "Lard & salo",
+    "Saucisses & wieners",
+    "Saucissons & salamis",
+    "Tartinades & pâtés",
+    "Jambons & viandes fumées"
+   ]
+  },
+  {
+   "id": "fromages",
+   "fr": "Fromages",
+   "en": "Cheese",
+   "subs": [
+    "Feta & fromages en saumure",
+    "Fumés & chechil",
+    "Fondus, tranchés & blocs",
+    "Fromages à la coupe"
+   ]
+  },
+  {
+   "id": "laitiers",
+   "fr": "Lait, crème & œufs",
+   "en": "Milk, cream & eggs",
+   "subs": [
+    "Œufs",
+    "Beurre",
+    "Kéfir, ryazhenka & ayran",
+    "Crème sure",
+    "Tvorog, cottage & fromage frais",
+    "Lait & crème"
+   ]
+  },
+  {
+   "id": "pret-a-manger",
+   "fr": "Prêt-à-manger & pelmenis",
+   "en": "Ready meals & dumplings",
+   "subs": [
+    "Pelmenis & varenyky",
+    "Crêpes & syrniki",
+    "Soupes & bortsch",
+    "Pâtes à cuire",
+    "Salades & plats maison"
+   ]
+  },
+  {
+   "id": "pains",
+   "fr": "Pains & pâtisseries",
+   "en": "Bread & bakery",
+   "subs": [
+    "Pains de seigle",
+    "Pains",
+    "Pains plats",
+    "Gâteaux",
+    "Beignets, strudels & éclairs"
+   ]
+  },
+  {
+   "id": "surgeles",
+   "fr": "Surgelés",
+   "en": "Frozen",
+   "subs": [
+    "Pelmenis & pierogis",
+    "Crêpes",
+    "Pâtes à cuire",
+    "Poisson & crevettes",
+    "Fruits & champignons",
+    "Syrki & gâteaux au fromage",
+    "Crème glacée",
+    "Gâteaux",
+    "Pain surgelé",
+    "Beurre & fromage frais"
+   ]
+  },
+  {
+   "id": "bonbons",
+   "fr": "Bonbons en vrac",
+   "en": "Bulk candy",
+   "subs": [
+    "Bonbons au kilo"
+   ]
+  },
+  {
+   "id": "chocolats",
+   "fr": "Chocolats, biscuits & gaufres",
+   "en": "Chocolate, cookies & wafers",
+   "subs": [
+    "Halva",
+    "Guimauve & zéphyr",
+    "Gaufres & biscuits",
+    "Chocolats & barres"
+   ]
+  },
+  {
+   "id": "tartinades",
+   "fr": "Confitures, miel & sucré",
+   "en": "Jams, honey & sweet spreads",
+   "subs": [
+    "Miel",
+    "Lait condensé",
+    "Beurres de noix",
+    "Confitures & fruits au sucre"
+   ]
+  },
+  {
+   "id": "conserves",
+   "fr": "Marinades & conserves",
+   "en": "Pickles & preserves",
+   "subs": [
+    "Poissons en conserve",
+    "Champignons",
+    "Choucroute",
+    "Cornichons, tomates & ail",
+    "Ragoûts de viande",
+    "Caviars & légumes cuisinés"
+   ]
+  },
+  {
+   "id": "sauces",
+   "fr": "Sauces & condiments",
+   "en": "Sauces & condiments",
+   "subs": [
+    "Mayonnaise",
+    "Moutarde & raifort",
+    "Ketchup & sauces tomate",
+    "Adjika & sauces géorgiennes"
+   ]
+  },
+  {
+   "id": "epicerie-base",
+   "fr": "Épicerie de base",
+   "en": "Pantry staples",
+   "subs": [
+    "Sarrasin, riz & céréales",
+    "Huiles & vinaigre",
+    "Épices & bouillons",
+    "Farine, sucre & cuisson"
+   ]
+  },
+  {
+   "id": "the-cafe",
+   "fr": "Thé & café",
+   "en": "Tea & coffee",
+   "subs": [
+    "Café",
+    "Chicorée",
+    "Thés Lovaré",
+    "Thés & coffrets"
+   ]
+  },
+  {
+   "id": "boissons",
+   "fr": "Boissons & kvas",
+   "en": "Drinks & kvass",
+   "subs": [
+    "Kvas",
+    "Jus & nectars",
+    "Eaux minérales",
+    "Bières",
+    "Boissons gazeuses"
+   ]
+  },
+  {
+   "id": "grignotines",
+   "fr": "Graines & grignotines",
+   "en": "Seeds & snacks",
+   "subs": [
+    "Graines de tournesol & citrouille",
+    "Croustilles & croûtons",
+    "Noix",
+    "Calmar & poisson séché",
+    "Maïs soufflé & autres"
+   ]
+  },
+  {
+   "id": "maison",
+   "fr": "Maison & entretien",
+   "en": "Household",
+   "subs": [
+    "Papier & essuie-tout",
+    "Lessive & nettoyage",
+    "Animaux",
+    "Cuisine & divers"
+   ]
+  }
+ ],
+ "codeRules": {
+  "0000000011000": "bonbons",
+  "0000000011001": "bonbons",
+  "0000000011002": "bonbons",
+  "0000000011003": "bonbons",
+  "0000000011008": "bonbons"
+ },
+ "rules": [
+  {
+   "aisle": "maison",
+   "re": ".",
+   "depts": [
+    "7"
+   ]
+  },
+  {
+   "aisle": "maison",
+   "re": "PAPIER HYG|SAVON DE MENAGE|ESSUIE",
+   "depts": null
+  },
+  {
+   "aisle": "conserves",
+   "re": "CORNICHON",
+   "depts": [
+    "71"
+   ]
+  },
+  {
+   "aisle": "laitiers",
+   "re": "\\bOEUFS?\\b",
+   "depts": [
+    "21",
+    "3"
+   ]
+  },
+  {
+   "aisle": "charcuterie",
+   "re": "BACON",
+   "depts": [
+    "21"
+   ]
+  },
+  {
+   "aisle": "viande-poisson",
+   "re": ".",
+   "depts": [
+    "21",
+    "22",
+    "23",
+    "24",
+    "26"
+   ]
+  },
+  {
+   "aisle": "surgeles",
+   "re": ".",
+   "depts": [
+    "4"
+   ]
+  },
+  {
+   "aisle": "charcuterie",
+   "re": "HUMMUS|TARAMOSALATA",
+   "depts": null
+  },
+  {
+   "aisle": "epicerie-base",
+   "re": "^LEVURE",
+   "depts": null
+  },
+  {
+   "aisle": "charcuterie",
+   "re": ".",
+   "depts": [
+    "31"
+   ]
+  },
+  {
+   "aisle": "fromages",
+   "re": ".",
+   "depts": [
+    "32"
+   ]
+  },
+  {
+   "aisle": "boissons",
+   "re": ".",
+   "depts": [
+    "81"
+   ]
+  },
+  {
+   "aisle": "bonbons",
+   "re": "^BONBONS$",
+   "depts": null
+  },
+  {
+   "aisle": "epicerie-base",
+   "re": "SARRASIN",
+   "depts": [
+    "71"
+   ]
+  },
+  {
+   "aisle": "pret-a-manger",
+   "re": "PEROGIE|PIEROGI|PELMEN|VARENYK|KHINKALI|CREPES|SYRNIKI|ZAPEKANKA|KHOLODETS|SALADE (MIMOSA|POMME|HARENG)|SHUBA|CHEBUREK|PATE LEVEE|PATE FEUILLET|FEUILLE DE PATE|PHYILLO|PHYLLO",
+   "depts": null
+  },
+  {
+   "aisle": "pret-a-manger",
+   "re": ".",
+   "depts": [
+    "61",
+    "62"
+   ]
+  },
+  {
+   "aisle": "chocolats",
+   "re": "GUIMAUVE|ZEFIR|ZEPHYR",
+   "depts": null
+  },
+  {
+   "aisle": "chocolats",
+   "re": "HALVA",
+   "depts": null
+  },
+  {
+   "aisle": "pains",
+   "re": "GATEAU|BARRE DE FROMAGE|CREME GLACEE|PLOMBIR|ECLAIR|BEIGNE|STRUDEL|PATISSERIE|HALVA|NAPOLEON|\\bPAIN\\b|BAGEL|NAAN|LAVASH|BAGUETTE|BORODINSK",
+   "depts": null
+  },
+  {
+   "aisle": "pains",
+   "re": ".",
+   "depts": [
+    "51",
+    "52",
+    "5"
+   ]
+  },
+  {
+   "aisle": "surgeles",
+   "re": "CONGEL|SURGEL",
+   "depts": [
+    "1",
+    "2",
+    "3",
+    "41"
+   ]
+  },
+  {
+   "aisle": "grignotines",
+   "re": "^FLINT\\b",
+   "depts": null
+  },
+  {
+   "aisle": "fromages",
+   "re": "FROMAGE FONDU|FROMAGE (CORDE|SULGUNI|ADYGHE)|SULGUNI|PARMESAN|BABYBEL|KRAFT SING|FROM\\.BLOC|BANDI FROMAGE|SVALA",
+   "depts": null
+  },
+  {
+   "aisle": "laitiers",
+   "re": "BEURRE(?! D.ARACHIDE| D.AMANDE)|LAIT(?! COND)|CREME|CR\\.|KEFIR|RYAZHENKA|AYRAN|TVOROG|COTTAGE|FROMAGE (FRAIS|BLANC|FERMIER)|RICOTTA|\\bOEUF|PHILADEL|FROMAGE A LA CREME|LACTAN|VOLOCHKOVE",
+   "depts": [
+    "3",
+    "4"
+   ]
+  },
+  {
+   "aisle": "laitiers",
+   "re": "^(BREST-LITOVSK|FERMA|ROKISKIO|M-C DAIRY).*BEURRE|^BEURRE NATURE",
+   "depts": null
+  },
+  {
+   "aisle": "laitiers",
+   "re": ".",
+   "depts": [
+    "3"
+   ]
+  },
+  {
+   "aisle": "chocolats",
+   "re": "CHOCOLAT|KINDER|ROSHEN|WAFER|GAUFR|GOFRET|BISCUIT|KONTIK|KONTI\\b|BAMBUK|LINDT|MERINGUE|MARMELADE|BONBON|CALENDRIER|PAPILLONS",
+   "depts": null
+  },
+  {
+   "aisle": "grignotines",
+   "re": "BATONNETS DE MAIS|MAIS SOUFFLE",
+   "depts": null
+  },
+  {
+   "aisle": "boissons",
+   "re": "\\\\bJUS\\\\b",
+   "depts": null
+  },
+  {
+   "aisle": "tartinades",
+   "re": "CONFITURE|MIEL|CONDENS|COND\\.|DULCE|ARACHIDE|BEURRE D.AMANDE|AVEC SUCRE|AU SUCRE|ET SUCRE|SIRUP|POPPY SEED MASS",
+   "depts": null
+  },
+  {
+   "aisle": "grignotines",
+   "re": "CAJOU|AMANDE|NOIX DE PIN|GRAINES DE CITROUILLE CRUES|GRAINES DE SESAME|NOIX DE GRENOBLE",
+   "depts": [
+    "41",
+    "1"
+   ]
+  },
+  {
+   "aisle": "fruits-legumes",
+   "re": ".",
+   "depts": [
+    "41"
+   ]
+  },
+  {
+   "aisle": "the-cafe",
+   "re": "\\bTHE\\b|\\bTEA\\b|AHMAD|LOVARE|\\bCAFE|JACOBS|CHICOR|^INKA\\b|COFFRET|ESPRESSO",
+   "depts": null
+  },
+  {
+   "aisle": "pret-a-manger",
+   "re": "SOUPE|BORTSCH|BORSCHT(?! ZAP)|RASSOLNIK",
+   "depts": [
+    "1",
+    "2"
+   ]
+  },
+  {
+   "aisle": "grignotines",
+   "re": "CROUST|LAYS",
+   "depts": null
+  },
+  {
+   "aisle": "boissons",
+   "re": "\\\\bJUS\\\\b|KVAS",
+   "depts": null
+  },
+  {
+   "aisle": "epicerie-base",
+   "re": "BOUILLON|ZAPRAVKA",
+   "depts": null
+  },
+  {
+   "aisle": "conserves",
+   "re": "MARINE|SARDINE|SPRAT|SAUMON|HARENG|MORUE|SAURY|KILKA|CRAB|RAGOUT|AUBERGINE|LECHO|CAVIAR|LEGUMES",
+   "depts": [
+    "1",
+    "2"
+   ]
+  },
+  {
+   "aisle": "boissons",
+   "re": "KVAS|\\bJUS\\b|NECTAR|\\bEAU\\b|BORJOMI|COKE|PEPSI|BOISSON|SODA|MONSTER|RED BULL|ROSINKA|ZHYVCHYK|ESSENTUKI|OBOLON|POLIANA|ODESSA|COCKTAIL|BIERE",
+   "depts": null
+  },
+  {
+   "aisle": "grignotines",
+   "re": "GRAINES|GRAINE DE|CROUST|CHRUSTY|CALMAR|SELAIRE|ALGUES BIO|LAYS|RUFFLES",
+   "depts": null
+  },
+  {
+   "aisle": "sauces",
+   "re": "MAYO|KETCHUP|ADJ|ADZ|SATSEB|SATZEB|MOUTARDE|RAIFORT|KHRENODER|TKEMALI|SAUCE|SHISHKEBAB|SALSA|DAUCE",
+   "depts": null
+  },
+  {
+   "aisle": "epicerie-base",
+   "re": "HUILE|VINAIGRE|BOUILLON|ASSAISONNEMENT|VEGETA|ZAPRAVKA|HMELI|SARRASIN|\\bRIZ\\b|ORGE|SEMOLINA|ARTEK|FARINE|SUCRE|CACAO|EPICE",
+   "depts": null
+  },
+  {
+   "aisle": "conserves",
+   "re": ".",
+   "depts": [
+    "1",
+    "2"
+   ]
+  }
+ ],
+ "subRules": {
+  "fruits-legumes": [
+   {
+    "sub": "Petits fruits surgelés",
+    "re": "CONGEL|FOREST MIX|CHOKEBERR"
+   },
+   {
+    "sub": "Herbes fraîches",
+    "re": "ANETH|PERSIL|CORIANDRE|OIGNON VERT"
+   },
+   {
+    "sub": "Fruits",
+    "re": "POMME(?! DE TERRE)|POMME$|BANAN|ORANGE|CITRON|LIME|KIWI|RAISIN|POIRE|PECHE|NECTARINE|PRUNE|CERISE|FRAISE|FRAMBOISE|BLEUET|MELON|ANANAS|AVOCAT|MANDARINE|CLEMENTINE|PAMPLEMOUSSE|POM\\.(?!TER)"
+   },
+   {
+    "sub": "Légumes",
+    "re": "."
+   }
+  ],
+  "viande-poisson": [
+   {
+    "sub": "Viande fraîche",
+    "re": "POUL|PORC|BOEUF|KEBAB|MICI"
+   },
+   {
+    "sub": "Poisson séché",
+    "re": "SECH|\\bSEC\\b|VOBLA|TARANKA|SOLOMKA"
+   },
+   {
+    "sub": "Crevettes & fruits de mer",
+    "re": "CREVETTE|CREV\\.|CRABE|TARAMA"
+   },
+   {
+    "sub": "Poisson fumé & salé",
+    "re": "."
+   }
+  ],
+  "charcuterie": [
+   {
+    "sub": "Lard & salo",
+    "re": "LARD|SLANINA"
+   },
+   {
+    "sub": "Saucisses & wieners",
+    "re": "SAUCISSE|SAUCISE|WIENNER|FRANKFURTER|KNACKWURST|KABANOS|DEBRECYNA|BOUDIN"
+   },
+   {
+    "sub": "Saucissons & salamis",
+    "re": "SALAMI|SAUCISSON|CERVELAT|SOPRESSATA|CALABRESE|CACCIATORE|COPPA|BOLOGNE|KOLBASSA|CSABAI"
+   },
+   {
+    "sub": "Tartinades & pâtés",
+    "re": "HUMMUS|TARAMO|PATE|FOIE|TETE FROMAGEE"
+   },
+   {
+    "sub": "Jambons & viandes fumées",
+    "re": "."
+   }
+  ],
+  "fromages": [
+   {
+    "sub": "Feta & fromages en saumure",
+    "re": "FETA|MANOURI|SULGUNI|ADYGHE|CORDE"
+   },
+   {
+    "sub": "Fumés & chechil",
+    "re": "FUME|CHECHIL"
+   },
+   {
+    "sub": "Fondus, tranchés & blocs",
+    "re": "FONDU|KRAFT|BABYBEL|BLOC|SVALA|BANDI|PARMESAN"
+   },
+   {
+    "sub": "Fromages à la coupe",
+    "re": "."
+   }
+  ],
+  "laitiers": [
+   {
+    "sub": "Œufs",
+    "re": "OEUF"
+   },
+   {
+    "sub": "Beurre",
+    "re": "BEURRE"
+   },
+   {
+    "sub": "Kéfir, ryazhenka & ayran",
+    "re": "KEFIR|RYAZHENKA|AYRAN"
+   },
+   {
+    "sub": "Crème sure",
+    "re": "SURE"
+   },
+   {
+    "sub": "Tvorog, cottage & fromage frais",
+    "re": "TVOROG|COTTAGE|RICOTTA|FROMAGE|PHILADEL|VOLOCHKOVE"
+   },
+   {
+    "sub": "Lait & crème",
+    "re": "."
+   }
+  ],
+  "pret-a-manger": [
+   {
+    "sub": "Pelmenis & varenyky",
+    "re": "PEROGIE|PIEROGI|PELMEN|KHINKALI|^$"
+   },
+   {
+    "sub": "Crêpes & syrniki",
+    "re": "CREPES|SYRNIKI|ZAPEKANKA"
+   },
+   {
+    "sub": "Soupes & bortsch",
+    "re": "SOUPE|BORTSCH|BORSCHT|RASSOLNIK"
+   },
+   {
+    "sub": "Pâtes à cuire",
+    "re": "PATE|FEUILLE|PHYILLO"
+   },
+   {
+    "sub": "Salades & plats maison",
+    "re": "."
+   }
+  ],
+  "pains": [
+   {
+    "sub": "Pains de seigle",
+    "re": "SEIGLE|SEGLE|BORODINSK"
+   },
+   {
+    "sub": "Pains",
+    "re": "PAIN|BAGUETTE|BAGEL"
+   },
+   {
+    "sub": "Pains plats",
+    "re": "NAAN|LAVASH"
+   },
+   {
+    "sub": "Gâteaux",
+    "re": "GATEAU|NAPOLEON"
+   },
+   {
+    "sub": "Beignets, strudels & éclairs",
+    "re": "."
+   }
+  ],
+  "surgeles": [
+   {
+    "sub": "Pelmenis & pierogis",
+    "re": "PEROGIE|PIEROGI|PELMEN|KHINKALI"
+   },
+   {
+    "sub": "Crêpes",
+    "re": "CREPES"
+   },
+   {
+    "sub": "Pâtes à cuire",
+    "re": "PATE|FEUILLE|PHYILLO"
+   },
+   {
+    "sub": "Poisson & crevettes",
+    "re": "SAUMON|HARENG|CREVETTE|CREV\\.|SANDRE|CRABE|MATJES|POISSON"
+   },
+   {
+    "sub": "Fruits & champignons",
+    "re": "CONGEL|CHOKEBERR|FOREST|ALGUES"
+   },
+   {
+    "sub": "Syrki & gâteaux au fromage",
+    "re": "BARRE DE FROMAGE|GATEAU AU FROMAGE"
+   },
+   {
+    "sub": "Crème glacée",
+    "re": "GLACEE|PLOMBIR"
+   },
+   {
+    "sub": "Gâteaux",
+    "re": "GATEAU|PATISSERIE"
+   },
+   {
+    "sub": "Pain surgelé",
+    "re": "PAIN"
+   },
+   {
+    "sub": "Beurre & fromage frais",
+    "re": "."
+   }
+  ],
+  "bonbons": [
+   {
+    "sub": "Bonbons au kilo",
+    "re": "."
+   }
+  ],
+  "chocolats": [
+   {
+    "sub": "Halva",
+    "re": "HALVA"
+   },
+   {
+    "sub": "Guimauve & zéphyr",
+    "re": "ZEFIR|ZEPHYR|GUIMAUVE|MERINGUE|MARMELADE"
+   },
+   {
+    "sub": "Gaufres & biscuits",
+    "re": "WAFER|GAUFR|GOFRET|BISCUIT|KONTI|BAMBUK|PAPILLONS"
+   },
+   {
+    "sub": "Chocolats & barres",
+    "re": "."
+   }
+  ],
+  "tartinades": [
+   {
+    "sub": "Miel",
+    "re": "MIEL"
+   },
+   {
+    "sub": "Lait condensé",
+    "re": "COND|DULCE"
+   },
+   {
+    "sub": "Beurres de noix",
+    "re": "ARACHIDE|AMANDE"
+   },
+   {
+    "sub": "Confitures & fruits au sucre",
+    "re": "."
+   }
+  ],
+  "conserves": [
+   {
+    "sub": "Poissons en conserve",
+    "re": "SARDINE|SPRAT|SAUMON|HARENG|MORUE|SAURY|KILKA"
+   },
+   {
+    "sub": "Champignons",
+    "re": "CHAMPIGNON|NAME[KC]O|BOLET|SMORCHKI|SHIITAKE"
+   },
+   {
+    "sub": "Choucroute",
+    "re": "CHOUCROUTE"
+   },
+   {
+    "sub": "Cornichons, tomates & ail",
+    "re": "CORNICHON|TOMATE|AIL|MARINE"
+   },
+   {
+    "sub": "Ragoûts de viande",
+    "re": "RAGOUT DE (BOEUF|PORC|POULET|MOUTTON)"
+   },
+   {
+    "sub": "Caviars & légumes cuisinés",
+    "re": "."
+   }
+  ],
+  "sauces": [
+   {
+    "sub": "Mayonnaise",
+    "re": "MAYO"
+   },
+   {
+    "sub": "Moutarde & raifort",
+    "re": "MOUTARDE|RAIFORT|KHRENODER"
+   },
+   {
+    "sub": "Ketchup & sauces tomate",
+    "re": "KETCHUP|DAUCE|KHERSON"
+   },
+   {
+    "sub": "Adjika & sauces géorgiennes",
+    "re": "."
+   }
+  ],
+  "epicerie-base": [
+   {
+    "sub": "Sarrasin, riz & céréales",
+    "re": "SARRASIN|RIZ|ORGE|SEMOLINA|ARTEK"
+   },
+   {
+    "sub": "Huiles & vinaigre",
+    "re": "HUILE|VINAIGRE"
+   },
+   {
+    "sub": "Épices & bouillons",
+    "re": "BOUILLON|ASSAISON|VEGETA|HMELI|ZAPRAVKA"
+   },
+   {
+    "sub": "Farine, sucre & cuisson",
+    "re": "."
+   }
+  ],
+  "the-cafe": [
+   {
+    "sub": "Café",
+    "re": "CAFE|JACOBS|ESPRESSO|CAF\\."
+   },
+   {
+    "sub": "Chicorée",
+    "re": "CHICOR|INKA"
+   },
+   {
+    "sub": "Thés Lovaré",
+    "re": "LOVARE"
+   },
+   {
+    "sub": "Thés & coffrets",
+    "re": "."
+   }
+  ],
+  "boissons": [
+   {
+    "sub": "Kvas",
+    "re": "KVAS"
+   },
+   {
+    "sub": "Jus & nectars",
+    "re": "JUS|NECTAR|COCKTAIL"
+   },
+   {
+    "sub": "Eaux minérales",
+    "re": "EAU|BORJOMI|ESSENTUKI|BORSEC"
+   },
+   {
+    "sub": "Bières",
+    "re": "BIERE"
+   },
+   {
+    "sub": "Boissons gazeuses",
+    "re": "."
+   }
+  ],
+  "grignotines": [
+   {
+    "sub": "Graines de tournesol & citrouille",
+    "re": "GRAINE"
+   },
+   {
+    "sub": "Croustilles & croûtons",
+    "re": "CROUST|LAYS|RUFFLES|FLINT|CHRUSTY"
+   },
+   {
+    "sub": "Noix",
+    "re": "CAJOU|AMANDE|NOIX"
+   },
+   {
+    "sub": "Calmar & poisson séché",
+    "re": "CALMAR|SELAIRE"
+   },
+   {
+    "sub": "Maïs soufflé & autres",
+    "re": "."
+   }
+  ],
+  "maison": [
+   {
+    "sub": "Papier & essuie-tout",
+    "re": "PAP|ESS\\.?TOUT|ESSUIE|BOUNTI"
+   },
+   {
+    "sub": "Lessive & nettoyage",
+    "re": "TIDE|ARIEL|VANISH|DET|LESS|SAVON|NETTOY"
+   },
+   {
+    "sub": "Animaux",
+    "re": "FRISKIES|LITIERE|CHAT|CHIEN"
+   },
+   {
+    "sub": "Cuisine & divers",
+    "re": "."
+   }
+  ]
+ },
+ "also": [
+  {
+   "from": "viande-poisson",
+   "to": "surgeles",
+   "re": "CONGEL",
+   "depts": null
+  },
+  {
+   "from": "viande-poisson",
+   "to": "surgeles",
+   "re": ".",
+   "depts": [
+    "22"
+   ]
+  },
+  {
+   "from": "viande-poisson",
+   "to": "surgeles",
+   "re": "^(?!.*SECH)",
+   "depts": [
+    "23"
+   ]
+  },
+  {
+   "from": "surgeles",
+   "to": "pains",
+   "re": "\\bPAIN\\b",
+   "depts": null
+  },
+  {
+   "from": "surgeles",
+   "to": "pret-a-manger",
+   "re": "PEROGIE|PIEROGI|PELMEN|CREPES",
+   "depts": null
+  }
+ ],
+ "frozenAisle": "surgeles",
+ "pairings": {
+  "charcuterie": [
+   [
+    "conserves",
+    "Cornichons, tomates & ail"
+   ],
+   [
+    "pains",
+    "Pains de seigle"
+   ],
+   [
+    "sauces",
+    "Moutarde & raifort"
+   ],
+   [
+    "fromages",
+    null
+   ]
+  ],
+  "fromages": [
+   [
+    "charcuterie",
+    "Saucissons & salamis"
+   ],
+   [
+    "pains",
+    null
+   ],
+   [
+    "tartinades",
+    "Confitures & fruits au sucre"
+   ]
+  ],
+  "pret-a-manger": [
+   [
+    "laitiers",
+    "Crème sure"
+   ],
+   [
+    "sauces",
+    "Adjika & sauces géorgiennes"
+   ],
+   [
+    "conserves",
+    null
+   ]
+  ],
+  "surgeles": [
+   [
+    "laitiers",
+    "Crème sure"
+   ],
+   [
+    "tartinades",
+    "Lait condensé"
+   ],
+   [
+    "sauces",
+    "Adjika & sauces géorgiennes"
+   ]
+  ],
+  "viande-poisson": [
+   [
+    "boissons",
+    "Bières"
+   ],
+   [
+    "pains",
+    "Pains de seigle"
+   ],
+   [
+    "conserves",
+    "Cornichons, tomates & ail"
+   ]
+  ],
+  "pains": [
+   [
+    "charcuterie",
+    null
+   ],
+   [
+    "laitiers",
+    "Beurre"
+   ],
+   [
+    "tartinades",
+    null
+   ]
+  ],
+  "laitiers": [
+   [
+    "pains",
+    null
+   ],
+   [
+    "tartinades",
+    "Confitures & fruits au sucre"
+   ],
+   [
+    "surgeles",
+    "Crêpes"
+   ]
+  ],
+  "conserves": [
+   [
+    "charcuterie",
+    "Lard & salo"
+   ],
+   [
+    "pains",
+    "Pains de seigle"
+   ],
+   [
+    "epicerie-base",
+    "Huiles & vinaigre"
+   ]
+  ],
+  "sauces": [
+   [
+    "charcuterie",
+    null
+   ],
+   [
+    "surgeles",
+    "Pelmenis & pierogis"
+   ],
+   [
+    "pains",
+    null
+   ]
+  ],
+  "epicerie-base": [
+   [
+    "sauces",
+    null
+   ],
+   [
+    "conserves",
+    null
+   ]
+  ],
+  "tartinades": [
+   [
+    "the-cafe",
+    null
+   ],
+   [
+    "pains",
+    null
+   ],
+   [
+    "laitiers",
+    "Tvorog, cottage & fromage frais"
+   ]
+  ],
+  "the-cafe": [
+   [
+    "chocolats",
+    null
+   ],
+   [
+    "tartinades",
+    "Miel"
+   ],
+   [
+    "bonbons",
+    null
+   ]
+  ],
+  "bonbons": [
+   [
+    "chocolats",
+    null
+   ],
+   [
+    "the-cafe",
+    null
+   ]
+  ],
+  "chocolats": [
+   [
+    "the-cafe",
+    null
+   ],
+   [
+    "bonbons",
+    null
+   ]
+  ],
+  "grignotines": [
+   [
+    "boissons",
+    "Kvas"
+   ],
+   [
+    "viande-poisson",
+    "Poisson séché"
+   ]
+  ],
+  "boissons": [
+   [
+    "grignotines",
+    null
+   ],
+   [
+    "viande-poisson",
+    "Poisson séché"
+   ]
+  ],
+  "fruits-legumes": [
+   [
+    "laitiers",
+    null
+   ],
+   [
+    "epicerie-base",
+    "Huiles & vinaigre"
+   ]
+  ],
+  "maison": []
+ },
+ "ukrainePrefix": "0482"
+}

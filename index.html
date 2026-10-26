@@ -912,6 +912,26 @@
   .ecom-dept-stat { font-family: var(--font-display); font-size: 9px; color: var(--text-dim); letter-spacing: 0.04em; }
   .ecom-dept-caret { font-size: 10px; color: var(--text-faint); width: 12px; text-align: center; }
   .ecom-dept-body.collapsed { display: none; }
+  /* website aisles */
+  .ecom-view-seg { display: flex; width: 100%; border: 1px solid var(--border); border-radius: 9px; overflow: hidden; }
+  .ecom-view-seg button { flex: 1; padding: 8px 6px; background: var(--surface); color: var(--text-dim); border: 0; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: .05em; cursor: pointer; }
+  .ecom-view-seg button.on { background: var(--accent); color: #000; }
+  .ecom-zone-label { font-family: var(--font-display); font-size: 9px; letter-spacing: .14em; color: var(--accent); margin: 16px 2px 4px; }
+  .ecom-aisle-chip { font-family: var(--font-display); font-size: 8.5px; letter-spacing: .04em; line-height: 1; padding: 4px 8px; border-radius: 999px; border: 1px dashed var(--border); background: transparent; color: var(--text-dim); cursor: pointer; max-width: 190px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; position: relative; }
+  .ecom-aisle-chip::after { content: ''; position: absolute; inset: -6px -3px; }
+  .ecom-aisle-chip.ov { border-style: solid; border-color: var(--accent); color: var(--accent); }
+  .ecom-aisle-chip.none { border-style: solid; border-color: var(--bad); color: var(--bad); }
+  .ecom-row.also { opacity: .62; }
+  .ecom-also-note { font-family: var(--font-display); font-size: 8.5px; color: var(--text-faint); letter-spacing: .04em; }
+  .ap-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .ap-auto { font-family: var(--font-display); font-size: 10px; color: var(--text-dim); margin-bottom: 14px; line-height: 1.5; }
+  .ap-lbl { font-family: var(--font-display); font-size: 9.5px; letter-spacing: .1em; color: var(--text-dim); margin: 14px 0 6px; }
+  .ap-zone { margin-bottom: 8px; } .ap-zname { font-size: 11px; color: var(--text-faint); margin-bottom: 4px; }
+  .ap-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ap-btn { padding: 9px 11px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 13px; cursor: pointer; }
+  .ap-btn.small { padding: 6px 9px; font-size: 12px; color: var(--text-dim); }
+  .ap-btn.on { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 600; }
+  .ap-actions { display: flex; gap: 8px; margin: 20px 0 30px; } .ap-actions .btn { flex: 1; padding: 12px; }
   /* Out of stock = red OUTLINE only (no fill) everywhere it appears */
   .ecom-stock {
     position: relative; font-family: var(--font-display); font-size: 8.5px; letter-spacing: .07em; line-height: 1;
@@ -2281,7 +2301,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v229</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v230</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2362,6 +2382,10 @@
   </div>
   <div class="ecom-progress-wrap" id="ecom-progress-wrap"></div>
   <div class="ecom-filter-row" id="ecom-filter-row">
+    <div class="ecom-view-seg" id="ecom-view-seg">
+      <button data-eview="aisle">🧭 WEBSITE AISLES</button><button data-eview="dept">🏷 POS DEPARTMENTS</button>
+    </div>
+    <select id="ecom-aisle" class="ecom-select"><option value="">ALL AISLES</option></select>
     <select id="ecom-dept" class="ecom-select"><option value="">ALL DEPARTMENTS</option></select>
   </div>
   <div class="ecom-filter-row" id="ecom-filter-row2">
@@ -2378,6 +2402,8 @@
     <button class="ecom-chip" data-efilter="variants">VARIANTS</button>
     <button class="ecom-chip" data-efilter="scale">SCALE</button>
     <button class="ecom-chip" data-efilter="dupes">DUPLICATE NAMES</button>
+    <button class="ecom-chip" data-efilter="aislehand">🧭 MOVED BY HAND</button>
+    <button class="ecom-chip" data-efilter="noaisle">⚠ NO AISLE</button>
   </div>
   <div class="ecom-statusbar" id="ecom-statusbar"></div>
   <div id="ecom-container">
@@ -2404,6 +2430,14 @@
       <button class="btn small" id="ac-skip">SKIP</button>
     </div>
   </div>
+</div>
+
+<div class="modal" id="aisle-modal">
+  <div class="modal-header">
+    <span class="label">WEBSITE AISLE</span>
+    <div class="actions"><button class="close" id="close-aisle-modal">×</button></div>
+  </div>
+  <div class="modal-content" id="ap-body"></div>
 </div>
 
 <div class="modal" id="ecom-add-modal">
@@ -2872,7 +2906,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v229</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v230</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11615,6 +11649,192 @@
     return null;
   }
 
+  // ── WEBSITE AISLES ──────────────────────────────────────────────────────
+  // Rules: ecom/categories.json (checked top to bottom on the POS title, uppercase, no accents,
+  // + POS department; first match wins). Per-product override: catalog.items[code].aisle =
+  // {a, s, also} (kids: candyGroups[code][i].aisle). Completely separate from the POS departments.
+  // SAME logic as shopify_sync.py (class Aisles) -- keep them in sync.
+  let _aisleCfg = null;
+  let _ecomView = (() => { try { return localStorage.getItem('ecomView') || 'aisle'; } catch { return 'aisle'; } })();
+  let _ecomAisle = '';
+  const aNorm = s => String(s || '').toUpperCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  async function fetchAisleCfg(force) {
+    if (_aisleCfg && !force) return _aisleCfg;
+    try {
+      const r = await fetch(recipeRawUrl('ecom/categories.json') + '?t=' + Date.now(), { cache: 'no-store' });
+      if (r.ok) { const c = await r.json(); compileAisles(c); _aisleCfg = c; }
+    } catch (e) { console.warn('aisles', e); }
+    return _aisleCfg;
+  }
+  function compileAisles(c) {
+    c._ids = c.aisles.map(a => a.id);
+    c._by = Object.fromEntries(c.aisles.map(a => [a.id, a]));
+    c._rules = c.rules.map(r => ({ a: r.aisle, rx: new RegExp(r.re), d: r.depts ? new Set(r.depts) : null }));
+    c._subs = {};
+    for (const [k, v] of Object.entries(c.subRules || {})) c._subs[k] = v.map(x => ({ n: x.sub, rx: new RegExp(x.re) }));
+    c._also = (c.also || []).map(r => ({ f: r.from, t: r.to, rx: new RegExp(r.re), d: r.depts ? new Set(r.depts) : null }));
+    c._zoneOf = {}; c.zones.forEach(z => z.aisles.forEach(a => { c._zoneOf[a] = z; }));
+    c._order = c.zones.flatMap(z => z.aisles);
+  }
+  function aisleAuto(code, title, dept) {
+    const c = _aisleCfg; if (!c) return null;
+    if (c.codeRules && c.codeRules[code]) return c.codeRules[code];
+    const t = aNorm(title), d = String(dept);
+    for (const r of c._rules) { if (r.d && !r.d.has(d)) continue; if (r.rx.test(t)) return r.a; }
+    return null;
+  }
+  function aisleSub(a, title) {
+    const t = aNorm(title) || 'X';
+    for (const s of (_aisleCfg._subs[a] || [])) if (s.rx.test(t)) return s.n;
+    return null;
+  }
+  function aisleAlsoAuto(a, title, dept) {
+    const t = aNorm(title), d = String(dept), out = [];
+    for (const r of _aisleCfg._also) if (r.f === a && (!r.d || r.d.has(d)) && r.rx.test(t) && !out.includes(r.t) && r.t !== a) out.push(r.t);
+    return out;
+  }
+  // -> { a, s, also, auto: {a,s,also}, ov }
+  function aislePlace(code, title, dept, ov, parent) {
+    const c = _aisleCfg; ov = ov || {};
+    let autoA = parent ? aisleAuto(parent[0], parent[1], parent[2]) : null;
+    if (!autoA) autoA = aisleAuto(code, title, dept);
+    const subTitle = title || (parent ? parent[1] : '');
+    const alsoDept = parent ? parent[2] : dept;
+    const auto = { a: autoA, s: autoA ? aisleSub(autoA, subTitle) : null, also: autoA ? aisleAlsoAuto(autoA, title, alsoDept) : [] };
+    const a = c._ids.includes(ov.a) ? ov.a : autoA;
+    if (!a) return { a: null, s: null, also: [], auto, ov: !!ov.a };
+    const s = (ov.a === a && ov.s) ? ov.s : aisleSub(a, subTitle);
+    const also = Array.isArray(ov.also) ? ov.also.filter(x => c._ids.includes(x) && x !== a) : aisleAlsoAuto(a, title, alsoDept);
+    return { a, s, also, auto, ov: !!(ov.a || ov.s || Array.isArray(ov.also)) };
+  }
+  function aisleOfItem(code) {
+    const cat = _ecomCatalog || { items: {} };
+    const rc = resolveCode(code), p = DATA.products[rc] || [], e = cat.items[code] || {};
+    const fam = (cat.produce || {})[code];
+    const dept = p[2] != null ? String(p[2]) : (e.dept != null ? String(e.dept) : '');
+    return aislePlace(rc, fam ? fam.title : (p[0] || ''), dept, e.aisle);
+  }
+  function aisleOfKid(code, kid) {
+    const rc = resolveCode(code), p = DATA.products[rc] || [];
+    const dept = p[2] != null ? String(p[2]) : '';
+    return aislePlace(rc, kid.name || '', dept, kid.aisle, [rc, p[0] || '', dept]);
+  }
+  const aisleName = a => (a && _aisleCfg && _aisleCfg._by[a]) ? _aisleCfg._by[a].fr : 'Sans allée';
+
+  // ---- picker ----
+  let _ap = null;   // { code, kid, title, place, sel: {a, s, also} }
+  function openAislePicker(code, kidId) {
+    if (!_aisleCfg) { showToast('Aisles not loaded yet', true); return; }
+    const cat = _ecomCatalog;
+    let place, title;
+    if (kidId) {
+      const kid = ((cat.candyGroups || {})[code] || []).find(k => k.id === kidId); if (!kid) return;
+      place = aisleOfKid(code, kid); title = (kid.name || '').trim() || '(no name yet)';
+    } else {
+      place = aisleOfItem(code);
+      const fam = (cat.produce || {})[code];
+      title = fam ? fam.title : ((DATA.products[resolveCode(code)] || [])[0] || code);
+    }
+    _ap = { code, kid: kidId || null, title, place, sel: { a: place.a, s: place.s, also: [...place.also] } };
+    paintAislePicker();
+    $('#aisle-modal').classList.add('open');
+  }
+  function paintAislePicker() {
+    const c = _aisleCfg, ap = _ap, sel = ap.sel, au = ap.place.auto;
+    const subs = sel.a ? (c._by[sel.a].subs || []) : [];
+    const isAuto = sel.a === au.a && sel.s === au.s && JSON.stringify([...sel.also].sort()) === JSON.stringify([...au.also].sort());
+    $('#ap-body').innerHTML = `
+      <div class="ap-title">${escapeHtml(ap.title.trim())}</div>
+      <div class="ap-auto">AUTOMATIC: ${au.a ? escapeHtml(aisleName(au.a)) + (au.s ? ' › ' + escapeHtml(au.s) : '') : 'no rule matched'}${au.also.length ? ' · also in ' + au.also.map(aisleName).map(escapeHtml).join(', ') : ''}</div>
+      <div class="ap-lbl">AISLE</div>
+      ${c.zones.map(z => `<div class="ap-zone"><div class="ap-zname">${escapeHtml(z.fr)}</div><div class="ap-grid">${z.aisles.map(a =>
+        `<button class="ap-btn${sel.a === a ? ' on' : ''}" data-ap-a="${a}">${escapeHtml(c._by[a].fr)}</button>`).join('')}</div></div>`).join('')}
+      ${subs.length ? `<div class="ap-lbl">SUB-SHELF IN ${escapeHtml(aisleName(sel.a).toUpperCase())}</div><div class="ap-grid">${subs.map(s =>
+        `<button class="ap-btn${sel.s === s ? ' on' : ''}" data-ap-s="${escapeHtml(s)}">${escapeHtml(s)}</button>`).join('')}</div>` : ''}
+      <div class="ap-lbl">ALSO SHOW IN (optional)</div>
+      <div class="ap-grid">${c._order.filter(a => a !== sel.a).map(a =>
+        `<button class="ap-btn small${sel.also.includes(a) ? ' on' : ''}" data-ap-x="${a}">${sel.also.includes(a) ? '✓ ' : '+ '}${escapeHtml(c._by[a].fr)}</button>`).join('')}</div>
+      <div class="ap-actions">
+        <button class="btn primary" id="ap-save">${isAuto ? 'SAVE (= AUTOMATIC)' : 'SAVE'}</button>
+        <button class="btn" id="ap-reset" ${ap.place.ov ? '' : 'disabled'}>BACK TO AUTOMATIC</button>
+      </div>`;
+    const body = $('#ap-body');
+    body.querySelectorAll('[data-ap-a]').forEach(b => b.onclick = () => {
+      const a = b.dataset.apA; sel.a = a; sel.s = aisleSub(a, _ap.title) || (c._by[a].subs || [])[0] || null;
+      sel.also = sel.also.filter(x => x !== a); paintAislePicker(); });
+    body.querySelectorAll('[data-ap-s]').forEach(b => b.onclick = () => { sel.s = b.dataset.apS; paintAislePicker(); });
+    body.querySelectorAll('[data-ap-x]').forEach(b => b.onclick = () => {
+      const x = b.dataset.apX; sel.also = sel.also.includes(x) ? sel.also.filter(y => y !== x) : sel.also.concat(x); paintAislePicker(); });
+    $('#ap-save').onclick = () => saveAislePick(false);
+    $('#ap-reset').onclick = () => saveAislePick(true);
+  }
+  async function saveAislePick(reset) {
+    const ap = _ap, sel = ap.sel, au = ap.place.auto;
+    let val = null;
+    if (!reset && sel.a) {
+      val = {};
+      if (sel.a !== au.a || sel.s !== au.s) { val.a = sel.a; if (sel.s) val.s = sel.s; }
+      const autoAlsoForSel = sel.a === au.a ? au.also : aisleAlsoAuto(sel.a, ap.title, '');
+      if (JSON.stringify([...sel.also].sort()) !== JSON.stringify([...autoAlsoForSel].sort())) { val.also = [...sel.also]; if (!val.a) val.a = sel.a; }
+      if (!Object.keys(val).length) val = null;
+    }
+    try {
+      await mutateEcomCatalog(c => {
+        let t = null;
+        if (ap.kid) t = ((c.candyGroups || {})[ap.code] || []).find(k => k.id === ap.kid);
+        else t = c.items[ap.code];
+        if (!t) return;
+        if (val) t.aisle = val; else delete t.aisle;
+      });
+      showToast(val ? 'MOVED TO ' + aisleName(sel.a).toUpperCase() + ' ✓' : 'AUTOMATIC AISLE ✓');
+      $('#aisle-modal').classList.remove('open');
+      renderEcom();
+    } catch (e) { showToast(e.message, true); }
+  }
+  function aisleChip(pl, code, kidId, inAisleView) {
+    const label = !pl.a ? '⚠ NO AISLE' : inAisleView ? (pl.s || aisleName(pl.a)) : aisleName(pl.a) + (pl.s ? ' › ' + pl.s : '');
+    return `<button class="ecom-aisle-chip${!pl.a ? ' none' : pl.ov ? ' ov' : ''}" data-eact="aisle" data-code="${escapeHtml(code)}"${kidId ? ` data-kid="${escapeHtml(kidId)}"` : ''} title="Website aisle - tap to move">🧭 ${escapeHtml(label)}${pl.ov ? ' ✎' : ''}</button>`;
+  }
+  function renderAisleGroups(rows, rowHtml) {
+    const c = _aisleCfg, by = {};
+    const push = (a, s, r) => { const A = (by[a] = by[a] || { subs: {}, n: 0, ph: 0, x: 0 }); (A.subs[s || '—'] = A.subs[s || '—'] || []).push(r); A.n++; if (r.nPhotos) A.ph++; if (r.alsoFrom) A.x++; };
+    rows.forEach(r => {
+      push(r.pl.a || '_none', r.pl.s, r);
+      r.pl.also.forEach(x => push(x, aisleSub(x, r.name), Object.assign({}, r, { alsoFrom: r.pl.a })));
+    });
+    const order = c._order.concat(['_none']).filter(a => by[a] && (!_ecomAisle || a === _ecomAisle));
+    let lastZone = null;
+    return order.map(a => {
+      const A = by[a], z = c._zoneOf[a];
+      const zl = z && z !== lastZone ? `<div class="ecom-zone-label">${escapeHtml(z.fr.toUpperCase())}</div>` : '';
+      lastZone = z;
+      const key = 'aisle:' + a, collapsed = _ecomCollapsed[key] !== false && !_ecomAisle;
+      const subOrder = a === '_none' ? Object.keys(A.subs) : (c._by[a].subs || []).filter(s => A.subs[s]).concat(Object.keys(A.subs).filter(s => !(c._by[a].subs || []).includes(s)));
+      const inner = subOrder.map(sn => {
+        const items = A.subs[sn].sort((x, y) => (!!x.alsoFrom - !!y.alsoFrom) || (y.rev - x.rev));
+        const sk = key + '::' + sn, sc = _ecomCollapsed[sk] !== false && subOrder.length > 1;
+        return `<div class="ecom-sub-head" data-dept="${escapeHtml(sk)}"><span class="ecom-dept-caret">${sc ? '▸' : '▾'}</span><span class="ecom-dept-name">${escapeHtml(sn)}</span><span class="ecom-dept-stat">${items.filter(i => i.nPhotos).length}/${items.length} 📷</span></div>
+          <div class="ecom-dept-body ${sc ? 'collapsed' : ''}" data-dept-body="${escapeHtml(sk)}">${items.map(rowHtml).join('')}</div>`;
+      }).join('');
+      return `${zl}<div class="ecom-dept-head" data-dept="${escapeHtml(key)}"${a === '_none' ? ' style="border-color:var(--bad)"' : ''}>
+          <span class="ecom-dept-caret">${collapsed ? '▸' : '▾'}</span>
+          <span class="ecom-dept-name">${escapeHtml(a === '_none' ? '⚠ SANS ALLÉE / NO AISLE' : c._by[a].fr)}</span>
+          <span class="ecom-dept-stat">${A.ph}/${A.n} 📷${A.x ? ' · ' + A.x + ' also' : ''}</span>
+        </div><div class="ecom-dept-body ${collapsed ? 'collapsed' : ''}" data-dept-body="${escapeHtml(key)}">${inner}</div>`;
+    }).join('');
+  }
+  function populateEcomAisles(rows) {
+    const sel = $('#ecom-aisle'); if (!sel || !_aisleCfg) return;
+    const n = {}; rows.forEach(r => { const k = r.pl.a || '_none'; n[k] = (n[k] || 0) + 1; r.pl.also.forEach(x => { n[x] = (n[x] || 0) + 1; }); });
+    let html = '<option value="">ALL AISLES</option>';
+    _aisleCfg.zones.forEach(z => {
+      html += `<optgroup label="${escapeHtml(z.fr)}">` + z.aisles.map(a =>
+        `<option value="${a}"${_ecomAisle === a ? ' selected' : ''}>${escapeHtml(_aisleCfg._by[a].fr)} (${n[a] || 0})</option>`).join('') + '</optgroup>';
+    });
+    if (n._none) html += `<option value="_none"${_ecomAisle === '_none' ? ' selected' : ''}>⚠ SANS ALLÉE (${n._none})</option>`;
+    sel.innerHTML = html;
+  }
+
   function ecomGroupOf(code) {
     const arr = DATA.products[resolveCode(code)];
     const sub = arr ? Number(arr[2]) : null;
@@ -11735,7 +11955,11 @@
   async function renderEcom() {
     const container = $('#ecom-container');
     const status = $('#ecom-statusbar');
-    const cat = await fetchEcomCatalog();
+    const [cat] = await Promise.all([fetchEcomCatalog(), fetchAisleCfg()]);
+    const aisleView = _ecomView === 'aisle' && !!_aisleCfg;
+    document.querySelectorAll('#ecom-view-seg [data-eview]').forEach(b => b.classList.toggle('on', b.dataset.eview === (aisleView ? 'aisle' : 'dept')));
+    $('#ecom-aisle').style.display = aisleView ? '' : 'none';
+    $('#ecom-dept').style.display = aisleView ? 'none' : '';
     if (cat.produce && !_editData) await fetchEditData();   // produce families need the weighed flags
     else fetchEditData();     // weighed flags for per-kg prices (non-blocking)
     populateEcomDepts(cat);
@@ -11803,11 +12027,17 @@
         scale: !!entry.scale,
         fresh: !!entry.fresh,
         kids: ((cat.candyGroups || {})[code] || (cat.candyGroups || {})[resolveCode(code)] || null),
+        pl: _aisleCfg ? aisleOfItem(code) : { a: null, s: null, also: [], auto: {}, ov: false },
       };
-    }).filter(r => {
+    });
+    if (aisleView) populateEcomAisles(rows);
+    rows = rows.filter(r => {
       if (q && !(r.name.toLowerCase().includes(q) || r.code.includes(q)
                  || (r.kids && r.kids.some(e => (e.name || '').toLowerCase().includes(q))))) return false;
-      if (_ecomDept) {
+      if (aisleView && _ecomAisle) {
+        if (_ecomAisle === '_none' ? !!r.pl.a : (r.pl.a !== _ecomAisle && !r.pl.also.includes(_ecomAisle))) return false;
+      }
+      if (!aisleView && _ecomDept) {
         if (_ecomDept.startsWith('fam:')) {
           const g = DEPT_GROUPS.find(x => x.name === _ecomDept.slice(4));
           if (!g || !g.subs.map(String).includes(r.deptCode)) return false;
@@ -11826,6 +12056,8 @@
         case 'oos':       if (!r.oos) return false; break;
         case 'featured':  if (!r.featured) return false; break;
         case 'dupes':    if (!r.variantDupe) return false; break;
+        case 'aislehand': if (!r.pl.ov && !(r.kids || []).some(k => k.aisle)) return false; break;
+        case 'noaisle':   if (r.pl.a) return false; break;
       }
       return true;
     });
@@ -11854,7 +12086,7 @@
       // quiet "no sales" note: only the longest period, and never on items already marked out of stock
       const quiet = r.oos ? null : (r.noSales30d ? ['q30', '1mo', '1 month'] : r.noSales14d ? ['q14', '14d', '14 days'] : r.noSales7d ? ['q7', '7d', '7 days'] : null);
       return `
-      <div class="ecom-row${r.oos ? ' oos' : ''}" data-code="${r.code}">
+      <div class="ecom-row${r.oos ? ' oos' : ''}${r.alsoFrom ? ' also' : ''}" data-code="${r.code}">
         <div class="ecom-thumb-wrap">
           ${r.photo
             ? `<img class="ecom-thumb js-photo-thumb" data-full="${photoSrc(r.photo)}" src="${photoSrc(r.photo)}" loading="lazy" alt="">${r.nPhotos > 1 ? `<span class="ecom-photo-count">+${r.nPhotos - 1}</span>` : ''}`
@@ -11869,7 +12101,8 @@
             ${r.pf ? `<span class="ecom-badge-fam" data-eact="fam" data-code="${r.code}" title="Every brand of this item. The website price follows the brand whose price changed last.">🌿 ${r.pf.members.length} brand code${r.pf.members.length === 1 ? '' : 's'} · price from ${escapeHtml(r.pf.official.replace(/^0+/, ''))}</span>` : ''}
             ${r.pfam ? '' : r.variantDupe ? '<span class="ecom-badge-dupe">DUPLICATE NAME</span>' : (r.variantOf ? '<span class="ecom-badge-dupe" style="color:var(--text-faint)">variant</span>' : '')}
             ${quiet ? `<span class="ecom-quiet ${quiet[0]}" title="No sales in the last ${quiet[2]}">no sales ${quiet[1]}</span>` : ''}
-          </div>
+            ${_aisleCfg ? aisleChip(r.pl, r.code, null, aisleView) : ''}
+          </div>${r.alsoFrom ? `<div class="ecom-also-note">↪ also shown here · lives in ${escapeHtml(aisleName(r.alsoFrom))}</div>` : ''}
         </div>
         <div class="ecom-side">
           <div class="li-cur">${r.price != null ? priceText(r.priceCode || r.code, r.price) : '—'}</div>
@@ -11900,15 +12133,18 @@
           return `<div class="ecom-kid${e.oos ? ' oos' : ''}" data-kcode="${escapeHtml(r.code)}" data-kid="${escapeHtml(e.id)}">
             ${ph ? `<img class="kid-thumb js-photo-thumb" data-full="${photoSrc(ph)}" src="${photoSrc(ph)}" loading="lazy" alt="">` : '<div class="kid-thumb empty">NO<br>PHOTO</div>'}
             <div class="kid-name${(e.name || '').trim() ? '' : ' unnamed'}">${escapeHtml((e.name || '').trim() || '(no name yet)')}</div>
+            ${_aisleCfg ? aisleChip(aisleOfKid(r.code, e), r.code, e.id, true) : ''}
             <button class="ecom-stock${e.oos ? ' out' : ''}" data-kid-oos="${escapeHtml(e.id)}" data-kcode="${escapeHtml(r.code)}">${e.oos ? 'OUT' : 'IN'}</button>
           </div>`;
         }).join('')}
       </div>`;
     }
 
+    // Website-aisle view: zone -> aisle -> sub-shelf -> products (cross-listed items shown dimmed)
+    if (aisleView) container.innerHTML = renderAisleGroups(rows, rowHtml);
     // Two levels: family (Épicerie…) -> department (#1, #2…) -> products.
     // Both levels collapse independently.
-    container.innerHTML = groupNames.map(gname => {
+    else container.innerHTML = groupNames.map(gname => {
       const items = byGroup[gname].sort((a, b) => b.rev - a.rev);
       const gPhotos = items.filter(i => i.nPhotos).length;
       const collapsed = _ecomCollapsed[gname] !== false;   // default CLOSED, same as sub-departments
@@ -11974,6 +12210,7 @@
           openPosDirect(f && _editData ? produceFamily(btn.dataset.code, f).official : btn.dataset.code);
         }
         else if (btn.dataset.eact === 'fam') ecomProduceInfo(btn.dataset.code);
+        else if (btn.dataset.eact === 'aisle') openAislePicker(btn.dataset.code, btn.dataset.kid || null);
         else if (btn.dataset.eact === 'oos') ecomToggleOos(btn.dataset.code);
         else if (btn.dataset.eact === 'feat') ecomToggleFeatured(btn.dataset.code);
         else if (btn.dataset.eact === 'del') {
@@ -13640,6 +13877,12 @@
         document.querySelectorAll('#ecom-filter-row2 .ecom-chip').forEach(c => c.classList.toggle('active', c === chip));
         renderEcom();
       }));
+    document.querySelectorAll('#ecom-view-seg [data-eview]').forEach(b => b.addEventListener('click', () => {
+      _ecomView = b.dataset.eview; try { localStorage.setItem('ecomView', _ecomView); } catch {}
+      renderEcom();
+    }));
+    $('#ecom-aisle').addEventListener('change', () => { _ecomAisle = $('#ecom-aisle').value; renderEcom(); });
+    $('#close-aisle-modal').addEventListener('click', () => $('#aisle-modal').classList.remove('open'));
     $('#ecom-add-btn').addEventListener('click', () => {
       $('#ecom-add-modal').classList.add('open');
       setTimeout(() => $('#ecom-add-search').focus(), 60);
@@ -13765,7 +14008,7 @@
       // through our guard entries (it is saved from the top of the page).
       try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
 
-      const OVERLAYS = ['audit-confirm-modal','ecom-add-modal','count-session-detail-modal',
+      const OVERLAYS = ['audit-confirm-modal','ecom-add-modal','aisle-modal','count-session-detail-modal',
                         'product-modal','pos-edit-modal','pos-pin-modal','pos-direct-modal',
                         'list-detail-modal','merge-picker-modal','add-to-list-modal',
                         'labels-overlay','reports-overlay','candy-modal','photo-lightbox','flyer-modal'];
