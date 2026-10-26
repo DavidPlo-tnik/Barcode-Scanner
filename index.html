@@ -2302,7 +2302,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v231</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v232</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2907,7 +2907,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v231</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v232</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11830,7 +11830,8 @@
       lastZone = z;
       const key = 'aisle:' + a, collapsed = _ecomCollapsed[key] !== false && !_ecomAisle;
       const subOrder = a === '_none' ? Object.keys(A.subs) : (c._by[a].subs || []).filter(s => A.subs[s]).concat(Object.keys(A.subs).filter(s => !(c._by[a].subs || []).includes(s)));
-      const inner = subOrder.map(sn => {
+      const flat = subOrder.length === 1 && subOrder[0] === '—';   // no sub-shelves: products straight under the aisle
+      const inner = flat ? A.subs['—'].sort((x, y) => (!!x.alsoFrom - !!y.alsoFrom) || (y.rev - x.rev)).map(rowHtml).join('') : subOrder.map(sn => {
         const items = A.subs[sn].sort((x, y) => (!!x.alsoFrom - !!y.alsoFrom) || (y.rev - x.rev));
         const sk = key + '::' + sn, sc = _ecomCollapsed[sk] !== false && subOrder.length > 1;
         return `<div class="ecom-sub-head" data-dept="${escapeHtml(sk)}"><span class="ecom-dept-caret">${sc ? '▸' : '▾'}</span><span class="ecom-dept-name">${escapeHtml(sn)}</span><span class="ecom-dept-stat">${items.filter(i => i.nPhotos).length}/${items.length} 📷</span></div>
