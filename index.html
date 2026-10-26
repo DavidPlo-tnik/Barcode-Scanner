@@ -144,6 +144,14 @@
   .sup-pos { display: flex; align-items: center; gap: 9px; width: 100%; text-align: left; padding: 7px; margin-bottom: 6px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text); }
   .sup-pos span { flex: 1; min-width: 0; font-size: 13px; } .sup-pos small { display: block; color: var(--text-dim); font-size: 11px; } .sup-x { font-style: normal; color: #ff6b5e; }
   .sup-mrow { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px; margin-bottom: 8px; }
+  .sup-line.carried { border-color: #30d158; box-shadow: 0 0 0 1px rgba(48,209,88,.35), 0 0 10px rgba(48,209,88,.18); }
+  .sup-line.carried.in { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+  .sup-qty { min-width: 46px; height: 34px; border-radius: 8px; border: 1px dashed var(--border); background: transparent; color: var(--text); font-weight: 700; font-size: 16px; padding: 0 4px; }
+  .sup-qty-in { width: 64px; height: 34px; box-sizing: border-box; border-radius: 8px; border: 1px solid var(--accent); background: var(--surface-2); color: var(--text); font-size: 16px; text-align: center; }
+  .sup-step button { touch-action: manipulation; }
+  .sup-free { display: block; width: 100%; margin-top: 6px; padding: 6px; border-radius: 7px; border: 1px dashed var(--border); background: transparent; color: var(--text-dim); font-size: 12px; }
+  .sup-free.on { border-style: solid; border-color: #ff9f0a; color: #ff9f0a; }
+  .sup-invoice { white-space: pre-wrap; font-size: 11.5px; line-height: 1.45; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; color: var(--text); overflow-x: auto; }
   .sup-alt { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 6px; font-size: 11px; color: var(--text-dim); }
   .sup-alt span { padding: 2px 6px; border-radius: 5px; background: var(--surface-2); } .sup-alt em { font-style: normal; color: #ff9f0a; }
   .sup-alt button { padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); background: transparent; color: var(--accent); font-size: 11px; }
@@ -2346,7 +2354,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v235</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v236</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2953,7 +2961,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v235</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v236</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11238,11 +11246,13 @@
     })());
     if (force || !_sup.orders) jobs.push((async () => {
       const { json } = await ghGetJsonAndSha('suppliers/orders.json');
+      if (json) { try { localStorage.setItem('supOrdersCache', JSON.stringify(json)); } catch (e) {} }
       _sup.orders = json || { orders: [] };
       if (!_sup.orders.orders) _sup.orders.orders = [];
-    })());
+    })().catch(e => { let cached = null; try { cached = JSON.parse(localStorage.getItem('supOrdersCache') || 'null'); } catch (x) {} if (!cached) throw e; _sup.orders = cached; }));
     await Promise.all(jobs);
     supIndexCodes();
+    supRestorePending();
   }
   // which supplier lines carry each of our POS codes (an item can come from several suppliers)
   function supIndexCodes() {
@@ -11329,7 +11339,7 @@
     list.sort((a, b) => String(b.sentAt || b.created).localeCompare(String(a.sentAt || a.created)));
     if (!list.length) return null;
     const o = list[0], l = o.lines[k];
-    return { date: String(o.receivedAt || o.sentAt || o.created).slice(0, 10), qty: l.recv != null ? l.recv : l.q, received: !!o.receivedAt };
+    return { date: String(o.receivedAt || o.sentAt || o.created).slice(0, 10), qty: l.recv != null ? l.recv : l.q + (l.free || 0), received: !!o.receivedAt };
   }
   function supSuggest(cfg, it, cover) {
     const codes = supCodes(cfg, it); if (!codes.length || it.p == null) return null;
@@ -11404,22 +11414,43 @@
   }
   // Only the lines you touched are sent, and they are merged into the shared order: two phones
   // can fill the same order at the same time without overwriting each other.
-  function supApplyDirty(o) {
-    for (const [k, v] of Object.entries(_sup.dirty)) {
+  function supApplyDirty(o, dirty) {
+    for (const [k, v] of Object.entries(dirty || _sup.dirty)) {
       if (k === '__cover') o.cover = v;
       else if (v && v.q > 0) o.lines[k] = v; else delete o.lines[k];
     }
   }
-  function supQueueSave(k, v) {
+  // Changes are kept on the phone (localStorage) until the server has them: walking around the
+  // store without signal loses nothing, it syncs as soon as the connection is back.
+  function supPersistPending() {
+    try {
+      if (Object.keys(_sup.dirty).length) localStorage.setItem('supPending', JSON.stringify({ draftId: _sup.draftId, sid: _sup.sid, dirty: _sup.dirty, at: Date.now() }));
+      else localStorage.removeItem('supPending');
+    } catch (e) {}
+  }
+  function supRestorePending() {
+    let pend = null; try { pend = JSON.parse(localStorage.getItem('supPending') || 'null'); } catch (e) {}
+    if (!pend || !pend.dirty || !Object.keys(pend.dirty).length || !_sup.orders) return;
+    let d = _sup.orders.orders.find(o => o.id === pend.draftId && o.status === 'draft') || _sup.orders.orders.find(o => o.sid === pend.sid && o.status === 'draft');
+    if (!d) { d = { id: pend.draftId, sid: pend.sid, status: 'draft', created: new Date().toISOString(), lines: {}, cover: 2 }; _sup.orders.orders.push(d); }
+    _sup.draftId = d.id; _sup.sid = pend.sid;
+    Object.assign(_sup.dirty, pend.dirty);
+    supApplyDirty(d, pend.dirty);
+    supQueueSave();
+  }
+  function supSavedLabel(t) { const e = $('#sup-saved'); if (e) e.textContent = t; }
+  function supQueueSave(k, v, delay) {
     if (k) _sup.dirty[k] = v;
+    supPersistPending();
     clearTimeout(_sup.saveT);
-    $('#sup-saved') && ($('#sup-saved').textContent = 'saving…');
+    if (Object.keys(_sup.dirty).length) supSavedLabel(navigator.onLine === false ? 'offline · kept on this phone' : 'saving…');
     _sup.saveT = setTimeout(async () => {
-      if (_sup.saving) return supQueueSave();
+      if (!Object.keys(_sup.dirty).length) return;
+      if (_sup.saving) return supQueueSave(null, null, 600);
       const local = _sup.orders.orders.find(o => o.id === _sup.draftId); if (!local) return;
       const base = { id: local.id, sid: local.sid, created: local.created, cover: local.cover || 2 };
       const dirty = _sup.dirty; _sup.dirty = {}; _sup.saving = true;
-      let gone = false, id = base.id;
+      let gone = false, id = base.id, othersChanged = false;
       try {
         await supSaveOrders(doc => {
           gone = false;
@@ -11428,18 +11459,31 @@
           if (!o) o = doc.orders.find(x => x.sid === base.sid && x.status === 'draft');
           if (!o) { o = Object.assign({ status: 'draft', lines: {} }, base); doc.orders.push(o); }
           id = o.id; o.saved = true;
-          const keep = _sup.dirty; _sup.dirty = dirty; supApplyDirty(o); _sup.dirty = keep;
+          // did another phone change lines we did not touch?
+          const mine = (_sup.orders.orders.find(x => x.id === base.id) || {}).lines || {};
+          othersChanged = Object.keys(Object.assign({}, o.lines, mine)).some(kk => !(kk in dirty) && JSON.stringify(o.lines[kk] || null) !== JSON.stringify(mine[kk] || null));
+          supApplyDirty(o, dirty);
           o.editedAt = new Date().toISOString();
         });
         _sup.draftId = id;
-        if (gone) { showToast('This order was already sent from another phone', true); _sup.view = 'home'; }
-        const d2 = _sup.orders.orders.find(o => o.id === id); if (d2 && d2.status === 'draft') supApplyDirty(d2);   // edits made while saving
-        const ae = document.activeElement, typing = ae && ae.tagName === 'INPUT' && $('#sup-panel').contains(ae);
-        if (gone || (_sup.view === 'order' && !typing)) { const y = window.scrollY; supRender(); window.scrollTo(0, y); }   // show other phones' lines too
-        $('#sup-saved') && ($('#sup-saved').textContent = 'saved · shared');
-      } catch (e) { Object.assign(_sup.dirty, Object.assign({}, dirty, _sup.dirty)); showToast(e.message, true); }
-      finally { _sup.saving = false; }
-    }, 900);
+        const d2 = _sup.orders.orders.find(o => o.id === id); if (d2 && d2.status === 'draft') supApplyDirty(d2);   // taps made while saving
+        supPersistPending();
+        if (gone) { showToast('This order was already sent from another phone', true); _sup.view = 'home'; supRender(); }
+        else if (othersChanged && _sup.view === 'order') supRefreshOrder();
+        supSavedLabel(Object.keys(_sup.dirty).length ? 'saving…' : 'saved · shared');
+      } catch (e) {
+        for (const [kk, vv] of Object.entries(dirty)) if (!(kk in _sup.dirty)) _sup.dirty[kk] = vv;   // keep them, retry later
+        supPersistPending();
+        supSavedLabel('offline · kept on this phone, will sync');
+        clearTimeout(_sup.retryT); _sup.retryT = setTimeout(() => supQueueSave(null, null, 0), 15000);
+      } finally { _sup.saving = false; }
+    }, delay == null ? 800 : delay);
+  }
+  window.addEventListener('online', () => { if (Object.keys(_sup.dirty).length) supQueueSave(null, null, 0); });
+  function supRefreshOrder() {
+    const ae = document.activeElement;
+    if (ae && ae.tagName === 'INPUT' && $('#sup-panel').contains(ae)) return;
+    const y = window.scrollY; supRender(); window.scrollTo(0, y);
   }
   // other phones' changes show up here within ~15 s
   async function supPoll() {
@@ -11465,8 +11509,15 @@
       if (['home', 'order', 'receive'].includes(_sup.view)) { const y = window.scrollY; supRender(); window.scrollTo(0, y); }
     } catch (e) { /* offline: try again later */ }
   }
+  // quantities: q = boxes paid, free = free boxes (10+1 deal), fa = free follows q automatically
+  const supQtyText = (l) => !l || !l.q ? '0' : (l.free ? `${l.q}+${l.free}` : String(l.q));
+  function supParseQty(txt) {
+    const m = String(txt || '').replace(/\s/g, '').match(/^(\d+)(?:\+(\d+))?$/);
+    if (!m) return null;
+    return { q: +m[1], free: m[2] ? +m[2] : 0 };
+  }
   function supLineHtml(c, it, d, cover) {
-    const codes = supCodes(c, it), q = ((d.lines[it.k] || {}).q) || 0;
+    const codes = supCodes(c, it), l = d.lines[it.k], q = (l && l.q) || 0;
     const sg = supSuggest(c, it, cover);
     const p0 = codes.length ? (DATA.products[resolveCode(codes[0])] || []) : [];
     const ourName = codes.length ? (p0[0] || '').trim() : '';
@@ -11476,15 +11527,16 @@
     const costMove = cost != null && posCost && Math.abs(cost - posCost) > 0.05 * posCost;
     const na = it.p == null;
     const per = it.unit === 'lb' ? '/lb' : it.unit === 'kg' ? '/kg' : '/u';
-    return `<div class="sup-line${q ? ' in' : ''}${na ? ' na' : ''}" data-k="${escapeHtml(it.k)}">
+    return `<div class="sup-line${codes.length ? ' carried' : ''}${q ? ' in' : ''}${na ? ' na' : ''}" data-k="${escapeHtml(it.k)}">
       <div class="sup-l1">
         ${codes.length ? productThumbHtml(codes[0], 40) : '<span class="sup-noimg">?</span>'}
         <div class="sup-names"><b>${escapeHtml(ourName || it.d)}</b>${ourName ? `<small>${escapeHtml(it.d)}</small>` : ''}
           <small>${escapeHtml(it.b || '?')} per box · ${na ? '<span class="sup-bad">no price on their list</span>' : supMoney(it.p) + per + ' = ' + supMoney(it.p * (it.bn || 0)) + '/box'}${our ? ' · we sell ' + supMoney(our) : ''}${margin != null ? ` · <b class="${margin < 25 ? 'sup-bad' : 'sup-ok'}">${margin}%</b>` : ''}${it.n ? ` · <span class="sup-new">${escapeHtml(it.n)}</span>` : ''}</small>
           ${codes.length ? `<small>${sg && sg.rate ? 'sells ' + (sg.rate >= 10 ? Math.round(sg.rate) : sg.rate.toFixed(1)) + (it.unit !== 'ea' ? ' kg' : '') + '/wk' : 'no recent sales'}${sg && sg.last ? ' · last: ' + sg.last.qty + ' bx ' + sg.last.date.slice(5) : ''}${costMove ? ` · <span class="sup-warn">cost ${supMoney(cost)} vs POS ${supMoney(posCost)}</span>` : ''}</small>` : ''}
         </div>
-        ${na ? '' : `<div class="sup-step"><button data-sq="-1">−</button><span>${q}</span><button data-sq="1">＋</button></div>`}
+        ${na ? '' : `<div class="sup-step"><button data-sq="-1" aria-label="one box less">−</button><button class="sup-qty" data-qedit="1">${supQtyText(l)}</button><button data-sq="1" aria-label="one box more">＋</button></div>`}
       </div>
+      ${!na && q >= 10 ? `<button class="sup-free${l && l.fa ? ' on' : ''}" data-free="1">🎁 ${l && l.fa ? `${q}+${Math.floor(q / 10)} free box${Math.floor(q / 10) > 1 ? 'es' : ''} ✓` : '10+1 deal? tap to add the free boxes'}</button>` : ''}
       ${sg && sg.others && sg.others.length ? (() => {
         const pref = supPrefFor(codes);
         return `<div class="sup-alt">${sg.others.map(x => `<span>${pref === x.sid ? '★ ' : ''}${escapeHtml((_sup.cfg[x.sid] || {}).name || x.sid)}: ${supMoney(x.it.p)}${x.it.unit === 'lb' ? '/lb' : x.it.unit === 'kg' ? '/kg' : '/u'}</span>`).join('')}
@@ -11494,9 +11546,29 @@
       ${sg && sg.boxes && sg.boxes !== q && !na ? `<button class="sup-sugg" data-sset="${sg.boxes}">suggest ${sg.boxes} box${sg.boxes > 1 ? 'es' : ''} → tap</button>` : ''}
     </div>`;
   }
+  function supTotals(c, d) {
+    const byK = _sup.byKCache && _sup.byKCache.c === c ? _sup.byKCache.m : (_sup.byKCache = { c, m: Object.fromEntries(c.list.items.map(it => [it.k, it])) }).m;
+    let total = 0, boxes = 0, free = 0, n = 0;
+    Object.entries(d.lines).forEach(([k, l]) => {
+      if (!(l.q > 0)) return;
+      const it = byK[k] || {};
+      n++; boxes += l.q; free += l.free || 0;
+      total += (it.p != null ? it.p : l.p || 0) * (it.bn || 0) * l.q;
+    });
+    return { total, boxes, free, n, byK };
+  }
+  function supPaintTotals(el, c, d) {
+    const t = supTotals(c, d), box = el.querySelector('.sup-total');
+    if (!box) return;
+    box.querySelector('b').textContent = supMoney(t.total);
+    box.querySelector('span').textContent = `${t.boxes} boxes${t.free ? ' + ' + t.free + ' free' : ''} · ${t.n} products`;
+    const send = box.querySelector('[data-sa="send"]'); if (send) send.disabled = !t.n;
+    const chip = el.querySelector('[data-sf="in"]'); if (chip) chip.textContent = 'IN ORDER ' + t.n;
+  }
   function supRenderOrder(el) {
     const c = _sup.cfg[_sup.sid], d = supDraft(_sup.sid), cover = d.cover || 2;
     const items = c.list.items;
+    if (!['sugg', 'in', 'all'].includes(_sup.filter)) _sup.filter = 'all';
     const q = supKey(_sup.q);
     const carried = it => supCodes(c, it).length > 0;
     const sugMap = {};
@@ -11505,47 +11577,73 @@
     if (q) list = items.filter(it => supKey(it.d).includes(q) || (supCodes(c, it).some(cd => supKey((DATA.products[cd] || [])[0]).includes(q))));
     else if (_sup.filter === 'sugg') list = items.filter(it => sugMap[it.k] || (d.lines[it.k] || {}).q);
     else if (_sup.filter === 'in') list = items.filter(it => (d.lines[it.k] || {}).q);
-    else if (_sup.filter === 'carried') list = items.filter(carried);
-    else list = items.filter(it => !carried(it));
-    const lines = Object.entries(d.lines).filter(([, l]) => l.q > 0);
-    const byK = Object.fromEntries(items.map(it => [it.k, it]));
-    const total = lines.reduce((t, [k, l]) => t + ((byK[k] || {}).p || 0) * ((byK[k] || {}).bn || 0) * l.q, 0);
-    const boxes = lines.reduce((t, [, l]) => t + l.q, 0);
+    else list = items;
+    const t = supTotals(c, d), byK = t.byK;
     const sections = {};
     list.forEach(it => { (sections[it.s || 'Other'] = sections[it.s || 'Other'] || []).push(it); });
-    const nIn = lines.length, nSug = Object.keys(sugMap).length;
+    const nSug = Object.keys(sugMap).length, LIM = 1400;
+    let shown = 0;
     el.innerHTML = `
-      <div class="sup-top"><button class="or-refresh" data-sa="home">‹</button><div class="or-h">${escapeHtml(c.name)} · ORDER</div><span class="or-upd" id="sup-saved"></span></div>
-      <div class="sup-total"><div><b>${supMoney(total)}</b><span>${boxes} boxes · ${nIn} products</span></div>
-        <button class="btn primary" data-sa="send" ${nIn ? '' : 'disabled'}>SEND ›</button></div>
+      <div class="sup-top"><button class="or-refresh" data-sa="home">‹</button><div class="or-h">${escapeHtml(c.name)} · ORDER</div><span class="or-upd" id="sup-saved">${Object.keys(_sup.dirty).length ? 'not synced yet' : ''}</span></div>
+      <div class="sup-total"><div><b>${supMoney(t.total)}</b><span>${t.boxes} boxes${t.free ? ' + ' + t.free + ' free' : ''} · ${t.n} products</span></div>
+        <button class="btn primary" data-sa="send" ${t.n ? '' : 'disabled'}>SEND ›</button></div>
       <div class="sup-cover">Order enough for <select id="sup-cover">${[1, 2, 3, 4, 6, 8].map(w => `<option value="${w}"${w === cover ? ' selected' : ''}>${w} week${w > 1 ? 's' : ''}</option>`).join('')}</select>
         ${nSug ? `<button class="btn small" data-sa="fillsugg">FILL ${nSug} SUGGESTIONS</button>` : ''}
         <button class="btn small" data-sa="addprod">＋ ADD A PRODUCT</button></div>
       <input id="sup-q" class="sup-search" placeholder="Search their list or our products…" value="${escapeHtml(_sup.q)}" autocomplete="off">
-      <div class="or-chips">${[['sugg', 'SUGGESTED ' + nSug], ['in', 'IN ORDER ' + nIn], ['carried', 'WE CARRY'], ['new', 'NOT CARRIED']].map(([f, l]) =>
+      <div class="or-chips">${[['sugg', 'SUGGESTED ' + nSug], ['in', 'IN ORDER ' + t.n], ['all', 'FULL LIST']].map(([f, l]) =>
         `<button class="${_sup.filter === f && !q ? 'on' : ''}" data-sf="${f}">${l}</button>`).join('')}</div>
-      ${list.length > 400 ? '<div class="or-c3">Showing the first 400, search to narrow.</div>' : ''}
-      ${Object.entries(sections).map(([s, its]) => `<div class="sup-sec">${escapeHtml(s)}</div>` + its.slice(0, 400).map(it => supLineHtml(c, it, d, cover)).join('')).join('') || '<div class="empty-state">NOTHING HERE</div>'}`;
-    const setQ = (k, n) => {
+      ${_sup.filter === 'all' && !q ? '<div class="or-c3"><span class="sup-ok">Green outline</span> = we carry it (matched to our POS).</div>' : ''}
+      ${Object.entries(sections).map(([s, its]) => { if (shown >= LIM) return ''; const part = its.slice(0, LIM - shown); shown += part.length; return `<div class="sup-sec">${escapeHtml(s)}</div>` + part.map(it => supLineHtml(c, it, d, cover)).join(''); }).join('') || '<div class="empty-state">NOTHING HERE</div>'}
+      ${list.length > LIM ? `<div class="or-c3">Showing ${LIM} of ${list.length}: search to find the rest.</div>` : ''}`;
+    // one tap = update this line + the total right away; the server save happens in the background
+    const repaintLine = (k) => {
+      const row = el.querySelector(`.sup-line[data-k="${CSS.escape(k)}"]`); if (!row) return;
+      const it = byK[k]; const tmp = document.createElement('div'); tmp.innerHTML = supLineHtml(c, it, supDraft(_sup.sid), cover);
+      row.replaceWith(tmp.firstElementChild);
+      supPaintTotals(el, c, supDraft(_sup.sid));
+    };
+    const setLine = (k, q, free, fa) => {
       const it = byK[k]; if (!it || it.p == null) return;
       const dd = supDraft(_sup.sid);
-      n = Math.max(0, n);
-      const v = n ? { q: n, p: it.p, d: it.d, r: it.r, sku: it.sku } : null;
+      q = Math.max(0, q | 0);
+      if (fa) free = Math.floor(q / 10);
+      const v = q ? { q, p: it.p, d: it.d, r: it.r, sku: it.sku } : null;
+      if (v && free > 0) v.free = free;
+      if (v && fa) v.fa = true;
       if (v) dd.lines[k] = v; else delete dd.lines[k];
-      supQueueSave(k, v); supRenderOrder(el);
+      repaintLine(k);
+      supQueueSave(k, v);
     };
-    el.querySelectorAll('[data-sq]').forEach(b => b.onclick = () => { const k = b.closest('.sup-line').dataset.k; setQ(k, ((supDraft(_sup.sid).lines[k] || {}).q || 0) + (+b.dataset.sq)); });
-    el.querySelectorAll('[data-pref]').forEach(b => b.onclick = async () => {
-      try { await supSaveIndex(doc => { b.dataset.pref.split(',').forEach(code => { doc.pref[code] = _sup.sid; }); }); showToast('★ ' + c.name + ' is now the supplier for this product'); supRenderOrder(el); }
-      catch (e) { showToast(e.message, true); }
-    });
-    el.querySelectorAll('[data-sset]').forEach(b => b.onclick = () => setQ(b.closest('.sup-line').dataset.k, +b.dataset.sset));
-    el.querySelectorAll('[data-sf]').forEach(b => b.onclick = () => { _sup.filter = b.dataset.sf; _sup.q = ''; supRenderOrder(el); });
+    el.onclick = (e) => {
+      const b = e.target.closest('button, .sup-names'); if (!b || !el.contains(b)) return;
+      const row = b.closest('.sup-line'); const k = row && row.dataset.k;
+      const cur = k ? (supDraft(_sup.sid).lines[k] || {}) : {};
+      if (b.dataset.sq) { e.preventDefault(); setLine(k, (cur.q || 0) + (+b.dataset.sq), cur.free || 0, cur.fa); }
+      else if (b.dataset.sset) setLine(k, +b.dataset.sset, cur.free || 0, cur.fa);
+      else if (b.dataset.free) setLine(k, cur.q || 0, cur.fa ? 0 : Math.floor((cur.q || 0) / 10), !cur.fa);
+      else if (b.dataset.qedit) {
+        const inp = document.createElement('input');
+        inp.className = 'sup-qty-in'; inp.value = cur.q ? supQtyText(cur) : ''; inp.placeholder = '10+1'; inp.setAttribute('inputmode', 'text'); inp.autocomplete = 'off';
+        b.replaceWith(inp); inp.focus(); inp.select();
+        let done = false;
+        const commit = () => {
+          if (done) return; done = true;
+          const r = inp.value.trim() === '' ? { q: 0, free: 0 } : supParseQty(inp.value);
+          if (!r) { showToast('Type a number like 12, or 10+1', true); repaintLine(k); return; }
+          setLine(k, r.q, r.free, false);
+        };
+        inp.onkeydown = (ev) => { if (ev.key === 'Enter') inp.blur(); };
+        inp.onblur = commit;
+      }
+      else if (b.dataset.pref) {
+        (async () => { try { await supSaveIndex(doc => { b.dataset.pref.split(',').forEach(code => { doc.pref[code] = _sup.sid; }); }); showToast('★ ' + c.name + ' is now the supplier for this product'); repaintLine(k); } catch (err) { showToast(err.message, true); } })();
+      }
+      else if (b.dataset.sf) { _sup.filter = b.dataset.sf; _sup.q = ''; supRenderOrder(el); }
+      else if (b.classList.contains('sup-names')) { const it = byK[k]; if (it && !supCodes(c, it).length) supOpenLink(_sup.sid, it.k); }
+    };
     const qi = $('#sup-q'); qi.oninput = () => { _sup.q = qi.value; clearTimeout(_sup.qT); _sup.qT = setTimeout(() => { supRenderOrder(el); const n = $('#sup-q'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 350); };
     $('#sup-cover').onchange = (e) => { supDraft(_sup.sid).cover = +e.target.value; supQueueSave('__cover', +e.target.value); supRenderOrder(el); };
-    el.querySelectorAll('.sup-line').forEach(row => row.querySelector('.sup-names').onclick = () => {
-      const it = byK[row.dataset.k]; if (!supCodes(c, it).length) supOpenLink(_sup.sid, it.k);
-    });
     supBindCommon(el);
   }
 
@@ -11561,7 +11659,8 @@
     const colNum = s => s.split('').reduce((n, ch) => n * 26 + ch.charCodeAt(0) - 64, 0);
     for (const [k, l] of Object.entries(d.lines)) {
       if (!(l.q > 0) || !l.r) continue;
-      const ref = col + l.r, cell = `<c r="${ref}"><v>${l.q}</v></c>`;
+      const ref = col + l.r, val = l.free ? `${l.q}+${l.free}` : null;
+      const cell = val ? `<c r="${ref}" t="inlineStr"><is><t>${val}</t></is></c>` : `<c r="${ref}"><v>${l.q}</v></c>`;
       const rowRe = new RegExp(`<row[^>]*\\sr="${l.r}"[^>]*?(/>|>[\\s\\S]*?</row>)`);
       const m = xml.match(rowRe);
       if (!m) continue;
@@ -11569,7 +11668,7 @@
       if (row.endsWith('/>')) row = row.slice(0, -2) + '>' + cell + '</row>';
       else {
         const existing = new RegExp(`<c r="${ref}"[^>]*?(/>|>[\\s\\S]*?</c>)`);
-        if (existing.test(row)) row = row.replace(existing, (old) => { const s = (old.match(/\ss="\d+"/) || [''])[0]; return `<c r="${ref}"${s}><v>${l.q}</v></c>`; });
+        if (existing.test(row)) row = row.replace(existing, (old) => { const s = (old.match(/\ss="\d+"/) || [''])[0]; return val ? `<c r="${ref}"${s} t="inlineStr"><is><t>${val}</t></is></c>` : `<c r="${ref}"${s}><v>${l.q}</v></c>`; });
         else {
           const cells = [...row.matchAll(/<c r="([A-Z]+)\d+"/g)];
           const after = cells.find(x => colNum(x[1]) > colNum(col));
@@ -11582,10 +11681,23 @@
     zip.remove('xl/calcChain.xml');
     return zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   }
+  // the order as an invoice: compare it line by line with the one that comes with the delivery
   function supOrderText(c, d) {
-    const byK = Object.fromEntries(c.list.items.map(it => [it.k, it]));
-    return `Marché Décarie — order ${supToday()}\n` + Object.entries(d.lines).filter(([, l]) => l.q > 0)
-      .map(([k, l]) => `${l.q} box  ${byK[k] ? (byK[k].sku ? byK[k].sku + '  ' : '') + byK[k].d : l.d}`).join('\n');
+    const t = supTotals(c, d), byK = t.byK;
+    const out = [`MARCHÉ DÉCARIE — ORDER ${supToday()} — ${c.name}`, ''];
+    let freeValue = 0;
+    Object.entries(d.lines).filter(([, l]) => l.q > 0).forEach(([k, l]) => {
+      const it = byK[k] || { d: l.d, p: l.p, bn: 0, unit: 'ea' };
+      const price = it.p != null ? it.p : l.p || 0, per = it.unit === 'lb' ? 'lb' : it.unit === 'kg' ? 'kg' : 'u';
+      const boxPrice = price * (it.bn || 0);
+      freeValue += boxPrice * (l.free || 0);
+      out.push(`${supQtyText(l)} box  ${it.sku ? it.sku + '  ' : ''}${it.d}`);
+      out.push(`      ${it.b || it.bn || '?'}/box × ${supMoney(price)}/${per} = ${supMoney(boxPrice)}/box → ${supMoney(boxPrice * l.q)}${l.free ? `  (+${l.free} free)` : ''}`);
+    });
+    out.push('', `Boxes: ${t.boxes}${t.free ? ' + ' + t.free + ' free' : ''} · ${t.n} products`);
+    if (freeValue) out.push(`Free boxes worth: ${supMoney(freeValue)}`);
+    out.push(`TOTAL before taxes: ${supMoney(t.total)}`);
+    return out.join('\n');
   }
   async function supSend() {
     const c = _sup.cfg[_sup.sid], d = supDraft(_sup.sid);
@@ -11593,32 +11705,27 @@
     const byK = Object.fromEntries(c.list.items.map(it => [it.k, it]));
     const lines = Object.entries(d.lines).filter(([, l]) => l.q > 0);
     const total = lines.reduce((t, [k, l]) => t + ((byK[k] || {}).p || 0) * ((byK[k] || {}).bn || 0) * l.q, 0);
+    const tt = supTotals(c, d);
     el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="order">‹</button><div class="or-h">SEND TO ${escapeHtml(c.name.toUpperCase())}</div></div>
-      <div class="sup-total"><div><b>${supMoney(total)}</b><span>${lines.reduce((t, [, l]) => t + l.q, 0)} boxes · ${lines.length} products</span></div></div>
-      <p class="or-c3">Their own order sheet, with your quantities in the ORDER column. Share it by email or WhatsApp.</p>
-      ${c.list.file ? `<button class="btn primary sup-wide" id="sup-share">📎 SHARE THEIR SHEET (.xlsx)</button>
-      <button class="btn sup-wide" id="sup-dl">⬇ DOWNLOAD THE SHEET</button>
+      <div class="sup-total"><div><b>${supMoney(tt.total)}</b><span>${tt.boxes} boxes${tt.free ? ' + ' + tt.free + ' free' : ''} · ${tt.n} products</span></div></div>
+      ${c.list.file ? `<button class="btn primary sup-wide" id="sup-dl">⬇ DOWNLOAD THEIR SHEET (.xlsx)</button>
+      <p class="or-c3">Their own order sheet with your quantities in the ORDER column (10+1 written as is). Attach it to your email or WhatsApp.</p>
       ${lines.some(([, l]) => !l.r) ? '<p class="or-c3 sup-warn">Some products were added by hand and are not on their sheet: send the text too.</p>' : ''}` : '<button class="btn primary sup-wide" id="sup-sharetxt">📤 SHARE THE ORDER</button>'}
-      <button class="btn sup-wide" id="sup-copy">📋 COPY AS TEXT</button>
+      <button class="btn sup-wide" id="sup-copy">📋 COPY THE ORDER (with prices)</button>
       <button class="btn sup-wide" id="sup-mark">✓ MARK AS SENT</button>
-      <div class="sup-recap">${lines.map(([k, l]) => `<div><b>${l.q}</b> × ${escapeHtml((byK[k] || {}).d || l.d)}</div>`).join('')}</div>`;
+      <div class="sup-sec">YOUR INVOICE TO COMPARE</div>
+      <pre class="sup-invoice">${escapeHtml(supOrderText(c, d))}</pre>`;
     const fname = `Marche_Decarie_order_${supToday()}.xlsx`;
     const getFile = async () => new File([await supBuildXlsx(c, d)], fname, { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
     if ($('#sup-sharetxt')) $('#sup-sharetxt').onclick = async () => {
       try { if (navigator.share) await navigator.share({ title: 'Order Marché Décarie', text: supOrderText(c, d) }); else { await navigator.clipboard.writeText(supOrderText(c, d)); showToast('COPIED ✓'); } }
       catch (e) { if (e.name !== 'AbortError') showToast(e.message, true); }
     };
-    if ($('#sup-share')) $('#sup-share').onclick = async () => {
-      try {
-        const f = await getFile();
-        if (navigator.canShare && navigator.canShare({ files: [f] })) await navigator.share({ files: [f], title: 'Order Marché Décarie', text: 'Order from Marché Décarie' });
-        else { showToast('Sharing files not supported here, downloading instead'); supDownload(f); }
-      } catch (e) { if (e.name !== 'AbortError') showToast(e.message, true); }
-    };
     if ($('#sup-dl')) $('#sup-dl').onclick = async () => { try { supDownload(await getFile()); } catch (e) { showToast(e.message, true); } };
     $('#sup-copy').onclick = async () => { try { await navigator.clipboard.writeText(supOrderText(c, d)); showToast('COPIED ✓'); } catch { prompt('Copy:', supOrderText(c, d)); } };
     $('#sup-mark').onclick = async () => {
       if (!confirm('Mark this order as sent?')) return;
+      if (Object.keys(_sup.dirty).length) { showToast('Some changes are not synced yet — wait for a connection, then try again', true); supQueueSave(null, null, 0); return; }
       d.status = 'sent'; d.sentAt = new Date().toISOString(); d.total = Math.round(total * 100) / 100;
       const snap = JSON.parse(JSON.stringify(d));
       try { await supSaveOrders(doc => { const i = doc.orders.findIndex(o => o.id === snap.id); if (i >= 0) doc.orders[i] = snap; else doc.orders.push(snap); }); _sup.draftId = null; _sup.view = 'home'; showToast('ORDER SENT ✓'); supRender(); }
@@ -11639,10 +11746,10 @@
     el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="home">‹</button><div class="or-h">${ro ? 'RECEIVED' : 'DELIVERY'} · ${escapeHtml(String(o.sentAt || o.created).slice(0, 10))}</div></div>
       <p class="or-c3">${ro ? 'What came in.' : 'Check each line as you unpack. Change the number if a box is missing or extra.'}</p>
       ${Object.entries(o.lines).map(([k, l]) => {
-        const codes = supCodes(c, byK[k] || { k }), r = l.recv != null ? l.recv : l.q;
+        const codes = supCodes(c, byK[k] || { k }), r = l.recv != null ? l.recv : l.q + (l.free || 0);
         return `<div class="sup-line${r !== l.q ? ' diff' : ''}" data-k="${escapeHtml(k)}"><div class="sup-l1">
           ${codes.length ? productThumbHtml(codes[0], 40) : '<span class="sup-noimg">?</span>'}
-          <div class="sup-names"><b>${escapeHtml(codes.length ? (DATA.products[resolveCode(codes[0])] || [''])[0] : (byK[k] || {}).d || l.d)}</b><small>ordered ${l.q} box${l.q > 1 ? 'es' : ''}</small></div>
+          <div class="sup-names"><b>${escapeHtml(codes.length ? (DATA.products[resolveCode(codes[0])] || [''])[0] : (byK[k] || {}).d || l.d)}</b><small>ordered ${supQtyText(l)} box${l.q + (l.free || 0) > 1 ? 'es' : ''}</small></div>
           ${ro ? `<b>${r}</b>` : `<div class="sup-step"><button data-rq="-1">−</button><span>${r}</span><button data-rq="1">＋</button></div>`}
         </div></div>`;
       }).join('')}
@@ -11650,14 +11757,14 @@
       ${ro ? '' : '<button class="btn sup-wide" id="sup-cancel">Cancel this order</button>'}`;
     el.querySelectorAll('[data-rq]').forEach(b => b.onclick = () => {
       const k = b.closest('.sup-line').dataset.k, l = o.lines[k];
-      l.recv = Math.max(0, (l.recv != null ? l.recv : l.q) + (+b.dataset.rq)); supRenderReceive(el);
+      l.recv = Math.max(0, (l.recv != null ? l.recv : l.q + (l.free || 0)) + (+b.dataset.rq)); supRenderReceive(el);
     });
     const save = async (patch) => {
       Object.assign(o, patch); const snap = JSON.parse(JSON.stringify(o));
       try { await supSaveOrders(doc => { const i = doc.orders.findIndex(x => x.id === snap.id); if (i >= 0) doc.orders[i] = snap; }); _sup.view = 'home'; supRender(); }
       catch (e) { showToast(e.message, true); }
     };
-    if ($('#sup-recv')) $('#sup-recv').onclick = () => { Object.values(o.lines).forEach(l => { if (l.recv == null) l.recv = l.q; }); save({ status: 'received', receivedAt: new Date().toISOString() }); showToast('RECEIVED ✓'); };
+    if ($('#sup-recv')) $('#sup-recv').onclick = () => { Object.values(o.lines).forEach(l => { if (l.recv == null) l.recv = l.q + (l.free || 0); }); save({ status: 'received', receivedAt: new Date().toISOString() }); showToast('RECEIVED ✓'); };
     if ($('#sup-cancel')) $('#sup-cancel').onclick = () => { if (confirm('Cancel this order?')) save({ status: 'cancelled' }); };
     supBindCommon(el);
   }
