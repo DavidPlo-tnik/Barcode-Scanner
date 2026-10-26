@@ -80,8 +80,8 @@
   },
   {
    "id": "laitiers",
-   "fr": "Lait, crème & œufs",
-   "en": "Milk, cream & eggs",
+   "fr": "Produits laitiers & œufs",
+   "en": "Dairy & eggs",
    "subs": [],
    "subsEn": []
   },
@@ -115,8 +115,8 @@
   },
   {
    "id": "chocolats",
-   "fr": "Chocolats, biscuits & gaufres",
-   "en": "Chocolate, cookies & wafers",
+   "fr": "Biscuits & sucreries",
+   "en": "Cookies & sweets",
    "subs": [],
    "subsEn": []
   },
@@ -474,6 +474,18 @@
    "to": "pains",
    "re": "\\bPAIN\\b",
    "depts": null
+  },
+  {
+   "from": "laitiers",
+   "to": "fromages",
+   "re": "COTTAGE",
+   "depts": null
+  },
+  {
+   "from": "surgeles",
+   "to": "fromages",
+   "re": "COTTAGE",
+   "depts": null
   }
  ],
  "frozenAisle": "surgeles",
@@ -720,5 +732,26 @@
   "maison": "hg-10"
  },
  "_doc_taxonomy": "Shopify Standard Product Taxonomy id per aisle (Google Shopping / tax only, not the site menu).",
- "_doc_subs": "No sub-shelves on purpose (Oct 25): aisles only."
+ "_doc_subs": "No sub-shelves on purpose (Oct 25): aisles only.",
+ "order": [
+  "fruits-legumes",
+  "pret-a-manger",
+  "viande-poisson",
+  "charcuterie",
+  "fromages",
+  "laitiers",
+  "pains",
+  "surgeles",
+  "conserves",
+  "sauces",
+  "epicerie-base",
+  "tartinades",
+  "the-cafe",
+  "maison",
+  "bonbons",
+  "chocolats",
+  "grignotines",
+  "boissons"
+ ],
+ "_doc_order": "Display order of the aisles (site bar, shelves, app). Zones group them in the menu only."
 }

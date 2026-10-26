@@ -7,7 +7,7 @@ def norm(s):
 def slug(s): return re.sub(r'[^a-z0-9]+','-',norm(s).lower().replace('œ','oe')).strip('-')
 zone_of={a:z['id'] for z in c['zones'] for a in z['aisles']}
 A={a['id']:a for a in c['aisles']}
-order=[a for z in c['zones'] for a in z['aisles']]
+order=c.get('order') or [a for z in c['zones'] for a in z['aisles']]
 for a in c['aisles']:
     for s in a['subs']+a['subsEn']+[a['fr'],a['en']]: assert not re.search(r"[|~^;']",s),s
 AISLES_DEF=';'.join(f"{i}|{A[i]['fr']}|{A[i]['en']}|{zone_of[i]}|"+'^'.join(f"{slug(s)}~{s}~{e}" for s,e in zip(A[i]['subs'],A[i]['subsEn'])) for i in order)
@@ -55,7 +55,6 @@ CARD="""{%- comment -%} Compact product card for the aisle shelves (home, "goes 
       {{ product.featured_image | image_url: width: 360 | image_tag: loading: 'lazy', alt: product.title, sizes: '(min-width: 750px) 180px, 40vw', draggable: 'false' }}
     {%- endif -%}
     <span class="dshelf__new" hidden>{% if en %}Discover{% else %}À découvrir{% endif %}</span>
-    {%- if product.tags contains 'ukraine' -%}<span class="dshelf__ua" title="Ukraine">🇺🇦</span>{%- endif -%}
   </span>
   <span class="dshelf__name">{{ product.title }}</span>
   <span class="dshelf__price">

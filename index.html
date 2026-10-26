@@ -2302,7 +2302,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v232</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v233</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2907,7 +2907,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v232</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v233</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11694,7 +11694,7 @@
     for (const [k, v] of Object.entries(c.subRules || {})) c._subs[k] = v.map(x => ({ n: x.sub, rx: new RegExp(x.re) }));
     c._also = (c.also || []).map(r => ({ f: r.from, t: r.to, rx: new RegExp(r.re), d: r.depts ? new Set(r.depts) : null }));
     c._zoneOf = {}; c.zones.forEach(z => z.aisles.forEach(a => { c._zoneOf[a] = z; }));
-    c._order = c.zones.flatMap(z => z.aisles);
+    c._order = (c.order && c.order.length) ? c.order.filter(a => c._by[a]) : c.zones.flatMap(z => z.aisles);
   }
   function aisleAuto(code, title, dept) {
     const c = _aisleCfg; if (!c) return null;
@@ -11826,7 +11826,7 @@
     let lastZone = null;
     return order.map(a => {
       const A = by[a], z = c._zoneOf[a];
-      const zl = z && z !== lastZone ? `<div class="ecom-zone-label">${escapeHtml(z.fr.toUpperCase())}</div>` : '';
+      const zl = '';   // aisles follow the website order (categories.json "order"), no zone headers
       lastZone = z;
       const key = 'aisle:' + a, collapsed = _ecomCollapsed[key] !== false && !_ecomAisle;
       const subOrder = a === '_none' ? Object.keys(A.subs) : (c._by[a].subs || []).filter(s => A.subs[s]).concat(Object.keys(A.subs).filter(s => !(c._by[a].subs || []).includes(s)));

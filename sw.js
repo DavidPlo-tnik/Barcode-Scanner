@@ -1,4 +1,4 @@
-const CACHE = 'decarie-v232';
+const CACHE = 'decarie-v233';
 const MODELS = 'decarie-models';   // studio-photo cut-out model: kept across app updates
 const ASSETS = [
   './manifest.webmanifest',
