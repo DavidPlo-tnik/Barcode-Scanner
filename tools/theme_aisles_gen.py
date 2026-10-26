@@ -292,9 +292,6 @@ AISLE=DEFS+"""
     {%- if zrec -%}<p class="daisle__crumb"><a href="{{ routes.root_url }}">{% if en %}{{ zrec[2] }}{% else %}{{ zrec[1] }}{% endif %}</a></p>{%- endif -%}
     <h1 class="daisle__title">{{ aname }}</h1>
     <p class="daisle__count">{{ collection.products_count }} {% if en %}products{% else %}produits{% endif %}</p>
-        {%- endfor -%}
-      </ul>
-    {%- endif -%}
   </div>
 </div>
 {% schema %}
