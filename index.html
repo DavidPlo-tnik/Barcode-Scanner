@@ -144,6 +144,9 @@
   .sup-pos { display: flex; align-items: center; gap: 9px; width: 100%; text-align: left; padding: 7px; margin-bottom: 6px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text); }
   .sup-pos span { flex: 1; min-width: 0; font-size: 13px; } .sup-pos small { display: block; color: var(--text-dim); font-size: 11px; } .sup-x { font-style: normal; color: #ff6b5e; }
   .sup-mrow { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px; margin-bottom: 8px; }
+  .sup-alt { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 6px; font-size: 11px; color: var(--text-dim); }
+  .sup-alt span { padding: 2px 6px; border-radius: 5px; background: var(--surface-2); } .sup-alt em { font-style: normal; color: #ff9f0a; }
+  .sup-alt button { padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); background: transparent; color: var(--accent); font-size: 11px; }
   .sup-qs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
   .sup-qs button { flex: 1 1 140px; text-align: left; padding: 8px 9px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 12px; }
   .sup-qs button small { color: var(--text-dim); } .sup-qs button[data-qlink] { border-style: dashed; }
@@ -2343,7 +2346,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v234</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v235</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2950,7 +2953,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v234</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v235</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11216,13 +11219,18 @@
   //  suppliers/orders.json : drafts, sent and received orders
   //  All three are private (locked with the staff passphrase like the sales data).
   // ════════════════════════════════════════════════════════════════
-  const SUP_IDS = ['knv'];
-  const _sup = { cfg: {}, orders: null, view: 'home', sid: 'knv', draftId: null, filter: 'sugg', q: '', open: {}, saveT: null, matchQ: '', busy: false };
+  let SUP_IDS = ['knv'];   // from suppliers/index.json
+  const _sup = { index: { suppliers: [], pref: {} }, byCode: {}, dirty: {}, cfg: {}, orders: null, view: 'home', sid: 'knv', draftId: null, filter: 'sugg', q: '', open: {}, saveT: null, matchQ: '', busy: false };
   const supKey = (s) => String(s || '').toUpperCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ').trim();
   const supMoney = (n) => n == null || isNaN(n) ? '—' : '$' + Number(n).toFixed(2);
   const supToday = () => new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 
   async function supLoad(force) {
+    if (force || !_sup.indexLoaded) {
+      const { json } = await ghGetJsonAndSha('suppliers/index.json');
+      if (json && json.suppliers && json.suppliers.length) { _sup.index = json; if (!_sup.index.pref) _sup.index.pref = {}; SUP_IDS = json.suppliers.map(x => x.id); }
+      _sup.indexLoaded = true;
+    }
     const jobs = [];
     for (const id of SUP_IDS) if (force || !_sup.cfg[id]) jobs.push((async () => {
       const { json } = await ghGetJsonAndSha(`suppliers/${id}.json`);
@@ -11234,6 +11242,42 @@
       if (!_sup.orders.orders) _sup.orders.orders = [];
     })());
     await Promise.all(jobs);
+    supIndexCodes();
+  }
+  // which supplier lines carry each of our POS codes (an item can come from several suppliers)
+  function supIndexCodes() {
+    const by = {};
+    for (const id of SUP_IDS) {
+      const c = _sup.cfg[id]; if (!c) continue;
+      (c.list.items || []).forEach(it => ((c.map || {})[it.k] || []).forEach(code => { (by[code] = by[code] || []).push({ sid: id, it }); }));
+    }
+    _sup.byCode = by;
+  }
+  async function supSaveIndex(fn) {
+    _sup.index = await supMutate('suppliers/index.json', d => { d.suppliers = d.suppliers || [{ id: 'knv', name: 'KNV Food' }]; d.pref = d.pref || {}; fn(d); });
+    SUP_IDS = _sup.index.suppliers.map(x => x.id);
+  }
+  function supOthers(sid, codes) {   // the same product at other suppliers
+    const seen = {}, out = [];
+    codes.forEach(code => (_sup.byCode[code] || []).forEach(x => {
+      if (x.sid === sid || seen[x.sid + '|' + x.it.k]) return;
+      seen[x.sid + '|' + x.it.k] = 1; out.push(x);
+    }));
+    return out;
+  }
+  function supPrefFor(codes) { for (const c of codes) if ((_sup.index.pref || {})[c]) return _sup.index.pref[c]; return null; }
+  // boxes of these products already ordered from OTHER suppliers and not received yet (no double ordering)
+  function supPendingElsewhere(sid, codes) {
+    let units = 0;
+    ((_sup.orders || {}).orders || []).forEach(o => {
+      if (o.sid === sid || o.status !== 'sent') return;
+      const c = _sup.cfg[o.sid]; if (!c) return;
+      Object.entries(o.lines || {}).forEach(([k, l]) => {
+        const it = (c.list.items || []).find(x => x.k === k);
+        if (it && ((c.map || {})[k] || []).some(x => codes.includes(x))) units += (l.q || 0) * (supUnitsPerBox(it) || 0);
+      });
+    });
+    return units;
   }
   // read-modify-write with retry (other phone / tab may have saved in between)
   async function supMutate(path, fn) {
@@ -11250,6 +11294,7 @@
   }
   async function supSaveCfg(id, fn) {
     _sup.cfg[id] = await supMutate(`suppliers/${id}.json`, fn);
+    supIndexCodes();
   }
   async function supSaveOrders(fn) {
     _sup.orders = await supMutate('suppliers/orders.json', d => { if (!d.orders) d.orders = []; fn(d); });
@@ -11289,15 +11334,27 @@
   function supSuggest(cfg, it, cover) {
     const codes = supCodes(cfg, it); if (!codes.length || it.p == null) return null;
     const rate = supRate(codes), per = supUnitsPerBox(it);
-    if (!rate || !per) return { rate, boxes: 0 };
-    let need = rate * cover;
+    // several suppliers carry it: suggest only at the preferred one (★), else at the cheapest
+    const others = supOthers(cfg.id, codes).filter(x => x.it.p != null);
+    let elsewhere = null;
+    if (others.length) {
+      const pref = supPrefFor(codes);
+      if (pref && pref !== cfg.id) elsewhere = { sid: pref, why: 'pref' };
+      else if (!pref) {
+        const mine = supCostPerOurUnit(it), best = others.reduce((a, b) => supCostPerOurUnit(b.it) < supCostPerOurUnit(a.it) ? b : a);
+        if (supCostPerOurUnit(best.it) < mine - 0.005) elsewhere = { sid: best.sid, why: 'cheaper' };
+      }
+    }
+    if (elsewhere) return { rate, boxes: 0, elsewhere, others };
+    if (!rate || !per) return { rate, boxes: 0, others };
+    let need = rate * cover - supPendingElsewhere(cfg.id, codes);
     const last = supLastOrderLine(cfg.id, it.k, _sup.draftId);
     if (last && last.received) {   // what is probably still on the shelf from the last delivery
       const weeks = Math.max(0, (Date.now() - new Date(last.date).getTime()) / (7 * 864e5));
       need -= Math.max(0, last.qty * per - rate * weeks);
     }
     const x = need / per;
-    return { rate, boxes: x >= 0.5 ? Math.max(1, Math.round(x)) : 0, last };
+    return { rate, boxes: x >= 0.5 ? Math.max(1, Math.round(x)) : 0, last, others };
   }
 
   // ---- views ----
@@ -11307,6 +11364,7 @@
     if (_sup.view === 'order') return supRenderOrder(el);
     if (_sup.view === 'match') return supRenderMatch(el);
     if (_sup.view === 'receive') return supRenderReceive(el);
+    if (_sup.view === 'addprod') return supRenderAddProd(el);
     supRenderHome(el);
   }
   function supRenderHome(el) {
@@ -11318,12 +11376,12 @@
       const draft = orders.find(o => o.sid === id && o.status === 'draft');
       const mine = orders.filter(o => o.sid === id);
       return `<div class="sup-card">
-        <div class="sup-c1"><b>${escapeHtml(c.name)}</b><span>price list ${escapeHtml(c.list.date || '?')}</span></div>
+        <div class="sup-c1"><b>${escapeHtml(c.name)}</b><span>${c.list.date ? 'price list ' + escapeHtml(c.list.date) : 'products added by hand'}</span></div>
         <div class="sup-c2">${items.length} products on their list · <b>${mapped}</b> matched to our POS${review ? ` · <span class="sup-warn">${review} to confirm</span>` : ''}</div>
         <div class="sup-btns">
           <button class="btn primary" data-sa="order" data-sid="${id}">${draft ? '✏️ CONTINUE ORDER' : '＋ NEW ORDER'}</button>
           <button class="btn" data-sa="match" data-sid="${id}">🔗 MATCH${review ? ' (' + review + ')' : ''}</button>
-          <label class="btn sup-up">⬆ NEW PRICE LIST<input type="file" accept=".xlsx,.xls" data-sup-upload="${id}" hidden></label>
+          <label class="btn sup-up">⬆ ${c.list.file ? 'NEW PRICE LIST' : 'THEIR ORDER SHEET'}<input type="file" accept=".xlsx,.xls" data-sup-upload="${id}" hidden></label>
         </div>
         ${mine.filter(o => o.status !== 'draft').slice(0, 8).map(o => {
           const n = Object.values(o.lines || {}).reduce((t, l) => t + (l.q || 0), 0);
@@ -11332,7 +11390,8 @@
             <em class="sup-st ${o.status}">${o.status === 'sent' ? 'SENT · tap when delivered' : o.status === 'received' ? 'RECEIVED' : o.status.toUpperCase()}</em></button>`;
         }).join('')}
       </div>`;
-    }).join('');
+    }).join('') + `<button class="btn sup-wide" data-sa="addsup">＋ ADD A SUPPLIER</button>
+      <p class="or-c3">A product can be linked at several suppliers: the order screen shows the other prices, and ★ picks which supplier you order it from (otherwise the cheapest).</p>`;
     supBindCommon(el);
   }
 
@@ -11343,15 +11402,68 @@
     _sup.draftId = d.id;
     return d;
   }
-  function supQueueSave() {
+  // Only the lines you touched are sent, and they are merged into the shared order: two phones
+  // can fill the same order at the same time without overwriting each other.
+  function supApplyDirty(o) {
+    for (const [k, v] of Object.entries(_sup.dirty)) {
+      if (k === '__cover') o.cover = v;
+      else if (v && v.q > 0) o.lines[k] = v; else delete o.lines[k];
+    }
+  }
+  function supQueueSave(k, v) {
+    if (k) _sup.dirty[k] = v;
     clearTimeout(_sup.saveT);
-    _sup.saveT = setTimeout(async () => {
-      const d = _sup.orders.orders.find(o => o.id === _sup.draftId); if (!d) return;
-      const snap = JSON.parse(JSON.stringify(d));
-      try { await supSaveOrders(doc => { const i = doc.orders.findIndex(o => o.id === snap.id); if (i >= 0) doc.orders[i] = snap; else doc.orders.push(snap); }); $('#sup-saved') && ($('#sup-saved').textContent = 'saved'); }
-      catch (e) { showToast(e.message, true); }
-    }, 1200);
     $('#sup-saved') && ($('#sup-saved').textContent = 'saving…');
+    _sup.saveT = setTimeout(async () => {
+      if (_sup.saving) return supQueueSave();
+      const local = _sup.orders.orders.find(o => o.id === _sup.draftId); if (!local) return;
+      const base = { id: local.id, sid: local.sid, created: local.created, cover: local.cover || 2 };
+      const dirty = _sup.dirty; _sup.dirty = {}; _sup.saving = true;
+      let gone = false, id = base.id;
+      try {
+        await supSaveOrders(doc => {
+          gone = false;
+          let o = doc.orders.find(x => x.id === base.id);
+          if (o && o.status !== 'draft') { gone = true; return; }
+          if (!o) o = doc.orders.find(x => x.sid === base.sid && x.status === 'draft');
+          if (!o) { o = Object.assign({ status: 'draft', lines: {} }, base); doc.orders.push(o); }
+          id = o.id; o.saved = true;
+          const keep = _sup.dirty; _sup.dirty = dirty; supApplyDirty(o); _sup.dirty = keep;
+          o.editedAt = new Date().toISOString();
+        });
+        _sup.draftId = id;
+        if (gone) { showToast('This order was already sent from another phone', true); _sup.view = 'home'; }
+        const d2 = _sup.orders.orders.find(o => o.id === id); if (d2 && d2.status === 'draft') supApplyDirty(d2);   // edits made while saving
+        const ae = document.activeElement, typing = ae && ae.tagName === 'INPUT' && $('#sup-panel').contains(ae);
+        if (gone || (_sup.view === 'order' && !typing)) { const y = window.scrollY; supRender(); window.scrollTo(0, y); }   // show other phones' lines too
+        $('#sup-saved') && ($('#sup-saved').textContent = 'saved · shared');
+      } catch (e) { Object.assign(_sup.dirty, Object.assign({}, dirty, _sup.dirty)); showToast(e.message, true); }
+      finally { _sup.saving = false; }
+    }, 900);
+  }
+  // other phones' changes show up here within ~15 s
+  async function supPoll() {
+    if (document.hidden || _sup.saving || Object.keys(_sup.dirty).length || !$('#sup-panel') || $('#sup-panel').style.display === 'none') return;
+    if (!document.querySelector('#orders-view.active')) return;
+    try {
+      const { json } = await ghGetJsonAndSha('suppliers/orders.json');
+      if (!json || _sup.saving || Object.keys(_sup.dirty).length) return;
+      if (!json.orders) json.orders = [];
+      const before = JSON.stringify(_sup.orders);
+      if (JSON.stringify(json) === before) return;
+      const hadDraft = _sup.view === 'order' && _sup.draftId;
+      const local = (_sup.orders.orders || []).find(o => o.id === _sup.draftId);
+      if (local && local.status === 'draft' && !local.saved && !json.orders.some(o => o.id === local.id)) json.orders.push(local);   // new, not saved yet: keep it
+      _sup.orders = json;
+      if (hadDraft && !json.orders.some(o => o.id === _sup.draftId && o.status === 'draft')) {
+        const other = json.orders.find(o => o.sid === _sup.sid && o.status === 'draft');
+        if (other) _sup.draftId = other.id;
+        else { showToast('This order was sent from another phone'); _sup.view = 'home'; }
+      }
+      const ae = document.activeElement;
+      if (ae && ae.tagName === 'INPUT' && $('#sup-panel').contains(ae)) return;   // don't disturb typing
+      if (['home', 'order', 'receive'].includes(_sup.view)) { const y = window.scrollY; supRender(); window.scrollTo(0, y); }
+    } catch (e) { /* offline: try again later */ }
   }
   function supLineHtml(c, it, d, cover) {
     const codes = supCodes(c, it), q = ((d.lines[it.k] || {}).q) || 0;
@@ -11373,6 +11485,12 @@
         </div>
         ${na ? '' : `<div class="sup-step"><button data-sq="-1">−</button><span>${q}</span><button data-sq="1">＋</button></div>`}
       </div>
+      ${sg && sg.others && sg.others.length ? (() => {
+        const pref = supPrefFor(codes);
+        return `<div class="sup-alt">${sg.others.map(x => `<span>${pref === x.sid ? '★ ' : ''}${escapeHtml((_sup.cfg[x.sid] || {}).name || x.sid)}: ${supMoney(x.it.p)}${x.it.unit === 'lb' ? '/lb' : x.it.unit === 'kg' ? '/kg' : '/u'}</span>`).join('')}
+          ${pref === c.id ? '<span class="sup-ok">★ ordered from here</span>' : `<button data-pref="${escapeHtml(codes.join(','))}">★ order it from ${escapeHtml(c.name)}</button>`}
+          ${sg.elsewhere ? `<em>${sg.elsewhere.why === 'pref' ? 'usually ordered from' : 'cheaper at'} ${escapeHtml((_sup.cfg[sg.elsewhere.sid] || {}).name || sg.elsewhere.sid)}</em>` : ''}</div>`;
+      })() : ''}
       ${sg && sg.boxes && sg.boxes !== q && !na ? `<button class="sup-sugg" data-sset="${sg.boxes}">suggest ${sg.boxes} box${sg.boxes > 1 ? 'es' : ''} → tap</button>` : ''}
     </div>`;
   }
@@ -11401,7 +11519,8 @@
       <div class="sup-total"><div><b>${supMoney(total)}</b><span>${boxes} boxes · ${nIn} products</span></div>
         <button class="btn primary" data-sa="send" ${nIn ? '' : 'disabled'}>SEND ›</button></div>
       <div class="sup-cover">Order enough for <select id="sup-cover">${[1, 2, 3, 4, 6, 8].map(w => `<option value="${w}"${w === cover ? ' selected' : ''}>${w} week${w > 1 ? 's' : ''}</option>`).join('')}</select>
-        ${nSug ? `<button class="btn small" data-sa="fillsugg">FILL ${nSug} SUGGESTIONS</button>` : ''}</div>
+        ${nSug ? `<button class="btn small" data-sa="fillsugg">FILL ${nSug} SUGGESTIONS</button>` : ''}
+        <button class="btn small" data-sa="addprod">＋ ADD A PRODUCT</button></div>
       <input id="sup-q" class="sup-search" placeholder="Search their list or our products…" value="${escapeHtml(_sup.q)}" autocomplete="off">
       <div class="or-chips">${[['sugg', 'SUGGESTED ' + nSug], ['in', 'IN ORDER ' + nIn], ['carried', 'WE CARRY'], ['new', 'NOT CARRIED']].map(([f, l]) =>
         `<button class="${_sup.filter === f && !q ? 'on' : ''}" data-sf="${f}">${l}</button>`).join('')}</div>
@@ -11409,15 +11528,21 @@
       ${Object.entries(sections).map(([s, its]) => `<div class="sup-sec">${escapeHtml(s)}</div>` + its.slice(0, 400).map(it => supLineHtml(c, it, d, cover)).join('')).join('') || '<div class="empty-state">NOTHING HERE</div>'}`;
     const setQ = (k, n) => {
       const it = byK[k]; if (!it || it.p == null) return;
+      const dd = supDraft(_sup.sid);
       n = Math.max(0, n);
-      if (n) d.lines[k] = Object.assign(d.lines[k] || {}, { q: n, p: it.p, d: it.d, r: it.r, sku: it.sku }); else delete d.lines[k];
-      supQueueSave(); supRenderOrder(el);
+      const v = n ? { q: n, p: it.p, d: it.d, r: it.r, sku: it.sku } : null;
+      if (v) dd.lines[k] = v; else delete dd.lines[k];
+      supQueueSave(k, v); supRenderOrder(el);
     };
-    el.querySelectorAll('[data-sq]').forEach(b => b.onclick = () => { const k = b.closest('.sup-line').dataset.k; setQ(k, ((d.lines[k] || {}).q || 0) + (+b.dataset.sq)); });
+    el.querySelectorAll('[data-sq]').forEach(b => b.onclick = () => { const k = b.closest('.sup-line').dataset.k; setQ(k, ((supDraft(_sup.sid).lines[k] || {}).q || 0) + (+b.dataset.sq)); });
+    el.querySelectorAll('[data-pref]').forEach(b => b.onclick = async () => {
+      try { await supSaveIndex(doc => { b.dataset.pref.split(',').forEach(code => { doc.pref[code] = _sup.sid; }); }); showToast('★ ' + c.name + ' is now the supplier for this product'); supRenderOrder(el); }
+      catch (e) { showToast(e.message, true); }
+    });
     el.querySelectorAll('[data-sset]').forEach(b => b.onclick = () => setQ(b.closest('.sup-line').dataset.k, +b.dataset.sset));
     el.querySelectorAll('[data-sf]').forEach(b => b.onclick = () => { _sup.filter = b.dataset.sf; _sup.q = ''; supRenderOrder(el); });
     const qi = $('#sup-q'); qi.oninput = () => { _sup.q = qi.value; clearTimeout(_sup.qT); _sup.qT = setTimeout(() => { supRenderOrder(el); const n = $('#sup-q'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 350); };
-    $('#sup-cover').onchange = (e) => { d.cover = +e.target.value; supQueueSave(); supRenderOrder(el); };
+    $('#sup-cover').onchange = (e) => { supDraft(_sup.sid).cover = +e.target.value; supQueueSave('__cover', +e.target.value); supRenderOrder(el); };
     el.querySelectorAll('.sup-line').forEach(row => row.querySelector('.sup-names').onclick = () => {
       const it = byK[row.dataset.k]; if (!supCodes(c, it).length) supOpenLink(_sup.sid, it.k);
     });
@@ -11460,7 +11585,7 @@
   function supOrderText(c, d) {
     const byK = Object.fromEntries(c.list.items.map(it => [it.k, it]));
     return `Marché Décarie — order ${supToday()}\n` + Object.entries(d.lines).filter(([, l]) => l.q > 0)
-      .map(([k, l]) => `${l.q} box  ${byK[k] ? byK[k].sku + '  ' + byK[k].d : l.d}`).join('\n');
+      .map(([k, l]) => `${l.q} box  ${byK[k] ? (byK[k].sku ? byK[k].sku + '  ' : '') + byK[k].d : l.d}`).join('\n');
   }
   async function supSend() {
     const c = _sup.cfg[_sup.sid], d = supDraft(_sup.sid);
@@ -11471,21 +11596,26 @@
     el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="order">‹</button><div class="or-h">SEND TO ${escapeHtml(c.name.toUpperCase())}</div></div>
       <div class="sup-total"><div><b>${supMoney(total)}</b><span>${lines.reduce((t, [, l]) => t + l.q, 0)} boxes · ${lines.length} products</span></div></div>
       <p class="or-c3">Their own order sheet, with your quantities in the ORDER column. Share it by email or WhatsApp.</p>
-      <button class="btn primary sup-wide" id="sup-share">📎 SHARE THEIR SHEET (.xlsx)</button>
+      ${c.list.file ? `<button class="btn primary sup-wide" id="sup-share">📎 SHARE THEIR SHEET (.xlsx)</button>
       <button class="btn sup-wide" id="sup-dl">⬇ DOWNLOAD THE SHEET</button>
+      ${lines.some(([, l]) => !l.r) ? '<p class="or-c3 sup-warn">Some products were added by hand and are not on their sheet: send the text too.</p>' : ''}` : '<button class="btn primary sup-wide" id="sup-sharetxt">📤 SHARE THE ORDER</button>'}
       <button class="btn sup-wide" id="sup-copy">📋 COPY AS TEXT</button>
       <button class="btn sup-wide" id="sup-mark">✓ MARK AS SENT</button>
       <div class="sup-recap">${lines.map(([k, l]) => `<div><b>${l.q}</b> × ${escapeHtml((byK[k] || {}).d || l.d)}</div>`).join('')}</div>`;
     const fname = `Marche_Decarie_order_${supToday()}.xlsx`;
     const getFile = async () => new File([await supBuildXlsx(c, d)], fname, { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    $('#sup-share').onclick = async () => {
+    if ($('#sup-sharetxt')) $('#sup-sharetxt').onclick = async () => {
+      try { if (navigator.share) await navigator.share({ title: 'Order Marché Décarie', text: supOrderText(c, d) }); else { await navigator.clipboard.writeText(supOrderText(c, d)); showToast('COPIED ✓'); } }
+      catch (e) { if (e.name !== 'AbortError') showToast(e.message, true); }
+    };
+    if ($('#sup-share')) $('#sup-share').onclick = async () => {
       try {
         const f = await getFile();
         if (navigator.canShare && navigator.canShare({ files: [f] })) await navigator.share({ files: [f], title: 'Order Marché Décarie', text: 'Order from Marché Décarie' });
         else { showToast('Sharing files not supported here, downloading instead'); supDownload(f); }
       } catch (e) { if (e.name !== 'AbortError') showToast(e.message, true); }
     };
-    $('#sup-dl').onclick = async () => { try { supDownload(await getFile()); } catch (e) { showToast(e.message, true); } };
+    if ($('#sup-dl')) $('#sup-dl').onclick = async () => { try { supDownload(await getFile()); } catch (e) { showToast(e.message, true); } };
     $('#sup-copy').onclick = async () => { try { await navigator.clipboard.writeText(supOrderText(c, d)); showToast('COPIED ✓'); } catch { prompt('Copy:', supOrderText(c, d)); } };
     $('#sup-mark').onclick = async () => {
       if (!confirm('Mark this order as sent?')) return;
@@ -11598,6 +11728,34 @@
     supBindCommon(el);
   }
 
+  // ---- add one of our products to a supplier's list by hand (cost + box size) ----
+  function supRenderAddProd(el) {
+    const c = _sup.cfg[_sup.sid];
+    const found = _sup.matchQ ? supPosSearch(_sup.matchQ, 20) : [];
+    el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="order">‹</button><div class="or-h">ADD TO ${escapeHtml(c.name.toUpperCase())}</div></div>
+      <p class="or-c3">Find our product, then enter what ${escapeHtml(c.name)} charges and how many come in a box.</p>
+      <input id="sup-mq" class="sup-search" placeholder="Name or barcode…" value="${escapeHtml(_sup.matchQ)}" autocomplete="off">
+      ${found.map(x => supPosRow(x)).join('')}`;
+    el.querySelectorAll('[data-link]').forEach(b => b.onclick = async () => {
+      const code = b.dataset.link, p = DATA.products[code] || [];
+      const cost = parseFloat(String(prompt(`${(p[0] || '').trim()}\n\nCost per unit at ${c.name} ($):`, p[4] || '') || '').replace(',', '.'));
+      if (!(cost > 0)) return;
+      const box = parseFloat(String(prompt('Units per box:', p[6] || 12) || '').replace(',', '.'));
+      if (!(box > 0)) return;
+      const k = 'POS ' + resolveCode(code);
+      try {
+        await supSaveCfg(c.id, doc => {
+          doc.list = doc.list || { items: [] }; doc.list.items = (doc.list.items || []).filter(x => x.k !== k);
+          doc.list.items.push({ k, sku: '', d: (p[0] || '').trim(), s: 'Added by hand', p: cost, b: String(box), bn: box, unit: 'ea', r: null, n: '', manual: true });
+          doc.map = doc.map || {}; doc.map[k] = [resolveCode(code)];
+        });
+        showToast('Added ✓'); _sup.view = 'order'; _sup.filter = 'carried'; supRender();
+      } catch (e) { showToast(e.message, true); }
+    });
+    const mq = $('#sup-mq'); mq.focus(); mq.oninput = () => { _sup.matchQ = mq.value; clearTimeout(_sup.qT); _sup.qT = setTimeout(() => { supRenderAddProd(el); const n = $('#sup-mq'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 350); };
+    supBindCommon(el);
+  }
+
   // ---- new price list: parse THEIR sheet, keep every match we already made ----
   function supParseRows(rows) {
     const H = (rows[0] || []).map(x => String(x == null ? '' : x).trim().toUpperCase());
@@ -11679,10 +11837,21 @@
         else if (a === 'match') { _sup.view = 'match'; _sup.linkK = null; _sup.linkSid = _sup.sid; _sup.matchQ = ''; supRender(); }
         else if (a === 'matchlist') { _sup.linkK = null; _sup.matchQ = ''; supRender(); }
         else if (a === 'send') supSend();
+        else if (a === 'addprod') { _sup.view = 'addprod'; _sup.matchQ = ''; supRender(); }
+        else if (a === 'addsup') {
+          const name = (prompt('Supplier name (e.g. Tonsell, Crussimpex):') || '').trim(); if (!name) return;
+          const id = supKey(name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 24) || ('s' + Date.now().toString(36));
+          if (SUP_IDS.includes(id)) { showToast('Already there', true); return; }
+          try {
+            await supSaveCfg(id, doc => { Object.assign(doc, { id, name, list: Object.assign({ date: null, file: null, items: [] }, doc.list || {}), map: doc.map || {}, skip: doc.skip || [], sugg: doc.sugg || {} }); });
+            await supSaveIndex(doc => { if (!doc.suppliers.some(x => x.id === id)) doc.suppliers.push({ id, name }); });
+            showToast(name + ' added'); supRender();
+          } catch (e) { showToast(e.message, true); }
+        }
         else if (a === 'receive' || a === 'view') { _sup.recvId = b.dataset.oid; _sup.view = 'receive'; supRender(); }
         else if (a === 'fillsugg') {
           const c = _sup.cfg[_sup.sid], d = supDraft(_sup.sid);
-          c.list.items.forEach(it => { if (supCodes(c, it).length && !(d.lines[it.k] || {}).q) { const s = supSuggest(c, it, d.cover || 2); if (s && s.boxes) d.lines[it.k] = { q: s.boxes, p: it.p, d: it.d, r: it.r, sku: it.sku }; } });
+          c.list.items.forEach(it => { if (supCodes(c, it).length && !(d.lines[it.k] || {}).q) { const s = supSuggest(c, it, d.cover || 2); if (s && s.boxes) { d.lines[it.k] = { q: s.boxes, p: it.p, d: it.d, r: it.r, sku: it.sku }; _sup.dirty[it.k] = d.lines[it.k]; } } });
           _sup.filter = 'in'; supQueueSave(); supRender();
         }
       };
@@ -11695,7 +11864,11 @@
     const web = mode !== 'sup';
     $('#or-panel').style.display = web ? 'block' : 'none';
     $('#sup-panel').style.display = web ? 'none' : 'block';
-    if (!web) supRender();
+    if (!web) {
+      supRender();
+      if (_sup.orders) supLoad(true).then(() => { if (!Object.keys(_sup.dirty).length) supRender(); }).catch(() => {});
+      clearInterval(_sup.pollT); _sup.pollT = setInterval(supPoll, 15000);
+    } else clearInterval(_sup.pollT);
   }
 
   function openOrdersView() {
