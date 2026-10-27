@@ -473,6 +473,10 @@
   .pd-head-code { font-family: var(--font-display); font-size: 11px; color: var(--text-faint); margin-top: 3px; letter-spacing: 0.04em; }
 
   .pd-group { margin-bottom: 26px; }
+  .pd-webname { border-top: 1px dashed var(--border); padding-top: 18px; }
+  .pd-wn-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .pd-wn-row .pd-input { flex: 1; min-width: 0; }
+  .pd-wn-lang { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); width: 22px; }
   .pd-group-title {
     font-family: var(--font-display); font-size: 10px; font-weight: 700;
     letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint);
@@ -2354,7 +2358,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v238</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v239</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2915,6 +2919,15 @@
       <label class="pd-toggle"><input type="checkbox" id="pd-qte"><span>Prompt for quantity</span></label>
     </section>
 
+    <section class="pd-group pd-webname" id="pd-webname" style="display:none;">
+      <div class="pd-group-title">Website name &middot; FR / EN</div>
+      <div class="pd-note" style="margin:-4px 0 10px;">What customers see on marchedecarie.ca only. Does not change the POS name or the receipt at the top.</div>
+      <label class="pd-wn-row"><span class="pd-wn-lang">FR</span><input id="pd-wn-fr" type="text" class="pd-input" maxlength="120" placeholder="Nom en français" autocomplete="off"></label>
+      <label class="pd-wn-row"><span class="pd-wn-lang">EN</span><input id="pd-wn-en" type="text" class="pd-input" maxlength="120" placeholder="English name" autocomplete="off"></label>
+      <button type="button" class="btn small" id="pd-wn-save" style="margin-top:4px;">SAVE WEBSITE NAME</button>
+      <div class="pd-note" id="pd-wn-status"></div>
+    </section>
+
     <div id="pd-queued" class="pd-queued"></div>
   </div>
 </div>
@@ -2961,7 +2974,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v238</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v239</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7417,6 +7430,7 @@
       const cat = await fetchEcomCatalog();
       paintPdEcomBtn(cat.items[code]);
       renderPdPhotos(code, (cat.items[code] || {}).photos);
+      pdPaintWebName(code);
     } catch (e) {
       paintPdEcomBtn(null);
       renderPdPhotos(code, []);
@@ -7805,6 +7819,56 @@
     } finally { b.disabled = false; pdPaintFlyer(code); }
   }
 
+  // ── Website name FR / EN (ecom/translations.json, read by shopify_sync.py) ──
+  // Keyed by the Shopify handle. A name saved here is marked manual: the sync uses it
+  // even if the POS name changes later, and translation passes leave it alone.
+  function pdWebHandle(code) {
+    const cat = _ecomCatalog; if (!cat || !cat.items) return null;
+    const c = resolveCode(code);
+    const lead = produceLeadOf(c) || c;
+    return cat.items[lead] ? 'pos-' + lead : null;
+  }
+  async function pdPaintWebName(code) {
+    const sec = $('#pd-webname'); if (!sec) return;
+    const h = pdWebHandle(code);
+    sec.style.display = h ? '' : 'none';
+    if (!h) return;
+    const fr = $('#pd-wn-fr'), en = $('#pd-wn-en'), st = $('#pd-wn-status');
+    fr.value = ''; en.value = ''; st.textContent = 'Loading…';
+    sec.dataset.handle = h;
+    try {
+      const { json } = await ghGetJsonAndSha('ecom/translations.json');
+      if (sec.dataset.handle !== h) return;
+      const t = json && json.products && json.products[h];
+      fr.value = (t && t.fr) || ''; en.value = (t && t.en) || '';
+      st.textContent = !t ? 'No website name yet: the site shows the POS name until you fill these in (or the next translation pass).'
+        : t.manual ? 'Set by you' + (t.at ? ' on ' + t.at : '') + '. Kept even if the POS name changes.'
+        : 'Written by Claude. Change it and tap SAVE to keep your version.';
+    } catch (e) { st.textContent = 'Could not load the website names: ' + e.message; }
+  }
+  async function pdSaveWebName() {
+    const sec = $('#pd-webname'), h = sec && sec.dataset.handle; if (!h) return;
+    const fr = $('#pd-wn-fr').value.trim().replace(/\s+/g, ' '), en = $('#pd-wn-en').value.trim().replace(/\s+/g, ' ');
+    if (!fr || !en) { showToast('Fill in both the French and the English name', true); return; }
+    const b = $('#pd-wn-save'); b.disabled = true; b.textContent = 'SAVING…';
+    try {
+      for (let attempt = 0; ; attempt++) {
+        const { json, sha } = await ghGetJsonAndSha('ecom/translations.json');
+        const doc = json || { products: {}, collections: {} };
+        doc.products = doc.products || {};
+        const old = doc.products[h] || {};
+        const p = (_pdCtx && _pdCtx.original && _pdCtx.original.name) || '';
+        doc.products[h] = { src: old.src || p.trim(), fr, en, manual: true, at: pmToday() };
+        const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(doc, null, 1))));
+        try { await ghPutFile('ecom/translations.json', b64, 'website name ' + h, sha); break; }
+        catch (e) { if (!e.isConflict || attempt >= 3) throw e; }
+      }
+      $('#pd-wn-status').textContent = 'Saved. The website shows it after the next sync.';
+      showToast('Website name saved');
+    } catch (e) { showToast(e.message, true); }
+    finally { b.disabled = false; b.textContent = 'SAVE WEBSITE NAME'; }
+  }
+
   function paintPdEcomBtn(ent) {
     const btn = $('#pd-ecom-btn'), note = $('#pd-ecom-note');
     if (!btn) return;
@@ -7843,7 +7907,7 @@
           cat.items[code] = { added: new Date().toISOString().slice(0, 10), photos: [] };
         }
       });
-      paintPdEcomBtn(cat.items[code]);
+      paintPdEcomBtn(cat.items[code]); pdPaintWebName(code);
       showToast(cat.items[code] ? 'ADDED TO ECOM' : 'REMOVED FROM ECOM');
     } catch (e) {
       showToast('Website update failed: ' + e.message, true);
@@ -14638,6 +14702,7 @@
     $('#close-pos-pin').addEventListener('click', () => { _candyAfterPin = null; $('#pos-pin-modal').classList.remove('open'); });
     $('#pin-pad').addEventListener('click', e => { const k = e.target.dataset.k; if (k) pinKey(k); });
     $('#close-pos-direct').addEventListener('click', () => $('#pos-direct-modal').classList.remove('open'));
+    $('#pd-wn-save').addEventListener('click', pdSaveWebName);
     const priceEach = () => {
       const pr = parseFloat($('#pd-price').value), q = parseInt($('#pd-price-qty').value, 10) || 1;
       $('#pd-price-each').textContent = (q > 1 && pr > 0) ? `${q} for $${pr.toFixed(2)} = $${(pr / q).toFixed(2)} each` : '';
