@@ -799,6 +799,10 @@
     color: var(--text); border: 1px solid var(--border); border-radius: 6px; font-size: 13px;
   }
   .candy-row .btn { flex-shrink: 0; }
+  .candy-row { flex-wrap: wrap; }
+  .candy-row input[type="text"] { flex-basis: 120px; }
+  .candy-web { margin: -2px 0 10px; padding: 10px; border: 1px dashed var(--border); border-radius: 6px; background: var(--surface); }
+  .candy-row [data-candy-web].is-on { border-color: var(--accent); color: var(--accent); }
   .up-chip { position: fixed; left: 12px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 430; padding: 8px 12px; border-radius: 99px; background: #1c1c1e; border: 1px solid var(--accent); color: var(--accent); font-family: var(--font-display); font-size: 11px; font-weight: 800; box-shadow: 0 4px 16px rgba(0,0,0,.5); opacity: 0; transform: translateY(10px); transition: opacity .2s, transform .2s; pointer-events: none; }
   .up-chip.on { opacity: 1; transform: none; }
   .up-chip.bad { border-color: #fb923c; color: #fb923c; }
@@ -2358,7 +2362,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v239</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v240</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2974,7 +2978,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v239</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v240</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7659,13 +7663,45 @@
           : `<div class="thumb thumb-empty"></div>`}
         <input type="text" placeholder="Name (optional)" value="${escapeHtml(e.name || '')}" data-candy-name="${escapeHtml(e.id)}">
         <button type="button" class="btn small${e.oos ? ' is-out' : ''}" data-candy-oos="${escapeHtml(e.id)}" title="Out of stock toggle">${e.oos ? 'OUT' : 'IN'}</button>
+        <button type="button" class="btn small" data-candy-web="${escapeHtml(e.id)}" title="Website name FR / EN">FR/EN</button>
         <button type="button" class="btn small" data-candy-photo="${escapeHtml(e.id)}">📷</button>
         ${isCandyOnly(_candyCtx) ? `<button type="button" class="btn small" data-candy-move="${escapeHtml(e.id)}" title="Move to another price level">⇄</button>` : ''}
         <button type="button" class="btn small danger" data-candy-del="${escapeHtml(e.id)}">✕</button>
+      </div>
+      <div class="candy-web" data-candy-webpanel="${escapeHtml(e.id)}" data-handle="candy-${escapeHtml(e.home || _candyCtx)}-${escapeHtml(e.id)}" hidden>
+        <div class="pd-note candy-web-st"></div>
+        <label class="pd-wn-row"><span class="pd-wn-lang">FR</span><input type="text" class="pd-input" maxlength="120" placeholder="Nom en français" data-wn="fr"></label>
+        <label class="pd-wn-row"><span class="pd-wn-lang">EN</span><input type="text" class="pd-input" maxlength="120" placeholder="English name" data-wn="en"></label>
+        <button type="button" class="btn small" data-wn-save>SAVE WEBSITE NAME</button>
       </div>`).join('');
+    candyPaintWebNames();
 
     list.querySelectorAll('[data-candy-name]').forEach(inp => {
       inp.addEventListener('change', () => saveCandyName(inp.dataset.candyName, inp.value));
+    });
+    list.querySelectorAll('[data-candy-web]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const pnl = list.querySelector(`[data-candy-webpanel="${CSS.escape(btn.dataset.candyWeb)}"]`);
+        if (pnl) pnl.hidden = !pnl.hidden;
+      });
+    });
+    list.querySelectorAll('[data-wn-save]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const pnl = btn.closest('.candy-web'), h = pnl.dataset.handle;
+        const fr = pnl.querySelector('[data-wn="fr"]').value.trim().replace(/\s+/g, ' ');
+        const en = pnl.querySelector('[data-wn="en"]').value.trim().replace(/\s+/g, ' ');
+        if (!fr || !en) { showToast('Fill in both the French and the English name', true); return; }
+        const row = list.querySelector(`.candy-row[data-id="${CSS.escape(pnl.dataset.candyWebpanel)}"]`);
+        const src = (row && row.querySelector('[data-candy-name]').value) || '';
+        btn.disabled = true; btn.textContent = 'SAVING…';
+        try {
+          const doc = await webNameWrite(h, fr, en, src);
+          _candyWebDoc = doc;
+          pnl.querySelector('.candy-web-st').textContent = 'Saved. The website shows it after the next sync.';
+          showToast('Website name saved');
+        } catch (e) { showToast(e.message, true); }
+        finally { btn.disabled = false; btn.textContent = 'SAVE WEBSITE NAME'; }
+      });
     });
     list.querySelectorAll('[data-candy-photo]').forEach(btn => {
       btn.addEventListener('click', () => uploadCandyPhoto(btn.dataset.candyPhoto));
@@ -7678,6 +7714,21 @@
     });
     list.querySelectorAll('[data-candy-del]').forEach(btn => {
       btn.addEventListener('click', () => deleteCandyEntry(btn.dataset.candyDel));
+    });
+  }
+
+  let _candyWebDoc = null;
+  async function candyPaintWebNames() {
+    try { _candyWebDoc = (await ghGetJsonAndSha('ecom/translations.json')).json || {}; } catch (e) { _candyWebDoc = _candyWebDoc || {}; }
+    document.querySelectorAll('#candy-list .candy-web').forEach(pnl => {
+      const t = (_candyWebDoc.products || {})[pnl.dataset.handle];
+      pnl.querySelector('[data-wn="fr"]').value = (t && t.fr) || '';
+      pnl.querySelector('[data-wn="en"]').value = (t && t.en) || '';
+      pnl.querySelector('.candy-web-st').textContent = !t ? 'No website name yet: the site shows the name above.'
+        : t.manual ? 'Set by you' + (t.at ? ' on ' + t.at : '') + '. Kept even if the name above changes.'
+        : 'Written by Claude. Change it and tap SAVE to keep your version.';
+      const b = document.querySelector(`#candy-list [data-candy-web="${CSS.escape(pnl.dataset.candyWebpanel)}"]`);
+      if (b) b.classList.toggle('is-on', !!(t && t.fr));
     });
   }
 
@@ -7846,23 +7897,25 @@
         : 'Written by Claude. Change it and tap SAVE to keep your version.';
     } catch (e) { st.textContent = 'Could not load the website names: ' + e.message; }
   }
+  async function webNameWrite(h, fr, en, srcName) {
+    for (let attempt = 0; ; attempt++) {
+      const { json, sha } = await ghGetJsonAndSha('ecom/translations.json');
+      const doc = json || { products: {}, collections: {} };
+      doc.products = doc.products || {};
+      const old = doc.products[h] || {};
+      doc.products[h] = { src: old.src || (srcName || '').trim(), fr, en, manual: true, at: pmToday() };
+      const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(doc, null, 1))));
+      try { await ghPutFile('ecom/translations.json', b64, 'website name ' + h, sha); return doc; }
+      catch (e) { if (!e.isConflict || attempt >= 3) throw e; }
+    }
+  }
   async function pdSaveWebName() {
     const sec = $('#pd-webname'), h = sec && sec.dataset.handle; if (!h) return;
     const fr = $('#pd-wn-fr').value.trim().replace(/\s+/g, ' '), en = $('#pd-wn-en').value.trim().replace(/\s+/g, ' ');
     if (!fr || !en) { showToast('Fill in both the French and the English name', true); return; }
     const b = $('#pd-wn-save'); b.disabled = true; b.textContent = 'SAVING…';
     try {
-      for (let attempt = 0; ; attempt++) {
-        const { json, sha } = await ghGetJsonAndSha('ecom/translations.json');
-        const doc = json || { products: {}, collections: {} };
-        doc.products = doc.products || {};
-        const old = doc.products[h] || {};
-        const p = (_pdCtx && _pdCtx.original && _pdCtx.original.name) || '';
-        doc.products[h] = { src: old.src || p.trim(), fr, en, manual: true, at: pmToday() };
-        const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(doc, null, 1))));
-        try { await ghPutFile('ecom/translations.json', b64, 'website name ' + h, sha); break; }
-        catch (e) { if (!e.isConflict || attempt >= 3) throw e; }
-      }
+      await webNameWrite(h, fr, en, (_pdCtx && _pdCtx.original && _pdCtx.original.name) || '');
       $('#pd-wn-status').textContent = 'Saved. The website shows it after the next sync.';
       showToast('Website name saved');
     } catch (e) { showToast(e.message, true); }
