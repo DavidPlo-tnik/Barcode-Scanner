@@ -2362,7 +2362,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v240</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v241</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2978,7 +2978,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v240</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v241</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7922,6 +7922,9 @@
     finally { b.disabled = false; b.textContent = 'SAVE WEBSITE NAME'; }
   }
 
+  // Interac e-Transfer address customers pay to (autodeposit). The old Gmail in the PC's orders config is ignored.
+  const PAY_EMAIL = 'pay@marchedecarie.ca';
+
   function paintPdEcomBtn(ent) {
     const btn = $('#pd-ecom-btn'), note = $('#pd-ecom-note');
     if (!btn) return;
@@ -11316,7 +11319,7 @@
     return `sms:${orPhoneDigits(o.phone)}${/iPhone|iPad|iPod/.test(navigator.userAgent) ? '&' : '?'}body=${encodeURIComponent(body)}`;
   }
   function orMsg(o, kind) {
-    const fr = (o.locale || 'fr') !== 'en', first = o.first || '', em = (_or.data && _or.data.etransfer_email) || '8921920@gmail.com';
+    const fr = (o.locale || 'fr') !== 'en', first = o.first || '', em = PAY_EMAIL;
     const tot = o.pos ? o.pos.total : 0;
     const mt = kind === 'total' ? orMatch(o) : null;
     const miss = mt && mt.missing.length ? mt.missing.map(it => it.t).join(', ') : '';
