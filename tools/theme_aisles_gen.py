@@ -34,7 +34,7 @@ CARD="""{%- comment -%} Compact product card for the aisle shelves (home, "goes 
 {%- liquid
   assign price = product.price
   assign per_kg = false
-  if product.options contains 'Poids'
+  if product.variants.size > 1
     assign kg_variant = product.variants | where: 'option1', '1 kg' | first
     if kg_variant
       assign price = kg_variant.price
