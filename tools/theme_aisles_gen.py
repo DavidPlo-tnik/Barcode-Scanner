@@ -487,6 +487,15 @@ DRAWER=DEFS+"""
 {%- endif -%}
 <li><a href="{{ routes.all_products_collection_url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">{{ 'decarie.drawer.all' | t }}</a></li>
 <li class="decarie-drawer__divider" role="presentation"></li>
+{%- assign about_pg = pages['a-propos'] | default: pages['about'] -%}
+{%- assign terms_pg = pages['conditions-d-utilisation'] | default: pages['conditions-dutilisation'] | default: pages['conditions'] | default: pages['terms'] -%}
+{%- if about_pg != blank -%}
+  <li><a href="{{ about_pg.url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">{% if en %}About us{% else %}À propos{% endif %}</a></li>
+  <li><a href="{{ about_pg.url }}#heures" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">{% if en %}Opening hours{% else %}Heures d'ouverture{% endif %}</a></li>
+{%- endif -%}
+{%- if terms_pg != blank -%}
+  <li><a href="{{ terms_pg.url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">{% if en %}Terms of use{% else %}Conditions d'utilisation{% endif %}</a></li>
+{%- endif -%}
 <script>
   (function () {
     if (window.__decarieAcc) return; window.__decarieAcc = true;
