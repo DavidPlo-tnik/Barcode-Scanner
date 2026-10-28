@@ -1067,6 +1067,8 @@
   .fl-pickimg.on { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(212,255,58,.35); }
   .fl-item.fl-pressing { transform: scale(.985); transition: transform .4s ease-out; }
   .fl-grip.fl-pressing { background: var(--surface-2); color: var(--accent); transform: scale(1.15); transition: transform .28s ease-out; }
+  .fl-frozen { margin: 6px 0 10px; padding: 8px 10px; border-radius: 9px; background: var(--surface-2); color: var(--text-dim); font-size: 12px; }
+  .fl-missing { border: 1px dashed var(--accent); color: var(--text); } .fl-missing button { margin-left: 6px; padding: 4px 9px; font-size: 11px; }
   .fl-weeks { display: flex; gap: 6px; margin-bottom: 10px; }
   .fl-weeks button { flex: 1; padding: 9px 8px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text-dim); font-family: var(--font-display); font-size: 10.5px; font-weight: 800; cursor: pointer; }
   .fl-weeks button.on { background: var(--surface-2); color: var(--text); border-color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
@@ -2373,7 +2375,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v243</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v244</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2989,7 +2991,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v243</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v244</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -5056,6 +5058,7 @@
       if (r.status === 200) { const d = await r.json(); _fl.sha = d.sha; _fl.cfg = JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g, ''))))); }
     } catch (e) {}
     if (!_fl.cfg) _fl.cfg = {};
+    _fl.global = null;                    // fresh copy from GitHub: no week design swapped in
     if (!_fl.cfg.items) _fl.cfg.items = {};
     if (!_fl.cfg.groups) _fl.cfg.groups = [];
     // older versions: S/W/T/L presets and auto-join flags are gone
@@ -5324,12 +5327,51 @@
     clearTimeout(_flSaveT);
     _flSaveT = setTimeout(async () => {
       try {
-        const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(_fl.cfg, null, 1))));
+        const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(flyerSerialize(), null, 1))));
         const res = await ghPutFile('ecom/flyer.json', b64, 'flyer settings', _fl.sha);
         if (res && res.content) _fl.sha = res.content.sha;
-      } catch (e) { if (e.isConflict) { _fl.sha = null; const keep = _fl.cfg; await flyerLoadCfg(); _fl.cfg = keep; flyerSaveCfg(); } }
+      } catch (e) { if (e.isConflict) { _fl.sha = null; const keep = _fl.cfg, keepG = _fl.global; await flyerLoadCfg(); _fl.cfg = keep; _fl.global = keepG; flyerSaveCfg(); } }
     }, 1000);
   }
+  // ── One frozen copy per week (cfg.weeks[<Thursday>]) ──────────────────────────
+  // Box sizes, photos, names, groups, pages, colours, the product list, its order and the dates are
+  // saved for the week they were designed for. When "next week" becomes "this week" on Thursday,
+  // THIS WEEK opens that copy unchanged, so the same flyer can be downloaded again. Designing the
+  // following week (or later tweaks elsewhere) never changes a week that already has its copy.
+  const FL_DESIGN = ['items', 'groups', 'onePage', 'theme', 'qr'];
+  const flClone = (v) => v === undefined ? undefined : JSON.parse(JSON.stringify(v));
+  function flyerEnterWeek(k) {
+    const cfg = _fl.cfg;
+    if (_fl.global) { FL_DESIGN.forEach(f => { cfg[f] = _fl.global[f]; }); _fl.global = null; }
+    _fl.wkey = k;
+    const snap = (cfg.weeks || {})[k];
+    if (!snap) return null;
+    _fl.global = {};
+    FL_DESIGN.forEach(f => { _fl.global[f] = cfg[f]; cfg[f] = flClone(snap[f]); });
+    if (!cfg.items) cfg.items = {};
+    if (!cfg.groups) cfg.groups = [];
+    return snap;
+  }
+  function flyerSerialize() {
+    const cfg = _fl.cfg, out = Object.assign({}, cfg);
+    if (_fl.global) FL_DESIGN.forEach(f => { out[f] = _fl.global[f]; });
+    out.weeks = Object.assign({}, cfg.weeks || {});
+    if (_fl.wkey && _fl.rows && _fl.rows.length) {
+      const w = { codes: _fl.rows.map(r => r.code), from: _fl.from, to: _fl.to, at: new Date().toISOString() };
+      FL_DESIGN.forEach(f => { if (cfg[f] !== undefined) w[f] = flClone(cfg[f]); });
+      out.weeks[_fl.wkey] = w;
+      // designing the coming week also sets the starting point for the weeks after it
+      if (_fl.mode === 'next') FL_DESIGN.forEach(f => { out[f] = flClone(cfg[f]); if (_fl.global) _fl.global[f] = out[f]; });
+    }
+    Object.keys(out.weeks).forEach(k => { if (k < pmAddDays(pmToday(), -28)) delete out.weeks[k]; });
+    cfg.weeks = out.weeks;
+    // from now on edits of THIS week change only its own copy
+    if (_fl.mode === 'current' && !_fl.global && out.weeks[_fl.wkey]) {
+      _fl.global = {}; FL_DESIGN.forEach(f => { _fl.global[f] = out[f] === cfg[f] ? flClone(cfg[f]) : out[f]; });
+    }
+    return out;
+  }
+
   function flyerNiceName(n) {
     const small = /^(de|du|des|la|le|les|au|aux|a|à|et|en|of|in|with|and)$/i;
     return String(n || '').trim().toLowerCase().replace(/\s+/g, ' ')
@@ -5352,8 +5394,15 @@
     const all = pmCollect();
     const nw = pmNextWeek(all);
     _fl.week = nw;
+    const cw = { start: pmAddDays(nw.start, -7), end: pmAddDays(nw.start, -1) };   // this Thursday → Wednesday
+    const wkey = _fl.mode === 'next' ? nw.start : cw.start;
+    const snap = flyerEnterWeek(wkey);
+    // a week that was planned (frozen copy or saved order): rebuild it exactly as it was planned
+    const planned = _fl.mode === 'current' && (snap || (_fl.cfg.weekOrder || {})[cw.start]);
+    const inWeek = (w) => { const wk = pmWeekLog(w); return all.filter(r => r.st !== 'ended' && (r.ps || '0000') <= w.end && r.pe >= w.start && !(r.st === 'current' && r.pe < w.end && wk.drop.includes(resolveCode(r.code)))); };
     let src;
-    if (_fl.mode === 'next') { const wk = pmWeekLog(nw); src = all.filter(r => r.st !== 'ended' && (r.ps || '0000') <= nw.end && r.pe >= nw.start && !(r.st === 'current' && r.pe < nw.end && wk.drop.includes(resolveCode(r.code)))); }
+    if (_fl.mode === 'next') src = inWeek(nw);
+    else if (planned) src = inWeek(cw);
     else src = all.filter(r => r.st === 'current');
     const cat = _ecomCatalog || { items: {} };
     _fl.rows = src.map(r => {
@@ -5375,10 +5424,33 @@
       _fl.rows.push({ code, photos: ent.photos, kg: e.bal === 1, pp: e.rp != null ? e.rp : p[1], pq: e.rq || 1, rp: null, rq: 1,
                       ps: null, pe: null, posName: String(p[0]).trim(), size: p[10] ? String(p[10]).trim() : '', extra: c0 });
     });
-    const ord = (_fl.mode === 'next' && _fl.cfg.weekOrder && _fl.cfg.weekOrder[nw.start]) || (cat.specialsOrder || []).map(c => resolveCode(c));
+    _fl.missing = [];
+    if (_fl.mode === 'current' && snap && snap.codes) {
+      // exactly the products of the frozen copy, in its order; a promo that ended early keeps its box
+      const byCode = {}; _fl.rows.forEach(r => { byCode[r.code] = r; });
+      const rows = [];
+      snap.codes.forEach(code => {
+        let r = byCode[code];
+        if (!r) {
+          const pr = all.find(x => resolveCode(x.code) === code && (x.ps || '0000') <= cw.end && x.pe >= cw.start);
+          const ent = cat.items[code] || {}, e = editStateFor(code) || {}, p = DATA.products[code];
+          if (pr && (ent.photos || []).length) r = { code, photos: ent.photos, kg: e.bal === 1, pp: pr.pp, pq: pr.pq || 1, rp: pr.rp, rq: pr.rq || 1, ps: pr.ps, pe: pr.pe, posName: p ? String(p[0]).trim() : code, size: p && p[10] ? String(p[10]).trim() : '' };
+        }
+        if (r) { rows.push(r); delete byCode[code]; }
+      });
+      _fl.missing = Object.values(byCode);      // new since the flyer was made: listed, not added on their own
+      _fl.rows = rows;
+      _fl.from = snap.from || cw.start; _fl.to = snap.to || cw.end;
+      _fl.select = null; _fl.sel = null;
+      flyerRenderUI();
+      return;
+    }
+    _fl.freezeOnOpen = !snap;
+    const ord = (_fl.mode === 'next' && snap && snap.codes) || (_fl.cfg.weekOrder && _fl.cfg.weekOrder[wkey]) || (cat.specialsOrder || []).map(c => resolveCode(c));
     const rank = (r) => { const i = ord.indexOf(r.code); return i < 0 ? 9999 : i; };
     _fl.rows.sort((a, b) => (rank(a) - rank(b)) || String(a.ps || '').localeCompare(String(b.ps || '')));
-    if (_fl.mode === 'next') { _fl.from = nw.start; _fl.to = nw.end; }
+    if (_fl.mode === 'next') { _fl.from = (snap && snap.from) || nw.start; _fl.to = (snap && snap.to) || nw.end; }
+    else if (planned) { _fl.from = cw.start; _fl.to = cw.end; }
     else {
       _fl.from = _fl.rows.map(r => r.ps).filter(Boolean).sort().reverse()[0] || pmToday();
       const ends = {}; _fl.rows.forEach(r => { if (r.pe) ends[r.pe] = (ends[r.pe] || 0) + 1; });
@@ -5387,6 +5459,7 @@
     }
     _fl.select = null; _fl.sel = null;
     flyerRenderUI();
+    if (_fl.freezeOnOpen && _fl.rows.length) { _fl.freezeOnOpen = false; flyerSaveCfg(); }   // lock this week's flyer as it is now
   }
 
   // Units = what becomes one box: a single item or a group (members kept together)
@@ -5478,6 +5551,8 @@
         <button data-week="next" class="${_fl.mode === 'next' ? 'on' : ''}">NEXT WEEK · ${pmFmt(nw.start)}</button>
       </div>
       ${review.length ? `<div class="pm-review" id="fl-review">${pmReviewHtml(review, nw)}</div>` : ''}
+      ${_fl.mode === 'current' && (_fl.cfg.weeks || {})[_fl.wkey] ? `<div class="fl-frozen">🔒 Same flyer as designed${_fl.cfg.weeks[_fl.wkey].at ? ' (' + pmFmt(_fl.cfg.weeks[_fl.wkey].at.slice(0, 10)) + ')' : ''}: next week's changes don't touch it.</div>` : ''}
+      ${(_fl.missing || []).length ? `<div class="fl-frozen fl-missing">${_fl.missing.length} new promo${_fl.missing.length > 1 ? 's' : ''} not on this flyer: ${_fl.missing.slice(0, 4).map(r => escapeHtml(flyerNiceName(r.posName))).join(', ')}${_fl.missing.length > 4 ? '…' : ''} <button class="alt" id="fl-missing-add">ADD AT THE END</button></div>` : ''}
       <div class="fl-formats">${Object.entries(FL_FORMATS).map(([k, f]) => `<button data-fmt="${k}" class="${_fl.fmt === k ? 'on' : ''}">${f.label}</button>`).join('')}</div>
       <div class="fl-preview"><div class="fl-stage" id="fl-stage"><canvas id="fl-canvas"></canvas><div class="fl-edit-hint">✎ TAP TO EDIT LAYOUT</div></div></div>
       <div class="fl-pages" id="fl-pages"></div>
@@ -5499,8 +5574,12 @@
     body.querySelectorAll('[data-week]').forEach(b => b.addEventListener('click', () => { if (b.dataset.week !== _fl.mode) flyerOpen(b.dataset.week); }));
     if (review.length) pmReviewBind($('#fl-review'), review, nw, () => flyerOpen('next', true));
     body.querySelectorAll('[data-fmt]').forEach(b => b.addEventListener('click', () => { _fl.fmt = b.dataset.fmt; _fl.sel = null; _fl.page = 0; flyerRenderUI(); }));
-    $('#fl-from').addEventListener('change', e => { _fl.from = e.target.value; flyerDraw(); });
-    $('#fl-to').addEventListener('change', e => { _fl.to = e.target.value; flyerDraw(); });
+    $('#fl-from').addEventListener('change', e => { _fl.from = e.target.value; flyerSaveCfg(); flyerDraw(); });
+    $('#fl-to').addEventListener('change', e => { _fl.to = e.target.value; flyerSaveCfg(); flyerDraw(); });
+    if ($('#fl-missing-add')) $('#fl-missing-add').addEventListener('click', () => {
+      _fl.rows = _fl.rows.concat(_fl.missing); _fl.missing = []; flyerSaveCfg(); flyerRenderUI();
+      showToast('Added at the end of the flyer');
+    });
     $('#fl-edit').addEventListener('click', flyerEditorOpen);
     $('#fl-theme').addEventListener('change', (e) => { _fl.cfg.theme = e.target.value; $('#fl-theme-sw').style.background = flSwatch(flTheme()); flyerSaveCfg(); _fl.page = 0; flyerDraw(); });
     if ($('#fl-qr')) $('#fl-qr').addEventListener('click', () => { _fl.cfg.qr = _fl.cfg.qr === false; flyerSaveCfg(); flyerRenderUI(); });
@@ -5664,6 +5743,11 @@
 
   async function flyerApplyOrder(codes) {
     _fl.rows.sort((a, b) => codes.indexOf(a.code) - codes.indexOf(b.code));
+    if (_fl.mode === 'current' && _fl.wkey) {      // this week's frozen copy follows the new order
+      _fl.cfg.weekOrder = _fl.cfg.weekOrder || {};
+      _fl.cfg.weekOrder[_fl.wkey] = codes;
+      flyerSaveCfg();
+    }
     if (_fl.mode === 'next' && _fl.week) {          // planned week: its own order (the website keeps this week's)
       _fl.cfg.weekOrder = _fl.cfg.weekOrder || {};
       _fl.cfg.weekOrder[_fl.week.start] = codes;
