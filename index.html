@@ -2375,7 +2375,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v245</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v246</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2991,7 +2991,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v245</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v246</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -6505,8 +6505,7 @@
       const fTop = H - footH + Math.round(footH * .035), fH = footH - Math.round(footH * .035);
       const qS = Math.round(fH * .84), qY = fTop + (fH - qS) / 2;
       ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
-      ctx.fillStyle = TH.FNAME; flFit(ctx, 'MARCHÉ DÉCARIE', W * .26, fH * .26, T.SANS(900)); ctx.fillText('MARCHÉ DÉCARIE', M, fTop + fH * .34);
-      ctx.fillStyle = TH.FLINE; flFit(ctx, FL_URL, W * .26, fH * .2, T.SANS(900)); ctx.fillText(FL_URL, M, fTop + fH * .56);
+      ctx.fillStyle = TH.FNAME; flFit(ctx, FL_URL, W * .26, fH * .32, T.SANS(900)); ctx.fillText(FL_URL, M, fTop + fH * .48);
       ctx.fillStyle = TH.FINFO; flFit(ctx, '(514) 484-8421', W * .26, fH * .16, T.SANS(800)); ctx.fillText('(514) 484-8421', M, fTop + fH * .76);
       flFit(ctx, '3824 boul. Décarie, Montréal', W * .26, fH * .14, T.SANS(700)); ctx.fillText('3824 boul. Décarie, Montréal', M, fTop + fH * .94);
       // three QR blocks: [QR] + two lines of text, laid out right-to-left from the margin
@@ -6528,16 +6527,14 @@
     } else {
       const fy = H - footH / 2 + footH * .04;
       ctx.textBaseline = 'middle'; ctx.textAlign = 'left'; ctx.fillStyle = TH.FNAME;
-      flFit(ctx, 'MARCHÉ DÉCARIE', W * .3, footH * .34, T.SANS(900)); ctx.fillText('MARCHÉ DÉCARIE', M, fy - footH * .17);
-      ctx.fillStyle = TH.FLINE; flFit(ctx, FL_URL, W * .3, footH * .28, T.SANS(900)); ctx.fillText(FL_URL, M, fy + footH * .2);
+      flFit(ctx, FL_URL, W * .36, footH * .5, T.SANS(900)); ctx.fillText(FL_URL, M, fy);
       ctx.textAlign = 'right'; ctx.fillStyle = TH.FINFO;
-      flFit(ctx, info, W * .58, footH * .32, T.SANS(800)); ctx.fillText(info, W - M, fy);
+      flFit(ctx, info, W * .54, footH * .32, T.SANS(800)); ctx.fillText(info, W - M, fy);
     }
 
     // "delivery available soon" strip just above the footer (turned on per week)
-    let stripH = 0;
-    if (_fl.badge) {
-      stripH = Math.round(H * (tv ? .055 : story ? .032 : .042));
+    const drawStrip = () => {
+      const stripH = Math.round(H * (tv ? .055 : story ? .032 : .042));
       const sy = H - footH - stripH;
       ctx.fillStyle = TH.DTAG; ctx.fillRect(0, sy, W, stripH);
       ctx.fillStyle = TH.DTXT; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
@@ -6547,9 +6544,11 @@
       if (sp) ctx.letterSpacing = sp + 'px';
       ctx.fillText(msg, W / 2, sy + stripH * .54);
       if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
-    }
+      return stripH;
+    };
     // grid
-    const bodyTop = headTop + headH + Math.round(H * (tv ? .028 : .02)), bodyBot = H - footH - stripH - Math.round(H * .018);
+    const bodyTop = headTop + headH + Math.round(H * (tv ? .028 : .02));
+    let bodyBot = H - footH - Math.round(H * .018);
     const want = flyerPagesWanted(fmtKey), onePage = want === 1;
     // a LOCKED box keeps its real size: on its own page the grid keeps the row count it had
     // when it was locked; on a finer one-page grid its size in cells is converted so the
@@ -6653,6 +6652,7 @@
     }
     const pageN = Math.max(1, pages.filter((pg, i) => pg.length || i === 0).length);
     page = Math.min(page || 0, pageN - 1);
+    if (_fl.badge && page === 0) bodyBot -= drawStrip();       // "delivery available soon": first page only
     const units = pages[page] || [];
     let packed = uni ? null : flyerPack(units, cols);
     let place = uni ? [] : packed.place;
