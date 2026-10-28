@@ -1698,7 +1698,8 @@
     "post": 5,
     "tv": 2
    },
-   "theme": "halloween"
+   "theme": "halloween2",
+   "badge": "delivery-soon"
   }
  }
 }
