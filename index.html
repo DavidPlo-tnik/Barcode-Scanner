@@ -143,6 +143,7 @@
   .sup-them { background: var(--surface-2); border-radius: 9px; padding: 9px 11px; } .sup-them b { display: block; font-size: 13.5px; } .sup-them small { display: block; font-size: 11px; color: var(--text-dim); margin-top: 2px; }
   .sup-pos { display: flex; align-items: center; gap: 9px; width: 100%; text-align: left; padding: 7px; margin-bottom: 6px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text); }
   .sup-pos span { flex: 1; min-width: 0; font-size: 13px; } .sup-pos small { display: block; color: var(--text-dim); font-size: 11px; } .sup-x { font-style: normal; color: #ff6b5e; }
+  .sup-flash { outline: 2px solid var(--accent); outline-offset: 2px; transition: outline-color 1.2s; }
   .sup-pc { display: flex; align-items: center; gap: 10px; padding: 8px; margin: 6px 0; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); }
   .sup-pc.is-linked { border-color: var(--good, #34c759); box-shadow: 0 0 0 1px var(--good, #34c759) inset; }
   .sup-pc-t { flex: 1; min-width: 0; font-size: 13px; } .sup-pc-t b { display: block; } .sup-pc-t small { display: block; color: var(--text-dim); font-size: 11px; margin-top: 2px; }
@@ -2372,7 +2373,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v242</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v243</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2988,7 +2989,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v242</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v243</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11500,7 +11501,33 @@
   }
 
   // ---- views ----
+  function supScroller() {
+    let n = $('#sup-panel');
+    while (n && n !== document.body) {
+      const st = getComputedStyle(n);
+      if (/(auto|scroll)/.test(st.overflowY) && n.scrollHeight > n.clientHeight) return n;
+      n = n.parentElement;
+    }
+    return document.scrollingElement || document.documentElement;
+  }
   function supRender() {
+    supRenderView();
+    const b = _sup.back;
+    if (b && ((b.view === 'order' && _sup.view === 'order') || (b.view === 'matchlist' && _sup.view === 'match' && !_sup.linkK))) {
+      _sup.back = null;
+      const go = () => {
+        const sc = supScroller(); sc.scrollTop = b.y;
+        const row = document.querySelector(`#sup-panel [data-k="${CSS.escape(b.k)}"]`);
+        if (row) {
+          const r = row.getBoundingClientRect();
+          if (r.top < 0 || r.bottom > window.innerHeight) row.scrollIntoView({ block: 'center' });
+          row.classList.add('sup-flash'); setTimeout(() => row.classList.remove('sup-flash'), 1600);
+        }
+      };
+      go(); requestAnimationFrame(go);
+    }
+  }
+  function supRenderView() {
     const el = $('#sup-panel'); if (!el) return;
     if (!_sup.orders) { el.innerHTML = '<div class="empty-state">LOADING SUPPLIERS…</div>'; supLoad().then(supRender).catch(e => { el.innerHTML = `<div class="or-warn">${escapeHtml(e.message)}</div>`; }); return; }
     if (_sup.view === 'order') return supRenderOrder(el);
@@ -12022,7 +12049,13 @@
       <small>${it.sku ? 'Their code ' + escapeHtml(it.sku) + ' · ' : ''}${escapeHtml(it.s || '')}</small>
       <small>${escapeHtml(it.b || '?')} per box · ${it.p != null ? supMoney(it.p) + per + ' = ' + supMoney(it.p * (it.bn || 0)) + ' a box' : 'no price on their list'}${it.oos ? ' · <span class="sup-bad">out of stock</span>' : ''}${it.n ? ' · <span class="sup-new">' + escapeHtml(it.n) + '</span>' : ''}</small></div>`;
   }
-  function supOpenLink(sid, k, from) { _sup.linkK = k; _sup.linkSid = sid; _sup.linkFrom = from || 'match'; _sup.view = 'match'; _sup.matchQ = ''; supRender(); }
+  function supOpenLink(sid, k, from) {
+    // remember where we were so BACK returns to the same spot in the list, not the top
+    const sc = supScroller();
+    _sup.back = { view: from === 'order' ? 'order' : 'matchlist', y: sc.scrollTop, k };
+    _sup.linkK = k; _sup.linkSid = sid; _sup.linkFrom = from || 'match'; _sup.view = 'match'; _sup.matchQ = ''; supRender();
+    sc.scrollTop = 0;
+  }
   async function supSaveMatch(c, fn) {
     await supSaveCfg(c.id, doc => { doc.map = doc.map || {}; doc.skip = doc.skip || []; fn(doc); });
   }
