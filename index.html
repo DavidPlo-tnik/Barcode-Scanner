@@ -2375,7 +2375,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v244</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v245</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2991,7 +2991,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v244</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v245</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -5103,6 +5103,10 @@
     halloween: { name: '🎃 Halloween', BG: '#1E1426', PATK: 'bats', PAT: '#6B3FA0', PATA: .45, AW1: '#F07A1A', AW2: '#2A1D35', PANEL: '#2A1D35', PLINE: '#4A3560', TITLE: '#FF8A1F', SUB: '#E8DDF5', STRIP: '#8E4CC9',
                  DTAG: '#8E4CC9', DTXT: '#fff', DYR: '#FFB566', FOOT: '#2A1D35', FLINE: '#F07A1A', FNAME: '#FF8A1F', FINFO: '#E8DDF5', TAG: '#F07A1A', TAGTXT: '#1E1426', TAGRIM: '#1E1426',
                  BADGE: '#8E4CC9', BADGETXT: '#fff', CARD: '#fff', CREAM: '#FFF3E6', STRIKE: '#F07A1A', NOTE: '#8E4CC9', SH: '0,0,0' },
+    // second Halloween look (for a 2nd week in a row): orange ground, pumpkins, hanging ghosts, candy corn
+    halloween2: { name: '🎃 Halloween 2 (citrouille)', BG: '#E2611A', PATK: 'pumpkins', PAT: '#2A1306', PATA: .2, AW1: '#1E1426', AW2: '#FF9A3D', PANEL: '#1E1426', PLINE: '#4A3560', TITLE: '#FF8A1F', SUB: '#F5EBDD', STRIP: '#7DD14A',
+                 DTAG: '#7DD14A', DTXT: '#1E1426', DYR: '#3B1F52', FOOT: '#1E1426', FLINE: '#7DD14A', FNAME: '#FF8A1F', FINFO: '#F5EBDD', TAG: '#1E1426', TAGTXT: '#FF9A3D', TAGRIM: '#FF9A3D',
+                 BADGE: '#7DD14A', BADGETXT: '#1E1426', CARD: '#fff', CREAM: '#FFF3E6', STRIKE: '#C8102E', NOTE: '#7A3DB0', SH: '70,20,0', DECO: 'halloween2' },
     hiver:     { name: '❄ Hiver', BG: '#D7E8F4', PATK: 'snow', PAT: '#fff', PATA: 1, AW1: '#2D6CA6', AW2: '#fff', PANEL: '#fff', PLINE: '#B7D2E8', TITLE: '#1F4E7D', SUB: '#2A3A4A', STRIP: '#6FB3E0',
                  DTAG: '#1F4E7D', DTXT: '#fff', DYR: '#BFE3FA', FOOT: '#1F4E7D', FLINE: '#6FB3E0', FNAME: '#fff', FINFO: '#DCEBF7', TAG: '#D62A3A', TAGTXT: '#fff',
                  BADGE: '#1F4E7D', BADGETXT: '#fff', CARD: '#fff', CREAM: '#F2F8FC', CARDLINE: '#B7D2E8', STRIKE: '#D62A3A', NOTE: '#1F4E7D', SH: '30,70,110' },
@@ -5159,6 +5163,11 @@
       const s = U * .07; ctx.lineWidth = Math.max(1, U * .0018);
       for (let y = top, row = 0; y < H + s; y += s * .5, row++) for (let x = (row % 2) * s / 2; x < W + s; x += s) {
         ctx.beginPath(); ctx.arc(x, y, s / 2, Math.PI, 0); ctx.stroke(); ctx.beginPath(); ctx.arc(x, y, s / 4, Math.PI, 0); ctx.stroke(); }
+    } else if (k === 'pumpkins') {
+      const n = Math.round(W * H / 52000);
+      for (let i = 0; i < n; i++) { const x = rnd() * W, y = top + rnd() * (H - top), r = U * (.014 + rnd() * .014);
+        ctx.beginPath(); ctx.ellipse(x - r * .45, y, r * .55, r * .78, 0, 0, 7); ctx.ellipse(x + r * .45, y, r * .55, r * .78, 0, 0, 7); ctx.ellipse(x, y, r * .6, r * .82, 0, 0, 7); ctx.fill();
+        ctx.fillRect(x - r * .1, y - r * 1.05, r * .2, r * .3); }
     } else if (k === 'bats') {
       // a big pale moon top-right, then little bats
       ctx.save(); ctx.globalAlpha = .1; ctx.fillStyle = '#FFE7B0'; ctx.beginPath(); ctx.arc(W * .9, top + U * .2, U * .16, 0, 7); ctx.fill(); ctx.restore();
@@ -5265,6 +5274,20 @@
     } else if (k === 'halloween') {
       if (back) { web(W, tip, U * .8, P * .5, P); for (let i = 1; i < n; i += 3) spider(i * sw + sw / 2, tip, B * (.15 + rnd() * .25), B * .2); }
       else { web(logoX - M * .2, logoY + logoH + M * .2, U * .32, -P * .5, 0); spider(tx + tW + M * .5, tip, (pY + pH * .55) - tip, U * .035); }
+    } else if (k === 'halloween2') {
+      const ghost = (x, y0, len, r) => {
+        ctx.strokeStyle = 'rgba(255,255,255,.6)'; ctx.lineWidth = Math.max(1, r * .06); ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y0 + len); ctx.stroke();
+        const y = y0 + len + r; ctx.fillStyle = '#FFFDF8'; ctx.beginPath(); ctx.arc(x, y, r, P, 0);
+        ctx.lineTo(x + r, y + r * 1.1); for (let i = 0; i < 4; i++) { const xa = x + r - (i + .5) * r / 2, xb = x + r - (i + 1) * r / 2; ctx.quadraticCurveTo(xa, y + r * (i % 2 ? 1.35 : .85), xb, y + r * 1.1); }
+        ctx.closePath(); ctx.fill();
+        ctx.fillStyle = '#1E1426'; ctx.beginPath(); ctx.ellipse(x - r * .35, y - r * .05, r * .14, r * .22, 0, 0, 7); ctx.ellipse(x + r * .35, y - r * .05, r * .14, r * .22, 0, 0, 7); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(x, y + r * .45, r * .16, r * .2, 0, 0, 7); ctx.fill(); };
+      const corn = (x, y, s, rot) => { ctx.save(); ctx.translate(x, y); ctx.rotate(rot);
+        const band = (c, a, b) => { ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(-s * .5 * (1 - a), s * a); ctx.lineTo(s * .5 * (1 - a), s * a); ctx.lineTo(s * .5 * (1 - b), s * b); ctx.lineTo(-s * .5 * (1 - b), s * b); ctx.closePath(); ctx.fill(); };
+        band('#FFFDF8', 0, .3); band('#FF9A3D', .3, .65); band('#F5C518', .65, .98); ctx.restore(); };
+      if (back) { for (let i = 1; i < n; i += 3) ghost(i * sw + sw / 2, tip, B * (.05 + rnd() * .2), Math.min(sw * .36, B * .34)); }
+      else { corn(tx + tW - U * .12, pY - U * .06, U * .2, 2.8); corn(tx + tW - U * .26, pY - U * .02, U * .15, 2.4);
+        corn(logoX + U * .04, logoY + logoH - U * .1, U * .16, .3); }
     } else if (k === 'valentine') {
       // little hearts on ribbons, and a heart pair on the corners
       if (back) for (let i = 0; i < n; i++) { const x = i * sw + sw / 2, len = B * (.12 + (i % 3) * .14), r = B * (.15 + (i % 2) * .04);
@@ -5300,6 +5323,7 @@
     }
     ctx.restore();
   }
+  const FL_URL = 'marchedecarie.ca';
   const flSwatch = (t) => `linear-gradient(135deg,${t.BG} 0 45%,${t.TAG} 45% 70%,${t.BADGE} 70%)`;
   const flTheme = () => FL_THEMES[(_fl.cfg && _fl.cfg.theme) || 'classique'] || FL_THEMES.classique;
   // QR codes on the TV screen (drawn as crisp modules, no image files)
@@ -5358,6 +5382,7 @@
     out.weeks = Object.assign({}, cfg.weeks || {});
     if (_fl.wkey && _fl.rows && _fl.rows.length) {
       const w = { codes: _fl.rows.map(r => r.code), from: _fl.from, to: _fl.to, at: new Date().toISOString() };
+      if (_fl.badge) w.badge = _fl.badge;
       FL_DESIGN.forEach(f => { if (cfg[f] !== undefined) w[f] = flClone(cfg[f]); });
       out.weeks[_fl.wkey] = w;
       // designing the coming week also sets the starting point for the weeks after it
@@ -5397,6 +5422,7 @@
     const cw = { start: pmAddDays(nw.start, -7), end: pmAddDays(nw.start, -1) };   // this Thursday → Wednesday
     const wkey = _fl.mode === 'next' ? nw.start : cw.start;
     const snap = flyerEnterWeek(wkey);
+    _fl.badge = (snap && snap.badge) || null;
     // a week that was planned (frozen copy or saved order): rebuild it exactly as it was planned
     const planned = _fl.mode === 'current' && (snap || (_fl.cfg.weekOrder || {})[cw.start]);
     const inWeek = (w) => { const wk = pmWeekLog(w); return all.filter(r => r.st !== 'ended' && (r.ps || '0000') <= w.end && r.pe >= w.start && !(r.st === 'current' && r.pe < w.end && wk.drop.includes(resolveCode(r.code)))); };
@@ -5561,6 +5587,7 @@
       <div class="fl-themes"><label for="fl-theme">COLOURS</label><i id="fl-theme-sw" style="background:${flSwatch(flTheme())}"></i>
         <select id="fl-theme">${Object.entries(FL_THEMES).map(([k, t]) => `<option value="${k}" ${((_fl.cfg.theme || 'classique') === k) ? 'selected' : ''}>${t.name}</option>`).join('')}</select></div>
       ${_fl.fmt === 'tv' ? `<div class="fl-actions"><button class="alt ${_fl.cfg.qr !== false ? 'on' : ''}" id="fl-qr">${_fl.cfg.qr !== false ? '✓ ' : ''}QR CODES ON TV</button></div>` : ''}
+      <div class="fl-actions"><button class="alt ${_fl.badge ? 'on' : ''}" id="fl-badge">${_fl.badge ? '✓ ' : ''}"DELIVERY AVAILABLE SOON" STRIP (this week only)</button></div>
       <div class="fl-actions"><button id="fl-dl">⬇ SAVE THIS SIZE</button><button class="alt" id="fl-dl-all">⬇ ALL SIZES</button></div>
       <div class="fl-dates"><div><label>FROM</label><input type="date" id="fl-from" value="${_fl.from}"></div><div><label>TO</label><input type="date" id="fl-to" value="${_fl.to}"></div></div>
       <div class="fl-help"><b>Layout:</b> tap the flyer (or ✎ EDIT LAYOUT) for the full-screen editor — zoom, resize, move, photos, lock, undo.
@@ -5583,6 +5610,7 @@
     $('#fl-edit').addEventListener('click', flyerEditorOpen);
     $('#fl-theme').addEventListener('change', (e) => { _fl.cfg.theme = e.target.value; $('#fl-theme-sw').style.background = flSwatch(flTheme()); flyerSaveCfg(); _fl.page = 0; flyerDraw(); });
     if ($('#fl-qr')) $('#fl-qr').addEventListener('click', () => { _fl.cfg.qr = _fl.cfg.qr === false; flyerSaveCfg(); flyerRenderUI(); });
+    $('#fl-badge').addEventListener('click', () => { _fl.badge = _fl.badge ? null : 'delivery-soon'; flyerSaveCfg(); flyerRenderUI(); });
     $('#fl-one').addEventListener('change', (e) => { flyerSetPages(+e.target.value); flyerRenderUI(); });
     $('#fl-dl').addEventListener('click', () => { _fl.sel = null; flyerPaintOverlay(); flyerExport([_fl.fmt]); });
     $('#fl-dl-all').addEventListener('click', () => { _fl.sel = null; flyerPaintOverlay(); flyerExport(Object.keys(FL_FORMATS)); });
@@ -6477,9 +6505,10 @@
       const fTop = H - footH + Math.round(footH * .035), fH = footH - Math.round(footH * .035);
       const qS = Math.round(fH * .84), qY = fTop + (fH - qS) / 2;
       ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
-      ctx.fillStyle = TH.FNAME; flFit(ctx, 'MARCHÉ DÉCARIE', W * .26, fH * .3, T.SANS(900)); ctx.fillText('MARCHÉ DÉCARIE', M, fTop + fH * .46);
-      ctx.fillStyle = TH.FINFO; flFit(ctx, '(514) 484-8421', W * .26, fH * .2, T.SANS(800)); ctx.fillText('(514) 484-8421', M, fTop + fH * .7);
-      flFit(ctx, '3824 boul. Décarie, Montréal', W * .26, fH * .16, T.SANS(700)); ctx.fillText('3824 boul. Décarie, Montréal', M, fTop + fH * .9);
+      ctx.fillStyle = TH.FNAME; flFit(ctx, 'MARCHÉ DÉCARIE', W * .26, fH * .26, T.SANS(900)); ctx.fillText('MARCHÉ DÉCARIE', M, fTop + fH * .34);
+      ctx.fillStyle = TH.FLINE; flFit(ctx, FL_URL, W * .26, fH * .2, T.SANS(900)); ctx.fillText(FL_URL, M, fTop + fH * .56);
+      ctx.fillStyle = TH.FINFO; flFit(ctx, '(514) 484-8421', W * .26, fH * .16, T.SANS(800)); ctx.fillText('(514) 484-8421', M, fTop + fH * .76);
+      flFit(ctx, '3824 boul. Décarie, Montréal', W * .26, fH * .14, T.SANS(700)); ctx.fillText('3824 boul. Décarie, Montréal', M, fTop + fH * .94);
       // three QR blocks: [QR] + two lines of text, laid out right-to-left from the margin
       const lblW = Math.round(W * .115), blkW = qS + Math.round(qS * .12) + lblW, gapB = Math.round(W * .022);
       let bx = W - M - blkW * 3 - gapB * 2;
@@ -6499,13 +6528,28 @@
     } else {
       const fy = H - footH / 2 + footH * .04;
       ctx.textBaseline = 'middle'; ctx.textAlign = 'left'; ctx.fillStyle = TH.FNAME;
-      flFit(ctx, 'MARCHÉ DÉCARIE', W * .32, footH * .38, T.SANS(900)); ctx.fillText('MARCHÉ DÉCARIE', M, fy);
+      flFit(ctx, 'MARCHÉ DÉCARIE', W * .3, footH * .34, T.SANS(900)); ctx.fillText('MARCHÉ DÉCARIE', M, fy - footH * .17);
+      ctx.fillStyle = TH.FLINE; flFit(ctx, FL_URL, W * .3, footH * .28, T.SANS(900)); ctx.fillText(FL_URL, M, fy + footH * .2);
       ctx.textAlign = 'right'; ctx.fillStyle = TH.FINFO;
       flFit(ctx, info, W * .58, footH * .32, T.SANS(800)); ctx.fillText(info, W - M, fy);
     }
 
+    // "delivery available soon" strip just above the footer (turned on per week)
+    let stripH = 0;
+    if (_fl.badge) {
+      stripH = Math.round(H * (tv ? .055 : story ? .032 : .042));
+      const sy = H - footH - stripH;
+      ctx.fillStyle = TH.DTAG; ctx.fillRect(0, sy, W, stripH);
+      ctx.fillStyle = TH.DTXT; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      const msg = 'LIVRAISON BIENTÔT DISPONIBLE  ·  DELIVERY AVAILABLE SOON';
+      const sp = 'letterSpacing' in ctx ? Math.round(stripH * .03) : 0;
+      flFit(ctx, msg, W - M * 4 - sp * msg.length, stripH * .46, T.SANS(900));
+      if (sp) ctx.letterSpacing = sp + 'px';
+      ctx.fillText(msg, W / 2, sy + stripH * .54);
+      if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
+    }
     // grid
-    const bodyTop = headTop + headH + Math.round(H * (tv ? .028 : .02)), bodyBot = H - footH - Math.round(H * .018);
+    const bodyTop = headTop + headH + Math.round(H * (tv ? .028 : .02)), bodyBot = H - footH - stripH - Math.round(H * .018);
     const want = flyerPagesWanted(fmtKey), onePage = want === 1;
     // a LOCKED box keeps its real size: on its own page the grid keeps the row count it had
     // when it was locked; on a finer one-page grid its size in cells is converted so the
