@@ -279,12 +279,12 @@
      "h": 6
     }
    },
-   "hero": "0482309790387",
    "note": "2 saveurs disponibles",
    "name": "Veladis Hareng 500g",
    "ph": {},
    "lock": false,
-   "pos": {}
+   "pos": {},
+   "pick": []
   },
   {
    "id": "gmv8hzpfx",
