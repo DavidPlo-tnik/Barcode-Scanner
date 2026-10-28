@@ -2375,7 +2375,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v247</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v248</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2991,7 +2991,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v247</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v248</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -6555,7 +6555,7 @@
     const logoH = Math.round(U * (tv ? .1 : .085)), logoW = Math.round(logoH * 2.9);
     if (lg) { ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.5)'; ctx.shadowBlur = logoH * .2; ctx.drawImage(lg, M, M * .9, logoW, logoH); ctx.restore(); }
     const tx = tv ? W * .62 : W * .66, tTop = M * .55;
-    const s1 = U * (tv ? .062 : .068), s2 = U * (tv ? .1 : .108);
+    const s1 = U * (tv ? .052 : .056), s2 = U * (tv ? .086 : .092);
     ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
     ctx.fillStyle = '#fff'; ctx.font = `${Math.round(s1)}px Anton, Impact, sans-serif`;
     ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.6)'; ctx.shadowBlur = s1 * .2; ctx.fillText('SEMAINE DES', tx, tTop + s1); ctx.restore();
@@ -6571,12 +6571,12 @@
     const MO = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
     const a1 = fd(_fl.from), a2 = fd(_fl.to);
     const dt = a1.getMonth() === a2.getMonth() ? `du ${a1.getDate()} au ${a2.getDate()} ${MO[a2.getMonth()]}` : `du ${a1.getDate()} ${MO[a1.getMonth()]} au ${a2.getDate()} ${MO[a2.getMonth()]}`;
-    const ds = U * (tv ? .03 : .034); ctx.font = `800 ${Math.round(ds)}px Archivo, Arial, sans-serif`;
+    const ds = U * (tv ? .026 : .029); ctx.font = `800 ${Math.round(ds)}px Archivo, Arial, sans-serif`;
     const dw = ctx.measureText(dt).width + ds * 1.6, dh = ds * 1.5, dy = y2 + ds * .55;
     ctx.fillStyle = 'rgba(8,12,22,.55)'; flRound(ctx, tx - dw / 2, dy, dw, dh, dh / 2); ctx.fill();
     ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(2, ds * .1); flRound(ctx, tx - dw / 2, dy, dw, dh, dh / 2); ctx.stroke();
     ctx.fillStyle = '#fff'; ctx.fillText(dt, tx, dy + dh * .7);
-    const headBot = dy + dh + U * .02;
+    const headBot = dy + dh + U * .005;
     // footer: the link, and the delivery line on page 1
     const footH = U * .07;
     ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.font = `900 ${Math.round(U * .036)}px Archivo, Arial, sans-serif`;
@@ -6597,19 +6597,20 @@
       // where the photo and the text go
       let ph, tx2, tyTop, textW, alignR = false;
       if (cols > 1) {
-        ph = { x: sx + slotW * .06, y: sy, w: slotW * .88, h: slotH * .62 };
-        tx2 = sx + slotW * .08; tyTop = sy + slotH * .66; textW = slotW * .84;
+        ph = { x: sx + slotW * .01, y: sy - slotH * .02, w: slotW * .98, h: slotH * .72 };
+        tx2 = sx + slotW * .06; tyTop = sy + slotH * .68; textW = slotW * .88;
       } else {
-        const pw = (W - M * 2) * .58;
-        ph = { x: flip ? W - M - pw : M, y: sy + slotH * .04, w: pw, h: slotH * .9 };
-        tx2 = flip ? M : M + pw + (W - M * 2) * .03; textW = (W - M * 2) * .39; tyTop = sy + slotH * .2;
+        // the product takes ~3/4 of the width and the whole slot; price + name sit beside it, overlapping a little
+        const full = W - M * 2, pw = full * .76;
+        ph = { x: flip ? W - M * .4 - pw : M * .4, y: sy - slotH * .03, w: pw, h: slotH * 1.02 };
+        textW = full * .34; tx2 = flip ? M : W - M - textW; tyTop = sy + slotH * .12;
       }
-      flSceneSlab(ctx, ph.x - ph.w * .04, ph.y + ph.h * .78, ph.w * 1.08, ph.h * .2);
+      flSceneSlab(ctx, ph.x + ph.w * .02, ph.y + ph.h * .8, ph.w * .96, ph.h * .17);
       // photos (cut out), standing on the slab
       const files = flyerUnitPhotos(u);
       const loaded = (await Promise.all(files.map(f => flyerImg(photoSrc(f))))).filter(Boolean);
       if (loaded.length) {
-        const auto = flyerPhotoAuto(loaded, ph.x, ph.y, ph.x + ph.w, ph.y + ph.h * .9, false);
+        const auto = flyerPhotoAuto(loaded, ph.x, ph.y, ph.x + ph.w, ph.y + ph.h * .93, false);
         loaded.forEach((t, k) => { const r = auto[k];
           ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.55)'; ctx.shadowBlur = U * .03; ctx.shadowOffsetY = U * .012;
           if (!t.cut) { flRound(ctx, r.x, r.y, r.w, r.h, U * .02); ctx.clip(); }
@@ -6617,11 +6618,11 @@
       }
       // name (white), note, then the price pill
       const name = flyerUnitName(u), note = flyerUnitNote(u);
-      let ns = U * (cols > 1 ? .03 : .04);
+      let ns = U * (cols > 1 ? .03 : .036);
       ctx.font = `800 ${Math.round(ns)}px Archivo, Arial, sans-serif`;
       let lines = flWrap(ctx, name, textW, 99);
       while (lines.length > 3 && ns > U * .022) { ns -= 1; ctx.font = `800 ${Math.round(ns)}px Archivo, Arial, sans-serif`; lines = flWrap(ctx, name, textW, 99); }
-      const pSize = U * (cols > 1 ? .085 : tv ? .09 : .1);
+      const pSize = U * (cols > 1 ? .08 : tv ? .085 : .092);
       let ty = tyTop + pSize * .55;
       // price first, then the name under it (as in the reference)
       const pr = flScenePrice(ctx, r0, alignR ? tx2 + textW : tx2, ty, pSize, alignR);
