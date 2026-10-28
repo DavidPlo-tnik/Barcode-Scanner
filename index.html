@@ -132,7 +132,7 @@
   .sup-line.in { border-color: var(--accent); } .sup-line.na { opacity: .5; } .sup-line.diff { border-color: #ff9f0a; }
   .sup-l1 { display: flex; align-items: center; gap: 9px; }
   .sup-noimg { width: 40px; height: 40px; flex: none; border-radius: 6px; background: var(--surface-2); color: var(--text-faint); display: flex; align-items: center; justify-content: center; }
-  .sup-names { flex: 1; min-width: 0; font-size: 13px; line-height: 1.3; cursor: pointer; } .sup-names b { display: block; } .sup-names small { display: block; color: var(--text-dim); font-size: 11px; margin-top: 2px; }
+  .sup-names { flex: 1; min-width: 0; font-size: 13px; line-height: 1.3; } .sup-names b { display: block; } .sup-names small { display: block; color: var(--text-dim); font-size: 11px; margin-top: 2px; }
   .sup-step { display: flex; align-items: center; gap: 4px; flex: none; }
   .sup-step button { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 18px; }
   .sup-step span { min-width: 24px; text-align: center; font-weight: 700; font-size: 16px; }
@@ -143,6 +143,16 @@
   .sup-them { background: var(--surface-2); border-radius: 9px; padding: 9px 11px; } .sup-them b { display: block; font-size: 13.5px; } .sup-them small { display: block; font-size: 11px; color: var(--text-dim); margin-top: 2px; }
   .sup-pos { display: flex; align-items: center; gap: 9px; width: 100%; text-align: left; padding: 7px; margin-bottom: 6px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text); }
   .sup-pos span { flex: 1; min-width: 0; font-size: 13px; } .sup-pos small { display: block; color: var(--text-dim); font-size: 11px; } .sup-x { font-style: normal; color: #ff6b5e; }
+  .sup-pc { display: flex; align-items: center; gap: 10px; padding: 8px; margin: 6px 0; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); }
+  .sup-pc.is-linked { border-color: var(--good, #34c759); box-shadow: 0 0 0 1px var(--good, #34c759) inset; }
+  .sup-pc-t { flex: 1; min-width: 0; font-size: 13px; } .sup-pc-t b { display: block; } .sup-pc-t small { display: block; color: var(--text-dim); font-size: 11px; margin-top: 2px; }
+  .sup-pc-tag { display: inline-block; font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 2px; }
+  .sup-pc .btn { flex-shrink: 0; }
+  .sup-mline { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 11.5px; color: var(--text-dim); }
+  .sup-mline span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sup-mline button { flex-shrink: 0; padding: 5px 9px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text-dim); font-size: 11px; }
+  .sup-mline button.primary { border-color: var(--accent); color: var(--accent); font-weight: 700; }
+  .sup-mnote { font-size: 12px; margin-top: 6px; }
   .sup-mrow { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px; margin-bottom: 8px; }
   .sup-line.carried { border-color: #30d158; box-shadow: 0 0 0 1px rgba(48,209,88,.35), 0 0 10px rgba(48,209,88,.18); }
   .sup-line.carried.in { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
@@ -2362,7 +2372,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v241</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v242</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2978,7 +2988,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v241</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v242</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11658,6 +11668,8 @@
         </div>
         ${na ? '' : `<div class="sup-step"><button data-sq="-1" aria-label="one box less">−</button><button class="sup-qty" data-qedit="1">${supQtyText(l)}</button><button data-sq="1" aria-label="one box more">＋</button></div>`}
       </div>
+      ${codes.length ? `<div class="sup-mline"><span>✓ matched to <b>${escapeHtml(ourName)}</b>${codes.length > 1 ? ' +' + (codes.length - 1) : ''}</span><button data-match="1">change / unmatch</button></div>`
+        : `<div class="sup-mline is-un"><span>${(() => { const s0 = ((c.sugg || {})[it.k] || []).find(x => DATA.products[x]); return s0 ? 'suggestion: ' + escapeHtml(((DATA.products[s0] || [])[0] || '').trim()) : 'not matched to our products'; })()}</span><button class="primary" data-match="1">🔍 FIND MATCH</button></div>`}
       ${!na && q >= 10 ? `<button class="sup-free${l && l.fa ? ' on' : ''}" data-free="1">🎁 ${l && l.fa ? `${q}+${Math.floor(q / 10)} free box${Math.floor(q / 10) > 1 ? 'es' : ''} ✓` : '10+1 deal? tap to add the free boxes'}</button>` : ''}
       ${sg && sg.others && sg.others.length ? (() => {
         const pref = supPrefFor(codes);
@@ -11738,7 +11750,7 @@
       supQueueSave(k, v);
     };
     el.onclick = (e) => {
-      const b = e.target.closest('button, .sup-names'); if (!b || !el.contains(b)) return;
+      const b = e.target.closest('button'); if (!b || !el.contains(b)) return;
       const row = b.closest('.sup-line'); const k = row && row.dataset.k;
       const cur = k ? (supDraft(_sup.sid).lines[k] || {}) : {};
       if (b.dataset.sq) { e.preventDefault(); setLine(k, (cur.q || 0) + (+b.dataset.sq), cur.free || 0, cur.fa); }
@@ -11762,7 +11774,7 @@
         (async () => { try { await supSaveIndex(doc => { b.dataset.pref.split(',').forEach(code => { doc.pref[code] = _sup.sid; }); }); showToast('★ ' + c.name + ' is now the supplier for this product'); repaintLine(k); } catch (err) { showToast(err.message, true); } })();
       }
       else if (b.dataset.sf) { _sup.filter = b.dataset.sf; _sup.q = ''; supRenderOrder(el); }
-      else if (b.classList.contains('sup-names')) { const it = byK[k]; if (it && !supCodes(c, it).length) supOpenLink(_sup.sid, it.k); }
+      else if (b.dataset.match) supOpenLink(_sup.sid, k, 'order');
     };
     const qi = $('#sup-q'); qi.oninput = () => { _sup.q = qi.value; clearTimeout(_sup.qT); _sup.qT = setTimeout(() => { supRenderOrder(el); const n = $('#sup-q'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 350); };
     $('#sup-cover').onchange = (e) => { supDraft(_sup.sid).cover = +e.target.value; supQueueSave('__cover', +e.target.value); supRenderOrder(el); };
@@ -11901,66 +11913,186 @@
   }
 
   // ---- matching their lines to our POS codes ----
+  // Our products are found by POS name, website names (French + English, from ecom/translations.json:
+  // supplier lists are usually in English, so the English website name matches much better) and barcode.
+  function supTr() {
+    if (_sup.tr) return _sup.tr;
+    _sup.tr = {};
+    if (!_sup.trLoading) {
+      _sup.trLoading = true;
+      ghGetJsonAndSha('ecom/translations.json').then(({ json }) => {
+        const m = {};
+        Object.entries((json && json.products) || {}).forEach(([h, t]) => { if (h.startsWith('pos-')) m[h.slice(4)] = t; });
+        _sup.tr = m; _sup.trText = null; _sup.wIdx = null;
+        if (_sup.view === 'match' || _sup.view === 'order') supRender();
+      }).catch(() => {});
+    }
+    return _sup.tr;
+  }
+  function supText(code) {   // everything we know a product by, normalised, for searching
+    if (!_sup.trText) _sup.trText = {};
+    let t = _sup.trText[code];
+    if (t == null) {
+      const tr = supTr()[code] || {};
+      t = _sup.trText[code] = supKey([(DATA.products[code] || [])[0], tr.fr, tr.en].filter(Boolean).join(' ')).replace(/[^A-Z0-9 ]/g, ' ');
+    }
+    return t;
+  }
   function supPosSearch(q, limit) {
-    q = supKey(q); if (q.length < 2) return [];
+    q = supKey(q).replace(/[^A-Z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim(); if (q.length < 2) return [];
     const words = q.split(' ');
     const out = [];
-    for (const [code, p] of Object.entries(DATA.products)) {
+    for (const code of Object.keys(DATA.products)) {
       if (code === q || code.endsWith(q)) { out.push([1e9, code]); continue; }
-      const t = supKey(p[0]);
+      const t = supText(code);
       if (words.every(w => t.includes(w))) out.push([((DATA.sales[code] || {}).ta || 0), code]);
     }
     return out.sort((a, b) => b[0] - a[0]).slice(0, limit || 12).map(x => x[1]);
   }
-  function supPosRow(code, extra) {
-    const p = DATA.products[code] || [];
-    return `<button class="sup-pos" data-link="${code}">${productThumbHtml(code, 34)}<span><b>${escapeHtml((p[0] || '').trim())}</b>
-      <small>${escapeHtml(productSizeText(code) || '')} · ${p[1] != null ? priceText(code, p[1]) : ''} · ${Math.round(((DATA.sales[code] || {}).ta) || 0)}$/yr · ${code.replace(/^0+/, '')}</small></span>${extra || ''}</button>`;
+  const SUP_STOP = new Set('AND WITH THE FOR IN OF FROM BAG BOX PACK PCS PC JAR CAN GLASS PET WT NEW ET AU AUX DE DU LA LE LES DES EN'.split(' '));
+  function supSizeOf(s) {   // "450g" / "0.5 L" / "1,5kg" -> grams or ml
+    const m = String(s || '').toLowerCase().replace(',', '.').match(/(\d+(?:\.\d+)?)\s*(kg|g|gr|ml|l|lt)\b/);
+    if (!m) return null;
+    const v = parseFloat(m[1]); return /^(kg|l|lt)$/.test(m[2]) ? Math.round(v * 1000) : Math.round(v);
   }
-  function supOpenLink(sid, k) { _sup.linkK = k; _sup.linkSid = sid; _sup.view = 'match'; _sup.matchQ = ''; supRender(); }
+  // Best guesses for one of their lines: word overlap with all our names, plus brand, size, and
+  // "our POS cost is their price" (the strongest sign it is the same item). Earlier suggestions count a little.
+  function supMatchPrep(it) {
+    const words = [...new Set(supKey(it.d).replace(/[^A-Z0-9 ]/g, ' ').split(' ').filter(w => w.length >= 3 && !/^\d/.test(w) && !SUP_STOP.has(w)))];
+    return { stems: words.map(w => w.length > 4 ? w.replace(/(IES|ES|S)$/, '') : w), brand: supKey(it.s || '').split(' ')[0] || '', size: supSizeOf(it.d), cost: supCostPerOurUnit(it) };
+  }
+  function supMatchScore(m, code) {
+    const t = ' ' + supText(code) + ' ';
+    let hit = 0; for (const w of m.stems) if (t.includes(' ' + w)) hit++;
+    if (hit < 2) return -1;
+    let sc = hit / m.stems.length * 10;
+    if (m.brand && t.includes(' ' + m.brand)) sc += 3;
+    const ps = supSizeOf((DATA.products[code] || [])[0]) || supSizeOf(productSizeText(code));
+    if (m.size && ps) sc += ps === m.size ? 4 : -2;
+    const pc = (DATA.products[code] || [])[4];
+    if (m.cost && pc && Math.abs(pc - m.cost) <= 0.02 * m.cost + 0.01) sc += 6;
+    return sc + Math.min(2, Math.log10(1 + ((DATA.sales[code] || {}).ta || 0)) / 2);
+  }
+  function supWordIdx() {   // first 4 letters of every word in our names -> products (built once)
+    if (_sup.wIdx && _sup.wIdxTr === _sup.tr) return _sup.wIdx;
+    const idx = new Map();
+    for (const code of Object.keys(DATA.products)) {
+      for (const w of supText(code).split(' ')) {
+        if (w.length < 3) continue;
+        const k = w.slice(0, 4); let a = idx.get(k); if (!a) idx.set(k, a = new Set()); a.add(code);
+      }
+    }
+    _sup.wIdx = idx; _sup.wIdxTr = _sup.tr;
+    return idx;
+  }
+  function supAutoSuggest(c, it, exclude, n, extra) {
+    const m = supMatchPrep(it);
+    if (m.stems.length < 1) return [];
+    const idx = supWordIdx(), cnt = new Map();
+    for (const w of m.stems) for (const code of (idx.get(w.slice(0, 4)) || [])) cnt.set(code, (cnt.get(code) || 0) + 1);
+    (extra || []).forEach(code => cnt.set(code, 9));
+    const out = [];
+    for (const [code, k] of cnt) {
+      if (k < 2) continue;
+      if (exclude.includes(code)) continue;
+      let sc = supMatchScore(m, code);
+      if (extra && extra.includes(code)) sc = Math.max(sc, 6) + 1;
+      if (sc >= 7) out.push([sc, code]);
+    }
+    return out.sort((a, b) => b[0] - a[0]).slice(0, n || 5).map(x => x[1]);
+  }
+  // One of our products with what you need to decide: photo, names, size, our price, cost, sales, barcode.
+  function supPosCard(code, it, action, tag) {
+    const p = DATA.products[code] || [], tr = supTr()[code] || {};
+    const pos = (p[0] || '').trim(), web = tr.en && supKey(tr.en) !== supKey(pos) ? tr.en : '';
+    const cost = it ? supCostPerOurUnit(it) : null, our = p[1];
+    const mg = cost != null && our ? Math.round(100 * (our - cost) / our) : null;
+    const ta = Math.round(((DATA.sales[code] || {}).ta) || 0);
+    return `<div class="sup-pc${action === 'unlink' ? ' is-linked' : ''}">
+      ${productThumbHtml(code, 52)}
+      <div class="sup-pc-t">${tag ? `<em class="sup-pc-tag">${tag}</em>` : ''}<b>${escapeHtml(pos)}</b>${web ? `<small>${escapeHtml(web)}</small>` : ''}
+        <small>${escapeHtml(productSizeText(code) || 'no size')} · we sell ${our != null ? priceText(code, our) : '—'}${p[4] ? ' · POS cost ' + supMoney(p[4]) : ''}</small>
+        <small>${ta ? ta.toLocaleString() + ' $/yr sales' : 'no sales this year'} · ${escapeHtml(code.replace(/^0+/, ''))}${mg != null ? ` · <b class="${mg < 25 ? 'sup-bad' : 'sup-ok'}">${mg}% margin at their price</b>` : ''}</small></div>
+      <button class="btn small${action === 'link' ? ' primary' : ''}" data-${action}="${code}">${action === 'link' ? 'MATCH ✓' : 'UNMATCH'}</button>
+    </div>`;
+  }
+  function supThemCard(c, it) {
+    const per = it.unit === 'lb' ? '/lb' : it.unit === 'kg' ? '/kg' : ' each';
+    return `<div class="sup-them"><small>${escapeHtml(c.name)} sells</small><b>${escapeHtml(it.d)}</b>
+      <small>${it.sku ? 'Their code ' + escapeHtml(it.sku) + ' · ' : ''}${escapeHtml(it.s || '')}</small>
+      <small>${escapeHtml(it.b || '?')} per box · ${it.p != null ? supMoney(it.p) + per + ' = ' + supMoney(it.p * (it.bn || 0)) + ' a box' : 'no price on their list'}${it.oos ? ' · <span class="sup-bad">out of stock</span>' : ''}${it.n ? ' · <span class="sup-new">' + escapeHtml(it.n) + '</span>' : ''}</small></div>`;
+  }
+  function supOpenLink(sid, k, from) { _sup.linkK = k; _sup.linkSid = sid; _sup.linkFrom = from || 'match'; _sup.view = 'match'; _sup.matchQ = ''; supRender(); }
+  async function supSaveMatch(c, fn) {
+    await supSaveCfg(c.id, doc => { doc.map = doc.map || {}; doc.skip = doc.skip || []; fn(doc); });
+  }
   function supRenderMatch(el) {
     const c = _sup.cfg[_sup.linkSid || _sup.sid];
     const items = c.list.items;
-    if (_sup.linkK) {   // one line: pick the product(s)
-      const it = items.find(x => x.k === _sup.linkK); const cur = (c.map || {})[it.k] || [];
-      const sug = ((c.sugg || {})[it.k] || []).filter(x => !cur.includes(x) && DATA.products[x]);
-      const found = _sup.matchQ ? supPosSearch(_sup.matchQ).filter(x => !cur.includes(x)) : [];
-      el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="matchlist">‹</button><div class="or-h">MATCH</div></div>
-        <div class="sup-them"><small>${escapeHtml(c.name)} sells:</small><b>${escapeHtml(it.d)}</b><small>${escapeHtml(it.b || '')} per box · ${supMoney(it.p)}</small></div>
-        ${cur.length ? `<div class="sup-sec">LINKED TO (tap to remove)</div>` + cur.map(x => supPosRow(x, '<em class="sup-x">✕</em>').replace('data-link=', 'data-unlink=')).join('') : ''}
-        ${sug.length ? `<div class="sup-sec">SUGGESTIONS</div>` + sug.map(x => supPosRow(x)).join('') : ''}
-        <div class="sup-sec">FIND OUR PRODUCT (name or barcode)</div>
-        <input id="sup-mq" class="sup-search" placeholder="e.g. veres lecho, or scan/type the barcode" value="${escapeHtml(_sup.matchQ)}" autocomplete="off">
-        ${found.map(x => supPosRow(x)).join('')}
-        <button class="btn sup-wide" data-sa="skip">${(c.skip || []).includes(it.k) ? 'Undo "we don\'t carry this"' : "We don't carry this"}</button>`;
-      const save = async (fn) => { try { await supSaveCfg(c.id, doc => { doc.map = doc.map || {}; doc.skip = doc.skip || []; fn(doc); }); supRenderMatch(el); } catch (e) { showToast(e.message, true); } };
-      el.querySelectorAll('[data-link]').forEach(b => b.onclick = () => save(doc => { doc.map[it.k] = [...new Set([...(doc.map[it.k] || []), b.dataset.link])]; doc.skip = doc.skip.filter(x => x !== it.k); }));
-      el.querySelectorAll('[data-unlink]').forEach(b => b.onclick = () => save(doc => { doc.map[it.k] = (doc.map[it.k] || []).filter(x => x !== b.dataset.unlink); if (!doc.map[it.k].length) delete doc.map[it.k]; }));
-      el.querySelector('[data-sa="skip"]').onclick = (e) => { e.stopPropagation(); save(doc => { doc.skip = doc.skip.includes(it.k) ? doc.skip.filter(x => x !== it.k) : doc.skip.concat(it.k); }); };
+    supTr();
+    if (_sup.linkK) {   // one line of their list: see it, see our candidates, match / unmatch
+      const it = items.find(x => x.k === _sup.linkK);
+      if (!it) { _sup.linkK = null; return supRenderMatch(el); }
+      const cur = ((c.map || {})[it.k] || []).filter(x => DATA.products[x]);
+      const stored = ((c.sugg || {})[it.k] || []).filter(x => !cur.includes(x) && DATA.products[x]);
+      const cands = supAutoSuggest(c, it, cur, 6, stored);
+      const found = _sup.matchQ ? supPosSearch(_sup.matchQ, 15).filter(x => !cur.includes(x)) : [];
+      const skipped = (c.skip || []).includes(it.k);
+      const back = _sup.linkFrom === 'order' ? 'order' : 'matchlist';
+      el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="${back}">‹</button><div class="or-h">FIND MATCH</div></div>
+        ${supThemCard(c, it)}
+        ${cur.length ? `<div class="sup-sec">MATCHED TO</div>` + cur.map(x => supPosCard(x, it, 'unlink')).join('')
+          + `<button class="btn primary sup-wide" data-sa="${back}">DONE ›</button>` : ''}
+        ${skipped ? `<div class="or-c3">Marked as <b>not carried</b>.</div>` : ''}
+        ${cands.length ? `<div class="sup-sec">${cur.length ? 'OTHER POSSIBLE MATCHES' : 'SUGGESTIONS · best guess first'}</div>`
+          + cands.map((x, i) => supPosCard(x, it, 'link', i === 0 && !cur.length ? 'best guess' : '')).join('')
+          : (cur.length ? '' : '<div class="or-c3">No suggestion found: search below.</div>')}
+        <div class="sup-sec">SEARCH OUR PRODUCTS</div>
+        <input id="sup-mq" class="sup-search" placeholder="Name in English, French or POS, or the barcode" value="${escapeHtml(_sup.matchQ)}" autocomplete="off">
+        ${found.map(x => supPosCard(x, it, 'link')).join('')}
+        ${_sup.matchQ && !found.length && supKey(_sup.matchQ).length >= 2 ? '<div class="or-c3">Nothing found. Try fewer words, or the brand only.</div>' : ''}
+        ${cur.length ? '' : `<button class="btn sup-wide" data-sa="skip">${skipped ? 'Undo "we don\'t carry this"' : "We don't carry this"}</button>`}`;
+      const save = async (fn, msg) => { try { await supSaveMatch(c, fn); if (msg) showToast(msg); supRenderMatch(el); } catch (e) { showToast(e.message, true); } };
+      el.querySelectorAll('[data-link]').forEach(b => b.onclick = () => save(doc => {
+        doc.map[it.k] = [...new Set([...(doc.map[it.k] || []), b.dataset.link])]; doc.skip = doc.skip.filter(x => x !== it.k);
+      }, 'Matched ✓'));
+      el.querySelectorAll('[data-unlink]').forEach(b => b.onclick = () => {
+        const nm = ((DATA.products[b.dataset.unlink] || [])[0] || '').trim();
+        if (!confirm(`Unmatch "${nm}" from\n${it.d}?`)) return;
+        save(doc => { doc.map[it.k] = (doc.map[it.k] || []).filter(x => x !== b.dataset.unlink); if (!doc.map[it.k].length) delete doc.map[it.k]; }, 'Unmatched');
+      });
+      const sk = el.querySelector('[data-sa="skip"]');
+      if (sk) sk.onclick = (e) => { e.stopPropagation(); save(doc => { doc.skip = doc.skip.includes(it.k) ? doc.skip.filter(x => x !== it.k) : doc.skip.concat(it.k); }); };
       const mq = $('#sup-mq'); mq.oninput = () => { _sup.matchQ = mq.value; clearTimeout(_sup.qT); _sup.qT = setTimeout(() => { supRenderMatch(el); const n = $('#sup-mq'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 350); };
       supBindCommon(el);
       return;
     }
-    // the review list: suggestions to confirm first, then everything not matched
+    // the review list: every line not matched yet, the ones with a likely match first
     const todo = items.filter(it => !(c.map || {})[it.k] && !(c.skip || []).includes(it.k) && it.p != null);
-    const withSug = todo.filter(it => ((c.sugg || {})[it.k] || []).length);
     const q = supKey(_sup.matchQ);
-    const list = (q ? items.filter(it => supKey(it.d).includes(q)) : withSug.concat(todo.filter(it => !withSug.includes(it)))).slice(0, 150);
+    const best = {};
+    const pool = q ? items.filter(it => supKey(it.d).includes(q)) : todo;
+    pool.slice(0, 150).forEach(it => {
+      const s = ((c.sugg || {})[it.k] || []).filter(x => DATA.products[x]);
+      best[it.k] = supAutoSuggest(c, it, [], 1, s)[0] || null;
+    });
+    const list = pool.slice(0, 150).sort((a, b) => (best[b.k] ? 1 : 0) - (best[a.k] ? 1 : 0)).slice(0, 120);
+    const nBest = todo.filter(it => best[it.k]).length;
     el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="home">‹</button><div class="or-h">${escapeHtml(c.name)} · MATCH</div></div>
-      <p class="or-c3">Tell the app which of our products each line of their list is. ${withSug.length} have a possible match to check, ${todo.length - withSug.length} more have none yet (most are things we don't carry).</p>
+      <p class="or-c3">${todo.length} lines of their list aren't matched to one of our products yet${q ? '' : `; ${nBest} of the first ${Math.min(150, todo.length)} have a likely match, shown first`}. Check the best guess, then tap MATCH, or FIND to search.</p>
       <input id="sup-mq" class="sup-search" placeholder="Search their list…" value="${escapeHtml(_sup.matchQ)}" autocomplete="off">
       ${list.map(it => {
-        const cur = (c.map || {})[it.k] || [], sg = ((c.sugg || {})[it.k] || []).filter(x => DATA.products[x]);
-        return `<div class="sup-mrow" data-k="${escapeHtml(it.k)}"><div class="sup-them"><b>${escapeHtml(it.d)}</b><small>${escapeHtml(it.s)} · ${escapeHtml(it.b || '')}/box · ${supMoney(it.p)}${cur.length ? ' · <span class="sup-ok">linked ✓</span>' : ''}${(c.skip || []).includes(it.k) ? ' · not carried' : ''}</small></div>
-          ${!cur.length && sg.length ? `<div class="sup-qs">${sg.slice(0, 2).map(x => `<button data-qlink="${x}">Is it ${escapeHtml(((DATA.products[x] || [])[0] || '').trim())} <small>${escapeHtml(productSizeText(x) || '')}</small></button>`).join('')}</div>` : ''}
-          <div class="sup-qs"><button data-open="1">${cur.length ? 'Change' : 'Find / other'} ›</button>${cur.length ? '' : '<button data-noc="1">Not carried</button>'}</div></div>`;
-      }).join('')}`;
-    const save = async (k, fn) => { try { await supSaveCfg(c.id, doc => { doc.map = doc.map || {}; doc.skip = doc.skip || []; fn(doc); }); supRenderMatch(el); } catch (e) { showToast(e.message, true); } };
+        const cur = ((c.map || {})[it.k] || []).filter(x => DATA.products[x]), b = best[it.k];
+        return `<div class="sup-mrow" data-k="${escapeHtml(it.k)}">${supThemCard(c, it)}
+          ${cur.length ? `<div class="sup-ok sup-mnote">Matched to ${escapeHtml(((DATA.products[cur[0]] || [])[0] || '').trim())}</div>` : b ? supPosCard(b, it, 'link', 'best guess') : ''}
+          <div class="sup-qs"><button data-open="1">${cur.length ? 'Change / unmatch' : b ? 'Not this one: find ›' : 'Find match ›'}</button>${cur.length ? '' : '<button data-noc="1">We don\'t carry it</button>'}</div></div>`;
+      }).join('') || '<div class="empty-state">EVERYTHING IS MATCHED</div>'}`;
+    const save = async (fn, msg) => { try { await supSaveMatch(c, fn); if (msg) showToast(msg); supRenderMatch(el); } catch (e) { showToast(e.message, true); } };
     el.querySelectorAll('.sup-mrow').forEach(row => {
       const k = row.dataset.k;
-      row.querySelectorAll('[data-qlink]').forEach(b => b.onclick = () => save(k, doc => { doc.map[k] = [b.dataset.qlink]; }));
-      row.querySelector('[data-open]').onclick = () => { _sup.linkK = k; _sup.linkSid = c.id; _sup.matchQ = ''; supRenderMatch(el); };
-      const nc = row.querySelector('[data-noc]'); if (nc) nc.onclick = () => save(k, doc => { if (!doc.skip.includes(k)) doc.skip.push(k); });
+      row.querySelectorAll('[data-link]').forEach(b => b.onclick = () => save(doc => { doc.map[k] = [b.dataset.link]; doc.skip = doc.skip.filter(x => x !== k); }, 'Matched ✓'));
+      row.querySelector('[data-open]').onclick = () => supOpenLink(c.id, k, 'match');
+      const nc = row.querySelector('[data-noc]'); if (nc) nc.onclick = () => save(doc => { if (!doc.skip.includes(k)) doc.skip.push(k); });
     });
     const mq = $('#sup-mq'); mq.oninput = () => { _sup.matchQ = mq.value; clearTimeout(_sup.qT); _sup.qT = setTimeout(() => { supRenderMatch(el); const n = $('#sup-mq'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 350); };
     supBindCommon(el);
@@ -12074,6 +12206,7 @@
         else if (a === 'order') { _sup.view = 'order'; supRender(); }
         else if (a === 'match') { _sup.view = 'match'; _sup.linkK = null; _sup.linkSid = _sup.sid; _sup.matchQ = ''; supRender(); }
         else if (a === 'matchlist') { _sup.linkK = null; _sup.matchQ = ''; supRender(); }
+        else if (a === 'order' && _sup.view === 'match') { _sup.view = 'order'; _sup.linkK = null; _sup.matchQ = ''; supRender(); }
         else if (a === 'send') supSend();
         else if (a === 'addprod') { _sup.view = 'addprod'; _sup.matchQ = ''; supRender(); }
         else if (a === 'addsup') {
