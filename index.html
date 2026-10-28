@@ -2375,7 +2375,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v246</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v247</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2991,7 +2991,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v246</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v247</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -5107,6 +5107,9 @@
     halloween2: { name: '🎃 Halloween 2 (citrouille)', BG: '#E2611A', PATK: 'pumpkins', PAT: '#2A1306', PATA: .2, AW1: '#1E1426', AW2: '#FF9A3D', PANEL: '#1E1426', PLINE: '#4A3560', TITLE: '#FF8A1F', SUB: '#F5EBDD', STRIP: '#7DD14A',
                  DTAG: '#7DD14A', DTXT: '#1E1426', DYR: '#3B1F52', FOOT: '#1E1426', FLINE: '#7DD14A', FNAME: '#FF8A1F', FINFO: '#F5EBDD', TAG: '#1E1426', TAGTXT: '#FF9A3D', TAGRIM: '#FF9A3D',
                  BADGE: '#7DD14A', BADGETXT: '#1E1426', CARD: '#fff', CREAM: '#FFF3E6', STRIKE: '#C8102E', NOTE: '#7A3DB0', SH: '70,20,0', DECO: 'halloween2' },
+    // night scene, big products on stone, red price pills (2 per page on posts)
+    scene:     { name: '🎃 Scène Halloween (grandes photos)', LAYOUT: 'scene', BG: '#0B1324', PAT: '#fff', PATA: 0, AW1: '#1C2C4C', AW2: '#F06A0E', PANEL: '#1C2C4C', TITLE: '#F06A0E', SUB: '#fff', STRIP: '#F06A0E',
+                 DTAG: '#E31B23', DTXT: '#fff', DYR: '#FFE21A', FOOT: '#0B1324', FLINE: '#F06A0E', FNAME: '#fff', FINFO: '#fff', TAG: '#E31B23', TAGTXT: '#fff', BADGE: '#FFE21A', BADGETXT: '#E31B23', CREAM: '#fff', SH: '0,0,0' },
     hiver:     { name: '❄ Hiver', BG: '#D7E8F4', PATK: 'snow', PAT: '#fff', PATA: 1, AW1: '#2D6CA6', AW2: '#fff', PANEL: '#fff', PLINE: '#B7D2E8', TITLE: '#1F4E7D', SUB: '#2A3A4A', STRIP: '#6FB3E0',
                  DTAG: '#1F4E7D', DTXT: '#fff', DYR: '#BFE3FA', FOOT: '#1F4E7D', FLINE: '#6FB3E0', FNAME: '#fff', FINFO: '#DCEBF7', TAG: '#D62A3A', TAGTXT: '#fff',
                  BADGE: '#1F4E7D', BADGETXT: '#fff', CARD: '#fff', CREAM: '#F2F8FC', CARDLINE: '#B7D2E8', STRIKE: '#D62A3A', NOTE: '#1F4E7D', SH: '30,70,110' },
@@ -6330,7 +6333,7 @@
   async function flyerFonts() {
     if (!_fl.fontsP) {
       _fl.fontsP = Promise.all([
-        ['Anton', 'fonts/anton.woff2', '400'], ['Archivo', 'fonts/archivo-800.woff2', '800'], ['Archivo', 'fonts/archivo-900.woff2', '900'],
+        ['Anton', 'fonts/anton.woff2', '400'], ['Archivo', 'fonts/archivo-800.woff2', '800'], ['Archivo', 'fonts/archivo-900.woff2', '900'], ['Creepster', 'fonts/creepster.woff2', '400'],
       ].map(([fam, url, wgt]) => new FontFace(fam, `url(${url})`, { weight: wgt }).load().then(f => { document.fonts.add(f); }).catch(() => {})));
     }
     await _fl.fontsP;
@@ -6400,8 +6403,241 @@
     return lines;
   }
 
+  // ════════════════════════════════════════════════════════════════
+  //  SCENE LAYOUT (theme LAYOUT: 'scene') — big products standing in a drawn night scene
+  //  (moon, bare trees, stone ledge, leaves, jack-o'-lanterns), no cards, 2 per page on posts,
+  //  red price pill with a yellow % tab, white names. Like the "prix à faire peur" carousels.
+  // ════════════════════════════════════════════════════════════════
+  const FL_SCENE_PER = { post: 2, square: 2, story: 3, tv: 3 };
+  function flSceneBg(W, H, seedBase) {
+    const key = W + 'x' + H + ':' + seedBase;
+    _fl.sceneBg = _fl.sceneBg || {};
+    if (_fl.sceneBg[key]) return _fl.sceneBg[key];
+    const c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d'), U = Math.min(W, H), P = Math.PI;
+    let seed = seedBase; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    // sky
+    const sky = g.createRadialGradient(W * .3, H * .22, U * .05, W * .5, H * .45, Math.max(W, H) * .85);
+    sky.addColorStop(0, '#3A5682'); sky.addColorStop(.45, '#1C2C4C'); sky.addColorStop(1, '#070C18');
+    g.fillStyle = sky; g.fillRect(0, 0, W, H);
+    // stars
+    for (let i = 0; i < 70; i++) { g.fillStyle = `rgba(255,255,240,${.15 + rnd() * .5})`; g.beginPath(); g.arc(rnd() * W, rnd() * H * .5, U * (.0008 + rnd() * .0018), 0, 7); g.fill(); }
+    // crescent moon with glow
+    const mx = W * (W > H ? .5 : .2), my = H * (W > H ? .2 : .3), mr = U * .07;
+    const glow = g.createRadialGradient(mx, my, mr * .5, mx, my, mr * 4); glow.addColorStop(0, 'rgba(240,235,200,.35)'); glow.addColorStop(1, 'rgba(240,235,200,0)');
+    g.fillStyle = glow; g.fillRect(mx - mr * 4, my - mr * 4, mr * 8, mr * 8);
+    const mc = document.createElement('canvas'); mc.width = mc.height = Math.ceil(mr * 2.4); const m = mc.getContext('2d');
+    m.fillStyle = '#F4F0DA'; m.beginPath(); m.arc(mr * 1.2, mr * 1.2, mr, 0, 7); m.fill();
+    m.globalCompositeOperation = 'destination-out'; m.beginPath(); m.arc(mr * 1.62, mr * .98, mr * .9, 0, 7); m.fill();
+    g.drawImage(mc, mx - mr * 1.2, my - mr * 1.2);
+    // mist
+    for (let i = 0; i < 6; i++) { const fy = H * (.35 + rnd() * .35), fx = rnd() * W, fr = U * (.35 + rnd() * .3);
+      const fg = g.createRadialGradient(fx, fy, 0, fx, fy, fr); fg.addColorStop(0, 'rgba(150,175,215,.13)'); fg.addColorStop(1, 'rgba(150,175,215,0)');
+      g.fillStyle = fg; g.fillRect(fx - fr, fy - fr, fr * 2, fr * 2); }
+    // bare trees from both sides
+    const branch = (x, y, len, ang, w, d) => {
+      if (d === 0 || len < U * .01) return;
+      const x2 = x + Math.cos(ang) * len, y2 = y + Math.sin(ang) * len;
+      g.strokeStyle = '#0B111D'; g.lineWidth = w; g.lineCap = 'round';
+      g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo((x + x2) / 2 + (rnd() - .5) * len * .3, (y + y2) / 2 + (rnd() - .5) * len * .3, x2, y2); g.stroke();
+      const k = 2 + (rnd() < .4 ? 1 : 0);
+      for (let i = 0; i < k; i++) branch(x2, y2, len * (.62 + rnd() * .18), ang + (rnd() - .5) * 1.3, w * .66, d - 1);
+    };
+    g.globalAlpha = .85;
+    branch(-U * .02, H * .62, U * .2, -1.05, U * .028, 7);
+    branch(W + U * .02, H * .58, U * .2, -2.1, U * .028, 7);
+    if (W > H) { branch(W * .2, H * .75, U * .18, -1.4, U * .022, 6); branch(W * .82, H * .78, U * .18, -1.8, U * .022, 6); }
+    g.globalAlpha = 1;
+    // bats
+    for (let i = 0; i < 5; i++) { const x = W * (.15 + rnd() * .7), y = H * (.08 + rnd() * .35), r = U * (.012 + rnd() * .012);
+      g.save(); g.translate(x, y); g.rotate((rnd() - .5) * .5); g.scale(r, r); g.fillStyle = '#05080F'; g.beginPath();
+      g.moveTo(0, -.25); g.quadraticCurveTo(.25, -.55, .45, -.3); g.quadraticCurveTo(.8, -.6, 1.3, -.35); g.quadraticCurveTo(1.1, -.1, 1.15, .15);
+      g.quadraticCurveTo(.9, 0, .75, .2); g.quadraticCurveTo(.55, 0, .35, .3); g.quadraticCurveTo(.15, .1, 0, .4);
+      g.quadraticCurveTo(-.15, .1, -.35, .3); g.quadraticCurveTo(-.55, 0, -.75, .2); g.quadraticCurveTo(-.9, 0, -1.15, .15); g.quadraticCurveTo(-1.1, -.1, -1.3, -.35);
+      g.quadraticCurveTo(-.8, -.6, -.45, -.3); g.quadraticCurveTo(-.25, -.55, 0, -.25); g.fill(); g.restore(); }
+    // stone ledges (one wide slab per product row, drawn by the page renderer) — here: the ground
+    const ground = g.createLinearGradient(0, H * .8, 0, H); ground.addColorStop(0, '#1B2433'); ground.addColorStop(1, '#0A0E16');
+    g.fillStyle = ground; g.beginPath(); g.moveTo(0, H * .86); g.quadraticCurveTo(W * .5, H * .8, W, H * .86); g.lineTo(W, H); g.lineTo(0, H); g.fill();
+    // autumn leaves on the ground
+    const leafCols = ['#7A3B12', '#9C4A16', '#5E2E0E', '#B5651D', '#6B4423'];
+    for (let i = 0; i < 70; i++) { const x = rnd() * W, y = H * (.86 + rnd() * .14), s = U * (.012 + rnd() * .016);
+      g.save(); g.translate(x, y); g.rotate(rnd() * 7); g.fillStyle = leafCols[i % 5]; g.globalAlpha = .9; g.beginPath();
+      // oak leaf: wavy lobes along a pointed oval, plus a little stem
+      for (let j = 0; j <= 16; j++) { const t = j / 16, a = t * P * 2, lobe = 1 + .22 * Math.sin(t * P * 10);
+        g.lineTo(Math.cos(a) * s * 1.4, Math.sin(a) * s * .62 * lobe * (1 - .35 * Math.abs(Math.cos(a)))); }
+      g.fill(); g.strokeStyle = 'rgba(30,12,4,.6)'; g.lineWidth = Math.max(1, s * .08); g.beginPath(); g.moveTo(-s * 1.7, 0); g.lineTo(s * 1.2, 0); g.stroke(); g.restore(); }
+    // jack-o'-lanterns in the bottom corners
+    const pumpkin = (cx, cy, r, flip) => {
+      const lg = g.createRadialGradient(cx, cy, r * .2, cx, cy, r * 2.4); lg.addColorStop(0, 'rgba(255,150,40,.35)'); lg.addColorStop(1, 'rgba(255,150,40,0)');
+      g.fillStyle = lg; g.fillRect(cx - r * 2.4, cy - r * 2.4, r * 4.8, r * 4.8);
+      for (const [dx, sc, col] of [[-.55, .62, '#B4520F'], [.55, .62, '#B4520F'], [-.28, .75, '#D2691A'], [.28, .75, '#D2691A'], [0, .8, '#E07A22']]) {
+        const pg = g.createRadialGradient(cx + dx * r - r * .2, cy - r * .3, r * .1, cx + dx * r, cy, r * sc * 1.1); pg.addColorStop(0, '#F6A048'); pg.addColorStop(1, col);
+        g.fillStyle = pg; g.beginPath(); g.ellipse(cx + dx * r, cy, r * sc * .62, r * .82, 0, 0, 7); g.fill(); }
+      g.fillStyle = '#3B5E2B'; g.beginPath(); g.moveTo(cx - r * .08, cy - r * .78); g.quadraticCurveTo(cx + (flip ? -1 : 1) * r * .1, cy - r * 1.15, cx + (flip ? -1 : 1) * r * .22, cy - r * 1.12); g.lineTo(cx + r * .1, cy - r * .76); g.fill();
+      const fire = g.createRadialGradient(cx, cy, r * .05, cx, cy, r * .7); fire.addColorStop(0, '#FFF3A8'); fire.addColorStop(.6, '#FFB52E'); fire.addColorStop(1, '#E8740C');
+      g.fillStyle = fire;
+      for (const sx of [-1, 1]) { g.beginPath(); g.moveTo(cx + sx * r * .42, cy - r * .12); g.lineTo(cx + sx * r * .12, cy - r * .1); g.lineTo(cx + sx * r * .27, cy - r * .42); g.closePath(); g.fill(); }
+      g.beginPath(); g.moveTo(cx - r * .52, cy + r * .12);
+      for (let i = 0; i <= 8; i++) { const xx = cx - r * .52 + i * r * .13, yy = cy + r * (i % 2 ? .24 : .14) + Math.sin(i / 8 * P) * r * .22; g.lineTo(xx, yy); }
+      for (let i = 8; i >= 0; i--) { const xx = cx - r * .52 + i * r * .13, yy = cy + r * (i % 2 ? .3 : .42) + Math.sin(i / 8 * P) * r * .12; g.lineTo(xx, yy); }
+      g.closePath(); g.fill();
+    };
+    const pr = U * (W > H ? .12 : .13);
+    pumpkin(pr * .75, H - pr * .95, pr, false);
+    pumpkin(W - pr * .7, H - pr * .85, pr * .9, true);
+    _fl.sceneBg[key] = c;
+    return c;
+  }
+  // a dark stone slab for one product to stand on
+  function flSceneSlab(ctx, x, y, w, h) {
+    const sg = ctx.createLinearGradient(0, y, 0, y + h); sg.addColorStop(0, '#4A5A70'); sg.addColorStop(.25, '#2E3A4C'); sg.addColorStop(1, '#141B27');
+    ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.6)'; ctx.shadowBlur = h * .5; ctx.shadowOffsetY = h * .15;
+    ctx.fillStyle = sg; ctx.beginPath();
+    ctx.moveTo(x + w * .04, y + h * .1); ctx.lineTo(x + w * .3, y); ctx.lineTo(x + w * .72, y + h * .04); ctx.lineTo(x + w * .97, y + h * .12);
+    ctx.lineTo(x + w, y + h * .7); ctx.lineTo(x + w * .9, y + h); ctx.lineTo(x + w * .08, y + h * .96); ctx.lineTo(x, y + h * .6); ctx.closePath(); ctx.fill(); ctx.restore();
+    ctx.strokeStyle = 'rgba(160,180,205,.35)'; ctx.lineWidth = Math.max(1.5, h * .025);
+    ctx.beginPath(); ctx.moveTo(x + w * .04, y + h * .1); ctx.lineTo(x + w * .3, y); ctx.lineTo(x + w * .72, y + h * .04); ctx.lineTo(x + w * .97, y + h * .12); ctx.stroke();
+  }
+  // red price pill + yellow % tab; returns the pill rectangle
+  function flScenePrice(ctx, r0, x, y, size, alignRight) {
+    const v = (+r0.pp).toFixed(2).split('.');
+    const pre = r0.pq > 1 ? `${r0.pq}/` : '', unit = r0.kg && r0.pq <= 1 ? '/kg' : '';
+    const big = size, sup = size * .42;
+    const F = (s, w) => `${w || 900} ${Math.round(s)}px Archivo, "Helvetica Neue", Arial, sans-serif`;
+    ctx.font = F(big * .55); const wPre = pre ? ctx.measureText(pre).width : 0;
+    ctx.font = F(sup); const wSym = ctx.measureText('$').width, wC = ctx.measureText('.' + v[1]).width;
+    ctx.font = F(big); const wD = ctx.measureText(v[0]).width;
+    const regUnit = r0.rp != null ? r0.rp / (r0.rq || 1) : null, promoUnit = r0.pp / (r0.pq || 1);
+    const old = regUnit && regUnit > promoUnit + .001 ? (+r0.rp).toFixed(2) : '';
+    ctx.font = F(sup * .62, 800); const wOld = old ? ctx.measureText(old).width : 0;
+    const tail = Math.max(wC, wOld, unit ? sup * 1.2 : 0);
+    const padX = big * .26, h = big * 1.12, w = padX * 2 + wPre + wSym + wD + big * .04 + tail;
+    if (alignRight) x -= w;
+    ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.45)'; ctx.shadowBlur = big * .25; ctx.shadowOffsetY = big * .08;
+    ctx.fillStyle = '#E31B23'; flRound(ctx, x, y, w, h, h * .38); ctx.fill(); ctx.restore();
+    ctx.fillStyle = '#fff'; ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+    let cx = x + padX; const base = y + h * .82;
+    if (pre) { ctx.font = F(big * .55); ctx.fillText(pre, cx, base); cx += wPre; }
+    ctx.font = F(sup); ctx.fillText('$', cx, y + h * .42); cx += wSym;
+    ctx.font = F(big); ctx.fillText(v[0], cx, base); cx += wD + big * .04;
+    ctx.font = F(sup); ctx.fillText('.' + v[1], cx, y + h * .46);
+    if (old) {
+      ctx.font = F(sup * .62, 800); ctx.fillStyle = 'rgba(255,255,255,.85)'; const oy = y + h * .78;
+      ctx.fillText(old, cx, oy); ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(1.5, sup * .06);
+      ctx.beginPath(); ctx.moveTo(cx - 1, oy - sup * .2); ctx.lineTo(cx + wOld + 1, oy - sup * .2); ctx.stroke();
+    } else if (unit) { ctx.font = F(sup * .7, 800); ctx.fillText(unit, cx, y + h * .8); }
+    if (old && unit) { ctx.font = F(sup * .55, 800); ctx.fillStyle = '#fff'; ctx.fillText(unit, x + w - padX * .9 - ctx.measureText(unit).width, y + h * .98 - 2); }
+    // yellow % tab above-left
+    const off = regUnit ? Math.floor(100 * (1 - promoUnit / regUnit)) : 0;
+    if (off >= 5) {
+      const t = `-${off}%`, ts = big * .4; ctx.font = F(ts);
+      const tw = ctx.measureText(t).width + ts * .7, th = ts * 1.3, tx = x + w * .08, ty = y - th * .72;
+      ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.35)'; ctx.shadowBlur = ts * .3;
+      ctx.fillStyle = '#FFE21A'; flRound(ctx, tx, ty, tw, th, th * .45); ctx.fill(); ctx.restore();
+      ctx.fillStyle = '#E31B23'; ctx.textAlign = 'center'; ctx.fillText(t, tx + tw / 2, ty + th * .78); ctx.textAlign = 'left';
+    }
+    return { x, y, w, h };
+  }
+  async function flyerRenderScene(canvas, fmtKey, page) {
+    const F0 = FL_FORMATS[fmtKey], W = F0.w, H = F0.h, tv = fmtKey === 'tv', story = fmtKey === 'story';
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext('2d');
+    await flyerFonts();
+    const U = Math.min(W, H);
+    const units = flyerUnits().filter(u => !u.cfg.hide);
+    const per = FL_SCENE_PER[fmtKey] || 2;
+    const pages = Math.max(1, Math.ceil(units.length / per));
+    page = Math.min(page || 0, pages - 1);
+    ctx.drawImage(flSceneBg(W, H, 7), 0, 0);
+    // header: logo + "SEMAINE DES / PRIX À FAIRE PEUR / dates"
+    const M = Math.round(W * .04);
+    const lg = await flyerRawImg('images/logo-rect.png');
+    const logoH = Math.round(U * (tv ? .1 : .085)), logoW = Math.round(logoH * 2.9);
+    if (lg) { ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.5)'; ctx.shadowBlur = logoH * .2; ctx.drawImage(lg, M, M * .9, logoW, logoH); ctx.restore(); }
+    const tx = tv ? W * .62 : W * .66, tTop = M * .55;
+    const s1 = U * (tv ? .062 : .068), s2 = U * (tv ? .1 : .108);
+    ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = '#fff'; ctx.font = `${Math.round(s1)}px Anton, Impact, sans-serif`;
+    ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.6)'; ctx.shadowBlur = s1 * .2; ctx.fillText('SEMAINE DES', tx, tTop + s1); ctx.restore();
+    const t2 = 'PRIX À FAIRE PEUR';
+    let fs2 = s2; ctx.font = `${Math.round(fs2)}px Creepster, Anton, sans-serif`;
+    const maxT = (tv ? W * .7 : W * .62); if (ctx.measureText(t2).width > maxT) { fs2 *= maxT / ctx.measureText(t2).width; ctx.font = `${Math.round(fs2)}px Creepster, Anton, sans-serif`; }
+    const y2 = tTop + s1 + fs2 * .98;
+    ctx.save(); ctx.lineJoin = 'round'; ctx.strokeStyle = '#1A0C04'; ctx.lineWidth = fs2 * .12; ctx.strokeText(t2, tx, y2);
+    const og = ctx.createLinearGradient(0, y2 - fs2, 0, y2); og.addColorStop(0, '#FFB23A'); og.addColorStop(1, '#F06A0E');
+    ctx.fillStyle = og; ctx.fillText(t2, tx, y2); ctx.restore();
+    // dates in an outlined pill
+    const fd = (d) => new Date(d + 'T12:00:00');
+    const MO = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+    const a1 = fd(_fl.from), a2 = fd(_fl.to);
+    const dt = a1.getMonth() === a2.getMonth() ? `du ${a1.getDate()} au ${a2.getDate()} ${MO[a2.getMonth()]}` : `du ${a1.getDate()} ${MO[a1.getMonth()]} au ${a2.getDate()} ${MO[a2.getMonth()]}`;
+    const ds = U * (tv ? .03 : .034); ctx.font = `800 ${Math.round(ds)}px Archivo, Arial, sans-serif`;
+    const dw = ctx.measureText(dt).width + ds * 1.6, dh = ds * 1.5, dy = y2 + ds * .55;
+    ctx.fillStyle = 'rgba(8,12,22,.55)'; flRound(ctx, tx - dw / 2, dy, dw, dh, dh / 2); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(2, ds * .1); flRound(ctx, tx - dw / 2, dy, dw, dh, dh / 2); ctx.stroke();
+    ctx.fillStyle = '#fff'; ctx.fillText(dt, tx, dy + dh * .7);
+    const headBot = dy + dh + U * .02;
+    // footer: the link, and the delivery line on page 1
+    const footH = U * .07;
+    ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.font = `900 ${Math.round(U * .036)}px Archivo, Arial, sans-serif`;
+    ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.8)'; ctx.shadowBlur = U * .02;
+    ctx.fillText(FL_URL, W / 2, H - footH * .38);
+    if (_fl.badge && page === 0) { ctx.fillStyle = '#FFE21A'; ctx.font = `900 ${Math.round(U * .026)}px Archivo, Arial, sans-serif`; ctx.fillText('LIVRAISON BIENTÔT DISPONIBLE · DELIVERY AVAILABLE SOON', W / 2, H - footH * 1.05); }
+    ctx.restore();
+    const areaTop = headBot, areaBot = H - footH * (_fl.badge && page === 0 ? 1.45 : 1);
+    // product slots
+    const list = units.slice(page * per, page * per + per);
+    const cols = tv || fmtKey === 'square' ? list.length || 1 : 1;
+    const rowsN = cols > 1 ? 1 : (list.length || 1);
+    const slotW = (W - M * 2) / cols, slotH = (areaBot - areaTop) / rowsN;
+    for (let i = 0; i < list.length; i++) {
+      const u = list[i], r0 = u.members[0];
+      const sx = M + (cols > 1 ? i * slotW : 0), sy = areaTop + (cols > 1 ? 0 : i * slotH);
+      const flip = cols === 1 && i % 2 === 1;               // alternate sides, like the reference
+      // where the photo and the text go
+      let ph, tx2, tyTop, textW, alignR = false;
+      if (cols > 1) {
+        ph = { x: sx + slotW * .06, y: sy, w: slotW * .88, h: slotH * .62 };
+        tx2 = sx + slotW * .08; tyTop = sy + slotH * .66; textW = slotW * .84;
+      } else {
+        const pw = (W - M * 2) * .58;
+        ph = { x: flip ? W - M - pw : M, y: sy + slotH * .04, w: pw, h: slotH * .9 };
+        tx2 = flip ? M : M + pw + (W - M * 2) * .03; textW = (W - M * 2) * .39; tyTop = sy + slotH * .2;
+      }
+      flSceneSlab(ctx, ph.x - ph.w * .04, ph.y + ph.h * .78, ph.w * 1.08, ph.h * .2);
+      // photos (cut out), standing on the slab
+      const files = flyerUnitPhotos(u);
+      const loaded = (await Promise.all(files.map(f => flyerImg(photoSrc(f))))).filter(Boolean);
+      if (loaded.length) {
+        const auto = flyerPhotoAuto(loaded, ph.x, ph.y, ph.x + ph.w, ph.y + ph.h * .9, false);
+        loaded.forEach((t, k) => { const r = auto[k];
+          ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.55)'; ctx.shadowBlur = U * .03; ctx.shadowOffsetY = U * .012;
+          if (!t.cut) { flRound(ctx, r.x, r.y, r.w, r.h, U * .02); ctx.clip(); }
+          ctx.drawImage(t.img, t.sx, t.sy, t.sw, t.sh, r.x, r.y, r.w, r.h); ctx.restore(); });
+      }
+      // name (white), note, then the price pill
+      const name = flyerUnitName(u), note = flyerUnitNote(u);
+      let ns = U * (cols > 1 ? .03 : .04);
+      ctx.font = `800 ${Math.round(ns)}px Archivo, Arial, sans-serif`;
+      let lines = flWrap(ctx, name, textW, 99);
+      while (lines.length > 3 && ns > U * .022) { ns -= 1; ctx.font = `800 ${Math.round(ns)}px Archivo, Arial, sans-serif`; lines = flWrap(ctx, name, textW, 99); }
+      const pSize = U * (cols > 1 ? .085 : tv ? .09 : .1);
+      let ty = tyTop + pSize * .55;
+      // price first, then the name under it (as in the reference)
+      const pr = flScenePrice(ctx, r0, alignR ? tx2 + textW : tx2, ty, pSize, alignR);
+      ty = pr.y + pr.h + ns * 1.25;
+      ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.85)'; ctx.shadowBlur = ns * .35; ctx.fillStyle = '#fff'; ctx.textAlign = 'left';
+      ctx.font = `800 ${Math.round(ns)}px Archivo, Arial, sans-serif`;
+      lines.slice(0, 3).forEach(l => { ctx.fillText(l, tx2, ty); ty += ns * 1.18; });
+      if (note) { ctx.fillStyle = '#FFC46B'; ctx.font = `800 ${Math.round(ns * .72)}px Archivo, Arial, sans-serif`; ctx.fillText(note, tx2, ty + ns * .05); }
+      ctx.restore();
+    }
+    return { boxes: [], cw: 1, ch: 1, gap: 0, cols: 1, rows: 1, M, bodyTop: areaTop, page, pages, onePage: false, scene: true };
+  }
+
   let _flOneRows = 0;
   async function flyerRenderTo(canvas, fmtKey, page) {
+    if (flTheme().LAYOUT === 'scene') return flyerRenderScene(canvas, fmtKey, page);
     const F = FL_FORMATS[fmtKey];
     const W = F.w, H = F.h, tv = fmtKey === 'tv', story = fmtKey === 'story';
     canvas.width = W; canvas.height = H;
