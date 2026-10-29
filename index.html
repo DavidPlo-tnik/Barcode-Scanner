@@ -2375,7 +2375,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v248</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v249</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2991,7 +2991,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v248</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v249</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -6545,8 +6545,18 @@
     await flyerFonts();
     const U = Math.min(W, H);
     const units = flyerUnits().filter(u => !u.cfg.hide);
-    const per = FL_SCENE_PER[fmtKey] || 2;
-    const pages = Math.max(1, Math.ceil(units.length / per));
+    // pages: FIT TO N PAGES spreads the items evenly over exactly N pages (e.g. 24 items / 10 pages =
+    // 4 pages of 3 + 6 pages of 2); AUTO keeps the default count per page
+    const per = FL_SCENE_PER[fmtKey] || 2, want = flyerPagesWanted(fmtKey);
+    const starts = [0];
+    if (want) {
+      const n = Math.max(1, Math.min(want, units.length)), base = Math.floor(units.length / n), ex = units.length % n;
+      for (let k = 0; k < n; k++) starts.push(starts[k] + base + (k < ex ? 1 : 0));
+    } else {
+      const n = Math.max(1, Math.ceil(units.length / per));
+      for (let k = 1; k <= n; k++) starts.push(Math.min(units.length, k * per));
+    }
+    const pages = starts.length - 1;
     page = Math.min(page || 0, pages - 1);
     ctx.drawImage(flSceneBg(W, H, 7), 0, 0);
     // header: logo + "SEMAINE DES / PRIX À FAIRE PEUR / dates"
@@ -6586,19 +6596,29 @@
     ctx.restore();
     const areaTop = headBot, areaBot = H - footH * (_fl.badge && page === 0 ? 1.45 : 1);
     // product slots
-    const list = units.slice(page * per, page * per + per);
-    const cols = tv || fmtKey === 'square' ? list.length || 1 : 1;
-    const rowsN = cols > 1 ? 1 : (list.length || 1);
-    const slotW = (W - M * 2) / cols, slotH = (areaBot - areaTop) / rowsN;
+    const list = units.slice(starts[page], starts[page + 1]);
+    // rows: post/story stack one product per row up to their normal count; more than that = rows of 2
+    // (odd count: the first product gets a full row). TV / square: side by side, up to 3 / 2 per row.
+    const nL = list.length || 1;
+    let rowSizes;
+    if (tv || fmtKey === 'square') {
+      const cap = tv ? 3 : 2, rN = Math.ceil(nL / cap), bs = Math.floor(nL / rN), ex = nL % rN;
+      rowSizes = Array.from({ length: rN }, (_, k) => bs + (k < ex ? 1 : 0));
+    } else if (nL <= per) rowSizes = Array(nL).fill(1);
+    else rowSizes = (nL % 2 ? [1] : []).concat(Array(Math.floor(nL / 2)).fill(2));
+    const slotsAt = []; rowSizes.forEach((c, r) => { for (let k = 0; k < c; k++) slotsAt.push({ r, k, c }); });
+    const slotH = (areaBot - areaTop) / rowSizes.length;
     for (let i = 0; i < list.length; i++) {
-      const u = list[i], r0 = u.members[0];
-      const sx = M + (cols > 1 ? i * slotW : 0), sy = areaTop + (cols > 1 ? 0 : i * slotH);
-      const flip = cols === 1 && i % 2 === 1;               // alternate sides, like the reference
+      const u = list[i], r0 = u.members[0], sl = slotsAt[i];
+      const cols = sl.c, slotW = (W - M * 2) / cols;
+      const sx = M + sl.k * slotW, sy = areaTop + sl.r * slotH;
+      const flip = cols === 1 && sl.r % 2 === 1;            // alternate sides, like the reference
       // where the photo and the text go
       let ph, tx2, tyTop, textW, alignR = false;
       if (cols > 1) {
-        ph = { x: sx + slotW * .01, y: sy - slotH * .02, w: slotW * .98, h: slotH * .72 };
-        tx2 = sx + slotW * .06; tyTop = sy + slotH * .68; textW = slotW * .88;
+        const tight = rowSizes.length > 1;                  // several rows: smaller photo, room for the text under it
+        ph = { x: sx + slotW * .01, y: sy - slotH * .02, w: slotW * .98, h: slotH * (tight ? .6 : .72) };
+        tx2 = sx + slotW * .06; tyTop = sy + slotH * (tight ? .55 : .68); textW = slotW * .88;
       } else {
         // the product takes ~3/4 of the width and the whole slot; price + name sit beside it, overlapping a little
         const full = W - M * 2, pw = full * .76;
@@ -6618,18 +6638,19 @@
       }
       // name (white), note, then the price pill
       const name = flyerUnitName(u), note = flyerUnitNote(u);
-      let ns = U * (cols > 1 ? .03 : .036);
+      const tightRows = cols > 1 && rowSizes.length > 1;
+      let ns = Math.min(U * (cols > 1 ? .03 : .036), slotH * (tightRows ? .046 : cols > 1 ? .055 : .075));
       ctx.font = `800 ${Math.round(ns)}px Archivo, Arial, sans-serif`;
       let lines = flWrap(ctx, name, textW, 99);
       while (lines.length > 3 && ns > U * .022) { ns -= 1; ctx.font = `800 ${Math.round(ns)}px Archivo, Arial, sans-serif`; lines = flWrap(ctx, name, textW, 99); }
-      const pSize = U * (cols > 1 ? .08 : tv ? .085 : .092);
+      const pSize = Math.min(U * (cols > 1 ? .08 : tv ? .085 : .092), slotH * (tightRows ? .115 : cols > 1 ? .14 : .2), slotW * .2);
       let ty = tyTop + pSize * .55;
       // price first, then the name under it (as in the reference)
       const pr = flScenePrice(ctx, r0, alignR ? tx2 + textW : tx2, ty, pSize, alignR);
       ty = pr.y + pr.h + ns * 1.25;
       ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.85)'; ctx.shadowBlur = ns * .35; ctx.fillStyle = '#fff'; ctx.textAlign = 'left';
       ctx.font = `800 ${Math.round(ns)}px Archivo, Arial, sans-serif`;
-      lines.slice(0, 3).forEach(l => { ctx.fillText(l, tx2, ty); ty += ns * 1.18; });
+      lines.slice(0, tightRows ? 2 : 3).forEach(l => { ctx.fillText(l, tx2, ty); ty += ns * 1.18; });
       if (note) { ctx.fillStyle = '#FFC46B'; ctx.font = `800 ${Math.round(ns * .72)}px Archivo, Arial, sans-serif`; ctx.fillText(note, tx2, ty + ns * .05); }
       ctx.restore();
     }
