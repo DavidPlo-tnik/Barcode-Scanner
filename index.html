@@ -2375,7 +2375,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v249</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v250</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2991,7 +2991,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v249</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v250</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -5990,7 +5990,7 @@
     if (b) {
       const u = flyerUnitByKey(b.key), locked = u && u.cfg.lock;
       h += `<div class="fle-sel ${locked ? 'locked' : ''}" style="left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px;border-width:${px(2.5)}"></div>`;
-      if (!locked && !_fle.photoMode) {
+      if (!locked && !_fle.photoMode && !L.scene) {
         const H = 46 / _fle.z, V = 12 / _fle.z;              // touch target / visible knob (screen px)
         const knob = (cls, x, y, w, hh) => `<div class="fle-h ${cls}" data-h="${cls}" style="left:${x - w / 2}px;top:${y - hh / 2}px;width:${w}px;height:${hh}px"><i style="border-width:${px(2.5)}"></i></div>`;
         h += knob('r', b.x + b.w, b.y + b.h / 2, H, H * 1.6);
@@ -6028,6 +6028,19 @@
       el.innerHTML = `${pages}<div class="fle-row">
           ${flyerPagesSelect('fle-pages')}
           <span class="fle-hint">Tap a box to edit it · pinch or wheel to zoom · drag to move around</span></div>`;
+    } else if (L.scene && !_fle.photoMode) {
+      el.innerHTML = `${pages}<div class="fle-name">${escapeHtml(flyerUnitName(u))}</div>
+        <div class="fle-row">
+          <span class="fle-grp"><em>PHOTO</em><button data-t="allm">−</button><button data-t="allp">+</button></span>
+          <span class="fle-grp"><button data-t="prev" title="Earlier">◀</button><button data-t="next" title="Later">▶</button></span>
+        </div>
+        <div class="fle-row">
+          <button data-t="photos">📷 MOVE PHOTOS</button>
+          <button data-t="phauto" ${u.cfg.ph && u.cfg.ph[flPhKey()] ? '' : 'disabled'}>AUTO</button>
+          <button data-t="hide">HIDE</button>
+          <button data-t="desel" class="pri">DONE</button>
+        </div>
+        <div class="fle-hint">− / + makes every photo of this product smaller / bigger</div>`;
     } else if (u.cfg.lock) {
       el.innerHTML = `${pages}<div class="fle-name">${escapeHtml(flyerUnitName(u))}</div>
         <div class="fle-row"><button data-t="lock" class="on">🔓 UNLOCK</button><button data-t="desel">DONE</button>
@@ -6102,7 +6115,12 @@
     if (t === 'hide') { flyerSnap(); u.cfg.hide = true; _fl.sel = null; flyerSaveCfg(); await flyerDraw(); return; }
     if (t === 'photos') { _fle.photoMode = true; _fle.phSel = null; flyerEdPaint(); flyerEdTools(); return; }
     if (t === 'phdone') { _fle.photoMode = false; _fle.phSel = null; flyerEdPaint(); flyerEdTools(); return; }
-    if (t === 'phauto') { flyerSnap(); if (u.cfg.ph) delete u.cfg.ph[_fl.fmt]; flyerSaveCfg(); await flyerDraw(); return; }
+    if ((t === 'allp' || t === 'allm') && b && (b.photos || []).length) {
+      flyerSnap();
+      b.photos.forEach(r => { const o = flyerPhCfg(u, r.f); o.s = t === 'allp' ? Math.min(3, (o.s || 1) * 1.12) : Math.max(.3, (o.s || 1) / 1.12); });
+      flyerSaveCfg(); await flyerDraw(); flyerEdTools(); return;
+    }
+    if (t === 'phauto') { flyerSnap(); if (u.cfg.ph) delete u.cfg.ph[flPhKey()]; flyerSaveCfg(); await flyerDraw(); flyerEdTools(); return; }
     if (!_fle.phSel) return;
     const o = flyerPhCfg(u, _fle.phSel);
     flyerSnap();
@@ -6111,9 +6129,10 @@
     if (t === 'phreset') { o.s = 1; o.dx = 0; o.dy = 0; }
     flyerSaveCfg(); await flyerDraw();
   }
+  const flPhKey = () => _fl.fmt + (_fl.layout && _fl.layout.scene ? '~sc' : '');
   function flyerPhCfg(u, f) {
     u.cfg.ph = u.cfg.ph || {};
-    const per = u.cfg.ph[_fl.fmt] = u.cfg.ph[_fl.fmt] || {};
+    const k = flPhKey(), per = u.cfg.ph[k] = u.cfg.ph[k] || {};
     return per[f] = per[f] || { dx: 0, dy: 0, s: 1 };
   }
 
@@ -6607,7 +6626,7 @@
     } else if (nL <= per) rowSizes = Array(nL).fill(1);
     else rowSizes = (nL % 2 ? [1] : []).concat(Array(Math.floor(nL / 2)).fill(2));
     const slotsAt = []; rowSizes.forEach((c, r) => { for (let k = 0; k < c; k++) slotsAt.push({ r, k, c }); });
-    const slotH = (areaBot - areaTop) / rowSizes.length;
+    const slotH = (areaBot - areaTop) / rowSizes.length, boxes = [];
     for (let i = 0; i < list.length; i++) {
       const u = list[i], r0 = u.members[0], sl = slotsAt[i];
       const cols = sl.c, slotW = (W - M * 2) / cols;
@@ -6628,13 +6647,21 @@
       flSceneSlab(ctx, ph.x + ph.w * .02, ph.y + ph.h * .8, ph.w * .96, ph.h * .17);
       // photos (cut out), standing on the slab
       const files = flyerUnitPhotos(u);
-      const loaded = (await Promise.all(files.map(f => flyerImg(photoSrc(f))))).filter(Boolean);
+      const raw = await Promise.all(files.map(f => flyerImg(photoSrc(f))));
+      const loaded = raw.filter(Boolean), okNames = files.filter((f, k) => raw[k]);
+      const box = { key: u.key, x: sx, y: sy, w: slotW, h: slotH, cw: 1, ch: 1, photos: [] };
+      boxes.push(box);
       if (loaded.length) {
-        const auto = flyerPhotoAuto(loaded, ph.x, ph.y, ph.x + ph.w, ph.y + ph.h * .93, false);
-        loaded.forEach((t, k) => { const r = auto[k];
+        const fnames = okNames;
+        const man = (u.cfg.ph && u.cfg.ph[fmtKey + '~sc']) || {};   // own set: hand edits from the grid look don't apply here
+        const auto = flyerPhotoAuto(loaded, ph.x, ph.y, ph.x + ph.w, ph.y + ph.h * .93, Object.keys(man).length > 0);
+        loaded.forEach((t, k) => { let r = auto[k];
+          const o = man[fnames[k]];          // ✎ editor: moved / resized by hand (dx, dy = share of the box)
+          if (o) { const sc = o.s || 1, cx = r.x + r.w / 2 + (o.dx || 0) * slotW, cy = r.y + r.h / 2 + (o.dy || 0) * slotH; r = { x: cx - r.w * sc / 2, y: cy - r.h * sc / 2, w: r.w * sc, h: r.h * sc }; }
           ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.55)'; ctx.shadowBlur = U * .03; ctx.shadowOffsetY = U * .012;
           if (!t.cut) { flRound(ctx, r.x, r.y, r.w, r.h, U * .02); ctx.clip(); }
-          ctx.drawImage(t.img, t.sx, t.sy, t.sw, t.sh, r.x, r.y, r.w, r.h); ctx.restore(); });
+          ctx.drawImage(t.img, t.sx, t.sy, t.sw, t.sh, r.x, r.y, r.w, r.h); ctx.restore();
+          box.photos.push({ f: fnames[k], x: r.x, y: r.y, w: r.w, h: r.h, ax: auto[k].x, ay: auto[k].y, aw: auto[k].w, ah: auto[k].h }); });
       }
       // name (white), note, then the price pill
       const name = flyerUnitName(u), note = flyerUnitNote(u);
@@ -6654,7 +6681,7 @@
       if (note) { ctx.fillStyle = '#FFC46B'; ctx.font = `800 ${Math.round(ns * .72)}px Archivo, Arial, sans-serif`; ctx.fillText(note, tx2, ty + ns * .05); }
       ctx.restore();
     }
-    return { boxes: [], cw: 1, ch: 1, gap: 0, cols: 1, rows: 1, M, bodyTop: areaTop, page, pages, onePage: false, scene: true };
+    return { boxes, cw: 1, ch: 1, gap: 0, cols: 1, rows: 1, M, bodyTop: areaTop, page, pages, onePage: false, scene: true };
   }
 
   let _flOneRows = 0;
