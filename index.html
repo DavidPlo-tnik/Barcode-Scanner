@@ -2375,7 +2375,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v251</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v252</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2991,7 +2991,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v251</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v252</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -8033,8 +8033,9 @@
   // Other codes that work the same way: several named items under ONE POS code.
   // 10104/10107/10108 are the scale codes for ready-made food (sides / salads /
   // meats); 85 is the pastry / pierozhki code (sold per piece).
-  const GROUP_ONLY_CODES_RAW = ['0021010400000', '0021010700000', '0021010800000', '85', '0005559200003', '0005559200001'];   // + Paradis honey 1 kg / 500 g
-  const GROUP_NOUN = { '0021010400000': 'side', '0021010700000': 'salad', '0021010800000': 'meat', '85': 'pastry', '0005559200003': 'honey', '0005559200001': 'honey' };
+  // + Paradis honey 1 kg / 500 g; 10134 = ready-made dishes per piece (METS CUISINÉS 3.99), 10144 = homemade soups 950 ml
+  const GROUP_ONLY_CODES_RAW = ['0021010400000', '0021010700000', '0021010800000', '85', '0005559200003', '0005559200001', '0021013400000', '0021014400000'];
+  const GROUP_NOUN = { '0021010400000': 'side', '0021010700000': 'salad', '0021010800000': 'meat', '85': 'pastry', '0005559200003': 'honey', '0005559200001': 'honey', '0021013400000': 'dish', '0021014400000': 'soup' };
   function groupNoun(code) { return GROUP_NOUN[code] || GROUP_NOUN[String(code).replace(/^0+/, '')] || (isCandyOnly(code) ? 'candy' : 'item'); }
   function isCandyOnly(code) {
     const rc = resolveCode(String(code));
