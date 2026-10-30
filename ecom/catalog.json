@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-30T18:42:48.563Z",
+ "updated": "2026-10-30T18:43:05.608Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -7291,23 +7291,6 @@
    "group": "3-riviera-yog-grec",
    "dept": "3",
    "weekly": 13.98,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0006491211112": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "3-riviera-yog-grec",
-   "dept": "3",
-   "weekly": 13.89,
    "scale": false,
    "fresh": false,
    "v": {
