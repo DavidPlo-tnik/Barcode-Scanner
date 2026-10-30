@@ -12,7 +12,9 @@
     "charcuterie",
     "fromages",
     "laitiers"
-   ]
+   ],
+   "uk": "Свіже",
+   "ru": "Свежее"
   },
   {
    "id": "cuisine",
@@ -22,7 +24,9 @@
     "pret-a-manger",
     "pains",
     "surgeles"
-   ]
+   ],
+   "uk": "Кухня, хліб і заморожене",
+   "ru": "Кухня, хлеб и замороженное"
   },
   {
    "id": "garde-manger",
@@ -35,7 +39,9 @@
     "tartinades",
     "the-cafe",
     "maison"
-   ]
+   ],
+   "uk": "Комора",
+   "ru": "Кладовая"
   },
   {
    "id": "sucre",
@@ -46,7 +52,9 @@
     "chocolats",
     "grignotines",
     "boissons"
-   ]
+   ],
+   "uk": "Солодке та напої",
+   "ru": "Сладкое и напитки"
   }
  ],
  "aisles": [
@@ -55,126 +63,162 @@
    "fr": "Fruits & légumes",
    "en": "Fruits & vegetables",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Фрукти та овочі",
+   "ru": "Фрукты и овощи"
   },
   {
    "id": "viande-poisson",
    "fr": "Viande & poisson",
    "en": "Meat & fish",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "М'ясо та риба",
+   "ru": "Мясо и рыба"
   },
   {
    "id": "charcuterie",
    "fr": "Charcuterie",
    "en": "Deli meats",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Ковбаси та делікатеси",
+   "ru": "Колбасы и деликатесы"
   },
   {
    "id": "fromages",
    "fr": "Fromages",
    "en": "Cheese",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Сири",
+   "ru": "Сыры"
   },
   {
    "id": "laitiers",
    "fr": "Produits laitiers & œufs",
    "en": "Dairy & eggs",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Молочне та яйця",
+   "ru": "Молочное и яйца"
   },
   {
    "id": "pret-a-manger",
    "fr": "Prêt-à-manger maison",
    "en": "Ready meals, made here",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Готові страви власного виробництва",
+   "ru": "Готовые блюда собственного приготовления"
   },
   {
    "id": "pains",
    "fr": "Pains & pâtisseries",
    "en": "Bread & bakery",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Хліб і випічка",
+   "ru": "Хлеб и выпечка"
   },
   {
    "id": "surgeles",
    "fr": "Surgelés",
    "en": "Frozen",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Заморожені продукти",
+   "ru": "Замороженные продукты"
   },
   {
    "id": "bonbons",
    "fr": "Bonbons en vrac",
    "en": "Bulk candy",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Цукерки на вагу",
+   "ru": "Конфеты на развес"
   },
   {
    "id": "chocolats",
    "fr": "Biscuits & sucreries",
    "en": "Cookies & sweets",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Печиво та солодощі",
+   "ru": "Печенье и сладости"
   },
   {
    "id": "tartinades",
    "fr": "Confitures, miel & sucré",
    "en": "Jams, honey & sweet spreads",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Варення, мед і солодке",
+   "ru": "Варенье, мёд и сладкое"
   },
   {
    "id": "conserves",
    "fr": "Marinades & conserves",
    "en": "Pickles & preserves",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Соління та консервація",
+   "ru": "Соленья и консервы"
   },
   {
    "id": "sauces",
    "fr": "Sauces & condiments",
    "en": "Sauces & condiments",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Соуси та приправи",
+   "ru": "Соусы и приправы"
   },
   {
    "id": "epicerie-base",
    "fr": "Épicerie de base",
    "en": "Pantry staples",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Бакалія",
+   "ru": "Бакалея"
   },
   {
    "id": "the-cafe",
    "fr": "Thé & café",
    "en": "Tea & coffee",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Чай і кава",
+   "ru": "Чай и кофе"
   },
   {
    "id": "boissons",
    "fr": "Boissons & kvas",
    "en": "Drinks & kvass",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Напої та квас",
+   "ru": "Напитки и квас"
   },
   {
    "id": "grignotines",
    "fr": "Graines & grignotines",
    "en": "Seeds & snacks",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Насіння та снеки",
+   "ru": "Семечки и снеки"
   },
   {
    "id": "maison",
    "fr": "Maison & entretien",
    "en": "Household",
    "subs": [],
-   "subsEn": []
+   "subsEn": [],
+   "uk": "Дім і господарство",
+   "ru": "Дом и хозяйство"
   }
  ],
  "codeRules": {

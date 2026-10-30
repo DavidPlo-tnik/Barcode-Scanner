@@ -1,5 +1,7 @@
 # Generates the storefront aisle sections from ecom/categories.json (re-run whenever the aisles change)
-import json, re, unicodedata, os
+import json, re, unicodedata, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from theme_i18n import quad, LANG_ASSIGN
 T='/home/claude/marche-decarie-store/'
 c=json.load(open('/home/claude/barcode-scanner/ecom/categories.json'))
 def norm(s):
@@ -10,8 +12,10 @@ A={a['id']:a for a in c['aisles']}
 order=c.get('order') or [a for z in c['zones'] for a in z['aisles']]
 for a in c['aisles']:
     for s in a['subs']+a['subsEn']+[a['fr'],a['en']]: assert not re.search(r"[|~^;']",s),s
-AISLES_DEF=';'.join(f"{i}|{A[i]['fr']}|{A[i]['en']}|{zone_of[i]}|"+'^'.join(f"{slug(s)}~{s}~{e}" for s,e in zip(A[i]['subs'],A[i]['subsEn'])) for i in order)
-ZONES_DEF=';'.join(f"{z['id']}|{z['fr']}|{z['en']}|{','.join(z['aisles'])}" for z in c['zones'])
+def L(x): return (x or '').replace("'", "\u2019")       # Ukrainian apostrophe: the defs live in a '...' string
+# aisles: id|fr|en|zone|subs|uk|ru     zones: id|fr|en|aisles|uk|ru
+AISLES_DEF=';'.join(f"{i}|{A[i]['fr']}|{A[i]['en']}|{zone_of[i]}|"+'^'.join(f"{slug(s)}~{s}~{e}" for s,e in zip(A[i]['subs'],A[i]['subsEn']))+f"|{L(A[i].get('uk') or A[i]['fr'])}|{L(A[i].get('ru') or A[i]['fr'])}" for i in order)
+ZONES_DEF=';'.join(f"{z['id']}|{z['fr']}|{z['en']}|{','.join(z['aisles'])}|{L(z.get('uk') or z['fr'])}|{L(z.get('ru') or z['fr'])}" for z in c['zones'])
 PAIRS_DEF=';'.join(f"{a}|"+'^'.join(f"{p[0]}~{slug(p[1]) if p[1] else ''}" for p in v) for a,v in c['pairings'].items() if v)
 DEFS=f"""{{%- comment -%}} GENERATED from ecom/categories.json by theme_gen.py -- do not edit by hand {{%- endcomment -%}}
 {{%- liquid
@@ -19,10 +23,11 @@ DEFS=f"""{{%- comment -%}} GENERATED from ecom/categories.json by theme_gen.py -
   if request.locale.iso_code == 'en'
     assign en = true
   endif
+  LANGASSIGN
   assign aisles_def = '{AISLES_DEF}' | split: ';'
   assign zones_def = '{ZONES_DEF}' | split: ';'
   assign pairs_def = '{PAIRS_DEF}' | split: ';'
--%}}"""
+-%}}""".replace('LANGASSIGN', LANG_ASSIGN)
 open('/tmp/claude-0/aisles/defs.liquid','w').write(DEFS)
 
 ZONE_COLORS={'frais':('#E7F3EA','#1F6B3E'),'cuisine':('#FCEFE1','#9A4F0E'),'garde-manger':('#ECEFF8','#33437F'),'sucre':('#FBE8EF','#9A2C52')}
@@ -31,6 +36,7 @@ ZONE_CSS_PLACE=zone_css
 
 # ---------------- shelf card snippet ----------------
 CARD="""{%- comment -%} Compact product card for the aisle shelves (home, "goes with"). {%- endcomment -%}
+{%- assign lang = request.locale.iso_code | slice: 0, 2 -%}
 {%- liquid
   assign price = product.price
   assign per_kg = false
@@ -63,7 +69,7 @@ CARD="""{%- comment -%} Compact product card for the aisle shelves (home, "goes 
   </span>
   {%- unless product.available -%}<span class="dshelf__sold">{% if en %}Sold out{% else %}Épuisé{% endif %}</span>{%- endunless -%}
 </a>"""
-open(T+'snippets/decarie-shelf-card.liquid','w').write(CARD)
+open(T+'snippets/decarie-shelf-card.liquid','w').write(quad(CARD))
 
 SHELF_CSS="""
   .dshelf { padding: 1.4rem 0 .6rem; }
@@ -244,7 +250,7 @@ SHELVES=DEFS+"""
 { "name": "Aisle shelves", "settings": [], "presets": [{ "name": "Aisle shelves" }] }
 {% endschema %}
 """
-open(T+'sections/decarie-aisle-shelves.liquid','w').write(SHELVES)
+open(T+'sections/decarie-aisle-shelves.liquid','w').write(quad(SHELVES))
 
 # ---------------- aisle (collection) page ----------------
 AISLE=DEFS+"""
@@ -272,11 +278,16 @@ AISLE=DEFS+"""
   assign aname = collection.title
   if a
     assign zone = a[3]
-    if en
-      assign aname = a[2]
-    else
-      assign aname = a[1]
-    endif
+    case lang
+      when 'en'
+        assign aname = a[2]
+      when 'uk'
+        assign aname = a[5] | default: a[1]
+      when 'ru'
+        assign aname = a[6] | default: a[1]
+      else
+        assign aname = a[1]
+    endcase
   endif
   assign zrec = nil
   for zd in zones_def
@@ -297,8 +308,8 @@ AISLE=DEFS+"""
 { "name": "Aisle header", "settings": [] }
 {% endschema %}
 """.replace('ZONECSS',zone_css)
-open(T+'sections/decarie-aisle-page.liquid','w').write(AISLE)
-open(T+'templates/collection.allee.json','w').write(json.dumps({'sections':{'aisle':{'type':'decarie-aisle-page','settings':{}},'combo':{'type':'decarie-combo','settings':{'show_on':'allee-pret-a-manger','demo_meat':'candy-0021010800000-cmuyx97c9','demo_salad':'candy-0021010700000-cmuyx813r'}},'product-grid':{'type':'main-collection-product-grid','settings':{'products_per_page': 48, 'columns_desktop': 5, 'color_scheme': 'scheme-1', 'image_ratio': 'square', 'image_shape': 'default', 'show_secondary_image': False, 'show_vendor': False, 'show_rating': False, 'quick_add': 'standard', 'enable_filtering': False, 'filter_type': 'horizontal', 'enable_sorting': True, 'columns_mobile': '2', 'padding_top': 16, 'padding_bottom': 36}}},'order':['aisle','combo','product-grid']},indent=2))
+open(T+'sections/decarie-aisle-page.liquid','w').write(quad(AISLE))
+open(T+'templates/collection.allee.json','w').write(json.dumps({'sections':{'aisle':{'type':'decarie-aisle-page','settings':{}},'combo':{'type':'decarie-combo','settings':{'show_on':'allee-pret-a-manger','demo_meat':'cuisse-de-poulet-rotie','demo_salad':'salade-de-chou-frise-au-sesame'}},'product-grid':{'type':'main-collection-product-grid','settings':{'products_per_page': 48, 'columns_desktop': 5, 'color_scheme': 'scheme-1', 'image_ratio': 'square', 'image_shape': 'default', 'show_secondary_image': False, 'show_vendor': False, 'show_rating': False, 'quick_add': 'standard', 'enable_filtering': False, 'filter_type': 'horizontal', 'enable_sorting': True, 'columns_mobile': '2', 'padding_top': 16, 'padding_bottom': 36}}},'order':['aisle','combo','product-grid']},indent=2))
 
 # ---------------- product page: goes with ----------------
 GOES=DEFS+"""
@@ -353,7 +364,7 @@ GOES=DEFS+"""
 { "name": "Goes well with", "settings": [], "presets": [{ "name": "Goes well with" }] }
 {% endschema %}
 """
-open(T+'sections/decarie-goes-with.liquid','w').write(GOES)
+open(T+'sections/decarie-goes-with.liquid','w').write(quad(GOES))
 
 # ---------------- header: aisle bar + store-map overlay + surprise ----------------
 NAV=DEFS+"""
@@ -451,7 +462,7 @@ NAV=DEFS+"""
 { "name": "Aisle bar", "settings": [] }
 {% endschema %}
 """.replace('ZONECSS',zone_css)
-open(T+'sections/decarie-aisle-nav.liquid','w').write(NAV)
+open(T+'sections/decarie-aisle-nav.liquid','w').write(quad(NAV))
 
 # ---------------- hamburger menu: zones -> aisles ----------------
 DRAWER=DEFS+"""
@@ -487,12 +498,8 @@ DRAWER=DEFS+"""
 {%- endif -%}
 <li><a href="{{ routes.all_products_collection_url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">{{ 'decarie.drawer.all' | t }}</a></li>
 <li class="decarie-drawer__divider" role="presentation"></li>
-{%- assign about_pg = pages['a-propos'] | default: pages['about'] -%}
 {%- assign terms_pg = pages['conditions-d-utilisation'] | default: pages['conditions-dutilisation'] | default: pages['conditions'] | default: pages['terms'] -%}
-{%- if about_pg != blank -%}
-  <li><a href="{{ about_pg.url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">{% if en %}About us{% else %}À propos{% endif %}</a></li>
-  <li><a href="{{ about_pg.url }}#heures" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">{% if en %}Opening hours{% else %}Heures d'ouverture{% endif %}</a></li>
-{%- endif -%}
+<li><a href="#heures" data-close-drawer class="menu-drawer__menu-item list-menu__item link link--text focus-inset">{% if en %}Opening hours{% else %}Heures d'ouverture{% endif %}</a></li>
 {%- if terms_pg != blank -%}
   <li><a href="{{ terms_pg.url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">{% if en %}Terms of use{% else %}Conditions d'utilisation{% endif %}</a></li>
 {%- endif -%}
@@ -500,6 +507,8 @@ DRAWER=DEFS+"""
   (function () {
     if (window.__decarieAcc) return; window.__decarieAcc = true;
     document.addEventListener('click', function (e) {
+      var hc = e.target.closest && e.target.closest('[data-close-drawer]');   // "Opening hours" -> the hours in the footer: close the menu first
+      if (hc) { var sm = document.querySelector('header-drawer details[open] > summary'); if (sm) sm.click(); }
       var b = e.target.closest && e.target.closest('[data-decarie-acc]');   // a link, not a <button>: the theme's drawer script binds every <button> and <details> inside the menu
       if (!b) return;
       e.preventDefault(); e.stopPropagation();
@@ -511,5 +520,5 @@ DRAWER=DEFS+"""
   })();
 </script>
 """
-open(T+'snippets/decarie-drawer-departments.liquid','w').write(DRAWER)
+open(T+'snippets/decarie-drawer-departments.liquid','w').write(quad(DRAWER))
 print('theme files written')

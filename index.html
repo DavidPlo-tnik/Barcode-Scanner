@@ -2375,7 +2375,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v250</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v251</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2991,7 +2991,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v250</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v251</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -8327,7 +8327,10 @@
       const doc = json || { products: {}, collections: {} };
       doc.products = doc.products || {};
       const old = doc.products[h] || {};
-      doc.products[h] = { src: old.src || (srcName || '').trim(), fr, en, manual: true, at: pmToday() };
+      // Ukrainian / Russian stay only while the French + English they were made from are unchanged;
+      // otherwise they are dropped (site shows French there) until the next translation pass
+      const keepXL = old.fr === fr && old.en === en;
+      doc.products[h] = { src: old.src || (srcName || '').trim(), fr, en, ...(keepXL && old.uk ? { uk: old.uk } : {}), ...(keepXL && old.ru ? { ru: old.ru } : {}), manual: true, at: pmToday() };
       const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(doc, null, 1))));
       try { await ghPutFile('ecom/translations.json', b64, 'website name ' + h, sha); return doc; }
       catch (e) { if (!e.isConflict || attempt >= 3) throw e; }
