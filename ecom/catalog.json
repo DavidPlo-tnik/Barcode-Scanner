@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-30T18:42:37.308Z",
+ "updated": "2026-10-30T18:42:48.563Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -6133,23 +6133,6 @@
    "group": "1-kickh-caf-moul",
    "dept": "1",
    "weekly": 13.99,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482001268472": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": null,
-   "dept": "3",
-   "weekly": 27.96,
    "scale": false,
    "fresh": false,
    "v": {
