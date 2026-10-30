@@ -1844,11 +1844,11 @@
    "ru": "POM мягкий нарезной цельнозерновой хлеб 675 г"
   },
   "pos-0006107777845": {
-   "src": "Pom tortilla blanc N.Y N.Y 9\"       610g",
-   "fr": "POM tortillas blanches N.Y. N.Y. 9 po 610 g",
-   "en": "POM N.Y. N.Y. white tortillas 9 in 610 g",
-   "uk": "POM білі тортильї N.Y. N.Y. 9 дюймів 610 г",
-   "ru": "POM белые тортильи N.Y. N.Y. 9 дюймов 610 г"
+   "src": "Pom tortilla blanc originale       610g",
+   "fr": "POM tortillas blanches originales 610 g",
+   "en": "POM original white tortillas 610 g",
+   "uk": "POM білі тортильї оригінальні 610 г",
+   "ru": "POM белые тортильи оригинальные 610 г"
   },
   "pos-0006120002020": {
    "src": "DAIRY MILK",
@@ -3412,11 +3412,11 @@
    "ru": "Подсолнечная халва шоколадная"
   },
   "pos-0021051500000": {
-   "src": "BEIGNE A LA CREME",
-   "fr": "Beigne à la crème",
-   "en": "Cream donut",
-   "uk": "Пончик із кремом",
-   "ru": "Пончик с кремом"
+   "src": "BEIGNE VANILLE",
+   "fr": "Beigne à la vanille",
+   "en": "Vanilla donut",
+   "uk": "Пончик ванільний",
+   "ru": "Пончик ванильный"
   },
   "pos-0021051600000": {
    "src": "BEIGNE A LA FRAISE",
@@ -3531,11 +3531,11 @@
    "ru": "Тарамасалата"
   },
   "pos-0023880000000": {
-   "src": "MAQUERAU FUME",
-   "fr": "Maquereau fumé",
-   "en": "Smoked mackerel",
-   "uk": "Скумбрія копчена",
-   "ru": "Скумбрия копчёная"
+   "src": "MAQUERAU FUME A CHAUD",
+   "fr": "Maquereau fumé à chaud",
+   "en": "Hot-smoked mackerel",
+   "uk": "Скумбрія гарячого копчення",
+   "ru": "Скумбрия горячего копчения"
   },
   "pos-0023880100000": {
    "src": "CAVIAR DE  SAUMON ROUGE",
@@ -7150,11 +7150,11 @@
    "ru": "Наш Сок вишнёво-арониевый сок"
   },
   "pos-0482026429031": {
-   "src": "ODESSA JUS",
-   "fr": "Odessa jus",
-   "en": "Odessa juice",
-   "uk": "Одеса сік",
-   "ru": "Одесса сок"
+   "src": "NASH CIK JUS DE GRENADE",
+   "fr": "Nash Sik jus de grenade",
+   "en": "Nash Sik pomegranate juice",
+   "uk": "Наш Сік гранатовий сік",
+   "ru": "Наш Сок гранатовый сок"
   },
   "pos-0482026429112": {
    "src": "NASH SIK NECTAR DE POIRE ET POMME",
@@ -8800,6 +8800,223 @@
    "en": "Riviera crème fraîche 35% 2 × 120 ml",
    "uk": "Riviera крем-фреш 35 % 2 × 120 мл",
    "ru": "Riviera крем-фреш 35 % 2 × 120 мл"
+  },
+  "candy-0000000011002-cmvsp5rbg": {
+   "src": "Bonbons fruités miniatures / Mini bonbons aux fruits, Imperial",
+   "fr": "Mini bonbons fruités, Imperial",
+   "en": "Mini fruit candies, Imperial",
+   "uk": "Міні-фруктові цукерки, Imperial",
+   "ru": "Мини-фруктовые конфеты, Imperial"
+  },
+  "candy-0000000011002-cmvsp6wla": {
+   "src": "Bonbons au yaourt / Caramel au yaourt aux fruits, Roshen",
+   "fr": "Caramels au yogourt et aux fruits, Roshen",
+   "en": "Fruit yogurt caramels, Roshen",
+   "uk": "Йогуртова карамель із фруктами, Roshen",
+   "ru": "Йогуртовая карамель с фруктами, Roshen"
+  },
+  "candy-0000000011002-cmvsp6ywz": {
+   "src": "Bonbons caramel à l'épine-vinette (Barberry), Rot Front",
+   "fr": "Caramels à l'épine-vinette (Barbaris), Rot Front",
+   "en": "Barberry caramels (Barbaris), Rot Front",
+   "uk": "Карамель «Барбарис», Рот Фронт",
+   "ru": "Карамель «Барбарис», Рот Фронт"
+  },
+  "candy-0000000011002-cmvsp8f23": {
+   "src": "Bonbons durs Bim Bom aux fruits, Roshen",
+   "fr": "Bim-Bom, bonbons durs aux fruits, Roshen",
+   "en": "Bim-Bom fruit hard candies, Roshen",
+   "uk": "Бім-Бом, фруктові льодяники, Roshen",
+   "ru": "Бим-Бом, фруктовые леденцы, Roshen"
+  },
+  "candy-0000000011002-cmvsp8jqv": {
+   "src": "Bonbons aux agrumes Citrus Mix, Roshen",
+   "fr": "Citrus Mix, bonbons aux agrumes, Roshen",
+   "en": "Citrus Mix citrus candies, Roshen",
+   "uk": "Citrus Mix, цитрусові льодяники, Roshen",
+   "ru": "Citrus Mix, цитрусовые леденцы, Roshen"
+  },
+  "candy-0000000011002-cmvspal56": {
+   "src": "Caramel au café CoffeeLike avec garniture au lait, Roshen",
+   "fr": "CoffeeLike, caramel au café fourré au lait, Roshen",
+   "en": "CoffeeLike coffee caramel with milk filling, Roshen",
+   "uk": "CoffeeLike, кавова карамель з молочною начинкою, Roshen",
+   "ru": "CoffeeLike, кофейная карамель с молочной начинкой, Roshen"
+  },
+  "candy-0000000011002-cmvspans8": {
+   "src": "Bonbons acidulés pétillants Fizzy Boom, Roshen",
+   "fr": "Fizzy Boom, bonbons acidulés pétillants, Roshen",
+   "en": "Fizzy Boom fizzy sour candies, Roshen",
+   "uk": "Fizzy Boom, шипучі кислі льодяники, Roshen",
+   "ru": "Fizzy Boom, шипучие кислые леденцы, Roshen"
+  },
+  "candy-0000000011002-cmvspc0k6": {
+   "src": "Bonbons au lait Sweet Drop сhargés de crème, Roshen",
+   "fr": "Sweet Drop, bonbons au lait fourrés à la crème, Roshen",
+   "en": "Sweet Drop cream-filled milk candies, Roshen",
+   "uk": "Sweet Drop, молочні цукерки з вершковою начинкою, Roshen",
+   "ru": "Sweet Drop, молочные конфеты со сливочной начинкой, Roshen"
+  },
+  "candy-0000000011002-cmvspcr1z": {
+   "src": "Bonbons caramel Karamelkino à l'épine-vinette, Roshen",
+   "fr": "Karamelkino, caramels à l'épine-vinette, Roshen",
+   "en": "Karamelkino barberry caramels, Roshen",
+   "uk": "Карамелькіно, карамель «Барбарис», Roshen",
+   "ru": "Карамелькино, карамель «Барбарис», Roshen"
+  },
+  "candy-0000000011002-cmvspcsqk": {
+   "src": "Bonbons caramel Karamelkino Duchesse à la poire, Roshen",
+   "fr": "Karamelkino Duchesse, caramels à la poire, Roshen",
+   "en": "Karamelkino Duchess pear caramels, Roshen",
+   "uk": "Карамелькіно Дюшес, грушева карамель, Roshen",
+   "ru": "Карамелькино Дюшес, грушевая карамель, Roshen"
+  },
+  "candy-0000000011002-cmvspeix5": {
+   "src": "Caramel Snezhok fondant au sucre, Rot Front",
+   "fr": "Snezhok, caramel fondant au sucre, Rot Front",
+   "en": "Snezhok sugar fondant caramel, Rot Front",
+   "uk": "Сніжок, карамель із цукровою помадкою, Рот Фронт",
+   "ru": "Снежок, карамель с сахарной помадкой, Рот Фронт"
+  },
+  "candy-0000000011002-cmvspg05w": {
+   "src": "Bonbons caramel à la menthe Poivrée, Rot Front",
+   "fr": "Caramels à la menthe poivrée, Rot Front",
+   "en": "Peppermint caramels, Rot Front",
+   "uk": "М'ятна карамель, Рот Фронт",
+   "ru": "Мятная карамель, Рот Фронт"
+  },
+  "pos-0020170900000": {
+   "src": "Graines de tournesol crues",
+   "fr": "Graines de tournesol crues",
+   "en": "Raw sunflower seeds",
+   "uk": "Сире насіння соняшника",
+   "ru": "Сырые семечки подсолнечника"
+  },
+  "pos-0020171000000": {
+   "src": "Graines de citrouille crues",
+   "fr": "Graines de citrouille crues",
+   "en": "Raw pumpkin seeds",
+   "uk": "Гарбузове насіння сире",
+   "ru": "Тыквенные семечки сырые"
+  },
+  "pos-0020232900000": {
+   "src": "PILON DE DINDE FUMÉE",
+   "fr": "Pilon de dinde fumé",
+   "en": "Smoked turkey drumstick",
+   "uk": "Копчена гомілка індички",
+   "ru": "Копчёная голень индейки"
+  },
+  "pos-0020236000000": {
+   "src": "KOSTITSA MINI BACON",
+   "fr": "Kostitsa, mini bacon",
+   "en": "Kostitsa mini bacon",
+   "uk": "Кістиця, міні-бекон",
+   "ru": "Костица, мини-бекон"
+  },
+  "pos-0020238200000": {
+   "src": "HAUT CUISSE DINDE FUMEE",
+   "fr": "Haut de cuisse de dinde fumé",
+   "en": "Smoked turkey thigh",
+   "uk": "Копчене стегно індички",
+   "ru": "Копчёное бедро индейки"
+  },
+  "pos-0020239600000": {
+   "src": "BRANDT SALAMI GENRE BALTIC",
+   "fr": "Brandt salami style balte",
+   "en": "Brandt Baltic-style salami",
+   "uk": "Brandt салямі по-балтійськи",
+   "ru": "Brandt салями по-балтийски"
+  },
+  "pos-0020239700000": {
+   "src": "BRANDT SALAMI GENRE BALTIC PIQUANT",
+   "fr": "Brandt salami style balte piquant",
+   "en": "Brandt spicy Baltic-style salami",
+   "uk": "Brandt салямі по-балтійськи гостра",
+   "ru": "Brandt салями по-балтийски острая"
+  },
+  "pos-0020239800000": {
+   "src": "SALAMI SZEGEDI",
+   "fr": "Salami Szegedi",
+   "en": "Szegedi salami",
+   "uk": "Салямі Сегедська",
+   "ru": "Салями Сегедская"
+  },
+  "pos-0020304000000": {
+   "src": "JARRET DE PORC FUME",
+   "fr": "Jarret de porc fumé",
+   "en": "Smoked pork hock",
+   "uk": "Копчена свиняча рулька",
+   "ru": "Копчёная свиная рулька"
+  },
+  "pos-0020616000000": {
+   "src": "HAMBURGER DE POULET CONGELÉ",
+   "fr": "Hamburgers de poulet surgelés",
+   "en": "Frozen chicken burgers",
+   "uk": "Курячі бургери заморожені",
+   "ru": "Куриные бургеры замороженные"
+  },
+  "pos-0020762800000": {
+   "src": "MORTADELLE",
+   "fr": "Mortadelle",
+   "en": "Mortadella",
+   "uk": "Мортаделла",
+   "ru": "Мортаделла"
+  },
+  "pos-0023881900000": {
+   "src": "FLETAN FUMÉ À CHAUD PALTUS",
+   "fr": "Flétan fumé à chaud (paltus)",
+   "en": "Hot-smoked halibut (paltus)",
+   "uk": "Палтус гарячого копчення",
+   "ru": "Палтус горячего копчения"
+  },
+  "pos-0077332120450": {
+   "src": "BRANDT MINI SAUCISSON FERMIER FUMÉ",
+   "fr": "Brandt mini saucissons fermiers fumés",
+   "en": "Brandt smoked mini farmer sausages",
+   "uk": "Brandt міні-ковбаски фермерські копчені",
+   "ru": "Brandt мини-колбаски фермерские копчёные"
+  },
+  "pos-0482017460009": {
+   "src": "HATINKA FARINE",
+   "fr": "Khatynka farine",
+   "en": "Khatynka flour",
+   "uk": "Хатинка борошно",
+   "ru": "Хатынка мука"
+  },
+  "pos-0482017460040": {
+   "src": "HATINKA MILLET",
+   "fr": "Khatynka millet",
+   "en": "Khatynka millet",
+   "uk": "Хатинка пшоно",
+   "ru": "Хатынка пшено"
+  },
+  "pos-0482020587284": {
+   "src": "GATEAU KIYIV BKK",
+   "fr": "BKK gâteau Kyiv",
+   "en": "BKK Kyiv cake",
+   "uk": "БКК Київський торт",
+   "ru": "БКК Киевский торт"
+  },
+  "pos-0482309790474": {
+   "src": "VELADIS CAVIAR DE COLIN D'ALASKA BREAKOUT (MINTAI)",
+   "fr": "Veladis caviar de goberge d'Alaska (mintaï)",
+   "en": "Veladis Alaska pollock roe (mintai)",
+   "uk": "Veladis ікра минтаю",
+   "ru": "Veladis икра минтая"
+  },
+  "pos-0482309790476": {
+   "src": "VELADIS CAVIAR DE MORUE",
+   "fr": "Veladis caviar de morue",
+   "en": "Veladis cod roe",
+   "uk": "Veladis ікра тріски",
+   "ru": "Veladis икра трески"
+  },
+  "pos-0484000802977": {
+   "src": "FRANZELUTA GATEAU MIEL",
+   "fr": "Franzeluta gâteau au miel",
+   "en": "Franzeluta honey cake",
+   "uk": "Францелюта медовий торт",
+   "ru": "Францелюта медовый торт"
   }
  },
  "collections": {
