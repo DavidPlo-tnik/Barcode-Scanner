@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-30T18:06:05.935Z",
+ "updated": "2026-10-30T18:06:12.928Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -573,23 +573,6 @@
    "featured": true
   },
   "0085007784004": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "32-tresse-de-fromage",
-   "dept": "32",
-   "weekly": 19.98,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0085007784002": {
    "added": "2026-09-06",
    "photos": [],
    "listed": false,
