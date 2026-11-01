@@ -1,5 +1,5 @@
 {
- "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime.",
+ "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime. Optional 'desc' {fr,en,uk,ru}: extra HTML appended to the product description.",
  "updated": "2026-11-01",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
@@ -431,10 +431,12 @@
   },
   "candy-0021010400000-cmuxaeu1v": {
    "src": "Item #45",
-   "fr": "Riz pilaf aux légumes",
-   "en": "Vegetable rice pilaf",
-   "uk": "Рисовий плов з овочами",
-   "ru": "Рисовый плов с овощами"
+   "fr": "Riz aux légumes",
+   "en": "Rice with vegetables",
+   "uk": "Рис з овочами",
+   "ru": "Рис с овощами",
+   "manual": true,
+   "at": "2026-11-01"
   },
   "candy-0021010400000-cmuxaf3bz": {
    "src": "Item #46",
@@ -466,10 +468,12 @@
   },
   "candy-0021010700000-cmuywoo2a": {
    "src": "Item #57",
-   "fr": "Aubergines et poivrons marinés",
-   "en": "Marinated eggplant & peppers",
-   "uk": "Мариновані баклажани з перцем",
-   "ru": "Маринованные баклажаны с перцем"
+   "fr": "Salade d'aubergines",
+   "en": "Eggplant salad",
+   "uk": "Салат із баклажанів",
+   "ru": "Салат из баклажанов",
+   "manual": true,
+   "at": "2026-11-01"
   },
   "candy-0021010700000-cmuywvd5d": {
    "src": "Item #58",
@@ -487,10 +491,12 @@
   },
   "candy-0021010700000-cmuyxbh56": {
    "src": "Item #60",
-   "fr": "Légumes grillés",
-   "en": "Grilled vegetables",
-   "uk": "Овочі гриль",
-   "ru": "Овощи гриль"
+   "fr": "Légumes grillés marinés",
+   "en": "Marinated grilled vegetables",
+   "uk": "Мариновані овочі гриль",
+   "ru": "Маринованные овощи гриль",
+   "manual": true,
+   "at": "2026-11-01"
   },
   "candy-0021010700000-cmuyxdsrn": {
    "src": "Item #61",
@@ -501,10 +507,12 @@
   },
   "candy-0021010800000-cmuxdfqvi": {
    "src": "Item #49",
-   "fr": "Boulettes de viande",
-   "en": "Meatballs",
-   "uk": "Тефтелі",
-   "ru": "Тефтели"
+   "fr": "Boulettes au bœuf",
+   "en": "Beef meatballs",
+   "uk": "Яловичі тефтелі",
+   "ru": "Говяжьи тефтели",
+   "manual": true,
+   "at": "2026-11-01"
   },
   "candy-0021010800000-cmuxdhgyx": {
    "src": "Item #50",
@@ -515,10 +523,12 @@
   },
   "candy-0021010800000-cmuxdjd4v": {
    "src": "Item #51",
-   "fr": "Poulet glacé en sauce",
-   "en": "Glazed chicken in sauce",
-   "uk": "Глазурована курка в соусі",
-   "ru": "Глазированная курица в соусе"
+   "fr": "Poulet teriyaki",
+   "en": "Teriyaki chicken",
+   "uk": "Курка теріякі",
+   "ru": "Курица терияки",
+   "manual": true,
+   "at": "2026-11-01"
   },
   "candy-0021010800000-cmuyx97c9": {
    "src": "Item #52",
@@ -536,10 +546,12 @@
   },
   "candy-0021010800000-cmuyxin3j": {
    "src": "Item #54",
-   "fr": "Varenykys",
-   "en": "Varenyky",
+   "fr": "Pierogis (varenyky)",
+   "en": "Pierogies (varenyky)",
    "uk": "Вареники",
-   "ru": "Вареники"
+   "ru": "Вареники",
+   "manual": true,
+   "at": "2026-11-01"
   },
   "candy-0021010800000-cmv47aew3": {
    "src": "Item #55",
@@ -3364,10 +3376,18 @@
   },
   "pos-0021013700000": {
    "src": "KHINKALI AU BOEUF ET PORC",
-   "fr": "Khinkali au bœuf et porc",
-   "en": "Beef & pork khinkali",
-   "uk": "Хінкалі з яловичиною та свининою",
-   "ru": "Хинкали с говядиной и свининой"
+   "fr": "Khinkali surgelés au bœuf et porc",
+   "en": "Frozen beef & pork khinkali",
+   "uk": "Хінкалі заморожені з яловичиною та свининою",
+   "ru": "Хинкали замороженные с говядиной и свининой",
+   "manual": true,
+   "at": "2026-11-01",
+   "desc": {
+    "fr": "<p><strong>Surgelés.</strong> Cuisson : plonger les khinkali encore congelés dans une grande casserole d'eau bouillante salée, remuer doucement et cuire 12 à 15 min après qu'ils remontent à la surface.</p>",
+    "en": "<p><strong>Frozen.</strong> To cook: drop the khinkali still frozen into a large pot of salted boiling water, stir gently and cook 12–15 min after they float.</p>",
+    "uk": "<p><strong>Заморожені.</strong> Приготування: опустіть замороженими у велику каструлю з підсоленим окропом, обережно помішайте й варіть 12–15 хв після того, як спливуть.</p>",
+    "ru": "<p><strong>Замороженные.</strong> Приготовление: опустите замороженными в большую кастрюлю с подсоленным кипятком, аккуратно помешайте и варите 12–15 мин после всплытия.</p>"
+   }
   },
   "pos-0021014100000": {
    "src": "KHOLODETS",
@@ -8747,10 +8767,12 @@
   },
   "candy-0000000000085-cmvrijg6x": {
    "src": "Item #79",
-   "fr": "Burek aux épinards",
-   "en": "Spinach burek",
-   "uk": "Бурек зі шпинатом",
-   "ru": "Бурек со шпинатом"
+   "fr": "Spanakopita épinards, feta et fromage",
+   "en": "Spanakopita with spinach, feta & cheese",
+   "uk": "Спанакопіта зі шпинатом, фетою та сиром",
+   "ru": "Спанакопита со шпинатом, фетой и сыром",
+   "manual": true,
+   "at": "2026-11-01"
   },
   "candy-0000000000085-cmvrio697": {
    "src": "Item #80",
@@ -9020,10 +9042,12 @@
   },
   "candy-0021014400000-cmvvea765": {
    "src": "Item #97",
-   "fr": "Bortsch maison 950 ml",
-   "en": "Homemade borscht 950 ml",
-   "uk": "Домашній борщ 950 мл",
-   "ru": "Домашний борщ 950 мл"
+   "fr": "Bortsch ukrainien 950 ml",
+   "en": "Ukrainian borscht 950 ml",
+   "uk": "Український борщ 950 мл",
+   "ru": "Украинский борщ 950 мл",
+   "manual": true,
+   "at": "2026-11-01"
   },
   "candy-0021014400000-cmvvedd44": {
    "src": "Item #98",
@@ -9034,10 +9058,12 @@
   },
   "candy-0021014400000-cmvvefspg": {
    "src": "Item #99",
-   "fr": "Soupe aux pois 950 ml",
-   "en": "Split pea soup 950 ml",
-   "uk": "Гороховий суп 950 мл",
-   "ru": "Гороховый суп 950 мл"
+   "fr": "Soupe aux lentilles rouges 950 ml",
+   "en": "Red lentil soup 950 ml",
+   "uk": "Суп із червоної сочевиці 950 мл",
+   "ru": "Суп из красной чечевицы 950 мл",
+   "manual": true,
+   "at": "2026-11-01"
   },
   "pos-0006872100388": {
    "src": "Villaggio pain blé entier     600g",
