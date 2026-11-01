@@ -118,7 +118,7 @@ SHUFFLE_JS="""
       track.innerHTML = '';
       top.forEach(function (s) { if (s.p >= 4) { var b = s.el.querySelector('.dshelf__new'); if (b) b.hidden = false; } track.appendChild(s.el); });
     };
-    document.querySelectorAll('[data-dshelf-mix]').forEach(function (t) { window.dShelfMix(t, +t.getAttribute('data-dshelf-mix') || 12, t.getAttribute('data-key') || ''); });
+    document.querySelectorAll('[data-dshelf-mix]').forEach(function (t) { t.dataset.mixed = 1; window.dShelfMix(t, +t.getAttribute('data-dshelf-mix') || 12, t.getAttribute('data-key') || ''); });
   })();
 </script>"""
 
@@ -205,6 +205,10 @@ SHELVES=DEFS+"""
   .dua__s { display: block; font-size: 1.4rem; font-weight: 600; margin-top: .5rem; }
   .dua__go { align-self: flex-end; background: #1a1a1a; color: #fff; border-radius: 99px; padding: .8rem 1.3rem; font-weight: 800; font-size: 1.35rem; white-space: nowrap; }
 {%- endstyle -%}
+{%- comment -%} Speed: the home page renders only the first few shelves; the rest come from
+  /?view=allshelves (templates/index.allshelves.json, no layout) when the visitor scrolls near them. {%- endcomment -%}
+{%- assign mode = section.settings.mode | default: 'all' -%}
+{%- assign first_n = section.settings.first_n | default: 3 -%}
 <div class="page-width dshelves">
   {%- assign n_done = 0 -%}
   {%- for ad in aisles_def -%}
@@ -213,6 +217,10 @@ SHELVES=DEFS+"""
     {%- assign col = collections[h] -%}
     {%- if col != blank and col.products_count > 0 -%}
       {%- assign n_done = n_done | plus: 1 -%}
+      {%- assign show = true -%}
+      {%- if mode == 'first' and n_done > first_n -%}{%- assign show = false -%}{%- endif -%}
+      {%- if mode == 'rest' and n_done <= first_n -%}{%- assign show = false -%}{%- endif -%}
+      {%- if show -%}
       {%- assign zclass = 'dplan__zone--' | append: a[3] -%}
       <section class="dshelf {{ zclass }}" aria-label="{{ a[1] | escape }}">
         <div class="dshelf__head">
@@ -242,15 +250,48 @@ SHELVES=DEFS+"""
           </a></div>
         {%- endif -%}
       {%- endif -%}
+      {%- endif -%}
     {%- endif -%}
   {%- endfor -%}
+  {%- if mode == 'first' and n_done > first_n -%}
+    {%- assign more_url = routes.root_url | append: '?view=allshelves' | replace: '//?', '/?' -%}
+    <div class="dshelves__more" data-dshelves-more="{{ more_url }}" aria-busy="true" style="display:block;min-height:40rem"><span class="visually-hidden">…</span></div>
+  {%- endif -%}
 </div>
+<script>
+  (function () {
+    var box = document.querySelector('[data-dshelves-more]'); if (!box || box.dataset.done) return;
+    function load() {
+      if (box.dataset.done) return; box.dataset.done = 1;
+      fetch(box.getAttribute('data-dshelves-more'), { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (html) {
+        var tmp = document.createElement('div'); tmp.innerHTML = html;
+        var rest = tmp.querySelector('.dshelves'); if (!rest) { box.remove(); return; }
+        var frag = document.createDocumentFragment();
+        Array.prototype.slice.call(rest.children).forEach(function (el) { frag.appendChild(el); });
+        box.replaceWith(frag);
+        document.querySelectorAll('[data-dshelf-mix]').forEach(function (t) {
+          if (t.dataset.mixed || !window.dShelfMix) return; t.dataset.mixed = 1;
+          window.dShelfMix(t, +t.getAttribute('data-dshelf-mix') || 12, t.getAttribute('data-key') || '');
+        });
+      }).catch(function () { box.dataset.done = ''; });
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); load(); } }, { rootMargin: '1200px 0px' });
+      io.observe(box);
+    } else { load(); }
+  })();
+</script>
 """ + SHUFFLE_JS + """
 {% schema %}
-{ "name": "Aisle shelves", "settings": [], "presets": [{ "name": "Aisle shelves" }] }
+{ "name": "Aisle shelves", "settings": [
+  { "type": "select", "id": "mode", "label": "Shelves shown", "default": "all", "options": [
+    { "value": "all", "label": "All shelves" }, { "value": "first", "label": "First shelves now, the rest when scrolling (faster)" }, { "value": "rest", "label": "Only the shelves after the first ones" } ] },
+  { "type": "range", "id": "first_n", "label": "Shelves loaded right away", "min": 1, "max": 8, "step": 1, "default": 3 } ],
+  "presets": [{ "name": "Aisle shelves" }] }
 {% endschema %}
 """
 open(T+'sections/decarie-aisle-shelves.liquid','w').write(quad(SHELVES))
+open(T+'templates/index.allshelves.json','w').write(json.dumps({'layout': False, 'sections': {'rest': {'type': 'decarie-aisle-shelves', 'settings': {'mode': 'rest', 'first_n': 3}}}, 'order': ['rest']}, indent=2))
 
 # ---------------- aisle (collection) page ----------------
 AISLE=DEFS+"""
