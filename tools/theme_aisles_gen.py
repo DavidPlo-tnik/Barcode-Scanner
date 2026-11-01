@@ -285,7 +285,7 @@ SHELVES=DEFS+"""
 {% schema %}
 { "name": "Aisle shelves", "settings": [
   { "type": "select", "id": "mode", "label": "Shelves shown", "default": "all", "options": [
-    { "value": "all", "label": "All shelves" }, { "value": "first", "label": "First shelves now, the rest when scrolling (faster)" }, { "value": "rest", "label": "Only the shelves after the first ones" } ] },
+    { "value": "all", "label": "All shelves" }, { "value": "first", "label": "First shelves, rest on scroll" }, { "value": "rest", "label": "Only the later shelves" } ] },
   { "type": "range", "id": "first_n", "label": "Shelves loaded right away", "min": 1, "max": 8, "step": 1, "default": 3 } ],
   "presets": [{ "name": "Aisle shelves" }] }
 {% endschema %}
