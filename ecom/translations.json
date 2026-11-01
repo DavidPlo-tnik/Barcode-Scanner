@@ -1,6 +1,6 @@
 {
  "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime.",
- "updated": "2026-10-30",
+ "updated": "2026-11-01",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
    "src": "Romachka, Roshen,",
@@ -9017,6 +9017,34 @@
    "en": "Franzeluta honey cake",
    "uk": "Францелюта медовий торт",
    "ru": "Францелюта медовый торт"
+  },
+  "candy-0021014400000-cmvvea765": {
+   "src": "Item #97",
+   "fr": "Bortsch maison 950 ml",
+   "en": "Homemade borscht 950 ml",
+   "uk": "Домашній борщ 950 мл",
+   "ru": "Домашний борщ 950 мл"
+  },
+  "candy-0021014400000-cmvvedd44": {
+   "src": "Item #98",
+   "fr": "Crème de champignons 950 ml",
+   "en": "Cream of mushroom soup 950 ml",
+   "uk": "Грибний крем-суп 950 мл",
+   "ru": "Грибной крем-суп 950 мл"
+  },
+  "candy-0021014400000-cmvvefspg": {
+   "src": "Item #99",
+   "fr": "Soupe aux pois 950 ml",
+   "en": "Split pea soup 950 ml",
+   "uk": "Гороховий суп 950 мл",
+   "ru": "Гороховый суп 950 мл"
+  },
+  "pos-0006872100388": {
+   "src": "Villaggio pain blé entier     600g",
+   "fr": "Villaggio pain de blé entier 600 g",
+   "en": "Villaggio whole wheat bread 600 g",
+   "uk": "Villaggio цільнозерновий хліб 600 г",
+   "ru": "Villaggio цельнозерновой хлеб 600 г"
   }
  },
  "collections": {
