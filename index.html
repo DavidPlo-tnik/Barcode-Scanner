@@ -2403,7 +2403,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v253</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v254</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3019,7 +3019,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v253</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v254</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11807,6 +11807,7 @@
   //  11 stops, very good order (nearest + 2-opt) above that. Nothing is saved to GitHub
   //  except the normal "out for delivery" status.
   // ════════════════════════════════════════════════════════════════
+  const RT_TESLA = false;   // the Tesla arrives Feb 2027: then true = 🚗 TESLA button + help line (sends the address to the Tesla app)
   const RT_STORE = { lat: 45.4766564, lng: -73.6145465, address: '3824 Boulevard Décarie, Montréal, QC H4A 3J7' };
   const _rt = { day: null, off: new Set(), plan: null, busy: false, ret: true, stopMin: 5, start: null, err: '' };
   const rtIsoDay = (d) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
@@ -11958,14 +11959,14 @@
               <small>${escapeHtml(o.address || '')}${o.note ? ' · 📝 ' + escapeHtml(o.note) : ''}</small>
               <div class="rt-btns">
                 <a target="_blank" rel="noopener" href="${nav}">🧭 MAPS</a>
-                <button data-share="${k}">🚗 TESLA</button>
+                <button data-share="${k}">${RT_TESLA ? '🚗 TESLA' : '📤 SHARE'}</button>
                 ${o.phone ? `<a href="${orSmsLink(o, rtMsg(o, x.eta))}">💬 ON THE WAY</a><a href="tel:${orPhoneDigits(o.phone)}">📞</a>` : ''}
                 <button data-open="${escapeHtml(o.id)}">${o.status === 'delivered' ? '✓ DONE' : '✓ DELIVERED…'}</button>
               </div></div></div>`;
           }).join('')}
           ${P.back ? `<div class="rt-stop rt-store"><i>🏪</i><div><b>Back at the store</b><small>~${rtClock(P.back)}</small></div></div>` : ''}
         </div>` : ''}
-      <p class="or-hint rt-help">🚗 TESLA sends the address to the Tesla app (pick “Tesla” in the share menu) and it appears in the car. Times include ${_rt.stopMin} min at each door.</p>
+      <p class="or-hint rt-help">${RT_TESLA ? '🚗 TESLA sends the address to the Tesla app (pick “Tesla” in the share menu) and it appears in the car.' : '📤 SHARE sends the address to another app (Waze, Apple Maps, a message to the driver…).'} Times include ${_rt.stopMin} min at each door.</p>
     </div>`;
     $('#rt-x').onclick = rtClose;
     m.querySelectorAll('.rt-days button').forEach(b => b.onclick = () => { _rt.day = b.dataset.d; _rt.plan = null; rtRender(); });
