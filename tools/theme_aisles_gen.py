@@ -207,7 +207,8 @@ SHELVES=DEFS+"""
 {%- endstyle -%}
 {%- comment -%} Speed: the home page renders only the first few shelves; the rest come from
   /?view=allshelves (templates/index.allshelves.json, no layout) when the visitor scrolls near them. {%- endcomment -%}
-{%- assign mode = section.settings.mode | default: 'all' -%}
+{%- assign mode = section.settings.mode | default: 'first' -%}
+{%- if template.suffix == 'allshelves' -%}{%- assign mode = 'rest' -%}{%- endif -%}
 {%- assign first_n = section.settings.first_n | default: 3 -%}
 <div class="page-width dshelves">
   {%- assign n_done = 0 -%}
@@ -284,7 +285,7 @@ SHELVES=DEFS+"""
 """ + SHUFFLE_JS + """
 {% schema %}
 { "name": "Aisle shelves", "settings": [
-  { "type": "select", "id": "mode", "label": "Shelves shown", "default": "all", "options": [
+  { "type": "select", "id": "mode", "label": "Shelves shown", "default": "first", "options": [
     { "value": "all", "label": "All shelves" }, { "value": "first", "label": "First shelves, rest on scroll" }, { "value": "rest", "label": "Only the later shelves" } ] },
   { "type": "range", "id": "first_n", "label": "Shelves loaded right away", "min": 1, "max": 8, "step": 1, "default": 3 } ],
   "presets": [{ "name": "Aisle shelves" }] }
