@@ -491,10 +491,10 @@
   },
   "candy-0021010700000-cmuyxbh56": {
    "src": "Item #60",
-   "fr": "Légumes grillés marinés",
-   "en": "Marinated grilled vegetables",
-   "uk": "Мариновані овочі гриль",
-   "ru": "Маринованные овощи гриль",
+   "fr": "Légumes marinés",
+   "en": "Marinated vegetables",
+   "uk": "Мариновані овочі",
+   "ru": "Маринованные овощи",
    "manual": true,
    "at": "2026-11-01"
   },
