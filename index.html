@@ -2403,7 +2403,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v254</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v255</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3019,7 +3019,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v254</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v255</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -12100,11 +12100,13 @@
   }
   function supUnitsPerBox(it) {   // in OUR selling unit (kg for weighed items)
     if (!it.bn) return null;
+    if (it.ou) return it.ou * it.bn;   // we sell it by the piece but buy it by weight: ou = our pieces per kg (Barilo's mini bologna, 500 g → 2)
     if (it.unit === 'lb') return it.bn / 2.2046;
     return it.bn;
   }
   function supCostPerOurUnit(it) {
     if (it.p == null) return null;
+    if (it.ou) return it.p / it.ou;
     return it.unit === 'lb' ? it.p * 2.2046 : it.p;
   }
   function supLastOrderLine(sid, k, excludeId) {
@@ -12116,7 +12118,14 @@
   }
   function supSuggest(cfg, it, cover) {
     const codes = supCodes(cfg, it); if (!codes.length || it.p == null) return null;
-    const rate = supRate(codes), per = supUnitsPerBox(it);
+    let rate = supRate(codes); const per = supUnitsPerBox(it);
+    // two of THEIR lines sold under one of our codes (e.g. Barilo's bologna CP + SP, both rung as BOLOGNE PORC):
+    // split our sales between them by what we last received of each, so the pair isn't ordered twice
+    const sib = (cfg.list.items || []).filter(x => x.k !== it.k && supCodes(cfg, x).some(c => codes.includes(c)));
+    if (sib.length) {
+      const w = x => { const l = supLastOrderLine(cfg.id, x.k, _sup.draftId); return l && l.qty > 0 ? l.qty : 1; };
+      rate = rate * w(it) / (w(it) + sib.reduce((a, x) => a + w(x), 0));
+    }
     // several suppliers carry it: suggest only at the preferred one (★), else at the cheapest
     const others = supOthers(cfg.id, codes).filter(x => x.it.p != null);
     let elsewhere = null;
@@ -12190,12 +12199,12 @@
         <div class="sup-btns">
           <button class="btn primary" data-sa="order" data-sid="${id}">${draft ? '✏️ CONTINUE ORDER' : '＋ NEW ORDER'}</button>
           <button class="btn" data-sa="match" data-sid="${id}">🔗 MATCH${review ? ' (' + review + ')' : ''}</button>
-          <label class="btn sup-up">⬆ ${c.list.file ? 'NEW PRICE LIST' : 'THEIR ORDER SHEET'}<input type="file" accept=".xlsx,.xls" data-sup-upload="${id}" hidden></label>
+          ${c.unit === 'kg' && !c.list.file ? '' : `<label class="btn sup-up">⬆ ${c.list.file ? 'NEW PRICE LIST' : 'THEIR ORDER SHEET'}<input type="file" accept=".xlsx,.xls" data-sup-upload="${id}" hidden></label>`}
         </div>
         ${mine.filter(o => o.status !== 'draft').slice(0, 8).map(o => {
           const n = Object.values(o.lines || {}).reduce((t, l) => t + (l.q || 0), 0);
           return `<button class="sup-ord" data-sa="${o.status === 'sent' ? 'receive' : 'view'}" data-oid="${o.id}" data-sid="${id}">
-            <span>${escapeHtml(String(o.sentAt || o.created).slice(0, 10))} · ${Object.keys(o.lines || {}).length} lines · ${n} boxes · ${supMoney(o.total)}</span>
+            <span>${escapeHtml(String(o.sentAt || o.created).slice(0, 10))} · ${Object.keys(o.lines || {}).length} lines · ${c.unit === 'kg' ? Math.round(n * 100) / 100 + ' kg' : n + ' boxes'} · ${supMoney(o.total)}</span>
             <em class="sup-st ${o.status}">${o.status === 'sent' ? 'SENT · tap when delivered' : o.status === 'received' ? 'RECEIVED' : o.status.toUpperCase()}</em></button>`;
         }).join('')}
       </div>`;
@@ -12330,14 +12339,14 @@
       <div class="sup-l1">
         ${codes.length ? productThumbHtml(codes[0], 40) : '<span class="sup-noimg">?</span>'}
         <div class="sup-names"><b>${escapeHtml(ourName || it.d)}</b>${ourName ? `<small>${escapeHtml(it.d)}</small>` : ''}
-          <small>${escapeHtml(it.b || '?')} per box · ${na ? '<span class="sup-bad">no price on their list</span>' : supMoney(it.p) + per + ' = ' + supMoney(it.p * (it.bn || 0)) + '/box'}${our ? ' · we sell ' + supMoney(our) : ''}${margin != null ? ` · <b class="${margin < 25 ? 'sup-bad' : 'sup-ok'}">${margin}%</b>` : ''}${it.n ? ` · <span class="sup-new">${escapeHtml(it.n)}</span>` : ''}</small>
-          ${codes.length ? `<small>${sg && sg.rate ? 'sells ' + (sg.rate >= 10 ? Math.round(sg.rate) : sg.rate.toFixed(1)) + (it.unit !== 'ea' ? ' kg' : '') + '/wk' : 'no recent sales'}${sg && sg.last ? ' · last: ' + sg.last.qty + ' bx ' + sg.last.date.slice(5) : ''}${costMove ? ` · <span class="sup-warn">cost ${supMoney(cost)} vs POS ${supMoney(posCost)}</span>` : ''}</small>` : ''}
+          <small>${c.unit === 'kg' ? (na ? '<span class="sup-bad">no price</span>' : supMoney(it.p) + '/kg' + (it.ou ? ' (' + supMoney(cost) + ' a piece)' : '')) : `${escapeHtml(it.b || '?')} per box · ${na ? '<span class="sup-bad">no price on their list</span>' : supMoney(it.p) + per + ' = ' + supMoney(it.p * (it.bn || 0)) + '/box'}`}${our ? ' · we sell ' + supMoney(our) : ''}${margin != null ? ` · <b class="${margin < 25 ? 'sup-bad' : 'sup-ok'}">${margin}%</b>` : ''}${it.n ? ` · <span class="sup-new">${escapeHtml(it.n)}</span>` : ''}</small>
+          ${codes.length ? `<small>${sg && sg.rate ? 'sells ' + (sg.rate >= 10 ? Math.round(sg.rate) : sg.rate.toFixed(1)) + (it.ou ? ' pcs' : it.unit !== 'ea' ? ' kg' : '') + '/wk' : 'no recent sales'}${sg && sg.last ? ' · last: ' + sg.last.qty + (c.unit === 'kg' ? ' kg ' : ' bx ') + sg.last.date.slice(5) : ''}${costMove ? ` · <span class="sup-warn">cost ${supMoney(cost)} vs POS ${supMoney(posCost)}</span>` : ''}</small>` : ''}
         </div>
         ${na ? '' : `<div class="sup-step"><button data-sq="-1" aria-label="one box less">−</button><button class="sup-qty" data-qedit="1">${supQtyText(l)}</button><button data-sq="1" aria-label="one box more">＋</button></div>`}
       </div>
       ${codes.length ? `<div class="sup-mline"><span>✓ matched to <b>${escapeHtml(ourName)}</b>${codes.length > 1 ? ' +' + (codes.length - 1) : ''}</span><button data-match="1">change / unmatch</button></div>`
         : `<div class="sup-mline is-un"><span>${(() => { const s0 = ((c.sugg || {})[it.k] || []).find(x => DATA.products[x]); return s0 ? 'suggestion: ' + escapeHtml(((DATA.products[s0] || [])[0] || '').trim()) : 'not matched to our products'; })()}</span><button class="primary" data-match="1">🔍 FIND MATCH</button></div>`}
-      ${!na && q >= 10 ? `<button class="sup-free${l && l.fa ? ' on' : ''}" data-free="1">🎁 ${l && l.fa ? `${q}+${Math.floor(q / 10)} free box${Math.floor(q / 10) > 1 ? 'es' : ''} ✓` : '10+1 deal? tap to add the free boxes'}</button>` : ''}
+      ${!na && q >= 10 && c.unit !== 'kg' ? `<button class="sup-free${l && l.fa ? ' on' : ''}" data-free="1">🎁 ${l && l.fa ? `${q}+${Math.floor(q / 10)} free box${Math.floor(q / 10) > 1 ? 'es' : ''} ✓` : '10+1 deal? tap to add the free boxes'}</button>` : ''}
       ${sg && sg.others && sg.others.length ? (() => {
         const pref = supPrefFor(codes);
         return `<div class="sup-alt">${sg.others.map(x => `<span>${pref === x.sid ? '★ ' : ''}${escapeHtml((_sup.cfg[x.sid] || {}).name || x.sid)}: ${supMoney(x.it.p)}${x.it.unit === 'lb' ? '/lb' : x.it.unit === 'kg' ? '/kg' : '/u'}</span>`).join('')}
@@ -12362,7 +12371,7 @@
     const t = supTotals(c, d), box = el.querySelector('.sup-total');
     if (!box) return;
     box.querySelector('b').textContent = supMoney(t.total);
-    box.querySelector('span').textContent = `${t.boxes} boxes${t.free ? ' + ' + t.free + ' free' : ''} · ${t.n} products`;
+    box.querySelector('span').textContent = c.unit === 'kg' ? `${Math.round(t.boxes * 100) / 100} kg · ${t.n} products` : `${t.boxes} boxes${t.free ? ' + ' + t.free + ' free' : ''} · ${t.n} products`;
     const send = box.querySelector('[data-sa="send"]'); if (send) send.disabled = !t.n;
     const chip = el.querySelector('[data-sf="in"]'); if (chip) chip.textContent = 'IN ORDER ' + t.n;
   }
@@ -12386,7 +12395,7 @@
     let shown = 0;
     el.innerHTML = `
       <div class="sup-top"><button class="or-refresh" data-sa="home">‹</button><div class="or-h">${escapeHtml(c.name)} · ORDER</div><span class="or-upd" id="sup-saved">${Object.keys(_sup.dirty).length ? 'not synced yet' : ''}</span></div>
-      <div class="sup-total"><div><b>${supMoney(t.total)}</b><span>${t.boxes} boxes${t.free ? ' + ' + t.free + ' free' : ''} · ${t.n} products</span></div>
+      <div class="sup-total"><div><b>${supMoney(t.total)}</b><span>${c.unit === 'kg' ? Math.round(t.boxes * 100) / 100 + ' kg' : t.boxes + ' boxes' + (t.free ? ' + ' + t.free + ' free' : '')} · ${t.n} products</span></div>
         <button class="btn primary" data-sa="send" ${t.n ? '' : 'disabled'}>SEND ›</button></div>
       <div class="sup-cover">Order enough for <select id="sup-cover">${[1, 2, 3, 4, 6, 8].map(w => `<option value="${w}"${w === cover ? ' selected' : ''}>${w} week${w > 1 ? 's' : ''}</option>`).join('')}</select>
         ${nSug ? `<button class="btn small" data-sa="fillsugg">FILL ${nSug} SUGGESTIONS</button>` : ''}
@@ -12492,10 +12501,15 @@
       const price = it.p != null ? it.p : l.p || 0, per = it.unit === 'lb' ? 'lb' : it.unit === 'kg' ? 'kg' : 'u';
       const boxPrice = price * (it.bn || 0);
       freeValue += boxPrice * (l.free || 0);
+      if (c.unit === 'kg') {   // sold by weight (Barilo's): quantities are kg, not boxes
+        out.push(`${supQtyText(l)} kg  ${it.sku ? it.sku + '  ' : ''}${it.d}`);
+        out.push(`      × ${supMoney(price)}/kg → ${supMoney(price * l.q)}`);
+        return;
+      }
       out.push(`${supQtyText(l)} box  ${it.sku ? it.sku + '  ' : ''}${it.d}`);
       out.push(`      ${it.b || it.bn || '?'}/box × ${supMoney(price)}/${per} = ${supMoney(boxPrice)}/box → ${supMoney(boxPrice * l.q)}${l.free ? `  (+${l.free} free)` : ''}`);
     });
-    out.push('', `Boxes: ${t.boxes}${t.free ? ' + ' + t.free + ' free' : ''} · ${t.n} products`);
+    out.push('', c.unit === 'kg' ? `Total weight: ${t.boxes} kg · ${t.n} products` : `Boxes: ${t.boxes}${t.free ? ' + ' + t.free + ' free' : ''} · ${t.n} products`);
     if (freeValue) out.push(`Free boxes worth: ${supMoney(freeValue)}`);
     out.push(`TOTAL before taxes: ${supMoney(t.total)}`);
     return out.join('\n');
