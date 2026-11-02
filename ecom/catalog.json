@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T19:38:00.555Z",
+ "updated": "2026-11-02T19:38:11.258Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -18890,13 +18890,6 @@
     ]
    },
    {
-    "id": "cmvspcr1z",
-    "name": "Bonbons caramel Karamelkino à l'épine-vinette, Roshen",
-    "photos": [
-     "0000000011002_cmvspcr1z_1793227518219.webp"
-    ]
-   },
-   {
     "id": "cmvspcsqk",
     "name": "Bonbons caramel Karamelkino Duchesse à la poire, Roshen",
     "photos": [
@@ -19158,6 +19151,14 @@
     "name": "Bonbons au lait Sweet Drop сhargés de crème, Roshen",
     "photos": [
      "0000000011002_cmvspc0k6_1793227477814.webp"
+    ],
+    "home": "0000000011002"
+   },
+   {
+    "id": "cmvspcr1z",
+    "name": "Bonbons caramel Karamelkino à l'épine-vinette, Roshen",
+    "photos": [
+     "0000000011002_cmvspcr1z_1793227518219.webp"
     ],
     "home": "0000000011002"
    }
