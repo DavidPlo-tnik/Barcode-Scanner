@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T19:37:12.651Z",
+ "updated": "2026-11-02T19:37:18.836Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -18890,13 +18890,6 @@
     ]
    },
    {
-    "id": "cmvsp6wla",
-    "name": "Bonbons au yaourt / Caramel au yaourt aux fruits, Roshen",
-    "photos": [
-     "0000000011002_cmvsp6wla_1793227243824.webp"
-    ]
-   },
-   {
     "id": "cmvsp6ywz",
     "name": "Bonbons caramel à l'épine-vinette (Barberry), Rot Front",
     "photos": [
@@ -19151,6 +19144,14 @@
     "name": "Bonbons fruités miniatures / Mini bonbons aux fruits, Imperial",
     "photos": [
      "0000000011002_cmvsp5rbg_1793227204902.webp"
+    ],
+    "home": "0000000011002"
+   },
+   {
+    "id": "cmvsp6wla",
+    "name": "Bonbons au yaourt / Caramel au yaourt aux fruits, Roshen",
+    "photos": [
+     "0000000011002_cmvsp6wla_1793227243824.webp"
     ],
     "home": "0000000011002"
    }
