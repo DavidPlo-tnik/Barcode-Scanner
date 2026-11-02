@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T19:37:47.979Z",
+ "updated": "2026-11-02T19:38:00.555Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -18890,13 +18890,6 @@
     ]
    },
    {
-    "id": "cmvspc0k6",
-    "name": "Bonbons au lait Sweet Drop сhargés de crème, Roshen",
-    "photos": [
-     "0000000011002_cmvspc0k6_1793227477814.webp"
-    ]
-   },
-   {
     "id": "cmvspcr1z",
     "name": "Bonbons caramel Karamelkino à l'épine-vinette, Roshen",
     "photos": [
@@ -19157,6 +19150,14 @@
     "name": "Bonbons acidulés pétillants Fizzy Boom, Roshen",
     "photos": [
      "0000000011002_cmvspans8_1793227443757.webp"
+    ],
+    "home": "0000000011002"
+   },
+   {
+    "id": "cmvspc0k6",
+    "name": "Bonbons au lait Sweet Drop сhargés de crème, Roshen",
+    "photos": [
+     "0000000011002_cmvspc0k6_1793227477814.webp"
     ],
     "home": "0000000011002"
    }
