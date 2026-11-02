@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01T16:06:03.244Z",
+ "updated": "2026-11-02T14:02:53.711Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -19462,7 +19462,11 @@
   },
   "0003338365162": {
    "title": "COEURS DE ROMAINE",
-   "key": "laitue coeur romaine|3UN1"
+   "key": "laitue coeur romaine|3UN1",
+   "pin": {
+    "code": "0003338365162",
+    "at": "2026-11-02 09:02:53"
+   }
   },
   "0003338344626": {
    "title": "PRUNES JAUNES PANIER",
