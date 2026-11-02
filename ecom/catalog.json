@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T19:37:42.775Z",
+ "updated": "2026-11-02T19:37:47.979Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -18890,13 +18890,6 @@
     ]
    },
    {
-    "id": "cmvspans8",
-    "name": "Bonbons acidulés pétillants Fizzy Boom, Roshen",
-    "photos": [
-     "0000000011002_cmvspans8_1793227443757.webp"
-    ]
-   },
-   {
     "id": "cmvspc0k6",
     "name": "Bonbons au lait Sweet Drop сhargés de crème, Roshen",
     "photos": [
@@ -19156,6 +19149,14 @@
     "name": "Caramel au café CoffeeLike avec garniture au lait, Roshen",
     "photos": [
      "0000000011002_cmvspal56_1793227413129.webp"
+    ],
+    "home": "0000000011002"
+   },
+   {
+    "id": "cmvspans8",
+    "name": "Bonbons acidulés pétillants Fizzy Boom, Roshen",
+    "photos": [
+     "0000000011002_cmvspans8_1793227443757.webp"
     ],
     "home": "0000000011002"
    }
