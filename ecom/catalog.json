@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T19:38:11.258Z",
+ "updated": "2026-11-02T19:38:15.464Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -18890,13 +18890,6 @@
     ]
    },
    {
-    "id": "cmvspcsqk",
-    "name": "Bonbons caramel Karamelkino Duchesse à la poire, Roshen",
-    "photos": [
-     "0000000011002_cmvspcsqk_1793227545343.webp"
-    ]
-   },
-   {
     "id": "cmvspeix5",
     "name": "Caramel Snezhok fondant au sucre, Rot Front",
     "photos": [
@@ -19159,6 +19152,14 @@
     "name": "Bonbons caramel Karamelkino à l'épine-vinette, Roshen",
     "photos": [
      "0000000011002_cmvspcr1z_1793227518219.webp"
+    ],
+    "home": "0000000011002"
+   },
+   {
+    "id": "cmvspcsqk",
+    "name": "Bonbons caramel Karamelkino Duchesse à la poire, Roshen",
+    "photos": [
+     "0000000011002_cmvspcsqk_1793227545343.webp"
     ],
     "home": "0000000011002"
    }
