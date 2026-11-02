@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T19:37:31.316Z",
+ "updated": "2026-11-02T19:37:36.206Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -18890,13 +18890,6 @@
     ]
    },
    {
-    "id": "cmvsp8jqv",
-    "name": "Bonbons aux agrumes Citrus Mix, Roshen",
-    "photos": [
-     "0000000011002_cmvsp8jqv_1793227375997.webp"
-    ]
-   },
-   {
     "id": "cmvspal56",
     "name": "Caramel au café CoffeeLike avec garniture au lait, Roshen",
     "photos": [
@@ -19154,6 +19147,14 @@
     "name": "Bonbons durs Bim Bom aux fruits, Roshen",
     "photos": [
      "0000000011002_cmvsp8f23_1793227333888.webp"
+    ],
+    "home": "0000000011002"
+   },
+   {
+    "id": "cmvsp8jqv",
+    "name": "Bonbons aux agrumes Citrus Mix, Roshen",
+    "photos": [
+     "0000000011002_cmvsp8jqv_1793227375997.webp"
     ],
     "home": "0000000011002"
    }
