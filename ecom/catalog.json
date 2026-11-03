@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T20:25:39.226Z",
+ "updated": "2026-11-03T20:26:27.790Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -492,23 +492,6 @@
    "group": "2-lux-croustilles",
    "dept": "2",
    "weekly": 43.1,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0762220225425": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "2-lux-croustilles",
-   "dept": "2",
-   "weekly": 23.59,
    "scale": false,
    "fresh": false,
    "v": {
