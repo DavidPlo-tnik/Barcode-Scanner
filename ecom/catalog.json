@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T20:15:37.264Z",
+ "updated": "2026-11-03T20:16:36.894Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -4040,23 +4040,6 @@
    "group": "4-flavors-tarte-au",
    "dept": "4",
    "weekly": 44.93,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0484103100437": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "4-flavors-tarte-au",
-   "dept": "4",
-   "weekly": 23.96,
    "scale": false,
    "fresh": false,
    "v": {
