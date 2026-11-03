@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T20:08:00.847Z",
+ "updated": "2026-11-03T20:08:28.919Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -1364,23 +1364,6 @@
    "group": "4-volochkove-pole-fromage",
    "dept": "4",
    "weekly": 55.41,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482000423392": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "4-volochkove-pole-fromage",
-   "dept": "4",
-   "weekly": 48.88,
    "scale": false,
    "fresh": false,
    "v": {
