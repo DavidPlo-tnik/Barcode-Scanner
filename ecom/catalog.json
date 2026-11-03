@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T20:30:48.866Z",
+ "updated": "2026-11-03T20:31:34.863Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -11227,23 +11227,6 @@
    "group": "2-remedy-kombucha-bio",
    "dept": "2",
    "weekly": 12.21,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0005974995950": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": null,
-   "dept": "1",
-   "weekly": 13.7,
    "scale": false,
    "fresh": false,
    "v": {
