@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T19:51:32.720Z",
+ "updated": "2026-11-03T19:51:58.946Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -10300,23 +10300,6 @@
    "group": null,
    "dept": "2",
    "weekly": 15.26,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482020587598": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-bkk-eclair-aux",
-   "dept": "1",
-   "weekly": 15.21,
    "scale": false,
    "fresh": false,
    "v": {
