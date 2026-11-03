@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T20:31:54.479Z",
+ "updated": "2026-11-03T20:32:26.071Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -11354,23 +11354,6 @@
    "group": "4-pelmen-pierogies-de",
    "dept": "4",
    "weekly": 12.48,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0006700001116": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": null,
-   "dept": "2",
-   "weekly": 13.41,
    "scale": false,
    "fresh": false,
    "v": {
