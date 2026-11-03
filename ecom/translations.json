@@ -3433,24 +3433,30 @@
   },
   "pos-0021051500000": {
    "src": "BEIGNE VANILLE",
-   "fr": "Beigne à la vanille",
-   "en": "Vanilla donut",
-   "uk": "Пончик ванільний",
-   "ru": "Пончик ванильный"
+   "fr": "Pączki polonais à la vanille",
+   "en": "Polish pączki, vanilla",
+   "uk": "Польські пончики (pączki) з ваніллю",
+   "ru": "Польские пончики (pączki) с ванилью",
+   "manual": true,
+   "at": "2026-11-03"
   },
   "pos-0021051600000": {
    "src": "BEIGNE A LA FRAISE",
-   "fr": "Beigne à la fraise",
-   "en": "Strawberry donut",
-   "uk": "Пончик полуничний",
-   "ru": "Пончик клубничный"
+   "fr": "Pączki polonais à la fraise",
+   "en": "Polish pączki, strawberry",
+   "uk": "Польські пончики (pączki) з полуницею",
+   "ru": "Польские пончики (pączki) с клубникой",
+   "manual": true,
+   "at": "2026-11-03"
   },
   "pos-0021051700000": {
    "src": "BEIGNE AUX PRUNES",
-   "fr": "Beigne aux prunes",
-   "en": "Plum donut",
-   "uk": "Пончик зі сливою",
-   "ru": "Пончик со сливой"
+   "fr": "Pączki polonais aux prunes",
+   "en": "Polish pączki, plum",
+   "uk": "Польські пончики (pączki) зі сливою",
+   "ru": "Польские пончики (pączki) со сливой",
+   "manual": true,
+   "at": "2026-11-03"
   },
   "pos-0021053000000": {
    "src": "GATEAU AU GAUFRES ET LAIT CONDENSÉ",
