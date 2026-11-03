@@ -2403,7 +2403,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v255</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v256</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3019,7 +3019,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v255</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v256</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11774,27 +11774,78 @@
   function orSmsLink(o, body) {
     return `sms:${orPhoneDigits(o.phone)}${/iPhone|iPad|iPod/.test(navigator.userAgent) ? '&' : '?'}body=${encodeURIComponent(body)}`;
   }
+  // The actual bill, as rung at the register: one line per item, taxes, deposits, total.
+  // Names: what the customer ordered on the site when the register line matches it, else the POS name.
+  // website names in the customer's language (ecom/translations.json, loaded once when an order is opened)
+  let _orTr = null;
+  async function orLoadTr() { if (_orTr) return; try { _orTr = (await ghGetJsonAndSha('ecom/translations.json')).json || {}; } catch (e) { _orTr = {}; } }
+  function orWebName(code, lg) {
+    const p = (_orTr && _orTr.products) || {}; if (!code) return '';
+    const c = (typeof resolveCode === 'function' ? resolveCode(code) : code);
+    const t = p['pos-' + c] || p['pos-' + String(code).replace(/^0+/, '')];
+    return t ? (t[lg] || t.fr || '') : '';
+  }
+  function orBillLines(o, lg) {
+    const items = (o.pos && o.pos.items) || [];
+    if (!items.length) return [];
+    const site = {};
+    (o.items || []).forEach(it => { const k = orPosKey(it.code); if (k && k !== 'combo' && !site[k]) site[k] = it.t; });
+    const m = (n) => orMoney4(n, lg);
+    const lines = items.map(it => {
+      const nm = (orWebName(it.code, lg) || site[orPosKey(it.code)] || it.name || it.code || '').trim();
+      const qty = it.kg ? (lg === 'en' ? (+it.kg).toFixed(3) : (+it.kg).toFixed(3).replace('.', ',')) + ' kg ' : ((+it.q || 1) > 1 ? (+it.q) + ' × ' : '');
+      return `• ${qty}${nm} — ${m(it.amt)}`;
+    });
+    const T = { fr: ['Taxes', 'Consignes'], en: ['Taxes', 'Deposits'], uk: ['Податки', 'Застава'], ru: ['Налоги', 'Залог'] }[lg];
+    const c = lg === 'fr' ? ' :' : ':';
+    if (o.pos.tax) lines.push(`${T[0]}${c} ${m(o.pos.tax)}`);
+    if (o.pos.deposit) lines.push(`${T[1]}${c} ${m(o.pos.deposit)}`);
+    return lines;
+  }
+  function orMoney4(n, lg) { const v = (+n || 0).toFixed(2); return lg === 'en' ? '$' + v : v.replace('.', ',') + ' $'; }
+  function orLang(o) { const l = (o.locale || 'fr').slice(0, 2); return ['en', 'uk', 'ru'].includes(l) ? l : 'fr'; }
   function orMsg(o, kind) {
-    const fr = (o.locale || 'fr') !== 'en', first = o.first || '', em = PAY_EMAIL;
-    const tot = o.pos ? o.pos.total : 0;
+    const lg = orLang(o), first = o.first || '', em = PAY_EMAIL, name = o.name;
+    const tot = orMoney4(o.pos ? o.pos.total : 0, lg);
     const mt = kind === 'total' ? orMatch(o) : null;
     const miss = mt && mt.missing.length ? mt.missing.map(it => it.t).join(', ') : '';
     const extra = mt && mt.extra.length ? mt.extra.map(it => it.name || it.code).join(', ') : '';
-    const note = fr
-      ? (miss ? ` Non disponible (non facturé) : ${miss}.` : '') + (extra ? ` Remplacé par : ${extra}.` : '')
-      : (miss ? ` Not available (not charged): ${miss}.` : '') + (extra ? ` Replaced with: ${extra}.` : '');
-    if (kind === 'total' && orDoor(o)) return fr
-      ? `Bonjour ${first}, ici Marché Décarie. Votre commande ${o.name} est prête. Total final (taxes incluses) : ${tot.toFixed(2).replace('.', ',')} $.${note} Vous payez à la livraison par débit ou crédit. Nous livrons ${orDayFr(orNextDay(new Date()))}. Merci!`
-      : `Hi ${first}, it's Marché Décarie. Your order ${o.name} is ready. Final total (taxes included): $${tot.toFixed(2)}.${note} You pay on delivery by debit or credit card. We deliver ${orNextDay(new Date()).toLocaleDateString('en-CA', { weekday: 'long', month: 'long', day: 'numeric' })}. Thank you!`;
-    if (kind === 'total') return fr
-      ? `Bonjour ${first}, ici Marché Décarie. Votre commande ${o.name} est prête. Total final (taxes incluses) : ${tot.toFixed(2).replace('.', ',')} $.${note} Veuillez payer par virement Interac à ${em} en écrivant ${o.name} dans le message. Nous livrons dès réception du paiement (lundi au vendredi). Merci!`
-      : `Hi ${first}, it's Marché Décarie. Your order ${o.name} is ready. Final total (taxes included): $${tot.toFixed(2)}.${note} Please pay by Interac e-Transfer to ${em} with ${o.name} in the message. We deliver once payment is received (Monday to Friday). Thank you!`;
-    if (kind === 'cancel') return fr
-      ? `Bonjour ${first}, ici Marché Décarie. Votre commande ${o.name} a été annulée. Aucun paiement n'est requis. Pour toute question, appelez-nous au (514) 484-8421. Merci!`
-      : `Hi ${first}, it's Marché Décarie. Your order ${o.name} has been cancelled. No payment is needed. If you have any questions, call us at (514) 484-8421. Thank you!`;
-    return fr
-      ? `Bonjour ${first}, votre commande ${o.name} de Marché Décarie est en route! À tout à l'heure.`
-      : `Hi ${first}, your Marché Décarie order ${o.name} is on its way! See you soon.`;
+    const nd = orNextDay(new Date());
+    const day = nd.toLocaleDateString({ fr: 'fr-CA', en: 'en-CA', uk: 'uk-UA', ru: 'ru-RU' }[lg], { weekday: 'long', month: 'long', day: 'numeric' });
+    const W = {
+      fr: { hi: `Bonjour ${first}, ici Marché Décarie.`, ready: `Votre commande ${name} est prête. Voici votre facture :`, total: `TOTAL (taxes incluses) : ${tot}`,
+            miss: `Non disponible (non facturé) : ${miss}.`, extra: `Remplacé par : ${extra}.`,
+            door: `Vous payez à la livraison par débit ou crédit. Nous livrons ${day}. Merci!`,
+            pay: `Veuillez payer par virement Interac à ${em} en écrivant ${name} dans le message. Nous livrons dès réception du paiement (lundi au vendredi). Merci!`,
+            cancel: `Bonjour ${first}, ici Marché Décarie. Votre commande ${name} a été annulée. Aucun paiement n'est requis. Pour toute question, écrivez-nous sur Instagram ou Facebook. Merci!`,
+            route: `Bonjour ${first}, votre commande ${name} de Marché Décarie est en route! À tout à l'heure.` },
+      en: { hi: `Hi ${first}, it's Marché Décarie.`, ready: `Your order ${name} is ready. Here is your bill:`, total: `TOTAL (taxes included): ${tot}`,
+            miss: `Not available (not charged): ${miss}.`, extra: `Replaced with: ${extra}.`,
+            door: `You pay on delivery by debit or credit card. We deliver ${day}. Thank you!`,
+            pay: `Please pay by Interac e-Transfer to ${em} with ${name} in the message. We deliver once payment is received (Monday to Friday). Thank you!`,
+            cancel: `Hi ${first}, it's Marché Décarie. Your order ${name} has been cancelled. No payment is needed. If you have any questions, message us on Instagram or Facebook. Thank you!`,
+            route: `Hi ${first}, your Marché Décarie order ${name} is on its way! See you soon.` },
+      uk: { hi: `Вітаємо, ${first}! Це Marché Décarie.`, ready: `Ваше замовлення ${name} готове. Ваш рахунок:`, total: `РАЗОМ (з податками): ${tot}`,
+            miss: `Немає в наявності (не враховано): ${miss}.`, extra: `Замінено на: ${extra}.`,
+            door: `Оплата під час доставки карткою (дебетовою чи кредитною). Доставимо ${day}. Дякуємо!`,
+            pay: `Будь ласка, оплатіть переказом Interac на ${em}, вказавши ${name} у повідомленні. Доставимо після отримання оплати (з понеділка по п'ятницю). Дякуємо!`,
+            cancel: `Вітаємо, ${first}! Це Marché Décarie. Ваше замовлення ${name} скасовано. Оплата не потрібна. З питаннями пишіть нам в Instagram або Facebook. Дякуємо!`,
+            route: `Вітаємо, ${first}! Ваше замовлення ${name} з Marché Décarie вже в дорозі. До зустрічі!` },
+      ru: { hi: `Здравствуйте, ${first}! Это Marché Décarie.`, ready: `Ваш заказ ${name} готов. Ваш счёт:`, total: `ИТОГО (с налогами): ${tot}`,
+            miss: `Нет в наличии (не учтено): ${miss}.`, extra: `Заменено на: ${extra}.`,
+            door: `Оплата при доставке картой (дебетовой или кредитной). Доставим ${day}. Спасибо!`,
+            pay: `Пожалуйста, оплатите переводом Interac на ${em}, указав ${name} в сообщении. Доставим после получения оплаты (с понедельника по пятницу). Спасибо!`,
+            cancel: `Здравствуйте, ${first}! Это Marché Décarie. Ваш заказ ${name} отменён. Оплата не требуется. С вопросами пишите нам в Instagram или Facebook. Спасибо!`,
+            route: `Здравствуйте, ${first}! Ваш заказ ${name} из Marché Décarie уже в пути. До встречи!` },
+    }[lg];
+    if (kind === 'total') {
+      const out = [W.hi + ' ' + W.ready, '', ...orBillLines(o, lg), W.total];
+      if (miss || extra) out.push('', ...(miss ? [W.miss] : []), ...(extra ? [W.extra] : []));
+      out.push('', orDoor(o) ? W.door : W.pay);
+      return out.join('\n');
+    }
+    if (kind === 'cancel') return W.cancel;
+    return W.route;
   }
 
   // ════════════════════════════════════════════════════════════════
@@ -13045,6 +13096,7 @@
   function orClose() { _or.sel = null; const m = $('#or-modal'); if (m) m.classList.remove('open'); }
 
   function orDetail() {
+    if (!_orTr) orLoadTr().then(() => { if ($('#or-modal') && $('#or-modal').innerHTML) orDetail(); });
     let m = $('#or-modal');
     if (!m) { m = document.createElement('div'); m.id = 'or-modal'; m.className = 'or-modal'; document.body.appendChild(m); }
     // keep the scroll position: the sheet is rebuilt on every tap and on the 30-second refresh
@@ -13083,17 +13135,17 @@
       case 'total_ready':
         act = (orOver(o) ? `<div class="or-bad-box">⚠ ${orOver(o)}% above the estimate before taxes (${orMoney(orPre(o))} vs ${orMoney(orEst(o))}). <b>Call ${escapeHtml(o.first || 'the customer')} before sending the total.</b>${o.phone ? ` <a href="tel:${orPhoneDigits(o.phone)}">📞 Call</a>` : ''}</div>` : '')
           + `<div class="or-total">${orMoney(o.pos.total)}<span>estimate was ${orMoney(orEst(o))} before tax · ${o.pos.src === 'pos' ? 'held at register ' + escapeHtml(String(o.pos.register || '').replace(/^0+/, '')) + (o.pos.time ? ' · ' + escapeHtml(o.pos.time) : '') : 'typed in'}</span></div>
-          <a class="or-big" id="or-sms-total" href="${orSmsLink(o, orMsg(o, 'total'))}">📱 TEXT THE TOTAL TO ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())}</a>
+          <a class="or-big" id="or-sms-total" href="${orSmsLink(o, orMsg(o, 'total'))}">📱 TEXT THE BILL TO ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())}</a>
           <button class="or-link" data-a="on_hold">Wrong total? Pick the held sale again</button>`; break;
       case 'payment_requested':
         if (orDoor(o)) {
           act = `<div class="or-total">${orMoney(o.pos && o.pos.total)}<span>total sent · paid at the door (debit/credit) · deliver ${orDay(o.deliver_on || orNextDay(new Date()).toISOString().slice(0, 10))}</span></div>
           <a class="or-big" id="or-sms-route" href="${orSmsLink(o, orMsg(o, 'route'))}">🚚 OUT FOR DELIVERY · TEXT ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())}</a>
-          <a class="or-link" href="${orSmsLink(o, orMsg(o, 'total'))}">Send the total again</a>`; break;
+          <a class="or-link" href="${orSmsLink(o, orMsg(o, 'total'))}">Send the bill again</a>`; break;
         }
         act = `<div class="or-total">${orMoney(o.pos && o.pos.total)}<span>waiting for the Interac e-Transfer (message: ${escapeHtml(o.name)})</span></div>
           <button class="or-big" data-a="paid">💰 PAYMENT RECEIVED</button>
-          <a class="or-link" href="${orSmsLink(o, orMsg(o, 'total'))}">Send the total again</a>`; break;
+          <a class="or-link" href="${orSmsLink(o, orMsg(o, 'total'))}">Send the bill again</a>`; break;
       case 'paid':
         act = `<div class="or-total">${orDay(o.deliver_on)}<span>delivery day (paid ${orMoney(o.pos && o.pos.total)})</span></div>
           <a class="or-big" id="or-sms-route" href="${orSmsLink(o, orMsg(o, 'route'))}">🚚 OUT FOR DELIVERY · TEXT ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())}</a>`; break;
