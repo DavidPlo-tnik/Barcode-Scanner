@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T20:05:53.149Z",
+ "updated": "2026-11-03T20:06:16.848Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -8966,23 +8966,6 @@
    "group": "4-del-monte-petits",
    "dept": "4",
    "weekly": 18.16,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0005500014115": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "4-del-monte-petits",
-   "dept": "4",
-   "weekly": 16.65,
    "scale": false,
    "fresh": false,
    "v": {
