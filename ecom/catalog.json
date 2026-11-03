@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T20:32:36.569Z",
+ "updated": "2026-11-03T20:32:49.995Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -4593,23 +4593,6 @@
    "group": "1-tropicana-jus",
    "dept": "1",
    "weekly": 38.45,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0004850020576": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-tropicana-jus",
-   "dept": "1",
-   "weekly": 13.98,
    "scale": false,
    "fresh": false,
    "v": {
