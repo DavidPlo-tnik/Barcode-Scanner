@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T19:52:05.403Z",
+ "updated": "2026-11-03T19:52:12.669Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -11743,23 +11743,6 @@
    "group": "1-kievhlib-pain-d",
    "dept": "1",
    "weekly": 11.85,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0482311750352": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-kievhlib-pain-d",
-   "dept": "1",
-   "weekly": 11.48,
    "scale": false,
    "fresh": false,
    "v": {
