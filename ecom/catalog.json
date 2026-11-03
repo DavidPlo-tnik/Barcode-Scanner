@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T19:48:38.992Z",
+ "updated": "2026-11-03T19:48:52.661Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -1066,23 +1066,6 @@
    "dept": "3",
    "weekly": 41.13,
    "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0020810800000": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": null,
-   "dept": "24",
-   "weekly": 139.79,
-   "scale": true,
    "fresh": false,
    "v": {
     "title": false,
