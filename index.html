@@ -194,6 +194,24 @@
   .or-pass { max-width: 420px; margin: 20px auto; } .or-pass p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
   .or-pass input { width: 100%; box-sizing: border-box; padding: 12px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 16px; margin: 6px 0 12px; }
   .or-pass .btn { width: 100%; } .or-bad { color: #ff6b5e; }
+  /* ── daily stock check (ECOM > 📋 CHECK) ── */
+  #sc-open-btn { position: relative; white-space: nowrap; }
+  .sc-badge { position: absolute; top: -6px; right: -6px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--bad); color: #fff; font-size: 11px; line-height: 18px; font-weight: 700; }
+  .sc-intro { color: var(--text-dim); font-size: 13px; margin: 10px 0 12px; line-height: 1.4; }
+  .sc-sec { font-family: var(--font-display); font-size: 11px; letter-spacing: .1em; color: var(--text-dim); margin: 16px 0 8px; }
+  .sc-row { display: flex; gap: 10px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px; margin-bottom: 8px; }
+  .sc-row.hi { border-color: var(--bad); }
+  .sc-row .sc-main { flex: 1; min-width: 0; }
+  .sc-row b { display: block; font-size: 14px; line-height: 1.25; }
+  .sc-row small { display: block; color: var(--text-dim); font-size: 12px; margin-top: 3px; line-height: 1.35; }
+  .sc-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .05em; padding: 2px 6px; border-radius: 5px; margin-right: 4px; background: var(--surface-2); color: var(--text-dim); }
+  .sc-tag.bad { background: var(--bad); color: #fff; } .sc-tag.warn { background: #ffb02033; color: #ffb020; }
+  .sc-acts { display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto; }
+  .sc-acts button { min-width: 92px; padding: 8px 8px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 11.5px; font-weight: 700; letter-spacing: .03em; }
+  .sc-acts .sc-in { border-color: var(--good, #2ecc71); color: var(--good, #2ecc71); }
+  .sc-acts .sc-out { border-color: var(--bad); color: var(--bad); }
+  .sc-stale summary { cursor: pointer; list-style: none; } .sc-stale summary::-webkit-details-marker { display: none; } .sc-stale summary::before { content: '▸ '; } .sc-stale[open] summary::before { content: '▾ '; }
+  .sc-done { text-align: center; color: var(--text-dim); padding: 30px 10px; }
   .or-modal { position: fixed; inset: 0; z-index: 162; background: rgba(0,0,0,.6); display: none; }
   .or-modal.open { display: block; }
   #rt-modal { z-index: 161; }
@@ -2403,7 +2421,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v256</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v257</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2480,6 +2498,7 @@
 <section id="ecom-view">
   <div class="ecom-header">
     <input type="text" id="ecom-search" placeholder="Search catalog…" autocomplete="off" />
+    <button class="btn" id="sc-open-btn" title="Daily stock check">📋 CHECK<span id="sc-badge" class="sc-badge" hidden></span></button>
     <button class="btn primary" id="ecom-add-btn">+ ADD</button>
   </div>
   <div class="ecom-progress-wrap" id="ecom-progress-wrap"></div>
@@ -3019,7 +3038,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v256</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v257</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11423,6 +11442,7 @@
     if (name === 'search') setTimeout(() => $('#search-input').focus(), 50);
     if (name === 'lists') renderLists();
     if (name === 'ecom') {
+      setTimeout(() => { try { if (!_sc.list || Date.now() - _sc.list.at > 30 * 60000) scCompute().catch(() => {}); } catch (e) {} }, 1500);   // 📋 CHECK badge
       // ECOM edits the public catalogue, so gate it behind the same PIN
       if (!_posUnlocked) { ecomUnlock(); }
       else renderEcom();
@@ -13390,7 +13410,7 @@
       await mutateEcomCatalog(c => {
         const it = c.items[code];
         if (!it) return;
-        if (it.oos) delete it.oos; else it.oos = true;
+        if (it.oos) { delete it.oos; delete it.oosAt; } else { it.oos = true; it.oosAt = new Date().toISOString(); }
         nowOut = !!it.oos;
       });
       showToast(nowOut ? 'OUT OF STOCK \u2014 shows as sold out on the site' : 'BACK IN STOCK');
@@ -13400,6 +13420,206 @@
       const cat = await fetchEcomCatalog();
       paintPdEcomBtn(cat.items[code]);
     }
+  }
+
+  // ════════════════════════════════════════════════════════════════
+  //  DAILY STOCK CHECK (ECOM > 📋 CHECK)
+  //  Guesses which website items have probably run out, so they get checked and marked out of stock
+  //  before a customer orders them. Per item, from the register sales:
+  //   • how often it normally sells (share of days with a sale; else from its weekly rate)
+  //   • how long it has now gone without a sale (today counts only for the part of the day already gone)
+  //   → chance of such a silence if it were still on the shelf: (1 − p)^days. Under 5% = suggest it.
+  //  Also: stock from the last supplier delivery probably sold through, and items marked out of
+  //  stock on the site that are selling again at the register. "In stock" answers are shared
+  //  (pos/stock_checks.json) and quiet the item until it goes silent again after the check.
+  // ════════════════════════════════════════════════════════════════
+  const _sc = { checks: null, sha: null, list: null, busy: {} };
+  const SC_FILE = 'pos/stock_checks.json';
+  function scToday() { return new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10); }
+  function scDayFrac() {   // share of a normal day's sales already behind us (store hours profile)
+    const h = (DATA && DATA.hourly) || {}, now = new Date(), cur = now.getHours() + now.getMinutes() / 60;
+    let tot = 0, done = 0;
+    for (const k in h) { const q = +(h[k].qty || 0); tot += q; if (+k + 1 <= cur) done += q; else if (+k <= cur) done += q * (cur - +k); }
+    return tot ? Math.min(1, done / tot) : Math.min(1, Math.max(0, (cur - 9) / 11));
+  }
+  async function scLoadChecks() {
+    try { const { json, sha } = await ghGetJsonAndSha(SC_FILE); _sc.checks = (json && json.items) || {}; _sc.sha = sha; }
+    catch (e) { _sc.checks = _sc.checks || {}; }
+  }
+  async function scSaveCheck(code, res) {
+    for (let a = 0; a < 5; a++) {
+      let doc = { items: {} }, sha = null;
+      try { const r = await ghGetJsonAndSha(SC_FILE); if (r.json) doc = r.json; sha = r.sha; } catch (e) {}
+      doc.items = doc.items || {};
+      doc.items[code] = { at: new Date().toISOString(), r: res };
+      // keep the file small: forget answers older than 60 days
+      const old = new Date(Date.now() - 60 * 864e5).toISOString();
+      for (const k in doc.items) if ((doc.items[k].at || '') < old) delete doc.items[k];
+      const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(doc))));
+      try { await ghPutFile(SC_FILE, b64, 'stock check ' + code, sha); _sc.checks = doc.items; return; }
+      catch (e) { if (e.isConflict && a < 4) { await new Promise(r => setTimeout(r, 300 * (a + 1))); continue; } throw e; }
+    }
+  }
+  // sales series for a website item (a produce family = all its brands together)
+  function scSeries(code, cat) {
+    const fam = (cat.produce || {})[code];
+    const members = fam && _editData ? produceFamily(code, fam).members : [resolveCode(code)];
+    const dq = new Array(14).fill(0), wq = new Array(9).fill(0);
+    members.forEach(m => {
+      const s = DATA.sales[m]; if (!s) return;
+      (s.dq || []).slice(-14).forEach((x, i, a) => { dq[14 - a.length + i] += x || 0; });
+      (s.wq || []).slice(-9).forEach((x, i, a) => { wq[9 - a.length + i] += x || 0; });
+    });
+    return { dq, wq, members };
+  }
+  // what is probably left from the last supplier delivery of this item (only if supplier data is loaded)
+  function scDelivery(code, dq, dates) {
+    if (typeof _sup === 'undefined' || !_sup.orders || !_sup.byCode) return null;
+    const c = resolveCode(code), lines = _sup.byCode[c]; if (!lines || !lines.length) return null;
+    let best = null;
+    lines.forEach(({ sid, it }) => {
+      const l = supLastOrderLine(sid, it.k, null);
+      if (l && l.received) {
+        const per = supUnitsPerBox(it) || 1, q = l.qty * per;
+        if (!best || l.date > best.date) best = { date: l.date, qty: q, sid };
+        else if (l.date === best.date) best.qty += q;   // two of their lines rung under this one code (bologna CP + SP)
+      }
+    });
+    if (!best) return null;
+    const i = dates.indexOf(best.date); if (i < 0) return null;   // older than 2 weeks: not reliable
+    const sold = dq.slice(i).reduce((a, b) => a + b, 0);
+    return Object.assign(best, { sold, share: best.qty ? sold / best.qty : 0 });
+  }
+  async function scCompute() {
+    const cat = await fetchEcomCatalog(true);
+    if (!_editData) await fetchEditData();
+    if (!_sc.checks) await scLoadChecks();
+    try { if (typeof supLoad === 'function' && (!_sup.orders)) await supLoad(); } catch (e) {}
+    const dates = (DATA.last_14_days || []).slice(-14), today = scToday();
+    const frac = dates[dates.length - 1] === today ? scDayFrac() : 1;
+    // how busy each of the 14 days was compared with a normal day (whole-store sales)
+    const dd = DATA.dept_daily || {}, tot = (d) => Object.values(dd[d] || {}).reduce((a, b) => a + (+b || 0), 0);
+    const ref = Object.keys(dd).sort().filter(d => d < today).slice(-28).map(tot).filter(x => x > 0).sort((a, b) => a - b);
+    const med = ref.length ? ref[Math.floor(ref.length / 2)] : 0;
+    const dayW = dates.map((d, i) => {
+      if (!med || !dd[d]) return i === dates.length - 1 ? frac : 1;
+      return Math.min(1.5, tot(d) / med);
+    });
+    const skip = new Set(candyTierCodesResolved());
+    const out = [], back = [];
+    Object.keys(cat.items).forEach(code => {
+      const e = cat.items[code]; if (!e || skip.has(resolveCode(code))) return;
+      const arr = DATA.products[resolveCode(code)]; if (!arr) return;
+      const { dq, wq } = scSeries(code, cat);
+      const full = wq.slice(0, 8);                     // completed weeks (the 9th is this week, still going)
+      const active = full.filter(x => x > 0).length;
+      const rate = active ? full.reduce((a, b) => a + b, 0) / active : 0;   // per selling week
+      const name = (cat.produce && cat.produce[code] && cat.produce[code].title) || String(arr[0] || '').replace(/\s+/g, ' ').trim();
+      const ck = _sc.checks[code];
+      if (e.oos) {
+        // marked out on the site but selling at the register again
+        const recent = dq.slice(-2).reduce((a, b) => a + b, 0);
+        const markedAt = e.oosAt || null;
+        if (recent > 0 && (!markedAt || dates.slice(-2).some((d, i) => d >= String(markedAt).slice(0, 10) && dq[12 + i] > 0)))
+          back.push({ code, name, why: `Marked out of stock, but ${+recent.toFixed(2)} sold at the register in the last 2 days.`, score: 99 });
+        else if (markedAt && (Date.now() - new Date(markedAt).getTime()) > 7 * 864e5 && !(ck && ck.r === 'out' && Date.now() - new Date(ck.at).getTime() < 7 * 864e5))
+          back.push({ code, name, why: `Out of stock on the site since ${String(markedAt).slice(5, 10)}. Has it come back?`, score: 1 });
+        return;
+      }
+      if (active < 4) return;                          // not a regular seller: silence means nothing
+      // trailing silence, in "normal days": each quiet day counts by how busy the store was that day
+      // (a slow Monday counts less than a busy Saturday; today counts for what has been sold so far)
+      let gap = 0;
+      for (let i = dq.length - 1; i >= 0; i--) { if (dq[i] > 0) break; gap += dayW[i]; }
+      // an "in stock" answer restarts the clock from the moment of the check
+      if (ck && ck.r === 'in') {
+        const since = (Date.now() - new Date(ck.at).getTime()) / 864e5;
+        const soldSince = dates.some((d, i) => d > String(ck.at).slice(0, 10) && dq[i] > 0);
+        if (!soldSince) gap = Math.min(gap, since);
+      }
+      let quietDays = 0; for (let i = dq.length - 1; i >= 0 && !(dq[i] > 0); i--) quietDays++;
+      // how often it sells: share of days with a sale before the silence started; else from the weekly rate
+      const before = dq.slice(0, dq.length - quietDays);
+      let p;
+      if (before.length >= 6) p = before.filter(x => x > 0).length / before.length;
+      else { const weighed = !!(_editData.items[resolveCode(code)] || {}).bal; const perDay = (weighed ? rate / 0.4 : rate) / 7; p = 1 - Math.exp(-perDay); }
+      p = Math.min(p, 0.97);
+      const P = gap > 0 ? Math.pow(1 - p, gap) : 1;
+      const dl = scDelivery(code, dq, dates);
+      const reasons = [];
+      let score = 0, level = '';
+      if (P < 0.02 && gap >= 1) {
+        level = P < 0.01 ? 'bad' : 'warn';
+        score = -Math.log(P);
+        let d = 0; for (let i = dq.length - 1; i >= 0 && !(dq[i] > 0); i--) if (i < dq.length - 1) d++;
+        const tz = dq[dq.length - 1] === 0 && dates[dates.length - 1] === today;
+        reasons.push(`Usually sells ${p >= 0.85 ? 'every day' : Math.round(p * 7) + ' days a week'}; ${d ? 'no sale in ' + d + ' day' + (d > 1 ? 's' : '') + (tz ? ', none yet today' : '') : 'none yet today'}.`);
+      }
+      if (dl && dl.share >= 0.85) {
+        score = Math.max(score, 2 + dl.share);
+        level = level || (dl.share >= 1 ? 'bad' : 'warn');
+        reasons.push(`Sold ~${Math.round(dl.sold * 10) / 10} of the ${Math.round(dl.qty * 10) / 10} received ${dl.date.slice(5)} (${(_sup.cfg[dl.sid] || {}).name || dl.sid}).`);
+      }
+      if (!reasons.length) return;
+      const price = arr[1] || 0;
+      out.push({ code, name, why: reasons.join(' '), level, score: score + Math.log(1 + rate * price) * 0.5, rate, stale: quietDays >= 9 && !(dl && dl.share >= 0.85) });
+    });
+    out.sort((a, b) => b.score - a.score);
+    back.sort((a, b) => b.score - a.score);
+    // fresh silences first (just ran out); long ones (9+ days: out for a while, seasonal or discontinued) apart
+    _sc.list = { out: out.filter(r => !r.stale).slice(0, 25), stale: out.filter(r => r.stale).slice(0, 40), back, at: Date.now() };
+    scBadge();
+    return _sc.list;
+  }
+  function scBadge() { const b = $('#sc-badge'); if (!b || !_sc.list) return; const n = _sc.list.out.length + _sc.list.back.length; b.textContent = n; b.hidden = !n; }
+  function scOpen() {
+    let m = $('#sc-modal');
+    if (!m) { m = document.createElement('div'); m.id = 'sc-modal'; m.className = 'or-modal'; document.body.appendChild(m); }
+    m.classList.add('open');
+    m.innerHTML = `<div class="or-sheet"><div class="or-mh"><button class="or-x" id="sc-x">✕</button><b>📋 Stock check</b></div><div class="sc-done">Looking at the register sales…</div></div>`;
+    $('#sc-x').onclick = () => m.classList.remove('open');
+    scCompute().then(scRender).catch(e => { m.querySelector('.sc-done').textContent = e.message; });
+  }
+  function scRow(r, kind) {
+    const tag = kind === 'back' ? '<span class="sc-tag warn">ON SITE: OUT</span>' : r.level === 'bad' ? '<span class="sc-tag bad">LIKELY OUT</span>' : '<span class="sc-tag warn">CHECK</span>';
+    const acts = kind === 'back'
+      ? `<button class="sc-in" data-sc="back" data-code="${r.code}">✓ BACK IN STOCK</button><button data-sc="still" data-code="${r.code}">STILL OUT</button>`
+      : `<button class="sc-in" data-sc="in" data-code="${r.code}">✓ IN STOCK</button><button class="sc-out" data-sc="out" data-code="${r.code}">✗ OUT</button>`;
+    return `<div class="sc-row${r.level === 'bad' ? ' hi' : ''}" data-row="${r.code}">${productThumbHtml(r.code, 48)}
+      <div class="sc-main"><b>${escapeHtml(r.name)}</b><small>${tag}${escapeHtml(r.why)}</small></div>
+      <div class="sc-acts">${acts}</div></div>`;
+  }
+  function scRender() {
+    const m = $('#sc-modal'); if (!m || !m.classList.contains('open')) return;
+    const L = _sc.list || { out: [], stale: [], back: [] };
+    const body = (!L.out.length && !L.back.length ? `<div class="sc-done">✓ Nothing looks newly out of stock right now.</div>` : '')
+        + (L.out.length ? `<div class="sc-sec">CHECK THE SHELF TODAY (${L.out.length})</div>` + L.out.map(r => scRow(r, 'out')).join('') : '')
+        + (L.back.length ? `<div class="sc-sec">MARKED OUT ON THE WEBSITE (${L.back.length})</div>` + L.back.map(r => scRow(r, 'back')).join('') : '')
+        + (L.stale.length ? `<details class="sc-stale"><summary class="sc-sec">QUIET FOR 9+ DAYS (${L.stale.length}) · out for a while, seasonal or discontinued?</summary>` + L.stale.map(r => scRow(r, 'out')).join('') + `</details>` : '');
+    const wasOpen = !!(m.querySelector('details.sc-stale') || {}).open, keepY = m.querySelector('.or-sheet') ? m.querySelector('.or-sheet').scrollTop : 0;
+    m.innerHTML = `<div class="or-sheet"><div class="or-mh"><button class="or-x" id="sc-x">✕</button><b>📋 Stock check</b><button class="or-x" id="sc-re" title="Refresh">↻</button></div>
+      <p class="sc-intro">Items that have gone quiet at the register, most likely out first. Look on the shelf, then tap: <b>OUT</b> shows it as sold out on the website; <b>IN STOCK</b> hides it until it goes quiet again.</p>${body}</div>`;
+    $('#sc-x').onclick = () => m.classList.remove('open');
+    $('#sc-re').onclick = () => { _sc.checks = null; scOpen(); };
+    if (wasOpen && m.querySelector('details.sc-stale')) m.querySelector('details.sc-stale').open = true;
+    m.querySelector('.or-sheet').scrollTop = keepY;
+    m.querySelectorAll('[data-sc]').forEach(b => b.onclick = async () => {
+      const code = b.dataset.code, act = b.dataset.sc;
+      if (_sc.busy[code]) return; _sc.busy[code] = true;
+      b.closest('.sc-row').style.opacity = .45;
+      try {
+        if (act === 'out' || act === 'back') {
+          await mutateEcomCatalog(c => { const it = c.items[code]; if (!it) return;
+            if (act === 'out') { it.oos = true; it.oosAt = new Date().toISOString(); } else { delete it.oos; delete it.oosAt; } });
+        }
+        await scSaveCheck(code, act === 'out' || act === 'still' ? 'out' : 'in');
+        ['out', 'stale', 'back'].forEach(k => { _sc.list[k] = _sc.list[k].filter(r => r.code !== code); });
+        showToast(act === 'out' ? 'OUT OF STOCK — sold out on the site' : act === 'back' ? 'BACK IN STOCK on the site' : act === 'still' ? 'Still out — asked again in a week' : 'IN STOCK ✓');
+        scBadge();
+        scRender(); if (typeof renderEcom === 'function' && $('#ecom-view').classList.contains('active')) renderEcom();
+      } catch (e) { showToast(e.message, true); b.closest('.sc-row').style.opacity = 1; }
+      finally { delete _sc.busy[code]; }
+    });
   }
 
   async function ecomRemove(code) {
@@ -15726,6 +15946,7 @@
     }));
     $('#ecom-aisle').addEventListener('change', () => { _ecomAisle = $('#ecom-aisle').value; renderEcom(); });
     $('#close-aisle-modal').addEventListener('click', () => $('#aisle-modal').classList.remove('open'));
+    $('#sc-open-btn').addEventListener('click', scOpen);
     $('#ecom-add-btn').addEventListener('click', () => {
       $('#ecom-add-modal').classList.add('open');
       setTimeout(() => $('#ecom-add-search').focus(), 60);
