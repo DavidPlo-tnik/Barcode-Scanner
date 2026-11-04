@@ -429,7 +429,7 @@
      }
     }
    },
-   "name": "Saucisse Poulet, Porc et Poulet"
+   "name": "Saucisse Sikorski, Porc et Poulet"
   },
   {
    "id": "gmvihu7pd",
@@ -2597,7 +2597,6 @@
     "0482310581330",
     "0083213900126",
     "0083213900128",
-    "0023881400000",
     "0021051700000",
     "0021051600000",
     "0021051500000",
@@ -2649,7 +2648,7 @@
    ],
    "from": "2026-11-05",
    "to": "2026-11-11",
-   "at": "2026-11-04T19:46:36.347Z",
+   "at": "2026-11-04T19:54:25.875Z",
    "items": {
     "0023881500000": {
      "sz": {
@@ -3080,7 +3079,7 @@
        }
       }
      },
-     "name": "Saucisse Poulet, Porc et Poulet"
+     "name": "Saucisse Sikorski, Porc et Poulet"
     },
     {
      "id": "gmvihu7pd",
