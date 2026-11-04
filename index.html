@@ -2421,7 +2421,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v257</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v258</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3038,7 +3038,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v257</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v258</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7022,7 +7022,7 @@
       }
       let base = Math.min(unitBase * 1.15, Math.max(unitBase * .7, Math.min(w, h))), Sb = S;
       const lp = units[i].lockPos;
-      if (lp && lp.S && lp.base) { base = lp.base; Sb = lp.S; }        // locked: same text / tag sizes as when it was locked
+      if (lp && lp.S && lp.base) { base = lp.base; Sb = Object.assign({}, lp.S, { name: Math.max(lp.S.name || 0, S.name) }); }   // locked: same tag sizes as when it was locked; names never smaller than this grid's (legible)
       const photos = await flyerCard(ctx, units[i].u, x, y, w, h, base, T, Sb, fmtKey);
       boxes.push({ key: units[i].u.key, x, y, w, h, cw: pl.w, ch: pl.h, r: pl.r, c: pl.c, photos, base, S: Sb });
     }
@@ -7105,14 +7105,18 @@
     ctx.save(); ctx.shadowColor = `rgba(${TH.SH || '70,5,2'},${TH.CARDLINE ? .18 : .35})`; ctx.shadowBlur = Math.round(base * .06); ctx.shadowOffsetY = Math.round(base * .02);
     ctx.fillStyle = TH.CARD || '#fff'; flRound(ctx, x, y, w, h, R); ctx.fill(); ctx.restore();
     const wide = w / h > 2.1;
-    const nS = Math.round(Math.min(S.name * Math.min(1.2, grow), w * .062)), noteS = Math.round(nS * .82);
+    // never smaller than ~90% of the standard name size: narrow boxes wrap onto more lines instead of shrinking
+    // names stay legible in small boxes: at least ~1.15× the standard size; narrow boxes wrap onto more lines instead of shrinking
+    const narrow = !wide && w < S.name * 17;
+    const nS = Math.round(Math.max(S.name * 1.15, Math.min(S.name * Math.min(1.2, grow), w * .062))), noteS = Math.round(nS * .82);
     const name = flyerUnitName(u), note = flyerUnitNote(u);
     const colW = wide ? Math.min(w * .3, Math.max(base * 1.1, w * .2)) : w;
     const maxTextW = colW - P * 2;
-    const maxLines = wide ? (note ? 2 : 3) : (note ? 1 : 2);
+    const maxLines = wide ? (note ? 2 : 3) : narrow ? (note ? 3 : 4) : (note ? 1 : 2);
     // full name, never cut off: shrink until it fits the allowed lines (then allow one more line)
     let size = nS, lines;
-    for (;;) { flFont(ctx, T.SANS(800), size); lines = flWrap(ctx, name, maxTextW, 99); if (lines.length <= maxLines || size <= nS * .66) break; size -= 1; }
+    const floorS = S.name * (narrow ? 1 : .9);   // legible on a phone
+    for (;;) { flFont(ctx, T.SANS(800), size); lines = flWrap(ctx, name, maxTextW, 99); if (lines.length <= maxLines || size <= floorS) break; size -= 1; }
     flFont(ctx, T.SANS(800), size);
     lines = flWrap(ctx, name, maxTextW, 99);
     const textH = P * .7 + lines.length * size * 1.16 + (note ? noteS * 1.25 : 0) + P * .65;
