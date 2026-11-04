@@ -249,6 +249,7 @@
   .or-cust { display: flex; flex-direction: column; gap: 7px; padding: 12px 0; font-size: 14px; }
   .or-cust a { color: var(--accent); text-decoration: none; } .or-cust span { color: var(--text-dim); font-size: 12.5px; }
   .or-name { font-size: 19px; font-weight: 700; }
+  .or-note b { font-weight: 800; } .or-instr { margin-bottom: 6px; }
   .or-note { background: #3a2a00; color: #ffd27a; border-radius: 8px; padding: 8px 10px; font-size: 13.5px; }
   .or-act { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 9px; }
   .or-big { display: block; text-align: center; width: 100%; box-sizing: border-box; padding: 15px 10px; border-radius: 10px; border: none; background: var(--accent); color: #000; font-family: var(--font-display); font-size: 12.5px; font-weight: 800; letter-spacing: .05em; text-decoration: none; }
@@ -2421,7 +2422,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v258</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v259</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3038,7 +3039,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v258</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v259</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -12031,7 +12032,7 @@
             const o = x.o, nav = `https://www.google.com/maps/dir/?api=1&travelmode=driving&destination=${x.g.lat},${x.g.lng}`;
             return `<div class="rt-stop st-${o.status}"><i>${k + 1}</i><div>
               <b>${escapeHtml(o.customer || o.name)}</b> <span class="rt-eta">~${rtClock(x.eta)}</span>
-              <small>${escapeHtml(o.address || '')}${o.note ? ' · 📝 ' + escapeHtml(o.note) : ''}</small>
+              <small>${escapeHtml(o.address || '')}${o.instr ? ' · 🚪 ' + escapeHtml(o.instr) : ''}${o.note ? ' · 📝 ' + escapeHtml(o.note) : ''}</small>
               <div class="rt-btns">
                 <a target="_blank" rel="noopener" href="${nav}">🧭 MAPS</a>
                 <button data-share="${k}">${RT_TESLA ? '🚗 TESLA' : '📤 SHARE'}</button>
@@ -13102,7 +13103,7 @@
         return `<button class="or-card st-${o.status}" data-id="${escapeHtml(o.id)}">
           <div class="or-c1"><b>${escapeHtml(o.name)}</b><span class="or-pill st-${o.status}">${orLabel(o)}${o._pending ? ' ·…' : ''}</span></div>
           <div class="or-c2">${escapeHtml(o.customer || '')}<span>${orAgo(o.created)}</span></div>
-          <div class="or-c3">${o.items.length} items · est. ${orMoney(orEst(o))}${orDoor(o) ? ' · 💳 at door' : ' · 🏦 e-Transfer'}${o.subs ? ' · 🔄 subs OK' : ''}${o.pos ? ` · <b>final ${orMoney(o.pos.total)}</b>` : ''}
+          <div class="or-c3">${o.items.length} items · est. ${orMoney(orEst(o))}${orDoor(o) ? ' · 💳 at door' : ' · 🏦 e-Transfer'}${o.subs ? ' · 🔄 subs OK' : ''}${o.instr || o.note ? ' · 🚪 instructions' : ''}${o.pos ? ` · <b>final ${orMoney(o.pos.total)}</b>` : ''}
             ${o.status === 'preparing' ? ` · picked ${picked}/${o.items.length}` : ''}
             ${o.deliver_on && ['paid', 'out_for_delivery'].includes(o.status) ? ` · deliver <b>${orDay(o.deliver_on)}</b>` : ''}</div>
         </button>`;
@@ -13190,10 +13191,11 @@
         ${o.phone ? `<a href="tel:${orPhoneDigits(o.phone)}">📞 ${escapeHtml(o.phone)}</a>` : '<span class="or-bad">No phone number</span>'}
         ${o.address ? `<a target="_blank" rel="noopener" href="https://maps.google.com/?q=${encodeURIComponent(o.address)}">📍 ${escapeHtml(o.address)}</a>` : ''}
         ${o.email ? `<span>✉ ${escapeHtml(o.email)}</span>` : ''}
-        <span>${o.locale === 'en' ? 'English' : 'Français'} · ordered ${orAgo(o.created)} · estimate ${orMoney(orEst(o))} before tax</span>
+        <span>${({ en: 'English', uk: 'Українська', ru: 'Русский' })[o.locale] || 'Français'} · ordered ${orAgo(o.created)} · estimate ${orMoney(orEst(o))} before tax</span>
         <span class="or-pay">${orDoor(o) ? '💳 Pays at the door (debit/credit)' : '🏦 Interac e-Transfer'}${DOOR_PAY && o.pay_name ? ' · ' + escapeHtml(o.pay_name) : ''}</span>
         <span class="${o.subs ? 'or-subs-yes' : 'or-subs-no'}">${o.subs ? '🔄 Substitutions OK (similar item, same or lower price)' : '✕ No substitutions: leave out what we don\'t have'}</span>
-        ${o.note ? `<div class="or-note">“${escapeHtml(o.note)}”</div>` : ''}
+        ${o.instr ? `<div class="or-note or-instr">🚪 <b>Delivery instructions:</b> ${escapeHtml(o.instr)}</div>` : ''}
+        ${o.note ? `<div class="or-note">📝 <b>Note:</b> ${escapeHtml(o.note)}</div>` : ''}
       </div>
       <div class="or-act">${act}</div>
       ${(() => { const mt = orMatch(o); if (!mt) return '';
