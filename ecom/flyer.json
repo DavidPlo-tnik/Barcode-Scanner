@@ -700,7 +700,13 @@
     "0023982200000"
    ],
    "pick": [],
-   "name": "Fromage Emmentaler & Gouda"
+   "name": "Fromage Emmentaler & Gouda",
+   "sz": {
+    "post": {
+     "w": 11,
+     "h": 3
+    }
+   }
   }
  ],
  "weekOrder": {
@@ -2634,7 +2640,7 @@
    ],
    "from": "2026-11-05",
    "to": "2026-11-11",
-   "at": "2026-11-04T19:37:38.047Z",
+   "at": "2026-11-04T19:37:41.017Z",
    "items": {
     "0023881500000": {
      "sz": {
@@ -3336,7 +3342,13 @@
       "0023982200000"
      ],
      "pick": [],
-     "name": "Fromage Emmentaler & Gouda"
+     "name": "Fromage Emmentaler & Gouda",
+     "sz": {
+      "post": {
+       "w": 11,
+       "h": 3
+      }
+     }
     }
    ],
    "onePage": {
