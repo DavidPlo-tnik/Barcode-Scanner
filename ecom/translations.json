@@ -1,6 +1,6 @@
 {
  "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime. Optional 'desc' {fr,en,uk,ru}: extra HTML appended to the product description.",
- "updated": "2026-11-05T18:55:47.039Z",
+ "updated": "2026-11-05T19:08:42.000Z",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
    "src": "Romachka, Roshen,",
@@ -1682,24 +1682,30 @@
   },
   "pos-0005980700844": {
    "src": "VEGETA  ASSAISONNEMENT",
-   "fr": "Vegeta assaisonnement 500 g",
+   "fr": "Assaisonnement Vegeta 500 g",
    "en": "Vegeta seasoning 500 g",
-   "uk": "Vegeta приправа 500 г",
-   "ru": "Vegeta приправа 500 г"
+   "uk": "Приправа Vegeta 500 г",
+   "ru": "Приправа Vegeta 500 г",
+   "manual": true,
+   "at": "2026-11-05"
   },
   "pos-0005980700859": {
    "src": "VEGETA  ASSAISONNEMENT",
-   "fr": "Vegeta assaisonnement 250 g",
+   "fr": "Assaisonnement Vegeta 250 g",
    "en": "Vegeta seasoning 250 g",
-   "uk": "Vegeta приправа 250 г",
-   "ru": "Vegeta приправа 250 г"
+   "uk": "Приправа Vegeta 250 г",
+   "ru": "Приправа Vegeta 250 г",
+   "manual": true,
+   "at": "2026-11-05"
   },
   "pos-0005980700871": {
    "src": "VEGETA ASSAISONNEMENT",
-   "fr": "Vegeta assaisonnement 250 g",
+   "fr": "Assaisonnement Vegeta 250 g",
    "en": "Vegeta seasoning 250 g",
-   "uk": "Vegeta приправа 250 г",
-   "ru": "Vegeta приправа 250 г"
+   "uk": "Приправа Vegeta 250 г",
+   "ru": "Приправа Vegeta 250 г",
+   "manual": true,
+   "at": "2026-11-05"
   },
   "pos-0005980799910": {
    "src": "VEGETA BOUILLON DE BOEUF",
@@ -6092,10 +6098,12 @@
   },
   "pos-0482000117171": {
    "src": "EKO HMELI SYNELI",
-   "fr": "Eko khmeli-suneli",
+   "fr": "Khmeli-souneli Eko",
    "en": "Eko khmeli-suneli spice blend",
-   "uk": "Eko хмелі-сунелі",
-   "ru": "Eko хмели-сунели"
+   "uk": "Хмелі-сунелі Eko",
+   "ru": "Хмели-сунели Eko",
+   "manual": true,
+   "at": "2026-11-05"
   },
   "pos-0482000131462": {
    "src": "TORCHIN SATSEBELI",
@@ -8336,24 +8344,30 @@
   },
   "pos-0590113501562": {
    "src": "KUCHAREK ASSAISONNEMENT VEGETAL",
-   "fr": "Kucharek assaisonnement aux légumes 175 g",
+   "fr": "Assaisonnement aux légumes Kucharek 175 g",
    "en": "Kucharek vegetable seasoning 175 g",
-   "uk": "Kucharek овочева приправа 175 г",
-   "ru": "Kucharek овощная приправа 175 г"
+   "uk": "Овочева приправа Kucharek 175 г",
+   "ru": "Овощная приправа Kucharek 175 г",
+   "manual": true,
+   "at": "2026-11-05"
   },
   "pos-0590113502322": {
    "src": "KUCHAREK ASSAISONNEMENT VEGETAL",
-   "fr": "Kucharek assaisonnement aux légumes 500 g",
+   "fr": "Assaisonnement aux légumes Kucharek 500 g",
    "en": "Kucharek vegetable seasoning 500 g",
-   "uk": "Kucharek овочева приправа 500 г",
-   "ru": "Kucharek овощная приправа 500 г"
+   "uk": "Овочева приправа Kucharek 500 г",
+   "ru": "Овощная приправа Kucharek 500 г",
+   "manual": true,
+   "at": "2026-11-05"
   },
   "pos-0590113502324": {
    "src": "KUCHAREK ASSAISONNEMENT VEGETAL",
-   "fr": "Kucharek assaisonnement aux légumes 200 g",
+   "fr": "Assaisonnement aux légumes Kucharek 200 g",
    "en": "Kucharek vegetable seasoning 200 g",
-   "uk": "Kucharek овочева приправа 200 г",
-   "ru": "Kucharek овощная приправа 200 г"
+   "uk": "Овочева приправа Kucharek 200 г",
+   "ru": "Овощная приправа Kucharek 200 г",
+   "manual": true,
+   "at": "2026-11-05"
   },
   "pos-0590115404149": {
    "src": "INKA SUBSTITUT DE CAFÉ BOISSON AUX CÉRÉALES",
@@ -9511,6 +9525,24 @@
    "en": "Pripravka Korean-style carrot seasoning (mild) 25 g",
    "uk": "Приправа до моркви по-корейськи (негостра) Pripravka 25 г",
    "ru": "Приправа для моркови по-корейски (неострая) Pripravka 25 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929006": {
+   "src": "PRIPRAVKA VANILLE 2GR",
+   "fr": "Vanilline Pripravka Happy Baking 2 g",
+   "en": "Pripravka Happy Baking vanillin 2 g",
+   "uk": "Ванілін Pripravka Happy Baking 2 г",
+   "ru": "Ванилин Pripravka Happy Baking 2 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929012": {
+   "src": "PRIPRAVKA ACIDE DE CITRON 20GR",
+   "fr": "Acide citrique Pripravka Happy Baking 20 g",
+   "en": "Pripravka Happy Baking citric acid 20 g",
+   "uk": "Лимонна кислота Pripravka Happy Baking 20 г",
+   "ru": "Лимонная кислота Pripravka Happy Baking 20 г",
    "manual": true,
    "at": "2026-11-05"
   }
