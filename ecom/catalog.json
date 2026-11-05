@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05T20:06:21.007Z",
+ "updated": "2026-11-05T20:07:30.024Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -4787,23 +4787,6 @@
    "dept": "31",
    "weekly": 36.54,
    "scale": true,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0426012339068": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "1-flavors-tomates",
-   "dept": "1",
-   "weekly": 36.32,
-   "scale": false,
    "fresh": false,
    "v": {
     "title": false,
