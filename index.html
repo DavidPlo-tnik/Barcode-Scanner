@@ -2422,7 +2422,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v260</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v261</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3039,7 +3039,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v260</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v261</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11771,6 +11771,19 @@
     const extra = rungLeft.filter(x => !x.used && !okKeys.has(x.k)).map(x => x.it);
     return { ok, missing, extra };
   }
+  // which register line replaced which ordered item: pair "not rung" with "rung but not ordered" by closest price
+  function orSubPairs(o, mt) {
+    mt = mt || orMatch(o);
+    if (!mt) return { pairs: [], missing: [], extra: [] };
+    const extra = mt.extra.slice(), pairs = [], missing = [];
+    mt.missing.forEach(it => {
+      if (!extra.length) { missing.push(it); return; }
+      const want = (+it.p || 0) * (+it.q || 1);
+      let bi = 0; extra.forEach((x, i) => { if (Math.abs((+x.amt || 0) - want) < Math.abs((+extra[bi].amt || 0) - want)) bi = i; });
+      pairs.push({ from: it, to: extra.splice(bi, 1)[0] });
+    });
+    return { pairs, missing, extra };
+  }
   // the website shows no taxes: the 10% rule compares totals BEFORE taxes
   const orEst = (o) => +(o.subtotal || o.est_total || 0);
   function orPre(o) {
@@ -11839,31 +11852,34 @@
     const lg = orLang(o), first = o.first || '', em = PAY_EMAIL, name = o.name;
     const tot = orMoney4(o.pos ? o.pos.total : 0, lg);
     const mt = kind === 'total' ? orMatch(o) : null;
-    const miss = mt && mt.missing.length ? mt.missing.map(it => it.t).join(', ') : '';
-    const extra = mt && mt.extra.length ? mt.extra.map(it => it.name || it.code).join(', ') : '';
+    const sp = mt ? orSubPairs(o, mt) : { pairs: [], missing: [], extra: [] };
+    const nm = (x) => (orWebName(x.code, lg) || x.name || x.code || '').trim();
+    const miss = sp.missing.map(it => it.t).join(', ');
+    const extra = sp.extra.map(nm).join(', ');
+    const subs = sp.pairs.map(pr => `• ${pr.from.t} → ${nm(pr.to)}`);
     const nd = orNextDay(new Date());
     const day = nd.toLocaleDateString({ fr: 'fr-CA', en: 'en-CA', uk: 'uk-UA', ru: 'ru-RU' }[lg], { weekday: 'long', month: 'long', day: 'numeric' });
     const W = {
       fr: { hi: `Bonjour ${first}, ici Marché Décarie.`, ready: `Votre commande ${name} est prête. Voici votre facture :`, total: `TOTAL (taxes incluses) : ${tot}`,
-            miss: `Non disponible (non facturé) : ${miss}.`, extra: `Remplacé par : ${extra}.`,
+            miss: `Non disponible (non facturé) : ${miss}.`, extra: `Ajouté : ${extra}.`, subs: 'Remplacé (même prix ou moins) :',
             door: `Vous payez à la livraison par débit ou crédit. Nous livrons ${day}. Merci!`,
             pay: `Veuillez payer par virement Interac à ${em} en écrivant ${name} dans le message. Payé avant midi (lundi au vendredi) : livré le jour même; sinon, au prochain jour de livraison. Merci!`,
             cancel: `Bonjour ${first}, ici Marché Décarie. Votre commande ${name} a été annulée. Aucun paiement n'est requis. Pour toute question, écrivez-nous sur Instagram ou Facebook. Merci!`,
             route: `Bonjour ${first}, votre commande ${name} de Marché Décarie est en route! À tout à l'heure.` },
       en: { hi: `Hi ${first}, it's Marché Décarie.`, ready: `Your order ${name} is ready. Here is your bill:`, total: `TOTAL (taxes included): ${tot}`,
-            miss: `Not available (not charged): ${miss}.`, extra: `Replaced with: ${extra}.`,
+            miss: `Not available (not charged): ${miss}.`, extra: `Added: ${extra}.`, subs: 'Replaced (same price or less):',
             door: `You pay on delivery by debit or credit card. We deliver ${day}. Thank you!`,
             pay: `Please pay by Interac e-Transfer to ${em} with ${name} in the message. Paid by noon (Monday to Friday): delivered the same day; otherwise on the next delivery day. Thank you!`,
             cancel: `Hi ${first}, it's Marché Décarie. Your order ${name} has been cancelled. No payment is needed. If you have any questions, message us on Instagram or Facebook. Thank you!`,
             route: `Hi ${first}, your Marché Décarie order ${name} is on its way! See you soon.` },
       uk: { hi: `Вітаємо, ${first}! Це Marché Décarie.`, ready: `Ваше замовлення ${name} готове. Ваш рахунок:`, total: `РАЗОМ (з податками): ${tot}`,
-            miss: `Немає в наявності (не враховано): ${miss}.`, extra: `Замінено на: ${extra}.`,
+            miss: `Немає в наявності (не враховано): ${miss}.`, extra: `Додано: ${extra}.`, subs: 'Замінено (за тією ж ціною або дешевше):',
             door: `Оплата під час доставки карткою (дебетовою чи кредитною). Доставимо ${day}. Дякуємо!`,
             pay: `Будь ласка, оплатіть переказом Interac на ${em}, вказавши ${name} у повідомленні. Оплата до 12:00 (пн–пт) — доставимо того ж дня; пізніше — наступного дня доставки. Дякуємо!`,
             cancel: `Вітаємо, ${first}! Це Marché Décarie. Ваше замовлення ${name} скасовано. Оплата не потрібна. З питаннями пишіть нам в Instagram або Facebook. Дякуємо!`,
             route: `Вітаємо, ${first}! Ваше замовлення ${name} з Marché Décarie вже в дорозі. До зустрічі!` },
       ru: { hi: `Здравствуйте, ${first}! Это Marché Décarie.`, ready: `Ваш заказ ${name} готов. Ваш счёт:`, total: `ИТОГО (с налогами): ${tot}`,
-            miss: `Нет в наличии (не учтено): ${miss}.`, extra: `Заменено на: ${extra}.`,
+            miss: `Нет в наличии (не учтено): ${miss}.`, extra: `Добавлено: ${extra}.`, subs: 'Заменено (по той же цене или дешевле):',
             door: `Оплата при доставке картой (дебетовой или кредитной). Доставим ${day}. Спасибо!`,
             pay: `Пожалуйста, оплатите переводом Interac на ${em}, указав ${name} в сообщении. Оплата до 12:00 (пн–пт) — доставим в тот же день; позже — в следующий день доставки. Спасибо!`,
             cancel: `Здравствуйте, ${first}! Это Marché Décarie. Ваш заказ ${name} отменён. Оплата не требуется. С вопросами пишите нам в Instagram или Facebook. Спасибо!`,
@@ -11871,6 +11887,7 @@
     }[lg];
     if (kind === 'total') {
       const out = [W.hi + ' ' + W.ready, '', ...orBillLines(o, lg), W.total];
+      if (subs.length) out.push('', W.subs, ...subs);
       if (miss || extra) out.push('', ...(miss ? [W.miss] : []), ...(extra ? [W.extra] : []));
       out.push('', orDoor(o) ? W.door : W.pay);
       return out.join('\n');
@@ -13207,8 +13224,9 @@
       ${(() => { const mt = orMatch(o); if (!mt) return '';
         return `<div class="or-ih">RUNG AT THE REGISTER${o.pos.register ? ' · REG ' + escapeHtml(String(o.pos.register).replace(/^0+/, '')) : ''}</div>
           <div class="or-rcpt">${orRcptLines(o.pos.items)}${o.pos.tax ? `<div class="or-rl or-rt"><span></span><b>Taxes${o.pos.deposit ? ' + deposit' : ''}</b><em>${orMoney((o.pos.tax || 0) + (o.pos.deposit || 0))}</em></div>` : ''}<div class="or-rl or-rt"><span></span><b>TOTAL</b><em>${orMoney(o.pos.total)}</em></div></div>
-          ${mt.missing.length ? `<div class="or-warn">⚠ Ordered but NOT rung: ${mt.missing.map(it => escapeHtml(it.t)).join(', ')}</div>` : ''}
-          ${mt.extra.length ? `<div class="or-warn">＋ Rung but not in the order: ${mt.extra.map(it => escapeHtml(it.name || it.code)).join(', ')}</div>` : ''}
+          ${(() => { const sp = orSubPairs(o, mt); return (sp.pairs.length ? `<div class="or-ok">🔄 Replacements (the text tells the customer):<br>${sp.pairs.map(pr => escapeHtml(pr.from.t) + ' → ' + escapeHtml(pr.to.name || pr.to.code)).join('<br>')}</div>` : '')
+            + (sp.missing.length ? `<div class="or-warn">⚠ Ordered but NOT rung: ${sp.missing.map(it => escapeHtml(it.t)).join(', ')}</div>` : '')
+            + (sp.extra.length ? `<div class="or-warn">＋ Rung but not in the order: ${sp.extra.map(it => escapeHtml(it.name || it.code)).join(', ')}</div>` : ''); })()}
           ${!mt.missing.length && !mt.extra.length ? `<div class="or-ok">✓ Everything ordered was rung</div>` : ''}`; })()}
       <div class="or-ih">ITEMS · picked ${nPicked}/${o.items.length}${(() => { const n = o.items.filter(orFrozen).length; return n ? ` · <span class="or-frz">❄️ ${n} frozen: cooler bag</span>` : ''; })()}</div>
       <div class="or-items">${o.items.map((it, i) => `
