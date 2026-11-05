@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05T19:49:26.730Z",
+ "updated": "2026-11-05T19:49:28.862Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -1820,24 +1820,6 @@
     "photo": true,
     "price": false
    }
-  },
-  "0477904060076": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "4-happy-family-9x65g",
-   "dept": "4",
-   "weekly": 97.46,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   },
-   "oos": true
   },
   "0085313500105": {
    "added": "2026-09-06",
