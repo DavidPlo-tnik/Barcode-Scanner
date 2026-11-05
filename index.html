@@ -2422,7 +2422,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v259</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v260</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3039,7 +3039,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v259</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v260</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11678,7 +11678,7 @@
     if (act === 'use_hold') p.pos = Object.assign({ src: 'pos' }, extra.hold);
     if (act === 'manual_total') p.pos = { total: extra.total, src: 'manual' };
     if (act === 'delivered' && extra && extra.pod) p.pod = extra.pod;
-    if (act === 'paid') p.deliver_on = orNextDay(new Date()).toISOString().slice(0, 10);
+    if (act === 'paid') p.deliver_on = orPaidDeliveryDay(new Date());
     // several steps before the PC catches up: keep what the earlier ones knew (the chosen total)
     const prev = pend[o.id];
     if (prev && orRank(p.status) >= orRank(prev.status) && act !== 'on_hold') { if (!p.pos && prev.pos) p.pos = prev.pos; if (!p.deliver_on && prev.deliver_on) p.deliver_on = prev.deliver_on; }
@@ -11783,6 +11783,12 @@
   }
   function orOver(o) { const e = orEst(o), p = orPre(o); return o.pos && e > 0 && p > e * 1.10 ? Math.round((p / e - 1) * 100) : 0; }
   const orDayFr = (d) => d.toLocaleDateString('fr-CA', { weekday: 'long', day: 'numeric', month: 'long' });
+  // paid by noon on a delivery day (Mon–Fri) → goes out that afternoon (the van never leaves after 2 pm); later → next delivery day
+  const OR_PAY_CUTOFF = 12;
+  function orPaidDeliveryDay(now) {
+    const d = (now.getDay() >= 1 && now.getDay() <= 5 && now.getHours() < OR_PAY_CUTOFF) ? now : orNextDay(now);
+    return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  }
   function orNextDay(d) { const n = new Date(d); n.setDate(n.getDate() + 1); while (n.getDay() === 0 || n.getDay() === 6) n.setDate(n.getDate() + 1); return n; }
   function orDay(iso) {
     if (!iso) return '';
@@ -11841,25 +11847,25 @@
       fr: { hi: `Bonjour ${first}, ici Marché Décarie.`, ready: `Votre commande ${name} est prête. Voici votre facture :`, total: `TOTAL (taxes incluses) : ${tot}`,
             miss: `Non disponible (non facturé) : ${miss}.`, extra: `Remplacé par : ${extra}.`,
             door: `Vous payez à la livraison par débit ou crédit. Nous livrons ${day}. Merci!`,
-            pay: `Veuillez payer par virement Interac à ${em} en écrivant ${name} dans le message. Nous livrons dès réception du paiement (lundi au vendredi). Merci!`,
+            pay: `Veuillez payer par virement Interac à ${em} en écrivant ${name} dans le message. Payé avant midi (lundi au vendredi) : livré le jour même; sinon, au prochain jour de livraison. Merci!`,
             cancel: `Bonjour ${first}, ici Marché Décarie. Votre commande ${name} a été annulée. Aucun paiement n'est requis. Pour toute question, écrivez-nous sur Instagram ou Facebook. Merci!`,
             route: `Bonjour ${first}, votre commande ${name} de Marché Décarie est en route! À tout à l'heure.` },
       en: { hi: `Hi ${first}, it's Marché Décarie.`, ready: `Your order ${name} is ready. Here is your bill:`, total: `TOTAL (taxes included): ${tot}`,
             miss: `Not available (not charged): ${miss}.`, extra: `Replaced with: ${extra}.`,
             door: `You pay on delivery by debit or credit card. We deliver ${day}. Thank you!`,
-            pay: `Please pay by Interac e-Transfer to ${em} with ${name} in the message. We deliver once payment is received (Monday to Friday). Thank you!`,
+            pay: `Please pay by Interac e-Transfer to ${em} with ${name} in the message. Paid by noon (Monday to Friday): delivered the same day; otherwise on the next delivery day. Thank you!`,
             cancel: `Hi ${first}, it's Marché Décarie. Your order ${name} has been cancelled. No payment is needed. If you have any questions, message us on Instagram or Facebook. Thank you!`,
             route: `Hi ${first}, your Marché Décarie order ${name} is on its way! See you soon.` },
       uk: { hi: `Вітаємо, ${first}! Це Marché Décarie.`, ready: `Ваше замовлення ${name} готове. Ваш рахунок:`, total: `РАЗОМ (з податками): ${tot}`,
             miss: `Немає в наявності (не враховано): ${miss}.`, extra: `Замінено на: ${extra}.`,
             door: `Оплата під час доставки карткою (дебетовою чи кредитною). Доставимо ${day}. Дякуємо!`,
-            pay: `Будь ласка, оплатіть переказом Interac на ${em}, вказавши ${name} у повідомленні. Доставимо після отримання оплати (з понеділка по п'ятницю). Дякуємо!`,
+            pay: `Будь ласка, оплатіть переказом Interac на ${em}, вказавши ${name} у повідомленні. Оплата до 12:00 (пн–пт) — доставимо того ж дня; пізніше — наступного дня доставки. Дякуємо!`,
             cancel: `Вітаємо, ${first}! Це Marché Décarie. Ваше замовлення ${name} скасовано. Оплата не потрібна. З питаннями пишіть нам в Instagram або Facebook. Дякуємо!`,
             route: `Вітаємо, ${first}! Ваше замовлення ${name} з Marché Décarie вже в дорозі. До зустрічі!` },
       ru: { hi: `Здравствуйте, ${first}! Это Marché Décarie.`, ready: `Ваш заказ ${name} готов. Ваш счёт:`, total: `ИТОГО (с налогами): ${tot}`,
             miss: `Нет в наличии (не учтено): ${miss}.`, extra: `Заменено на: ${extra}.`,
             door: `Оплата при доставке картой (дебетовой или кредитной). Доставим ${day}. Спасибо!`,
-            pay: `Пожалуйста, оплатите переводом Interac на ${em}, указав ${name} в сообщении. Доставим после получения оплаты (с понедельника по пятницу). Спасибо!`,
+            pay: `Пожалуйста, оплатите переводом Interac на ${em}, указав ${name} в сообщении. Оплата до 12:00 (пн–пт) — доставим в тот же день; позже — в следующий день доставки. Спасибо!`,
             cancel: `Здравствуйте, ${first}! Это Marché Décarie. Ваш заказ ${name} отменён. Оплата не требуется. С вопросами пишите нам в Instagram или Facebook. Спасибо!`,
             route: `Здравствуйте, ${first}! Ваш заказ ${name} из Marché Décarie уже в пути. До встречи!` },
     }[lg];
