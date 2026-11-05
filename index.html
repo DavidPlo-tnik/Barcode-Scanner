@@ -2442,7 +2442,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v263</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v264</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3059,7 +3059,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v263</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v264</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -13250,6 +13250,8 @@
         if (was) paint(sel); else z.remove();       // picked: back to the list
       };
       const ob = $('#or-zoos'); if (ob) ob.onclick = async () => {
+        const isOut = !!(ce && ce.oos);
+        if (!confirm(isOut ? `Put back IN STOCK on the website?\n\n${it.t}` : `Mark OUT OF STOCK on the website?\n\n${it.t}`)) return;
         ob.disabled = true; let nowOut = false;
         try {
           await mutateEcomCatalog(c => { const e = c.items[key]; if (!e) return;
