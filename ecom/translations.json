@@ -1,6 +1,6 @@
 {
  "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime. Optional 'desc' {fr,en,uk,ru}: extra HTML appended to the product description.",
- "updated": "2026-11-01",
+ "updated": "2026-11-05T18:55:47.039Z",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
    "src": "Romachka, Roshen,",
@@ -6910,18 +6910,22 @@
    "ru": "Ромашка конфеты 1 кг"
   },
   "pos-0482019551516": {
-   "src": "PRIPRAVKA KETCHUP AVEC AIL",
-   "fr": "Pripravka ketchup à l'ail",
-   "en": "Pripravka garlic ketchup",
-   "uk": "Приправка кетчуп часниковий",
-   "ru": "Приправка кетчуп чесночный"
+   "src": "PRIPRAVKA KETCHUP BBQ 400G",
+   "fr": "Ketchup à l'ail pour chachlyk Pripravka 400 g",
+   "en": "Pripravka garlic ketchup for shashlik 400 g",
+   "uk": "Кетчуп до шашлику з часником Pripravka 400 г",
+   "ru": "Кетчуп к шашлыку с чесноком Pripravka 400 г",
+   "manual": true,
+   "at": "2026-11-05"
   },
   "pos-0482019551518": {
-   "src": "PRIPRAVKA KETCHUP AVEC BASILIC",
-   "fr": "Pripravka ketchup au basilic",
-   "en": "Pripravka basil ketchup",
-   "uk": "Приправка кетчуп із базиліком",
-   "ru": "Приправка кетчуп с базиликом"
+   "src": "PRIPRAVKA KETCHUP 400GR",
+   "fr": "Ketchup doux au basilic Pripravka 400 g",
+   "en": "Pripravka mild basil ketchup 400 g",
+   "uk": "Кетчуп лагідний з базиліком Pripravka 400 г",
+   "ru": "Кетчуп нежный с базиликом Pripravka 400 г",
+   "manual": true,
+   "at": "2026-11-05"
   },
   "pos-0482019693003": {
    "src": "KWAS YARYLO",
@@ -9077,6 +9081,429 @@
    "en": "Villaggio whole wheat bread 600 g",
    "uk": "Villaggio цільнозерновий хліб 600 г",
    "ru": "Villaggio цельнозерновой хлеб 600 г"
+  },
+  "pos-0482003929003": {
+   "src": "PRIPRAVKA POUDRE DE CHILI 20GR",
+   "fr": "Piment rouge moulu Pripravka 20 g",
+   "en": "Pripravka ground red chili pepper 20 g",
+   "uk": "Перець червоний мелений Pripravka 20 г",
+   "ru": "Перец красный молотый Pripravka 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929004": {
+   "src": "PRIPRAVKA PIMENT DE LA JAMAIQUE 20GR",
+   "fr": "Piment de la Jamaïque en grains Pripravka 20 g",
+   "en": "Pripravka whole allspice 20 g",
+   "uk": "Перець духмяний горошок Pripravka 20 г",
+   "ru": "Перец душистый горошек Pripravka 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929011": {
+   "src": "PRIPRAVKA CANNELLE MOULUE 20GR",
+   "fr": "Cannelle moulue Pripravka 20 g",
+   "en": "Pripravka ground cinnamon 20 g",
+   "uk": "Кориця мелена Pripravka 20 г",
+   "ru": "Корица молотая Pripravka 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929013": {
+   "src": "PRIPRAVKA POUDRE DE MOUTARDE 50GR",
+   "fr": "Moutarde en poudre Pripravka 50 g",
+   "en": "Pripravka mustard powder 50 g",
+   "uk": "Гірчичний порошок Pripravka 50 г",
+   "ru": "Горчичный порошок Pripravka 50 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929014": {
+   "src": "PRIPRAVKA CORIANDRE 20GR",
+   "fr": "Coriandre moulue Pripravka 20 g",
+   "en": "Pripravka ground coriander 20 g",
+   "uk": "Коріандр мелений Pripravka 20 г",
+   "ru": "Кориандр молотый Pripravka 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929077": {
+   "src": "PRIPRAVKA ANETH SECHEE 10GR",
+   "fr": "Aneth séché Pripravka 10 g",
+   "en": "Pripravka dried dill 10 g",
+   "uk": "Кріп сушений Pripravka 10 г",
+   "ru": "Укроп сушёный Pripravka 10 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929078": {
+   "src": "PRIPRAVKA PERSIL SECHE 10GR",
+   "fr": "Persil séché Pripravka 10 g",
+   "en": "Pripravka dried parsley 10 g",
+   "uk": "Петрушка сушена Pripravka 10 г",
+   "ru": "Петрушка сушёная Pripravka 10 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929106": {
+   "src": "PRIPRAVKA POUDRE GINGEMBRE 10GR",
+   "fr": "Gingembre moulu Pripravka 10 g",
+   "en": "Pripravka ground ginger 10 g",
+   "uk": "Імбир мелений Pripravka 10 г",
+   "ru": "Имбирь молотый Pripravka 10 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929107": {
+   "src": "PRIPRAVKA PAPRIKA EN POUDRE 15GR",
+   "fr": "Paprika moulu Pripravka 15 g",
+   "en": "Pripravka ground paprika 15 g",
+   "uk": "Паприка мелена Pripravka 15 г",
+   "ru": "Паприка молотая Pripravka 15 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929108": {
+   "src": "PRIPRAVKA CUMIN 10GR",
+   "fr": "Cumin Pripravka 10 g",
+   "en": "Pripravka cumin 10 g",
+   "uk": "Кумин (зіра) Pripravka 10 г",
+   "ru": "Кумин (зира) Pripravka 10 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929109": {
+   "src": "PRIPRAVKA CURCUMA 15GR",
+   "fr": "Curcuma moulu Pripravka 15 g",
+   "en": "Pripravka ground turmeric 15 g",
+   "uk": "Куркума мелена Pripravka 15 г",
+   "ru": "Куркума молотая Pripravka 15 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929110": {
+   "src": "PRIPRAVKA GRAINES DE CARVI 20GR",
+   "fr": "Graines de carvi Pripravka 20 g",
+   "en": "Pripravka caraway seeds 20 g",
+   "uk": "Кмин Pripravka 20 г",
+   "ru": "Тмин Pripravka 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929082": {
+   "src": "PRIPRAVKA ASS. VIANDE 30GR",
+   "fr": "Épices pour viande Pripravka 30 g",
+   "en": "Pripravka meat seasoning 30 g",
+   "uk": "Приправа до м'яса Pripravka 30 г",
+   "ru": "Приправа для мяса Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929084": {
+   "src": "PRIPRAVKA ASS. POISSON 30GR",
+   "fr": "Épices pour poisson Pripravka 30 g",
+   "en": "Pripravka fish seasoning 30 g",
+   "uk": "Приправа до риби Pripravka 30 г",
+   "ru": "Приправа для рыбы Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929085": {
+   "src": "PRIPRAVKA ASS. PILAF 30GR",
+   "fr": "Épices pour plov (pilaf) Pripravka 30 g",
+   "en": "Pripravka plov (pilaf) seasoning 30 g",
+   "uk": "Приправа до плову Pripravka 30 г",
+   "ru": "Приправа для плова Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929090": {
+   "src": "PRIPRAVKA ASS. POULET 30GR",
+   "fr": "Épices pour poulet Pripravka 30 g",
+   "en": "Pripravka chicken seasoning 30 g",
+   "uk": "Приправа до курки Pripravka 30 г",
+   "ru": "Приправа для курицы Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929095": {
+   "src": "PRIPRAVKA ASS. SOUPE 30GR",
+   "fr": "Épices pour soupe Pripravka 30 g",
+   "en": "Pripravka soup seasoning 30 g",
+   "uk": "Приправа до супу Pripravka 30 г",
+   "ru": "Приправа для супа Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929099": {
+   "src": "PRIPRAVKA ASS. SOUPE DE POISSON 30GR",
+   "fr": "Épices pour soupe de poisson (oukha) Pripravka 30 g",
+   "en": "Pripravka fish soup (ukha) seasoning 30 g",
+   "uk": "Приправа до юшки (ухи) Pripravka 30 г",
+   "ru": "Приправа для ухи Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929100": {
+   "src": "PRIPRAVKA ASS. FARCES 30GR",
+   "fr": "Épices pour viande hachée et choux farcis Pripravka 30 g",
+   "en": "Pripravka seasoning for ground meat & cabbage rolls 30 g",
+   "uk": "Приправа до фаршу і голубців Pripravka 30 г",
+   "ru": "Приправа для фарша и голубцов Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929103": {
+   "src": "PRIPRAVKA ASS. PORC 30GR",
+   "fr": "Épices pour porc Pripravka 30 g",
+   "en": "Pripravka pork seasoning 30 g",
+   "uk": "Приправа до свинини Pripravka 30 г",
+   "ru": "Приправа для свинины Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929105": {
+   "src": "PRIPRAVKA ASS. CUISSES POULET 30GR",
+   "fr": "Épices pour cuisses de poulet Pripravka 30 g",
+   "en": "Pripravka chicken leg seasoning 30 g",
+   "uk": "Приправа до курячих стегенець Pripravka 30 г",
+   "ru": "Приправа для куриных окорочков Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929143": {
+   "src": "PRIPRAVKA HOUBLON-SUNELI 25GR",
+   "fr": "Khmeli-souneli Pripravka 25 g",
+   "en": "Pripravka khmeli-suneli 25 g",
+   "uk": "Хмелі-сунелі Pripravka 25 г",
+   "ru": "Хмели-сунели Pripravka 25 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929081": {
+   "src": "PRIPRAVKA ASS. POMMES DE TERRE 30GR",
+   "fr": "Épices pour pommes de terre Pripravka 30 g",
+   "en": "Pripravka potato seasoning 30 g",
+   "uk": "Приправа до картоплі Pripravka 30 г",
+   "ru": "Приправа для картофеля Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929083": {
+   "src": "PRIPRAVKA BBQ 30G",
+   "fr": "Épices pour chachlyk (brochettes) Pripravka 30 g",
+   "en": "Pripravka shashlik (kebab) seasoning 30 g",
+   "uk": "Приправа до шашлику Pripravka 30 г",
+   "ru": "Приправа для шашлыка Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929096": {
+   "src": "PRIPRAVKA ASS. SOUPE 30GR",
+   "fr": "Épices pour bortsch Pripravka 30 g",
+   "en": "Pripravka borscht seasoning 30 g",
+   "uk": "Приправа до борщу Pripravka 30 г",
+   "ru": "Приправа для борща Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929097": {
+   "src": "PRIPRAVKA ASS.SOUPE KHARCHO 30GR",
+   "fr": "Épices pour soupe kharcho Pripravka 30 g",
+   "en": "Pripravka kharcho soup seasoning 30 g",
+   "uk": "Приправа до супу харчо Pripravka 30 г",
+   "ru": "Приправа для супа харчо Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929098": {
+   "src": "PRIPRAVKA ASS. PORC 30GR",
+   "fr": "Épices pour salo (lard salé) Pripravka 30 g",
+   "en": "Pripravka salo (cured pork fat) seasoning 30 g",
+   "uk": "Приправа до сала та шпику Pripravka 30 г",
+   "ru": "Приправа для сала и шпика Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929286": {
+   "src": "PRIPRAVKA EXCLUSIVE MELANGE DE POIVRONS 35GR",
+   "fr": "Mélange de poivres sans sel Pripravka Exclusive 35 g",
+   "en": "Pripravka Exclusive salt-free pepper blend 35 g",
+   "uk": "Суміш перців без солі Pripravka Exclusive 35 г",
+   "ru": "Смесь перцев без соли Pripravka Exclusive 35 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929437": {
+   "src": "PRIPRAVKA EXCLUSIVE HERBES DE PROVENCE 30GR",
+   "fr": "Herbes de Provence sans sel Pripravka Exclusive 30 g",
+   "en": "Pripravka Exclusive salt-free herbes de Provence 30 g",
+   "uk": "Прованські трави без солі Pripravka Exclusive 30 г",
+   "ru": "Прованские травы без соли Pripravka Exclusive 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929463": {
+   "src": "PRIPRAVKA EXCLUSIVE VIN CHAUD 15GR",
+   "fr": "Épices pour vin chaud Pripravka Exclusive 15 g",
+   "en": "Pripravka Exclusive mulled wine spices 15 g",
+   "uk": "Прянощі для глінтвейну Pripravka Exclusive 15 г",
+   "ru": "Пряности для глинтвейна Pripravka Exclusive 15 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551298": {
+   "src": "PRIPRAVKA EXCLUSIVE BBQ 40GR",
+   "fr": "Épices pour grillades et BBQ sans sel Pripravka Exclusive 40 g",
+   "en": "Pripravka Exclusive salt-free grill & BBQ seasoning 40 g",
+   "uk": "Приправа для гриля та барбекю без солі Pripravka Exclusive 40 г",
+   "ru": "Приправа для гриля и барбекю без соли Pripravka Exclusive 40 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551299": {
+   "src": "PRIPRAVKA EXCLUSIVE BBQ 45GR",
+   "fr": "Épices pour chachlyk sans sel Pripravka Exclusive 45 g",
+   "en": "Pripravka Exclusive salt-free shashlik seasoning 45 g",
+   "uk": "Приправа до шашлику без солі Pripravka Exclusive 45 г",
+   "ru": "Приправа для шашлыка без соли Pripravka Exclusive 45 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551300": {
+   "src": "PRIPRAVKA EXCLUSIVE POULET 50GR",
+   "fr": "Épices pour poulet sans sel Pripravka Exclusive 50 g",
+   "en": "Pripravka Exclusive salt-free chicken seasoning 50 g",
+   "uk": "Приправа до курки без солі Pripravka Exclusive 50 г",
+   "ru": "Приправа для курицы без соли Pripravka Exclusive 50 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551301": {
+   "src": "PRIPRAVKA EXCLUSIVE PILAF 40GR",
+   "fr": "Épices pour plov sans sel Pripravka Exclusive 40 g",
+   "en": "Pripravka Exclusive salt-free plov seasoning 40 g",
+   "uk": "Приправа до плову без солі Pripravka Exclusive 40 г",
+   "ru": "Приправа для плова без соли Pripravka Exclusive 40 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551302": {
+   "src": "PRIPRAVKA EXCLUSIVE POISSON 45GR",
+   "fr": "Épices pour poisson sans sel Pripravka Exclusive 45 g",
+   "en": "Pripravka Exclusive salt-free fish seasoning 45 g",
+   "uk": "Приправа до риби без солі Pripravka Exclusive 45 г",
+   "ru": "Приправа для рыбы без соли Pripravka Exclusive 45 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551309": {
+   "src": "PRIPRAVKA EXCLUSIVE VIANDE 50GR",
+   "fr": "Épices pour viande sans sel Pripravka Exclusive 50 g",
+   "en": "Pripravka Exclusive salt-free meat seasoning 50 g",
+   "uk": "Приправа до м'яса без солі Pripravka Exclusive 50 г",
+   "ru": "Приправа для мяса без соли Pripravka Exclusive 50 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929495": {
+   "src": "PRIPRAVKA SEL ROSE HIMALAYA 200GR",
+   "fr": "Sel rose de l'Himalaya Pripravka 200 g",
+   "en": "Pripravka Himalayan pink salt 200 g",
+   "uk": "Гімалайська рожева сіль Pripravka 200 г",
+   "ru": "Гималайская розовая соль Pripravka 200 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551126": {
+   "src": "PRIPRAVKA AGAR-AGAR 8GR",
+   "fr": "Agar-agar Pripravka 8 g",
+   "en": "Pripravka agar-agar 8 g",
+   "uk": "Агар-агар Pripravka 8 г",
+   "ru": "Агар-агар Pripravka 8 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929079": {
+   "src": "PRIPRAVKA BACKING POWDER 18GR",
+   "fr": "Poudre à pâte Pripravka 18 g",
+   "en": "Pripravka baking powder 18 g",
+   "uk": "Розпушувач для тіста Pripravka 18 г",
+   "ru": "Разрыхлитель теста Pripravka 18 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929453": {
+   "src": "PRIPRAVKA POUR POULET AVEC SAC 30GR",
+   "fr": "Épices pour poulet citron-basilic avec sac de cuisson Pripravka 30 g",
+   "en": "Pripravka lemon-basil chicken seasoning with roasting bag 30 g",
+   "uk": "Приправа для ароматної курочки з пакетом для запікання Pripravka 30 г",
+   "ru": "Приправа для ароматной курочки с пакетом для запекания Pripravka 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551741": {
+   "src": "PRIPRAVKA SAUCE PHILIPPINE 180G",
+   "fr": "Sauce philippine à la banane Pripravka 180 g",
+   "en": "Pripravka Philippine banana sauce 180 g",
+   "uk": "Соус філіппінський з бананом Pripravka 180 г",
+   "ru": "Соус филиппинский с бананом Pripravka 180 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551742": {
+   "src": "PRIPRAVKA SAUCE MOROCCAN 180G",
+   "fr": "Sauce harissa marocaine Pripravka 180 g",
+   "en": "Pripravka Moroccan harissa sauce 180 g",
+   "uk": "Соус марокканський харіса Pripravka 180 г",
+   "ru": "Соус марокканский харисса Pripravka 180 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551743": {
+   "src": "PRIPRAVKA SAUCE CHIESE 180G",
+   "fr": "Sauce chinoise à l'ail noir Pripravka 180 g",
+   "en": "Pripravka Chinese black garlic sauce 180 g",
+   "uk": "Соус китайський з чорним часником Pripravka 180 г",
+   "ru": "Соус китайский с чёрным чесноком Pripravka 180 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551744": {
+   "src": "PRIPRAVKA SAUCE MEXICAN 180G",
+   "fr": "Sauce mole mexicaine cacao et piment ancho Pripravka 180 g",
+   "en": "Pripravka Mexican mole sauce, cocoa & ancho chili 180 g",
+   "uk": "Соус мексиканський моле з какао та анчо Pripravka 180 г",
+   "ru": "Соус мексиканский моле с какао и анчо Pripravka 180 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551745": {
+   "src": "PRIPRAVKA SAUCE SPANISH 180G",
+   "fr": "Sauce romesco espagnole Pripravka 180 g",
+   "en": "Pripravka Spanish romesco sauce 180 g",
+   "uk": "Соус іспанський ромеско Pripravka 180 г",
+   "ru": "Соус испанский ромеско Pripravka 180 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551746": {
+   "src": "PRIPRAVKA SAUCE ITALIAN 180G",
+   "fr": "Sauce italienne à la truffe noire Pripravka 180 g",
+   "en": "Pripravka Italian black truffle sauce 180 g",
+   "uk": "Соус італійський з чорним трюфелем Pripravka 180 г",
+   "ru": "Соус итальянский с чёрным трюфелем Pripravka 180 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551514": {
+   "src": "PRIPRAVKA KETCHUP LIGHT 250G",
+   "fr": "Ketchup doux au basilic Pripravka 250 g",
+   "en": "Pripravka mild basil ketchup 250 g",
+   "uk": "Кетчуп лагідний з базиліком Pripravka 250 г",
+   "ru": "Кетчуп нежный с базиликом Pripravka 250 г",
+   "manual": true,
+   "at": "2026-11-05"
   }
  },
  "collections": {
