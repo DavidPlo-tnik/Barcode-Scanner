@@ -269,6 +269,26 @@
   .or-chk { flex: none; width: 26px; height: 26px; border-radius: 7px; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 900; color: #000; }
   .or-item.done .or-chk { background: #30d158; border-color: #30d158; }
   .or-item img, .or-noimg { flex: none; width: 54px; height: 54px; border-radius: 8px; object-fit: contain; background: #fff; }
+  .or-item .or-zm { flex: none; position: relative; }
+  .or-item .or-zm::after { content: '🔍'; position: absolute; right: -4px; bottom: -4px; font-size: 12px; background: var(--bg); border-radius: 50%; padding: 1px 2px; }
+  .or-oos-tag { color: #ff453a; font-weight: 700; }
+  .or-zoom { position: fixed; inset: 0; z-index: 170; background: rgba(0,0,0,.85); display: flex; align-items: center; justify-content: center; padding: 14px; }
+  .or-zbox { background: var(--bg); border-radius: 16px; width: 100%; max-width: 480px; max-height: 100%; overflow-y: auto; padding: 14px; position: relative; }
+  .or-zbox .or-x { position: absolute; top: 8px; right: 8px; }
+  .or-zimg { display: block; width: 100%; max-height: 52vh; object-fit: contain; background: #fff; border-radius: 12px; }
+  .or-zthumbs { display: flex; gap: 6px; margin-top: 6px; overflow-x: auto; }
+  .or-zthumbs img { width: 52px; height: 52px; object-fit: contain; background: #fff; border-radius: 6px; border: 2px solid transparent; }
+  .or-zthumbs img.on { border-color: var(--accent, #0a84ff); }
+  .or-zname { font-size: 17px; font-weight: 700; margin: 10px 30px 2px 0; }
+  .or-zsub { font-size: 13px; color: var(--text-faint); }
+  .or-zbc { background: #fff; border-radius: 10px; margin: 10px 0; padding: 6px; text-align: center; }
+  .or-zbc svg { max-width: 100%; height: auto; }
+  .or-zcode { font: 700 20px/1.2 ui-monospace, Menlo, monospace; letter-spacing: .08em; text-align: center; color: #000; }
+  .or-zbtns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .or-zbtns button { padding: 14px 8px; border-radius: 12px; font-size: 15px; font-weight: 800; border: 0; color: #fff; background: #30d158; }
+  .or-zbtns button.or-zoos { background: #ff453a; }
+  .or-zbtns button.or-zoos.back { background: #636366; }
+  .or-zbtns button.undo { background: #636366; }
   .or-it { flex: 1; min-width: 0; font-size: 14px; line-height: 1.3; } .or-it em { color: var(--accent); font-style: normal; font-weight: 700; }
   .or-it small { display: block; color: var(--text-faint); font-size: 11.5px; margin-top: 2px; }
   .or-pod { position: fixed; inset: 0; z-index: 168; background: rgba(0,0,0,.75); display: flex; align-items: center; justify-content: center; padding: 14px; }
@@ -2422,7 +2442,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v262</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v263</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3039,7 +3059,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v262</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v263</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -13183,6 +13203,67 @@
   function orOpen(id) { _or.sel = id; _or.manual = false; orDetail(); }
   function orClose() { _or.sel = null; const m = $('#or-modal'); if (m) m.classList.remove('open'); }
 
+  // Tap an item's picture while picking: big photo(s), the barcode to check against the package,
+  // tick it as picked, or mark it out of stock on the website.
+  function orBarcodeDigits(code) {
+    let n = String(code || '').trim().replace(/-[\d.]+KG$/i, '').replace(/^0+/, '');
+    if (/^\d{6,10}$/.test(n)) n = n.padStart(11, '0');           // short POS code -> UPC-A (11 digits + check)
+    return n;
+  }
+  function orZoom(o, i) {
+    const it = o.items[i]; if (!it) return;
+    const cat = (_ecomCatalog && _ecomCatalog.items) || {};
+    const key = String(it.code || '').trim().replace(/-[\d.]+KG$/i, '');
+    const ce = cat[key];
+    const photos = ce && ce.photos && ce.photos.length ? ce.photos.map(photoSrc) : (it.img ? [it.img] : []);
+    let z = $('#or-zoom'); if (z) z.remove();
+    z = document.createElement('div'); z.id = 'or-zoom'; z.className = 'or-zoom'; document.body.appendChild(z);
+    const paint = (sel) => {
+      const picked = new Set(orLS('orPick:' + o.id) || []);
+      const out = !!(ce && ce.oos);
+      z.innerHTML = `<div class="or-zbox">
+        <button class="or-x" id="or-zx" aria-label="Close">✕</button>
+        ${photos.length ? `<img class="or-zimg" id="or-zimg" src="${escapeHtml(photos[sel])}" alt="">` : '<div class="or-zsub" style="padding:30px 0;text-align:center">No photo</div>'}
+        ${photos.length > 1 ? `<div class="or-zthumbs">${photos.map((u, k) => `<img data-k="${k}" class="${k === sel ? 'on' : ''}" src="${escapeHtml(u)}" alt="">`).join('')}</div>` : ''}
+        <div class="or-zname">${it.q} × ${escapeHtml(it.t)}${it.v ? ` <em>${escapeHtml(it.v)}</em>` : ''}</div>
+        ${it.attrs && it.attrs.length ? `<div class="or-zsub">${it.attrs.map(a => escapeHtml(a[0] + ': ' + a[1])).join(' · ')}</div>` : ''}
+        <div class="or-zsub">${orMoney(it.p * it.q)}${out ? ' · <span class="or-oos-tag">OUT OF STOCK on the site</span>' : ''}</div>
+        <div class="or-zbc"><svg id="or-zsvg"></svg><div class="or-zcode" id="or-zcode"></div></div>
+        <div class="or-zbtns">
+          <button id="or-zpick" class="${picked.has(i) ? 'undo' : ''}">${picked.has(i) ? '↺ UNTICK' : '✓ PICKED'}</button>
+          ${ce ? `<button id="or-zoos" class="or-zoos ${out ? 'back' : ''}">${out ? 'BACK IN STOCK' : '⛔ OUT OF STOCK'}</button>` : '<button disabled style="opacity:.4">Not on the site</button>'}
+        </div></div>`;
+      const digits = orBarcodeDigits(it.code);
+      const svg = $('#or-zsvg');
+      let ok = false; try { ok = /^\d+$/.test(digits) && renderBarcode(svg, digits); } catch (e) { ok = false; }
+      if (!ok) svg.style.display = 'none';
+      const shown = ok && svg.querySelector('text') ? '' : (digits || key);
+      $('#or-zcode').textContent = shown;
+      if (ok) { svg.removeAttribute('width'); svg.removeAttribute('height'); }
+      $('#or-zx').onclick = () => z.remove();
+      z.onclick = (e) => { if (e.target === z) z.remove(); };
+      z.querySelectorAll('.or-zthumbs img').forEach(t => t.onclick = () => paint(+t.dataset.k));
+      $('#or-zpick').onclick = () => {
+        const s = new Set(orLS('orPick:' + o.id) || []);
+        const was = s.has(i); was ? s.delete(i) : s.add(i); orLS('orPick:' + o.id, [...s]);
+        orDetail();
+        if (was) paint(sel); else z.remove();       // picked: back to the list
+      };
+      const ob = $('#or-zoos'); if (ob) ob.onclick = async () => {
+        ob.disabled = true; let nowOut = false;
+        try {
+          await mutateEcomCatalog(c => { const e = c.items[key]; if (!e) return;
+            if (e.oos) { delete e.oos; delete e.oosAt; } else { e.oos = true; e.oosAt = new Date().toISOString(); }
+            nowOut = !!e.oos; });
+          if (ce) { if (nowOut) { ce.oos = true; ce.oosAt = new Date().toISOString(); } else { delete ce.oos; delete ce.oosAt; } }
+          showToast(nowOut ? 'OUT OF STOCK — sold out on the site' : 'BACK IN STOCK on the site');
+        } catch (e) { showToast(e.message, true); }
+        orDetail(); paint(sel);
+      };
+    };
+    paint(0);
+  }
+
   function orDetail() {
     if (!_orTr) orLoadTr().then(() => { if ($('#or-modal') && $('#or-modal').innerHTML) orDetail(); });
     let m = $('#or-modal');
@@ -13272,10 +13353,10 @@
       <div class="or-items">${o.items.map((it, i) => `
         <button class="or-item ${picked.has(i) ? 'done' : ''}" data-i="${i}">
           <span class="or-chk">${picked.has(i) ? '✓' : ''}</span>
-          ${img(it) ? `<img src="${escapeHtml(img(it))}" alt="" loading="lazy">` : '<span class="or-noimg"></span>'}
+          <span class="or-zm" data-zoom="${i}">${img(it) ? `<img src="${escapeHtml(img(it))}" alt="" loading="lazy">` : '<span class="or-noimg"></span>'}</span>
           <span class="or-it"><b>${it.q} ×</b> ${orFrozen(it) ? '<span class="or-frz">❄️</span> ' : ''}${escapeHtml(it.t)}${it.v ? ` <em>${escapeHtml(it.v)}</em>` : ''}
             ${it.attrs && it.attrs.length ? `<small>${it.attrs.map(a => escapeHtml(a[0] + ': ' + a[1])).join(' · ')}</small>` : ''}
-            <small>${escapeHtml(it.code || '')} · ${orMoney(it.p * it.q)}${(() => { const mt = orMatch(o); if (!mt) return ''; return mt.ok[i] ? ' · <span class="or-y">✓ rung</span>' : ' · <span class="or-n">⚠ not rung</span>'; })()}</small></span>
+            <small>${(() => { const e = cat[String(it.code || '').trim().replace(/-[\d.]+KG$/i, '')]; return e && e.oos ? '<span class="or-oos-tag">⛔ OUT OF STOCK</span> · ' : ''; })()}${escapeHtml(it.code || '')} · ${orMoney(it.p * it.q)}${(() => { const mt = orMatch(o); if (!mt) return ''; return mt.ok[i] ? ' · <span class="or-y">✓ rung</span>' : ' · <span class="or-n">⚠ not rung</span>'; })()}</small></span>
         </button>`).join('')}</div>
       ${!['delivered', 'cancelled'].includes(o.status) ? `<button class="or-link or-cancel" data-a="cancelled">Cancel this order</button>` : ''}
     </div>`;
@@ -13283,7 +13364,8 @@
     if (keepScroll) { const sh = m.querySelector('.or-sheet'); if (sh) sh.scrollTop = keepScroll; }
     $('#or-x').onclick = orClose;
     m.onclick = (e) => { if (e.target === m) orClose(); };
-    m.querySelectorAll('.or-item').forEach(b => b.onclick = () => {
+    m.querySelectorAll('.or-item').forEach(b => b.onclick = (e) => {
+      if (e.target.closest('[data-zoom]')) { orZoom(o, +b.dataset.i); return; }   // picture: zoom + barcode
       const s = new Set(orLS('orPick:' + o.id) || []), i = +b.dataset.i;
       s.has(i) ? s.delete(i) : s.add(i); orLS('orPick:' + o.id, [...s]); orDetail();
     });
