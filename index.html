@@ -2422,7 +2422,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v261</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v262</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3039,7 +3039,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v261</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v262</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11559,7 +11559,7 @@
           const file = `orders/pod/${String(o.name).replace(/[^\w-]/g, '')}_${Date.now()}.json`;
           const enc = await orEncrypt({ order: o.name, kind, at, img: shot }, orPass());
           await ghPutFile(file, btoa(JSON.stringify(enc)), `proof of delivery ${o.name}`);
-          done({ kind, file, at });
+          done({ kind, file, at, _img: shot });
         } catch (e) {
           showToast('Could not save the proof: ' + (e.message || e), true);
           if (btn) { btn.disabled = false; btn.textContent = 'TRY AGAIN'; }
@@ -11567,6 +11567,45 @@
       };
       pick();
     });
+  }
+  // ── text the door photo to the customer ──
+  // Phones only let a web app hand a photo to the share sheet (no sending in the background):
+  // tap SEND → pick Messages → the customer (their number is copied, ready to paste).
+  function orPodText(o) {
+    const first = o.first || '', lg = orLang(o);
+    return {
+      fr: `Bonjour ${first}, ici Marché Décarie. Personne n'était à la maison, alors nous avons laissé votre commande ${o.name} à votre porte (photo ci-jointe). Bonne journée!`,
+      en: `Hi ${first}, it's Marché Décarie. Nobody was home, so we left your order ${o.name} at your door (photo attached). Have a great day!`,
+      uk: `Вітаємо, ${first}! Це Marché Décarie. Нікого не було вдома, тож ми залишили ваше замовлення ${o.name} біля дверей (фото додаємо). Гарного дня!`,
+      ru: `Здравствуйте, ${first}! Это Marché Décarie. Никого не было дома, поэтому мы оставили ваш заказ ${o.name} у двери (фото прилагаем). Хорошего дня!`,
+    }[lg];
+  }
+  function orDataUrlFile(dataUrl, name) {   // synchronous, so the share stays inside the tap
+    const [head, b64] = dataUrl.split(','), bin = atob(b64), u = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+    return new File([u], name, { type: (head.match(/data:([^;]+)/) || [])[1] || 'image/jpeg' });
+  }
+  function orPodTextSheet(o, img) {
+    let ov = $('#or-podtx'); if (ov) ov.remove();
+    ov = document.createElement('div'); ov.id = 'or-podtx'; ov.className = 'or-pod'; document.body.appendChild(ov);
+    const file = orDataUrlFile(img, `Marche-Decarie-${String(o.name).replace(/[^\w-]/g, '')}.jpg`);
+    const text = orPodText(o), canShare = !!(navigator.canShare && navigator.canShare({ files: [file] }));
+    ov.innerHTML = `<div class="or-pod-box or-pod-wide"><div class="or-pod-h">LEFT AT THE DOOR · ${escapeHtml(o.name)} · ${escapeHtml(o.first || '')}</div>
+      <img class="or-pod-img" src="${img}" alt="">
+      <div class="or-note" style="white-space:pre-wrap">${escapeHtml(text)}</div>
+      ${canShare ? `<button class="or-big" id="podtx-send">📱 TEXT THE PHOTO TO ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())}</button>
+        <p class="or-pod-line">Pick <b>Messages</b>, then ${escapeHtml(o.first || 'the customer')}${o.phone ? ` (${escapeHtml(o.phone)} is copied, paste it in “To”)` : ''}.</p>`
+        : `<a class="or-big" id="podtx-sms" href="${orSmsLink(o, text)}">📱 TEXT ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())}</a>
+        <p class="or-pod-line">This phone can't attach the photo from the app: long-press the photo above → Save, then add it to the message.</p>`}
+      <button class="or-link" id="podtx-close">Not now</button></div>`;
+    const close = () => ov.remove();
+    $('#podtx-close').onclick = close;
+    const send = $('#podtx-send');
+    if (send) send.onclick = async () => {
+      try { if (o.phone && navigator.clipboard) navigator.clipboard.writeText(orPhoneDigits(o.phone)).catch(() => {}); } catch (e) {}
+      try { await navigator.share({ files: [file], text }); close(); showToast('PHOTO SENT ✓'); }
+      catch (e) { if (e.name !== 'AbortError') showToast(e.message || String(e), true); }
+    };
   }
   async function orShowPod(o) {
     const pod = o.pod; if (!pod || !pod.file) return;
@@ -11576,8 +11615,9 @@
       const { json } = await ghGetJsonAndSha(pod.file);
       const d = await orDecrypt(json, orPass());
       ov.innerHTML = `<div class="or-pod-box or-pod-wide"><div class="or-pod-h">${d.kind === 'signature' ? '✍️ SIGNATURE' : '📷 PHOTO'} · ${escapeHtml(o.name)} · ${escapeHtml((d.at || '').replace('T', ' '))}</div>
-        <img class="or-pod-img" src="${d.img}" alt=""><div class="or-pod-row"><button class="or-big" id="pod-close">CLOSE</button></div></div>`;
+        <img class="or-pod-img" src="${d.img}" alt=""><div class="or-pod-row">${d.kind === 'photo' ? '<button class="or-link" id="pod-text">📱 Text it to the customer</button>' : ''}<button class="or-big" id="pod-close">CLOSE</button></div></div>`;
       $('#pod-close').onclick = () => ov.remove();
+      if ($('#pod-text')) $('#pod-text').onclick = () => { ov.remove(); orPodTextSheet(o, d.img); };
     } catch (e) { ov.innerHTML = `<div class="or-pod-box"><div class="or-pod-h">Could not open the proof: ${escapeHtml(e.message || String(e))}</div><button class="or-big" onclick="this.closest('.or-pod').remove()">CLOSE</button></div>`; }
   }
 
@@ -13256,8 +13296,11 @@
         if (!pod) return;
         b.disabled = true;
         if (a === 'door_paid') await orAct(o, 'paid');
+        const img = pod._img; delete pod._img;
         await orAct(orApplyPending(o), 'delivered', pod.kind === 'none' ? {} : { pod });
-        orDetail(); return;
+        orDetail();
+        if (pod.kind === 'photo' && img) orPodTextSheet(o, img);   // nobody home: send them the photo
+        return;
       }
       b.disabled = true;
       await orAct(o, a);
