@@ -1,6 +1,6 @@
 {
  "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime. Optional 'desc' {fr,en,uk,ru}: extra HTML appended to the product description.",
- "updated": "2026-11-06T01:48:35.000Z",
+ "updated": "2026-11-06T23:20:30.000Z",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
    "src": "Romachka, Roshen,",
@@ -9837,6 +9837,96 @@
    "ru": "Кукурузные тортильи Don Chente 850 г",
    "manual": true,
    "at": "2026-11-05"
+  },
+  "pos-0479104500068": {
+   "src": "",
+   "fr": "Hyleys thé de Ceylan grandes feuilles",
+   "en": "Hyleys Ceylon large-leaf tea",
+   "uk": "Hyleys цейлонський чай крупнолистовий",
+   "ru": "Hyleys цейлонский чай крупнолистовой",
+   "manual": true,
+   "at": "2026-11-06"
+  },
+  "pos-0590158840058": {
+   "src": "",
+   "fr": "E. Wedel Ptasie Mleczko orange-chocolat, chocolat noir",
+   "en": "E. Wedel Ptasie Mleczko orange-chocolate, dark chocolate",
+   "uk": "E. Wedel Ptasie Mleczko (Пташине молоко) апельсин-шоколад у чорному шоколаді",
+   "ru": "E. Wedel Ptasie Mleczko (Птичье молоко) апельсин-шоколад в тёмном шоколаде",
+   "manual": true,
+   "at": "2026-11-06"
+  },
+  "pos-0590158840049": {
+   "src": "",
+   "fr": "E. Wedel Ptasie Mleczko crème, chocolat au lait 340 g",
+   "en": "E. Wedel Ptasie Mleczko creamy, milk chocolate 340 g",
+   "uk": "E. Wedel Ptasie Mleczko (Пташине молоко) вершкове в молочному шоколаді 340 г",
+   "ru": "E. Wedel Ptasie Mleczko (Птичье молоко) сливочное в молочном шоколаде 340 г",
+   "manual": true,
+   "at": "2026-11-06"
+  },
+  "pos-0590158840103": {
+   "src": "",
+   "fr": "E. Wedel Ptasie Mleczko noix de coco, chocolat au lait",
+   "en": "E. Wedel Ptasie Mleczko coconut, milk chocolate",
+   "uk": "E. Wedel Ptasie Mleczko (Пташине молоко) кокосове в молочному шоколаді",
+   "ru": "E. Wedel Ptasie Mleczko (Птичье молоко) кокосовое в молочном шоколаде",
+   "manual": true,
+   "at": "2026-11-06"
+  },
+  "pos-0628451413189": {
+   "src": "",
+   "fr": "Pain de Riga (seigle)",
+   "en": "Riga rye bread",
+   "uk": "Ризький житній хліб",
+   "ru": "Рижский ржаной хлеб",
+   "manual": true,
+   "at": "2026-11-06"
+  },
+  "pos-0590058500011": {
+   "src": "",
+   "fr": "Mestemacher pain de seigle complet (chleb razowy) 500 g",
+   "en": "Mestemacher whole rye bread (chleb razowy) 500 g",
+   "uk": "Mestemacher житній хліб з борошна грубого помелу 500 г",
+   "ru": "Mestemacher ржаной хлеб из муки грубого помола 500 г",
+   "manual": true,
+   "at": "2026-11-06"
+  },
+  "pos-0590039773461": {
+   "src": "",
+   "fr": "Łowicz confiture de cassis XXL",
+   "en": "Łowicz blackcurrant jam XXL",
+   "uk": "Łowicz джем із чорної смородини XXL",
+   "ru": "Łowicz джем из чёрной смородины XXL",
+   "manual": true,
+   "at": "2026-11-06"
+  },
+  "pos-0590039773463": {
+   "src": "",
+   "fr": "Łowicz confiture de griottes XXL",
+   "en": "Łowicz sour cherry jam XXL",
+   "uk": "Łowicz джем вишневий XXL",
+   "ru": "Łowicz джем вишнёвый XXL",
+   "manual": true,
+   "at": "2026-11-06"
+  },
+  "pos-0590039773462": {
+   "src": "",
+   "fr": "Łowicz confiture de fraises XXL",
+   "en": "Łowicz strawberry jam XXL",
+   "uk": "Łowicz джем полуничний XXL",
+   "ru": "Łowicz джем клубничный XXL",
+   "manual": true,
+   "at": "2026-11-06"
+  },
+  "pos-0590039774625": {
+   "src": "",
+   "fr": "Łowicz beurre de prunes (powidła) 450 g",
+   "en": "Łowicz plum butter (powidła) 450 g",
+   "uk": "Łowicz повидло сливове 450 г",
+   "ru": "Łowicz повидло сливовое 450 г",
+   "manual": true,
+   "at": "2026-11-06"
   }
  },
  "collections": {
