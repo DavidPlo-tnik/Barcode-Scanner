@@ -9596,20 +9596,20 @@
    "at": "2026-11-05"
   },
   "pos-0022679300000": {
-   "src": "GATEAU TIRAMISU 400G",
-   "fr": "Gâteau tiramisu Rosemont 400 g",
-   "en": "Rosemont tiramisu cake 400 g",
-   "uk": "Торт тірамісу Rosemont 400 г",
-   "ru": "Торт тирамису Rosemont 400 г",
+   "src": "GATEAU AUX POMMES",
+   "fr": "Gâteau aux pommes",
+   "en": "Apple cake",
+   "uk": "Яблучний пиріг",
+   "ru": "Яблочный пирог",
    "manual": true,
    "at": "2026-11-05"
   },
   "pos-0022679400000": {
-   "src": "GATEAU AU FRUIT DE LA PASSION",
-   "fr": "Gâteau aux fruits de la passion Rosemont",
-   "en": "Rosemont passion fruit cake",
-   "uk": "Торт з маракуєю Rosemont",
-   "ru": "Торт с маракуйей Rosemont",
+   "src": "GATEAU AUX CERISES",
+   "fr": "Gâteau aux cerises 550 g",
+   "en": "Cherry cake 550 g",
+   "uk": "Вишневий пиріг 550 г",
+   "ru": "Вишнёвый пирог 550 г",
    "manual": true,
    "at": "2026-11-05"
   },
