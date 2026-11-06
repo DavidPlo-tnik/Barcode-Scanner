@@ -1,6 +1,6 @@
 {
  "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime. Optional 'desc' {fr,en,uk,ru}: extra HTML appended to the product description.",
- "updated": "2026-11-06T23:20:30.000Z",
+ "updated": "2026-11-06T23:38:06.000Z",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
    "src": "Romachka, Roshen,",
@@ -2604,11 +2604,13 @@
    "ru": "Тарань сушёная"
   },
   "pos-0020143800000": {
-   "src": "SAUMON JERKI                      rég",
+   "src": "SAUMON JERKI",
    "fr": "Saumon séché (jerky)",
    "en": "Salmon jerky",
    "uk": "Лосось сушений (джерки)",
-   "ru": "Лосось сушёный (джерки)"
+   "ru": "Лосось сушёный (джерки)",
+   "manual": true,
+   "at": "2026-11-06"
   },
   "pos-0020143900000": {
    "src": "BATONNETS DE SANDRE SÉCHÉ SUDAK JERKY",
@@ -9925,6 +9927,33 @@
    "en": "Łowicz plum butter (powidła) 450 g",
    "uk": "Łowicz повидло сливове 450 г",
    "ru": "Łowicz повидло сливовое 450 г",
+   "manual": true,
+   "at": "2026-11-06"
+  },
+  "pos-0020143700000": {
+   "src": "SAUMON FUMÉ BATONETTES BBQ",
+   "fr": "Bâtonnets de saumon fumé BBQ",
+   "en": "BBQ smoked salmon jerky sticks",
+   "uk": "Палички з копченого лосося BBQ",
+   "ru": "Палочки из копчёного лосося BBQ",
+   "manual": true,
+   "at": "2026-11-06"
+  },
+  "pos-0020143600000": {
+   "src": "SAUMON FUMÉ BATONNETES POIVRE",
+   "fr": "Bâtonnets de saumon fumé au poivre",
+   "en": "Peppered smoked salmon jerky sticks",
+   "uk": "Палички з копченого лосося з перцем",
+   "ru": "Палочки из копчёного лосося с перцем",
+   "manual": true,
+   "at": "2026-11-06"
+  },
+  "pos-0062431811500": {
+   "src": "SUNBEC SUCRE",
+   "fr": "Sucre Sunbec",
+   "en": "Sunbec sugar",
+   "uk": "Цукор Sunbec",
+   "ru": "Сахар Sunbec",
    "manual": true,
    "at": "2026-11-06"
   }
