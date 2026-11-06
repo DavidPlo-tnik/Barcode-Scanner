@@ -9597,19 +9597,19 @@
   },
   "pos-0022679300000": {
    "src": "GATEAU AUX POMMES",
-   "fr": "Gâteau aux pommes",
-   "en": "Apple cake",
-   "uk": "Яблучний пиріг",
-   "ru": "Яблочный пирог",
+   "fr": "Gâteau aux pommes Rosemont",
+   "en": "Rosemont apple cake",
+   "uk": "Яблучний пиріг Rosemont",
+   "ru": "Яблочный пирог Rosemont",
    "manual": true,
    "at": "2026-11-05"
   },
   "pos-0022679400000": {
    "src": "GATEAU AUX CERISES",
-   "fr": "Gâteau aux cerises 550 g",
-   "en": "Cherry cake 550 g",
-   "uk": "Вишневий пиріг 550 г",
-   "ru": "Вишнёвый пирог 550 г",
+   "fr": "Gâteau aux cerises Rosemont 550 g",
+   "en": "Rosemont cherry cake 550 g",
+   "uk": "Вишневий пиріг Rosemont 550 г",
+   "ru": "Вишнёвый пирог Rosemont 550 г",
    "manual": true,
    "at": "2026-11-05"
   },
