@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06T15:48:25.309Z",
+ "updated": "2026-11-06T15:50:45.658Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -5570,23 +5570,6 @@
    "status": "draft",
    "group": null,
    "dept": "1",
-   "weekly": 29.97,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0590158840065": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "2-e-wedel-ptasie",
-   "dept": "2",
    "weekly": 29.97,
    "scale": false,
    "fresh": false,
