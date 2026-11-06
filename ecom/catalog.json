@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06T15:58:01.317Z",
+ "updated": "2026-11-06T16:05:21.894Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -8720,23 +8720,6 @@
    "group": "2-nacho-cruistillants",
    "dept": "2",
    "weekly": 18.3,
-   "scale": false,
-   "fresh": false,
-   "v": {
-    "title": false,
-    "size": false,
-    "photo": false,
-    "price": false
-   }
-  },
-  "0062784320311": {
-   "added": "2026-09-06",
-   "photos": [],
-   "listed": false,
-   "status": "draft",
-   "group": "2-nacho-cruistillants",
-   "dept": "2",
-   "weekly": 14.55,
    "scale": false,
    "fresh": false,
    "v": {
