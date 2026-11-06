@@ -1,6 +1,6 @@
 {
  "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime. Optional 'desc' {fr,en,uk,ru}: extra HTML appended to the product description.",
- "updated": "2026-11-05T19:08:42.000Z",
+ "updated": "2026-11-06T01:48:35.000Z",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
    "src": "Romachka, Roshen,",
@@ -3578,10 +3578,12 @@
   },
   "pos-0023880200000": {
    "src": "MAQUEREAU FUME ENTIER",
-   "fr": "Maquereau fumé entier",
-   "en": "Whole smoked mackerel",
-   "uk": "Скумбрія копчена ціла",
-   "ru": "Скумбрия копчёная целая"
+   "fr": "Maquereau entier fumé à froid",
+   "en": "Whole cold-smoked mackerel",
+   "uk": "Скумбрія холодного копчення ціла",
+   "ru": "Скумбрия холодного копчения целая",
+   "manual": true,
+   "at": "2026-11-05"
   },
   "pos-0023880300000": {
    "src": "SMELT SEC KORJUSHKA",
@@ -3620,10 +3622,12 @@
   },
   "pos-0023881200000": {
    "src": "MAQUEREAU FUMEE",
-   "fr": "Maquereau fumé",
-   "en": "Smoked mackerel",
-   "uk": "Скумбрія копчена",
-   "ru": "Скумбрия копчёная"
+   "fr": "Maquereau fumé à chaud",
+   "en": "Hot-smoked mackerel",
+   "uk": "Скумбрія гарячого копчення",
+   "ru": "Скумбрия горячего копчения",
+   "manual": true,
+   "at": "2026-11-05"
   },
   "pos-0023881400000": {
    "src": "SAUMON FUME BALYK (sans flancs)",
@@ -9543,6 +9547,294 @@
    "en": "Pripravka Happy Baking citric acid 20 g",
    "uk": "Лимонна кислота Pripravka Happy Baking 20 г",
    "ru": "Лимонная кислота Pripravka Happy Baking 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0005559200001": {
+   "src": "PARADIS MIEL NATUREL 500GR",
+   "fr": "Miel naturel Paradis 500 g",
+   "en": "Paradis natural honey 500 g",
+   "uk": "Натуральний мед Paradis 500 г",
+   "ru": "Натуральный мёд Paradis 500 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482309790982": {
+   "src": "VELADIS GOBIE A LA SAUCE TOMATE 230G",
+   "fr": "Gobies à la sauce tomate Veladis 230 g",
+   "en": "Veladis gobies in tomato sauce 230 g",
+   "uk": "Бички в томатному соусі Veladis 230 г",
+   "ru": "Бычки в томатном соусе Veladis 230 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482309790048": {
+   "src": "",
+   "fr": "Balaou (saïra) au naturel Veladis",
+   "en": "Veladis Pacific saury, natural",
+   "uk": "Сайра натуральна Veladis",
+   "ru": "Сайра натуральная Veladis",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482309791200": {
+   "src": "",
+   "fr": "Balaou (saïra) à l'huile Veladis",
+   "en": "Veladis Pacific saury in oil",
+   "uk": "Сайра в олії Veladis",
+   "ru": "Сайра в масле Veladis",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0020154700000": {
+   "src": "",
+   "fr": "Kraft Dinner Original macaroni au fromage 200 g",
+   "en": "Kraft Dinner Original mac & cheese 200 g",
+   "uk": "Макарони з сиром Kraft Dinner Original 200 г",
+   "ru": "Макароны с сыром Kraft Dinner Original 200 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0022679300000": {
+   "src": "GATEAU TIRAMISU 400G",
+   "fr": "Gâteau tiramisu Rosemont 400 g",
+   "en": "Rosemont tiramisu cake 400 g",
+   "uk": "Торт тірамісу Rosemont 400 г",
+   "ru": "Торт тирамису Rosemont 400 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0022679400000": {
+   "src": "GATEAU AU FRUIT DE LA PASSION",
+   "fr": "Gâteau aux fruits de la passion Rosemont",
+   "en": "Rosemont passion fruit cake",
+   "uk": "Торт з маракуєю Rosemont",
+   "ru": "Торт с маракуйей Rosemont",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929488": {
+   "src": "SMAKKO EPICES  70GR",
+   "fr": "Assaisonnement universel 15 légumes et épices Smakko 70 g",
+   "en": "Smakko all-purpose seasoning, 15 vegetables & spices 70 g",
+   "uk": "Універсальна приправа 15 овочів та прянощів Smakko 70 г",
+   "ru": "Универсальная приправа 15 овощей и пряностей Smakko 70 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929491": {
+   "src": "SMAKKO ASS. 15 LEGUMES EPICES 160GR",
+   "fr": "Assaisonnement universel 15 légumes et épices Smakko, format économique 160 g",
+   "en": "Smakko all-purpose seasoning, 15 vegetables & spices, economy pack 160 g",
+   "uk": "Універсальна приправа 15 овочів та прянощів Smakko, економ-пак 160 г",
+   "ru": "Универсальная приправа 15 овощей и пряностей Smakko, эконом-пак 160 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482000117235": {
+   "src": "ECO SPICES 20G",
+   "fr": "Épices pour carottes à la coréenne Eko 20 g",
+   "en": "Eko Korean-style carrot seasoning 20 g",
+   "uk": "Приправа до моркви по-корейськи Eko 20 г",
+   "ru": "Приправа для моркови по-корейски Eko 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482003929142": {
+   "src": "PRIPRAVKA ASS. CAROTTE COREENNE 25GR",
+   "fr": "Épices pour carottes à la coréenne (piquantes) Pripravka 25 g",
+   "en": "Pripravka Korean-style carrot seasoning (hot) 25 g",
+   "uk": "Приправа до моркви по-корейськи (гостра) Pripravka 25 г",
+   "ru": "Приправа для моркови по-корейски (острая) Pripravka 25 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0482019551479": {
+   "src": "PRIPRAVKA ASS.  20GR",
+   "fr": "Épices pour omelette et œufs au plat Pripravka 20 g",
+   "en": "Pripravka omelette & fried egg seasoning 20 g",
+   "uk": "Приправа до омлету та яєчні Pripravka 20 г",
+   "ru": "Приправа для омлета и яичницы Pripravka 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460700376049": {
+   "src": "EPINE-VINETTE BARBERRY SECHEE 10G",
+   "fr": "Épine-vinette séchée Magic Tree 10 g",
+   "en": "Magic Tree dried barberry 10 g",
+   "uk": "Барбарис сушений Magic Tree 10 г",
+   "ru": "Барбарис сушёный Magic Tree 10 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460700376846": {
+   "src": "MAGIC TREE UZHO-SUNELI 15GR",
+   "fr": "Outskho-souneli moulu Magic Tree 15 g",
+   "en": "Magic Tree ground utskho-suneli (blue fenugreek) 15 g",
+   "uk": "Уцхо-сунелі мелений Magic Tree 15 г",
+   "ru": "Уцхо-сунели молотый Magic Tree 15 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460700376348": {
+   "src": "MAGIC TREE HMELI-SUNELI 30GR",
+   "fr": "Khmeli-souneli Magic Tree 30 g",
+   "en": "Magic Tree khmeli-suneli 30 g",
+   "uk": "Хмелі-сунелі Magic Tree 30 г",
+   "ru": "Хмели-сунели Magic Tree 30 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356630233": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices pour porc Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy pork seasoning 20 g",
+   "uk": "Приправа до свинини «Острів спецій» 20 г",
+   "ru": "Приправа к свинине «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356630833": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices pour chachlyk Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy shashlik seasoning 20 g",
+   "uk": "Приправа до шашлику «Острів спецій» 20 г",
+   "ru": "Приправа к шашлыку «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356630533": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices pour pâtes Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy pasta seasoning 20 g",
+   "uk": "Приправа до макаронів «Острів спецій» 20 г",
+   "ru": "Приправа к макаронам «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356630933": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices pour viande hachée Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy ground meat seasoning 20 g",
+   "uk": "Приправа до фаршу «Острів спецій» 20 г",
+   "ru": "Приправа к фаршу «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356636133": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices pour bortsch Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy borscht seasoning 20 g",
+   "uk": "Приправа до борщу «Острів спецій» 20 г",
+   "ru": "Приправа к борщу «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356632333": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices pour carottes à la coréenne Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy Korean-style carrot seasoning 20 g",
+   "uk": "Приправа до моркви по-корейськи «Острів спецій» 20 г",
+   "ru": "Приправа к моркови по-корейски «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356631333": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices pour pommes de terre Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy potato seasoning 20 g",
+   "uk": "Приправа до картоплі «Острів спецій» 20 г",
+   "ru": "Приправа к картофелю «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356635533": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices pour pelmeni Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy pelmeni seasoning 20 g",
+   "uk": "Приправа до пельменів «Острів спецій» 20 г",
+   "ru": "Приправа к пельменям «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356631233": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices pour grillades Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy grill seasoning 20 g",
+   "uk": "Приправа до гриля «Острів спецій» 20 г",
+   "ru": "Приправа к грилю «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356632233": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices pour poulet Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy chicken seasoning 20 g",
+   "uk": "Приправа до курки «Острів спецій» 20 г",
+   "ru": "Приправа к курице «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356631133": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Bouquet de poivres Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy pepper bouquet 20 g",
+   "uk": "Приправа «Букет перців» «Острів спецій» 20 г",
+   "ru": "Приправа «Букет перцев» «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356631433": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices citronnées pour poisson Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy lemon fish seasoning 20 g",
+   "uk": "Лимонна приправа до риби «Острів спецій» 20 г",
+   "ru": "Лимонная приправа к рыбе «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356630333": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices pour plov Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy plov seasoning 20 g",
+   "uk": "Приправа до плову «Острів спецій» 20 г",
+   "ru": "Приправа к плову «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356630433": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Épices aux herbes pour soupe Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy herb soup seasoning 20 g",
+   "uk": "Приправа з зеленню до супу «Острів спецій» 20 г",
+   "ru": "Приправа с зеленью к супу «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0460356633133": {
+   "src": "OSTROV SPEZII 20GR",
+   "fr": "Khmeli-souneli Ostrov Spetsiy 20 g",
+   "en": "Ostrov Spetsiy khmeli-suneli 20 g",
+   "uk": "Хмелі-сунелі «Острів спецій» 20 г",
+   "ru": "Хмели-сунели «Остров специй» 20 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0590008500013": {
+   "src": "WINIARY BUDYN 60GR",
+   "fr": "Pouding saveur vanille Winiary 60 g",
+   "en": "Winiary vanilla pudding mix 60 g",
+   "uk": "Пудинг ванільний Winiary 60 г",
+   "ru": "Пудинг ванильный Winiary 60 г",
+   "manual": true,
+   "at": "2026-11-05"
+  },
+  "pos-0078909140959": {
+   "src": "TORTILLAS MAIS 850GR",
+   "fr": "Tortillas de maïs Don Chente 850 g",
+   "en": "Don Chente corn tortillas 850 g",
+   "uk": "Кукурудзяні тортильї Don Chente 850 г",
+   "ru": "Кукурузные тортильи Don Chente 850 г",
    "manual": true,
    "at": "2026-11-05"
   }
