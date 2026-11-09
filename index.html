@@ -2442,7 +2442,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v266</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v267</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3059,7 +3059,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v266</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v267</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -12345,8 +12345,25 @@
     }
     return document.scrollingElement || document.documentElement;
   }
+  // which screen is showing: lists (home, an order, a match list) remember their scroll position so that
+  // coming back from a detail screen (one line's match, a delivery, add-a-product) lands where you were
+  function supViewKey() {
+    const v = _sup.view;
+    if (v === 'match') return _sup.linkK ? 'detail' : 'matchlist|' + (_sup.linkSid || _sup.sid);
+    if (v === 'order') return 'order|' + _sup.sid;
+    if (v === 'home' || !v) return 'home';
+    return 'detail';
+  }
   function supRender() {
+    const sc0 = supScroller(), prevKey = _sup.curKey;
+    _sup.scrollMem = _sup.scrollMem || {};
+    if (prevKey && prevKey !== 'detail') _sup.scrollMem[prevKey] = sc0.scrollTop;
     supRenderView();
+    const key = _sup.curKey = supViewKey();
+    if (key !== 'detail' && !_sup.back) {
+      const y = key === prevKey ? _sup.scrollMem[key] : (prevKey === 'detail' ? _sup.scrollMem[key] : null);
+      if (y != null) { const go = () => { supScroller().scrollTop = y; }; go(); requestAnimationFrame(go); }
+    } else if (key === 'detail' && prevKey !== 'detail') { supScroller().scrollTop = 0; }
     const b = _sup.back;
     if (b && ((b.view === 'order' && _sup.view === 'order') || (b.view === 'matchlist' && _sup.view === 'match' && !_sup.linkK))) {
       _sup.back = null;
@@ -12500,7 +12517,7 @@
       }
       const ae = document.activeElement;
       if (ae && ae.tagName === 'INPUT' && $('#sup-panel').contains(ae)) return;   // don't disturb typing
-      if (['home', 'order', 'receive'].includes(_sup.view)) { const y = window.scrollY; supRender(); window.scrollTo(0, y); }
+      if (['home', 'order', 'receive'].includes(_sup.view)) { const sc = supScroller(), y = sc.scrollTop; supRender(); sc.scrollTop = y; }
     } catch (e) { /* offline: try again later */ }
   }
   // quantities: q = boxes paid, free = free boxes (10+1 deal), fa = free follows q automatically
@@ -12977,9 +12994,10 @@
     }
     // the review list: every line not matched yet, the ones with a likely match first
     const todo = items.filter(it => !(c.map || {})[it.k] && !(c.skip || []).includes(it.k) && it.p != null);
-    const q = supKey(_sup.matchQ);
+    const q = supKey(_sup.listQ || '');
     const best = {};
-    const pool = q ? items.filter(it => supKey(it.d).includes(q)) : todo;
+    const qw = q ? supSearchWords(_sup.listQ) : null;
+    const pool = q ? items.filter(it => { const t = supItemText(c, it); return qw.every(w => t.includes(' ' + w)); }) : todo;
     pool.slice(0, 150).forEach(it => {
       const s = ((c.sugg || {})[it.k] || []).filter(x => supProd(x));
       best[it.k] = supAutoSuggest(c, it, [], 1, s)[0] || null;
@@ -12988,7 +13006,7 @@
     const nBest = todo.filter(it => best[it.k]).length;
     el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="home">‹</button><div class="or-h">${escapeHtml(c.name)} · MATCH</div></div>
       <p class="or-c3">${todo.length} lines of their list aren't matched to one of our products yet${q ? '' : `; ${nBest} of the first ${Math.min(150, todo.length)} have a likely match, shown first`}. Check the best guess, then tap MATCH, or FIND to search.</p>
-      <input id="sup-mq" class="sup-search" placeholder="Search their list…" value="${escapeHtml(_sup.matchQ)}" autocomplete="off">
+      <input id="sup-mq" class="sup-search" placeholder="Search their list…" value="${escapeHtml(_sup.listQ || '')}" autocomplete="off">
       ${list.map(it => {
         const cur = ((c.map || {})[it.k] || []).filter(x => supProd(x)), b = best[it.k];
         return `<div class="sup-mrow" data-k="${escapeHtml(it.k)}">${supThemCard(c, it)}
@@ -13002,7 +13020,7 @@
       row.querySelector('[data-open]').onclick = () => supOpenLink(c.id, k, 'match');
       const nc = row.querySelector('[data-noc]'); if (nc) nc.onclick = () => save(doc => { if (!doc.skip.includes(k)) doc.skip.push(k); });
     });
-    const mq = $('#sup-mq'); mq.oninput = () => { _sup.matchQ = mq.value; clearTimeout(_sup.qT); _sup.qT = setTimeout(() => { supRenderMatch(el); const n = $('#sup-mq'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 350); };
+    const mq = $('#sup-mq'); mq.oninput = () => { _sup.listQ = mq.value; clearTimeout(_sup.qT); _sup.qT = setTimeout(() => { supRenderMatch(el); const n = $('#sup-mq'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 350); };
     supBindCommon(el);
   }
 
@@ -13112,7 +13130,7 @@
         if (b.dataset.sid) _sup.sid = b.dataset.sid;
         if (a === 'home') { _sup.view = 'home'; _sup.linkK = null; supRender(); }
         else if (a === 'order') { _sup.view = 'order'; supRender(); }
-        else if (a === 'match') { _sup.view = 'match'; _sup.linkK = null; _sup.linkSid = _sup.sid; _sup.matchQ = ''; supRender(); }
+        else if (a === 'match') { _sup.view = 'match'; _sup.linkK = null; _sup.linkSid = _sup.sid; _sup.matchQ = ''; _sup.listQ = ''; supRender(); }
         else if (a === 'matchlist') { _sup.linkK = null; _sup.matchQ = ''; supRender(); }
         else if (a === 'order' && _sup.view === 'match') { _sup.view = 'order'; _sup.linkK = null; _sup.matchQ = ''; supRender(); }
         else if (a === 'send') supSend();
