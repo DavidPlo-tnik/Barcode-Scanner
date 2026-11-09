@@ -2442,7 +2442,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v265</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v266</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3059,7 +3059,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v265</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v266</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -3939,8 +3939,9 @@
   function productThumbHtml(code, size) {
     size = size || 42;
     const cat = _ecomCatalog;
-    const rc = resolveCode(code);
-    const ent = cat && cat.items && cat.items[rc];
+    const cdt = String(code).includes('#') && typeof supCandyOf === 'function' ? supCandyOf(code) : null;
+    const rc = resolveCode(cdt ? cdt.base : code);
+    const ent = cdt ? cdt.e : (cat && cat.items && cat.items[rc]);
     let photos = ent && ent.photos;
     // codes with several items under them (candies, honey, ready-made food): first item's photo;
     // a fruit/vegetable brand: the family's photo
@@ -12182,6 +12183,7 @@
       _sup.orders = json || { orders: [] };
       if (!_sup.orders.orders) _sup.orders.orders = [];
     })().catch(e => { let cached = null; try { cached = JSON.parse(localStorage.getItem('supOrdersCache') || 'null'); } catch (x) {} if (!cached) throw e; _sup.orders = cached; }));
+    if (!_ecomCatalog) jobs.push(fetchEcomCatalog().catch(() => {}));
     await Promise.all(jobs);
     supIndexCodes();
     supRestorePending();
@@ -12251,10 +12253,35 @@
   }
 
   // ---- numbers per supplier line ----
-  function supCodes(cfg, it) { return ((cfg.map || {})[it.k] || []).filter(c => DATA.products[c] || DATA.products[resolveCode(c)]); }
+  // A supplier line can also be matched to ONE item under a shared POS code (a candy under BONBONS 25.99,
+  // a honey, a pastry...): stored as "<code>#<item id>" from the catalog's candyGroups.
+  function supCandyOf(code) {
+    const i = String(code).indexOf('#'); if (i < 0) return null;
+    const base = code.slice(0, i), id = code.slice(i + 1);
+    const g = ((_ecomCatalog || {}).candyGroups || {});
+    const e = (g[base] || g[resolveCode(base)] || []).find(x => x.id === id);
+    return e ? { base, e } : null;
+  }
+  function supCandyName(cd) { return (cd.e.name || '').replace(/^[•\s]+/, '').replace(/,\s*$/, '').trim() || 'Item without a name'; }
+  function supProd(code) {
+    const cd = supCandyOf(code);
+    if (cd) { const p = DATA.products[cd.base] || DATA.products[resolveCode(cd.base)]; return p ? [supCandyName(cd), p[1], p[2]] : undefined; }
+    return DATA.products[code];
+  }
+  function supCandyKeys() {
+    if (_sup.candyKeys && _sup.candyKeysFor === _ecomCatalog) return _sup.candyKeys;
+    const out = [];
+    for (const [base, kids] of Object.entries((_ecomCatalog || {}).candyGroups || {})) {
+      if (!(DATA.products[base] || DATA.products[resolveCode(base)])) continue;
+      (kids || []).forEach(e => { if (e && e.id && (e.name || '').trim()) out.push(base + '#' + e.id); });
+    }
+    _sup.candyKeys = out; _sup.candyKeysFor = _ecomCatalog;
+    return out;
+  }
+  function supCodes(cfg, it) { return ((cfg.map || {})[it.k] || []).filter(c => supProd(c) || DATA.products[resolveCode(c)]); }
   function supRate(codes) {   // units (or kg) sold per week, stockout-adjusted, all our codes for this line together
     let r = 0;
-    codes.forEach(c => { r += ecomSalesStats(c).rateUnits || 0; });
+    codes.forEach(c => { if (!supCandyOf(c)) r += ecomSalesStats(c).rateUnits || 0; });   // a candy has no sales of its own
     return r;
   }
   function supUnitsPerBox(it) {   // in OUR selling unit (kg for weighed items)
@@ -12486,7 +12513,8 @@
   function supLineHtml(c, it, d, cover) {
     const codes = supCodes(c, it), l = d.lines[it.k], q = (l && l.q) || 0;
     const sg = supSuggest(c, it, cover);
-    const p0 = codes.length ? (DATA.products[resolveCode(codes[0])] || []) : [];
+    const p0 = codes.length ? (supProd(codes[0]) || DATA.products[resolveCode(codes[0])] || []) : [];
+    const cd0 = codes.length ? supCandyOf(codes[0]) : null;
     const ourName = codes.length ? (p0[0] || '').trim() : '';
     const cost = supCostPerOurUnit(it), our = p0[1];
     const margin = cost != null && our ? Math.round(100 * (our - cost) / our) : null;
@@ -12499,12 +12527,12 @@
         ${codes.length ? productThumbHtml(codes[0], 40) : '<span class="sup-noimg">?</span>'}
         <div class="sup-names"><b>${escapeHtml(ourName || it.d)}</b>${ourName ? `<small>${escapeHtml(it.d)}</small>` : ''}
           <small>${c.unit === 'kg' ? (na ? '<span class="sup-bad">no price</span>' : supMoney(it.p) + '/kg' + (it.ou ? ' (' + supMoney(cost) + ' a piece)' : '')) : `${escapeHtml(it.b || '?')} per box · ${na ? '<span class="sup-bad">no price on their list</span>' : supMoney(it.p) + per + ' = ' + supMoney(it.p * (it.bn || 0)) + '/box'}`}${our ? ' · we sell ' + supMoney(our) : ''}${margin != null ? ` · <b class="${margin < 25 ? 'sup-bad' : 'sup-ok'}">${margin}%</b>` : ''}${it.n ? ` · <span class="sup-new">${escapeHtml(it.n)}</span>` : ''}</small>
-          ${codes.length ? `<small>${sg && sg.rate ? 'sells ' + (sg.rate >= 10 ? Math.round(sg.rate) : sg.rate.toFixed(1)) + (it.ou ? ' pcs' : it.unit !== 'ea' ? ' kg' : '') + '/wk' : 'no recent sales'}${sg && sg.last ? ' · last: ' + sg.last.qty + (c.unit === 'kg' ? ' kg ' : ' bx ') + sg.last.date.slice(5) : ''}${costMove ? ` · <span class="sup-warn">cost ${supMoney(cost)} vs POS ${supMoney(posCost)}</span>` : ''}</small>` : ''}
+          ${codes.length ? `<small>${cd0 ? `🍬 sold under ${escapeHtml(((DATA.products[cd0.base] || [])[0] || '').trim())} ${supMoney((DATA.products[cd0.base] || [])[1])} with other items: no sales of its own` : sg && sg.rate ? 'sells ' + (sg.rate >= 10 ? Math.round(sg.rate) : sg.rate.toFixed(1)) + (it.ou ? ' pcs' : it.unit !== 'ea' ? ' kg' : '') + '/wk' : 'no recent sales'}${sg && sg.last ? ' · last: ' + sg.last.qty + (c.unit === 'kg' ? ' kg ' : ' bx ') + sg.last.date.slice(5) : ''}${costMove ? ` · <span class="sup-warn">cost ${supMoney(cost)} vs POS ${supMoney(posCost)}</span>` : ''}</small>` : ''}
         </div>
         ${na ? '' : `<div class="sup-step"><button data-sq="-1" aria-label="one box less">−</button><button class="sup-qty" data-qedit="1">${supQtyText(l)}</button><button data-sq="1" aria-label="one box more">＋</button></div>`}
       </div>
       ${codes.length ? `<div class="sup-mline"><span>✓ matched to <b>${escapeHtml(ourName)}</b>${codes.length > 1 ? ' +' + (codes.length - 1) : ''}</span><button data-match="1">change / unmatch</button></div>`
-        : `<div class="sup-mline is-un"><span>${(() => { const s0 = ((c.sugg || {})[it.k] || []).find(x => DATA.products[x]); return s0 ? 'suggestion: ' + escapeHtml(((DATA.products[s0] || [])[0] || '').trim()) : 'not matched to our products'; })()}</span><button class="primary" data-match="1">🔍 FIND MATCH</button></div>`}
+        : `<div class="sup-mline is-un"><span>${(() => { const s0 = ((c.sugg || {})[it.k] || []).find(x => supProd(x)); return s0 ? 'suggestion: ' + escapeHtml(((supProd(s0) || [])[0] || '').trim()) : 'not matched to our products'; })()}</span><button class="primary" data-match="1">🔍 FIND MATCH</button></div>`}
       ${!na && q >= 10 && c.unit !== 'kg' ? `<button class="sup-free${l && l.fa ? ' on' : ''}" data-free="1">🎁 ${l && l.fa ? `${q}+${Math.floor(q / 10)} free box${Math.floor(q / 10) > 1 ? 'es' : ''} ✓` : '10+1 deal? tap to add the free boxes'}</button>` : ''}
       ${sg && sg.others && sg.others.length ? (() => {
         const pref = supPrefFor(codes);
@@ -12723,7 +12751,7 @@
         const codes = supCodes(c, byK[k] || { k }), r = l.recv != null ? l.recv : l.q + (l.free || 0);
         return `<div class="sup-line${r !== l.q ? ' diff' : ''}" data-k="${escapeHtml(k)}"><div class="sup-l1">
           ${codes.length ? productThumbHtml(codes[0], 40) : '<span class="sup-noimg">?</span>'}
-          <div class="sup-names"><b>${escapeHtml(codes.length ? (DATA.products[resolveCode(codes[0])] || [''])[0] : (byK[k] || {}).d || l.d)}</b><small>ordered ${supQtyText(l)} box${l.q + (l.free || 0) > 1 ? 'es' : ''}</small></div>
+          <div class="sup-names"><b>${escapeHtml(codes.length ? (supProd(codes[0]) || DATA.products[resolveCode(codes[0])] || [''])[0] : (byK[k] || {}).d || l.d)}</b><small>ordered ${supQtyText(l)} box${l.q + (l.free || 0) > 1 ? 'es' : ''}</small></div>
           ${ro ? `<b>${r}</b>` : `<div class="sup-step"><button data-rq="-1">−</button><span>${r}</span><button data-rq="1">＋</button></div>`}
         </div></div>`;
       }).join('')}
@@ -12790,7 +12818,7 @@
     let t = _sup.trText[code];
     if (t == null) {
       const tr = supTr()[code] || {};
-      t = _sup.trText[code] = supKey([(DATA.products[code] || [])[0], tr.fr, tr.en].filter(Boolean).join(' ')).replace(/[^A-Z0-9 ]/g, ' ');
+      t = _sup.trText[code] = supKey([(supProd(code) || [])[0], tr.fr, tr.en].filter(Boolean).join(' ')).replace(/[^A-Z0-9 ]/g, ' ');
     }
     return t;
   }
@@ -12802,6 +12830,10 @@
       if (code === q || code.endsWith(q)) { out.push([1e9, code]); continue; }
       const t = supText(code);
       if (words.every(w => t.includes(w))) out.push([((DATA.sales[code] || {}).ta || 0), code]);
+    }
+    for (const code of supCandyKeys()) {   // candies & other items under a shared code, by their own names
+      const t = ' ' + supText(code);
+      if (words.every(w => t.includes(' ' + w))) out.push([5e8, code]);
     }
     return out.sort((a, b) => b[0] - a[0]).slice(0, limit || 12).map(x => x[1]);
   }
@@ -12823,22 +12855,23 @@
     if (hit < 2) return -1;
     let sc = hit / m.stems.length * 10;
     if (m.brand && t.includes(' ' + m.brand)) sc += 3;
-    const ps = supSizeOf((DATA.products[code] || [])[0]) || supSizeOf(productSizeText(code));
+    const cdx = supCandyOf(code);
+    const ps = supSizeOf((supProd(code) || [])[0]) || (cdx ? null : supSizeOf(productSizeText(code)));
     if (m.size && ps) sc += ps === m.size ? 4 : -2;
     const pc = (DATA.products[code] || [])[4];
     if (m.cost && pc && Math.abs(pc - m.cost) <= 0.02 * m.cost + 0.01) sc += 6;
     return sc + Math.min(2, Math.log10(1 + ((DATA.sales[code] || {}).ta || 0)) / 2);
   }
   function supWordIdx() {   // first 4 letters of every word in our names -> products (built once)
-    if (_sup.wIdx && _sup.wIdxTr === _sup.tr) return _sup.wIdx;
+    if (_sup.wIdx && _sup.wIdxTr === _sup.tr && _sup.wIdxCat === _ecomCatalog) return _sup.wIdx;
     const idx = new Map();
-    for (const code of Object.keys(DATA.products)) {
+    for (const code of [...Object.keys(DATA.products), ...supCandyKeys()]) {
       for (const w of supText(code).split(' ')) {
         if (w.length < 3) continue;
         const k = w.slice(0, 4); let a = idx.get(k); if (!a) idx.set(k, a = new Set()); a.add(code);
       }
     }
-    _sup.wIdx = idx; _sup.wIdxTr = _sup.tr;
+    _sup.wIdx = idx; _sup.wIdxTr = _sup.tr; _sup.wIdxCat = _ecomCatalog;
     return idx;
   }
   function supAutoSuggest(c, it, exclude, n, extra) {
@@ -12859,6 +12892,19 @@
   }
   // One of our products with what you need to decide: photo, names, size, our price, cost, sales, barcode.
   function supPosCard(code, it, action, tag) {
+    const cdc = supCandyOf(code);
+    if (cdc) {
+      const bp = DATA.products[cdc.base] || DATA.products[resolveCode(cdc.base)] || [];
+      const cost = it ? supCostPerOurUnit(it) : null, our = bp[1];
+      const mg = cost != null && our ? Math.round(100 * (our - cost) / our) : null;
+      return `<div class="sup-pc${action === 'unlink' ? ' is-linked' : ''}">
+        ${productThumbHtml(code, 52)}
+        <div class="sup-pc-t">${tag ? `<em class="sup-pc-tag">${tag}</em>` : ''}<b>🍬 ${escapeHtml(supCandyName(cdc))}</b>
+          <small>under ${escapeHtml((bp[0] || '').trim())} · we sell ${our != null ? priceText(cdc.base, our) : '—'}</small>
+          <small>${escapeHtml(cdc.base.replace(/^0+/, ''))}${mg != null ? ` · <b class="${mg < 25 ? 'sup-bad' : 'sup-ok'}">${mg}% margin at their price</b>` : ''}</small></div>
+        <button class="btn small${action === 'link' ? ' primary' : ''}" data-${action}="${escapeHtml(code)}">${action === 'link' ? 'MATCH ✓' : 'UNMATCH'}</button>
+      </div>`;
+    }
     const p = DATA.products[code] || [], tr = supTr()[code] || {};
     const pos = (p[0] || '').trim(), web = tr.en && supKey(tr.en) !== supKey(pos) ? tr.en : '';
     const cost = it ? supCostPerOurUnit(it) : null, our = p[1];
@@ -12895,8 +12941,8 @@
     if (_sup.linkK) {   // one line of their list: see it, see our candidates, match / unmatch
       const it = items.find(x => x.k === _sup.linkK);
       if (!it) { _sup.linkK = null; return supRenderMatch(el); }
-      const cur = ((c.map || {})[it.k] || []).filter(x => DATA.products[x]);
-      const stored = ((c.sugg || {})[it.k] || []).filter(x => !cur.includes(x) && DATA.products[x]);
+      const cur = ((c.map || {})[it.k] || []).filter(x => supProd(x));
+      const stored = ((c.sugg || {})[it.k] || []).filter(x => !cur.includes(x) && supProd(x));
       const cands = supAutoSuggest(c, it, cur, 6, stored);
       const found = _sup.matchQ ? supPosSearch(_sup.matchQ, 15).filter(x => !cur.includes(x)) : [];
       const skipped = (c.skip || []).includes(it.k);
@@ -12919,7 +12965,7 @@
         doc.map[it.k] = [...new Set([...(doc.map[it.k] || []), b.dataset.link])]; doc.skip = doc.skip.filter(x => x !== it.k);
       }, 'Matched ✓'));
       el.querySelectorAll('[data-unlink]').forEach(b => b.onclick = () => {
-        const nm = ((DATA.products[b.dataset.unlink] || [])[0] || '').trim();
+        const nm = ((supProd(b.dataset.unlink) || [])[0] || '').trim();
         if (!confirm(`Unmatch "${nm}" from\n${it.d}?`)) return;
         save(doc => { doc.map[it.k] = (doc.map[it.k] || []).filter(x => x !== b.dataset.unlink); if (!doc.map[it.k].length) delete doc.map[it.k]; }, 'Unmatched');
       });
@@ -12935,7 +12981,7 @@
     const best = {};
     const pool = q ? items.filter(it => supKey(it.d).includes(q)) : todo;
     pool.slice(0, 150).forEach(it => {
-      const s = ((c.sugg || {})[it.k] || []).filter(x => DATA.products[x]);
+      const s = ((c.sugg || {})[it.k] || []).filter(x => supProd(x));
       best[it.k] = supAutoSuggest(c, it, [], 1, s)[0] || null;
     });
     const list = pool.slice(0, 150).sort((a, b) => (best[b.k] ? 1 : 0) - (best[a.k] ? 1 : 0)).slice(0, 120);
@@ -12944,9 +12990,9 @@
       <p class="or-c3">${todo.length} lines of their list aren't matched to one of our products yet${q ? '' : `; ${nBest} of the first ${Math.min(150, todo.length)} have a likely match, shown first`}. Check the best guess, then tap MATCH, or FIND to search.</p>
       <input id="sup-mq" class="sup-search" placeholder="Search their list…" value="${escapeHtml(_sup.matchQ)}" autocomplete="off">
       ${list.map(it => {
-        const cur = ((c.map || {})[it.k] || []).filter(x => DATA.products[x]), b = best[it.k];
+        const cur = ((c.map || {})[it.k] || []).filter(x => supProd(x)), b = best[it.k];
         return `<div class="sup-mrow" data-k="${escapeHtml(it.k)}">${supThemCard(c, it)}
-          ${cur.length ? `<div class="sup-ok sup-mnote">Matched to ${escapeHtml(((DATA.products[cur[0]] || [])[0] || '').trim())}</div>` : b ? supPosCard(b, it, 'link', 'best guess') : ''}
+          ${cur.length ? `<div class="sup-ok sup-mnote">Matched to ${escapeHtml(((supProd(cur[0]) || [])[0] || '').trim())}</div>` : b ? supPosCard(b, it, 'link', 'best guess') : ''}
           <div class="sup-qs"><button data-open="1">${cur.length ? 'Change / unmatch' : b ? 'Not this one: find ›' : 'Find match ›'}</button>${cur.length ? '' : '<button data-noc="1">We don\'t carry it</button>'}</div></div>`;
       }).join('') || '<div class="empty-state">EVERYTHING IS MATCHED</div>'}`;
     const save = async (fn, msg) => { try { await supSaveMatch(c, fn); if (msg) showToast(msg); supRenderMatch(el); } catch (e) { showToast(e.message, true); } };
@@ -12963,7 +13009,7 @@
   // ---- add one of our products to a supplier's list by hand (cost + box size) ----
   function supRenderAddProd(el) {
     const c = _sup.cfg[_sup.sid];
-    const found = _sup.matchQ ? supPosSearch(_sup.matchQ, 20) : [];
+    const found = _sup.matchQ ? supPosSearch(_sup.matchQ, 20).filter(x => !x.includes('#')) : [];
     el.innerHTML = `<div class="sup-top"><button class="or-refresh" data-sa="order">‹</button><div class="or-h">ADD TO ${escapeHtml(c.name.toUpperCase())}</div></div>
       <p class="or-c3">Find our product, then enter what ${escapeHtml(c.name)} charges and how many come in a box.</p>
       <input id="sup-mq" class="sup-search" placeholder="Name or barcode…" value="${escapeHtml(_sup.matchQ)}" autocomplete="off">
