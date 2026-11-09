@@ -2442,7 +2442,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v264</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v265</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3059,7 +3059,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v264</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v265</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -12543,7 +12543,7 @@
     const sugMap = {};
     items.forEach(it => { if (carried(it)) { const s = supSuggest(c, it, cover); if (s && s.boxes) sugMap[it.k] = s.boxes; } });
     let list;
-    if (q) list = items.filter(it => supKey(it.d).includes(q) || (supCodes(c, it).some(cd => supKey((DATA.products[cd] || [])[0]).includes(q))));
+    if (q) { const words = supSearchWords(_sup.q); list = items.filter(it => { const t = supItemText(c, it); return words.every(w => t.includes(' ' + w)); }); }
     else if (_sup.filter === 'sugg') list = items.filter(it => sugMap[it.k] || (d.lines[it.k] || {}).q);
     else if (_sup.filter === 'in') list = items.filter(it => (d.lines[it.k] || {}).q);
     else list = items;
@@ -12768,6 +12768,22 @@
       }).catch(() => {});
     }
     return _sup.tr;
+  }
+  // Search in a supplier's list: every word must appear somewhere (their description, section, SKU,
+  // or our names / translations of the matched products), in any order. "80 g", "80gr", "80G" all read as 80G.
+  function supNormSearch(x) {
+    return ' ' + supKey(x).replace(/(\d)[,.](\d)/g, '$1.$2').replace(/(\d+(?:\.\d+)?)\s*(GRS|GR|G|KG|ML|LT|L|LB|LBS|OZ)\b/g, (m, n, u) => n + ({ GRS: 'G', GR: 'G', LT: 'L', LBS: 'LB' }[u] || u)).replace(/[^A-Z0-9.' ]/g, ' ').replace(/\s+/g, ' ') + ' ';
+  }
+  function supSearchWords(q) { return supNormSearch(q).trim().split(' ').filter(Boolean); }
+  function supItemText(c, it) {
+    if (!_sup.itText) _sup.itText = new Map();
+    const key = c.id + '|' + it.k + '|' + (((c.map || {})[it.k]) || []).join(',');
+    let t = _sup.itText.get(key);
+    if (t == null) {
+      t = supNormSearch([it.d, it.s, it.sku, it.n].filter(Boolean).join(' ')) + supCodes(c, it).map(cd => ' ' + supText(cd)).join(' ') + ' ';
+      _sup.itText.set(key, t);
+    }
+    return t;
   }
   function supText(code) {   // everything we know a product by, normalised, for searching
     if (!_sup.trText) _sup.trText = {};
