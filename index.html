@@ -2442,7 +2442,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v267</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v268</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3059,7 +3059,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v267</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v268</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -12460,7 +12460,7 @@
       if (_sup.saving) return supQueueSave(null, null, 600);
       const local = _sup.orders.orders.find(o => o.id === _sup.draftId); if (!local) return;
       const base = { id: local.id, sid: local.sid, created: local.created, cover: local.cover || 2 };
-      const dirty = _sup.dirty; _sup.dirty = {}; _sup.saving = true;
+      const dirty = _sup.dirty; _sup.dirty = {}; _sup.saving = true; _sup.saveGen = (_sup.saveGen || 0) + 1;
       let gone = false, id = base.id, othersChanged = false;
       try {
         await supSaveOrders(doc => {
@@ -12472,7 +12472,7 @@
           id = o.id; o.saved = true;
           // did another phone change lines we did not touch?
           const mine = (_sup.orders.orders.find(x => x.id === base.id) || {}).lines || {};
-          othersChanged = Object.keys(Object.assign({}, o.lines, mine)).some(kk => !(kk in dirty) && JSON.stringify(o.lines[kk] || null) !== JSON.stringify(mine[kk] || null));
+          othersChanged = Object.keys(Object.assign({}, o.lines, mine)).some(kk => !(kk in dirty) && !(kk in _sup.dirty) && JSON.stringify(o.lines[kk] || null) !== JSON.stringify(mine[kk] || null));
           supApplyDirty(o, dirty);
           o.editedAt = new Date().toISOString();
         });
@@ -12487,22 +12487,24 @@
         supPersistPending();
         supSavedLabel('offline · kept on this phone, will sync');
         clearTimeout(_sup.retryT); _sup.retryT = setTimeout(() => supQueueSave(null, null, 0), 15000);
-      } finally { _sup.saving = false; }
+      } finally { _sup.saving = false; _sup.saveGen = (_sup.saveGen || 0) + 1; }
     }, delay == null ? 800 : delay);
   }
   window.addEventListener('online', () => { if (Object.keys(_sup.dirty).length) supQueueSave(null, null, 0); });
   function supRefreshOrder() {
     const ae = document.activeElement;
     if (ae && ae.tagName === 'INPUT' && $('#sup-panel').contains(ae)) return;
-    const y = window.scrollY; supRender(); window.scrollTo(0, y);
+    const sc = supScroller(), y = sc.scrollTop; supRender(); sc.scrollTop = y;
   }
   // other phones' changes show up here within ~15 s
   async function supPoll() {
     if (document.hidden || _sup.saving || Object.keys(_sup.dirty).length || !$('#sup-panel') || $('#sup-panel').style.display === 'none') return;
     if (!document.querySelector('#orders-view.active')) return;
     try {
+      const gen = _sup.saveGen || 0;
       const { json } = await ghGetJsonAndSha('suppliers/orders.json');
-      if (!json || _sup.saving || Object.keys(_sup.dirty).length) return;
+      if (!json || _sup.saving || Object.keys(_sup.dirty).length || (_sup.saveGen || 0) !== gen) return;
+      if (json.updated && _sup.orders && _sup.orders.updated && json.updated < _sup.orders.updated) return;   // older than what we have
       if (!json.orders) json.orders = [];
       const before = JSON.stringify(_sup.orders);
       if (JSON.stringify(json) === before) return;
@@ -12626,6 +12628,7 @@
       if (v && free > 0) v.free = free;
       if (v && fa) v.fa = true;
       if (v) dd.lines[k] = v; else delete dd.lines[k];
+      _sup.saveGen = (_sup.saveGen || 0) + 1;
       repaintLine(k);
       supQueueSave(k, v);
     };
