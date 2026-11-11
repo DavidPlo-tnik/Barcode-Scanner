@@ -665,7 +665,7 @@
     }
    },
    "name": "Elwest Fromage Cottage 454g",
-   "hide": true
+   "hide": false
   },
   {
    "id": "gmvilw9ze",
@@ -3521,7 +3521,7 @@
    ],
    "from": "2026-11-12",
    "to": "2026-11-18",
-   "at": "2026-11-11T19:02:55.832Z",
+   "at": "2026-11-11T19:02:59.111Z",
    "items": {
     "0023881500000": {
      "sz": {
@@ -4188,7 +4188,7 @@
       }
      },
      "name": "Elwest Fromage Cottage 454g",
-     "hide": true
+     "hide": false
     },
     {
      "id": "gmvilw9ze",
