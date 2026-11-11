@@ -2442,7 +2442,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v269</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v270</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3059,7 +3059,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v269</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v270</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11917,6 +11917,7 @@
     const p = orPending()[o.id];
     return (o.hist || []).some(x => x[1] === 'payment_requested') || !!(p && p.over === 'payment_requested');
   }
+  const OR_REVIEW_URL = 'https://search.google.com/local/writereview?placeid=ChIJUwMAKawQyUwRL3RhZCJK0Wg';   // Google: write a review for Marché Décarie
   function orMsg(o, kind) {
     const lg = orLang(o), first = o.first || '', em = PAY_EMAIL, name = o.name;
     const tot = orMoney4(o.pos ? o.pos.total : 0, lg);
@@ -11933,24 +11934,28 @@
             miss: `Non disponible (non facturé) : ${miss}.`, extra: `Ajouté : ${extra}.`, subs: 'Remplacé (même prix ou moins) :',
             door: `Vous payez à la livraison par débit ou crédit. Nous livrons ${day}. Merci!`,
             pay: `Veuillez payer par virement Interac à ${em} en écrivant ${name} dans le message. Payé avant midi (lundi au vendredi) : livré le jour même; sinon, au prochain jour de livraison. Merci!`,
+            review: `Bonjour ${first}, ici Marché Décarie. Merci pour votre commande ${name}! Si vous avez aimé, un petit avis Google nous aiderait beaucoup (ça prend 30 secondes) : ${OR_REVIEW_URL} Merci! 🙏`,
             cancel: `Bonjour ${first}, ici Marché Décarie. Votre commande ${name} a été annulée. Aucun paiement n'est requis. Pour toute question, écrivez-nous sur Instagram ou Facebook. Merci!`,
             route: `Bonjour ${first}, votre commande ${name} de Marché Décarie est en route! À tout à l'heure.` },
       en: { hi: `Hi ${first}, it's Marché Décarie.`, ready: `Your order ${name} is ready. Here is your bill:`, fixd: `Here is your corrected bill for order ${name} (it replaces the previous one):`, total: `TOTAL (taxes included): ${tot}`,
             miss: `Not available (not charged): ${miss}.`, extra: `Added: ${extra}.`, subs: 'Replaced (same price or less):',
             door: `You pay on delivery by debit or credit card. We deliver ${day}. Thank you!`,
             pay: `Please pay by Interac e-Transfer to ${em} with ${name} in the message. Paid by noon (Monday to Friday): delivered the same day; otherwise on the next delivery day. Thank you!`,
+            review: `Hi ${first}, it's Marché Décarie. Thank you for your order ${name}! If you enjoyed it, a quick Google review would help us a lot (it takes 30 seconds): ${OR_REVIEW_URL} Thank you! 🙏`,
             cancel: `Hi ${first}, it's Marché Décarie. Your order ${name} has been cancelled. No payment is needed. If you have any questions, message us on Instagram or Facebook. Thank you!`,
             route: `Hi ${first}, your Marché Décarie order ${name} is on its way! See you soon.` },
       uk: { hi: `Вітаємо, ${first}! Це Marché Décarie.`, ready: `Ваше замовлення ${name} готове. Ваш рахунок:`, fixd: `Ваш виправлений рахунок за замовлення ${name} (замінює попередній):`, total: `РАЗОМ (з податками): ${tot}`,
             miss: `Немає в наявності (не враховано): ${miss}.`, extra: `Додано: ${extra}.`, subs: 'Замінено (за тією ж ціною або дешевше):',
             door: `Оплата під час доставки карткою (дебетовою чи кредитною). Доставимо ${day}. Дякуємо!`,
             pay: `Будь ласка, оплатіть переказом Interac на ${em}, вказавши ${name} у повідомленні. Оплата до 12:00 (пн–пт) — доставимо того ж дня; пізніше — наступного дня доставки. Дякуємо!`,
+            review: `Вітаємо, ${first}! Це Marché Décarie. Дякуємо за замовлення ${name}! Якщо вам сподобалося, короткий відгук у Google дуже нам допоможе (це 30 секунд): ${OR_REVIEW_URL} Дякуємо! 🙏`,
             cancel: `Вітаємо, ${first}! Це Marché Décarie. Ваше замовлення ${name} скасовано. Оплата не потрібна. З питаннями пишіть нам в Instagram або Facebook. Дякуємо!`,
             route: `Вітаємо, ${first}! Ваше замовлення ${name} з Marché Décarie вже в дорозі. До зустрічі!` },
       ru: { hi: `Здравствуйте, ${first}! Это Marché Décarie.`, ready: `Ваш заказ ${name} готов. Ваш счёт:`, fixd: `Ваш исправленный счёт за заказ ${name} (заменяет предыдущий):`, total: `ИТОГО (с налогами): ${tot}`,
             miss: `Нет в наличии (не учтено): ${miss}.`, extra: `Добавлено: ${extra}.`, subs: 'Заменено (по той же цене или дешевле):',
             door: `Оплата при доставке картой (дебетовой или кредитной). Доставим ${day}. Спасибо!`,
             pay: `Пожалуйста, оплатите переводом Interac на ${em}, указав ${name} в сообщении. Оплата до 12:00 (пн–пт) — доставим в тот же день; позже — в следующий день доставки. Спасибо!`,
+            review: `Здравствуйте, ${first}! Это Marché Décarie. Спасибо за заказ ${name}! Если вам понравилось, короткий отзыв в Google нам очень поможет (это 30 секунд): ${OR_REVIEW_URL} Спасибо! 🙏`,
             cancel: `Здравствуйте, ${first}! Это Marché Décarie. Ваш заказ ${name} отменён. Оплата не требуется. С вопросами пишите нам в Instagram или Facebook. Спасибо!`,
             route: `Здравствуйте, ${first}! Ваш заказ ${name} из Marché Décarie уже в пути. До встречи!` },
     }[lg];
@@ -11962,6 +11967,7 @@
       return out.join('\n');
     }
     if (kind === 'cancel') return W.cancel;
+    if (kind === 'review') return W.review;
     return W.route;
   }
 
@@ -13419,7 +13425,10 @@
              <button class="or-big" data-a="door_paid">💳 PAID AT THE DOOR · DELIVERED</button>`
           : `<button class="or-big" data-a="delivered">✓ DELIVERED</button>`; break;
       case 'delivered': act = `<p class="or-hint">Delivered. Shopify order marked fulfilled.</p>`
-        + (o.pod && o.pod.file ? `<button class="or-big" id="or-pod-view">📎 PROOF OF DELIVERY (${o.pod.kind === 'signature' ? 'signature' : 'photo'})</button>` : '<p class="or-hint">No proof of delivery saved.</p>'); break;
+        + (o.phone ? (orLS('orReview:' + o.id)
+            ? `<p class="or-hint">⭐ Google review asked ${orAgo(orLS('orReview:' + o.id))}.</p><a class="or-link" id="or-review" href="${orSmsLink(o, orMsg(o, 'review'))}">Ask again</a>`
+            : `<a class="or-big" id="or-review" href="${orSmsLink(o, orMsg(o, 'review'))}">⭐ ASK ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())} FOR A GOOGLE REVIEW</a>`) : '')
+          + (o.pod && o.pod.file ? `<button class="or-big" id="or-pod-view">📎 PROOF OF DELIVERY (${o.pod.kind === 'signature' ? 'signature' : 'photo'})</button>` : '<p class="or-hint">No proof of delivery saved.</p>'); break;
       case 'cancelled': act = `<p class="or-hint">Cancelled.</p><button class="or-link" data-a="reopen">Reopen</button>`; break;
     }
     m.innerHTML = `<div class="or-sheet">
@@ -13492,6 +13501,7 @@
       mo.disabled = true; _or.manual = false; await orAct(o, 'manual_total', { total: Math.round(v * 100) / 100 }); orDetail();
     };
     // the text buttons record the step as they open Messages
+    const rv = $('#or-review'); if (rv) rv.addEventListener('click', () => { orLS('orReview:' + o.id, new Date().toISOString()); setTimeout(orDetail, 600); });
     const st = $('#or-sms-total'); if (st) st.addEventListener('click', () => { setTimeout(() => orAct(o, 'payment_requested'), 300); });
     const sr = $('#or-sms-route'); if (sr) sr.addEventListener('click', () => { setTimeout(() => orAct(o, 'out_for_delivery'), 300); });
   }
