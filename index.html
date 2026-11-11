@@ -2442,7 +2442,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v270</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v271</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3059,7 +3059,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v270</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v271</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11696,6 +11696,10 @@
     finally { _or.loading = false; }
     orBadge();
     if (!quiet || document.querySelector('#orders-view.active')) orRender();
+    if (_or.data && (_or.reviews == null || Date.now() - (_or.revT || 0) > 120000)) {
+      _or.revT = Date.now();
+      orLoadReviews().then(() => { const m = $('#or-modal'); if (m && m.classList.contains('open')) { try { orDetail(); } catch (e) {} } });
+    }
   }
 
   function orBadge() {
@@ -11916,6 +11920,48 @@
     if (!['on_hold', 'total_ready'].includes(o.status)) return false;
     const p = orPending()[o.id];
     return (o.hist || []).some(x => x[1] === 'payment_requested') || !!(p && p.over === 'payment_requested');
+  }
+  // ── Google review asks: one per customer, ever (shared by every phone, locked like the orders) ──
+  const OR_REVIEWS = 'orders/reviews.enc.json';
+  function orCustKeys(o) {
+    const k = [];
+    const ph = orPhoneDigits(o.phone || '').replace(/\D/g, '').slice(-10);
+    if (ph.length >= 7) k.push('p:' + ph);
+    const em = String(o.email || '').trim().toLowerCase();
+    if (em) k.push('e:' + em);
+    return k;
+  }
+  function orReviewAsked(o) {
+    const r = (_or.reviews || {});
+    for (const k of orCustKeys(o)) if (r[k]) return r[k];
+    const loc = orLS('orReview:' + o.id); return loc ? { at: loc, order: o.name } : null;
+  }
+  async function orLoadReviews() {
+    try {
+      const { json } = await ghGetJsonAndSha(OR_REVIEWS);
+      _or.reviews = json ? await orDecrypt(json, orPass()) : {};
+    } catch (e) { if (!_or.reviews) _or.reviews = null; _or.revT = 0; }
+    // asks made before this was shared (saved on one phone only)
+    if (_or.reviews && _or.data) {
+      const add = [];
+      for (const o of _or.data.orders) { const at = orLS('orReview:' + o.id); if (at && !orCustKeys(o).some(k => _or.reviews[k])) add.push([o, at]); }
+      if (add.length) await orSaveReview(add);
+    }
+  }
+  async function orSaveReview(list) {   // list: [[order, iso], …]
+    for (let attempt = 0; attempt < 5; attempt++) {
+      try {
+        const { json, sha } = await ghGetJsonAndSha(OR_REVIEWS);
+        const r = json ? await orDecrypt(json, orPass()) : {};
+        for (const [o, at] of list) for (const k of orCustKeys(o)) if (!r[k]) r[k] = { at, order: o.name };
+        const enc = await orEncrypt(r, orPass());
+        await ghPutFile(OR_REVIEWS, btoa(JSON.stringify(enc)), 'review asks', sha);
+        _or.reviews = r; return true;
+      } catch (e) {
+        if (e.isConflict && attempt < 4) { await new Promise(res => setTimeout(res, 300 * (attempt + 1))); continue; }
+        showToast('Could not save the review ask: ' + (e.message || e), true); return false;
+      }
+    }
   }
   const OR_REVIEW_URL = 'https://search.google.com/local/writereview?placeid=ChIJUwMAKawQyUwRL3RhZCJK0Wg';   // Google: write a review for Marché Décarie
   function orMsg(o, kind) {
@@ -13425,9 +13471,10 @@
              <button class="or-big" data-a="door_paid">💳 PAID AT THE DOOR · DELIVERED</button>`
           : `<button class="or-big" data-a="delivered">✓ DELIVERED</button>`; break;
       case 'delivered': act = `<p class="or-hint">Delivered. Shopify order marked fulfilled.</p>`
-        + (o.phone ? (orLS('orReview:' + o.id)
-            ? `<p class="or-hint">⭐ Google review asked ${orAgo(orLS('orReview:' + o.id))}.</p><a class="or-link" id="or-review" href="${orSmsLink(o, orMsg(o, 'review'))}">Ask again</a>`
-            : `<a class="or-big" id="or-review" href="${orSmsLink(o, orMsg(o, 'review'))}">⭐ ASK ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())} FOR A GOOGLE REVIEW</a>`) : '')
+        + (o.phone ? (orReviewAsked(o)
+            ? `<p class="or-hint">⭐ Google review already asked ${orAgo(orReviewAsked(o).at)} (order ${escapeHtml(orReviewAsked(o).order || '')}). Not asking this customer again.</p>`
+            : (_or.reviews == null ? '<p class="or-hint">⭐ Checking whether this customer was already asked for a review…</p>'
+              : `<a class="or-big" id="or-review" href="${orSmsLink(o, orMsg(o, 'review'))}">⭐ ASK ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())} FOR A GOOGLE REVIEW</a>`)) : '')
           + (o.pod && o.pod.file ? `<button class="or-big" id="or-pod-view">📎 PROOF OF DELIVERY (${o.pod.kind === 'signature' ? 'signature' : 'photo'})</button>` : '<p class="or-hint">No proof of delivery saved.</p>'); break;
       case 'cancelled': act = `<p class="or-hint">Cancelled.</p><button class="or-link" data-a="reopen">Reopen</button>`; break;
     }
@@ -13501,7 +13548,7 @@
       mo.disabled = true; _or.manual = false; await orAct(o, 'manual_total', { total: Math.round(v * 100) / 100 }); orDetail();
     };
     // the text buttons record the step as they open Messages
-    const rv = $('#or-review'); if (rv) rv.addEventListener('click', () => { orLS('orReview:' + o.id, new Date().toISOString()); setTimeout(orDetail, 600); });
+    const rv = $('#or-review'); if (rv) rv.addEventListener('click', () => { const at = new Date().toISOString(); orLS('orReview:' + o.id, at); orSaveReview([[o, at]]); setTimeout(orDetail, 600); });
     const st = $('#or-sms-total'); if (st) st.addEventListener('click', () => { setTimeout(() => orAct(o, 'payment_requested'), 300); });
     const sr = $('#or-sms-route'); if (sr) sr.addEventListener('click', () => { setTimeout(() => orAct(o, 'out_for_delivery'), 300); });
   }
