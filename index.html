@@ -2442,7 +2442,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v268</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v269</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3059,7 +3059,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v268</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v269</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11653,6 +11653,7 @@
     if (!p) return false;
     if (Date.now() - (p.t || 0) > 6 * 3600e3) return false;
     if (o.status === p.status) return false;                                   // the PC caught up
+    if (p.over && o.status === p.over) return true;                            // went back (fix the sale) and on again before the PC caught up
     const fwd = orRank(p.status) >= orRank(p.base);
     if (fwd) return orRank(o.status) < orRank(p.status) && o.status !== 'cancelled';   // PC is behind (or the copy is stale)
     return o.status === p.base;                                               // going back a step (pick the held sale again, reopen)
@@ -11742,6 +11743,7 @@
     if (act === 'paid') p.deliver_on = orPaidDeliveryDay(new Date());
     // several steps before the PC catches up: keep what the earlier ones knew (the chosen total)
     const prev = pend[o.id];
+    if (prev && raw && orPendingLive(raw, prev) && (prev.over || orRank(prev.status) < orRank(prev.base))) p.over = prev.over || prev.base;
     if (prev && orRank(p.status) >= orRank(prev.status) && act !== 'on_hold') { if (!p.pos && prev.pos) p.pos = prev.pos; if (!p.deliver_on && prev.deliver_on) p.deliver_on = prev.deliver_on; }
     pend[o.id] = p; orLS('orPending', pend);
     orRender();
@@ -11909,6 +11911,12 @@
   }
   function orMoney4(n, lg) { const v = (+n || 0).toFixed(2); return lg === 'en' ? '$' + v : v.replace('.', ',') + ' $'; }
   function orLang(o) { const l = (o.locale || 'fr').slice(0, 2); return ['en', 'uk', 'ru'].includes(l) ? l : 'fr'; }
+  // a bill was already texted for this order, and the sale was fixed and picked again since
+  function orBillSent(o) {
+    if (!['on_hold', 'total_ready'].includes(o.status)) return false;
+    const p = orPending()[o.id];
+    return (o.hist || []).some(x => x[1] === 'payment_requested') || !!(p && p.over === 'payment_requested');
+  }
   function orMsg(o, kind) {
     const lg = orLang(o), first = o.first || '', em = PAY_EMAIL, name = o.name;
     const tot = orMoney4(o.pos ? o.pos.total : 0, lg);
@@ -11921,25 +11929,25 @@
     const nd = orNextDay(new Date());
     const day = nd.toLocaleDateString({ fr: 'fr-CA', en: 'en-CA', uk: 'uk-UA', ru: 'ru-RU' }[lg], { weekday: 'long', month: 'long', day: 'numeric' });
     const W = {
-      fr: { hi: `Bonjour ${first}, ici Marché Décarie.`, ready: `Votre commande ${name} est prête. Voici votre facture :`, total: `TOTAL (taxes incluses) : ${tot}`,
+      fr: { hi: `Bonjour ${first}, ici Marché Décarie.`, ready: `Votre commande ${name} est prête. Voici votre facture :`, fixd: `Voici votre facture corrigée pour la commande ${name} (elle remplace la précédente) :`, total: `TOTAL (taxes incluses) : ${tot}`,
             miss: `Non disponible (non facturé) : ${miss}.`, extra: `Ajouté : ${extra}.`, subs: 'Remplacé (même prix ou moins) :',
             door: `Vous payez à la livraison par débit ou crédit. Nous livrons ${day}. Merci!`,
             pay: `Veuillez payer par virement Interac à ${em} en écrivant ${name} dans le message. Payé avant midi (lundi au vendredi) : livré le jour même; sinon, au prochain jour de livraison. Merci!`,
             cancel: `Bonjour ${first}, ici Marché Décarie. Votre commande ${name} a été annulée. Aucun paiement n'est requis. Pour toute question, écrivez-nous sur Instagram ou Facebook. Merci!`,
             route: `Bonjour ${first}, votre commande ${name} de Marché Décarie est en route! À tout à l'heure.` },
-      en: { hi: `Hi ${first}, it's Marché Décarie.`, ready: `Your order ${name} is ready. Here is your bill:`, total: `TOTAL (taxes included): ${tot}`,
+      en: { hi: `Hi ${first}, it's Marché Décarie.`, ready: `Your order ${name} is ready. Here is your bill:`, fixd: `Here is your corrected bill for order ${name} (it replaces the previous one):`, total: `TOTAL (taxes included): ${tot}`,
             miss: `Not available (not charged): ${miss}.`, extra: `Added: ${extra}.`, subs: 'Replaced (same price or less):',
             door: `You pay on delivery by debit or credit card. We deliver ${day}. Thank you!`,
             pay: `Please pay by Interac e-Transfer to ${em} with ${name} in the message. Paid by noon (Monday to Friday): delivered the same day; otherwise on the next delivery day. Thank you!`,
             cancel: `Hi ${first}, it's Marché Décarie. Your order ${name} has been cancelled. No payment is needed. If you have any questions, message us on Instagram or Facebook. Thank you!`,
             route: `Hi ${first}, your Marché Décarie order ${name} is on its way! See you soon.` },
-      uk: { hi: `Вітаємо, ${first}! Це Marché Décarie.`, ready: `Ваше замовлення ${name} готове. Ваш рахунок:`, total: `РАЗОМ (з податками): ${tot}`,
+      uk: { hi: `Вітаємо, ${first}! Це Marché Décarie.`, ready: `Ваше замовлення ${name} готове. Ваш рахунок:`, fixd: `Ваш виправлений рахунок за замовлення ${name} (замінює попередній):`, total: `РАЗОМ (з податками): ${tot}`,
             miss: `Немає в наявності (не враховано): ${miss}.`, extra: `Додано: ${extra}.`, subs: 'Замінено (за тією ж ціною або дешевше):',
             door: `Оплата під час доставки карткою (дебетовою чи кредитною). Доставимо ${day}. Дякуємо!`,
             pay: `Будь ласка, оплатіть переказом Interac на ${em}, вказавши ${name} у повідомленні. Оплата до 12:00 (пн–пт) — доставимо того ж дня; пізніше — наступного дня доставки. Дякуємо!`,
             cancel: `Вітаємо, ${first}! Це Marché Décarie. Ваше замовлення ${name} скасовано. Оплата не потрібна. З питаннями пишіть нам в Instagram або Facebook. Дякуємо!`,
             route: `Вітаємо, ${first}! Ваше замовлення ${name} з Marché Décarie вже в дорозі. До зустрічі!` },
-      ru: { hi: `Здравствуйте, ${first}! Это Marché Décarie.`, ready: `Ваш заказ ${name} готов. Ваш счёт:`, total: `ИТОГО (с налогами): ${tot}`,
+      ru: { hi: `Здравствуйте, ${first}! Это Marché Décarie.`, ready: `Ваш заказ ${name} готов. Ваш счёт:`, fixd: `Ваш исправленный счёт за заказ ${name} (заменяет предыдущий):`, total: `ИТОГО (с налогами): ${tot}`,
             miss: `Нет в наличии (не учтено): ${miss}.`, extra: `Добавлено: ${extra}.`, subs: 'Заменено (по той же цене или дешевле):',
             door: `Оплата при доставке картой (дебетовой или кредитной). Доставим ${day}. Спасибо!`,
             pay: `Пожалуйста, оплатите переводом Interac на ${em}, указав ${name} в сообщении. Оплата до 12:00 (пн–пт) — доставим в тот же день; позже — в следующий день доставки. Спасибо!`,
@@ -11947,7 +11955,7 @@
             route: `Здравствуйте, ${first}! Ваш заказ ${name} из Marché Décarie уже в пути. До встречи!` },
     }[lg];
     if (kind === 'total') {
-      const out = [W.hi + ' ' + W.ready, '', ...orBillLines(o, lg), W.total];
+      const out = [W.hi + ' ' + (orBillSent(o) ? W.fixd : W.ready), '', ...orBillLines(o, lg), W.total];
       if (subs.length) out.push('', W.subs, ...subs);
       if (miss || extra) out.push('', ...(miss ? [W.miss] : []), ...(extra ? [W.extra] : []));
       out.push('', orDoor(o) ? W.door : W.pay);
@@ -13395,11 +13403,13 @@
         if (orDoor(o)) {
           act = `<div class="or-total">${orMoney(o.pos && o.pos.total)}<span>total sent · paid at the door (debit/credit) · deliver ${orDay(o.deliver_on || orNextDay(new Date()).toISOString().slice(0, 10))}</span></div>
           <a class="or-big" id="or-sms-route" href="${orSmsLink(o, orMsg(o, 'route'))}">🚚 OUT FOR DELIVERY · TEXT ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())}</a>
-          <a class="or-link" href="${orSmsLink(o, orMsg(o, 'total'))}">Send the bill again</a>`; break;
+          <a class="or-link" href="${orSmsLink(o, orMsg(o, 'total'))}">Send the bill again</a>
+          <button class="or-link" data-a="on_hold" data-fix="1">Fixed the sale at the register? Pick the corrected held sale</button>`; break;
         }
         act = `<div class="or-total">${orMoney(o.pos && o.pos.total)}<span>waiting for the Interac e-Transfer (message: ${escapeHtml(o.name)})</span></div>
           <button class="or-big" data-a="paid">💰 PAYMENT RECEIVED</button>
-          <a class="or-link" href="${orSmsLink(o, orMsg(o, 'total'))}">Send the bill again</a>`; break;
+          <a class="or-link" href="${orSmsLink(o, orMsg(o, 'total'))}">Send the bill again</a>
+          <button class="or-link" data-a="on_hold" data-fix="1">Fixed the sale at the register? Pick the corrected held sale</button>`; break;
       case 'paid':
         act = `<div class="or-total">${orDay(o.deliver_on)}<span>delivery day (paid ${orMoney(o.pos && o.pos.total)})</span></div>
           <a class="or-big" id="or-sms-route" href="${orSmsLink(o, orMsg(o, 'route'))}">🚚 OUT FOR DELIVERY · TEXT ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())}</a>`; break;
@@ -13457,6 +13467,7 @@
     m.querySelectorAll('[data-a]').forEach(b => b.onclick = async () => {
       const a = b.dataset.a;
       if (a === 'cancelled' && !confirm(`Cancel ${o.name}?\n\nShopify will email the customer that the order is cancelled.`)) return;
+      if (b.dataset.fix && !confirm(`Pick the corrected held sale for ${o.name}?\n\nPut the fixed sale back on hold at the register first. Then choose it here and text the new bill — it says it replaces the previous one.`)) return;
       if (a === 'on_hold' && o.status === 'preparing' && nPicked < o.items.length && !confirm(`Only ${nPicked} of ${o.items.length} items are checked. Continue?`)) return;
       if (a === 'delivered' || a === 'door_paid') {
         const pod = await orPodModal(o);            // signature or photo first
