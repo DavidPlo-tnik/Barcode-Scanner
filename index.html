@@ -180,6 +180,7 @@
   .or-chips { display: flex; gap: 6px; margin-bottom: 12px; }
   .or-chips button { flex: 1; padding: 9px 4px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text-dim); font-family: var(--font-display); font-size: 10px; letter-spacing: .06em; }
   .or-chips button.on { background: var(--accent); color: #000; border-color: var(--accent); }
+  .or-promo-tot { margin-top: 8px; font-size: 15px; } .or-promo-how { display: block; margin-top: 6px; opacity: .8; font-size: 12px; }
   .or-warn { background: #3a2a00; border: 1px solid #7a5800; color: #ffd27a; border-radius: 9px; padding: 10px 12px; font-size: 12.5px; line-height: 1.45; margin-bottom: 12px; }
   .or-list { display: flex; flex-direction: column; gap: 8px; }
   .or-card { text-align: left; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--border); border-radius: 11px; padding: 11px 13px; color: var(--text); width: 100%; }
@@ -2442,7 +2443,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v271</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v272</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3059,7 +3060,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v271</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v272</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11838,6 +11839,35 @@
     const extra = rungLeft.filter(x => !x.used && !okKeys.has(x.k)).map(x => x.it);
     return { ok, missing, extra };
   }
+  // price the customer was shown when ordering vs price rung at the register (a promo that ended since):
+  // by POS code, what the rung quantity would cost at the order's price. Only lines rung HIGHER.
+  function orPriceGaps(o) {
+    if (!o.pos || !o.pos.items || !o.pos.items.length) return { lines: [], total: 0 };
+    const K = orPosKey, byK = {};
+    o.items.forEach(it => {
+      const k = K(it.code); if (!k || k === 'combo' || k.startsWith('combo:')) return;
+      const m = String(it.code || '').match(/-([\d.]+)KG$/i);
+      const g = byK[k] || (byK[k] = { name: it.t, unit: 0, perKg: 0 });
+      if (m && +m[1] > 0) g.perKg = Math.max(g.perKg, +it.p / +m[1]); else g.unit = Math.max(g.unit, +it.p);
+    });
+    const rung = {};
+    o.pos.items.forEach(x => {
+      const k = K(x.code); if (!byK[k]) return;
+      const r = rung[k] || (rung[k] = { q: 0, kg: 0, amt: 0, name: x.name || x.code });
+      r.q += +x.q || 0; r.kg += +x.kg || 0; r.amt += +x.amt || 0;
+    });
+    const lines = [];
+    for (const k in rung) {
+      const g = byK[k], r = rung[k];
+      let want = null, how = '';
+      if (r.kg > 0 && g.perKg) { want = g.perKg * r.kg; how = `${orMoney(g.perKg)}/kg × ${r.kg.toFixed(3)} kg`; }
+      else if (!(r.kg > 0) && g.unit) { const q = r.q || 1; want = g.unit * q; how = `${q} × ${orMoney(g.unit)}`; }
+      if (want == null) continue;
+      const gap = +(r.amt - want).toFixed(2);
+      if (gap >= Math.max(0.05, want * 0.01)) lines.push({ name: g.name, rungName: r.name, rung: +r.amt.toFixed(2), want: +want.toFixed(2), how, gap });
+    }
+    return { lines, total: +lines.reduce((a, l) => a + l.gap, 0).toFixed(2) };
+  }
   // which register line replaced which ordered item: pair "not rung" with "rung but not ordered" by closest price
   function orSubPairs(o, mt) {
     mt = mt || orMatch(o);
@@ -13499,6 +13529,11 @@
           ${(() => { const sp = orSubPairs(o, mt); return (sp.pairs.length ? `<div class="or-ok">🔄 Replacements (the text tells the customer):<br>${sp.pairs.map(pr => escapeHtml(pr.from.t) + ' → ' + escapeHtml(pr.to.name || pr.to.code)).join('<br>')}</div>` : '')
             + (sp.missing.length ? `<div class="or-warn">⚠ Ordered but NOT rung: ${sp.missing.map(it => escapeHtml(it.t)).join(', ')}</div>` : '')
             + (sp.extra.length ? `<div class="or-warn">＋ Rung but not in the order: ${sp.extra.map(it => escapeHtml(it.name || it.code)).join(', ')}</div>` : ''); })()}
+          ${(() => { const pg = orPriceGaps(o); if (!pg.lines.length || ['paid', 'out_for_delivery', 'delivered', 'cancelled'].includes(o.status)) return '';
+            return `<div class="or-warn or-promo">💲 <b>Rung higher than the price they ordered at</b> (a promo ended since ${escapeHtml(orDay(o.created))}). Honour the order price:<br>`
+              + pg.lines.map(l => `• ${escapeHtml(l.name)}: rung ${orMoney(l.rung)}, ordered at ${escapeHtml(l.how)} = ${orMoney(l.want)} → <b>−${orMoney(l.gap)}</b>`).join('<br>')
+              + `<div class="or-promo-tot">Customer saves: <b>−${orMoney(pg.total)}</b></div>`
+              + `<span class="or-promo-how">At the register: recall the held sale, change the price of these lines to the order price, hold it again, then pick the held sale again here. This note disappears once the prices match.</span></div>`; })()}
           ${!mt.missing.length && !mt.extra.length ? `<div class="or-ok">✓ Everything ordered was rung</div>` : ''}`; })()}
       <div class="or-ih">ITEMS · picked ${nPicked}/${o.items.length}${(() => { const n = o.items.filter(orFrozen).length; return n ? ` · <span class="or-frz">❄️ ${n} frozen: cooler bag</span>` : ''; })()}</div>
       <div class="or-items">${o.items.map((it, i) => `
