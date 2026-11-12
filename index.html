@@ -2443,7 +2443,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v272</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v273</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3060,7 +3060,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v272</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v273</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -12159,12 +12159,40 @@
     _rt.plan = { stops, missing, km, start, end: back || new Date(t - _rt.stopMin * 60000), back, road: M.road };
     _rt.busy = false; rtRender();
   }
+  // ── Google Maps: on iPhone open the Google Maps APP directly (comgooglemaps://). Going through the browser
+  //    first and then "open in app" made the app search the text again and sometimes land on a wrong address.
+  //    Destinations are exact map points (lat,lng) whenever we have them.
+  const GM_IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  function gmPoint(o, g) {
+    if (g && g.lat != null && g.lng != null) return g.lat + ',' + g.lng;
+    if (o && o.lat != null && o.lng != null && o.lat !== '' && o.lng !== '') return o.lat + ',' + o.lng;
+    const a = String((o && o.address) || '');
+    return a ? (/canada|qc\b|québec|quebec/i.test(a) ? a : a + ', QC, Canada') : '';
+  }
+  // returns attributes for an <a>: web link + app link (stops: [destination] or [stop1, stop2, …, destination])
+  function gmAttrs(stops, origin) {
+    stops = stops.filter(Boolean); if (!stops.length) return '';
+    const dest = stops[stops.length - 1], way = stops.slice(0, -1).slice(0, 9);
+    const web = 'https://www.google.com/maps/dir/?api=1&travelmode=driving' + (origin ? '&origin=' + encodeURIComponent(origin) : '')
+      + '&destination=' + encodeURIComponent(dest) + (way.length ? '&waypoints=' + encodeURIComponent(way.join('|')) : '');
+    const app = 'comgooglemaps://?directionsmode=driving' + (origin ? '&saddr=' + encodeURIComponent(origin) : '')
+      + '&daddr=' + stops.map(encodeURIComponent).join('+to:');
+    return `href="${escapeHtml(web)}" data-gm-app="${escapeHtml(app)}" target="_blank" rel="noopener"`;
+  }
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[data-gm-app]');
+    if (!a || !GM_IOS) return;
+    e.preventDefault();
+    // Google Maps app not installed → nothing opens → fall back to the web link
+    const t = setTimeout(() => { if (!document.hidden) window.open(a.href, '_blank'); }, 1600);
+    document.addEventListener('visibilitychange', () => clearTimeout(t), { once: true });
+    location.href = a.dataset.gmApp;
+  }, true);
   function rtGmapsAll(plan) {
     const s = plan.stops.map(x => x.g.lat + ',' + x.g.lng);
     if (!s.length) return '';
-    const dest = _rt.ret ? RT_STORE.lat + ',' + RT_STORE.lng : s[s.length - 1];
-    const way = (_rt.ret ? s : s.slice(0, -1)).slice(0, 9);
-    return `https://www.google.com/maps/dir/?api=1&travelmode=driving&origin=${RT_STORE.lat},${RT_STORE.lng}&destination=${dest}` + (way.length ? '&waypoints=' + encodeURIComponent(way.join('|')) : '');
+    const st = RT_STORE.lat + ',' + RT_STORE.lng;
+    return gmAttrs((_rt.ret ? s.slice(0, 9).concat([st]) : (s.length <= 10 ? s : s.slice(0, 9).concat([s[s.length - 1]]))), st);
   }
   function rtOpen() {
     if (!_rt.day) _rt.day = rtIsoDay(new Date());
@@ -12198,17 +12226,17 @@
           <div><b>${Math.round((P.end - P.start) / 60000)}</b><span>min total</span></div><div><b>${rtClock(P.end)}</b><span>${P.back ? 'back at store' : 'last stop done'}</span></div></div>
         ${P.road ? '' : '<p class="or-hint">Road times unavailable right now: using straight-line estimates (order is still good, times are rough).</p>'}
         ${P.missing.length ? `<div class="or-warn">Could not place on the map: ${P.missing.map(o => escapeHtml(o.name + ' (' + (o.address || 'no address') + ')')).join(', ')}. Deliver it separately or fix the address.</div>` : ''}
-        <a class="or-big rt-all" target="_blank" rel="noopener" href="${rtGmapsAll(P)}">🗺 WHOLE ROUTE IN GOOGLE MAPS</a>
+        <a class="or-big rt-all" ${rtGmapsAll(P)}>🗺 WHOLE ROUTE IN GOOGLE MAPS</a>
         ${P.stops.some(x => x.o.status === 'paid') ? `<button class="or-big rt-out" id="rt-out">🚚 START · MARK ALL OUT FOR DELIVERY</button>` : ''}
         <div class="rt-stops">
           <div class="rt-stop rt-store"><i>🏪</i><div><b>Marché Décarie</b><small>leave ${rtClock(P.start)}</small></div></div>
           ${P.stops.map((x, k) => {
-            const o = x.o, nav = `https://www.google.com/maps/dir/?api=1&travelmode=driving&destination=${x.g.lat},${x.g.lng}`;
+            const o = x.o, nav = gmAttrs([gmPoint(o, x.g)]);
             return `<div class="rt-stop st-${o.status}"><i>${k + 1}</i><div>
               <b>${escapeHtml(o.customer || o.name)}</b> <span class="rt-eta">~${rtClock(x.eta)}</span>
               <small>${escapeHtml(o.address || '')}${o.instr ? ' · 🚪 ' + escapeHtml(o.instr) : ''}${o.note ? ' · 📝 ' + escapeHtml(o.note) : ''}</small>
               <div class="rt-btns">
-                <a target="_blank" rel="noopener" href="${nav}">🧭 MAPS</a>
+                <a ${nav}>🧭 MAPS</a>
                 <button data-share="${k}">${RT_TESLA ? '🚗 TESLA' : '📤 SHARE'}</button>
                 ${o.phone ? `<a href="${orSmsLink(o, rtMsg(o, x.eta))}">💬 ON THE WAY</a><a href="tel:${orPhoneDigits(o.phone)}">📞</a>` : ''}
                 <button data-open="${escapeHtml(o.id)}">${o.status === 'delivered' ? '✓ DONE' : '✓ DELIVERED…'}</button>
@@ -13514,7 +13542,7 @@
       <div class="or-cust">
         <div class="or-name">${escapeHtml(o.customer || '')}</div>
         ${o.phone ? `<a href="tel:${orPhoneDigits(o.phone)}">📞 ${escapeHtml(o.phone)}</a>` : '<span class="or-bad">No phone number</span>'}
-        ${o.address ? `<a target="_blank" rel="noopener" href="https://maps.google.com/?q=${encodeURIComponent(o.address)}">📍 ${escapeHtml(o.address)}</a>` : ''}
+        ${o.address ? `<a ${gmAttrs([gmPoint(o)])}>📍 ${escapeHtml(o.address)}</a>` : ''}
         ${o.email ? `<span>✉ ${escapeHtml(o.email)}</span>` : ''}
         <span>${({ en: 'English', uk: 'Українська', ru: 'Русский' })[o.locale] || 'Français'} · ordered ${orAgo(o.created)} · estimate ${orMoney(orEst(o))} before tax</span>
         <span class="or-pay">${orDoor(o) ? '💳 Pays at the door (debit/credit)' : '🏦 Interac e-Transfer'}${DOOR_PAY && o.pay_name ? ' · ' + escapeHtml(o.pay_name) : ''}</span>
