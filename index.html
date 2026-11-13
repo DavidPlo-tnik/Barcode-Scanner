@@ -2437,13 +2437,86 @@
   /* The label-printing flow replaces document.body.innerHTML entirely with a
      self-contained print document (see doPrintLabels). No print-time CSS
      needed here for labels — they bring their own stylesheet. */
+
+  /* ===== ECOM tab (redesign v274): search + 2 icon buttons, stat tiles, aisle strip, one Filter button ===== */
+  .ex-top { display: flex; gap: 8px; align-items: stretch; margin-bottom: 10px; }
+  .ex-search { flex: 1; min-width: 0; position: relative; display: flex; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+  .ex-search-ico { padding: 0 4px 0 12px; color: var(--text-faint); font-size: 15px; }
+  .ex-search input { flex: 1; min-width: 0; background: transparent; border: 0; outline: 0; color: var(--text); font-size: 15px; padding: 11px 6px; }
+  .ex-search-x { background: transparent; border: 0; color: var(--text-dim); font-size: 14px; padding: 0 12px; height: 100%; cursor: pointer; }
+  .ex-ibtn { position: relative; width: 46px; flex-shrink: 0; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .ex-ibtn.primary { background: var(--accent); color: #000; border-color: var(--accent); font-size: 22px; font-weight: 700; }
+  .ex-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 10px; }
+  .ex-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 7px 6px 6px; text-align: center; cursor: pointer; position: relative; overflow: hidden; }
+  .ex-stat b { display: block; font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.1; }
+  .ex-stat span { display: block; font-family: var(--font-display); font-size: 8.5px; letter-spacing: .06em; color: var(--text-dim); margin-top: 2px; white-space: nowrap; }
+  .ex-stat.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
+  .ex-stat.bad b { color: var(--bad); } .ex-stat.warn b { color: var(--warn); }
+  .ex-stat .ex-meter { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--good); }
+  .ex-aisles { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -14px 8px; padding: 0 14px 2px; -webkit-overflow-scrolling: touch; }
+  .ex-aisles::-webkit-scrollbar { display: none; }
+  .ex-aisle { flex-shrink: 0; border: 1px solid var(--border); background: var(--surface); color: var(--text-dim); border-radius: 999px; padding: 7px 12px; font-size: 12.5px; font-weight: 600; white-space: nowrap; cursor: pointer; }
+  .ex-aisle i { font-style: normal; font-family: var(--font-display); font-size: 9.5px; color: var(--text-faint); margin-left: 5px; }
+  .ex-aisle.on { background: var(--text); color: #000; border-color: var(--text); } .ex-aisle.on i { color: #333; }
+  .ex-aisle.bad { border-color: var(--bad); color: var(--bad); }
+  .ex-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; min-height: 30px; }
+  .ex-filter-btn { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 8px; padding: 6px 11px; font-size: 12.5px; font-weight: 600; cursor: pointer; flex-shrink: 0; }
+  .ex-filter-btn.on { border-color: var(--accent); color: var(--accent); }
+  .ex-active { display: flex; gap: 6px; min-width: 0; overflow: hidden; flex-shrink: 1; }
+  .ex-pill { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+  .ex-pill { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #000; border: 0; border-radius: 999px; padding: 5px 10px; font-size: 12px; font-weight: 700; white-space: nowrap; cursor: pointer; }
+  .ex-count { margin-left: auto; font-family: var(--font-display); font-size: 10px; color: var(--text-faint); white-space: nowrap; }
+  .modal.ex-sheet { z-index: 165; background: rgba(0,0,0,.55); display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; padding-top: 40px; }
+  .ex-panel { background: var(--bg); border-radius: 18px 18px 0 0; border-top: 1px solid var(--border); max-height: 100%; overflow-y: auto; padding-bottom: env(safe-area-inset-bottom); }
+  .ex-sheet .modal-content { padding-bottom: 28px; }
+  .ex-fgroup { font-family: var(--font-display); font-size: 9.5px; letter-spacing: .12em; color: var(--text-faint); margin: 14px 2px 6px; }
+  .ex-fgroup:first-child { margin-top: 2px; }
+  .ex-fopt { display: flex; align-items: center; width: 100%; gap: 10px; padding: 12px 12px; margin-bottom: 5px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 14px; text-align: left; cursor: pointer; }
+  .ex-fopt span { flex: 1; } .ex-fopt b { font-family: var(--font-display); font-size: 12px; color: var(--text-dim); }
+  .ex-fopt.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
+  .ex-fopt.zero { opacity: .45; }
+  .ex-act-head { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
+  .ex-act-head img, .ex-act-head .ex-noimg { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; background: #fff; flex-shrink: 0; }
+  .ex-act-head .ex-noimg { background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--warn); font-family: var(--font-display); }
+  .ex-act-head b { display: block; font-size: 15px; line-height: 1.25; }
+  .ex-act-head small { display: block; margin-top: 4px; font-family: var(--font-display); font-size: 10px; color: var(--text-dim); }
+  .ex-act { display: flex; align-items: center; gap: 12px; width: 100%; padding: 13px 14px; margin-bottom: 6px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-size: 14.5px; font-weight: 600; text-align: left; cursor: pointer; }
+  .ex-act i { font-style: normal; width: 22px; text-align: center; font-size: 17px; }
+  .ex-act small { margin-left: auto; font-weight: 400; font-size: 12px; color: var(--text-dim); max-width: 50%; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ex-act.out { border-color: var(--bad); color: var(--bad); }
+  .ex-act.feat { border-color: var(--warn); color: var(--warn); }
+  .ex-act.danger { color: var(--bad); background: transparent; margin-top: 14px; }
+  .ex-act-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  /* rows */
+  .ecom-row { min-height: 72px; border-radius: 10px; margin-bottom: 6px; }
+  .ecom-thumb-wrap { width: 72px; background: #fff; }
+  .ecom-row .ecom-thumb { object-fit: contain; }
+  .ecom-main { padding: 8px 10px; gap: 4px; }
+  .ecom-row .li-name { font-size: 13.5px; font-weight: 600; }
+  .ecom-row .li-meta { font-size: 10px; }
+  .ecom-side { padding: 8px 4px 8px 0; flex-direction: row; align-items: center; gap: 2px; }
+  .ecom-row .li-cur { font-size: 14px; }
+  .ex-more { width: 36px; height: 44px; border: 0; background: transparent; color: var(--text-dim); font-size: 20px; line-height: 1; cursor: pointer; border-radius: 8px; }
+  .ex-more:active { background: var(--surface-2); }
+  .ex-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .ex-tag { font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: .04em; padding: 3px 7px; border-radius: 6px; line-height: 1; }
+  .ex-tag.out { background: var(--bad); color: #fff; }
+  .ex-tag.star { background: color-mix(in srgb, var(--warn) 20%, transparent); color: var(--warn); }
+  .ex-tag.warn { border: 1px solid var(--warn); color: var(--warn); }
+  .ex-tag.bad { border: 1px solid var(--bad); color: var(--bad); }
+  .ex-tag.dim { border: 1px solid var(--border); color: var(--text-dim); }
+  .ex-tag.good { border: 1px solid var(--good); color: var(--good); }
+  .ecom-dept-head { border-radius: 10px; padding: 12px 12px; margin: 8px 0 6px; background: var(--surface); }
+  .ecom-dept-name { font-family: inherit; font-size: 15px; letter-spacing: 0; }
+  .ecom-sub-head { padding: 10px 4px 6px; }
+  .ecom-sub-head .ecom-dept-name { font-size: 12.5px; color: var(--text-dim); }
 </style>
 </head>
 <body>
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v273</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v274</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2518,41 +2591,46 @@
 </section>
 
 <section id="ecom-view">
-  <div class="ecom-header">
-    <input type="text" id="ecom-search" placeholder="Search catalog…" autocomplete="off" />
-    <button class="btn" id="sc-open-btn" title="Daily stock check">📋 CHECK<span id="sc-badge" class="sc-badge" hidden></span></button>
-    <button class="btn primary" id="ecom-add-btn">+ ADD</button>
-  </div>
-  <div class="ecom-progress-wrap" id="ecom-progress-wrap"></div>
-  <div class="ecom-filter-row" id="ecom-filter-row">
-    <div class="ecom-view-seg" id="ecom-view-seg">
-      <button data-eview="aisle">🧭 WEBSITE AISLES</button><button data-eview="dept">🏷 POS DEPARTMENTS</button>
+  <div class="ex-top">
+    <div class="ex-search">
+      <span class="ex-search-ico">⌕</span>
+      <input type="text" id="ecom-search" placeholder="Search the website…" autocomplete="off" />
+      <button type="button" id="ecom-search-x" class="ex-search-x" hidden aria-label="Clear">✕</button>
     </div>
-    <select id="ecom-aisle" class="ecom-select"><option value="">ALL AISLES</option></select>
-    <select id="ecom-dept" class="ecom-select"><option value="">ALL DEPARTMENTS</option></select>
+    <button class="ex-ibtn" id="sc-open-btn" title="Daily stock check">📋<span id="sc-badge" class="sc-badge" hidden></span></button>
+    <button class="ex-ibtn primary" id="ecom-add-btn" title="Add a product to the website">＋</button>
   </div>
-  <div class="ecom-filter-row" id="ecom-filter-row2">
-    <button class="ecom-chip active" data-efilter="all">ALL</button>
-    <button class="ecom-chip" data-efilter="listed">LISTED</button>
-    <button class="ecom-chip" data-efilter="nophoto">NEEDS PHOTO</button>
-    <button class="ecom-chip" data-efilter="hasphoto">HAS PHOTO</button>
-    <button class="ecom-chip" data-efilter="nosales7">NO SALES 7D</button>
-    <button class="ecom-chip" data-efilter="nosales14">NO SALES 14D</button>
-    <button class="ecom-chip" data-efilter="nosales30">NO SALES 1MO</button>
-    <button class="ecom-chip" data-efilter="nosize">NO SIZE</button>
-    <button class="ecom-chip" data-efilter="oos">OUT OF STOCK</button>
-    <button class="ecom-chip" data-efilter="featured">★ FEATURED</button>
-    <button class="ecom-chip" data-efilter="variants">VARIANTS</button>
-    <button class="ecom-chip" data-efilter="scale">SCALE</button>
-    <button class="ecom-chip" data-efilter="dupes">DUPLICATE NAMES</button>
-    <button class="ecom-chip" data-efilter="aislehand">🧭 MOVED BY HAND</button>
-    <button class="ecom-chip" data-efilter="noaisle">⚠ NO AISLE</button>
+  <div class="ex-stats" id="ecom-progress-wrap"></div>
+  <div class="ex-aisles" id="ecom-aisle-strip"></div>
+  <div class="ex-bar">
+    <button type="button" class="ex-filter-btn" id="ecom-filter-btn">☰ Filter</button>
+    <span class="ex-active" id="ecom-filter-active"></span>
+    <span class="ex-count" id="ecom-statusbar"></span>
   </div>
-  <div class="ecom-statusbar" id="ecom-statusbar"></div>
   <div id="ecom-container">
     <div class="empty-state">LOADING CATALOG…</div>
   </div>
 </section>
+
+<div class="modal ex-sheet" id="ecom-filter-modal">
+  <div class="ex-panel">
+    <div class="modal-header">
+      <span class="label">SHOW ONLY</span>
+      <div class="actions"><button class="close" id="ecom-filter-close">×</button></div>
+    </div>
+    <div class="modal-content" id="ecom-filter-body"></div>
+  </div>
+</div>
+
+<div class="modal ex-sheet" id="ecom-act-modal">
+  <div class="ex-panel">
+    <div class="modal-header">
+      <span class="label">PRODUCT</span>
+      <div class="actions"><button class="close" id="ecom-act-close">×</button></div>
+    </div>
+    <div class="modal-content" id="ecom-act-body"></div>
+  </div>
+</div>
 
 <div class="modal" id="audit-confirm-modal">
   <div class="modal-header">
@@ -3060,7 +3138,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v273</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v274</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -14240,12 +14318,13 @@
       const A = by[a], z = c._zoneOf[a];
       const zl = '';   // aisles follow the website order (categories.json "order"), no zone headers
       lastZone = z;
-      const key = 'aisle:' + a, collapsed = _ecomCollapsed[key] !== false && !_ecomAisle;
+      const narrowed = _ecomFilter !== 'all' || !!(_ecomSearch || '').trim();
+      const key = 'aisle:' + a, collapsed = _ecomCollapsed[key] !== false && !_ecomAisle && !narrowed;
       const subOrder = a === '_none' ? Object.keys(A.subs) : (c._by[a].subs || []).filter(s => A.subs[s]).concat(Object.keys(A.subs).filter(s => !(c._by[a].subs || []).includes(s)));
       const flat = subOrder.length === 1 && subOrder[0] === '—';   // no sub-shelves: products straight under the aisle
       const inner = flat ? A.subs['—'].sort((x, y) => (!!x.alsoFrom - !!y.alsoFrom) || (y.rev - x.rev)).map(rowHtml).join('') : subOrder.map(sn => {
         const items = A.subs[sn].sort((x, y) => (!!x.alsoFrom - !!y.alsoFrom) || (y.rev - x.rev));
-        const sk = key + '::' + sn, sc = _ecomCollapsed[sk] !== false && subOrder.length > 1;
+        const sk = key + '::' + sn, sc = _ecomCollapsed[sk] !== false && subOrder.length > 1 && !narrowed;
         return `<div class="ecom-sub-head" data-dept="${escapeHtml(sk)}"><span class="ecom-dept-caret">${sc ? '▸' : '▾'}</span><span class="ecom-dept-name">${escapeHtml(sn)}</span><span class="ecom-dept-stat">${items.filter(i => i.nPhotos).length}/${items.length} 📷</span></div>
           <div class="ecom-dept-body ${sc ? 'collapsed' : ''}" data-dept-body="${escapeHtml(sk)}">${items.map(rowHtml).join('')}</div>`;
       }).join('');
@@ -14385,37 +14464,87 @@
     };
   }
 
+  // ── ECOM tab ── one list in website-aisle order. Filters live in one sheet, row actions in another.
+  const ECOM_FILTERS = [
+    ['On the website', [['featured', '★ Featured on the home page'], ['oos', 'Out of stock']]],
+    ['To fix', [['tofix', 'Anything to fix (photo, size, aisle)'], ['nophoto', 'Needs a photo'], ['nosize', 'No size'], ['noaisle', 'No aisle'], ['dupes', 'Duplicate names']]],
+    ['Sales', [['nosales7', 'No sales in 7 days'], ['nosales14', 'No sales in 14 days'], ['nosales30', 'No sales in a month']]],
+    ['Other', [['hasphoto', 'Has a photo'], ['variants', 'Variants'], ['scale', 'Scale items'], ['aislehand', 'Moved to an aisle by hand']]],
+  ];
+  const ECOM_FLABEL = Object.assign(Object.fromEntries(ECOM_FILTERS.flatMap(g => g[1])), { tofix: 'To fix', featured: '★ Featured', nosales7: 'No sales 7 d', nosales14: 'No sales 14 d', nosales30: 'No sales 1 mo', aislehand: 'Moved by hand' });
+  function ecomPass(r, f) {
+    switch (f) {
+      case 'nophoto': return !r.nPhotos;
+      case 'hasphoto': return !!r.nPhotos;
+      case 'listed': return r.listed;
+      case 'variants': return !!r.variantOf;
+      case 'scale': return r.scale;
+      case 'nosales7': return r.noSales7d;
+      case 'nosales14': return r.noSales14d;
+      case 'nosales30': return r.noSales30d;
+      case 'nosize': return !r.sizeText;
+      case 'oos': return r.oos;
+      case 'featured': return r.featured;
+      case 'dupes': return r.variantDupe;
+      case 'aislehand': return r.pl.ov || (r.kids || []).some(k => k.aisle);
+      case 'noaisle': return !!_aisleCfg && !r.pl.a;
+      case 'tofix': return !r.nPhotos || !r.sizeText || (!!_aisleCfg && !r.pl.a);
+      default: return true;
+    }
+  }
+  let _ecomRows = [];
+  function ecomSetFilter(f) { _ecomFilter = (f === _ecomFilter ? 'all' : f) || 'all'; $('#ecom-filter-modal').classList.remove('open'); renderEcom(); }
+  function ecomOpenFilters() {
+    const base = _ecomRowsBase || [];
+    $('#ecom-filter-body').innerHTML = `<button class="ex-fopt${_ecomFilter === 'all' ? ' on' : ''}" data-f="all"><span>Everything</span><b>${base.length}</b></button>`
+      + ECOM_FILTERS.map(([g, opts]) => `<div class="ex-fgroup">${escapeHtml(g.toUpperCase())}</div>` + opts.map(([k, l]) => {
+        const n = base.filter(r => ecomPass(r, k)).length;
+        return `<button class="ex-fopt${_ecomFilter === k ? ' on' : ''}${n ? '' : ' zero'}" data-f="${k}"><span>${escapeHtml(l)}</span><b>${n}</b></button>`;
+      }).join('')).join('');
+    $('#ecom-filter-body').querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => { _ecomFilter = b.dataset.f; $('#ecom-filter-modal').classList.remove('open'); renderEcom(); }));
+    $('#ecom-filter-modal').classList.add('open');
+  }
+  let _ecomRowsBase = [];
+  function ecomActions(code, kid) {
+    const r = _ecomRows.find(x => x.code === code) || _ecomRowsBase.find(x => x.code === code); if (!r) return;
+    const yr = '$' + Math.round(r.rev || 0).toLocaleString() + '/yr';
+    const aisle = !_aisleCfg ? '' : !r.pl.a ? '⚠ none' : aisleName(r.pl.a) + (r.pl.s ? ' › ' + r.pl.s : '') + (r.pl.ov ? ' ✎' : '');
+    $('#ecom-act-body').innerHTML = `
+      <div class="ex-act-head">${r.photo ? `<img src="${photoSrc(r.photo)}" alt="">` : '<div class="ex-noimg">NO PHOTO</div>'}
+        <div><b>${escapeHtml(r.name.trim())}</b><small>${r.price != null ? priceText(r.priceCode || r.code, r.price) + ' · ' : ''}${r.sizeText ? escapeHtml(r.sizeText) + ' · ' : ''}${yr}<br>${escapeHtml(r.code)}</small></div></div>
+      <div class="ex-act-row">
+        <button class="ex-act${r.oos ? ' out' : ''}" data-x="oos"><i>${r.oos ? '⛔' : '✓'}</i>${r.oos ? 'Out of stock' : 'In stock'}</button>
+        <button class="ex-act${r.featured ? ' feat' : ''}" data-x="feat"><i>${r.featured ? '★' : '☆'}</i>${r.featured ? 'Featured' : 'Feature it'}</button>
+      </div>
+      <button class="ex-act" data-x="open"><i>📷</i>Photos &amp; details<small>${r.nPhotos} photo${r.nPhotos === 1 ? '' : 's'}</small></button>
+      ${_aisleCfg ? `<button class="ex-act" data-x="aisle"><i>🧭</i>Website aisle<small>${escapeHtml(aisle)}</small></button>` : ''}
+      <button class="ex-act" data-x="edit"><i>⚡</i>POS editor<small>price, name, size</small></button>
+      ${r.pf ? `<button class="ex-act" data-x="fam"><i>🌿</i>Brand codes<small>${r.pf.members.length} · price from ${escapeHtml(r.pf.official.replace(/^0+/, ''))}</small></button>` : ''}
+      <button class="ex-act danger" data-x="del"><i>✕</i>Remove from the website</button>`;
+    $('#ecom-act-body').querySelectorAll('[data-x]').forEach(b => b.addEventListener('click', () => {
+      const x = b.dataset.x; $('#ecom-act-modal').classList.remove('open');
+      if (x === 'oos') ecomToggleOos(code);
+      else if (x === 'feat') ecomToggleFeatured(code);
+      else if (x === 'open') openProduct(code);
+      else if (x === 'aisle') openAislePicker(code, null);
+      else if (x === 'fam') ecomProduceInfo(code);
+      else if (x === 'edit') { const f = ((_ecomCatalog || {}).produce || {})[code]; openPosDirect(f && _editData ? produceFamily(code, f).official : code); }
+      else if (x === 'del') { if (confirm('Remove "' + r.name.trim() + '" from the website?')) ecomRemove(code); }
+    }));
+    $('#ecom-act-modal').classList.add('open');
+  }
+
   async function renderEcom() {
     const container = $('#ecom-container');
     const status = $('#ecom-statusbar');
     const [cat] = await Promise.all([fetchEcomCatalog(), fetchAisleCfg()]);
-    const aisleView = _ecomView === 'aisle' && !!_aisleCfg;
-    document.querySelectorAll('#ecom-view-seg [data-eview]').forEach(b => b.classList.toggle('on', b.dataset.eview === (aisleView ? 'aisle' : 'dept')));
-    $('#ecom-aisle').style.display = aisleView ? '' : 'none';
-    $('#ecom-dept').style.display = aisleView ? 'none' : '';
+    const aisleView = !!_aisleCfg;
     if (cat.produce && !_editData) await fetchEditData();   // produce families need the weighed flags
     else fetchEditData();     // weighed flags for per-kg prices (non-blocking)
-    populateEcomDepts(cat);
     const codes = Object.keys(cat.items);
     const q = (_ecomSearch || '').trim().toLowerCase();
-
-    // progress bar (photo coverage is the data-entry goal)
-    const withPhotos = codes.filter(c => (cat.items[c].photos || []).length).length;
-    const pct = codes.length ? Math.round(100 * withPhotos / codes.length) : 0;
-    $('#ecom-progress-wrap').innerHTML = codes.length ? `
-      <div class="ecom-progress-track"><div class="ecom-progress-fill" style="width:${pct}%"></div></div>
-      <div class="ecom-progress-label">${withPhotos} / ${codes.length} WITH PHOTO · ${pct}% COMPLETE</div>` : '';
-
-    // build rows with dept + photo + sales info
+    $('#ecom-search-x').hidden = !q;
     const gmeta = cat.groups || {};
-
-    // Duplicate-name detection is recomputed LIVE from current titles every
-    // render, not read from the stored group metadata (that was a one-time
-    // snapshot from population, so a title fix never cleared the flag).
-    // Checked against the WHOLE POS catalogue (55k+ items), not just the ecom
-    // list -- the matching duplicate can sit outside the ecom catalogue
-    // entirely and still mean the same product got entered twice in the POS.
-    // Cached and only rebuilt when DATA reloads.
     const nameCounts = productNameCounts();
 
     let rows = codes.map(code => {
@@ -14463,61 +14592,56 @@
         pl: _aisleCfg ? aisleOfItem(code) : { a: null, s: null, also: [], auto: {}, ov: false },
       };
     });
-    if (aisleView) populateEcomAisles(rows);
-    rows = rows.filter(r => {
-      if (q && !(r.name.toLowerCase().includes(q) || r.code.includes(q)
-                 || (r.kids && r.kids.some(e => (e.name || '').toLowerCase().includes(q))))) return false;
-      if (aisleView && _ecomAisle) {
-        if (_ecomAisle === '_none' ? !!r.pl.a : (r.pl.a !== _ecomAisle && !r.pl.also.includes(_ecomAisle))) return false;
-      }
-      if (!aisleView && _ecomDept) {
-        if (_ecomDept.startsWith('fam:')) {
-          const g = DEPT_GROUPS.find(x => x.name === _ecomDept.slice(4));
-          if (!g || !g.subs.map(String).includes(r.deptCode)) return false;
-        } else if (r.deptCode !== _ecomDept) return false;
-      }
-      switch (_ecomFilter) {
-        case 'nophoto':  if (r.nPhotos) return false; break;
-        case 'hasphoto': if (!r.nPhotos) return false; break;
-        case 'listed':   if (!r.listed) return false; break;
-        case 'variants': if (!r.variantOf) return false; break;
-        case 'scale':    if (!r.scale) return false; break;
-        case 'nosales7':  if (!r.noSales7d) return false; break;
-        case 'nosales14': if (!r.noSales14d) return false; break;
-        case 'nosales30': if (!r.noSales30d) return false; break;
-        case 'nosize':    if (r.sizeText) return false; break;
-        case 'oos':       if (!r.oos) return false; break;
-        case 'featured':  if (!r.featured) return false; break;
-        case 'dupes':    if (!r.variantDupe) return false; break;
-        case 'aislehand': if (!r.pl.ov && !(r.kids || []).some(k => k.aisle)) return false; break;
-        case 'noaisle':   if (r.pl.a) return false; break;
-      }
-      return true;
-    });
+    const _ecomAllRows = rows;
+    // search + aisle first (the filter sheet counts what is left)
+    if (_ecomAisle && !(aisleView && (_ecomAisle === '_none' || _aisleCfg._by[_ecomAisle]))) _ecomAisle = '';
+    const searched = rows.filter(r => !q || r.name.toLowerCase().includes(q) || r.code.includes(q)
+                 || (r.kids && r.kids.some(e => (e.name || '').toLowerCase().includes(q))));
+    if (aisleView) ecomAisleStrip(searched);
+    else $('#ecom-aisle-strip').innerHTML = '';
+    const inAisle = searched.filter(r => !aisleView || !_ecomAisle
+      || (_ecomAisle === '_none' ? !r.pl.a : (r.pl.a === _ecomAisle || r.pl.also.includes(_ecomAisle))));
+    _ecomRowsBase = inAisle;
+    rows = inAisle.filter(r => ecomPass(r, _ecomFilter));
+    _ecomRows = rows;
 
-    const _nOos = codes.filter(c => cat.items[c].oos).length;
-    const _nFeat = codes.filter(c => cat.items[c].featured).length;
-    status.innerHTML = `${codes.length} product${codes.length===1?'':'s'} in catalog` +
-      (_nOos ? ` · <span style="color:var(--bad)">${_nOos} out of stock</span>` : '') +
-      (_nFeat ? ` · <span style="color:var(--warn)">\u2605 ${_nFeat} featured${_nFeat > FEATURED_TARGET ? ' (target ' + FEATURED_TARGET + ')' : ''}</span>` : '') +
-      (rows.length !== codes.length ? ` · ${rows.length} shown` : '') +
-      (GH_HAS_TOKEN ? '' : ' · <span style="color:var(--warn)">READ-ONLY (no token)</span>');
+    // stat tiles = shortcuts to the filters people use most
+    const nPh = codes.filter(c => (cat.items[c].photos || []).length).length;
+    const pct = codes.length ? Math.round(100 * nPh / codes.length) : 0;
+    const nOos = codes.filter(c => cat.items[c].oos).length;
+    const nFeat = codes.filter(c => cat.items[c].featured).length;
+    const nFix = _ecomAllRows.filter(r => ecomPass(r, 'tofix')).length;
+    const tile = (f, val, lbl, cls, extra) => `<div class="ex-stat${cls ? ' ' + cls : ''}${_ecomFilter === f ? ' on' : ''}" data-tile="${f}"><b>${val}</b><span>${lbl}</span>${extra || ''}</div>`;
+    $('#ecom-progress-wrap').innerHTML = codes.length ? tile('nophoto', pct + '%', 'WITH PHOTO', '', `<div class="ex-meter" style="width:${pct}%"></div>`)
+      + tile('oos', nOos, 'OUT OF STOCK', nOos ? 'bad' : '')
+      + tile('featured', nFeat, '★ FEATURED', nFeat > FEATURED_TARGET ? 'warn' : '')
+      + tile('tofix', nFix, 'TO FIX', nFix ? 'warn' : '') : '';
+    $('#ecom-progress-wrap').querySelectorAll('[data-tile]').forEach(t => t.addEventListener('click', () => ecomSetFilter(t.dataset.tile)));
+
+    // filter button + active filter pill
+    $('#ecom-filter-btn').classList.toggle('on', _ecomFilter !== 'all');
+    $('#ecom-filter-active').innerHTML = _ecomFilter !== 'all' ? `<button class="ex-pill" id="ecom-filter-clear">${escapeHtml(ECOM_FLABEL[_ecomFilter] || _ecomFilter)} ✕</button>` : '';
+    const fc = $('#ecom-filter-clear'); if (fc) fc.addEventListener('click', () => { _ecomFilter = 'all'; renderEcom(); });
+    status.innerHTML = (rows.length === codes.length ? codes.length + ' products' : rows.length + ' of ' + codes.length)
+      + (GH_HAS_TOKEN ? '' : ' · <span style="color:var(--warn)">read-only</span>');
 
     if (!rows.length) {
-      container.innerHTML = `<div class="empty-state">${codes.length ? 'NO MATCHES' : 'CATALOG EMPTY<br><br>TAP + ADD TO START BUILDING<br>YOUR WEBSITE PRODUCT LIST'}</div>`;
+      container.innerHTML = `<div class="empty-state">${codes.length ? 'NOTHING HERE' : 'CATALOG EMPTY<br><br>TAP ＋ TO START BUILDING<br>YOUR WEBSITE PRODUCT LIST'}</div>`;
       return;
     }
 
-    // group by department, order groups by DEPT_GROUPS order, items by revenue desc
-    const order = DEPT_GROUPS.map(g => g.name).concat(['Autre']);
-    const byGroup = {};
-    rows.forEach(r => { (byGroup[r.group] = byGroup[r.group] || []).push(r); });
-    const groupNames = Object.keys(byGroup).sort((a, b) => order.indexOf(a) - order.indexOf(b));
-
     const rowHtml = (r) => {
-      const yr = '$' + Math.round(r.rev || 0).toLocaleString() + '/yr';
-      // quiet "no sales" note: only the longest period, and never on items already marked out of stock
-      const quiet = r.oos ? null : (r.noSales30d ? ['q30', '1mo', '1 month'] : r.noSales14d ? ['q14', '14d', '14 days'] : r.noSales7d ? ['q7', '7d', '7 days'] : null);
+      const yr = r.rev >= 1000 ? '$' + (r.rev / 1000).toFixed(r.rev >= 10000 ? 0 : 1) + 'k/yr' : '$' + Math.round(r.rev || 0) + '/yr';
+      const quiet = r.oos ? null : (r.noSales30d ? ['warn', 'no sales 1 mo'] : r.noSales14d ? ['dim', 'no sales 14 d'] : null);
+      const tags = [
+        r.oos ? '<span class="ex-tag out">OUT</span>' : '',
+        r.featured ? '<span class="ex-tag star">★ FEATURED</span>' : '',
+        !r.sizeText ? '<span class="ex-tag warn">NO SIZE</span>' : '',
+        _aisleCfg && !r.pl.a ? '<span class="ex-tag bad">NO AISLE</span>' : '',
+        !r.pfam && r.variantDupe ? '<span class="ex-tag bad">DUPLICATE NAME</span>' : '',
+        r.pf && r.pf.members.length > 1 ? `<span class="ex-tag good">🌿 ${r.pf.members.length} BRANDS</span>` : '',
+        quiet ? `<span class="ex-tag ${quiet[0]}">${quiet[1]}</span>` : '',
+      ].join('');
       return `
       <div class="ecom-row${r.oos ? ' oos' : ''}${r.alsoFrom ? ' also' : ''}" data-code="${r.code}">
         <div class="ecom-thumb-wrap">
@@ -14527,22 +14651,13 @@
         </div>
         <div class="ecom-main">
           <div class="li-name">${escapeHtml(r.name.trim())}</div>
-          <div class="li-meta">${r.sizeText ? '<b>' + escapeHtml(r.sizeText) + '</b>' : '<span style="color:var(--bad)">no size</span>'} · <span class="ecom-yr">${yr}</span> · ${escapeHtml(r.code)}</div>
-          <div class="ecom-flags">
-            <button class="ecom-stock${r.oos ? ' out' : ''}" data-eact="oos" data-code="${r.code}">${r.oos ? 'OUT OF STOCK' : 'IN STOCK'}</button>
-            <button class="ecom-star${r.featured ? ' on' : ''}" data-eact="feat" data-code="${r.code}" title="${r.featured ? 'Featured on the home page - tap to remove' : 'Feature on the home page'}">${r.featured ? '\u2605' : '\u2606'}</button>
-            ${r.pf ? `<span class="ecom-badge-fam" data-eact="fam" data-code="${r.code}" title="Every brand of this item. The website price follows the brand whose price changed last.">🌿 ${r.pf.members.length} brand code${r.pf.members.length === 1 ? '' : 's'} · price from ${escapeHtml(r.pf.official.replace(/^0+/, ''))}</span>` : ''}
-            ${r.pfam ? '' : r.variantDupe ? '<span class="ecom-badge-dupe">DUPLICATE NAME</span>' : (r.variantOf ? '<span class="ecom-badge-dupe" style="color:var(--text-faint)">variant</span>' : '')}
-            ${quiet ? `<span class="ecom-quiet ${quiet[0]}" title="No sales in the last ${quiet[2]}">no sales ${quiet[1]}</span>` : ''}
-            ${_aisleCfg ? aisleChip(r.pl, r.code, null, aisleView) : ''}
-          </div>${r.alsoFrom ? `<div class="ecom-also-note">↪ also shown here · lives in ${escapeHtml(aisleName(r.alsoFrom))}</div>` : ''}
+          <div class="li-meta">${r.sizeText ? '<b>' + escapeHtml(r.sizeText) + '</b> · ' : ''}<span class="ecom-yr">${yr}</span></div>
+          ${tags ? `<div class="ex-tags">${tags}</div>` : ''}
+          ${r.alsoFrom ? `<div class="ecom-also-note">↪ also shown here · lives in ${escapeHtml(aisleName(r.alsoFrom))}</div>` : ''}
         </div>
         <div class="ecom-side">
           <div class="li-cur">${r.price != null ? priceText(r.priceCode || r.code, r.price) : '—'}</div>
-          <div class="li-x">
-            <button class="btn small" data-eact="edit" data-code="${r.code}" title="POS editor">⚡</button>
-            <button class="btn small danger" data-eact="del" data-code="${r.code}" title="Remove from catalogue">✕</button>
-          </div>
+          <button class="ex-more" data-eact="more" data-code="${r.code}" aria-label="Actions">⋯</button>
         </div>
       </div>${kidsHtml(r)}`;
     };
@@ -14573,86 +14688,27 @@
       </div>`;
     }
 
-    // Website-aisle view: zone -> aisle -> sub-shelf -> products (cross-listed items shown dimmed)
-    if (aisleView) container.innerHTML = renderAisleGroups(rows, rowHtml);
-    // Two levels: family (Épicerie…) -> department (#1, #2…) -> products.
-    // Both levels collapse independently.
-    else container.innerHTML = groupNames.map(gname => {
-      const items = byGroup[gname].sort((a, b) => b.rev - a.rev);
-      const gPhotos = items.filter(i => i.nPhotos).length;
-      const collapsed = _ecomCollapsed[gname] !== false;   // default CLOSED, same as sub-departments
+    // website aisles → sub-shelves → products (no aisles set up: one list by sales)
+    container.innerHTML = aisleView ? renderAisleGroups(rows, rowHtml) : rows.sort((a, b) => b.rev - a.rev).map(rowHtml).join('');
 
-      // split this family into its departments
-      const byDept = {};
-      items.forEach(r => { (byDept[r.deptCode] = byDept[r.deptCode] || []).push(r); });
-      const deptCodes = Object.keys(byDept).sort((a, b) => byDept[b].length - byDept[a].length);
-      const single = deptCodes.length <= 1;   // no point nesting a lone dept
-
-      const inner = single
-        ? items.map(rowHtml).join('')
-        : deptCodes.map(dc => {
-            const dItems = byDept[dc];
-            const key = gname + '::' + dc;
-            const dCollapsed = _ecomCollapsed[key] !== false;   // sub-depts start closed
-            const dName = (DATA.depts && DATA.depts[dc]) || ('#' + dc);
-            const dPhotos = dItems.filter(i => i.nPhotos).length;
-            return `
-              <div class="ecom-sub-head" data-dept="${escapeHtml(key)}">
-                <span class="ecom-dept-caret">${dCollapsed ? '▸' : '▾'}</span>
-                <span class="ecom-dept-name">${escapeHtml(dName)}</span>
-                <span class="ecom-dept-stat">${dPhotos}/${dItems.length} 📷</span>
-              </div>
-              <div class="ecom-dept-body ${dCollapsed ? 'collapsed' : ''}" data-dept-body="${escapeHtml(key)}">
-                ${dItems.map(rowHtml).join('')}
-              </div>`;
-          }).join('');
-
-      return `
-        <div class="ecom-dept-head" data-dept="${escapeHtml(gname)}">
-          <span class="ecom-dept-caret">${collapsed ? '▸' : '▾'}</span>
-          <span class="ecom-dept-name">${escapeHtml(gname)}</span>
-          <span class="ecom-dept-stat">${gPhotos}/${items.length} 📷</span>
-        </div>
-        <div class="ecom-dept-body ${collapsed ? 'collapsed' : ''}" data-dept-body="${escapeHtml(gname)}">
-          ${inner}
-        </div>`;
-    }).join('');
-
-    // dept header collapse
     container.querySelectorAll('.ecom-dept-head, .ecom-sub-head').forEach(h =>
       h.addEventListener('click', () => {
         const g = h.dataset.dept;
-        // Same rule as the render above: a section nobody has touched counts as
-        // CLOSED (state !== false). Flipping the raw value (undefined -> true)
-        // "closed it again", so the first tap did nothing visible and it took
-        // two taps to open.
         _ecomCollapsed[g] = (_ecomCollapsed[g] === false);
         const body = container.querySelector(`[data-dept-body="${CSS.escape(g)}"]`);
         const caret = h.querySelector('.ecom-dept-caret');
         if (body) body.classList.toggle('collapsed', _ecomCollapsed[g]);
         if (caret) caret.textContent = _ecomCollapsed[g] ? '▸' : '▾';
       }));
-
-    // row actions
     container.querySelectorAll('[data-eact]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (btn.dataset.eact === 'view') openProduct(btn.dataset.code);
-        else if (btn.dataset.eact === 'edit') {
-          const f = ((_ecomCatalog || {}).produce || {})[btn.dataset.code];
-          openPosDirect(f && _editData ? produceFamily(btn.dataset.code, f).official : btn.dataset.code);
-        }
-        else if (btn.dataset.eact === 'fam') ecomProduceInfo(btn.dataset.code);
+        if (btn.dataset.eact === 'more') ecomActions(btn.dataset.code);
         else if (btn.dataset.eact === 'aisle') openAislePicker(btn.dataset.code, btn.dataset.kid || null);
-        else if (btn.dataset.eact === 'oos') ecomToggleOos(btn.dataset.code);
-        else if (btn.dataset.eact === 'feat') ecomToggleFeatured(btn.dataset.code);
-        else if (btn.dataset.eact === 'del') {
-          if (confirm('Remove from website catalog?')) ecomRemove(btn.dataset.code);
-        }
       });
     });
     container.querySelectorAll('.ecom-row').forEach(row =>
-      row.addEventListener('click', () => openProduct(row.dataset.code)));
+      row.addEventListener('click', (e) => { if (e.target.closest('.js-photo-thumb')) return; openProduct(row.dataset.code); }));
     container.querySelectorAll('.ecom-kids-toggle').forEach(t =>
       t.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -14672,9 +14728,23 @@
       }));
     container.querySelectorAll('.ecom-kid').forEach(k =>
       k.addEventListener('click', (e) => {
-        if (e.target.closest('.js-photo-thumb')) return;      // photo tap = zoom
+        if (e.target.closest('.js-photo-thumb') || e.target.closest('[data-eact]')) return;
         openCandyManager(k.dataset.kcode, k.dataset.kid);
       }));
+  }
+  // horizontal aisle strip (replaces the dropdown)
+  function ecomAisleStrip(rows) {
+    const el = $('#ecom-aisle-strip'); if (!el || !_aisleCfg) return;
+    const n = {}; rows.forEach(r => { const k = r.pl.a || '_none'; n[k] = (n[k] || 0) + 1; r.pl.also.forEach(x => { n[x] = (n[x] || 0) + 1; }); });
+    const keep = el.scrollLeft;
+    el.innerHTML = `<button class="ex-aisle${!_ecomAisle ? ' on' : ''}" data-a="">All<i>${rows.length}</i></button>`
+      + _aisleCfg._order.filter(a => n[a]).map(a => `<button class="ex-aisle${_ecomAisle === a ? ' on' : ''}" data-a="${a}">${escapeHtml(_aisleCfg._by[a].fr)}<i>${n[a]}</i></button>`).join('')
+      + (n._none ? `<button class="ex-aisle bad${_ecomAisle === '_none' ? ' on' : ''}" data-a="_none">⚠ No aisle<i>${n._none}</i></button>` : '');
+    el.scrollLeft = keep;
+    el.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => {
+      _ecomAisle = b.dataset.a; if (_ecomAisle) _ecomCollapsed['aisle:' + _ecomAisle] = false;
+      renderEcom();
+    }));
   }
 
   // ── Add-to-catalog picker (search any product) ──
@@ -16305,17 +16375,11 @@
 
     // ECOM catalog controls
     $('#ecom-search').addEventListener('input', () => { _ecomSearch = $('#ecom-search').value; renderEcom(); });
-    document.querySelectorAll('#ecom-filter-row2 .ecom-chip').forEach(chip =>
-      chip.addEventListener('click', () => {
-        _ecomFilter = chip.dataset.efilter;
-        document.querySelectorAll('#ecom-filter-row2 .ecom-chip').forEach(c => c.classList.toggle('active', c === chip));
-        renderEcom();
-      }));
-    document.querySelectorAll('#ecom-view-seg [data-eview]').forEach(b => b.addEventListener('click', () => {
-      _ecomView = b.dataset.eview; try { localStorage.setItem('ecomView', _ecomView); } catch {}
-      renderEcom();
-    }));
-    $('#ecom-aisle').addEventListener('change', () => { _ecomAisle = $('#ecom-aisle').value; renderEcom(); });
+    $('#ecom-search-x').addEventListener('click', () => { $('#ecom-search').value = ''; _ecomSearch = ''; renderEcom(); });
+    $('#ecom-filter-btn').addEventListener('click', ecomOpenFilters);
+    $('#ecom-filter-close').addEventListener('click', () => $('#ecom-filter-modal').classList.remove('open'));
+    $('#ecom-act-close').addEventListener('click', () => $('#ecom-act-modal').classList.remove('open'));
+    ['#ecom-filter-modal', '#ecom-act-modal'].forEach(id => $(id).addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.classList.remove('open'); }));
     $('#close-aisle-modal').addEventListener('click', () => $('#aisle-modal').classList.remove('open'));
     $('#sc-open-btn').addEventListener('click', scOpen);
     $('#ecom-add-btn').addEventListener('click', () => {
@@ -16443,7 +16507,7 @@
       // through our guard entries (it is saved from the top of the page).
       try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
 
-      const OVERLAYS = ['audit-confirm-modal','ecom-add-modal','aisle-modal','count-session-detail-modal',
+      const OVERLAYS = ['audit-confirm-modal','ecom-add-modal','ecom-filter-modal','ecom-act-modal','aisle-modal','count-session-detail-modal',
                         'product-modal','pos-edit-modal','pos-pin-modal','pos-direct-modal',
                         'list-detail-modal','merge-picker-modal','add-to-list-modal',
                         'labels-overlay','reports-overlay','candy-modal','photo-lightbox','flyer-modal'];
