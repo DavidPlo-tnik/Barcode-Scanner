@@ -2580,7 +2580,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v278</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v279</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3203,7 +3203,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v278</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v279</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -17101,7 +17101,7 @@ analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(
       const cut = wtNow() - WT_DAYS * 864e5;
       if (_wt.ev.length && _wt.ev[0].t < cut) _wt.ev = _wt.ev.filter(x => x.t >= cut);
       _wt.err = null; _wt.loadedAt = Date.now();
-    } catch (e) { _wt.err = (e && e.message) || String(e); }
+    } catch (e) { _wt.err = /failed to fetch|load failed|networkerror/i.test((e && e.message) || '') ? 'Could not reach the Google collector (tap ⚙ for the address)' : ((e && e.message) || String(e)); }
     _wt.loading = false;
   }
   function wtStopPoll() { if (_wt.timer) { clearInterval(_wt.timer); _wt.timer = null; } }

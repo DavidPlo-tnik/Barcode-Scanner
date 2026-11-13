@@ -1,4 +1,4 @@
-const CACHE = 'decarie-v278';
+const CACHE = 'decarie-v279';
 const MODELS = 'decarie-models';   // studio-photo cut-out model: kept across app updates
 const ASSETS = [
   './manifest.webmanifest',
@@ -32,6 +32,8 @@ self.addEventListener('fetch', (e) => {
 
   // Never intercept GitHub API calls (recipe writes / sha lookups).
   if (url.hostname === 'api.github.com') return;
+  // Site activity collector (Google Apps Script): always straight to the network, never cached
+  if (url.hostname.endsWith('google.com') || url.hostname.endsWith('googleusercontent.com')) return;
 
   // Studio photo model + wasm (~80 MB): download once, keep forever (own cache)
   if (url.hostname === 'staticimgly.com') {
