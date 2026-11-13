@@ -2580,7 +2580,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v277</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v278</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3203,7 +3203,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v277</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v278</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -16938,7 +16938,7 @@
   //  Shopify custom pixel → Google Apps Script web app (a Sheet in the owner's Drive) → read here.
   //  Config (collector URL + read key) is in pos/webtrack.json, locked like the other pos/ files.
   // ════════════════════════════════════════════════════════════════
-  const WT_FILE = 'pos/webtrack.json';
+  const WT_FILE = 'pos/site_cfg.json';   // not "track" in the name: tracker blockers refuse such addresses
   const WT_DAYS = 7, WT_POLL_MS = 30000;
   const WT_GAS = String.raw`/**
  * Marché Décarie — site activity collector (anonymous).
