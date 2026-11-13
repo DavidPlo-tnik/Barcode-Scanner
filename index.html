@@ -2503,6 +2503,9 @@
      needed here for labels — they bring their own stylesheet. */
 
   /* ===== ECOM tab (redesign v274): search + 2 icon buttons, stat tiles, aisle strip, one Filter button ===== */
+  #sc-modal .or-mh b { white-space: nowrap; }
+  .sc-status { margin-left: auto; margin-right: 8px; font-family: var(--font-display); font-size: 10px; color: var(--text-dim); white-space: nowrap; }
+  .sc-status.ok { color: var(--good); } .sc-status.bad { color: var(--warn); }
   .ex-top { display: flex; gap: 8px; align-items: stretch; margin-bottom: 10px; }
   .ex-search { flex: 1; min-width: 0; position: relative; display: flex; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
   .ex-search-ico { padding: 0 4px 0 12px; color: var(--text-faint); font-size: 15px; }
@@ -2582,7 +2585,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v281</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v282</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3205,7 +3208,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v281</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v282</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11608,6 +11611,7 @@
     if (name === 'lists') renderLists();
     if (name === 'ecom') {
       setTimeout(() => { try { if (!_sc.list || Date.now() - _sc.list.at > 30 * 60000) scCompute().catch(() => {}); } catch (e) {} }, 1500);   // 📋 CHECK badge
+      setTimeout(() => { try { scFlush(); } catch (e) {} }, 4000);   // stock-check answers not saved last time
       // ECOM edits the public catalogue, so gate it behind the same PIN
       if (!_posUnlocked) { ecomUnlock(); }
       else renderEcom();
@@ -13942,8 +13946,59 @@
   //  stock on the site that are selling again at the register. "In stock" answers are shared
   //  (pos/stock_checks.json) and quiet the item until it goes silent again after the check.
   // ════════════════════════════════════════════════════════════════
-  const _sc = { checks: null, sha: null, list: null, busy: {} };
+  const _sc = { checks: null, sha: null, list: null, busy: {}, pend: {}, flushing: false, err: null, ecomDirty: false };
   const SC_FILE = 'pos/stock_checks.json';
+  // Answers are applied on screen at once and saved in the background, all waiting ones in one go.
+  // They are kept on the phone until saved (and 15 minutes more, in case a slow copy of the data comes back).
+  const SC_PEND = 'scPending';
+  try { _sc.pend = JSON.parse(localStorage.getItem(SC_PEND) || '{}') || {}; } catch (e) { _sc.pend = {}; }
+  function scPendStore() {
+    const cut = Date.now() - 15 * 60000;
+    for (const k in _sc.pend) if (_sc.pend[k].saved && _sc.pend[k].saved < cut) delete _sc.pend[k];
+    try { localStorage.setItem(SC_PEND, JSON.stringify(_sc.pend)); } catch (e) {}
+  }
+  const scPendN = () => Object.values(_sc.pend).filter(x => !x.saved).length;
+  // lay the phone's answers over whatever was loaded (catalog + shared answers)
+  function scOverlay(cat) {
+    scPendStore();
+    for (const code in _sc.pend) {
+      const a = _sc.pend[code];
+      if (_sc.checks) _sc.checks[code] = { at: a.at, r: a.act === 'out' || a.act === 'still' ? 'out' : 'in' };
+      const it = cat && cat.items && cat.items[code];
+      if (it) { if (a.act === 'out') { it.oos = true; it.oosAt = it.oosAt || a.at; } else if (a.act === 'back') { delete it.oos; delete it.oosAt; } }
+    }
+  }
+  function scStatus() {
+    const el = document.getElementById('sc-status'); if (!el) return;
+    const n = scPendN();
+    el.textContent = _sc.err && n ? '⚠ ' + n + ' unsaved · retrying' : n ? 'saving ' + n + '…' : 'saved ✓';
+    el.className = 'sc-status' + (_sc.err && n ? ' bad' : n ? '' : ' ok');
+  }
+  async function scFlush() {
+    if (_sc.flushing || !scPendN()) { scStatus(); return; }
+    _sc.flushing = true; scStatus();
+    let wait = 3000;
+    while (scPendN()) {
+      const batch = Object.keys(_sc.pend).filter(k => !_sc.pend[k].saved).map(k => [k, _sc.pend[k].act, _sc.pend[k].at]);
+      try {
+        const site = batch.filter(b => b[1] === 'out' || b[1] === 'back');
+        if (site.length) {
+          await mutateEcomCatalog(c => { site.forEach(([code, act, at]) => { const it = c.items[code]; if (!it) return;
+            if (act === 'out') { it.oos = true; it.oosAt = at; } else { delete it.oos; delete it.oosAt; } }); });
+        }
+        await scSaveChecks(batch);
+        const now = Date.now();
+        batch.forEach(([code, act, at]) => { const a = _sc.pend[code]; if (a && a.at === at) a.saved = now; });   // answered again meanwhile: stays waiting
+        _sc.err = null; wait = 3000;
+        scOverlay(_ecomCatalog);
+      } catch (e) {
+        _sc.err = (e && e.message) || String(e); scStatus();
+        await new Promise(r => setTimeout(r, wait)); wait = Math.min(60000, wait * 2);
+      }
+      scStatus();
+    }
+    _sc.flushing = false; scStatus();
+  }
   function scToday() { return new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10); }
   function scDayFrac() {   // share of a normal day's sales already behind us (store hours profile)
     const h = (DATA && DATA.hourly) || {}, now = new Date(), cur = now.getHours() + now.getMinutes() / 60;
@@ -13955,17 +14010,17 @@
     try { const { json, sha } = await ghGetJsonAndSha(SC_FILE); _sc.checks = (json && json.items) || {}; _sc.sha = sha; }
     catch (e) { _sc.checks = _sc.checks || {}; }
   }
-  async function scSaveCheck(code, res) {
+  async function scSaveChecks(batch) {   // batch: [[code, act, at], …]
     for (let a = 0; a < 5; a++) {
       let doc = { items: {} }, sha = null;
-      try { const r = await ghGetJsonAndSha(SC_FILE); if (r.json) doc = r.json; sha = r.sha; } catch (e) {}
+      const r0 = await ghGetJsonAndSha(SC_FILE); if (r0.json) doc = r0.json; sha = r0.sha;
       doc.items = doc.items || {};
-      doc.items[code] = { at: new Date().toISOString(), r: res };
+      batch.forEach(([code, act, at]) => { doc.items[code] = { at, r: act === 'out' || act === 'still' ? 'out' : 'in' }; });
       // keep the file small: forget answers older than 60 days
       const old = new Date(Date.now() - 60 * 864e5).toISOString();
       for (const k in doc.items) if ((doc.items[k].at || '') < old) delete doc.items[k];
       const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(doc))));
-      try { await ghPutFile(SC_FILE, b64, 'stock check ' + code, sha); _sc.checks = doc.items; return; }
+      try { await ghPutFile(SC_FILE, b64, 'stock check (' + batch.length + ')', sha); _sc.checks = doc.items; scOverlay(null); return; }
       catch (e) { if (e.isConflict && a < 4) { await new Promise(r => setTimeout(r, 300 * (a + 1))); continue; } throw e; }
     }
   }
@@ -14004,6 +14059,7 @@
     if (!_editData) await fetchEditData();
     if (!_sc.checks) await scLoadChecks();
     try { if (typeof supLoad === 'function' && (!_sup.orders)) await supLoad(); } catch (e) {}
+    scOverlay(cat);
     const dates = (DATA.last_14_days || []).slice(-14), today = scToday();
     const frac = dates[dates.length - 1] === today ? scDayFrac() : 1;
     // how busy each of the 14 days was compared with a normal day (whole-store sales)
@@ -14086,8 +14142,12 @@
     if (!m) { m = document.createElement('div'); m.id = 'sc-modal'; m.className = 'or-modal'; document.body.appendChild(m); }
     m.classList.add('open');
     m.innerHTML = `<div class="or-sheet"><div class="or-mh"><button class="or-x" id="sc-x">✕</button><b>📋 Stock check</b></div><div class="sc-done">Looking at the register sales…</div></div>`;
-    $('#sc-x').onclick = () => m.classList.remove('open');
+    $('#sc-x').onclick = scClose;
     scCompute().then(scRender).catch(e => { m.querySelector('.sc-done').textContent = e.message; });
+  }
+  function scClose() {
+    const m = $('#sc-modal'); if (m) m.classList.remove('open');
+    if (_sc.ecomDirty) { _sc.ecomDirty = false; if (typeof renderEcom === 'function' && $('#ecom-view').classList.contains('active')) renderEcom(); }
   }
   function scRow(r, kind) {
     const tag = kind === 'back' ? '<span class="sc-tag warn">ON SITE: OUT</span>' : r.level === 'bad' ? '<span class="sc-tag bad">LIKELY OUT</span>' : '<span class="sc-tag warn">CHECK</span>';
@@ -14106,29 +14166,31 @@
         + (L.back.length ? `<div class="sc-sec">MARKED OUT ON THE WEBSITE (${L.back.length})</div>` + L.back.map(r => scRow(r, 'back')).join('') : '')
         + (L.stale.length ? `<details class="sc-stale"><summary class="sc-sec">QUIET FOR 9+ DAYS (${L.stale.length}) · out for a while, seasonal or discontinued?</summary>` + L.stale.map(r => scRow(r, 'out')).join('') + `</details>` : '');
     const wasOpen = !!(m.querySelector('details.sc-stale') || {}).open, keepY = m.querySelector('.or-sheet') ? m.querySelector('.or-sheet').scrollTop : 0;
-    m.innerHTML = `<div class="or-sheet"><div class="or-mh"><button class="or-x" id="sc-x">✕</button><b>📋 Stock check</b><button class="or-x" id="sc-re" title="Refresh">↻</button></div>
+    m.innerHTML = `<div class="or-sheet"><div class="or-mh"><button class="or-x" id="sc-x">✕</button><b>📋 Stock check</b><span class="sc-status" id="sc-status"></span><button class="or-x" id="sc-re" title="Refresh">↻</button></div>
       <p class="sc-intro">Items that have gone quiet at the register, most likely out first. Look on the shelf, then tap: <b>OUT</b> shows it as sold out on the website; <b>IN STOCK</b> hides it until it goes quiet again.</p>${body}</div>`;
-    $('#sc-x').onclick = () => m.classList.remove('open');
+    $('#sc-x').onclick = scClose;
     $('#sc-re').onclick = () => { _sc.checks = null; scOpen(); };
     if (wasOpen && m.querySelector('details.sc-stale')) m.querySelector('details.sc-stale').open = true;
     m.querySelector('.or-sheet').scrollTop = keepY;
-    m.querySelectorAll('[data-sc]').forEach(b => b.onclick = async () => {
-      const code = b.dataset.code, act = b.dataset.sc;
-      if (_sc.busy[code]) return; _sc.busy[code] = true;
-      b.closest('.sc-row').style.opacity = .45;
-      try {
-        if (act === 'out' || act === 'back') {
-          await mutateEcomCatalog(c => { const it = c.items[code]; if (!it) return;
-            if (act === 'out') { it.oos = true; it.oosAt = new Date().toISOString(); } else { delete it.oos; delete it.oosAt; } });
-        }
-        await scSaveCheck(code, act === 'out' || act === 'still' ? 'out' : 'in');
-        ['out', 'stale', 'back'].forEach(k => { _sc.list[k] = _sc.list[k].filter(r => r.code !== code); });
-        showToast(act === 'out' ? 'OUT OF STOCK — sold out on the site' : act === 'back' ? 'BACK IN STOCK on the site' : act === 'still' ? 'Still out — asked again in a week' : 'IN STOCK ✓');
-        scBadge();
-        scRender(); if (typeof renderEcom === 'function' && $('#ecom-view').classList.contains('active')) renderEcom();
-      } catch (e) { showToast(e.message, true); b.closest('.sc-row').style.opacity = 1; }
-      finally { delete _sc.busy[code]; }
-    });
+    scStatus();
+    // one handler for the whole sheet: the answer shows at once, saving happens in the background
+    m.querySelector('.or-sheet').onclick = (ev) => {
+      const b = ev.target.closest('[data-sc]'); if (!b) return;
+      const code = b.dataset.code, act = b.dataset.sc, row = b.closest('.sc-row');
+      _sc.pend[code] = { act, at: new Date().toISOString() };
+      scOverlay(_ecomCatalog);
+      ['out', 'stale', 'back'].forEach(k => { _sc.list[k] = _sc.list[k].filter(r => r.code !== code); });
+      _sc.ecomDirty = true;
+      scBadge();
+      // take the row out without redrawing the sheet
+      const sec = (el) => { let p = el.previousElementSibling; while (p && !p.classList.contains('sc-sec')) p = p.previousElementSibling; return p || (el.parentElement && el.parentElement.querySelector('summary.sc-sec')); };
+      const head = row && sec(row);
+      if (row) row.remove();
+      if (head) head.textContent = head.textContent.replace(/\((\d+)\)/, (x, n) => '(' + Math.max(0, n - 1) + ')');
+      if (!_sc.list.out.length && !_sc.list.back.length && !m.querySelector('.sc-row')) scRender();
+      showToast(act === 'out' ? 'OUT OF STOCK — sold out on the site' : act === 'back' ? 'BACK IN STOCK on the site' : act === 'still' ? 'Still out — asked again in a week' : 'IN STOCK ✓');
+      scFlush();
+    };
   }
 
   async function ecomRemove(code) {
@@ -14527,7 +14589,7 @@
   // ── ECOM tab ── one list in website-aisle order. Filters live in one sheet, row actions in another.
   const ECOM_FILTERS = [
     ['On the website', [['featured', '★ Featured on the home page'], ['oos', 'Out of stock']]],
-    ['To fix', [['tofix', 'Anything to fix (photo, size, aisle)'], ['nophoto', 'Needs a photo'], ['nosize', 'No size'], ['noaisle', 'No aisle'], ['dupes', 'Duplicate names']]],
+    ['To fix', [['tofix', 'Anything to fix (photo, size, aisle)'], ['nophoto', 'No photo'], ['nosize', 'No size'], ['noaisle', 'No aisle'], ['dupes', 'Duplicate names']]],
     ['Sales', [['nosales7', 'No sales in 7 days'], ['nosales14', 'No sales in 14 days'], ['nosales30', 'No sales in a month']]],
     ['Other', [['hasphoto', 'Has a photo'], ['variants', 'Variants'], ['scale', 'Scale items'], ['aislehand', 'Moved to an aisle by hand']]],
   ];
@@ -14688,7 +14750,7 @@
     const nFeat = codes.filter(c => cat.items[c].featured).length;
     const nFix = _ecomAllRows.filter(r => ecomPass(r, 'tofix')).length;
     const tile = (f, val, lbl, cls, extra) => `<div class="ex-stat${cls ? ' ' + cls : ''}${_ecomFilter === f ? ' on' : ''}" data-tile="${f}"><b>${val}</b><span>${lbl}</span>${extra || ''}</div>`;
-    $('#ecom-progress-wrap').innerHTML = codes.length ? tile('nophoto', pct + '%', 'WITH PHOTO', '', `<div class="ex-meter" style="width:${pct}%"></div>`)
+    $('#ecom-progress-wrap').innerHTML = codes.length ? tile('nophoto', codes.length - nPh, 'NO PHOTO', codes.length - nPh ? 'warn' : '', `<div class="ex-meter" style="width:${pct}%"></div>`)
       + tile('oos', nOos, 'OUT OF STOCK', nOos ? 'bad' : '')
       + tile('featured', nFeat, '★ FEATURED', nFeat > FEATURED_TARGET ? 'warn' : '')
       + tile('tofix', nFix, 'TO FIX', nFix ? 'warn' : '') : '';
