@@ -2582,7 +2582,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v280</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v281</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3205,7 +3205,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v280</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v281</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -17014,53 +17014,27 @@ function out_(o) {
 /** Optional: run once from the editor (▶ Run) to authorize and create the sheet before deploying. */
 function setup() { sheet_(); }
 `;
-  const WT_PIXEL = String.raw`// Marché Décarie — anonymous site activity (no names, emails or addresses are sent)
+  const WT_PIXEL = String.raw`// Marché Décarie — anonymous activity on the checkout pages (the store theme covers the rest of the site).
+// No names, emails or addresses are sent.
 const MD_URL = '__URL__';
-const mdSend = (e, ev, d) => {
+const mdVisitor = async (ev) => {
+  try { const c = await browser.cookie.get('_md_v'); if (c) return c; } catch (x) {}
+  return ev.clientId;
+};
+const mdCheckout = async (e, ev) => {
   try {
-    const c = ev.context || {}, doc = c.document || {}, loc = doc.location || {}, nav = c.navigator || {};
-    d = d || {};
-    d.m = /Mobi|Android|iPhone|iPad/i.test(nav.userAgent || '') ? 1 : 0;
-    let ref = '';
-    try { ref = doc.referrer ? new URL(doc.referrer).hostname : ''; } catch (x) {}
-    if (ref && ref !== loc.hostname) d.r = ref;
+    const c = ev.data.checkout || {}, loc = (ev.context && ev.context.document && ev.context.document.location) || {};
+    const d = { m: /Mobi|Android|iPhone|iPad/i.test((ev.context.navigator || {}).userAgent || '') ? 1 : 0,
+      tot: c.totalPrice ? +c.totalPrice.amount : 0,
+      items: (c.lineItems || []).map((li) => ({ t: li.title || '', s: (li.variant && li.variant.sku) || '', q: li.quantity || 1,
+        p: li.variant && li.variant.price ? +li.variant.price.amount : 0 })) };
     fetch(MD_URL, { method: 'POST', mode: 'no-cors', keepalive: true,
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify({ v: ev.clientId, e: e, u: loc.pathname || '', d: d }) });
+      body: JSON.stringify({ v: await mdVisitor(ev), e: e, u: loc.pathname || '', d: d }) });
   } catch (x) {}
 };
-const mdLine = (l) => {
-  const m = (l && l.merchandise) || {};
-  return { t: (m.product && (m.product.untranslatedTitle || m.product.title)) || m.title || '', s: m.sku || '', q: l.quantity || 1,
-           p: m.price ? +m.price.amount : 0, a: l.cost && l.cost.totalAmount ? +l.cost.totalAmount.amount : 0 };
-};
-const mdCart = (cart) => cart ? { cart: (cart.lines || []).map(mdLine), ct: cart.cost && cart.cost.totalAmount ? +cart.cost.totalAmount.amount : 0 } : {};
-analytics.subscribe('page_viewed', (ev) => {
-  let c0 = null; try { c0 = init.data.cart; } catch (x) {}
-  const d = mdCart(c0);
-  d.ti = (ev.context.document.title || '').slice(0, 120);
-  mdSend('page', ev, d);
-});
-analytics.subscribe('product_viewed', (ev) => {
-  const v = ev.data.productVariant || {};
-  mdSend('view', ev, { t: (v.product && (v.product.untranslatedTitle || v.product.title)) || '', s: v.sku || '', p: v.price ? +v.price.amount : 0 });
-});
-analytics.subscribe('collection_viewed', (ev) => mdSend('coll', ev, { t: (ev.data.collection && ev.data.collection.title) || '' }));
-analytics.subscribe('search_submitted', (ev) => {
-  const r = ev.data.searchResult || {};
-  mdSend('search', ev, { q: (r.query || '').slice(0, 80), n: (r.productVariants || []).length });
-});
-analytics.subscribe('product_added_to_cart', (ev) => mdSend('add', ev, mdLine(ev.data.cartLine)));
-analytics.subscribe('product_removed_from_cart', (ev) => mdSend('rem', ev, mdLine(ev.data.cartLine)));
-analytics.subscribe('cart_viewed', (ev) => mdSend('cart', ev, mdCart(ev.data.cart)));
-const mdCheckout = (ev) => {
-  const c = ev.data.checkout || {};
-  return { tot: c.totalPrice ? +c.totalPrice.amount : 0,
-    items: (c.lineItems || []).map((li) => ({ t: li.title || '', s: (li.variant && li.variant.sku) || '', q: li.quantity || 1,
-      p: li.variant && li.variant.price ? +li.variant.price.amount : 0 })) };
-};
-analytics.subscribe('checkout_started', (ev) => mdSend('checkout', ev, mdCheckout(ev)));
-analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(ev)));
+analytics.subscribe('checkout_started', (ev) => mdCheckout('checkout', ev));
+analytics.subscribe('checkout_completed', (ev) => mdCheckout('done', ev));
 `;
   const _wt = { cfg: undefined, ev: [], lastT: 0, skew: 0, timer: null, err: null, loading: false, open: {}, loadedAt: 0, setup: false, pf: 'all' };
   const wtNow = () => Date.now() + (_wt.skew || 0);
@@ -17114,12 +17088,17 @@ analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(
   // one visit = one visitor's events with no gap over 30 minutes
   function wtSessions() {
     const byV = {};
-    for (const x of _wt.ev) (byV[x.v] = byV[x.v] || []).push(x);
+    const themed = _wt.ev.some(x => x.d && x.d.src === 't');
+    for (const x of _wt.ev) {
+      if (themed && !(x.d && x.d.src === 't') && x.e !== 'checkout' && x.e !== 'done') continue;   // old pixel copies of what the theme already sends
+      (byV[x.v] = byV[x.v] || []).push(x);
+    }
     const out = [];
     for (const v in byV) {
       const list = byV[v].sort((a, b) => a.t - b.t);
-      let s = null;
+      let s = null, lastCk = 0;
       for (const x of list) {
+        if (x.e === 'checkout') { if (s && x.t - lastCk < 120000 && x.t - s.last < 30 * 60000) { s.last = x.t; if ((x.d || {}).tot) s.tot = x.d.tot; continue; } lastCk = x.t; }
         if (!s || x.t - s.last > 30 * 60000) {
           s = { v, id: v + ':' + x.t, start: x.t, last: x.t, ev: [], cart: [], m: 0, lang: 'fr', ref: '', checkout: false, done: false, tot: 0, adds: 0 };
           out.push(s);
@@ -17129,7 +17108,7 @@ analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(
         if (d.m) s.m = 1;
         if (d.r && !s.ref) s.ref = String(d.r).replace(/^(www|l|m|lm|out)\./, '').replace(/\.(com|ca)$/, '');
         if (x.e === 'page' && !/^\/(checkouts|cart)/.test(x.u)) s.lang = (x.u.match(/^\/(en|uk|ru)(\/|$)/) || [])[1] || 'fr';
-        if ((x.e === 'page' || x.e === 'cart') && Array.isArray(d.cart)) s.cart = d.cart.map(l => Object.assign({}, l));
+        if ((x.e === 'page' || x.e === 'cart') && Array.isArray(d.cart)) { s.cart = d.cart.map(l => Object.assign({}, l)); if (d.chg && d.cart.length) s.adds++; }
         else if (x.e === 'add') {
           s.adds++;
           const k = s.cart.find(l => (l.s || l.t) === (d.s || d.t));
@@ -17165,10 +17144,10 @@ analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(
     switch (x.e) {
       case 'view': return ['👁', d.t || 'product', d.p ? money2(d.p) : ''];
       case 'coll': return ['📂', d.t || 'aisle', ''];
-      case 'search': return ['🔎', '“' + (d.q || '') + '”', d.n === 0 ? 'no results' : (d.n != null ? d.n + ' results' : '')];
+      case 'search': return ['🔎', '“' + (d.q || '') + '”', d.n === 0 ? 'no results' : (d.n != null ? d.n + ' results' : 'typed')];
       case 'add': return ['➕', (d.q > 1 ? d.q + ' × ' : '') + (d.t || 'item'), d.a ? money2(d.a) : ''];
       case 'rem': return ['➖', d.t || 'item', 'removed'];
-      case 'cart': return ['🛒', 'Cart', d.ct ? money2(d.ct) : ''];
+      case 'cart': return ['🛒', d.chg ? (d.ct ? 'Cart updated' : 'Cart emptied') : 'Cart', d.ct ? money2(d.ct) : ''];
       case 'checkout': return ['💳', 'Checkout started', d.tot ? money2(d.tot) : ''];
       case 'done': return ['✅', 'Order placed', d.tot ? money2(d.tot) : ''];
       default: return ['📄', x.u === '/' || /^\/(en|uk|ru)\/?$/.test(x.u) ? 'Home page' : (wtTitle(d.ti) || x.u), ''];
@@ -17260,7 +17239,7 @@ analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(
       <div class="wt-stepc${c.url ? ' done' : ''}"><b>2 · Paste the Web app URL here</b>
         <input type="url" id="wt-url" class="propose-input" placeholder="https://script.google.com/macros/s/…/exec" value="${escapeHtml(c.url || '')}" autocomplete="off" autocapitalize="off" spellcheck="false">
         <button class="btn small primary" id="wt-save-url">TEST &amp; SAVE</button><span class="wt-msg" id="wt-url-msg"></span></div>
-      <div class="wt-stepc${c.url ? '' : ' off'}"><b>3 · Add the tracking code to Shopify</b>
+      <div class="wt-stepc${c.url ? '' : ' off'}"><b>3 · Checkout pages: add this code to Shopify</b><div style="color:var(--text-dim);margin-top:4px;">The store theme already reports the rest of the site. This code adds the checkout and the orders.</div>
         <ol><li>Tap <u>Copy the Shopify code</u> below.</li><li>Shopify admin › <b>Settings › Customer events › Add custom pixel</b>, name it <b>MD activity</b>.</li>
         <li>Permission: tick <b>Analytics</b> only. Data sale: <b>Data collected does not qualify as data sale</b>.</li>
         <li>Paste the code, <b>Save</b>, then <b>Connect</b>.</li><li>Open marchedecarie.ca on your phone: you appear here within a minute.</li></ol>
@@ -17323,7 +17302,7 @@ analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(
     let html = '';
     if (!_wt.ev.length) {
       if (!_wt.diag && !_wt.diagBusy) wtDiag();
-      html = head + `<div class="wt-empty"><b>No visits recorded yet.</b><br>If you have not added the code to Shopify yet, tap ⚙ and do step 3. Otherwise open marchedecarie.ca on your phone: you will appear here within a minute.</div>` + wtDiagHtml()
+      html = head + `<div class="wt-empty"><b>No visits recorded yet.</b><br>Open marchedecarie.ca on your phone and look at a product: you will appear here within a minute.</div>` + wtDiagHtml()
         + '<button class="btn small" id="wt-diag-run" style="margin-top:10px;">RUN THE CONNECTION TEST AGAIN</button>';
     } else if (_activeReport === 'site') {
       const tS = S.filter(s => wtDay(s.last) === today);
@@ -17342,9 +17321,11 @@ analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(
         ${tS.filter(s => now - s.last > 30 * 60000).slice(0, 60).map(s => wtSessionCard(s, false)).join('') || '<div class="wt-empty">—</div>'}`;
     } else if (_activeReport === 'site-search') {
       const agg = {};
-      _wt.ev.filter(x => x.e === 'search' && (x.d.q || '').trim()).forEach(x => {
+      const sv = _wt.ev.filter(x => x.e === 'search' && (x.d.q || '').trim());
+      sv.filter((x, i) => !sv.some((y, k) => k !== i && y.v === x.v && Math.abs(y.t - x.t) < 60000 && y.d.q.trim().toLowerCase() !== x.d.q.trim().toLowerCase() && y.d.q.trim().toLowerCase().startsWith(x.d.q.trim().toLowerCase()))
+        && !(x.d.n == null && sv.some(y => y !== x && y.v === x.v && y.d.n != null && Math.abs(y.t - x.t) < 60000 && y.d.q.trim().toLowerCase() === x.d.q.trim().toLowerCase()))).forEach(x => {
         const q = x.d.q.trim().toLowerCase(), a = agg[q] || (agg[q] = { q, n: 0, res: null, last: 0, vis: new Set() });
-        a.n++; a.vis.add(x.v); if (x.t > a.last) { a.last = x.t; a.res = x.d.n; }
+        a.n++; a.vis.add(x.v); if (x.t > a.last) a.last = x.t; if (x.d.n != null) a.res = x.d.n;
       });
       const list = Object.values(agg).sort((a, b) => b.vis.size - a.vis.size || b.last - a.last);
       const row = a => `<div class="wt-row"><span class="wt-q">${escapeHtml(a.q)}</span><small>${a.res === 0 ? '<b style="color:var(--bad)">no results</b>' : (a.res != null ? a.res + ' results' : '')} · ${wtAgo(a.last)}</small><b>${a.vis.size}×</b></div>`;
@@ -17356,11 +17337,13 @@ analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(
         ${list.map(row).join('') || '<div class="wt-empty">No searches yet.</div>'}`;
     } else if (_activeReport === 'site-prod') {
       const P = {};
-      const get = (t, sku) => { const key = (t || '').trim(); if (!key) return null; const p = P[key] || (P[key] = { t: key, s: sku || '', v: new Set(), a: new Set(), b: 0 }); if (!p.s && sku) p.s = sku; return p; };
+      const get = (t, sku) => { const base = String(sku || '').replace(/-[\d.]+KG$/i, ''), key = base || (t || '').trim(); if (!key) return null;
+        const p = P[key] || (P[key] = { t: (t || '').trim() || key, s: sku || '', v: new Set(), a: new Set(), b: 0 }); return p; };
       S.forEach(s => {
         s.ev.forEach(x => {
           if (x.e === 'view') { const p = get(x.d.t, x.d.s); if (p) p.v.add(s.id); }
           else if (x.e === 'add') { const p = get(x.d.t, x.d.s); if (p) p.a.add(s.id); }
+          else if (x.e === 'cart' && Array.isArray(x.d.cart)) x.d.cart.forEach(l => { const p = get(l.t, l.s); if (p) p.a.add(s.id); });
           else if (x.e === 'done') (x.d.items || []).forEach(l => { const p = get(l.t, l.s); if (p) p.b += l.q || 1; });
         });
       });
