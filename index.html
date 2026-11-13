@@ -2064,6 +2064,8 @@
   .wt-prod-n { display: grid; grid-template-columns: repeat(3, auto); gap: 2px 8px; font-family: var(--font-display); font-size: 11px; text-align: right; }
   .wt-prod-n small { grid-column: 1 / -1; color: var(--text-faint); font-size: 9.5px; }
   .wt-prod-n small.bad { color: var(--bad); }
+  .wt-diag { margin-top: 10px; padding: 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 13px; line-height: 1.7; background: var(--surface); }
+  .wt-diag b { display: block; font-family: var(--font-display); font-size: 10px; letter-spacing: .1em; color: var(--accent); }
   .wt-stepc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 10px; font-size: 13px; line-height: 1.5; }
   .wt-stepc.done { border-color: var(--good); } .wt-stepc.off { opacity: .5; }
   .wt-stepc ol { margin: 6px 0 10px; padding-left: 20px; color: var(--text-dim); }
@@ -2580,7 +2582,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v279</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v280</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3203,7 +3205,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v279</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v280</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -17094,6 +17096,8 @@ analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(
       for (const row of j.events || []) {
         let d = {}; try { d = JSON.parse(row[4] || '{}'); } catch (e) {}
         const t = +row[0]; if (!t) continue;
+        if (t > _wt.lastT) _wt.lastT = t;
+        if (String(row[2]) === 'test') continue;      // connection-test rows are not visits
         _wt.ev.push({ t, v: String(row[1] || ''), e: String(row[2] || ''), u: String(row[3] || ''), d });
         if (t > _wt.lastT) _wt.lastT = t;
       }
@@ -17209,6 +17213,40 @@ analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(
     }
     showToast(okMsg || 'Copied ✓');
   }
+  // Connection test: send a marked row to the collector by each method a page can use (from this page and from a
+  // sandboxed frame like the one Shopify runs the tracking code in), then read back which ones arrived.
+  const WT_DIAG = { A: 'page · POST', B: 'page · POST no-cors keepalive', C: 'sandbox · POST no-cors keepalive (what the site uses now)', D: 'sandbox · POST', E: 'sandbox · POST keepalive', G: 'sandbox · POST no-cors' };
+  async function wtDiag() {
+    const c = _wt.cfg || {}; if (!c.url || !c.key || _wt.diagBusy) return;
+    _wt.diagBusy = true; _wt.diag = null;
+    const run = Date.now(), U = c.url;
+    const body = (tag) => JSON.stringify({ v: 'diag', e: 'test', u: '/', d: { tag, run } });
+    const H = { 'Content-Type': 'text/plain;charset=utf-8' };
+    try { fetch(U, { method: 'POST', headers: H, body: body('A') }).catch(() => {}); } catch (e) {}
+    try { fetch(U, { method: 'POST', mode: 'no-cors', keepalive: true, headers: H, body: body('B') }).catch(() => {}); } catch (e) {}
+    const fr = document.createElement('iframe');
+    fr.setAttribute('sandbox', 'allow-scripts'); fr.style.cssText = 'position:fixed;left:-9999px;width:1px;height:1px;border:0;';
+    fr.srcdoc = '<scr' + 'ipt>const U=' + JSON.stringify(U) + ',run=' + run + ';'
+      + "const s=(tag,o)=>{try{fetch(U,Object.assign({method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({v:'diag',e:'test',u:'/',d:{tag:tag,run:run}})},o)).catch(()=>{});}catch(e){}};"
+      + "s('C',{mode:'no-cors',keepalive:true});s('D',{});s('E',{keepalive:true});s('G',{mode:'no-cors'});</scr" + 'ipt>';
+    document.body.appendChild(fr);
+    await new Promise(res => setTimeout(res, 9000));
+    fr.remove();
+    const got = {};
+    try {
+      const j = await wtGet(U, c.key, run - 120000);
+      (j.events || []).forEach(r => { if (String(r[2]) === 'test') { try { const d = JSON.parse(r[4] || '{}'); if (d.run === run) got[d.tag] = 1; } catch (e) {} } });
+      _wt.diag = { at: Date.now(), got };
+    } catch (e) { _wt.diag = { at: Date.now(), err: (e && e.message) || String(e) }; }
+    _wt.diagBusy = false;
+    if (wtActive() && !_wt.setup) wtPaint($('#reports-body'));
+  }
+  function wtDiagHtml() {
+    if (_wt.diagBusy) return '<div class="wt-diag">Connection test running… (10 seconds)</div>';
+    const d = _wt.diag; if (!d) return '';
+    if (d.err) return '<div class="wt-diag">Connection test: could not read back (' + escapeHtml(d.err) + ')</div>';
+    return '<div class="wt-diag"><b>CONNECTION TEST</b>' + Object.keys(WT_DIAG).map(k => `<div>${d.got[k] ? '✅' : '❌'} ${k} · ${WT_DIAG[k]}</div>`).join('') + '</div>';
+  }
   function wtSetupHtml() {
     const c = _wt.cfg || {};
     return `<div class="wt-setup">
@@ -17284,7 +17322,9 @@ analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(
     const head = `<div class="wt-head"><span>${_wt.err ? '<b style="color:var(--bad)">⚠ ' + escapeHtml(_wt.err) + '</b>' : 'Updated ' + new Date(_wt.loadedAt).toLocaleTimeString('en-CA', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) + ' · refreshes every 30 s'}</span><button class="wt-gear" id="wt-gear" title="Setup">⚙</button></div>`;
     let html = '';
     if (!_wt.ev.length) {
-      html = head + `<div class="wt-empty"><b>No visits recorded yet.</b><br>If you have not added the code to Shopify yet, tap ⚙ and do step 3. Otherwise open marchedecarie.ca on your phone and accept the cookie banner: you will appear here within a minute.</div>`;
+      if (!_wt.diag && !_wt.diagBusy) wtDiag();
+      html = head + `<div class="wt-empty"><b>No visits recorded yet.</b><br>If you have not added the code to Shopify yet, tap ⚙ and do step 3. Otherwise open marchedecarie.ca on your phone: you will appear here within a minute.</div>` + wtDiagHtml()
+        + '<button class="btn small" id="wt-diag-run" style="margin-top:10px;">RUN THE CONNECTION TEST AGAIN</button>';
     } else if (_activeReport === 'site') {
       const tS = S.filter(s => wtDay(s.last) === today);
       const nowS = S.filter(s => now - s.last <= 30 * 60000);
@@ -17346,6 +17386,7 @@ analytics.subscribe('checkout_completed', (ev) => mdSend('done', ev, mdCheckout(
     body.scrollTop = keep;
     body.querySelectorAll('[data-wt]').forEach(el => el.addEventListener('click', () => { _wt.open[el.dataset.wt] = !_wt.open[el.dataset.wt]; wtPaint(body); }));
     body.querySelectorAll('[data-pf]').forEach(el => el.addEventListener('click', () => { _wt.pf = el.dataset.pf; wtPaint(body); }));
+    const dg = body.querySelector('#wt-diag-run'); if (dg) dg.addEventListener('click', () => { _wt.diag = null; wtDiag(); wtPaint(body); });
     const gear = body.querySelector('#wt-gear'); if (gear) gear.addEventListener('click', () => { _wt.setup = true; wtStopPoll(); renderReport(); });
   }
 
