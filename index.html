@@ -2506,6 +2506,8 @@
   #sc-modal .or-mh b { white-space: nowrap; }
   .sc-status { margin-left: auto; margin-right: 8px; font-family: var(--font-display); font-size: 10px; color: var(--text-dim); white-space: nowrap; }
   .sc-status.ok { color: var(--good); } .sc-status.bad { color: var(--warn); }
+  #cat-chip { position: fixed; left: 50%; transform: translateX(-50%); top: calc(env(safe-area-inset-top, 0px) + 6px); z-index: 400; background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; font-family: var(--font-display); font-size: 10.5px; white-space: nowrap; pointer-events: none; }
+  #cat-chip.bad { color: #000; background: var(--warn); border-color: var(--warn); }
   .ex-top { display: flex; gap: 8px; align-items: stretch; margin-bottom: 10px; }
   .ex-search { flex: 1; min-width: 0; position: relative; display: flex; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
   .ex-search-ico { padding: 0 4px 0 12px; color: var(--text-faint); font-size: 15px; }
@@ -2585,7 +2587,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v282</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v283</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3208,7 +3210,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v282</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v283</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -8817,7 +8819,7 @@
             if (!cat.items[r.code]) cat.items[r.code] = { added: new Date().toISOString().slice(0, 10), photos: [], listed: false, status: 'draft' };
             const e = cat.items[r.code]; e.photos = e.photos || [];
             if (!e.photos.includes(r.fn)) e.photos.push(r.fn);
-          });
+          }, { wait: true });
           await upDel(r.fn);
           _upPending[r.code] = (_upPending[r.code] || []).filter(f => f !== r.fn);
           if (_pdCtx && _pdCtx.code === r.code) renderPdPhotos(r.code, (cat.items[r.code] || {}).photos);
@@ -13798,9 +13800,12 @@
     return _txnMonthCache[ym];
   }
 
+  const _cq = { q: [], flushing: false, err: null, holdUntil: 0, since: 0 };
   async function fetchEcomCatalog(force) {
     if (!_aisleCfg) fetchAisleCfg();   // website aisles (ECOM tab + ❄️ frozen flags on orders)
     if (_ecomCatalog && !force) return _ecomCatalog;
+    // changes still being saved, or saved a moment ago: our copy is newer than the one the server hands out
+    if (_ecomCatalog && (_cq.q.length || Date.now() < _cq.holdUntil)) return _ecomCatalog;
     try {
       const r = await fetch(recipeRawUrl('ecom/catalog.json'), { cache: 'no-store' });
       _ecomCatalog = r.ok ? await r.json() : { updated: null, items: {} };
@@ -13835,30 +13840,72 @@
   // mutate(freshCatalog) on it, then write. Retries the whole cycle on a SHA
   // conflict so concurrent writers (pipeline, other phone/tab, back-to-back
   // photo saves) merge instead of overwriting each other.
-  async function mutateEcomCatalog(mutate) {
-    if (!GH_HAS_TOKEN) throw new Error('No GitHub token in config.js — catalog is read-only.');
-    let lastErr;
-    for (let attempt = 0; attempt < 5; attempt++) {
-      // Read content AND sha from the API together so they're from the same
-      // commit (the raw CDN lags and would give a stale content/sha pair).
-      const { json, sha } = await ghGetJsonAndSha('ecom/catalog.json');
-      const fresh = json || { updated: null, items: {} };
-      if (!fresh.items) fresh.items = {};
-      mutate(fresh);
-      fresh.updated = new Date().toISOString();
-      const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(fresh, null, 1))));
-      try {
-        await ghPutFile('ecom/catalog.json', b64, 'ecom catalog update', sha);
-        _ecomCatalog = fresh;
-        return fresh;
-      } catch (e) {
-        lastErr = e;
-        if (e.isConflict) { await new Promise(r => setTimeout(r, 300 * (attempt + 1))); continue; }
-        throw e;
-      }
-    }
-    throw lastErr || new Error('catalog save failed after retries');
+  // Catalogue changes show on screen at once and are saved in the background: every change still waiting
+  // goes up in ONE save (read the live file, replay the changes on it, write). A failed save keeps retrying.
+  // opts.wait: resolve only once it is really saved (for callers that keep their own retry record).
+  function catChip() {
+    let el = document.getElementById('cat-chip');
+    const n = _cq.q.length, slow = n && (Date.now() - _cq.since > 1500);
+    if (!n || (!_cq.err && !slow)) { if (el) el.hidden = true; return; }
+    if (!el) { el = document.createElement('div'); el.id = 'cat-chip'; document.body.appendChild(el); }
+    el.hidden = false;
+    el.className = _cq.err ? 'bad' : '';
+    el.textContent = _cq.err ? '⚠ ' + n + ' change' + (n > 1 ? 's' : '') + ' not saved yet · retrying' : 'saving…';
   }
+  async function mutateEcomCatalog(mutate, opts) {
+    if (!GH_HAS_TOKEN) throw new Error('No GitHub token in config.js — catalog is read-only.');
+    if (!_ecomCatalog) await fetchEcomCatalog();
+    mutate(_ecomCatalog);
+    _ecomCatalog.updated = new Date().toISOString();
+    const job = { mutate, wait: !!(opts && opts.wait) };
+    const done = new Promise((res, rej) => { job.res = res; job.rej = rej; });
+    done.catch(() => {});
+    if (!_cq.q.length) _cq.since = Date.now();
+    _cq.q.push(job);
+    catFlush();
+    return job.wait ? done : _ecomCatalog;
+  }
+  async function catFlush() {
+    if (_cq.flushing) return;
+    _cq.flushing = true;
+    let wait = 2000;
+    const tick = setInterval(catChip, 500);
+    while (_cq.q.length) {
+      const batch = _cq.q.slice();
+      try {
+        let saved = null, lastErr = null;
+        for (let attempt = 0; attempt < 5 && !saved; attempt++) {
+          // content AND sha from the API together (the raw CDN lags and would give a stale pair)
+          const { json, sha } = await ghGetJsonAndSha('ecom/catalog.json');
+          const fresh = json || { updated: null, items: {} };
+          if (!fresh.items) fresh.items = {};
+          batch.forEach(job => { try { job.mutate(fresh); } catch (e) { console.warn('catalog change', e); } });
+          fresh.updated = new Date().toISOString();
+          const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(fresh, null, 1))));
+          try { await ghPutFile('ecom/catalog.json', b64, 'ecom catalog update' + (batch.length > 1 ? ' (' + batch.length + ')' : ''), sha); saved = fresh; }
+          catch (e) { lastErr = e; if (e.isConflict) { await new Promise(r => setTimeout(r, 300 * (attempt + 1))); continue; } throw e; }
+        }
+        if (!saved) throw lastErr || new Error('catalog save failed after retries');
+        _cq.q = _cq.q.filter(job => !batch.includes(job));
+        _cq.q.forEach(job => { try { job.mutate(saved); } catch (e) {} });   // changes made meanwhile, onto the new copy
+        _ecomCatalog = saved;
+        _cq.holdUntil = Date.now() + 5 * 60000;     // the raw copy lags behind for a few minutes: trust ours meanwhile
+        _cq.err = null; wait = 2000; _cq.since = Date.now();
+        batch.forEach(job => job.res(saved));
+      } catch (e) {
+        _cq.err = (e && e.message) || String(e);
+        const waiters = batch.filter(job => job.wait);            // they retry by themselves
+        waiters.forEach(job => job.rej(e));
+        _cq.q = _cq.q.filter(job => !waiters.includes(job));
+        catChip();
+        if (_cq.q.length) { await new Promise(r => setTimeout(r, wait)); wait = Math.min(60000, wait * 2); }
+      }
+      catChip();
+    }
+    clearInterval(tick);
+    _cq.flushing = false; _cq.err = null; catChip();
+  }
+  window.addEventListener('beforeunload', (e) => { if (_cq.q.length) { e.preventDefault(); e.returnValue = ''; } });
 
   async function ecomAdd(code) {
     const cat = await fetchEcomCatalog();
@@ -13984,7 +14031,7 @@
         const site = batch.filter(b => b[1] === 'out' || b[1] === 'back');
         if (site.length) {
           await mutateEcomCatalog(c => { site.forEach(([code, act, at]) => { const it = c.items[code]; if (!it) return;
-            if (act === 'out') { it.oos = true; it.oosAt = at; } else { delete it.oos; delete it.oosAt; } }); });
+            if (act === 'out') { it.oos = true; it.oosAt = at; } else { delete it.oos; delete it.oosAt; } }); }, { wait: true });
         }
         await scSaveChecks(batch);
         const now = Date.now();
@@ -14427,7 +14474,9 @@
     const label = !pl.a ? '⚠ NO AISLE' : inAisleView ? (pl.s || aisleName(pl.a)) : aisleName(pl.a) + (pl.s ? ' › ' + pl.s : '');
     return `<button class="ecom-aisle-chip${!pl.a ? ' none' : pl.ov ? ' ov' : ''}" data-eact="aisle" data-code="${escapeHtml(code)}"${kidId ? ` data-kid="${escapeHtml(kidId)}"` : ''} title="Website aisle - tap to move">🧭 ${escapeHtml(label)}${pl.ov ? ' ✎' : ''}</button>`;
   }
+  let _ecomLazy = {};      // closed aisle / shelf → function that draws its products (run when it is opened)
   function renderAisleGroups(rows, rowHtml) {
+    _ecomLazy = {};
     const c = _aisleCfg, by = {};
     const push = (a, s, r) => { const A = (by[a] = by[a] || { subs: {}, n: 0, ph: 0, x: 0 }); (A.subs[s || '—'] = A.subs[s || '—'] || []).push(r); A.n++; if (r.nPhotos) A.ph++; if (r.alsoFrom) A.x++; };
     rows.forEach(r => {
@@ -14444,17 +14493,19 @@
       const key = 'aisle:' + a, collapsed = _ecomCollapsed[key] !== false && !_ecomAisle && !narrowed;
       const subOrder = a === '_none' ? Object.keys(A.subs) : (c._by[a].subs || []).filter(s => A.subs[s]).concat(Object.keys(A.subs).filter(s => !(c._by[a].subs || []).includes(s)));
       const flat = subOrder.length === 1 && subOrder[0] === '—';   // no sub-shelves: products straight under the aisle
-      const inner = flat ? A.subs['—'].sort((x, y) => (!!x.alsoFrom - !!y.alsoFrom) || (y.rev - x.rev)).map(rowHtml).join('') : subOrder.map(sn => {
+      const innerFn = () => flat ? A.subs['—'].sort((x, y) => (!!x.alsoFrom - !!y.alsoFrom) || (y.rev - x.rev)).map(rowHtml).join('') : subOrder.map(sn => {
         const items = A.subs[sn].sort((x, y) => (!!x.alsoFrom - !!y.alsoFrom) || (y.rev - x.rev));
         const sk = key + '::' + sn, sc = _ecomCollapsed[sk] !== false && subOrder.length > 1 && !narrowed;
+        if (sc) _ecomLazy[sk] = () => items.map(rowHtml).join('');
         return `<div class="ecom-sub-head" data-dept="${escapeHtml(sk)}"><span class="ecom-dept-caret">${sc ? '▸' : '▾'}</span><span class="ecom-dept-name">${escapeHtml(sn)}</span><span class="ecom-dept-stat">${items.filter(i => i.nPhotos).length}/${items.length} 📷</span></div>
-          <div class="ecom-dept-body ${sc ? 'collapsed' : ''}" data-dept-body="${escapeHtml(sk)}">${items.map(rowHtml).join('')}</div>`;
+          <div class="ecom-dept-body ${sc ? 'collapsed' : ''}" data-dept-body="${escapeHtml(sk)}"${sc ? ' data-lazy="1"' : ''}>${sc ? '' : items.map(rowHtml).join('')}</div>`;
       }).join('');
+      if (collapsed) _ecomLazy[key] = innerFn;
       return `${zl}<div class="ecom-dept-head" data-dept="${escapeHtml(key)}"${a === '_none' ? ' style="border-color:var(--bad)"' : ''}>
           <span class="ecom-dept-caret">${collapsed ? '▸' : '▾'}</span>
           <span class="ecom-dept-name">${escapeHtml(a === '_none' ? '⚠ SANS ALLÉE / NO AISLE' : c._by[a].fr)}</span>
           <span class="ecom-dept-stat">${A.ph}/${A.n} 📷${A.x ? ' · ' + A.x + ' also' : ''}</span>
-        </div><div class="ecom-dept-body ${collapsed ? 'collapsed' : ''}" data-dept-body="${escapeHtml(key)}">${inner}</div>`;
+        </div><div class="ecom-dept-body ${collapsed ? 'collapsed' : ''}" data-dept-body="${escapeHtml(key)}"${collapsed ? ' data-lazy="1"' : ''}>${collapsed ? '' : innerFn()}</div>`;
     }).join('');
   }
   function populateEcomAisles(rows) {
@@ -14829,38 +14880,6 @@
     // website aisles → sub-shelves → products (no aisles set up: one list by sales)
     container.innerHTML = aisleView ? renderAisleGroups(rows, rowHtml) : rows.sort((a, b) => b.rev - a.rev).map(rowHtml).join('');
 
-    container.querySelectorAll('[data-eact]').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (btn.dataset.eact === 'more') ecomActions(btn.dataset.code);
-        else if (btn.dataset.eact === 'studio') { const c = btn.dataset.code; try { studioOpen(c, (img) => ecomSavePhoto(c, img)); } catch (err) { showToast('Studio: ' + err.message, true); } }
-        else if (btn.dataset.eact === 'aisle') openAislePicker(btn.dataset.code, btn.dataset.kid || null);
-      });
-    });
-    container.querySelectorAll('.ecom-row').forEach(row =>
-      row.addEventListener('click', (e) => { if (e.target.closest('.js-photo-thumb')) return; openProduct(row.dataset.code); }));
-    container.querySelectorAll('.ecom-kids-toggle').forEach(t =>
-      t.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const key = 'kids:' + t.dataset.kids;
-        const body = container.querySelector(`[data-kids-body="${CSS.escape(t.dataset.kids)}"]`);
-        const nowOpen = body.classList.contains('collapsed');
-        _ecomCollapsed[key] = nowOpen ? false : true;
-        body.classList.toggle('collapsed', !nowOpen);
-        t.textContent = t.textContent.replace(/^[▸▾]/, nowOpen ? '▾' : '▸');
-      }));
-    container.querySelectorAll('[data-kid-oos]').forEach(b =>
-      b.addEventListener('click', async (e) => {
-        e.stopPropagation();
-        _candyCtx = resolveCode(b.dataset.kcode);
-        await toggleCandyOos(b.dataset.kidOos);
-        renderEcom();
-      }));
-    container.querySelectorAll('.ecom-kid').forEach(k =>
-      k.addEventListener('click', (e) => {
-        if (e.target.closest('.js-photo-thumb') || e.target.closest('[data-eact]')) return;
-        openCandyManager(k.dataset.kcode, k.dataset.kid);
-      }));
   }
   // horizontal aisle strip (replaces the dropdown)
   function ecomAisleStrip(rows) {
@@ -16515,11 +16534,39 @@
       try { showToast('Processing photo…'); await ecomSavePhoto(code, await processStoreImage(file, { maxDim: 2048, square: true })); }
       catch (err) { showToast('Photo failed: ' + err.message, true); }
     });
-    $('#ecom-container').addEventListener('click', (e) => {
-      const h = e.target.closest('.ecom-dept-head, .ecom-sub-head'); if (!h) return;
-      const g = h.dataset.dept, c = $('#ecom-container');
+    $('#ecom-container').addEventListener('click', async (e) => {
+      const c = $('#ecom-container'), t = e.target;
+      // row buttons
+      const act = t.closest('[data-eact]');
+      if (act) {
+        const code = act.dataset.code;
+        if (act.dataset.eact === 'more') ecomActions(code);
+        else if (act.dataset.eact === 'studio') { try { studioOpen(code, (img) => ecomSavePhoto(code, img)); } catch (err) { showToast('Studio: ' + err.message, true); } }
+        else if (act.dataset.eact === 'aisle') openAislePicker(code, act.dataset.kid || null);
+        return;
+      }
+      const ko = t.closest('[data-kid-oos]');
+      if (ko) { _candyCtx = resolveCode(ko.dataset.kcode); await toggleCandyOos(ko.dataset.kidOos); renderEcom(); return; }
+      const kt = t.closest('.ecom-kids-toggle');
+      if (kt) {
+        const body = c.querySelector(`[data-kids-body="${CSS.escape(kt.dataset.kids)}"]`); if (!body) return;
+        const nowOpen = body.classList.contains('collapsed');
+        _ecomCollapsed['kids:' + kt.dataset.kids] = !nowOpen;
+        body.classList.toggle('collapsed', !nowOpen);
+        kt.textContent = kt.textContent.replace(/^[▸▾]/, nowOpen ? '▾' : '▸');
+        return;
+      }
+      if (t.closest('.js-photo-thumb')) return;
+      const kid = t.closest('.ecom-kid');
+      if (kid) { openCandyManager(kid.dataset.kcode, kid.dataset.kid); return; }
+      const row = t.closest('.ecom-row');
+      if (row) { openProduct(row.dataset.code); return; }
+      // aisle / shelf headers: open or close (a closed one is drawn the first time it opens)
+      const h = t.closest('.ecom-dept-head, .ecom-sub-head'); if (!h) return;
+      const g = h.dataset.dept;
       const body = c.querySelector(`[data-dept-body="${CSS.escape(g)}"]`); if (!body) return;
       const close = !body.classList.contains('collapsed');
+      if (!close && body.dataset.lazy) { delete body.dataset.lazy; if (_ecomLazy[g]) body.innerHTML = _ecomLazy[g](); }
       _ecomCollapsed[g] = close;
       body.classList.toggle('collapsed', close);
       const caret = h.querySelector('.ecom-dept-caret'); if (caret) caret.textContent = close ? '▸' : '▾';
