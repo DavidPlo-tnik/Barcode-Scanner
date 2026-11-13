@@ -879,7 +879,7 @@
   }
   .candy-row .btn { flex-shrink: 0; }
   .candy-row { flex-wrap: wrap; }
-  .candy-row input[type="text"] { flex-basis: 120px; }
+  .candy-row input[type="text"] { flex: 1 1 calc(100% - 90px); min-width: 0; }   /* name fills the first line, buttons sit under it */
   .candy-web { margin: -2px 0 10px; padding: 10px; border: 1px dashed var(--border); border-radius: 6px; background: var(--surface); }
   .candy-row [data-candy-web].is-on { border-color: var(--accent); color: var(--accent); }
   .up-chip { position: fixed; left: 12px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 430; padding: 8px 12px; border-radius: 99px; background: #1c1c1e; border: 1px solid var(--accent); color: var(--accent); font-family: var(--font-display); font-size: 11px; font-weight: 800; box-shadow: 0 4px 16px rgba(0,0,0,.5); opacity: 0; transform: translateY(10px); transition: opacity .2s, transform .2s; pointer-events: none; }
@@ -2587,7 +2587,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v283</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v284</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3210,7 +3210,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v283</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v284</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -8305,7 +8305,9 @@
         <input type="text" placeholder="Name (optional)" value="${escapeHtml(e.name || '')}" data-candy-name="${escapeHtml(e.id)}">
         <button type="button" class="btn small${e.oos ? ' is-out' : ''}" data-candy-oos="${escapeHtml(e.id)}" title="Out of stock toggle">${e.oos ? 'OUT' : 'IN'}</button>
         <button type="button" class="btn small" data-candy-web="${escapeHtml(e.id)}" title="Website name FR / EN">FR/EN</button>
-        <button type="button" class="btn small" data-candy-photo="${escapeHtml(e.id)}">📷</button>
+        <button type="button" class="btn small" data-candy-photo="${escapeHtml(e.id)}" data-mode="camera" title="Take a picture">📷</button>
+        <button type="button" class="btn small" data-candy-photo="${escapeHtml(e.id)}" data-mode="studio" title="Photo studio: white background, centred">✨</button>
+        <button type="button" class="btn small" data-candy-photo="${escapeHtml(e.id)}" data-mode="library" title="Choose from the photo library">🖼</button>
         ${isCandyOnly(_candyCtx) ? `<button type="button" class="btn small" data-candy-move="${escapeHtml(e.id)}" title="Move to another price level">⇄</button>` : ''}
         <button type="button" class="btn small danger" data-candy-del="${escapeHtml(e.id)}">✕</button>
       </div>
@@ -8345,7 +8347,7 @@
       });
     });
     list.querySelectorAll('[data-candy-photo]').forEach(btn => {
-      btn.addEventListener('click', () => uploadCandyPhoto(btn.dataset.candyPhoto));
+      btn.addEventListener('click', () => uploadCandyPhoto(btn.dataset.candyPhoto, btn.dataset.mode));
     });
     list.querySelectorAll('[data-candy-oos]').forEach(btn => {
       btn.addEventListener('click', () => toggleCandyOos(btn.dataset.candyOos));
@@ -8458,25 +8460,41 @@
     } catch (e) { showToast('Could not remove: ' + e.message, true); }
   }
 
-  function uploadCandyPhoto(id) {
+  // photo for one candy: shows at once, the picture and the catalogue save in the background
+  async function candySavePhoto(id, img) {
+    const ctx = _candyCtx, fn = `${ctx}_${id}_${Date.now()}.${img.ext || 'webp'}`;
+    _freshPhotos[fn] = img.dataUrl;
+    const apply = (cat) => {
+      const arr = cat.candyGroups && cat.candyGroups[ctx];
+      const e = arr && arr.find(x => x.id === id);
+      if (e) { e.photos = e.photos || []; if (!e.photos.includes(fn)) e.photos.unshift(fn); }   // newest = main photo
+    };
+    const cat = await fetchEcomCatalog(); apply(cat);              // on screen now
+    if (_candyCtx === ctx) await renderCandyList();
+    showToast('Photo added ✓ — saving…');
+    try {
+      await ghPutFile(`images/ecom/${fn}`, img.dataUrl.split(',')[1], `candy photo ${fn}`);
+      await mutateEcomCatalog(apply);
+    } catch (e) {
+      showToast('Photo not saved: ' + e.message + ' — try again', true);
+      const c2 = await fetchEcomCatalog(), a2 = c2.candyGroups && c2.candyGroups[ctx], e2 = a2 && a2.find(x => x.id === id);
+      if (e2 && e2.photos) e2.photos = e2.photos.filter(f => f !== fn);
+      if (_candyCtx === ctx) renderCandyList();
+    }
+  }
+  function uploadCandyPhoto(id, mode) {
+    if (mode === 'studio') {
+      try { studioOpen(_candyCtx, (img) => candySavePhoto(id, img)); } catch (e) { showToast('Studio: ' + e.message, true); }
+      return;
+    }
     const input = document.createElement('input');
     input.type = 'file'; input.accept = 'image/*';
+    if (mode === 'camera') input.setAttribute('capture', 'environment');   // opens the camera directly
     input.onchange = async () => {
       const file = input.files && input.files[0];
       if (!file) return;
-      try {
-        const { dataUrl, blob, ext } = await processStoreImage(file, { maxDim: 2048, square: true });
-        const fn = `${_candyCtx}_${id}_${Date.now()}.${ext}`;
-        await ghPutFile(`images/ecom/${fn}`, dataUrl.split(',')[1], `candy photo ${fn}`);
-        _freshPhotos[fn] = dataUrl;
-        await mutateEcomCatalog(cat => {
-          const arr = cat.candyGroups && cat.candyGroups[_candyCtx];
-          const e = arr && arr.find(x => x.id === id);
-          if (e) { e.photos = e.photos || []; e.photos.push(fn); }
-        });
-        await renderCandyList();
-        showToast('Photo added ✓');
-      } catch (e) { showToast('Upload failed: ' + e.message, true); }
+      try { showToast('Processing photo…'); await candySavePhoto(id, await processStoreImage(file, { maxDim: 2048, square: true })); }
+      catch (e) { showToast('Photo failed: ' + e.message, true); }
     };
     input.click();
   }
