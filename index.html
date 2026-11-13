@@ -2485,6 +2485,8 @@
   .ex-act small { margin-left: auto; font-weight: 400; font-size: 12px; color: var(--text-dim); max-width: 50%; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .ex-act.out { border-color: var(--bad); color: var(--bad); }
   .ex-act.feat { border-color: var(--warn); color: var(--warn); }
+  .ecom-thumb-empty[data-eact] { cursor: pointer; color: var(--accent); line-height: 1.5; }
+  .ex-act.photo { justify-content: center; border-color: var(--accent); color: var(--accent); }
   .ex-act.danger { color: var(--bad); background: transparent; margin-top: 14px; }
   .ex-act-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
   /* rows */
@@ -2516,7 +2518,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v275</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v276</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -2630,6 +2632,7 @@
     </div>
     <div class="modal-content" id="ecom-act-body"></div>
   </div>
+  <input type="file" accept="image/*" id="ecom-act-file" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
 </div>
 
 <div class="modal" id="audit-confirm-modal">
@@ -3138,7 +3141,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v275</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v276</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -8759,6 +8762,7 @@
           await upDel(r.fn);
           _upPending[r.code] = (_upPending[r.code] || []).filter(f => f !== r.fn);
           if (_pdCtx && _pdCtx.code === r.code) renderPdPhotos(r.code, (cat.items[r.code] || {}).photos);
+          if ($('#ecom-view') && $('#ecom-view').classList.contains('active')) renderEcom();
         } catch (e) {
           console.warn('photo upload', e);
           r.tries = (r.tries || 0) + 1; await upPut(r).catch(() => {});
@@ -14516,7 +14520,11 @@
         <button class="ex-act${r.oos ? ' out' : ''}" data-x="oos"><i>${r.oos ? '⛔' : '✓'}</i>${r.oos ? 'Out of stock' : 'In stock'}</button>
         <button class="ex-act${r.featured ? ' feat' : ''}" data-x="feat"><i>${r.featured ? '★' : '☆'}</i>${r.featured ? 'Featured' : 'Feature it'}</button>
       </div>
-      <button class="ex-act" data-x="open"><i>📷</i>Photos &amp; details<small>${r.nPhotos} photo${r.nPhotos === 1 ? '' : 's'}</small></button>
+      <div class="ex-act-row">
+        <button class="ex-act photo" data-x="studio"><i>✨</i>Photo studio</button>
+        <button class="ex-act photo" data-x="photo"><i>📷</i>Add a photo</button>
+      </div>
+      <button class="ex-act" data-x="open"><i>ⓘ</i>Details &amp; photos<small>${r.nPhotos ? r.nPhotos + ' photo' + (r.nPhotos === 1 ? '' : 's') : 'no photo yet'}</small></button>
       ${_aisleCfg ? `<button class="ex-act" data-x="aisle"><i>🧭</i>Website aisle<small>${escapeHtml(aisle)}</small></button>` : ''}
       <button class="ex-act" data-x="edit"><i>⚡</i>POS editor<small>price, name, size</small></button>
       ${r.pf ? `<button class="ex-act" data-x="fam"><i>🌿</i>Brand codes<small>${r.pf.members.length} · price from ${escapeHtml(r.pf.official.replace(/^0+/, ''))}</small></button>` : ''}
@@ -14525,6 +14533,8 @@
       const x = b.dataset.x; $('#ecom-act-modal').classList.remove('open');
       if (x === 'oos') ecomToggleOos(code);
       else if (x === 'feat') ecomToggleFeatured(code);
+      else if (x === 'studio') { try { studioOpen(code, (img) => ecomSavePhoto(code, img)); } catch (err) { showToast('Studio: ' + err.message, true); } }
+      else if (x === 'photo') { const inp = $('#ecom-act-file'); inp.dataset.code = code; inp.click(); }
       else if (x === 'open') openProduct(code);
       else if (x === 'aisle') openAislePicker(code, null);
       else if (x === 'fam') ecomProduceInfo(code);
@@ -14535,6 +14545,12 @@
   }
 
   let _ecomRenderTok = 0;
+  // photo from the ECOM list: same queue as the product page (shows at once, uploads in the background)
+  async function ecomSavePhoto(code, img) {
+    await pdSavePhoto(code, img);
+    showToast('Photo added ✓ — saving in the background');
+    renderEcom();
+  }
   async function renderEcom() {
     const tok = ++_ecomRenderTok;
     const container = $('#ecom-container');
@@ -14554,7 +14570,7 @@
     let rows = codes.map(code => {
       const arr = DATA.products[resolveCode(code)];
       const entry = cat.items[code];
-      const photos = entry.photos || [];
+      const photos = (entry.photos || []).concat((_upPending[code] || []).filter(f => !(entry.photos || []).includes(f)));   // + photos still uploading
       const v = entry.v || {};
       const vDone = ['title','size','photo','price'].filter(k => v[k]).length;
       const g = entry.group ? gmeta[entry.group] : null;
@@ -14651,7 +14667,7 @@
         <div class="ecom-thumb-wrap">
           ${r.photo
             ? `<img class="ecom-thumb js-photo-thumb" data-full="${photoSrc(r.photo)}" src="${photoSrc(r.photo)}" loading="lazy" alt="">${r.nPhotos > 1 ? `<span class="ecom-photo-count">+${r.nPhotos - 1}</span>` : ''}`
-            : `<div class="ecom-thumb-empty">NO<br>PHOTO</div>`}
+            : `<div class="ecom-thumb-empty" data-eact="studio" data-code="${r.code}">✨<br>ADD<br>PHOTO</div>`}
         </div>
         <div class="ecom-main">
           <div class="li-name">${escapeHtml(r.name.trim())}</div>
@@ -14699,6 +14715,7 @@
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         if (btn.dataset.eact === 'more') ecomActions(btn.dataset.code);
+        else if (btn.dataset.eact === 'studio') { const c = btn.dataset.code; try { studioOpen(c, (img) => ecomSavePhoto(c, img)); } catch (err) { showToast('Studio: ' + err.message, true); } }
         else if (btn.dataset.eact === 'aisle') openAislePicker(btn.dataset.code, btn.dataset.kid || null);
       });
     });
@@ -16373,6 +16390,13 @@
     $('#ecom-search').addEventListener('input', () => { _ecomSearch = $('#ecom-search').value; renderEcom(); });
     $('#ecom-search-x').addEventListener('click', () => { $('#ecom-search').value = ''; _ecomSearch = ''; renderEcom(); });
     $('#ecom-filter-btn').addEventListener('click', ecomOpenFilters);
+    $('#ecom-act-file').addEventListener('change', async (e) => {
+      const inp = e.target, file = inp.files && inp.files[0], code = inp.dataset.code;
+      inp.value = '';
+      if (!file || !code) return;
+      try { showToast('Processing photo…'); await ecomSavePhoto(code, await processStoreImage(file, { maxDim: 2048, square: true })); }
+      catch (err) { showToast('Photo failed: ' + err.message, true); }
+    });
     $('#ecom-container').addEventListener('click', (e) => {
       const h = e.target.closest('.ecom-dept-head, .ecom-sub-head'); if (!h) return;
       const g = h.dataset.dept, c = $('#ecom-container');
