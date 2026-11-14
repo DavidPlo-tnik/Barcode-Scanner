@@ -2587,7 +2587,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v284</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v285</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3210,7 +3210,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v284</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v285</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -5203,6 +5203,7 @@
         await mutateEcomCatalog(cat => {
           const prev = (cat.specialsOrder || []).filter(c => !order.includes(c));
           cat.specialsOrder = order.concat(prev);
+          cat.specialsOrderAt = new Date().toISOString();   // dragged by hand: wins over the flyer order for this week
         });
         showToast('Website order saved — updates on the next sync');
       } catch (e) { showToast('Could not save the order: ' + e.message, true); }
@@ -6002,6 +6003,7 @@
       await mutateEcomCatalog(cat => {
         const prev = (cat.specialsOrder || []).filter(c => !codes.includes(c));
         cat.specialsOrder = codes.concat(prev);
+        cat.specialsOrderAt = new Date().toISOString();
       });
     } catch (e) { showToast('Could not save the order: ' + e.message, true); }
   }
