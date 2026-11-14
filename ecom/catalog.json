@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-14T16:39:25.458Z",
+ "updated": "2026-11-14T16:40:23.362Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -19287,10 +19287,15 @@
    },
    {
     "id": "cmwgmo0mf",
-    "name": "Bonbons caramel « Moskvitchka »,",
+    "name": "Bonbons caramel « Moskvitchka »,Rot Front",
     "photos": [
      "0000000011002_cmwgmo0mf_1794674321400.webp"
     ]
+   },
+   {
+    "id": "cmwgmsgac",
+    "name": "",
+    "photos": []
    }
   ],
   "0021010400000": [
