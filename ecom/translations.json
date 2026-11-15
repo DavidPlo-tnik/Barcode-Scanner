@@ -1,6 +1,6 @@
 {
  "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime. Optional 'desc' {fr,en,uk,ru}: extra HTML appended to the product description.",
- "updated": "2026-11-06T23:38:06.000Z",
+ "updated": "2026-11-15T17:30:00.000Z",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
    "src": "Romachka, Roshen,",
@@ -297,11 +297,11 @@
    "ru": "Бим-Бом, Roshen"
   },
   "candy-0000000011002-cmueyknsi": {
-   "src": "Bonbon/Chocolat #63",
-   "fr": "Citrus Mix, Roshen",
-   "en": "Citrus Mix, Roshen",
-   "uk": "Citrus Mix, Roshen",
-   "ru": "Citrus Mix, Roshen"
+   "src": "Bonbons aux agrumes Citrus Mix, Roshen",
+   "fr": "Bonbons aux agrumes Citrus Mix, Roshen",
+   "en": "Citrus Mix candies, Roshen",
+   "uk": "Цитрусові цукерки Citrus Mix, Roshen",
+   "ru": "Цитрусовые конфеты Citrus Mix, Roshen"
   },
   "candy-0000000011002-cmueylckc": {
    "src": "Bonbon/Chocolat #42",
@@ -311,32 +311,32 @@
    "ru": "Крабс, какао и арахис, Roshen"
   },
   "candy-0000000011002-cmueymbcd": {
-   "src": "Bonbon/Chocolat #43",
-   "fr": "Crazy Bee, bonbons gélifiés, Roshen",
-   "en": "Crazy Bee jelly candies, Roshen",
-   "uk": "Crazy Bee, желейні цукерки, Roshen",
-   "ru": "Crazy Bee, желейные конфеты, Roshen"
+   "src": "Bonbons gélifiés fourrés aux fruits Crazy Bee Fruity, Roshen",
+   "fr": "Bonbons gélifiés fourrés aux fruits Crazy Bee Fruity, Roshen",
+   "en": "Crazy Bee Fruity filled jelly candies, Roshen",
+   "uk": "Желейні цукерки з фруктовою начинкою Crazy Bee Fruity, Roshen",
+   "ru": "Желейные конфеты с фруктовой начинкой Crazy Bee Fruity, Roshen"
   },
   "candy-0000000011002-cmueyp6n8": {
-   "src": "Bonbon/Chocolat #44",
-   "fr": "Korivka, caramel au lait, Roshen",
-   "en": "Korivka milk fudge, Roshen",
-   "uk": "Корівка, молочна помадка, Roshen",
-   "ru": "Коровка, молочная помадка, Roshen"
+   "src": "Bonbons au lait fondant « Korivka », Roshen",
+   "fr": "Bonbons au lait fondant « Korivka », Roshen",
+   "en": "“Korivka” fudge milk candies, Roshen",
+   "uk": "Молочні цукерки «Корівка», Roshen",
+   "ru": "Молочные конфеты «Коровка», Roshen"
   },
   "candy-0000000011002-cmueyp7so": {
-   "src": "Bonbon/Chocolat #64",
-   "fr": "Karamelkino, Roshen",
-   "en": "Karamelkino, Roshen",
-   "uk": "Карамелькіно, Roshen",
-   "ru": "Карамелькино, Roshen"
+   "src": "Bonbons caramel Karamelkino à l'épine-vinette, Roshen",
+   "fr": "Bonbons caramel Karamelkino à l'épine-vinette, Roshen",
+   "en": "Karamelkino barberry caramels, Roshen",
+   "uk": "Карамель Karamelkino зі смаком барбарису, Roshen",
+   "ru": "Карамель Karamelkino со вкусом барбариса, Roshen"
   },
   "candy-0000000011002-cmueyq6dz": {
-   "src": "Bonbon/Chocolat #65",
-   "fr": "Duchesse, bonbons durs à la poire, Roshen",
-   "en": "Duchesse pear hard candies, Roshen",
-   "uk": "Дюшес, льодяники зі смаком груші, Roshen",
-   "ru": "Дюшес, леденцы со вкусом груши, Roshen"
+   "src": "Bonbons caramel Karamelkino Duchesse à la poire, Roshen",
+   "fr": "Bonbons caramel Karamelkino Duchesse à la poire, Roshen",
+   "en": "Karamelkino Duchesse pear caramels, Roshen",
+   "uk": "Карамель Karamelkino «Дюшес» з грушею, Roshen",
+   "ru": "Карамель Karamelkino «Дюшес» с грушей, Roshen"
   },
   "candy-0000000011002-cmueyv7ff": {
    "src": "Bonbon/Chocolat #66",
@@ -346,11 +346,11 @@
    "ru": "Fizzy Boom, Roshen"
   },
   "candy-0000000011002-cmuezaomx": {
-   "src": "Bonbon/Chocolat #67",
-   "fr": "Sweet Drop, bonbons fourrés au lait, Roshen",
-   "en": "Sweet Drop milk-filled candies, Roshen",
-   "uk": "Sweet Drop, цукерки з молочною начинкою, Roshen",
-   "ru": "Sweet Drop, конфеты с молочной начинкой, Roshen"
+   "src": "Bonbons au lait Sweet Drop сhargés de crème, Roshen",
+   "fr": "Bonbons au lait Sweet Drop chargés de crème, Roshen",
+   "en": "Sweet Drop cream-filled milk candies, Roshen",
+   "uk": "Молочні цукерки Sweet Drop з кремовою начинкою, Roshen",
+   "ru": "Молочные конфеты Sweet Drop с кремовой начинкой, Roshen"
   },
   "candy-0005559200001-cmb39w587": {
    "src": "Miel Paradis Fleurs de Pommier 500 g",
@@ -1778,11 +1778,11 @@
    "ru": "Ruffles чипсы сметана и лук 200 г"
   },
   "pos-0006041005440": {
-   "src": "DORITOS",
-   "fr": "Doritos",
-   "en": "Doritos",
-   "uk": "Doritos",
-   "ru": "Doritos"
+   "src": "DORITOS NACHO FRIMAGE",
+   "fr": "Doritos nacho fromage",
+   "en": "Doritos Nacho Cheese",
+   "uk": "Doritos зі смаком сиру начо",
+   "ru": "Doritos со вкусом сыра начо"
   },
   "pos-0006041007417": {
    "src": "Dorit.crous.tor.piment infernal      72g",
@@ -1820,11 +1820,11 @@
    "ru": "Castello датский голубой сыр традиционный 125 г"
   },
   "pos-0006107731536": {
-   "src": "Villaggio pain blanc st.artesano    600g",
-   "fr": "Villaggio pain blanc style artisan 600 g",
-   "en": "Villaggio artisan-style white bread 600 g",
-   "uk": "Villaggio білий хліб ремісничий 600 г",
-   "ru": "Villaggio белый хлеб ремесленный 600 г"
+   "src": "BON MATIN 14 CEREALES",
+   "fr": "Bon Matin pain 14 céréales",
+   "en": "Bon Matin 14-grain bread",
+   "uk": "Хліб Bon Matin 14 злаків",
+   "ru": "Хлеб Bon Matin 14 злаков"
   },
   "pos-0006107762096": {
    "src": "Pom Sign.pain ham.brioché            8un",
@@ -2590,7 +2590,7 @@
    "ru": "Судак сушёный"
   },
   "pos-0020142400000": {
-   "src": "ROTENGLE SECHE KASNOPERKA",
+   "src": "ROTENGLE SECHE KRASNOPERKA",
    "fr": "Rotengle séché (krasnoperka)",
    "en": "Dried rudd (krasnoperka)",
    "uk": "Краснопірка сушена",
@@ -3616,11 +3616,11 @@
    "ru": "Вобла сушёная"
   },
   "pos-0023881100000": {
-   "src": "CAPUCETTE ETETEE",
-   "fr": "Capucette étêtée",
-   "en": "Headless sand smelt",
-   "uk": "Атерина без голови",
-   "ru": "Атерина без головы"
+   "src": "SABRE CHEHON SALÉ",
+   "fr": "Sabre salé (chekhon)",
+   "en": "Salted sabrefish (chekhon)",
+   "uk": "Чехоня солона",
+   "ru": "Чехонь солёная"
   },
   "pos-0023881200000": {
    "src": "MAQUEREAU FUMEE",
@@ -3695,11 +3695,11 @@
    "ru": "Сыр Mars z Ryk"
   },
   "pos-0023980300000": {
-   "src": "FROMAGE EMMENTAL ZAVERO",
-   "fr": "Fromage emmental Zavero",
-   "en": "Zavero Emmental cheese",
-   "uk": "Сир емменталь Zavero",
-   "ru": "Сыр эмменталь Zavero"
+   "src": "FROMAGE EMMENTAL",
+   "fr": "Fromage emmental",
+   "en": "Emmental cheese",
+   "uk": "Сир емменталь",
+   "ru": "Сыр эмменталь"
   },
   "pos-0023981100000": {
    "src": "FROMAGE MOOSBACHER AUTRICHIEN",
@@ -3772,11 +3772,11 @@
    "ru": "Ammerländer сыр тильзитер"
   },
   "pos-0023982200000": {
-   "src": "FROMAGE GOUDA MLEKOVITA",
-   "fr": "Mlekovita fromage gouda",
-   "en": "Mlekovita Gouda cheese",
-   "uk": "Mlekovita сир гауда",
-   "ru": "Mlekovita сыр гауда"
+   "src": "FROMAGE GOUDA",
+   "fr": "Fromage gouda",
+   "en": "Gouda cheese",
+   "uk": "Сир гауда",
+   "ru": "Сыр гауда"
   },
   "pos-0023982300000": {
    "src": "FROMAGE SERENADA KROLEWIECKI 45% M.G. 44% HUM.",
@@ -3996,11 +3996,11 @@
    "ru": "Earth's Own So Fresh овсяный напиток без сахара 1,89 л"
   },
   "pos-0062784320305": {
-   "src": "NACHO CRUISTILLANTS",
-   "fr": "Croustilles nacho",
-   "en": "Nacho chips",
-   "uk": "Чипси начос",
-   "ru": "Чипсы начос"
+   "src": "NACHO CRUISTILLANTS NATURE",
+   "fr": "Montréal Nachos croustilles nature",
+   "en": "Montréal Nachos plain tortilla chips",
+   "uk": "Кукурудзяні чипси Montréal Nachos натуральні",
+   "ru": "Кукурузные чипсы Montréal Nachos натуральные"
   },
   "pos-0062784320311": {
    "src": "NACHO CRUISTILLANTS",
@@ -4486,11 +4486,11 @@
    "ru": "Голубика"
   },
   "pos-0072802835746": {
-   "src": "TORTILLAS MAIS",
-   "fr": "Tortillas de maïs",
-   "en": "Corn tortillas",
-   "uk": "Кукурудзяні тортильї",
-   "ru": "Кукурузные тортильи"
+   "src": "TORTILLAS MAIS BLANC",
+   "fr": "Don Chente tortillas de maïs blanc",
+   "en": "Don Chente white corn tortillas",
+   "uk": "Кукурудзяні тортильї Don Chente білі",
+   "ru": "Кукурузные тортильи Don Chente белые"
   },
   "pos-0074343402225": {
    "src": "Lindt Excel.choc.tabl.noir cara.sel 100g",
@@ -4801,11 +4801,11 @@
    "ru": "M-C Dairy деревенское масло кислосливочное"
   },
   "pos-0078909140960": {
-   "src": "TORTILLAS MAIS",
-   "fr": "Tortillas de maïs",
-   "en": "Corn tortillas",
-   "uk": "Кукурудзяні тортильї",
-   "ru": "Кукурузные тортильи"
+   "src": "TORTILLAS MAIS JEUNE",
+   "fr": "Don Chente tortillas de maïs jaune",
+   "en": "Don Chente yellow corn tortillas",
+   "uk": "Кукурудзяні тортильї Don Chente жовті",
+   "ru": "Кукурузные тортильи Don Chente жёлтые"
   },
   "pos-0080138688701": {
    "src": "SALADE D'ALGUES CONGELÉE",
@@ -5529,11 +5529,11 @@
    "ru": "Flavors пирог с творогом 560 г"
   },
   "pos-0426012339623": {
-   "src": "FLAVORS  TOURTE AUX CERISES",
-   "fr": "Flavors tourte aux cerises",
+   "src": "FLAVORS  TARTE AUX CERISES",
+   "fr": "Flavors tarte aux cerises",
    "en": "Flavors cherry pie",
-   "uk": "Flavors пиріг із вишнею",
-   "ru": "Flavors пирог с вишней"
+   "uk": "Пиріг Flavors з вишнею",
+   "ru": "Пирог Flavors с вишней"
   },
   "pos-0426012339654": {
    "src": "FLAVORS JUS DE TOMATE",
@@ -7047,11 +7047,11 @@
    "ru": "БКК Киевский торт"
   },
   "pos-0482020587239": {
-   "src": "GATEAU NAPOLEON",
-   "fr": "Gâteau Napoléon",
-   "en": "Napoleon cake",
-   "uk": "Торт Наполеон",
-   "ru": "Торт Наполеон"
+   "src": "GATEAU NAPOLEON BKK",
+   "fr": "Gâteau Napoléon BKK",
+   "en": "Napoleon cake BKK",
+   "uk": "Торт «Наполеон» БКК",
+   "ru": "Торт «Наполеон» БКК"
   },
   "pos-0482020587283": {
    "src": "GATEAU KIYIVSKYI DARUNOK BKK",
@@ -8411,11 +8411,11 @@
    "ru": "E. Wedel Ptasie Mleczko (Птичье молоко)"
   },
   "pos-0590158840207": {
-   "src": "E.WEDEL PTASIE MLECZKO",
-   "fr": "E. Wedel Ptasie Mleczko",
-   "en": "E. Wedel Ptasie Mleczko (Bird's Milk)",
-   "uk": "E. Wedel Ptasie Mleczko (Пташине молоко)",
-   "ru": "E. Wedel Ptasie Mleczko (Птичье молоко)"
+   "src": "E.WEDEL PTASIE MLECZKO CASSIS",
+   "fr": "E. Wedel Ptasie Mleczko cassis",
+   "en": "E. Wedel Ptasie Mleczko blackcurrant",
+   "uk": "E. Wedel Ptasie Mleczko зі смородиною",
+   "ru": "E. Wedel Ptasie Mleczko со смородиной"
   },
   "pos-0590561700900": {
    "src": "HELIO POPPY SEED MASS",
@@ -9956,6 +9956,713 @@
    "ru": "Сахар Sunbec",
    "manual": true,
    "at": "2026-11-06"
+  },
+  "pos-0000000011008": {
+   "src": "BONBONS",
+   "fr": "Bonbons en vrac",
+   "en": "Bulk candies",
+   "uk": "Цукерки на вагу",
+   "ru": "Конфеты развесные"
+  },
+  "pos-0020340800000": {
+   "src": "PORC JARRET",
+   "fr": "Jarret de porc",
+   "en": "Pork shank",
+   "uk": "Свиняча рулька",
+   "ru": "Свиная рулька"
+  },
+  "pos-0482001119009": {
+   "src": "SOLOMKA KIYIVHLIB",
+   "fr": "Solomka sucrée Kyivkhlib 250 g",
+   "en": "Kyivkhlib sweet bread sticks (solomka) 250 g",
+   "uk": "Соломка солодка «Київхліб» 250 г",
+   "ru": "Соломка сладкая «Киевхлеб» 250 г"
+  },
+  "pos-0020239900000": {
+   "src": "SAUCISSE FUMÉE AU BOIS DE CERISE",
+   "fr": "Saucisse fumée au bois de cerisier",
+   "en": "Cherry-wood smoked sausage",
+   "uk": "Ковбаса копчена на вишневій деревині",
+   "ru": "Колбаса копчёная на вишнёвой древесине"
+  },
+  "pos-0023984400000": {
+   "src": "FROMAGE  FONDU FUMÉ  \"RAMBYNA\"",
+   "fr": "Fromage fondu fumé Rambyna",
+   "en": "Rambyna smoked processed cheese",
+   "uk": "Сир плавлений копчений «Рамбина»",
+   "ru": "Сыр плавленый копчёный «Рамбина»"
+  },
+  "pos-0482019551738": {
+   "src": "PRIPRAVKA LEVVURE",
+   "fr": "Pripravka levure instantanée",
+   "en": "Pripravka instant yeast",
+   "uk": "Дріжджі швидкодіючі Pripravka",
+   "ru": "Дрожжи быстродействующие Pripravka"
+  },
+  "pos-0082988200331": {
+   "src": "CAVIAR DE SAUMON",
+   "fr": "Caviar de saumon Red Gold 100 g",
+   "en": "Red Gold salmon caviar 100 g",
+   "uk": "Ікра лосося Red Gold 100 г",
+   "ru": "Икра лосося Red Gold 100 г"
+  },
+  "pos-0482311540709": {
+   "src": "LOVARÉ THÉ HIVER 80GR",
+   "fr": "Lovaré thé Hiver 80 g",
+   "en": "Lovaré Winter Tea 80 g",
+   "uk": "Чай Lovaré «Зимовий» 80 г",
+   "ru": "Чай Lovaré «Зимний» 80 г"
+  },
+  "pos-0023882900000": {
+   "src": "CAVIAR DE  SAUMON KING IKURA",
+   "fr": "Caviar de saumon King (ikura)",
+   "en": "King salmon caviar (ikura)",
+   "uk": "Ікра чавичі (ікура)",
+   "ru": "Икра чавычи (икура)"
+  },
+  "pos-0000000038830": {
+   "src": "CAVIAR DE  SAUMON COHO IKURA",
+   "fr": "Caviar de saumon Coho (ikura)",
+   "en": "Coho salmon caviar (ikura)",
+   "uk": "Ікра кижуча (ікура)",
+   "ru": "Икра кижуча (икура)"
+  },
+  "pos-0020703700000": {
+   "src": "FOIE BOEUF",
+   "fr": "Foie de bœuf",
+   "en": "Beef liver",
+   "uk": "Яловича печінка",
+   "ru": "Говяжья печень"
+  },
+  "pos-0088764300095": {
+   "src": "MASA MAKOWA PATE PAVOT DELICATESSES",
+   "fr": "Masa makowa, pâte de pavot aux fruits secs 900 g",
+   "en": "Masa makowa poppy seed filling with dried fruit 900 g",
+   "uk": "Макова маса з горіхами та сухофруктами 900 г",
+   "ru": "Маковая масса с орехами и сухофруктами 900 г"
+  },
+  "pos-0590561700914": {
+   "src": "HELIO KUTIA",
+   "fr": "Helio kutia",
+   "en": "Helio kutia",
+   "uk": "Кутя Helio",
+   "ru": "Кутья Helio"
+  },
+  "pos-0460008029051": {
+   "src": "CHOCOLAT KOROVKA",
+   "fr": "Korovka chocolat au lait",
+   "en": "Korovka milk chocolate",
+   "uk": "Молочний шоколад «Коровка»",
+   "ru": "Молочный шоколад «Коровка»"
+  },
+  "pos-0460008029050": {
+   "src": "CHOCOLAT KOROVKA",
+   "fr": "Korovka chocolat au lait",
+   "en": "Korovka milk chocolate",
+   "uk": "Молочний шоколад «Коровка»",
+   "ru": "Молочный шоколад «Коровка»"
+  },
+  "pos-0482307762622": {
+   "src": "ROSHEN CHOCOLAT LAIT",
+   "fr": "Roshen chocolat au lait aéré",
+   "en": "Roshen aerated milk chocolate",
+   "uk": "Roshen пористий молочний шоколад",
+   "ru": "Roshen пористый молочный шоколад"
+  },
+  "pos-0590318907631": {
+   "src": "NUSSBEISSER",
+   "fr": "Nussbeisser chocolat au lait et noisettes entières",
+   "en": "Nussbeisser milk chocolate with whole hazelnuts",
+   "uk": "Nussbeisser молочний шоколад з цілими лісовими горіхами",
+   "ru": "Nussbeisser молочный шоколад с целым фундуком"
+  },
+  "pos-0590010202839": {
+   "src": "WAWEL CHOCOLAT NOIR",
+   "fr": "Wawel chocolat noir 64 %",
+   "en": "Wawel dark chocolate 64%",
+   "uk": "Wawel чорний шоколад 64 %",
+   "ru": "Wawel тёмный шоколад 64 %"
+  },
+  "pos-0590010202840": {
+   "src": "WAWEL CHOCOLAT NOIR",
+   "fr": "Wawel chocolat noir à l'orange 64 %",
+   "en": "Wawel dark chocolate with orange 64%",
+   "uk": "Wawel чорний шоколад з апельсином 64 %",
+   "ru": "Wawel тёмный шоколад с апельсином 64 %"
+  },
+  "pos-0590010202957": {
+   "src": "WAWEL CHOCOLAT NOIR",
+   "fr": "Wawel chocolat noir doux menthe et caramel",
+   "en": "Wawel mild dark chocolate, mint and caramel",
+   "uk": "Wawel чорний шоколад з м'ятою та карамеллю",
+   "ru": "Wawel тёмный шоколад с мятой и карамелью"
+  },
+  "pos-0590010202838": {
+   "src": "WAWEL CHOCOLAT NOIR",
+   "fr": "Wawel chocolat noir 90 %",
+   "en": "Wawel dark chocolate 90%",
+   "uk": "Wawel чорний шоколад 90 %",
+   "ru": "Wawel тёмный шоколад 90 %"
+  },
+  "pos-0460008029431": {
+   "src": "ALIONKA",
+   "fr": "Alionka chocolat au lait aux amandes",
+   "en": "Alionka milk chocolate with almonds",
+   "uk": "Молочний шоколад «Альонка» з мигдалем",
+   "ru": "Молочный шоколад «Алёнка» с миндалём"
+  },
+  "pos-0460030009855": {
+   "src": "CHOCOLAT ALENKA",
+   "fr": "Alionka chocolat au lait",
+   "en": "Alionka milk chocolate",
+   "uk": "Молочний шоколад «Альонка»",
+   "ru": "Молочный шоколад «Алёнка»"
+  },
+  "pos-0460008029426": {
+   "src": "CHOCOLAT ALENKA",
+   "fr": "Alionka chocolat au lait aux noisettes",
+   "en": "Alionka milk chocolate with hazelnuts",
+   "uk": "Молочний шоколад «Альонка» з фундуком",
+   "ru": "Молочный шоколад «Алёнка» с фундуком"
+  },
+  "pos-0460008029427": {
+   "src": "CHOCOLAT ALENKA",
+   "fr": "Alionka chocolat au lait noisettes et raisins secs",
+   "en": "Alionka milk chocolate with hazelnuts and raisins",
+   "uk": "Молочний шоколад «Альонка» з фундуком і родзинками",
+   "ru": "Молочный шоколад «Алёнка» с фундуком и изюмом"
+  },
+  "pos-0460008029996": {
+   "src": "ALIONKA",
+   "fr": "Alionka chocolat au lait aéré",
+   "en": "Alionka aerated milk chocolate",
+   "uk": "Пористий молочний шоколад «Альонка»",
+   "ru": "Пористый молочный шоколад «Алёнка»"
+  },
+  "pos-0460082365139": {
+   "src": "CHOCOLAT VDOHNOVENIE",
+   "fr": "Vdokhnovenie chocolat noir aux amandes et crème truffe",
+   "en": "Vdokhnovenie dark chocolate with almonds and truffle cream",
+   "uk": "Темний шоколад «Вдохновение» з мигдалем і трюфельним кремом",
+   "ru": "Тёмный шоколад «Вдохновение» с миндалём и трюфельным кремом"
+  },
+  "pos-0460082365141": {
+   "src": "CHOCOLAT VDOHNOVENIE",
+   "fr": "Vdokhnovenie chocolat amer aux amandes 75 %",
+   "en": "Vdokhnovenie bitter chocolate with almonds 75%",
+   "uk": "Гіркий шоколад «Вдохновение» з мигдалем 75 %",
+   "ru": "Горький шоколад «Вдохновение» с миндалём 75 %"
+  },
+  "pos-0460082365137": {
+   "src": "CHOCOLAT VDOHNOVENIE",
+   "fr": "Vdokhnovenie chocolat",
+   "en": "Vdokhnovenie chocolate",
+   "uk": "Шоколад «Вдохновение»",
+   "ru": "Шоколад «Вдохновение»"
+  },
+  "pos-0460082365121": {
+   "src": "BABAEVSKI CHOCOLAT",
+   "fr": "Babaïevski chocolat noir noisettes et raisins secs",
+   "en": "Babaevsky dark chocolate with hazelnuts and raisins",
+   "uk": "Темний шоколад «Бабаєвський» з фундуком і родзинками",
+   "ru": "Тёмный шоколад «Бабаевский» с фундуком и изюмом"
+  },
+  "pos-0460082309312": {
+   "src": "BABAEVSKI CHOCOLAT",
+   "fr": "Babaïevski chocolat noir aux amandes entières",
+   "en": "Babaevsky dark chocolate with whole almonds",
+   "uk": "Темний шоколад «Бабаєвський» з цілим мигдалем",
+   "ru": "Тёмный шоколад «Бабаевский» с целым миндалём"
+  },
+  "pos-0460082309415": {
+   "src": "BABAEVSKI CHOCOLAT",
+   "fr": "Babaïevski chocolat",
+   "en": "Babaevsky chocolate",
+   "uk": "Шоколад «Бабаєвський»",
+   "ru": "Шоколад «Бабаевский»"
+  },
+  "pos-0460082365117": {
+   "src": "BABAEVSKI CHOCOLAT",
+   "fr": "Babaïevski chocolat noir « Firmenny »",
+   "en": "Babaevsky dark chocolate “Firmenny”",
+   "uk": "Темний шоколад «Бабаєвський» фірмовий",
+   "ru": "Тёмный шоколад «Бабаевский» фирменный"
+  },
+  "pos-0460082365105": {
+   "src": "CHOCOLAT BABAEVSKI",
+   "fr": "Babaïevski chocolat « Elitny » 75 %",
+   "en": "Babaevsky “Elitny” chocolate 75%",
+   "uk": "Шоколад «Бабаєвський» елітний 75 %",
+   "ru": "Шоколад «Бабаевский» элитный 75 %"
+  },
+  "pos-0460030000030": {
+   "src": "CHOCOLAT SLAVA",
+   "fr": "Slava chocolat noir aéré",
+   "en": "Slava aerated dark chocolate",
+   "uk": "Темний пористий шоколад «Слава»",
+   "ru": "Тёмный пористый шоколад «Слава»"
+  },
+  "pos-0460082365161": {
+   "src": "CHOCOLAT BABAEVSKI",
+   "fr": "Babaïevski chocolat",
+   "en": "Babaevsky chocolate",
+   "uk": "Шоколад «Бабаєвський»",
+   "ru": "Шоколад «Бабаевский»"
+  },
+  "pos-0762220112575": {
+   "src": "MILKA CHOCOLAT CREME VANILLE OREO",
+   "fr": "Milka crème et biscuit",
+   "en": "Milka cream & biscuit",
+   "uk": "Milka з кремом і печивом",
+   "ru": "Milka с кремом и печеньем"
+  },
+  "pos-0762220226252": {
+   "src": "MILKA CHOCOLAT CREME VANILLE OREO",
+   "fr": "Milka chocolat crème vanille Oreo",
+   "en": "Milka vanilla cream Oreo chocolate",
+   "uk": "Milka з ванільним кремом і Oreo",
+   "ru": "Milka с ванильным кремом и Oreo"
+  },
+  "pos-0762230059006": {
+   "src": "MILKA CHOCOLAT CREME VANILLE OREO",
+   "fr": "Milka crème framboise",
+   "en": "Milka raspberry cream",
+   "uk": "Milka з малиновим кремом",
+   "ru": "Milka с малиновым кремом"
+  },
+  "pos-0762220112106": {
+   "src": "MILKA CHOCOLAT BLANC",
+   "fr": "Milka Oreo chocolat blanc",
+   "en": "Milka Oreo white chocolate",
+   "uk": "Milka Oreo білий шоколад",
+   "ru": "Milka Oreo белый шоколад"
+  },
+  "pos-0800050044713": {
+   "src": "KINDER KINDERINI",
+   "fr": "Kinder Kinderini",
+   "en": "Kinder Kinderini",
+   "uk": "Kinder Kinderini",
+   "ru": "Kinder Kinderini"
+  },
+  "pos-0800050034750": {
+   "src": "Fer.Kinder choc CARDS",
+   "fr": "Kinder Cards",
+   "en": "Kinder Cards",
+   "uk": "Kinder Cards",
+   "ru": "Kinder Cards"
+  },
+  "pos-0482014562163": {
+   "src": "KAWA I LWOWA",
+   "fr": "Kava Lvova coffret café moulu crème irlandaise et cannelle 420 g",
+   "en": "Kava Lvova ground coffee set, Irish cream and cinnamon 420 g",
+   "uk": "Набір «Кава Львова»: ірландський крем і кава з корицею 420 г",
+   "ru": "Набор «Кава Львова»: ирландский крем и кофе с корицей 420 г"
+  },
+  "pos-0460082303109": {
+   "src": "CHOCOLAT",
+   "fr": "Babaïevski barre chocolat noir fourrée au chocolat",
+   "en": "Babaevsky dark chocolate bar with chocolate filling",
+   "uk": "Батончик «Бабаєвський» темний з шоколадною начинкою",
+   "ru": "Батончик «Бабаевский» тёмный с шоколадной начинкой"
+  },
+  "pos-0460082303009": {
+   "src": "CHOCOLAT",
+   "fr": "Babaïevski barre chocolat noir fourrée à la crème fondante",
+   "en": "Babaevsky dark chocolate bar with fondant cream filling",
+   "uk": "Батончик «Бабаєвський» темний з помадно-вершковою начинкою",
+   "ru": "Батончик «Бабаевский» тёмный с помадно-сливочной начинкой"
+  },
+  "pos-0460515500042": {
+   "src": "GAMATOGEN",
+   "fr": "Hématogène",
+   "en": "Hematogen bar",
+   "uk": "Гематоген",
+   "ru": "Гематоген"
+  },
+  "pos-0590508201309": {
+   "src": "MARZIPAN ARACHIDES",
+   "fr": "Barre de massepain aux arachides enrobée de chocolat",
+   "en": "Marzipan bar with peanuts in chocolate",
+   "uk": "Марципановий батончик з арахісом у шоколаді",
+   "ru": "Марципановый батончик с арахисом в шоколаде"
+  },
+  "pos-0590159800223": {
+   "src": "MARZIPAN",
+   "fr": "Massepain",
+   "en": "Marzipan",
+   "uk": "Марципан",
+   "ru": "Марципан"
+  },
+  "pos-0006202002702": {
+   "src": "KINDER CHOCOLAT",
+   "fr": "Kinder chocolat 42 g",
+   "en": "Kinder Chocolate 42 g",
+   "uk": "Kinder шоколад 42 г",
+   "ru": "Kinder шоколад 42 г"
+  },
+  "pos-0590035200182": {
+   "src": "MELLA GELEE CHOCOLAT CITRON",
+   "fr": "Goplana Mella gelée au chocolat citron",
+   "en": "Goplana Mella lemon jelly in chocolate",
+   "uk": "Goplana Mella желе в шоколаді лимон",
+   "ru": "Goplana Mella желе в шоколаде лимон"
+  },
+  "pos-0590035200181": {
+   "src": "MELLA GELEE CHOCOLAT ORANGE",
+   "fr": "Goplana Mella gelée au chocolat orange",
+   "en": "Goplana Mella orange jelly in chocolate",
+   "uk": "Goplana Mella желе в шоколаді апельсин",
+   "ru": "Goplana Mella желе в шоколаде апельсин"
+  },
+  "pos-0590035200077": {
+   "src": "MELLA GELEE CHOCOLAT CERISE",
+   "fr": "Goplana Mella gelée au chocolat cerise",
+   "en": "Goplana Mella cherry jelly in chocolate",
+   "uk": "Goplana Mella желе в шоколаді вишня",
+   "ru": "Goplana Mella желе в шоколаде вишня"
+  },
+  "pos-0482002667020": {
+   "src": "GOURMET FRUIT SLICES",
+   "fr": "Pâtes de fruits tranches de citron 265 g",
+   "en": "Lemon slices fruit jellies 265 g",
+   "uk": "Мармелад «Лимонні дольки» 265 г",
+   "ru": "Мармелад «Лимонные дольки» 265 г"
+  },
+  "pos-0085613400071": {
+   "src": "GOURMET FRUIT SLICES",
+   "fr": "Pâtes de fruits tranches citron et orange 265 g",
+   "en": "Lemon and orange slices fruit jellies 265 g",
+   "uk": "Мармелад «Лимонні та апельсинові дольки» асорті 265 г",
+   "ru": "Мармелад «Лимонные и апельсиновые дольки» ассорти 265 г"
+  },
+  "pos-0482307762422": {
+   "src": "ROSHEN BONNY FRUIT",
+   "fr": "Roshen Bonny Fruit mélange d'été",
+   "en": "Roshen Bonny Fruit summer mix",
+   "uk": "Roshen Bonny Fruit літній мікс",
+   "ru": "Roshen Bonny Fruit летний микс"
+  },
+  "pos-0482307762426": {
+   "src": "ROSHEN BONNY FRUIT",
+   "fr": "Roshen Bonny Fruit mélange de baies",
+   "en": "Roshen Bonny Fruit berry mix",
+   "uk": "Roshen Bonny Fruit ягідний мікс",
+   "ru": "Roshen Bonny Fruit ягодный микс"
+  },
+  "pos-0482307762424": {
+   "src": "ROSHEN BONNY FRUIT",
+   "fr": "Roshen Bonny Fruit mélange d'agrumes",
+   "en": "Roshen Bonny Fruit citrus mix",
+   "uk": "Roshen Bonny Fruit цитрусовий мікс",
+   "ru": "Roshen Bonny Fruit цитрусовый микс"
+  },
+  "pos-0482021809683": {
+   "src": "KLIM ZEPHYR",
+   "fr": "Klim Tenderness zéphyr à la framboise 240 g",
+   "en": "Klim Tenderness raspberry zephyr 240 g",
+   "uk": "Зефір Klim Tenderness з малиною 240 г",
+   "ru": "Зефир Klim Tenderness с малиной 240 г"
+  },
+  "pos-0482011236507": {
+   "src": "ZEFIR",
+   "fr": "Zéphyr blanc et rose 260 g",
+   "en": "White and pink zephyr 260 g",
+   "uk": "Зефір біло-рожевий 260 г",
+   "ru": "Зефир бело-розовый 260 г"
+  },
+  "pos-0482011236908": {
+   "src": "ZEFIR",
+   "fr": "Zéphyr blanc 260 g",
+   "en": "White zephyr 260 g",
+   "uk": "Зефір білий 260 г",
+   "ru": "Зефир белый 260 г"
+  },
+  "pos-0482002670126": {
+   "src": "ZOLOTOI HALVA TOURNESOL",
+   "fr": "Zolotyi Vik halva de tournesol à la vanille",
+   "en": "Zolotyi Vik sunflower halva, vanilla",
+   "uk": "Халва соняшникова ванільна «Золотий Вік»",
+   "ru": "Халва подсолнечная ванильная «Золотой Век»"
+  },
+  "pos-0023883100000": {
+   "src": "CAVIAR NOIR OSSETRA",
+   "fr": "Caviar noir Ossetra Coastal Bay",
+   "en": "Coastal Bay Ossetra black caviar",
+   "uk": "Чорна ікра осетра Coastal Bay",
+   "ru": "Чёрная икра осетра Coastal Bay"
+  },
+  "pos-0762220226244": {
+   "src": "MILKA HAZELNUT",
+   "fr": "Milka noisettes",
+   "en": "Milka hazelnut",
+   "uk": "Milka з лісовими горіхами",
+   "ru": "Milka с фундуком"
+  },
+  "pos-0762221007810": {
+   "src": "MILKA CHOCOLAT CREME VANILLE OREO",
+   "fr": "Milka Oreo",
+   "en": "Milka Oreo",
+   "uk": "Milka Oreo",
+   "ru": "Milka Oreo"
+  },
+  "pos-0762220000733": {
+   "src": "MILKA CHOCOLAT FRAISE YOGOURT",
+   "fr": "Milka fraise yogourt",
+   "en": "Milka strawberry yogurt",
+   "uk": "Milka полуниця з йогуртом",
+   "ru": "Milka клубника с йогуртом"
+  },
+  "pos-0062877419210": {
+   "src": "MILKA  BISCUIT",
+   "fr": "Milka biscuit LU",
+   "en": "Milka LU biscuit",
+   "uk": "Milka з печивом LU",
+   "ru": "Milka с печеньем LU"
+  },
+  "candy-0000000011002-cmvspg7yj": {
+   "src": "Bonbons gaufrettes au chocolat « Alionka », Krasny Oktyabr",
+   "fr": "Bonbons gaufrettes au chocolat « Alionka », Krasny Oktyabr",
+   "en": "“Alionka” chocolate wafer candies, Krasny Oktyabr",
+   "uk": "Шоколадні вафельні цукерки «Альонка», Червоний Жовтень",
+   "ru": "Шоколадные вафельные конфеты «Алёнка», Красный Октябрь"
+  },
+  "candy-0000000011002-cmwcilckh": {
+   "src": "Bonbons pralinés aux noisettes enrobés de chocolat « Belotchka », Babaïevski",
+   "fr": "Bonbons pralinés aux noisettes enrobés de chocolat « Belotchka », Babaïevski",
+   "en": "“Belochka” hazelnut praline chocolate candies, Babaevsky",
+   "uk": "Цукерки «Білочка» з горіховим праліне в шоколаді, Бабаєвський",
+   "ru": "Конфеты «Белочка» с ореховым пралине в шоколаде, Бабаевский"
+  },
+  "candy-0000000011002-cmwcinyx5": {
+   "src": "Bonbons de nougatine enrobés de chocolat « Grilyazh », Rot Front",
+   "fr": "Bonbons de nougatine enrobés de chocolat « Grilyazh », Rot Front",
+   "en": "“Grilyazh” brittle candies in chocolate, Rot Front",
+   "uk": "Цукерки «Гриляж» у шоколаді, Рот Фронт",
+   "ru": "Конфеты «Грильяж» в шоколаде, Рот Фронт"
+  },
+  "candy-0000000011002-cmwciorns": {
+   "src": "Bonbons gaufrettes au chocolat « Michka Kossolapy », Krasny Oktyabr",
+   "fr": "Bonbons gaufrettes au chocolat « Michka Kossolapy », Krasny Oktyabr",
+   "en": "“Mishka Kosolapy” chocolate wafer candies, Krasny Oktyabr",
+   "uk": "Цукерки «Мишка клишоногий», Червоний Жовтень",
+   "ru": "Конфеты «Мишка косолапый», Красный Октябрь"
+  },
+  "candy-0000000011002-cmwfg21yx": {
+   "src": "Bonbons soufflés enrobés de chocolat « Ptitsa Divnaïa », Akkond",
+   "fr": "Bonbons soufflés enrobés de chocolat « Ptitsa Divnaïa », Akkond",
+   "en": "“Ptitsa Divnaya” soufflé candies in chocolate, Akkond",
+   "uk": "Цукерки-суфле «Птиця Дивна» в шоколаді, Акконд",
+   "ru": "Конфеты-суфле «Птица Дивная» в шоколаде, Акконд"
+  },
+  "candy-0000000011002-cmwgmo0mf": {
+   "src": "Bonbons caramel « Moskvitchka »,Rot Front",
+   "fr": "Bonbons caramel « Moskvitchka », Rot Front",
+   "en": "“Moskvichka” caramel candies, Rot Front",
+   "uk": "Карамельні цукерки «Москвичка», Рот Фронт",
+   "ru": "Конфеты карамельные «Москвичка», Рот Фронт"
+  },
+  "candy-0000000011002-cmwgmsgac": {
+   "src": "Bonbons caramel « Moskvoretskaïa »,Rot Front",
+   "fr": "Bonbons caramel « Moskvoretskaïa », Rot Front",
+   "en": "“Moskvoretskaya” caramel candies, Rot Front",
+   "uk": "Карамельні цукерки «Москворецька», Рот Фронт",
+   "ru": "Конфеты карамельные «Москворецкая», Рот Фронт"
+  },
+  "candy-0000000011002-cmwgnaow7": {
+   "src": "Bonbons Minky Binky, Roshen",
+   "fr": "Bonbons Minky Binky, Roshen",
+   "en": "Minky Binky candies, Roshen",
+   "uk": "Цукерки Minky Binky, Roshen",
+   "ru": "Конфеты Minky Binky, Roshen"
+  },
+  "candy-0000000011002-cmwgnwc91": {
+   "src": "Bonbons gélifiés au chocolat saveur cerise et cognac « Déjà Vu », Akkond",
+   "fr": "Bonbons gélifiés au chocolat saveur cerise et cognac « Déjà Vu », Akkond",
+   "en": "“Déjà Vu” cherry-cognac jelly chocolates, Akkond",
+   "uk": "Желейні цукерки в шоколаді зі смаком вишні й коньяку «Дежавю», Акконд",
+   "ru": "Желейные конфеты в шоколаде со вкусом вишни и коньяка «Дежавю», Акконд"
+  },
+  "candy-0000000011002-cmwgo2snu": {
+   "src": "Bonbons pralinés aux noisettes enrobés de chocolat « Vdokhnovenie », Babaïevski",
+   "fr": "Bonbons pralinés aux noisettes enrobés de chocolat « Vdokhnovenie », Babaïevski",
+   "en": "“Vdokhnovenie” hazelnut praline chocolates, Babaevsky",
+   "uk": "Цукерки «Вдохновение» з горіховим праліне в шоколаді, Бабаєвський",
+   "ru": "Конфеты «Вдохновение» с ореховым пралине в шоколаде, Бабаевский"
+  },
+  "candy-0000000011002-cmwgo30w2": {
+   "src": "Bonbons gaufrettes au chocolat « V strane liliputov », Slavyanka",
+   "fr": "Bonbons gaufrettes au chocolat « V strane liliputov », Slavyanka",
+   "en": "“V strane liliputov” chocolate wafer candies, Slavyanka",
+   "uk": "Вафельні цукерки «В країні ліліпутів», Слав'янка",
+   "ru": "Вафельные конфеты «В стране лилипутов», Славянка"
+  },
+  "candy-0000000011002-cmwgontoz": {
+   "src": "Bonbons à la truffe aux noix Amour Dolci, Konti",
+   "fr": "Bonbons à la truffe aux noix Amour Dolci, Konti",
+   "en": "Amour Dolci nut truffle candies, Konti",
+   "uk": "Цукерки-трюфелі з горіхами Amour Dolci, Конті",
+   "ru": "Конфеты-трюфели с орехами Amour Dolci, Конти"
+  },
+  "candy-0000000011002-cmwgoo1ts": {
+   "src": "Bonbons à la truffe au lait Mone, Konti",
+   "fr": "Bonbons à la truffe au lait Mone, Konti",
+   "en": "Mone milk truffle candies, Konti",
+   "uk": "Цукерки-трюфелі молочні Mone, Конті",
+   "ru": "Конфеты-трюфели молочные Mone, Конти"
+  },
+  "candy-0000000011002-cmwgoo7k1": {
+   "src": "Bonbons au chocolat Babaevskie",
+   "fr": "Bonbons au chocolat Babaïevski",
+   "en": "Babaevsky chocolate candies",
+   "uk": "Шоколадні цукерки «Бабаєвські»",
+   "ru": "Шоколадные конфеты «Бабаевские»"
+  },
+  "candy-0000000011002-cmwgp8mfr": {
+   "src": "Bonbons au chocolat aux cacahuètes Michaszki Original, Mieszko",
+   "fr": "Bonbons au chocolat aux cacahuètes Michaszki Original, Mieszko",
+   "en": "Michaszki Original peanut chocolate candies, Mieszko",
+   "uk": "Шоколадні цукерки з арахісом Michaszki Original, Mieszko",
+   "ru": "Шоколадные конфеты с арахисом Michaszki Original, Mieszko"
+  },
+  "candy-0000000011002-cmwgp9jlb": {
+   "src": "Gelées à la pectine enrobées de chocolat saveur cerise Wiosenne Galaretki, Solidarność",
+   "fr": "Gelées à la pectine enrobées de chocolat saveur cerise Wiosenne Galaretki, Solidarność",
+   "en": "Wiosenne Galaretki cherry jellies in chocolate, Solidarność",
+   "uk": "Желе з вишневим смаком у шоколаді Wiosenne Galaretki, Solidarność",
+   "ru": "Желе со вкусом вишни в шоколаде Wiosenne Galaretki, Solidarność"
+  },
+  "candy-0000000011002-cmwgpzege": {
+   "src": "Bonbons soufflés aux abricots secs et noix de coco Ledi Den, Akkond",
+   "fr": "Bonbons soufflés aux abricots secs et noix de coco Ledi Den, Akkond",
+   "en": "Ledi Den soufflé candies with dried apricot and coconut, Akkond",
+   "uk": "Цукерки-суфле з курагою та кокосом «Леді День», Акконд",
+   "ru": "Конфеты-суфле с курагой и кокосом «Леди День», Акконд"
+  },
+  "candy-0000000011002-cmwgpzw9g": {
+   "src": "Caramels fourrés au cacao et aux amandes Rakovye Sheyki, Krasny Oktyabr",
+   "fr": "Caramels fourrés au cacao et aux amandes Rakovye Sheyki, Krasny Oktyabr",
+   "en": "“Rakovye Sheyki” caramels with cocoa-almond filling, Krasny Oktyabr",
+   "uk": "Карамель «Ракові шийки» з какао-мигдальною начинкою, Червоний Жовтень",
+   "ru": "Карамель «Раковые шейки» с какао-миндальной начинкой, Красный Октябрь"
+  },
+  "candy-0000000011002-cmwgq0mdp": {
+   "src": "Bonbons pralinés aux gaufrettes croustillantes Kara-Kum, Krasny Oktyabr",
+   "fr": "Bonbons pralinés aux gaufrettes croustillantes Kara-Kum, Krasny Oktyabr",
+   "en": "“Kara-Kum” praline candies with crispy wafer, Krasny Oktyabr",
+   "uk": "Цукерки «Кара-Кум» з праліне та вафлею, Червоний Жовтень",
+   "ru": "Конфеты «Кара-Кум» с пралине и вафлей, Красный Октябрь"
+  },
+  "candy-0000000011002-cmwgq0s9q": {
+   "src": "Caramels fourrés au cacao et aux noix Gusinye Lapki, Rot Front",
+   "fr": "Caramels fourrés au cacao et aux noix Gusinye Lapki, Rot Front",
+   "en": "“Gusinye Lapki” caramels with cocoa-nut filling, Rot Front",
+   "uk": "Карамель «Гусячі лапки» з какао-горіховою начинкою, Рот Фронт",
+   "ru": "Карамель «Гусиные лапки» с какао-ореховой начинкой, Рот Фронт"
+  },
+  "candy-0000000011002-cmwh2v6rk": {
+   "src": "Bonbons « Pavot rouge », Krasny Oktyabr",
+   "fr": "Bonbons « Pavot rouge », Krasny Oktyabr",
+   "en": "“Krasny Mak” (Red Poppy) candies, Krasny Oktyabr",
+   "uk": "Цукерки «Червоний мак», Червоний Жовтень",
+   "ru": "Конфеты «Красный мак», Красный Октябрь"
+  },
+  "candy-0000000011002-cmwh32p9r": {
+   "src": "Bonbons 《Le Petit Chaperon rouge》, Octobre rouge.",
+   "fr": "Bonbons « Le Petit Chaperon rouge », Krasny Oktyabr",
+   "en": "“Little Red Riding Hood” candies, Krasny Oktyabr",
+   "uk": "Цукерки «Червона Шапочка», Червоний Жовтень",
+   "ru": "Конфеты «Красная Шапочка», Красный Октябрь"
+  },
+  "candy-0000000011002-cmwh37wl1": {
+   "src": "Bonbons pralinés aux noisettes Lisova Bilochka, SweeTale",
+   "fr": "Bonbons pralinés aux noisettes Lisova Bilochka, SweeTale",
+   "en": "Lisova Bilochka hazelnut praline candies, SweeTale",
+   "uk": "Цукерки з горіховим праліне «Лісова білочка», SweeTale",
+   "ru": "Конфеты с ореховым пралине «Лесная белочка», SweeTale"
+  },
+  "candy-0000000011002-cmwh386hj": {
+   "src": "Bonbons soufflés aux pruneaux et amandes Ledi Noch, Akkond",
+   "fr": "Bonbons soufflés aux pruneaux et amandes Ledi Noch, Akkond",
+   "en": "Ledi Noch soufflé candies with prunes and almonds, Akkond",
+   "uk": "Цукерки-суфле з чорносливом і мигдалем «Леді Ніч», Акконд",
+   "ru": "Конфеты-суфле с черносливом и миндалём «Леди Ночь», Акконд"
+  },
+  "candy-0000000011001-cmw6t62zq": {
+   "src": "Bonbon au caramel goût cerise « Vichnia », Rot Front",
+   "fr": "Bonbon au caramel goût cerise « Vichnia », Rot Front",
+   "en": "“Vishnya” cherry caramel, Rot Front",
+   "uk": "Карамель «Вишня», Рот Фронт",
+   "ru": "Карамель «Вишня», Рот Фронт"
+  },
+  "candy-0000000011001-cmw6t6rjr": {
+   "src": "Bonbon au caramel acidulé « Vzlet », Rot Front",
+   "fr": "Bonbon au caramel acidulé « Vzlet », Rot Front",
+   "en": "“Vzlyot” sour caramel, Rot Front",
+   "uk": "Карамель «Зліт», Рот Фронт",
+   "ru": "Карамель «Взлёт», Рот Фронт"
+  },
+  "candy-0000000011001-cmw6t7f1x": {
+   "src": "Bonbons à la crème de noix de coco « Coconut », Roshen",
+   "fr": "Bonbons à la crème de noix de coco « Coconut », Roshen",
+   "en": "“Coconut” coconut cream candies, Roshen",
+   "uk": "Цукерки з кокосовим кремом «Coconut», Roshen",
+   "ru": "Конфеты с кокосовым кремом «Coconut», Roshen"
+  },
+  "candy-0000000011001-cmw6t7xbi": {
+   "src": "Bonbon au caramel goût cornouille « Kizil », Rot Front",
+   "fr": "Bonbon au caramel goût cornouille « Kizil », Rot Front",
+   "en": "“Kizil” cornelian-cherry caramel, Rot Front",
+   "uk": "Карамель «Кизил», Рот Фронт",
+   "ru": "Карамель «Кизил», Рот Фронт"
+  },
+  "candy-0000000011001-cmw6t8wjq": {
+   "src": "Bonbon au caramel avec garniture aux fruits « Mechta », Rot Front",
+   "fr": "Bonbon au caramel avec garniture aux fruits « Mechta », Rot Front",
+   "en": "“Mechta” fruit-filled caramel, Rot Front",
+   "uk": "Карамель з фруктовою начинкою «Мрія», Рот Фронт",
+   "ru": "Карамель с фруктовой начинкой «Мечта», Рот Фронт"
+  },
+  "candy-0000000011001-cmw6t98gc": {
+   "src": "Bonbon au caramel goût menthe « Feya », Rot Front",
+   "fr": "Bonbon au caramel goût menthe « Feya », Rot Front",
+   "en": "“Feya” mint caramel, Rot Front",
+   "uk": "М'ятна карамель «Фея», Рот Фронт",
+   "ru": "Мятная карамель «Фея», Рот Фронт"
+  },
+  "candy-0000000011001-cmw6t9kym": {
+   "src": "Toffee / Iris au lait « Zolotoy Kluchik », Krasny Oktyabr",
+   "fr": "Iris au lait « Zolotoy Klioutchik », Krasny Oktyabr",
+   "en": "“Zolotoy Klyuchik” milk toffee, Krasny Oktyabr",
+   "uk": "Іриски «Золотий ключик», Червоний Жовтень",
+   "ru": "Ириски «Золотой ключик», Красный Октябрь"
+  },
+  "candy-0000000011001-cmw6ta0qp": {
+   "src": "Confiserie glacée au lait « Missis Mu », Norsu",
+   "fr": "Confiserie glacée au lait « Missis Mu », Norsu",
+   "en": "“Missis Mu” glazed milk candy, Norsu",
+   "uk": "Глазуровані молочні цукерки «Місіс Му», Norsu",
+   "ru": "Глазированные молочные конфеты «Миссис Му», Norsu"
+  },
+  "candy-0000000011001-cmw6tagn7": {
+   "src": "• Confiserie chocolatée glacée « Chocolate Margo », Norsu",
+   "fr": "Confiserie chocolatée glacée « Chocolate Margo », Norsu",
+   "en": "“Chocolate Margo” glazed chocolate candy, Norsu",
+   "uk": "Глазуровані шоколадні цукерки «Chocolate Margo», Norsu",
+   "ru": "Глазированные шоколадные конфеты «Chocolate Margo», Norsu"
+  },
+  "candy-0000000011001-cmw6tdsxl": {
+   "src": "Bonbons fruités avec garniture liquide « Beri », Roshen",
+   "fr": "Bonbons fruités avec garniture liquide « Beri », Roshen",
+   "en": "“Beri” fruit candies with liquid filling, Roshen",
+   "uk": "Фруктові цукерки з рідкою начинкою «Beri», Roshen",
+   "ru": "Фруктовые конфеты с жидкой начинкой «Beri», Roshen"
+  },
+  "candy-0000000011001-cmw6u2y0b": {
+   "src": "• Bonbon au caramel goût épine-vinette « Barbaris », Rakhat",
+   "fr": "Bonbon au caramel goût épine-vinette « Barbaris », Rakhat",
+   "en": "“Barbaris” barberry caramel, Rakhat",
+   "uk": "Карамель «Барбарис», Рахат",
+   "ru": "Карамель «Барбарис», Рахат"
   }
  },
  "collections": {
