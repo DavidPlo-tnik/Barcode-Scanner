@@ -2587,7 +2587,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v285</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v286</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3210,7 +3210,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v285</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v286</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -13003,6 +13003,16 @@
     out.push(`TOTAL before taxes: ${supMoney(t.total)}`);
     return out.join('\n');
   }
+  // what goes to the supplier: their code, their name, how many cases — nothing else
+  function supShareText(c, d) {
+    const byK = Object.fromEntries((c.list.items || []).map(it => [it.k, it]));
+    const out = [`Marché Décarie — ${supToday()}`, ''];
+    Object.entries(d.lines).filter(([, l]) => l.q > 0).sort((a, b) => ((byK[a[0]] || a[1]).r || 999) - ((byK[b[0]] || b[1]).r || 999)).forEach(([k, l]) => {
+      const it = byK[k] || l;
+      out.push(`${it.sku ? it.sku + ' ' : ''}${it.d || l.d} — ${supQtyText(l)}${c.unit === 'kg' ? ' kg' : ''}`);
+    });
+    return out.join('\n');
+  }
   async function supSend() {
     const c = _sup.cfg[_sup.sid], d = supDraft(_sup.sid);
     const el = $('#sup-panel');
@@ -13022,7 +13032,7 @@
     const fname = `Marche_Decarie_order_${supToday()}.xlsx`;
     const getFile = async () => new File([await supBuildXlsx(c, d)], fname, { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
     if ($('#sup-sharetxt')) $('#sup-sharetxt').onclick = async () => {
-      try { if (navigator.share) await navigator.share({ title: 'Order Marché Décarie', text: supOrderText(c, d) }); else { await navigator.clipboard.writeText(supOrderText(c, d)); showToast('COPIED ✓'); } }
+      try { if (navigator.share) await navigator.share({ title: 'Order Marché Décarie', text: supShareText(c, d) }); else { await navigator.clipboard.writeText(supShareText(c, d)); showToast('COPIED ✓'); } }
       catch (e) { if (e.name !== 'AbortError') showToast(e.message, true); }
     };
     if ($('#sup-dl')) $('#sup-dl').onclick = async () => { try { supDownload(await getFile()); } catch (e) { showToast(e.message, true); } };
