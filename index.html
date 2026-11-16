@@ -532,6 +532,12 @@
   /* Product detail must always sit above other modals (lists, reports, etc.)
      so tapping "⋯" from inside a list opens it on top instead of behind. */
   #product-modal { z-index: 150; }
+  /* product info opened from inside another screen (stock check, supplier order…): on top of it, and so is whatever it opens */
+  body.pm-peek #product-modal { z-index: 440; }
+  body.pm-peek #pos-edit-modal, body.pm-peek #pos-pin-modal, body.pm-peek #pos-direct-modal, body.pm-peek #candy-modal, body.pm-peek #flyer-modal,
+  body.pm-peek #add-to-list-modal, body.pm-peek #ecom-add-modal, body.pm-peek #merge-picker-modal, body.pm-peek #audit-confirm-modal, body.pm-peek .studio-ov { z-index: 460; }
+  body.pm-peek .toast { z-index: 9500; }
+  [data-peek] { cursor: pointer; }
   #pos-edit-modal { z-index: 160; }
   .product-action-rows { padding: 0 16px 10px; display: flex; flex-direction: column; gap: 6px; }
   .par-row { display: flex; gap: 6px; }
@@ -2587,7 +2593,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v286</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v287</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3210,7 +3216,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v286</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v287</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4472,7 +4478,20 @@
   }
 
   // ============== PRODUCT DETAIL ==============
+  // tap the empty part of a product row (not its photo, not a button) anywhere in the app → its full info, on top
+  function peekProduct(code) {
+    if (!code || !lookup(code)) { showToast('PRODUCT NOT FOUND', true); return; }
+    openProduct(code);
+    document.body.classList.add('pm-peek');
+  }
+  document.addEventListener('click', (e) => {
+    const row = e.target.closest('[data-peek]'); if (!row) return;
+    if (e.target.closest('button, a, input, select, textarea, label, img, video, summary, [data-nopeek]')) return;
+    if (window.getSelection && String(window.getSelection()).length) return;
+    peekProduct(row.dataset.peek);
+  });
   function openProduct(code, scannedRaw) {
+    document.body.classList.remove('pm-peek');
     const p = lookup(code);
     if (!p) { showToast('PRODUCT NOT FOUND', true); return; }
     currentProductCode = code;
@@ -4540,6 +4559,7 @@
 
   function closeProduct() {
     $('#product-modal').classList.remove('open');
+    document.body.classList.remove('pm-peek');
     if (chart) { chart.destroy(); chart = null; }
     currentProductCode = null;
   }
@@ -12823,7 +12843,7 @@
     const costMove = cost != null && posCost && Math.abs(cost - posCost) > 0.05 * posCost;
     const na = it.p == null;
     const per = it.unit === 'lb' ? '/lb' : it.unit === 'kg' ? '/kg' : '/u';
-    return `<div class="sup-line${codes.length ? ' carried' : ''}${q ? ' in' : ''}${na ? ' na' : ''}" data-k="${escapeHtml(it.k)}">
+    return `<div class="sup-line${codes.length ? ' carried' : ''}${q ? ' in' : ''}${na ? ' na' : ''}" data-k="${escapeHtml(it.k)}"${codes.length ? ` data-peek="${escapeHtml(codes[0])}"` : ''}>
       <div class="sup-l1">
         ${codes.length ? productThumbHtml(codes[0], 40) : '<span class="sup-noimg">?</span>'}
         <div class="sup-names"><b>${escapeHtml(ourName || it.d)}</b>${ourName ? `<small>${escapeHtml(it.d)}</small>` : ''}
@@ -14231,7 +14251,7 @@
     const acts = kind === 'back'
       ? `<button class="sc-in" data-sc="back" data-code="${r.code}">✓ BACK IN STOCK</button><button data-sc="still" data-code="${r.code}">STILL OUT</button>`
       : `<button class="sc-in" data-sc="in" data-code="${r.code}">✓ IN STOCK</button><button class="sc-out" data-sc="out" data-code="${r.code}">✗ OUT</button>`;
-    return `<div class="sc-row${r.level === 'bad' ? ' hi' : ''}" data-row="${r.code}">${productThumbHtml(r.code, 48)}
+    return `<div class="sc-row${r.level === 'bad' ? ' hi' : ''}" data-row="${r.code}" data-peek="${r.code}">${productThumbHtml(r.code, 48)}
       <div class="sc-main"><b>${escapeHtml(r.name)}</b><small>${tag}${escapeHtml(r.why)}</small></div>
       <div class="sc-acts">${acts}</div></div>`;
   }
@@ -15188,7 +15208,7 @@
       const price = p ? p[1] : null;
       const subtotal = price != null ? `${fmtMoney(price * qty)}` : '';
       return `
-        <div class="counted-item" data-code="${code}">
+        <div class="counted-item" data-code="${code}" data-peek="${code}">
           <div class="ci-info">
             <div class="ci-name">${escapeHtml(name)}</div>
             <div class="ci-meta">${code}${subtotal ? ' · ' + subtotal : ''}</div>
@@ -15433,7 +15453,7 @@
         const name = p ? p[0] : `(unknown ${code})`;
         const price = p ? p[1] : null;
         return `
-          <div class="counted-item">
+          <div class="counted-item" data-peek="${code}">
             <div class="ci-info">
               <div class="ci-name">${escapeHtml(name)}</div>
               <div class="ci-meta">${code}${price != null ? ' · ' + fmtMoney(price * qty) : ''}</div>
