@@ -2593,7 +2593,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v287</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v288</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3216,7 +3216,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v287</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v288</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -4486,6 +4486,7 @@
   }
   document.addEventListener('click', (e) => {
     const row = e.target.closest('[data-peek]'); if (!row) return;
+    if (row.classList.contains('fl-item') && _fl.select) return;   // flyer: tapping picks items while selecting
     if (e.target.closest('button, a, input, select, textarea, label, img, video, summary, [data-nopeek]')) return;
     if (window.getSelection && String(window.getSelection()).length) return;
     peekProduct(row.dataset.peek);
@@ -5874,7 +5875,7 @@
            <span class="fl-picknote">${flyerPicked(u).length ? flyerPicked(u).length + ' of ' + u.members.length : 'tap photos to pick'}</span>
          </div>`
       : (r0.photos.length > 1 ? `<div class="fl-row"><span class="fl-lbl">PHOTO</span><button class="fl-chip ${!c.all ? 'on' : ''}" data-all="0">1</button><button class="fl-chip ${c.all ? 'on' : ''}" data-all="1">ALL ${r0.photos.length}</button></div>` : '');
-    return `<div class="fl-item ${multi ? 'fl-group' : ''} ${c.hide ? 'off' : ''} ${sel && sel.has(u.key) ? 'picked' : ''}" data-key="${escapeHtml(u.key)}" style="--i:${i}">
+    return `<div class="fl-item ${multi ? 'fl-group' : ''} ${c.hide ? 'off' : ''} ${sel && sel.has(u.key) ? 'picked' : ''}" data-key="${escapeHtml(u.key)}"${multi ? '' : ` data-peek="${escapeHtml(r0.code)}"`} style="--i:${i}">
       <div class="fl-check" aria-hidden="true"></div>
       <div class="fl-item-main">
         <div class="fl-item-top">${thumbs}
@@ -11384,7 +11385,7 @@
                       placeholder="prix" value="${np != null ? np : ''}" data-code="${item.code}" />
              </div>`;
         return `
-          <div class="list-item-c">
+          <div class="list-item-c" data-peek="${item.code}">
             ${productThumbHtml(item.code, 36)}
             <div class="li-main">
               <div class="li-name">${escapeHtml(item.name.trim())}</div>
@@ -13081,7 +13082,7 @@
       <p class="or-c3">${ro ? 'What came in.' : 'Check each line as you unpack. Change the number if a box is missing or extra.'}</p>
       ${Object.entries(o.lines).map(([k, l]) => {
         const codes = supCodes(c, byK[k] || { k }), r = l.recv != null ? l.recv : l.q + (l.free || 0);
-        return `<div class="sup-line${r !== l.q ? ' diff' : ''}" data-k="${escapeHtml(k)}"><div class="sup-l1">
+        return `<div class="sup-line${r !== l.q ? ' diff' : ''}" data-k="${escapeHtml(k)}"${codes.length ? ` data-peek="${escapeHtml(codes[0])}"` : ''}><div class="sup-l1">
           ${codes.length ? productThumbHtml(codes[0], 40) : '<span class="sup-noimg">?</span>'}
           <div class="sup-names"><b>${escapeHtml(codes.length ? (supProd(codes[0]) || DATA.products[resolveCode(codes[0])] || [''])[0] : (byK[k] || {}).d || l.d)}</b><small>ordered ${supQtyText(l)} box${l.q + (l.free || 0) > 1 ? 'es' : ''}</small></div>
           ${ro ? `<b>${r}</b>` : `<div class="sup-step"><button data-rq="-1">−</button><span>${r}</span><button data-rq="1">＋</button></div>`}
@@ -13242,7 +13243,7 @@
     const cost = it ? supCostPerOurUnit(it) : null, our = p[1];
     const mg = cost != null && our ? Math.round(100 * (our - cost) / our) : null;
     const ta = Math.round(((DATA.sales[code] || {}).ta) || 0);
-    return `<div class="sup-pc${action === 'unlink' ? ' is-linked' : ''}">
+    return `<div class="sup-pc${action === 'unlink' ? ' is-linked' : ''}" data-peek="${escapeHtml(code)}">
       ${productThumbHtml(code, 52)}
       <div class="sup-pc-t">${tag ? `<em class="sup-pc-tag">${tag}</em>` : ''}<b>${escapeHtml(pos)}</b>${web ? `<small>${escapeHtml(web)}</small>` : ''}
         <small>${escapeHtml(productSizeText(code) || 'no size')} · we sell ${our != null ? priceText(code, our) : '—'}${p[4] ? ' · POS cost ' + supMoney(p[4]) : ''}</small>
@@ -14969,7 +14970,7 @@
     out.sort((a,b)=>b.rev-a.rev);
     const inCat = (_ecomCatalog && _ecomCatalog.items) || {};
     box.innerHTML = out.slice(0, 40).map(m => `
-      <div class="search-row" data-code="${m.code}">
+      <div class="search-row" data-code="${m.code}" data-peek="${m.code}">
         ${productThumbHtml(m.code, 38)}
         <div style="flex:1;min-width:0;">
           <div class="name">${escapeHtml(m.name)}</div>
@@ -17320,6 +17321,10 @@ analytics.subscribe('checkout_completed', (ev) => mdCheckout('done', ev));
       return !(n && n.e !== 'page' && n.e !== 'add' && n.e !== 'rem' && n.t - x.t < 4000);
     });
   }
+  function wtCode(sku) {
+    const code = String(sku || '').replace(/-[\d.]+KG$/i, '');
+    try { return code && DATA.products[resolveCode(code)] ? resolveCode(code) : ''; } catch (e) { return ''; }
+  }
   function wtThumb(sku) {
     const code = String(sku || '').replace(/-[\d.]+KG$/i, '');
     try { return code && DATA.products[resolveCode(code)] ? productThumbHtml(resolveCode(code), 40) : ''; } catch (e) { return ''; }
@@ -17513,7 +17518,7 @@ analytics.subscribe('checkout_completed', (ev) => mdCheckout('done', ev));
       html = head + `<div class="wt-chips"><button class="ecom-chip${_wt.pf === 'all' ? ' active' : ''}" data-pf="all">ALL (${Object.keys(P).length})</button><button class="ecom-chip${_wt.pf === 'never' ? ' active' : ''}" data-pf="never">VIEWED 3+ TIMES, NEVER ADDED (${nNever})</button></div>
         <p class="wt-p">Last ${WT_DAYS} days. 👁 visits that opened the product · ➕ visits that added it to the cart · ✅ units ordered.</p>
         ${list.slice(0, 150).map(p => { const rate = p.v.size ? Math.round(100 * p.a.size / p.v.size) : 0;
-          return `<div class="wt-prod">${wtThumb(p.s)}<div class="wt-prod-m"><b>${escapeHtml(p.t)}</b><div class="wt-bar"><i style="width:${Math.round(100 * p.v.size / max)}%"></i></div></div>
+          return `<div class="wt-prod"${wtCode(p.s) ? ` data-peek="${wtCode(p.s)}"` : ''}>${wtThumb(p.s)}<div class="wt-prod-m"><b>${escapeHtml(p.t)}</b><div class="wt-bar"><i style="width:${Math.round(100 * p.v.size / max)}%"></i></div></div>
             <div class="wt-prod-n"><span>👁 ${p.v.size}</span><span>➕ ${p.a.size}</span><span>✅ ${p.b}</span><small class="${p.v.size >= 3 && !p.a.size ? 'bad' : ''}">${p.v.size ? rate + '% add' : ''}</small></div></div>`; }).join('') || '<div class="wt-empty">Nothing yet.</div>'}`;
     } else {
       const lost = S.filter(s => !s.done && s.cart.length && now - s.last > 30 * 60000);
@@ -18045,7 +18050,7 @@ analytics.subscribe('checkout_completed', (ev) => mdCheckout('done', ev));
         if (dq < 0 || da < 0) chip = '<span class="lv-chip bad">REFUND / RETURN</span>';
         else if (dq > 0 && da <= 0.005 && (inf.shelf || 0) > 0) chip = '<span class="lv-chip bad">$0</span>';
         else if (unit !== null && inf.shelf > 0 && unit < inf.shelf * 0.85) chip = '<span class="lv-chip hot">BELOW SHELF</span>';
-        return `<div class="lv-row" style="cursor:default;"><div class="lv-time">${t.slice(0, 8)}</div>${productThumbHtml(code, 34)}
+        return `<div class="lv-row" style="cursor:default;" data-peek="${escapeHtml(code)}"><div class="lv-time">${t.slice(0, 8)}</div>${productThumbHtml(code, 34)}
           <div class="lv-main"><div class="lv-name">${escapeHtml(inf.name)}${chip}</div>
           <div class="lv-meta">${escapeHtml(code.replace(/^0+/, '') || code)}${unit !== null ? ' · ' + money2(unit) + ' each' : ''}</div></div>
           <div class="lv-num"><div class="lv-qty ${dq < 0 ? 'lv-neg' : ''}" style="font-size:16px;">${dq > 0 ? '+' : ''}${liveFmtQ(dq)}</div><div class="lv-amt ${da < 0 ? 'lv-neg' : ''}">${liveMoney(da)}</div></div></div>`;
@@ -18483,7 +18488,7 @@ analytics.subscribe('checkout_completed', (ev) => mdCheckout('done', ev));
 
     let html = '<table class="rpt-table"><thead><tr><th>#</th><th>Produit</th><th>Qté</th><th>Ventes</th><th>%</th></tr></thead><tbody>';
     top.forEach((r,i) => {
-      html += `<tr><td>${i+1}</td><td class="rpt-name">${r.name.trim()}</td><td>${r.qty.toFixed(0)}</td><td>${money2(r.amt)}</td><td>${(100*r.amt/total).toFixed(1)}%</td></tr>`;
+      html += `<tr data-peek="${r.code}"><td>${i+1}</td><td class="rpt-name">${r.name.trim()}</td><td>${r.qty.toFixed(0)}</td><td>${money2(r.amt)}</td><td>${(100*r.amt/total).toFixed(1)}%</td></tr>`;
     });
     html += '</tbody></table>';
     if (!top.length) html = '<div class="rpt-empty">Aucune donnée pour cette période</div>';
@@ -18612,12 +18617,12 @@ analytics.subscribe('checkout_completed', (ev) => mdCheckout('done', ev));
       const pct = 100 * drop / prior;
       if (pct < 30) continue;              // only meaningful drops
       const p = DATA.products[code];
-      rows.push({ name: p ? p[0].trim() : code, recent, prior, pct });
+      rows.push({ code, name: p ? p[0].trim() : code, recent, prior, pct });
     }
     rows.sort((a, b) => (b.prior - b.recent) - (a.prior - a.recent));  // biggest $ drop first
     let html = '<table class="rpt-table"><thead><tr><th>Produit</th><th>Préc.</th><th>Récent</th><th>Baisse</th></tr></thead><tbody>';
     rows.slice(0, 40).forEach(r => {
-      html += `<tr><td class="rpt-name">${r.name}</td><td>${money(r.prior)}</td><td>${money(r.recent)}</td><td class="neg">-${r.pct.toFixed(0)}%</td></tr>`;
+      html += `<tr data-peek="${r.code}"><td class="rpt-name">${r.name}</td><td>${money(r.prior)}</td><td>${money(r.recent)}</td><td class="neg">-${r.pct.toFixed(0)}%</td></tr>`;
     });
     html += '</tbody></table>';
     if (!rows.length) html += '<div class="rpt-empty">No significant slow movers</div>';
