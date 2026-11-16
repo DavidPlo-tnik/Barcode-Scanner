@@ -2595,7 +2595,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v290</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v291</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3218,7 +3218,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v290</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v291</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -13051,7 +13051,7 @@
       <div class="sup-total"><div><b>${supMoney(tt.total)}</b><span>${tt.boxes} boxes${tt.free ? ' + ' + tt.free + ' free' : ''} · ${tt.n} products</span></div></div>
       ${c.list.file ? `<button class="btn primary sup-wide" id="sup-dl">⬇ DOWNLOAD THEIR SHEET (.xlsx)</button>
       <p class="or-c3">Their own order sheet with your quantities in the ORDER column (10+1 written as is). Attach it to your email or WhatsApp.</p>
-      ${lines.some(([, l]) => !l.r) ? '<p class="or-c3 sup-warn">Some products were added by hand and are not on their sheet: send the text too.</p>' : ''}` : '<button class="btn primary sup-wide" id="sup-sharetxt">📤 SHARE THE ORDER</button>'}
+      ${lines.some(([, l]) => !l.r) ? '<p class="or-c3 sup-warn">Some products were added by hand and are not on their sheet: send the text too.</p>' : ''}` : (supIsPhone() ? '<button class="btn primary sup-wide" id="sup-sharetxt">📤 SHARE THE ORDER</button>' : '<button class="btn primary sup-wide" id="sup-sharetxt">📋 COPY THE ORDER FOR THEM</button><p class="or-c3">Copies their codes, names and boxes. Paste it in your email.</p>')}
       <button class="btn sup-wide" id="sup-copy">📋 COPY THE ORDER (with prices)</button>
       <button class="btn sup-wide" id="sup-mark">✓ MARK AS SENT</button>
       <div class="sup-sec">YOUR INVOICE TO COMPARE</div>
@@ -13059,8 +13059,12 @@
     const fname = `Marche_Decarie_order_${supToday()}.xlsx`;
     const getFile = async () => new File([await supBuildXlsx(c, d)], fname, { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
     if ($('#sup-sharetxt')) $('#sup-sharetxt').onclick = async () => {
-      try { if (navigator.share) await navigator.share({ title: 'Order Marché Décarie', text: supShareText(c, d) }); else { await navigator.clipboard.writeText(supShareText(c, d)); showToast('COPIED ✓'); } }
-      catch (e) { if (e.name !== 'AbortError') showToast(e.message, true); }
+      const text = supShareText(c, d);
+      if (supIsPhone() && navigator.share) {
+        try { await navigator.share({ title: 'Order Marché Décarie', text }); } catch (e) { if (e.name !== 'AbortError') showToast(e.message, true); }
+        return;
+      }
+      try { await navigator.clipboard.writeText(text); showToast('ORDER COPIED ✓ — paste it in your email'); } catch (e) { prompt('Copy:', text); }
     };
     if ($('#sup-dl')) $('#sup-dl').onclick = async () => { try { supDownload(await getFile()); } catch (e) { showToast(e.message, true); } };
     $('#sup-copy').onclick = async () => { try { await navigator.clipboard.writeText(supOrderText(c, d)); showToast('COPIED ✓'); } catch { prompt('Copy:', supOrderText(c, d)); } };
@@ -13074,6 +13078,8 @@
     };
     supBindCommon(el);
   }
+  // the phone share sheet is useful; the Windows one (Copilot / Outlook / OneNote) is not: on a computer we just copy
+  function supIsPhone() { try { return matchMedia('(pointer: coarse)').matches && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent + (navigator.maxTouchPoints > 1 ? ' Mobile' : '')); } catch (e) { return false; } }
   function supDownload(file) {
     const a = document.createElement('a'); a.href = URL.createObjectURL(file); a.download = file.name;
     document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
