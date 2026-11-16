@@ -2595,7 +2595,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v289</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v290</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3218,7 +3218,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v289</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v290</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11873,6 +11873,7 @@
         try {
           const d = await orDecrypt(json, pass);
           // GitHub can hand back an older copy for a minute: keep the newer one we already have
+          if (d && !Array.isArray(d.orders)) d.orders = [];
           if (!(_or.data && _or.data.updated && d && d.updated && String(d.updated) < String(_or.data.updated))) _or.data = d;
           _or.err = '';
         }
@@ -11882,7 +11883,7 @@
       orCleanPending();
     } catch (e) { _or.err = String(e.message || e); }
     finally { _or.loading = false; }
-    orBadge();
+    try { orBadge(); } catch (e) { console.error('orBadge', e); }
     if (!quiet || document.querySelector('#orders-view.active')) orRender();
     if (_or.data && (_or.reviews == null || Date.now() - (_or.revT || 0) > 120000)) {
       _or.revT = Date.now();
@@ -13498,6 +13499,7 @@
     orSetMode(_sup.mode || (() => { try { return localStorage.getItem('orMode') || 'web'; } catch { return 'web'; } })());
     orRender();
     orFetch();
+    setTimeout(() => { const p = $('#or-panel'); if (p && p.style.display !== 'none' && !p.innerHTML.trim()) orRender(); }, 1200);
     Promise.all([fetchEcomCatalog(), fetchEditData()]).catch(() => {});   // produce families for order matching
     clearInterval(_or.timer);
     _or.timer = setInterval(() => { if (!document.hidden && document.querySelector('#orders-view.active')) orFetch(true); }, 30000);
@@ -13551,6 +13553,30 @@
 
   function orRender() {
     const el = $('#or-panel'); if (!el || el.style.display === 'none') return;
+    try { orRenderInner(el); }
+    catch (e) {
+      console.error('orRender', e);
+      el.innerHTML = `<div class="or-warn"><b>The orders screen hit an error</b><br>${escapeHtml(String(e && e.message || e))}<br><br>
+        <button class="btn primary" id="or-retry">⟳ TRY AGAIN</button></div>`;
+      const b = $('#or-retry'); if (b) b.onclick = () => { orFetch(); orRender(); };
+    }
+  }
+  function orCardHtml(o) {
+    try {
+      const picked = (orLS('orPick:' + o.id) || []).length, items = o.items || [];
+      return `<button class="or-card st-${o.status}" data-id="${escapeHtml(o.id)}">
+          <div class="or-c1"><b>${escapeHtml(o.name)}</b><span class="or-pill st-${o.status}">${orLabel(o)}${o._pending ? ' ·…' : ''}</span></div>
+          <div class="or-c2">${escapeHtml(o.customer || '')}<span>${o.created ? orAgo(o.created) : ''}</span></div>
+          <div class="or-c3">${items.length} items · est. ${orMoney(orEst(o))}${orDoor(o) ? ' · 💳 at door' : ' · 🏦 e-Transfer'}${o.subs ? ' · 🔄 subs OK' : ''}${o.instr || o.note ? ' · 🚪 instructions' : ''}${o.pos ? ` · <b>final ${orMoney(o.pos.total)}</b>` : ''}
+            ${o.status === 'preparing' ? ` · picked ${picked}/${items.length}` : ''}
+            ${o.deliver_on && ['paid', 'out_for_delivery'].includes(o.status) ? ` · deliver <b>${orDay(o.deliver_on)}</b>` : ''}</div>
+        </button>`;
+    } catch (e) {
+      console.error('order card', o && o.id, e);
+      return `<button class="or-card" data-id="${escapeHtml(String(o && o.id || ''))}"><div class="or-c1"><b>${escapeHtml(String(o && o.name || 'Order'))}</b></div><div class="or-c3">tap to open</div></button>`;
+    }
+  }
+  function orRenderInner(el) {
     if (!orPass() || _or.err === 'badpass') {
       el.innerHTML = `<div class="or-pass">
         <div class="or-h">ONLINE ORDERS</div>
@@ -13563,12 +13589,12 @@
       return;
     }
     if (!_or.data) { el.innerHTML = `<div class="empty-state">${_or.err ? 'Could not load orders: ' + escapeHtml(_or.err) : 'Loading orders…'}</div>`; return; }
-    const all = _or.data.orders.map(orApplyPending);
+    const all = (_or.data.orders || []).map(o => { try { return orApplyPending(o); } catch (e) { return o; } });
     const groups = { open: all.filter(o => !['delivered', 'cancelled'].includes(o.status)),
       done: all.filter(o => o.status === 'delivered'), cancelled: all.filter(o => o.status === 'cancelled') };
     const list = groups[_or.view] || [];
     const order = (o) => OR_FLOW.indexOf(o.status);
-    if (_or.view === 'open') list.sort((a, b) => order(a) - order(b) || a.created.localeCompare(b.created));
+    if (_or.view === 'open') list.sort((a, b) => order(a) - order(b) || String(a.created || '').localeCompare(String(b.created || '')));
     el.innerHTML = `
       <div class="or-top"><div class="or-h">ONLINE ORDERS</div>
         <span class="or-upd">${_or.data.updated ? 'PC ' + orAgo(_or.data.updated) : ''}</span>
@@ -13582,23 +13608,14 @@
       </div>
       ${_or.data.pc_error ? `<div class="or-warn"><b>The PC cannot read the website orders:</b><br>${escapeHtml(_or.data.pc_error)}</div>` : ''}
       ${!_or.data.pos_auto && groups.open.some(o => o.status === 'on_hold') ? `<div class="or-warn">The PC cannot read held sales from the register journals right now — check that online_orders.py is running.</div>` : ''}
-      <div class="or-list">${list.map(o => {
-        const picked = (orLS('orPick:' + o.id) || []).length;
-        return `<button class="or-card st-${o.status}" data-id="${escapeHtml(o.id)}">
-          <div class="or-c1"><b>${escapeHtml(o.name)}</b><span class="or-pill st-${o.status}">${orLabel(o)}${o._pending ? ' ·…' : ''}</span></div>
-          <div class="or-c2">${escapeHtml(o.customer || '')}<span>${orAgo(o.created)}</span></div>
-          <div class="or-c3">${o.items.length} items · est. ${orMoney(orEst(o))}${orDoor(o) ? ' · 💳 at door' : ' · 🏦 e-Transfer'}${o.subs ? ' · 🔄 subs OK' : ''}${o.instr || o.note ? ' · 🚪 instructions' : ''}${o.pos ? ` · <b>final ${orMoney(o.pos.total)}</b>` : ''}
-            ${o.status === 'preparing' ? ` · picked ${picked}/${o.items.length}` : ''}
-            ${o.deliver_on && ['paid', 'out_for_delivery'].includes(o.status) ? ` · deliver <b>${orDay(o.deliver_on)}</b>` : ''}</div>
-        </button>`;
-      }).join('') || `<div class="empty-state">${_or.view === 'open' ? 'No orders to prepare.' : 'Nothing here.'}</div>`}</div>`;
+      <div class="or-list">${list.map(orCardHtml).join('') || `<div class="empty-state">${_or.view === 'open' ? 'No orders to prepare.' : 'Nothing here.'}</div>`}</div>`;
     el.querySelectorAll('.or-chips button').forEach(b => b.onclick = () => { _or.view = b.dataset.v; orRender(); });
     $('#or-refresh').onclick = () => orFetch();
     $('#or-key').onclick = vaultSetup;
     $('#or-route').onclick = rtOpen;
-    rtRender();
     el.querySelectorAll('.or-card').forEach(b => b.onclick = () => orOpen(b.dataset.id));
-    if (_or.sel && !(document.activeElement && document.activeElement.id === 'or-man')) orDetail();
+    try { rtRender(); } catch (e) { console.error('rtRender', e); }
+    if (_or.sel && !(document.activeElement && document.activeElement.id === 'or-man')) { try { orDetail(); } catch (e) { console.error('orDetail', e); } }
   }
 
   function orOpen(id) { _or.sel = id; _or.manual = false; orDetail(); }
