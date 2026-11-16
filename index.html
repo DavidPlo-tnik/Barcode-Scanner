@@ -136,7 +136,9 @@
   .sup-step { display: flex; align-items: center; gap: 4px; flex: none; }
   .sup-step button { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 18px; }
   .sup-step span { min-width: 24px; text-align: center; font-weight: 700; font-size: 16px; }
-  .sup-sugg { display: block; width: 100%; margin-top: 6px; padding: 6px; border-radius: 7px; border: 1px dashed var(--accent); background: transparent; color: var(--accent); font-size: 12px; }
+  .sup-right { flex: none; display: flex; flex-direction: column; align-items: stretch; gap: 5px; }
+  .sup-sugg { display: block; width: 100%; padding: 5px 6px; border-radius: 7px; border: 1px dashed var(--accent); background: transparent; color: var(--accent); font-size: 12px; white-space: nowrap; }
+  .sup-chg { padding: 4px 6px; border-radius: 7px; border: 1px solid var(--border); background: transparent; color: var(--text-dim); font-size: 10.5px; white-space: nowrap; }
   .sup-ok { color: #30d158; } .sup-bad { color: #ff6b5e; } .sup-warn { color: #ff9f0a; } .sup-new { color: #000; background: #ffd23f; padding: 0 4px; border-radius: 3px; font-size: 9.5px; font-weight: 700; }
   .sup-wide { display: block; width: 100%; margin-bottom: 8px; padding: 13px; }
   .sup-recap { font-size: 12.5px; color: var(--text-dim); line-height: 1.6; margin-top: 10px; }
@@ -2593,7 +2595,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v288</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v289</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3216,7 +3218,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v288</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v289</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -12851,9 +12853,13 @@
           <small>${c.unit === 'kg' ? (na ? '<span class="sup-bad">no price</span>' : supMoney(it.p) + '/kg' + (it.ou ? ' (' + supMoney(cost) + ' a piece)' : '')) : `${escapeHtml(it.b || '?')} per box · ${na ? '<span class="sup-bad">no price on their list</span>' : supMoney(it.p) + per + ' = ' + supMoney(it.p * (it.bn || 0)) + '/box'}`}${our ? ' · we sell ' + supMoney(our) : ''}${margin != null ? ` · <b class="${margin < 25 ? 'sup-bad' : 'sup-ok'}">${margin}%</b>` : ''}${it.n ? ` · <span class="sup-new">${escapeHtml(it.n)}</span>` : ''}</small>
           ${codes.length ? `<small>${cd0 ? `🍬 sold under ${escapeHtml(((DATA.products[cd0.base] || [])[0] || '').trim())} ${supMoney((DATA.products[cd0.base] || [])[1])} with other items: no sales of its own` : sg && sg.rate ? 'sells ' + (sg.rate >= 10 ? Math.round(sg.rate) : sg.rate.toFixed(1)) + (it.ou ? ' pcs' : it.unit !== 'ea' ? ' kg' : '') + '/wk' : 'no recent sales'}${sg && sg.last ? ' · last: ' + sg.last.qty + (c.unit === 'kg' ? ' kg ' : ' bx ') + sg.last.date.slice(5) : ''}${costMove ? ` · <span class="sup-warn">cost ${supMoney(cost)} vs POS ${supMoney(posCost)}</span>` : ''}</small>` : ''}
         </div>
-        ${na ? '' : `<div class="sup-step"><button data-sq="-1" aria-label="one box less">−</button><button class="sup-qty" data-qedit="1">${supQtyText(l)}</button><button data-sq="1" aria-label="one box more">＋</button></div>`}
+        <div class="sup-right">
+          ${sg && sg.boxes && sg.boxes !== q && !na ? `<button class="sup-sugg" data-sset="${sg.boxes}">suggest ${sg.boxes} → tap</button>` : ''}
+          ${na ? '' : `<div class="sup-step"><button data-sq="-1" aria-label="one box less">−</button><button class="sup-qty" data-qedit="1">${supQtyText(l)}</button><button data-sq="1" aria-label="one box more">＋</button></div>`}
+          ${codes.length ? `<button class="sup-chg" data-match="1">${codes.length > 1 ? codes.length + ' matched · ' : ''}change match</button>` : ''}
+        </div>
       </div>
-      ${codes.length ? `<div class="sup-mline"><span>✓ matched to <b>${escapeHtml(ourName)}</b>${codes.length > 1 ? ' +' + (codes.length - 1) : ''}</span><button data-match="1">change / unmatch</button></div>`
+      ${codes.length ? ''
         : `<div class="sup-mline is-un"><span>${(() => { const s0 = ((c.sugg || {})[it.k] || []).find(x => supProd(x)); return s0 ? 'suggestion: ' + escapeHtml(((supProd(s0) || [])[0] || '').trim()) : 'not matched to our products'; })()}</span><button class="primary" data-match="1">🔍 FIND MATCH</button></div>`}
       ${!na && q >= 10 && c.unit !== 'kg' ? `<button class="sup-free${l && l.fa ? ' on' : ''}" data-free="1">🎁 ${l && l.fa ? `${q}+${Math.floor(q / 10)} free box${Math.floor(q / 10) > 1 ? 'es' : ''} ✓` : '10+1 deal? tap to add the free boxes'}</button>` : ''}
       ${sg && sg.others && sg.others.length ? (() => {
@@ -12862,7 +12868,6 @@
           ${pref === c.id ? '<span class="sup-ok">★ ordered from here</span>' : `<button data-pref="${escapeHtml(codes.join(','))}">★ order it from ${escapeHtml(c.name)}</button>`}
           ${sg.elsewhere ? `<em>${sg.elsewhere.why === 'pref' ? 'usually ordered from' : 'cheaper at'} ${escapeHtml((_sup.cfg[sg.elsewhere.sid] || {}).name || sg.elsewhere.sid)}</em>` : ''}</div>`;
       })() : ''}
-      ${sg && sg.boxes && sg.boxes !== q && !na ? `<button class="sup-sugg" data-sset="${sg.boxes}">suggest ${sg.boxes} box${sg.boxes > 1 ? 'es' : ''} → tap</button>` : ''}
     </div>`;
   }
   function supTotals(c, d) {
