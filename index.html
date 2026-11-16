@@ -2595,7 +2595,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v292</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v293</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3218,7 +3218,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v292</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v293</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11846,25 +11846,10 @@
     if (fwd) return orRank(o.status) < orRank(p.status) && o.status !== 'cancelled';   // PC is behind (or the copy is stale)
     return o.status === p.base;                                               // going back a step (pick the held sale again, reopen)
   }
-  // An item removed at the register can stay in the held sale's lines while the total already
-  // dropped it: the lines then add up to more than the sale by exactly that item. Leave it off the bill.
-  function orFixVoids(pos) {
-    if (!pos || !Array.isArray(pos.items) || pos.tax == null || pos.total == null || pos._vf) return pos;
-    const net = Math.round((pos.total - (pos.tax || 0) - (pos.deposit || 0)) * 100) / 100;
-    const its = pos.items, amt = (x) => +(x.amt != null ? x.amt : x.p != null ? x.p : 0) || 0;
-    const gap = Math.round((its.reduce((t, x) => t + amt(x), 0) - net) * 100) / 100;
-    let keep = null;
-    if (gap > 0.02) {
-      for (let i = its.length - 1; i >= 0 && !keep; i--) if (Math.abs(amt(its[i]) - gap) <= 0.02) keep = its.filter((_, k) => k !== i);
-      for (let i = its.length - 1; i >= 0 && !keep; i--) for (let j = i - 1; j >= 0 && !keep; j--)
-        if (Math.abs(amt(its[i]) + amt(its[j]) - gap) <= 0.02) keep = its.filter((_, k) => k !== i && k !== j);
-    }
-    return Object.assign({}, pos, { items: keep || its, _vf: 1 });
-  }
   function orApplyPending(o) {
     const p = orPending()[o.id];
-    if (!orPendingLive(o, p)) return o.pos && !o.pos._vf ? Object.assign({}, o, { pos: orFixVoids(o.pos) }) : o;
-    return Object.assign({}, o, { status: p.status, pos: orFixVoids(p.pos || o.pos), deliver_on: p.deliver_on || o.deliver_on, pod: p.pod || o.pod, _pending: true });
+    if (!orPendingLive(o, p)) return o;
+    return Object.assign({}, o, { status: p.status, pos: p.pos || o.pos, deliver_on: p.deliver_on || o.deliver_on, pod: p.pod || o.pod, _pending: true });
   }
   function orCleanPending() {
     if (!_or.data) return;
@@ -13720,7 +13705,7 @@
     const nPicked = o.items.filter((_, i) => picked.has(i)).length;
     const cat = (_ecomCatalog && _ecomCatalog.items) || {};
     const img = (it) => it.img || (cat[it.code] && cat[it.code].photos && cat[it.code].photos[0] ? photoSrc(cat[it.code].photos[0]) : '');
-    const holds = (_or.data.holds || []).map(h => h && h.items ? orFixVoids(h) : h);
+    const holds = (_or.data.holds || []);
     let act = '';
     switch (o.status) {
       case 'new':
