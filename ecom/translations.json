@@ -1,6 +1,6 @@
 {
  "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime. Optional 'desc' {fr,en,uk,ru}: extra HTML appended to the product description.",
- "updated": "2026-11-17T14:56:32",
+ "updated": "2026-11-17T14:59:00",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
    "src": "Romachka, Roshen,",
@@ -10698,6 +10698,83 @@
    "en": "Rot Front Sladkie Istorii vanilla zefir 250 g",
    "uk": "Рот Фронт «Солодкі історії» зефір ванільний 250 г",
    "ru": "Рот Фронт «Сладкие истории» зефир со вкусом ванили 250 г"
+  },
+  "pos-0020171200000": {
+   "src": "PRUNEAUX DENOYAUTÉS",
+   "fr": "Pruneaux dénoyautés",
+   "en": "Pitted prunes",
+   "uk": "Чорнослив без кісточок",
+   "ru": "Чернослив без косточек"
+  },
+  "pos-0020171100000": {
+   "src": "BONBONS DECORATIFS ARC-EN-CIEL",
+   "fr": "Bonbons décoratifs arc-en-ciel",
+   "en": "Rainbow decorative candies",
+   "uk": "Декоративні цукерки «Веселка»",
+   "ru": "Декоративные конфеты «Радуга»"
+  },
+  "pos-0020711800000": {
+   "src": "NOIX DE COCO RAPÉE SUCRÉE",
+   "fr": "Noix de coco râpée sucrée",
+   "en": "Sweetened shredded coconut",
+   "uk": "Кокосова стружка солодка",
+   "ru": "Кокосовая стружка сладкая"
+  },
+  "pos-0020711300000": {
+   "src": "MANGUES SECHEE EN MORCEAUX",
+   "fr": "Mangue séchée en morceaux",
+   "en": "Dried mango pieces",
+   "uk": "Сушене манго шматочками",
+   "ru": "Сушёное манго кусочками"
+  },
+  "pos-0020171900000": {
+   "src": "MOIX DE MACADAM SAVEURE CREMEUSE",
+   "fr": "Noix de macadam saveur crémeuse",
+   "en": "Creamy-flavour macadamia nuts",
+   "uk": "Горіхи макадамія з вершковим смаком",
+   "ru": "Орехи макадамия со сливочным вкусом"
+  },
+  "pos-0020711400000": {
+   "src": "NOISETTES CRUES",
+   "fr": "Noisettes crues",
+   "en": "Raw hazelnuts",
+   "uk": "Фундук сирий",
+   "ru": "Фундук сырой"
+  },
+  "pos-0020172000000": {
+   "src": "PECANES JUMBO",
+   "fr": "Pacanes jumbo",
+   "en": "Jumbo pecans",
+   "uk": "Пекан великий",
+   "ru": "Пекан крупный"
+  },
+  "pos-0020172100000": {
+   "src": "NOIX DU BRÉSIL",
+   "fr": "Noix du Brésil",
+   "en": "Brazil nuts",
+   "uk": "Бразильський горіх",
+   "ru": "Бразильский орех"
+  },
+  "pos-0020172300000": {
+   "src": "PISTACHES GRILLÉS SALÉS",
+   "fr": "Pistaches grillées salées",
+   "en": "Roasted salted pistachios",
+   "uk": "Фісташки смажені солоні",
+   "ru": "Фисташки жареные солёные"
+  },
+  "pos-0020172200000": {
+   "src": "RAISINS DORÉS SECS",
+   "fr": "Raisins secs dorés",
+   "en": "Golden raisins",
+   "uk": "Родзинки золотисті",
+   "ru": "Изюм золотистый"
+  },
+  "pos-0020172400000": {
+   "src": "RAISINS SEC THOMPSON",
+   "fr": "Raisins secs Thompson",
+   "en": "Thompson raisins",
+   "uk": "Родзинки Thompson",
+   "ru": "Изюм Thompson"
   }
  },
  "collections": {
