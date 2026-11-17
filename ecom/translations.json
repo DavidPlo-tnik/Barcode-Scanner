@@ -1,6 +1,6 @@
 {
  "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime. Optional 'desc' {fr,en,uk,ru}: extra HTML appended to the product description.",
- "updated": "2026-11-15T17:30:00.000Z",
+ "updated": "2026-11-17T14:56:32",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
    "src": "Romachka, Roshen,",
@@ -10663,6 +10663,41 @@
    "en": "“Barbaris” barberry caramel, Rakhat",
    "uk": "Карамель «Барбарис», Рахат",
    "ru": "Карамель «Барбарис», Рахат"
+  },
+  "pos-0022687700000": {
+   "src": "GATEAU NAPOLEON",
+   "fr": "Gâteau Napoléon maison 380 g",
+   "en": "Homemade Napoleon cake 380 g",
+   "uk": "Домашній торт «Наполеон» 380 г",
+   "ru": "Домашний торт «Наполеон» 380 г"
+  },
+  "pos-0020160000000": {
+   "src": "NOIX DE GRENOBLE",
+   "fr": "Noix de Grenoble",
+   "en": "Walnuts",
+   "uk": "Волоські горіхи",
+   "ru": "Грецкие орехи"
+  },
+  "pos-0460049222014": {
+   "src": "GUIMAUVE CHOCOLAT",
+   "fr": "Udarnitsa Charmel guimauve zéphyr enrobée de chocolat",
+   "en": "Udarnitsa Charmel chocolate-covered zefir",
+   "uk": "Ударниця «Шармель» зефір у шоколаді",
+   "ru": "Ударница «Шармэль» зефир в шоколаде"
+  },
+  "pos-0460714473350": {
+   "src": "GUIMAUVE FRAISE",
+   "fr": "Rot Front Sladkie Istorii guimauve zéphyr à la fraise 250 g",
+   "en": "Rot Front Sladkie Istorii strawberry zefir 250 g",
+   "uk": "Рот Фронт «Солодкі історії» зефір з полуницею 250 г",
+   "ru": "Рот Фронт «Сладкие истории» зефир с клубникой 250 г"
+  },
+  "pos-0460714473349": {
+   "src": "GUIMAUVE VANILLE",
+   "fr": "Rot Front Sladkie Istorii guimauve zéphyr vanille 250 g",
+   "en": "Rot Front Sladkie Istorii vanilla zefir 250 g",
+   "uk": "Рот Фронт «Солодкі історії» зефір ванільний 250 г",
+   "ru": "Рот Фронт «Сладкие истории» зефир со вкусом ванили 250 г"
   }
  },
  "collections": {

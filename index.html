@@ -2595,7 +2595,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v294</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v295</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3218,7 +3218,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v294</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v295</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -18050,8 +18050,11 @@ analytics.subscribe('checkout_completed', (ev) => mdCheckout('done', ev));
       if (!shown.length) html = '<div class="rpt-empty">Nothing matches</div>';
       else if (rows.length > shown.length) html += `<div class="rpt-sub" style="text-align:center;margin-top:8px;">Showing ${shown.length} of ${rows.length} — search to narrow down</div>`;
       list.innerHTML = html;
-      list.querySelectorAll('.lv-row').forEach(el => el.addEventListener('click', () => {
-        _live.open = _live.open === el.dataset.code ? null : el.dataset.code; paintLive(true);
+      list.querySelectorAll('.lv-row').forEach(el => el.addEventListener('click', (e) => {
+        if (e.target.closest('img, button, a, input')) return;
+        const c = el.dataset.code;
+        if (c && lookup(c)) { peekProduct(c); return; }      // a real product: its full info, on top
+        _live.open = _live.open === c ? null : c; paintLive(true);
       }));
     } else if (_live.view === 'feed' && _live.tx && _live.tx.date === d.date) {
       const all = _live.tx.txns;
