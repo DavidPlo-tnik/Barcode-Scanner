@@ -2595,7 +2595,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v293</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v294</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3218,7 +3218,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v293</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v294</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -14384,16 +14384,27 @@
     const wk = (m, n) => (((DATA.sales[m] || {}).wq) || []).slice(-n).reduce((a, b) => a + b, 0);
     const live = members.filter(m => wk(m, 26) > 0 || ((DATA.sales[m] || {}).dq || []).some(x => x > 0) || (DATA.products[m][8] || '') >= soon);
     const cand = live.length ? live : (members.length ? members : [lead]);
-    let official = cand.reduce((a, b) => {
-      const da = (DATA.products[a] || [])[8] || '', db = (DATA.products[b] || [])[8] || '';
-      return db > da || (db === da && wk(b, 8) > wk(a, 8)) ? b : a;
-    });
-    // the brand you edited last wins, unless another brand was repriced after that
-    const pin = fam.pin;
-    if (pin && members.includes(pin.code)) {
-      const later = members.some(m => m !== pin.code && ((DATA.products[m] || [])[8] || '') > String(pin.at).slice(0, 10));
-      if (!later) official = pin.code;
-    }
+    // official = the brand on the shelf NOW (same rules as shopify_sync.py produce_official):
+    // 1) repriced after the family's last sale = new delivery; 2) else the brand selling now
+    // (sold within 2 days of the last sale, most units this week); 3) nothing sold: latest repriced.
+    const days = DATA.last_14_days || [];
+    const soldDay = (m) => { const dq = ((DATA.sales[m] || {}).dq) || [], dd = days.slice(-dq.length); for (let i = dq.length - 1; i >= 0; i--) if (dq[i] && dd[i]) return String(dd[i]).slice(0, 10); return ''; };
+    const repr = (m) => (DATA.products[m] || [])[8] || '';
+    const u7 = (m) => (((DATA.sales[m] || {}).dq) || []).slice(-7).reduce((a, b) => a + b, 0);
+    let pin = fam.pin && members.includes(fam.pin.code) ? { code: fam.pin.code, day: String(fam.pin.at).slice(0, 10) } : null;
+    if (pin && members.some(m => m !== pin.code && repr(m) > pin.day)) pin = null;    // another brand repriced after the app edit
+    const touched = (m) => pin && m === pin.code && pin.day > repr(m) ? pin.day : repr(m);
+    const isPin = (m) => pin && m === pin.code ? 1 : 0;
+    const sold = Object.fromEntries(cand.map(m => [m, soldDay(m)]));
+    const last = cand.reduce((x, m) => sold[m] > x ? sold[m] : x, '');
+    const pick = (list, key) => list.reduce((a, b) => { const ka = key(a), kb = key(b); for (let i = 0; i < ka.length; i++) { if (kb[i] > ka[i]) return b; if (kb[i] < ka[i]) return a; } return a; });
+    const fresh = cand.filter(m => touched(m) > last);
+    let official;
+    if (fresh.length) official = pick(fresh, m => [touched(m), isPin(m), u7(m), m === lead ? 1 : 0, m]);
+    else if (last) {
+      const lim = new Date(Date.parse(last + 'T12:00:00Z') - 2 * 864e5).toISOString().slice(0, 10);
+      official = pick(cand.filter(m => sold[m] && sold[m] >= lim), m => [isPin(m), u7(m), sold[m], m === lead ? 1 : 0, m]);
+    } else official = pick(cand, m => [touched(m), isPin(m), wk(m, 8), m === lead ? 1 : 0, m]);
     const rev = members.reduce((t, m) => t + ((DATA.sales[m] || {}).ta || 0), 0);
     return { members, official, rev };
   }
