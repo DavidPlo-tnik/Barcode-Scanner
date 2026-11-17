@@ -3808,15 +3808,15 @@
   },
   "pos-0023983300000": {
    "src": "RICOTTA 15% TVOROG",
-   "fr": "Ricotta tvorog 15 %",
-   "en": "Ricotta tvorog 15%",
+   "fr": "Tvorog 15 % (ricotta)",
+   "en": "Tvorog 15% (ricotta)",
    "uk": "Сир кисломолочний (творог) 15 %",
    "ru": "Творог 15 %"
   },
   "pos-0023983400000": {
    "src": "RICOTTA 6% TVOROG",
-   "fr": "Ricotta tvorog 6 %",
-   "en": "Ricotta tvorog 6%",
+   "fr": "Tvorog 6 % (fromage cottage)",
+   "en": "Tvorog 6% (cottage cheese)",
    "uk": "Сир кисломолочний (творог) 6 %",
    "ru": "Творог 6 %"
   },
