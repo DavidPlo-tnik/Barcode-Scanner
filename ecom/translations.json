@@ -10665,11 +10665,11 @@
    "ru": "Карамель «Барбарис», Рахат"
   },
   "pos-0022687700000": {
-   "src": "GATEAU NAPOLEON",
-   "fr": "Gâteau Napoléon 380 g",
-   "en": "Napoleon cake 380 g",
-   "uk": "Торт «Наполеон» 380 г",
-   "ru": "Торт «Наполеон» 380 г"
+   "src": "GATEAU NAPOLEON (gateau entier)",
+   "fr": "Gâteau Napoléon (gâteau entier)",
+   "en": "Napoleon cake (whole cake)",
+   "uk": "Торт «Наполеон» (цілий торт)",
+   "ru": "Торт «Наполеон» (целый торт)"
   },
   "pos-0020160000000": {
    "src": "NOIX DE GRENOBLE",
