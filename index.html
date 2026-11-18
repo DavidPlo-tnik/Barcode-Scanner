@@ -2595,7 +2595,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v298</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v299</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3218,7 +3218,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v298</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v299</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7383,6 +7383,9 @@
     let ty = (wide ? y + h - textH : y + ph) + P * .7 + size;
     lines.forEach((l, i) => { ctx.fillText(l, x + P, ty); if (i < lines.length - 1) ty += size * 1.16; });
     if (note) { ctx.fillStyle = TH.NOTE || T.RED; flFit(ctx, note, maxTextW, noteS, T.SANS(800), noteS * .62); ctx.fillText(flWrap(ctx, note, maxTextW, 1)[0], x + P, ty + noteS * 1.3); }
+    // card outline: over the photos, UNDER the price tag and % badge (they stick out past the edge)
+    if (TH.CARDLINE) { ctx.save(); ctx.strokeStyle = TH.CARDLINE; const lw = Math.max(2, Math.round(base * .008 * (TH.CARDLW || 1))); ctx.lineWidth = lw;
+      flRound(ctx, x + lw / 2, y + lw / 2, w - lw, h - lw, Math.max(1, R - lw / 2)); ctx.stroke(); ctx.restore(); }      // drawn inside the card: box size unchanged
     // price tag — pinned to the top-right corner, a little off the card
     const regUnit = r0.rp != null ? r0.rp / (r0.rq || 1) : null, promoUnit = r0.pp / (r0.pq || 1);
     const off = regUnit ? Math.floor(100 * (1 - promoUnit / regUnit)) : 0;
@@ -7415,8 +7418,6 @@
       ctx.fillStyle = TH.BADGETXT || T.INK; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(txt, 0, bS * .06);
       ctx.restore();
     }
-    if (TH.CARDLINE) { ctx.save(); ctx.strokeStyle = TH.CARDLINE; const lw = Math.max(2, Math.round(base * .008 * (TH.CARDLW || 1))); ctx.lineWidth = lw;
-      flRound(ctx, x + lw / 2, y + lw / 2, w - lw, h - lw, Math.max(1, R - lw / 2)); ctx.stroke(); ctx.restore(); }      // drawn inside the card: box size unchanged
     return rects;
   }
 
