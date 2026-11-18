@@ -403,7 +403,7 @@
     }
    },
    "note": "2 saveurs disponibles",
-   "name": "Veladis Hareng 500g",
+   "name": "Veladis Hareng 500g MA:16/11/2026",
    "ph": {},
    "lock": false,
    "pos": {},
@@ -4425,7 +4425,7 @@
    ],
    "from": "2026-11-19",
    "to": "2026-11-25",
-   "at": "2026-11-18T18:39:48.011Z",
+   "at": "2026-11-18T18:40:40.532Z",
    "items": {
     "0023881500000": {
      "sz": {
@@ -4830,7 +4830,7 @@
       }
      },
      "note": "2 saveurs disponibles",
-     "name": "Veladis Hareng 500g",
+     "name": "Veladis Hareng 500g MA:16/11/2026",
      "ph": {},
      "lock": false,
      "pos": {},
