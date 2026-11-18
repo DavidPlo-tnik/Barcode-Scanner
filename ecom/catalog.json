@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18T14:37:24.760Z",
+ "updated": "2026-11-18T15:05:49.442Z",
  "items": {
   "0021010800000": {
    "added": "2026-09-06",
@@ -20363,7 +20363,11 @@
   },
   "0000000004593": {
    "title": "CONCOMBRE ANGLAIS",
-   "key": "concombre pepin|1UN1"
+   "key": "concombre pepin|1UN1",
+   "pin": {
+    "code": "0000000004593",
+    "at": "2026-11-18 10:05:48"
+   }
   },
   "0000000004060": {
    "title": "BROCOLI",
