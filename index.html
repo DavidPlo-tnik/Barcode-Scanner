@@ -2595,7 +2595,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v295</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v296</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3218,7 +3218,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v295</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v296</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11938,7 +11938,7 @@
     const prev = pend[o.id];
     if (prev && raw && orPendingLive(raw, prev) && (prev.over || orRank(prev.status) < orRank(prev.base))) p.over = prev.over || prev.base;
     if (prev && orRank(p.status) >= orRank(prev.status) && act !== 'on_hold') { if (!p.pos && prev.pos) p.pos = prev.pos; if (!p.deliver_on && prev.deliver_on) p.deliver_on = prev.deliver_on; }
-    pend[o.id] = p; orLS('orPending', pend);
+    if (p.status) { pend[o.id] = p; orLS('orPending', pend); }
     orRender();
     for (let attempt = 0; attempt < 6; attempt++) {
       try {
@@ -13567,6 +13567,26 @@
       const b = $('#or-retry'); if (b) b.onclick = () => { orFetch(); orRender(); };
     }
   }
+  // Interac e-Transfers read from the payments mailbox by the PC (online_orders.py check_payments)
+  function orPayLine(p) {
+    return `<b>${orMoney(p.amount)}</b> from <b>${escapeHtml(p.from || '?')}</b>${p.message ? ` · message “${escapeHtml(p.message)}”` : ' · no message'}`
+      + `<br><span style="opacity:.75">${p.at ? escapeHtml(new Date(p.at).toLocaleString('en-CA', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })) : ''}${p.ref ? ' · ref ' + escapeHtml(p.ref) : ''}</span>`;
+  }
+  function orPayBox(o) {
+    const ign = orLS('orPayIgn') || {};
+    if (o.pay_issue && !ign[o.id + '|' + (o.pay_issue.ref || o.pay_issue.at)] && !['paid', 'out_for_delivery', 'delivered', 'cancelled'].includes(o.status))
+      return `<div class="or-warn">💸 <b>Interac received — check it</b><br>${orPayLine(o.pay_issue)}<br>⚠ ${escapeHtml(o.pay_issue.why || '')}
+        <div style="display:flex;gap:8px;margin-top:8px"><button class="btn primary" data-a="paid" style="flex:1">✓ ACCEPT AS PAID</button><button class="btn" data-payign="1" style="flex:1">Not for this order</button></div></div>`;
+    if (o.payment) return `<div class="or-hint" style="color:#7ee2a8">✓ Paid by Interac${o.payment.auto ? ' — marked automatically' : ''}: ${orPayLine(o.payment)}${o.payment.why ? '<br><span style="opacity:.75">' + escapeHtml(o.payment.why) + '</span>' : ''}</div>`;
+    return '';
+  }
+  function orUnmatchedHtml() {
+    const ign = orLS('orPayIgn') || {};
+    const list = (_or.data.pay_unmatched || []).filter(p => !ign['u|' + (p.ref || p.at)]);
+    if (!list.length) return '';
+    return `<div class="or-warn">💸 <b>Interac payments that match no bill</b> — mark the right order paid by hand.
+      ${list.slice(-5).reverse().map(p => `<div style="margin-top:8px;display:flex;gap:8px;align-items:flex-start"><div style="flex:1">${orPayLine(p)}</div><button class="btn" data-uign="${escapeHtml(p.ref || p.at)}">Done</button></div>`).join('')}</div>`;
+  }
   function orCardHtml(o) {
     try {
       const picked = (orLS('orPick:' + o.id) || []).length, items = o.items || [];
@@ -13612,6 +13632,7 @@
         <button data-v="done" class="${_or.view === 'done' ? 'on' : ''}">DELIVERED · ${groups.done.length}</button>
         <button data-v="cancelled" class="${_or.view === 'cancelled' ? 'on' : ''}">CANCELLED · ${groups.cancelled.length}</button>
       </div>
+      ${_or.view === 'open' ? orUnmatchedHtml() : ''}
       ${_or.data.pc_error ? `<div class="or-warn"><b>The PC cannot read the website orders:</b><br>${escapeHtml(_or.data.pc_error)}</div>` : ''}
       ${!_or.data.pos_auto && groups.open.some(o => o.status === 'on_hold') ? `<div class="or-warn">The PC cannot read held sales from the register journals right now — check that online_orders.py is running.</div>` : ''}
       <div class="or-list">${list.map(orCardHtml).join('') || `<div class="empty-state">${_or.view === 'open' ? 'No orders to prepare.' : 'Nothing here.'}</div>`}</div>`;
@@ -13620,6 +13641,7 @@
     $('#or-key').onclick = vaultSetup;
     $('#or-route').onclick = rtOpen;
     el.querySelectorAll('.or-card').forEach(b => b.onclick = () => orOpen(b.dataset.id));
+    el.querySelectorAll('[data-uign]').forEach(b => b.onclick = () => { const ig = orLS('orPayIgn') || {}; ig['u|' + b.dataset.uign] = Date.now(); orLS('orPayIgn', ig); orRender(); });
     try { rtRender(); } catch (e) { console.error('rtRender', e); }
     if (_or.sel && !(document.activeElement && document.activeElement.id === 'or-man')) { try { orDetail(); } catch (e) { console.error('orDetail', e); } }
   }
@@ -13728,7 +13750,7 @@
           : `<button class="or-link" id="or-man-show">Type the total instead</button>`;
         break;
       case 'total_ready':
-        act = (orOver(o) ? `<div class="or-bad-box">⚠ ${orOver(o)}% above the estimate before taxes (${orMoney(orPre(o))} vs ${orMoney(orEst(o))}). <b>Call ${escapeHtml(o.first || 'the customer')} before sending the total.</b>${o.phone ? ` <a href="tel:${orPhoneDigits(o.phone)}">📞 Call</a>` : ''}</div>` : '')
+        act = orPayBox(o) + (orOver(o) ? `<div class="or-bad-box">⚠ ${orOver(o)}% above the estimate before taxes (${orMoney(orPre(o))} vs ${orMoney(orEst(o))}). <b>Call ${escapeHtml(o.first || 'the customer')} before sending the total.</b>${o.phone ? ` <a href="tel:${orPhoneDigits(o.phone)}">📞 Call</a>` : ''}</div>` : '')
           + `<div class="or-total">${orMoney(o.pos.total)}<span>estimate was ${orMoney(orEst(o))} before tax · ${o.pos.src === 'pos' ? 'held at register ' + escapeHtml(String(o.pos.register || '').replace(/^0+/, '')) + (o.pos.time ? ' · ' + escapeHtml(o.pos.time) : '') : 'typed in'}</span></div>
           <a class="or-big" id="or-sms-total" href="${orSmsLink(o, orMsg(o, 'total'))}">📱 TEXT THE BILL TO ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())}</a>
           <button class="or-link" data-a="on_hold">Wrong total? Pick the held sale again</button>`; break;
@@ -13739,12 +13761,12 @@
           <a class="or-link" href="${orSmsLink(o, orMsg(o, 'total'))}">Send the bill again</a>
           <button class="or-link" data-a="on_hold" data-fix="1">Fixed the sale at the register? Pick the corrected held sale</button>`; break;
         }
-        act = `<div class="or-total">${orMoney(o.pos && o.pos.total)}<span>waiting for the Interac e-Transfer (message: ${escapeHtml(o.name)})</span></div>
+        act = orPayBox(o) + `<div class="or-total">${orMoney(o.pos && o.pos.total)}<span>waiting for the Interac e-Transfer (message: ${escapeHtml(o.name)})${_or.data.pay_auto ? ' · marked paid by itself when it arrives' : ''}</span></div>
           <button class="or-big" data-a="paid">💰 PAYMENT RECEIVED</button>
           <a class="or-link" href="${orSmsLink(o, orMsg(o, 'total'))}">Send the bill again</a>
           <button class="or-link" data-a="on_hold" data-fix="1">Fixed the sale at the register? Pick the corrected held sale</button>`; break;
       case 'paid':
-        act = `<div class="or-total">${orDay(o.deliver_on)}<span>delivery day (paid ${orMoney(o.pos && o.pos.total)})</span></div>
+        act = orPayBox(o) + `<div class="or-total">${orDay(o.deliver_on)}<span>delivery day (paid ${orMoney(o.pos && o.pos.total)})</span></div>
           <a class="or-big" id="or-sms-route" href="${orSmsLink(o, orMsg(o, 'route'))}">🚚 OUT FOR DELIVERY · TEXT ${escapeHtml((o.first || 'CUSTOMER').toUpperCase())}</a>`; break;
       case 'out_for_delivery':
         act = orDoor(o)
@@ -13825,6 +13847,10 @@
       b.disabled = true;
       await orAct(o, a);
       orDetail();
+    });
+    m.querySelectorAll('[data-payign]').forEach(b => b.onclick = async () => {
+      const ig = orLS('orPayIgn') || {}; ig[o.id + '|' + (o.pay_issue.ref || o.pay_issue.at)] = Date.now(); orLS('orPayIgn', ig);
+      b.disabled = true; await orAct(o, 'pay_ignore'); orDetail();
     });
     m.querySelectorAll('[data-hold]').forEach(b => b.onclick = async () => { b.disabled = true; await orAct(o, 'use_hold', { hold: holds[+b.dataset.hold] }); orDetail(); });
     const pv = $('#or-pod-view'); if (pv) pv.onclick = () => orShowPod(o);
