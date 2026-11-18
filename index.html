@@ -2595,7 +2595,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v297</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v298</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3218,7 +3218,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v297</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v298</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -5322,7 +5322,7 @@
     // light & clean: warm paper ground, red only on tags/title; cards outlined
     creme:     { name: 'Crème (clair)', BG: '#F5ECDD', PATK: 'dots', PAT: '#B9966A', PATA: .22, AW1: '#DC241C', AW2: '#FFFDF8', PANEL: '#FFFDF8', PLINE: '#E2D3BC', TITLE: '#DC241C', SUB: '#2A2A2A', STRIP: '#DC241C',
                  DTAG: '#2A2A2A', DTXT: '#fff', DYR: '#FFD23F', FOOT: '#2A2A2A', FLINE: '#DC241C', FNAME: '#fff', FINFO: '#EEE6D8', TAG: '#DC241C', TAGTXT: '#fff',
-                 CARD: '#FFFDF8', CREAM: '#FBF4E8', CARDLINE: '#DCCAB0', SH: '110,80,40' },
+                 CARD: '#FFFDF8', CREAM: '#FBF4E8', CARDLINE: '#C9B08A', CARDLW: 2.4, SH: '110,80,40' },
     // charcoal + gold: good on the TV
     nuit:      { name: 'Nuit (or)', BG: '#1B1D22', PAT: '#fff', PATA: .035, AW1: '#2B2E36', AW2: '#E9B949', PANEL: '#25282F', PLINE: '#3A3E48', TITLE: '#F2C14E', SUB: '#F2F2F2', STRIP: '#F2C14E',
                  DTAG: '#F2C14E', DTXT: '#1B1D22', DYR: '#7A4A00', FOOT: '#25282F', FLINE: '#F2C14E', FNAME: '#F2C14E', FINFO: '#D9D9D9', TAG: '#F2C14E', TAGTXT: '#1B1D22', TAGRIM: '#1B1D22',
@@ -5472,14 +5472,14 @@
       for (let i = 0; i <= 6; i++) { const a = a0 + P / 2 * i / 6; ctx.beginPath(); ctx.moveTo(x + Math.cos(a) * R * .2, y + Math.sin(a) * R * .2); ctx.lineTo(x + Math.cos(a) * R * .46, y + Math.sin(a) * R * .46); ctx.stroke(); }
       ctx.beginPath(); ctx.arc(x, y, R * .14, a0, a0 + P / 2); ctx.lineTo(x, y); ctx.fill(); ctx.restore(); };
     const sparkle = (x, y, r, col) => { ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(x, y - r); ctx.quadraticCurveTo(x, y, x + r, y); ctx.quadraticCurveTo(x, y, x, y + r); ctx.quadraticCurveTo(x, y, x - r, y); ctx.quadraticCurveTo(x, y, x, y - r); ctx.fill(); };
-    const n = Math.round(W / sw);
+    const n = Math.round(W / sw) + 1;               // scallop tips sit at i * sw (awning starts half a stripe off the edge)
     ctx.save();
     if (k === 'holly') {
       // string of lights swagging between the awning tips, holly on the header corners
       if (back) {
       ctx.strokeStyle = '#1B3A26'; ctx.lineWidth = Math.max(1.5, U * .012);
       const cols = ['#FFD23F', '#E84A4A', '#5BC0EB', '#7BD389', '#F08CC0'];
-      for (let i = 0; i < n - 1; i++) { const x0 = i * sw + sw / 2, x1 = x0 + sw, sag = B * .38;
+      for (let i = 0; i < n - 1; i++) { const x0 = i * sw, x1 = x0 + sw, sag = B * .38;
         ctx.beginPath(); ctx.moveTo(x0, tip); ctx.quadraticCurveTo((x0 + x1) / 2, tip + sag * 2, x1, tip); ctx.stroke();
         const bx = (x0 + x1) / 2, by = tip + sag, r = B * .16; ctx.save(); ctx.shadowColor = cols[i % 5]; ctx.shadowBlur = r * 2.2;
         ctx.fillStyle = cols[i % 5]; ctx.beginPath(); ctx.ellipse(bx, by + r * 1.1, r * .7, r * 1.05, 0, 0, 7); ctx.fill(); ctx.restore();
@@ -5490,10 +5490,10 @@
       // gold tinsel, baubles on ribbons, a fir sprig with a bauble on the corners, sparkles
       if (back) {
       ctx.strokeStyle = '#D9B45A'; ctx.lineWidth = Math.max(2, U * .02); ctx.setLineDash([U * .03, U * .02]);
-      for (let i = 0; i < n - 1; i++) { const x0 = i * sw + sw / 2, x1 = x0 + sw; ctx.beginPath(); ctx.moveTo(x0, tip); ctx.quadraticCurveTo((x0 + x1) / 2, tip + B * .7, x1, tip); ctx.stroke(); }
+      for (let i = 0; i < n - 1; i++) { const x0 = i * sw, x1 = x0 + sw; ctx.beginPath(); ctx.moveTo(x0, tip); ctx.quadraticCurveTo((x0 + x1) / 2, tip + B * .7, x1, tip); ctx.stroke(); }
       ctx.setLineDash([]);
       const cols = ['#B3122E', '#D9B45A', '#2E6FBF', '#E8E8E8'];
-      for (let i = 1; i < n - 1; i += 2) { const x = i * sw + sw / 2, len = B * (i % 4 === 1 ? .42 : .2), r = B * .17;
+      for (let i = 1; i < n - 1; i += 2) { const x = i * sw, len = B * (i % 4 === 1 ? .42 : .2), r = B * .17;
         ctx.strokeStyle = 'rgba(217,180,90,.9)'; ctx.lineWidth = Math.max(1, U * .008); ctx.beginPath(); ctx.moveTo(x, tip); ctx.lineTo(x, tip + len); ctx.stroke();
         bauble(x, tip + len + r * 1.15, r, cols[(i >> 1) % 4]); }
       } else {
@@ -5506,12 +5506,12 @@
       for (const [sx, sy, sr] of [[logoX + logoW + (tx - logoX - logoW) / 2, pY + pH * .5, .05], [tx + tW * .3, pY + pH + U * .05, .035]]) sparkle(sx, sy, U * sr, '#F7D98B');
       }
     } else if (k === 'icicles') {
-      if (back) for (let i = 0; i < n; i++) { const x = i * sw + sw / 2, len = B * (.55 + rnd() * .55), w = sw * .16;
+      if (back) for (let i = 0; i < n; i++) { const x = i * sw, len = B * (.55 + rnd() * .55), w = sw * .16;
         const gr = ctx.createLinearGradient(x, tip, x, tip + len); gr.addColorStop(0, 'rgba(255,255,255,.95)'); gr.addColorStop(1, 'rgba(190,225,250,.6)');
         ctx.fillStyle = gr; ctx.beginPath(); ctx.moveTo(x - w, tip - 2); ctx.quadraticCurveTo(x - w * .3, tip + len * .55, x, tip + len); ctx.quadraticCurveTo(x + w * .3, tip + len * .55, x + w, tip - 2); ctx.fill();
         if (i % 3 === 1) { const x2 = x + sw * .3, l2 = len * .55; ctx.beginPath(); ctx.moveTo(x2 - w * .6, tip - 4); ctx.quadraticCurveTo(x2, tip + l2 * .6, x2, tip + l2); ctx.quadraticCurveTo(x2, tip + l2 * .6, x2 + w * .6, tip - 4); ctx.fill(); } }
     } else if (k === 'halloween') {
-      if (back) { web(W, tip, U * .8, P * .5, P); for (let i = 1; i < n; i += 3) spider(i * sw + sw / 2, tip, B * (.15 + rnd() * .25), B * .2); }
+      if (back) { web(W, tip, U * .8, P * .5, P); for (let i = 1; i < n; i += 3) spider(i * sw, tip, B * (.15 + rnd() * .25), B * .2); }
       else { web(logoX - M * .2, logoY + logoH + M * .2, U * .32, -P * .5, 0); spider(tx + tW + M * .5, tip, (pY + pH * .55) - tip, U * .035); }
     } else if (k === 'halloween2') {
       const ghost = (x, y0, len, r) => {
@@ -5524,12 +5524,12 @@
       const corn = (x, y, s, rot) => { ctx.save(); ctx.translate(x, y); ctx.rotate(rot);
         const band = (c, a, b) => { ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(-s * .5 * (1 - a), s * a); ctx.lineTo(s * .5 * (1 - a), s * a); ctx.lineTo(s * .5 * (1 - b), s * b); ctx.lineTo(-s * .5 * (1 - b), s * b); ctx.closePath(); ctx.fill(); };
         band('#FFFDF8', 0, .3); band('#FF9A3D', .3, .65); band('#F5C518', .65, .98); ctx.restore(); };
-      if (back) { for (let i = 1; i < n; i += 3) ghost(i * sw + sw / 2, tip, B * (.05 + rnd() * .2), Math.min(sw * .36, B * .34)); }
+      if (back) { for (let i = 1; i < n; i += 3) ghost(i * sw, tip, B * (.05 + rnd() * .2), Math.min(sw * .36, B * .34)); }
       else { corn(tx + tW - U * .12, pY - U * .06, U * .2, 2.8); corn(tx + tW - U * .26, pY - U * .02, U * .15, 2.4);
         corn(logoX + U * .04, logoY + logoH - U * .1, U * .16, .3); }
     } else if (k === 'valentine') {
       // little hearts on ribbons, and a heart pair on the corners
-      if (back) for (let i = 0; i < n; i++) { const x = i * sw + sw / 2, len = B * (.12 + (i % 3) * .14), r = B * (.15 + (i % 2) * .04);
+      if (back) for (let i = 0; i < n; i++) { const x = i * sw, len = B * (.12 + (i % 3) * .14), r = B * (.15 + (i % 2) * .04);
         ctx.strokeStyle = 'rgba(255,209,218,.9)'; ctx.lineWidth = Math.max(1, U * .008); ctx.beginPath(); ctx.moveTo(x, tip); ctx.lineTo(x, tip + len); ctx.stroke();
         ctx.fillStyle = i % 2 ? '#FFD1DA' : '#E8314F'; heart(x, tip + len, r); ctx.fill(); }
       const pair = (x, y, s) => { ctx.fillStyle = '#E8314F'; heart(x, y, s); ctx.fill(); ctx.fillStyle = '#FFD1DA'; heart(x + s * .9, y + s * .5, s * .62); ctx.fill(); };
@@ -5537,7 +5537,7 @@
     } else if (k === 'easter') {
       // painted eggs (pysanky) on ribbons, tulips on the corners
       const ec = [['#F4B6C2', '#C2456B'], ['#FFE59A', '#7FB77E'], ['#BFE3F5', '#4F7FBF'], ['#D9C6F0', '#8A5CB8']];
-      if (back) for (let i = 0; i < n; i += 2) { const x = i * sw + sw / 2, len = B * (i % 4 ? .3 : .12), r = B * .24;
+      if (back) for (let i = 0; i < n; i += 2) { const x = i * sw, len = B * (i % 4 ? .3 : .12), r = B * .24;
         ctx.strokeStyle = 'rgba(194,69,107,.55)'; ctx.lineWidth = Math.max(1, U * .008); ctx.beginPath(); ctx.moveTo(x, tip); ctx.lineTo(x, tip + len); ctx.stroke();
         egg(x, tip + len + r, r, ec[(i >> 1) % 4][0], ec[(i >> 1) % 4][1]); }
       if (!back) { tulip(tx + tW - U * .1, pY - U * .14, U * .3, '#E8607E'); tulip(tx + tW + U * .02, pY - U * .04, U * .24, '#F2C94C');
@@ -5545,7 +5545,7 @@
     } else if (k === 'deco') {
       // 1920s: a gold double frame with stepped corners, fans on the panel, beaded tassels
       const gold = '#C9A24A', inset = M * .45, H = g.H, fy = g.footTop;
-      if (back) { for (let i = 0; i < n; i += 3) { const x = i * sw + sw / 2; ctx.fillStyle = gold;
+      if (back) { for (let i = 0; i < n; i += 3) { const x = i * sw; ctx.fillStyle = gold;
         for (let b = 0; b < 4; b++) { ctx.beginPath(); ctx.arc(x, tip + B * (.1 + b * .13), B * (.06 - b * .006), 0, 7); ctx.fill(); }
         ctx.beginPath(); ctx.moveTo(x - B * .08, tip + B * .6); ctx.lineTo(x + B * .08, tip + B * .6); ctx.lineTo(x + B * .13, tip + B * .9); ctx.lineTo(x - B * .13, tip + B * .9); ctx.fill(); }
         ctx.restore(); return; }
@@ -5785,13 +5785,14 @@
     return pick.filter(x => codes.includes(x));
   }
   function flyerUnitPhotos(u) {
+    const xph = (u.cfg.xph || []).slice(0, 3);          // extra photos added in the flyer editor (e.g. a cut-open shot)
     if (u.members.length > 1) {
       const pick = flyerPicked(u);
       const ms = pick.length ? u.members.filter(m => pick.includes(m.code)) : u.members;
-      return ms.map(m => m.photos[0]).slice(0, 6);
+      return ms.map(m => m.photos[0]).slice(0, 6 - xph.length).concat(xph);
     }
     const r = u.members[0];
-    return u.cfg.all ? r.photos.slice(0, 6) : [r.photos[0]];
+    return (u.cfg.all ? r.photos.slice(0, 6 - xph.length) : [r.photos[0]]).concat(xph);
   }
   // Size in grid cells for one format. POST is the master; other formats scale it
   // to their own column count unless resized there by hand.
@@ -5889,6 +5890,10 @@
           <div class="fl-grip" title="Hold, then drag to reorder">≡</div>
         </div>
         ${photoPick}
+        <div class="fl-row"><span class="fl-lbl">EXTRA</span>
+          ${(c.xph || []).map(f => `<button class="fl-pickimg on" data-xdel="${escapeHtml(f)}" title="Tap to remove this extra photo"><img src="${photoSrc(f)}" alt=""></button>`).join('')}
+          <button class="fl-chip" data-xadd="1" title="Add a photo shown only on the flyer (e.g. the product cut open)">＋ PHOTO</button>
+        </div>
         <div class="fl-row">
           <button class="fl-chip ${c.hide ? 'on' : ''}" data-hide="1">${c.hide ? 'HIDDEN' : 'HIDE'}</button>
           ${i > 0 ? '<button class="fl-chip" data-totop="1" title="Move to the front of the flyer and of Specials on the site">⤒ TO TOP</button>' : ''}
@@ -5917,6 +5922,28 @@
     }));
     const rx = el.querySelector('[data-unflyer]');
     if (rx) rx.addEventListener('click', () => { delete (_fl.cfg.extras || {})[rx.dataset.unflyer]; flyerSaveCfg(); flyerOpen(_fl.mode, true); });
+    el.querySelectorAll('[data-xdel]').forEach(b => b.addEventListener('click', () => {
+      c.xph = (c.xph || []).filter(f => f !== b.dataset.xdel); if (!c.xph.length) delete c.xph;
+      flyerSaveCfg(); flyerRenderUI(); flyerDraw();
+    }));
+    const xa = el.querySelector('[data-xadd]');
+    if (xa) xa.addEventListener('click', () => {
+      const input = document.createElement('input'); input.type = 'file'; input.accept = 'image/*';
+      input.onchange = async () => {
+        const file = input.files && input.files[0]; if (!file) return;
+        try {
+          showToast('Adding photo…');
+          const img = await processStoreImage(file, { maxDim: 1600, square: false });
+          const fn = `flyer_${Date.now()}.${img.ext || 'webp'}`;
+          _freshPhotos[fn] = img.dataUrl;
+          await ghPutFile(`images/ecom/${fn}`, img.dataUrl.split(',')[1], `flyer photo ${fn}`);
+          c.xph = (c.xph || []).concat(fn);
+          flyerSaveCfg(); flyerRenderUI(); flyerDraw();
+          showToast('Photo added to the flyer ✓');
+        } catch (e) { showToast('Photo failed: ' + e.message, true); }
+      };
+      input.click();
+    });
     const tt = el.querySelector('[data-totop]');
     if (tt) tt.addEventListener('click', async () => {
       tt.disabled = true;
@@ -6950,10 +6977,11 @@
     ctx.fillStyle = TH.BG; ctx.fillRect(0, 0, W, H);
     flPattern(ctx, TH, W, H, 0);
     const nStripe = tv ? 24 : 14, sw = W / nStripe, awH = Math.round(H * (tv ? .04 : .026));
-    for (let i = 0; i < nStripe; i++) {
+    for (let i = 0; i <= nStripe; i++) {           // nStripe+1 stripes from -sw/2: symmetric (same colour at both edges)
+      const x0 = i * sw - sw / 2;
       ctx.fillStyle = i % 2 ? TH.AW2 : TH.AW1;
-      ctx.fillRect(i * sw, 0, sw, awH);
-      ctx.beginPath(); ctx.arc(i * sw + sw / 2, awH, sw / 2, 0, Math.PI); ctx.fill();
+      ctx.fillRect(x0, 0, sw, awH);
+      ctx.beginPath(); ctx.arc(x0 + sw / 2, awH, sw / 2, 0, Math.PI); ctx.fill();
     }
     {   // decorations hanging from the awning (drawn before the header, so the boxes sit in front of them)
       const hT = awH + sw / 2 + Math.round(H * .012) + (TH.DECO ? Math.round(H * (tv ? .034 : story ? .018 : .026)) : 0), hH = Math.round(H * (tv ? .15 : story ? .09 : .115)), lH = Math.round(hH * (tv ? .86 : .8)), pH0 = Math.round(hH * .86);
@@ -7387,7 +7415,8 @@
       ctx.fillStyle = TH.BADGETXT || T.INK; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(txt, 0, bS * .06);
       ctx.restore();
     }
-    if (TH.CARDLINE) { ctx.save(); ctx.strokeStyle = TH.CARDLINE; ctx.lineWidth = Math.max(2, Math.round(base * .008)); flRound(ctx, x + .5, y + .5, w - 1, h - 1, R); ctx.stroke(); ctx.restore(); }
+    if (TH.CARDLINE) { ctx.save(); ctx.strokeStyle = TH.CARDLINE; const lw = Math.max(2, Math.round(base * .008 * (TH.CARDLW || 1))); ctx.lineWidth = lw;
+      flRound(ctx, x + lw / 2, y + lw / 2, w - lw, h - lw, Math.max(1, R - lw / 2)); ctx.stroke(); ctx.restore(); }      // drawn inside the card: box size unchanged
     return rects;
   }
 
