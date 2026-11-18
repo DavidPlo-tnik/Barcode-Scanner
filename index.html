@@ -2595,7 +2595,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v296</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v297</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3218,7 +3218,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v296</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v297</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -5891,6 +5891,7 @@
         ${photoPick}
         <div class="fl-row">
           <button class="fl-chip ${c.hide ? 'on' : ''}" data-hide="1">${c.hide ? 'HIDDEN' : 'HIDE'}</button>
+          ${i > 0 ? '<button class="fl-chip" data-totop="1" title="Move to the front of the flyer and of Specials on the site">⤒ TO TOP</button>' : ''}
           ${multi ? '<button class="fl-chip" data-ungroup="1">UNGROUP</button>' : ''}
           ${r0.extra && !multi ? `<button class="fl-chip" data-unflyer="${escapeHtml(r0.extra)}">REMOVE FROM FLYER</button>` : ''}
         </div>
@@ -5916,6 +5917,16 @@
     }));
     const rx = el.querySelector('[data-unflyer]');
     if (rx) rx.addEventListener('click', () => { delete (_fl.cfg.extras || {})[rx.dataset.unflyer]; flyerSaveCfg(); flyerOpen(_fl.mode, true); });
+    const tt = el.querySelector('[data-totop]');
+    if (tt) tt.addEventListener('click', async () => {
+      tt.disabled = true;
+      const mine = u.members.map(m => m.code);
+      const order = _fl.rows.map(r => r.code);
+      await flyerApplyOrder(mine.concat(order.filter(c => !mine.includes(c))));
+      flyerSaveCfg(); flyerRenderUI(); flyerDraw();
+      showToast('Moved to the top ✓');
+      const first = document.querySelector('#fl-list .fl-item'); if (first) first.scrollIntoView({ block: 'center' });
+    });
     el.querySelector('[data-hide]').addEventListener('click', (ev) => { c.hide = !c.hide; el.classList.toggle('off', c.hide); ev.target.classList.toggle('on', c.hide); ev.target.textContent = c.hide ? 'HIDDEN' : 'HIDE'; flyerSaveCfg(); flyerDraw(); });
     const ug = el.querySelector('[data-ungroup]');
     if (ug) ug.addEventListener('click', () => { _fl.cfg.groups = _fl.cfg.groups.filter(g => g !== u.group); flyerSaveCfg(); flyerRenderUI(); });
