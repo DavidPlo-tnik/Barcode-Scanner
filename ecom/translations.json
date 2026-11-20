@@ -1,6 +1,6 @@
 {
  "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime. Optional 'desc' {fr,en,uk,ru}: extra HTML appended to the product description.",
- "updated": "2026-11-20T10:29:35",
+ "updated": "2026-11-20T16:05:45",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
    "src": "Romachka, Roshen,",
@@ -10943,6 +10943,13 @@
    "en": "Kyivsky classic truffle, Millenium",
    "uk": "Трюфель «Київський» класичний, Millennium",
    "ru": "Трюфель «Киевский» классический, Millennium"
+  },
+  "pos-0482020253556": {
+   "src": "ZLAGODA BEURRE EXTRA 82%",
+   "fr": "Zlagoda beurre doux extra 82 % 180 g",
+   "en": "Zlagoda extra sweet cream butter 82% 180 g",
+   "uk": "Злагода масло солодковершкове Екстра 82 % 180 г",
+   "ru": "Злагода масло сладкосливочное Экстра 82 % 180 г"
   }
  },
  "collections": {
