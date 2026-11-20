@@ -1,6 +1,6 @@
 {
  "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime. Optional 'desc' {fr,en,uk,ru}: extra HTML appended to the product description.",
- "updated": "2026-11-17T14:59:00",
+ "updated": "2026-11-20T10:29:35",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
    "src": "Romachka, Roshen,",
@@ -2921,11 +2921,11 @@
    "ru": "Салями квадратная с горчичным зерном"
   },
   "pos-0020236400000": {
-   "src": "SOC DE PORC FUME (JAMBON MOLDOVA)",
-   "fr": "Soc de porc fumé (jambon Moldova)",
-   "en": "Smoked pork neck (Moldova ham)",
-   "uk": "Копчена свиняча шия (шинка Молдова)",
-   "ru": "Копчёная свиная шея (ветчина Молдова)"
+   "src": "SOC DE PORC FUME - BALERON (JAMBON MOLDOVA)",
+   "fr": "Soc de porc fumé – baleron (jambon Moldova)",
+   "en": "Smoked pork shoulder – baleron (Moldova ham)",
+   "uk": "Копчений балерон (шинка Moldova)",
+   "ru": "Копчёный балерон (ветчина Moldova)"
   },
   "pos-0020236500000": {
    "src": "BACON DOUBLEMENT FUME",
@@ -3530,11 +3530,11 @@
    "ru": "Салат «Оливье»"
   },
   "pos-0022701400000": {
-   "src": "STRUDEL GRAINES DE PAVOT",
-   "fr": "Strudel aux graines de pavot",
-   "en": "Poppy seed strudel",
-   "uk": "Рулет із маком",
-   "ru": "Рулет с маком"
+   "src": "STRUDEL GRAINES DE PAVOT (MOITIÉ)",
+   "fr": "Strudel aux graines de pavot (demi)",
+   "en": "Poppy seed strudel (half)",
+   "uk": "Штрудель з маком (половина)",
+   "ru": "Штрудель с маком (половина)"
   },
   "pos-0022701600000": {
    "src": "CHRUSTY",
@@ -10775,6 +10775,174 @@
    "en": "Thompson raisins",
    "uk": "Родзинки Thompson",
    "ru": "Изюм Thompson"
+  },
+  "pos-0482026429032": {
+   "src": "NASH SIK NECTAR MULTIVITAMINE",
+   "fr": "Nash Sik nectar multivitamine 950 ml",
+   "en": "Nash Sik multivitamin nectar 950 ml",
+   "uk": "Наш Сік мультивітамінний нектар 950 мл",
+   "ru": "Наш Сок мультивитаминный нектар 950 мл"
+  },
+  "pos-0482000368998": {
+   "src": "NASH SIK JUS DE POMME PECHE",
+   "fr": "Nash Sik jus pomme et pêche avec pulpe 950 ml",
+   "en": "Nash Sik apple & peach juice with pulp 950 ml",
+   "uk": "Наш Сік яблучно-персиковий сік з м'якоттю 950 мл",
+   "ru": "Наш Сок яблочно-персиковый сок с мякотью 950 мл"
+  },
+  "pos-0482019226265": {
+   "src": "NASH SIK JUS DE POMME 100%",
+   "fr": "Nash Sik jus de pomme 100 % 950 ml",
+   "en": "Nash Sik 100% apple juice 950 ml",
+   "uk": "Наш Сік яблучний сік 100 % 950 мл",
+   "ru": "Наш Сок яблочный сок 100 % 950 мл"
+  },
+  "pos-0482307765294": {
+   "src": "ROSHEN BOITE CADEAU MAISON",
+   "fr": "Roshen boîte-cadeau maison 730 g",
+   "en": "Roshen gift box house 730 g",
+   "uk": "Roshen подарунковий набір «Будиночок» 730 г",
+   "ru": "Roshen подарочный набор «Домик» 730 г"
+  },
+  "pos-0482307765282": {
+   "src": "ROSHEN BOITE CADEAU OURS",
+   "fr": "Roshen boîte-cadeau ourson 425 g",
+   "en": "Roshen teddy bear gift box 425 g",
+   "uk": "Roshen подарунковий набір «Ведмедик» 425 г",
+   "ru": "Roshen подарочный набор «Мишка» 425 г"
+  },
+  "pos-0482307765280": {
+   "src": "ROSHEN BOITE CADEAU ARBRE DE NOEL",
+   "fr": "Roshen boîte-cadeau sapin de Noël 386 g",
+   "en": "Roshen Christmas tree gift box 386 g",
+   "uk": "Roshen подарунковий набір «Ялинка» 386 г",
+   "ru": "Roshen подарочный набор «Ёлочка» 386 г"
+  },
+  "pos-0482307765279": {
+   "src": "ROSHEN BOITE CADEAU SANTA AUTO",
+   "fr": "Roshen boîte-cadeau voiture du Père Noël 328 g",
+   "en": "Roshen Santa's car gift box 328 g",
+   "uk": "Roshen подарунковий набір «Машина Санти» 328 г",
+   "ru": "Roshen подарочный набор «Машина Санты» 328 г"
+  },
+  "pos-0482307765274": {
+   "src": "ROSHEN BOITE CADEAU MAISON",
+   "fr": "Roshen boîte-cadeau maison 272 g",
+   "en": "Roshen gift box house 272 g",
+   "uk": "Roshen подарунковий набір «Будиночок» 272 г",
+   "ru": "Roshen подарочный набор «Домик» 272 г"
+  },
+  "pos-0590035201731": {
+   "src": "GOPLANA MAISON",
+   "fr": "Goplana boîte-cadeau maison 174 g",
+   "en": "Goplana gift box house 174 g",
+   "uk": "Goplana подарунковий набір «Будиночок» 174 г",
+   "ru": "Goplana подарочный набор «Домик» 174 г"
+  },
+  "pos-0477163407025": {
+   "src": "CASSIS",
+   "fr": "Cassis surgelés 908 g",
+   "en": "Frozen black currants 908 g",
+   "uk": "Чорна смородина заморожена 908 г",
+   "ru": "Чёрная смородина замороженная 908 г"
+  },
+  "candy-0000000011001-cmueyknsi": {
+   "src": "Bonbons aux agrumes Citrus Mix, Roshen",
+   "fr": "Bonbons aux agrumes Citrus Mix, Roshen",
+   "en": "Citrus Mix candies, Roshen",
+   "uk": "Цукерки Citrus Mix, Roshen",
+   "ru": "Конфеты Citrus Mix, Roshen"
+  },
+  "candy-0000000011001-cmueyp7so": {
+   "src": "Bonbons caramel Karamelkino à l'épine-vinette, Roshen",
+   "fr": "Bonbons caramel Karamelkino à l'épine-vinette, Roshen",
+   "en": "Karamelkino barberry caramels, Roshen",
+   "uk": "Карамель Karamelkino барбарис, Roshen",
+   "ru": "Карамель Karamelkino барбарис, Roshen"
+  },
+  "candy-0000000011001-cmueyq6dz": {
+   "src": "Bonbons caramel Karamelkino Duchesse à la poire, Roshen",
+   "fr": "Bonbons caramel Karamelkino Duchesse à la poire, Roshen",
+   "en": "Karamelkino Duchess pear caramels, Roshen",
+   "uk": "Карамель Karamelkino дюшес, Roshen",
+   "ru": "Карамель Karamelkino дюшес, Roshen"
+  },
+  "candy-0000000011001-cmuezaomx": {
+   "src": "Bonbons au lait Sweet Drop сhargés de crème, Roshen",
+   "fr": "Bonbons au lait Sweet Drop сhargés de crème, Roshen",
+   "en": "Sweet Drop cream-filled milk candies, Roshen",
+   "uk": "Молочні цукерки Sweet Drop з вершковою начинкою, Roshen",
+   "ru": "Молочные конфеты Sweet Drop со сливочной начинкой, Roshen"
+  },
+  "candy-0000000011001-cmvsp5rbg": {
+   "src": "Bonbons fruités miniatures / Mini bonbons aux fruits, Imperial",
+   "fr": "Bonbons fruités miniatures / Mini bonbons aux fruits, Imperial",
+   "en": "Mini fruit candies, Imperial",
+   "uk": "Міні-цукерки фруктові, Imperial",
+   "ru": "Мини-конфеты фруктовые, Imperial"
+  },
+  "candy-0000000011001-cmvsp6wla": {
+   "src": "Bonbons au yaourt / Caramel au yaourt aux fruits, Roshen",
+   "fr": "Bonbons au yaourt / Caramel au yaourt aux fruits, Roshen",
+   "en": "Fruit yogurt caramels, Roshen",
+   "uk": "Карамель йогуртова фруктова, Roshen",
+   "ru": "Карамель йогуртовая фруктовая, Roshen"
+  },
+  "candy-0000000011001-cmvsp6ywz": {
+   "src": "Bonbons caramel à l'épine-vinette (Barberry), Rot Front",
+   "fr": "Bonbons caramel à l'épine-vinette (Barberry), Rot Front",
+   "en": "Barberry caramels, Rot Front",
+   "uk": "Карамель «Барбарис», Rot Front",
+   "ru": "Карамель «Барбарис», Рот Фронт"
+  },
+  "candy-0000000011001-cmvsp8f23": {
+   "src": "Bonbons durs Bim Bom aux fruits, Roshen",
+   "fr": "Bonbons durs Bim Bom aux fruits, Roshen",
+   "en": "Bim Bom fruit hard candies, Roshen",
+   "uk": "Льодяники Bim Bom фруктові, Roshen",
+   "ru": "Леденцы Bim Bom фруктовые, Roshen"
+  },
+  "candy-0000000011001-cmvspal56": {
+   "src": "Caramel au café CoffeeLike avec garniture au lait, Roshen",
+   "fr": "Caramel au café CoffeeLike avec garniture au lait, Roshen",
+   "en": "CoffeeLike coffee caramels with milk filling, Roshen",
+   "uk": "Карамель CoffeeLike кавова з молочною начинкою, Roshen",
+   "ru": "Карамель CoffeeLike кофейная с молочной начинкой, Roshen"
+  },
+  "candy-0000000011001-cmvspans8": {
+   "src": "Bonbons acidulés pétillants Fizzy Boom, Roshen",
+   "fr": "Bonbons acidulés pétillants Fizzy Boom, Roshen",
+   "en": "Fizzy Boom fizzy sour candies, Roshen",
+   "uk": "Шипучі цукерки Fizzy Boom, Roshen",
+   "ru": "Шипучие конфеты Fizzy Boom, Roshen"
+  },
+  "candy-0000000011001-cmvspeix5": {
+   "src": "Caramel Snezhok fondant au sucre, Rot Front",
+   "fr": "Caramel Snezhok fondant au sucre, Rot Front",
+   "en": "Snezhok sugar-fondant caramels, Rot Front",
+   "uk": "Карамель «Сніжок», Rot Front",
+   "ru": "Карамель «Снежок», Рот Фронт"
+  },
+  "candy-0000000011001-cmvspg05w": {
+   "src": "Bonbons caramel à la menthe Poivrée, Rot Front",
+   "fr": "Bonbons caramel à la menthe Poivrée, Rot Front",
+   "en": "Peppermint caramels, Rot Front",
+   "uk": "Карамель м'ятна, Rot Front",
+   "ru": "Карамель «Мятная», Рот Фронт"
+  },
+  "candy-0000000011003-cmuzupf8u": {
+   "src": "Kyivsky Truffe, goût de noix, Millenium",
+   "fr": "Kyivsky Truffe, goût de noix, Millenium",
+   "en": "Kyivsky truffle, nut flavour, Millenium",
+   "uk": "Трюфель «Київський» горіховий, Millennium",
+   "ru": "Трюфель «Киевский» ореховый, Millennium"
+  },
+  "candy-0000000011003-cmv0716qq": {
+   "src": "Kyivsky Truffe Classique, Millenium",
+   "fr": "Kyivsky Truffe Classique, Millenium",
+   "en": "Kyivsky classic truffle, Millenium",
+   "uk": "Трюфель «Київський» класичний, Millennium",
+   "ru": "Трюфель «Киевский» классический, Millennium"
   }
  },
  "collections": {
