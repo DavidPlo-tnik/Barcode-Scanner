@@ -2595,7 +2595,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v299</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v300</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3218,7 +3218,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v299</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v300</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -12048,6 +12048,12 @@
     const ok = new Array(o.items.length).fill(false);
     // 1) same POS code (or same fruit/vegetable family, or same ready-made food code)
     o.items.forEach((it, i) => { const k = K(it.code); if (k !== 'combo') ok[i] = take(x => x.k === k); });
+    // 1b) several items sold under one code and weighed together (candies, pastries…): one register line covers them all
+    o.items.forEach((it, i) => {
+      if (ok[i]) return;
+      const k = K(it.code);
+      if (k !== 'combo' && rungLeft.some(x => x.used && x.k === k && +x.it.kg > 0)) ok[i] = true;
+    });
     // 2) combo plate: rung as its side / meat / salad on the ready-made food codes (or one line)
     o.items.forEach((it, i) => {
       if (K(it.code) !== 'combo') return;
@@ -12159,10 +12165,16 @@
     const items = (o.pos && o.pos.items) || [];
     if (!items.length) return [];
     const site = {};
-    (o.items || []).forEach(it => { const k = orPosKey(it.code); if (k && k !== 'combo' && !site[k]) site[k] = it.t; });
+    // one register line can cover several site items weighed together under one code: list all their names
+    (o.items || []).forEach(it => {
+      const k = orPosKey(it.code); if (!k || k === 'combo') return;
+      const t = String(it.t || '').trim(); if (!t) return;
+      if (!site[k]) site[k] = t; else if (!site[k].split(' + ').includes(t)) site[k] += ' + ' + t;
+    });
     const m = (n) => orMoney4(n, lg);
     const lines = items.map(it => {
-      const nm = (orWebName(it.code, lg) || site[orPosKey(it.code)] || it.name || it.code || '').trim();
+      const sk = site[orPosKey(it.code)] || '';
+      const nm = ((it.kg && sk.includes(' + ') ? sk : '') || orWebName(it.code, lg) || sk || it.name || it.code || '').trim();
       const qty = it.kg ? (lg === 'en' ? (+it.kg).toFixed(3) : (+it.kg).toFixed(3).replace('.', ',')) + ' kg ' : ((+it.q || 1) > 1 ? (+it.q) + ' × ' : '');
       return `• ${qty}${nm} — ${m(it.amt)}`;
     });
