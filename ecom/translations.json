@@ -1,6 +1,6 @@
 {
  "about": "Website names in French (main), English, Ukrainian (uk) and Russian (ru). 'src' = the name the sync builds from the POS/app; when it changes the entry is out of date and the product shows the POS name until the next translation pass by Claude. Edit fr/en/uk/ru by hand anytime. Optional 'desc' {fr,en,uk,ru}: extra HTML appended to the product description.",
- "updated": "2026-11-20T16:05:45",
+ "updated": "2026-11-23T16:42:53",
  "products": {
   "candy-0000000011000-cmuex4zy7": {
    "src": "Romachka, Roshen,",
@@ -10950,6 +10950,41 @@
    "en": "Zlagoda extra sweet cream butter 82% 180 g",
    "uk": "Злагода масло солодковершкове Екстра 82 % 180 г",
    "ru": "Злагода масло сладкосливочное Экстра 82 % 180 г"
+  },
+  "pos-0482000544018": {
+   "src": "ZDOROVA RODYNA SIROP EGLANTIER ET AUBEPINE",
+   "fr": "Zdorova Rodyna sirop d’églantier et aubépine 200 ml",
+   "en": "Zdorova Rodyna rosehip & hawthorn syrup 200 ml",
+   "uk": "Здорова родина сироп шипшина та глід 200 мл",
+   "ru": "Здорова родина сироп шиповник и боярышник 200 мл"
+  },
+  "pos-0482000544039": {
+   "src": "ZDOROVA RODYNA SIROP EGLANTIER ECHINACEE MENTHE",
+   "fr": "Zdorova Rodyna sirop d’églantier, échinacée et menthe 200 ml",
+   "en": "Zdorova Rodyna rosehip syrup with echinacea & mint 200 ml",
+   "uk": "Здорова родина сироп шипшина, м’ята та ехінацея 200 мл",
+   "ru": "Здорова родина сироп шиповник, мята и эхинацея 200 мл"
+  },
+  "pos-0482000544041": {
+   "src": "ZDOROVA RODYNA SIROP EGLANTIER",
+   "fr": "Zdorova Rodyna sirop d’églantier 200 ml",
+   "en": "Zdorova Rodyna rosehip syrup 200 ml",
+   "uk": "Здорова родина сироп з плодів шипшини 200 мл",
+   "ru": "Здорова родина сироп из плодов шиповника 200 мл"
+  },
+  "pos-0482025148001": {
+   "src": "ZDOROVA RODYNA SIROP DE SUREAU",
+   "fr": "Zdorova Rodyna sirop de sureau 200 ml",
+   "en": "Zdorova Rodyna elderberry syrup 200 ml",
+   "uk": "Здорова родина сироп бузина 200 мл",
+   "ru": "Здорова родина сироп бузина 200 мл"
+  },
+  "pos-0482000544344": {
+   "src": "ZDOROVA RODYNA SIROP ARGOUSIER",
+   "fr": "Zdorova Rodyna sirop d’argousier 200 ml",
+   "en": "Zdorova Rodyna sea buckthorn syrup 200 ml",
+   "uk": "Здорова родина сироп обліпиха 200 мл",
+   "ru": "Здорова родина сироп облепиха 200 мл"
   }
  },
  "collections": {
