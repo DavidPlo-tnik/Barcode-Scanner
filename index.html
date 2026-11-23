@@ -2052,7 +2052,10 @@
   .wt-b.ok { background: var(--good); color: #000; }
   .wt-cart { margin-top: 8px; padding: 8px 10px; background: var(--surface-2); border-radius: 8px; }
   .wt-cart-h { font-family: var(--font-display); font-size: 9.5px; letter-spacing: .08em; color: var(--accent); margin-bottom: 4px; }
-  .wt-line { display: flex; justify-content: space-between; gap: 10px; font-size: 12.5px; padding: 2px 0; }
+  .wt-line { display: flex; align-items: center; gap: 10px; font-size: 12.5px; padding: 3px 0; cursor: pointer; }
+  .wt-line > span { flex: 1; min-width: 0; }
+  .wt-line > img, .wt-line > .wt-nothumb, .wt-line > div:first-child { flex: 0 0 34px; width: 34px; height: 34px; border-radius: 6px; }
+  .wt-nothumb { display: inline-block; background: var(--surface-3, #2a2a2a); }
   .wt-line b { font-family: var(--font-display); font-size: 11.5px; white-space: nowrap; }
   .wt-tl { margin-top: 8px; border-top: 1px solid var(--border); padding-top: 6px; }
   .wt-tl div { display: flex; gap: 8px; align-items: baseline; font-size: 12.5px; padding: 3px 0; }
@@ -2595,7 +2598,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v300</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v301</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3218,7 +3221,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v300</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v301</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -17079,7 +17082,7 @@
     { id: 'live',  icon: '🟢', label: 'LIVE',     reports: [['live', 'Magasin']] },
     { id: 'sales', icon: '📊', label: 'VENTES',   reports: [['dept', 'Départements'], ['top', 'Top'], ['hours', 'Heures'], ['trend', 'Tendance']] },
     { id: 'check', icon: '🔍', label: 'CONTRÔLE', reports: [['slow', 'Ralenti'], ['scale', 'Balance'], ['txn', 'Transactions']] },
-    { id: 'site',  icon: '🛍', label: 'SITE WEB', reports: [['site', 'En direct'], ['site-search', 'Recherches'], ['site-prod', 'Produits'], ['site-carts', 'Paniers']] },
+    { id: 'site',  icon: '🛍', label: 'SITE WEB', reports: [['site', 'Live'], ['site-search', 'Searches'], ['site-prod', 'Products'], ['site-carts', 'Carts']] },
   ];
   const _navLast = {};
   function reportsNavPaint() {
@@ -17420,11 +17423,11 @@ analytics.subscribe('checkout_completed', (ev) => mdCheckout('done', ev));
   function wtStep(x) {
     const d = x.d || {};
     switch (x.e) {
-      case 'view': return ['👁', d.t || 'product', d.p ? money2(d.p) : ''];
+      case 'view': return ['👁', wtName(d.t, d.s) || 'product', d.p ? money2(d.p) : ''];
       case 'coll': return ['📂', d.t || 'aisle', ''];
       case 'search': return ['🔎', '“' + (d.q || '') + '”', d.n === 0 ? 'no results' : (d.n != null ? d.n + ' results' : 'typed')];
-      case 'add': return ['➕', (d.q > 1 ? d.q + ' × ' : '') + (d.t || 'item'), d.a ? money2(d.a) : ''];
-      case 'rem': return ['➖', d.t || 'item', 'removed'];
+      case 'add': return ['➕', (d.q > 1 ? d.q + ' × ' : '') + (wtName(d.t, d.s) || 'item'), d.a ? money2(d.a) : ''];
+      case 'rem': return ['➖', wtName(d.t, d.s) || 'item', 'removed'];
       case 'cart': return ['🛒', d.chg ? (d.ct ? 'Cart updated' : 'Cart emptied') : 'Cart', d.ct ? money2(d.ct) : ''];
       case 'checkout': return ['💳', 'Checkout started', d.tot ? money2(d.tot) : ''];
       case 'done': return ['✅', 'Order placed', d.tot ? money2(d.tot) : ''];
@@ -17447,10 +17450,19 @@ analytics.subscribe('checkout_completed', (ev) => mdCheckout('done', ev));
     const code = String(sku || '').replace(/-[\d.]+KG$/i, '');
     try { return code && DATA.products[resolveCode(code)] ? productThumbHtml(resolveCode(code), 40) : ''; } catch (e) { return ''; }
   }
+  // the owner's screens are in English: use the site's English name for an item, whatever language the visitor browsed in
+  function wtName(t, sku) {
+    const code = wtCode(sku);
+    if (code) { const en = typeof orWebName === 'function' ? orWebName(code, 'en') : ''; if (en) return en; }
+    if (t && !/[\u0400-\u04FF]/.test(t)) return t;
+    if (code && DATA.products[code]) return DATA.products[code][0];
+    return t || '';
+  }
   function wtCartHtml(cart) {
     if (!cart.length) return '';
     return `<div class="wt-cart"><div class="wt-cart-h">🛒 IN THE CART · ${money2(wtCartTotal(cart))}</div>`
-      + cart.map(l => `<div class="wt-line"><span>${l.q > 1 ? l.q + ' × ' : ''}${escapeHtml(l.t || '')}</span><b>${money2(l.a || (l.p || 0) * (l.q || 1))}</b></div>`).join('') + '</div>';
+      + cart.map(l => { const c = wtCode(l.s);
+        return `<div class="wt-line"${c ? ` data-peek="${c}"` : ''}>${wtThumb(l.s) || '<i class="wt-nothumb"></i>'}<span>${l.q > 1 ? l.q + ' × ' : ''}${escapeHtml(wtName(l.t, l.s))}</span><b>${money2(l.a || (l.p || 0) * (l.q || 1))}</b></div>`; }).join('') + '</div>';
   }
   function wtSessionCard(s, live) {
     const tl = wtTimeline(s), cur = tl[tl.length - 1], st = cur ? wtStep(cur) : ['', '', ''];
@@ -17578,6 +17590,7 @@ analytics.subscribe('checkout_completed', (ev) => mdCheckout('done', ev));
     wtPaint(body);
   }
   function wtPaint(body) {
+    if (!_orTr && !_wt.trLoading) { _wt.trLoading = true; orLoadTr().then(() => { if (wtActive() && !_wt.setup) wtPaint($('#reports-body')); }); }
     const keep = body.scrollTop;
     const S = wtSessions(), now = wtNow(), today = wtDay(now);
     const head = `<div class="wt-head"><span>${_wt.err ? '<b style="color:var(--bad)">⚠ ' + escapeHtml(_wt.err) + '</b>' : 'Updated ' + new Date(_wt.loadedAt).toLocaleTimeString('en-CA', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) + ' · refreshes every 30 s'}</span><button class="wt-gear" id="wt-gear" title="Setup">⚙</button></div>`;
@@ -17620,7 +17633,7 @@ analytics.subscribe('checkout_completed', (ev) => mdCheckout('done', ev));
     } else if (_activeReport === 'site-prod') {
       const P = {};
       const get = (t, sku) => { const base = String(sku || '').replace(/-[\d.]+KG$/i, ''), key = base || (t || '').trim(); if (!key) return null;
-        const p = P[key] || (P[key] = { t: (t || '').trim() || key, s: sku || '', v: new Set(), a: new Set(), b: 0 }); return p; };
+        const p = P[key] || (P[key] = { t: wtName((t || '').trim(), sku) || key, s: sku || '', v: new Set(), a: new Set(), b: 0 }); return p; };
       S.forEach(s => {
         s.ev.forEach(x => {
           if (x.e === 'view') { const p = get(x.d.t, x.d.s); if (p) p.v.add(s.id); }
@@ -17649,7 +17662,7 @@ analytics.subscribe('checkout_completed', (ev) => mdCheckout('done', ev));
     }
     body.innerHTML = html;
     body.scrollTop = keep;
-    body.querySelectorAll('[data-wt]').forEach(el => el.addEventListener('click', () => { _wt.open[el.dataset.wt] = !_wt.open[el.dataset.wt]; wtPaint(body); }));
+    body.querySelectorAll('[data-wt]').forEach(el => el.addEventListener('click', (e) => { if (e.target.closest('[data-peek]')) return; _wt.open[el.dataset.wt] = !_wt.open[el.dataset.wt]; wtPaint(body); }));
     body.querySelectorAll('[data-pf]').forEach(el => el.addEventListener('click', () => { _wt.pf = el.dataset.pf; wtPaint(body); }));
     const dg = body.querySelector('#wt-diag-run'); if (dg) dg.addEventListener('click', () => { _wt.diag = null; wtDiag(); wtPaint(body); });
     const gear = body.querySelector('#wt-gear'); if (gear) gear.addEventListener('click', () => { _wt.setup = true; wtStopPoll(); renderReport(); });
