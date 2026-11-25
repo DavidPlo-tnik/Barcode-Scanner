@@ -620,7 +620,8 @@
     "0077507500220",
     "0077507500200"
    ],
-   "note": "5 saveurs disponibles"
+   "note": "5 saveurs disponibles",
+   "hide": true
   },
   {
    "id": "gmvihwj40",
@@ -4731,7 +4732,7 @@
    ],
    "from": "2026-11-26",
    "to": "2026-12-02",
-   "at": "2026-11-25T19:07:49.549Z",
+   "at": "2026-11-25T19:08:14.194Z",
    "items": {
     "0023881500000": {
      "sz": {
@@ -5353,7 +5354,8 @@
       "0077507500220",
       "0077507500200"
      ],
-     "note": "5 saveurs disponibles"
+     "note": "5 saveurs disponibles",
+     "hide": true
     },
     {
      "id": "gmvihwj40",
