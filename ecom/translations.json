@@ -10985,6 +10985,55 @@
    "en": "Zdorova Rodyna sea buckthorn syrup 200 ml",
    "uk": "Здорова родина сироп обліпиха 200 мл",
    "ru": "Здорова родина сироп облепиха 200 мл"
+  },
+  "pos-0482306310732": {
+   "src": "SADOCHOK NECTAR POMME RAISIN",
+   "fr": "Sadochok nectar pomme et raisin 950 ml",
+   "en": "Sadochok apple & grape nectar 950 ml",
+   "uk": "Садочок яблучно-виноградний нектар 950 мл",
+   "ru": "Садочок яблочно-виноградный нектар 950 мл"
+  },
+  "pos-0482306312320": {
+   "src": "SADOCHOK JUS DE POMME 100%",
+   "fr": "Sadochok jus de pomme 100 % 950 ml",
+   "en": "Sadochok 100% apple juice 950 ml",
+   "uk": "Садочок яблучний сік 100 % 950 мл",
+   "ru": "Садочок яблочный сок 100 % 950 мл"
+  },
+  "pos-0482306313031": {
+   "src": "SADOCHOK BOISSON MULTIFRUIT",
+   "fr": "Sadochok boisson aux jus multifruit 950 ml",
+   "en": "Sadochok multifruit juice drink 950 ml",
+   "uk": "Садочок мультифруктовий соковий напій 950 мл",
+   "ru": "Садочок мультифруктовый сокосодержащий напиток 950 мл"
+  },
+  "pos-0482306310707": {
+   "src": "SADOCHOK NECTAR POMME CERISE",
+   "fr": "Sadochok nectar pomme et cerise 950 ml",
+   "en": "Sadochok apple & cherry nectar 950 ml",
+   "uk": "Садочок яблучно-вишневий нектар 950 мл",
+   "ru": "Садочок яблочно-вишнёвый нектар 950 мл"
+  },
+  "pos-0482306312603": {
+   "src": "SADOCHOK JUS DE TOMATE",
+   "fr": "Sadochok jus de tomate avec pulpe 950 ml",
+   "en": "Sadochok tomato juice with pulp 950 ml",
+   "uk": "Садочок томатний сік з м'якоттю 950 мл",
+   "ru": "Садочок томатный сок с мякотью 950 мл"
+  },
+  "pos-0482306311027": {
+   "src": "SADOCHOK NECTAR POMME GRENADE",
+   "fr": "Sadochok nectar pomme et grenade 950 ml",
+   "en": "Sadochok apple & pomegranate nectar 950 ml",
+   "uk": "Садочок яблучно-гранатовий нектар 950 мл",
+   "ru": "Садочок яблочно-гранатовый нектар 950 мл"
+  },
+  "pos-0482306312605": {
+   "src": "SADOCHOK JUS PECHE POMME",
+   "fr": "Sadochok jus pêche et pomme avec pulpe 950 ml",
+   "en": "Sadochok peach & apple juice with pulp 950 ml",
+   "uk": "Садочок персиково-яблучний сік з м'якоттю 950 мл",
+   "ru": "Садочок персиково-яблочный сок с мякотью 950 мл"
   }
  },
  "collections": {
