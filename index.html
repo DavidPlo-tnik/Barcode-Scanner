@@ -2601,7 +2601,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v302</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v303</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3224,7 +3224,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v302</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v303</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -7370,7 +7370,12 @@
       const top = y + P * .35, bottom = wide ? y + h - P * .35 : y + ph + P * .25;
       const left = wide ? x + colW : x + P * .3, right = x + w - (wide ? P + tagS * 2.2 : P * .3);
       const man = (u.cfg.ph && u.cfg.ph[fmtKey]) || {};
-      const auto = flyerPhotoAuto(imgs, left, top, right, bottom, Object.keys(man).length > 0);
+      let auto = flyerPhotoAuto(imgs, left, top, right, bottom, Object.keys(man).length > 0);
+      // photos stacked in rows: start them below the price tag when it would cover the top-right one
+      if (!wide && !Object.keys(man).length && new Set(auto.map(r => Math.round(r.y))).size > 1) {
+        const tagL = x + w - tagS * 2.3, tagB = y + tagS * 1.15;
+        if (auto.some(r => r.x + r.w > tagL && r.y < tagB)) auto = flyerPhotoAuto(imgs, left, tagB + P * .2, right, bottom, false);
+      }
       imgs.forEach((t, k) => {
         let r = auto[k];
         const o = man[fnames[k]];
