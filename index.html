@@ -2601,7 +2601,7 @@
 
 <header class="topbar">
   <div class="topbar-left">
-    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v305</span></div>
+    <div class="brand">▮▮ MARCHÉ DÉCARIE <span style="font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v306</span></div>
     <div class="meta" id="meta-info">— ITEMS</div>
   </div>
   <button class="refresh-btn" id="refresh-btn" title="Refresh app data">⟳</button>
@@ -3224,7 +3224,7 @@
   <div class="labels-bar" id="labels-bar">
     <div class="labels-bar-row1">
       <span id="labels-bar-info">LABELS</span>
-      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v305</span>
+      <span style="font-family:var(--font-display);font-size:9px;color:var(--text-faint);letter-spacing:0.05em;">v306</span>
       <button class="btn" id="labels-close-btn">CLOSE</button>
     </div>
     <div class="mode-toggle" id="label-mode-toggle">
@@ -11933,6 +11933,7 @@
       }
       _or.at = Date.now();
       orCleanPending();
+      try { orResendPending(); } catch (e) { console.error('resend', e); }
     } catch (e) { _or.err = String(e.message || e); }
     finally { _or.loading = false; }
     try { orBadge(); } catch (e) { console.error('orBadge', e); }
@@ -11990,20 +11991,35 @@
     const prev = pend[o.id];
     if (prev && raw && orPendingLive(raw, prev) && (prev.over || orRank(prev.status) < orRank(prev.base))) p.over = prev.over || prev.base;
     if (prev && orRank(p.status) >= orRank(prev.status) && act !== 'on_hold') { if (!p.pos && prev.pos) p.pos = prev.pos; if (!p.deliver_on && prev.deliver_on) p.deliver_on = prev.deliver_on; }
-    if (p.status) { pend[o.id] = p; orLS('orPending', pend); }
+    if (p.status) { p.entry = entry; p.oname = o.name; pend[o.id] = p; orLS('orPending', pend); }
     orRender();
+    return orSendAction(entry, o.name);
+  }
+  // write one step to actions.json; a step that never reached it (phone asleep, no signal) is sent again on the next refresh
+  async function orSendAction(entry, oname, quiet) {
     for (let attempt = 0; attempt < 6; attempt++) {
       try {
         const { json, sha } = await ghGetJsonAndSha(OR_ACTIONS);
         const q = json && json.items ? json : { items: [] };
-        q.items.push(entry);
-        await ghPutFile(OR_ACTIONS, btoa(unescape(encodeURIComponent(JSON.stringify(q, null, 1)))), `order ${o.name} ${act}`, sha);
+        if (!q.items.some(x => x.id === entry.id)) q.items.push(entry);
+        await ghPutFile(OR_ACTIONS, btoa(unescape(encodeURIComponent(JSON.stringify(q, null, 1)))), `order ${oname || ''} ${entry.act}`, sha);
+        const pend = orPending(), p = pend[entry.order];
+        if (p && p.entry && p.entry.id === entry.id) { p.sent = Date.now(); orLS('orPending', pend); }
         return true;
       } catch (e) {
         if (e.isConflict && attempt < 5) { await new Promise(r => setTimeout(r, 300 * (attempt + 1))); continue; }
-        showToast('Could not save: ' + (e.message || e), true);
+        if (!quiet) showToast('Could not save: ' + (e.message || e) + ' — will retry', true);
         return false;
       }
+    }
+  }
+  function orResendPending() {
+    const pend = orPending();
+    for (const id in pend) {
+      const p = pend[id];
+      if (!p.entry || p.sent || Date.now() - (p.t || 0) < 20000 || Date.now() - (p.tryT || 0) < 20000) continue;
+      p.tryT = Date.now(); orLS('orPending', pend);
+      orSendAction(p.entry, p.oname, true);
     }
   }
 
